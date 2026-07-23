@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://aseemmankotia.github.io/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
-  <url><loc>https://aseemmankotia.github.io/aws-aif-c01.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://aseemmankotia.github.io/iapp-aigp.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
-  <url><loc>https://aseemmankotia.github.io/aws-aip-c01.html</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://aseemmankotia.github.io/aws-aif-c01-fundamentals-of-ai-and-ml.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/aws-aif-c01-fundamentals-of-generative-ai.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/aws-aif-c01-applications-of-foundation-models.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/aws-aif-c01-guidelines-for-responsible-ai.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/aws-aif-c01-security-compliance-and-governance-for-ai-solutions.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/aws-aif-c01.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://aseemmankotia.github.io/iapp-aigp-foundations-of-ai-systems.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/iapp-aigp-ai-development-lifecycle.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/iapp-aigp-responsible-ai-principles-and-impacts.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/iapp-aigp-ai-risk-management-and-governance-implementation.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/iapp-aigp-ai-laws-regulations-and-standards.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/iapp-aigp.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://aseemmankotia.github.io/aws-aip-c01-foundation-model-integration-data-management-and-compliance.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/aws-aip-c01-implementation-and-integration.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/aws-aip-c01-ai-safety-security-and-governance.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/aws-aip-c01.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
 </urlset>
