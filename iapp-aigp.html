@@ -1,0 +1,145 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free IAPP AI Governance Professional (AIGP) Practice Test — 12 Real Exam-Style Questions</title>
+<meta name="description" content="Free IAPP AI Governance Professional (AIGP) practice questions with detailed explanations. Test yourself before the real exam.">
+<style>
+:root{--bg:#0f172a;--card:#1e293b;--txt:#e2e8f0;--dim:#94a3b8;--acc:#38bdf8;--ok:#4ade80;--bad:#f87171;--btn:#0ea5e9}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--txt);line-height:1.6}
+.wrap{max-width:760px;margin:0 auto;padding:24px 16px 64px}
+header{padding:28px 0 8px}h1{font-size:1.5rem}h1 a{color:var(--txt);text-decoration:none}
+.sub{color:var(--dim);margin:4px 0 20px}
+.card{background:var(--card);border-radius:12px;padding:20px;margin:14px 0}
+.card h2{font-size:1.05rem;margin-bottom:4px}.card p{color:var(--dim);font-size:.92rem}
+.card a.go{display:inline-block;margin-top:10px;color:var(--acc);text-decoration:none;font-weight:600}
+.q{margin-bottom:8px;font-weight:600}
+.opt{display:block;width:100%;text-align:left;background:#0f172a;border:1px solid #334155;color:var(--txt);
+ border-radius:8px;padding:10px 12px;margin:6px 0;cursor:pointer;font-size:.95rem}
+.opt:hover{border-color:var(--acc)}
+.opt.correct{border-color:var(--ok);background:#052e16}
+.opt.wrong{border-color:var(--bad);background:#450a0a}
+.expl{display:none;background:#0f172a;border-left:3px solid var(--acc);padding:10px 12px;margin-top:8px;
+ border-radius:0 8px 8px 0;font-size:.92rem;color:var(--dim)}
+.meta{font-size:.78rem;color:var(--dim);margin-bottom:6px;text-transform:uppercase;letter-spacing:.04em}
+.cta{background:linear-gradient(135deg,#0ea5e9,#6366f1);border-radius:12px;padding:22px;margin:26px 0;text-align:center}
+.cta a{display:inline-block;background:#fff;color:#0f172a;font-weight:700;text-decoration:none;
+ padding:11px 22px;border-radius:8px;margin-top:10px}
+.cta p{color:#e0f2fe}
+.score{font-size:1.1rem;font-weight:700;margin:18px 0 6px}
+footer{color:var(--dim);font-size:.8rem;margin-top:44px;border-top:1px solid #1e293b;padding-top:16px}
+footer a{color:var(--dim)}
+.badge{display:inline-block;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:99px;margin-left:8px;vertical-align:middle}
+.badge.live{background:#052e16;color:var(--ok)}.badge.soon{background:#1e3a5f;color:var(--acc)}
+</style></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free IAPP AI Governance Professional (AIGP) practice test — 12 exam-style questions with explanations. No sign-up.</p></header>
+
+  <div class="card qcard" id="q0">
+    <div class="meta">Question 1 of 12 · Domain 1: Foundations of AI Systems</div>
+    <div class="q">A healthcare organization is developing an AI system to assist radiologists in detecting anomalies in X-ray images. The system will analyze images and flag potential areas of concern for human review. During development, the team discovers that the training dataset contains 85% images from patients of European descent and only 15% from other ethnic backgrounds. Which action should the organization prioritize FIRST to address potential AI system risks?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. Deploy the system with a disclaimer that accuracy may vary across patient populations</button><button class="opt" onclick="answer(this,0,1,3)">B. Implement post-deployment monitoring to track performance across different demographic groups</button><button class="opt" onclick="answer(this,0,2,3)">C. Use data augmentation techniques to artificially balance the existing dataset without collecting new data</button><button class="opt" onclick="answer(this,0,3,3)">D. Conduct a bias assessment and expand the training dataset to include representative samples from diverse patient populations before deployment</button>
+    <div class="expl">Addressing dataset representativeness and bias BEFORE deployment is a foundational principle of responsible AI development. The AIGP framework emphasizes proactive risk mitigation during the development phase. Expanding the dataset to include representative samples addresses the root cause of potential bias and ensures the system performs equitably across populations before it can cause harm.</div>
+  </div>
+
+  <div class="card qcard" id="q1">
+    <div class="meta">Question 2 of 12 · Domain 2: AI Development Lifecycle</div>
+    <div class="q">A healthcare AI system is being developed to predict patient readmission risk. During the data preparation phase, the team discovers that 78% of training records are from patients over age 65, while the hospital serves a diverse age population. The model performs well on test data but shows significant accuracy drops for patients under 40 in production. What is the MOST effective approach to address this issue?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. Collect additional training data from underrepresented age groups and rebalance the dataset using stratified sampling before retraining</button><button class="opt" onclick="answer(this,1,1,0)">B. Implement post-processing calibration to adjust predictions for younger patients based on demographic metadata</button><button class="opt" onclick="answer(this,1,2,0)">C. Apply transfer learning from a general medical model that was trained on balanced demographic data</button><button class="opt" onclick="answer(this,1,3,0)">D. Increase model complexity by adding more hidden layers to better capture patterns across all age groups</button>
+    <div class="expl">This addresses the root cause—sample bias in training data. Collecting representative data and using stratified sampling ensures the model learns patterns across all demographic groups. This is a fundamental data quality issue that requires fixing the training distribution, which is a core practice in the AI development lifecycle for ensuring fairness and generalizability.</div>
+  </div>
+
+  <div class="card qcard" id="q2">
+    <div class="meta">Question 3 of 12 · Domain 3: Responsible AI Principles and Impacts</div>
+    <div class="q">A healthcare organization is deploying an AI system to assist radiologists in detecting potential tumors in medical images. The system will flag images for human review but will not make final diagnoses. During testing, the model shows 92% accuracy overall, but only 78% accuracy for images from patients with darker skin tones. What is the MOST critical responsible AI principle being violated?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. Transparency, because the model's decision-making process is not sufficiently explainable to radiologists</button><button class="opt" onclick="answer(this,2,1,1)">B. Fairness, because the model performs significantly worse for a specific demographic group</button><button class="opt" onclick="answer(this,2,2,1)">C. Privacy, because the model processes sensitive medical data without proper anonymization</button><button class="opt" onclick="answer(this,2,3,1)">D. Accountability, because no single individual is designated as responsible for model outputs</button>
+    <div class="expl">The scenario describes disparate performance across demographic groups (92% vs 78% accuracy), which is a clear fairness issue. Fairness in AI requires that systems perform equitably across different populations and do not systematically disadvantage particular groups. A 14-percentage-point gap in accuracy based on skin tone represents algorithmic bias that could lead to health disparities.</div>
+  </div>
+
+  <div class="card qcard" id="q3">
+    <div class="meta">Question 4 of 12 · Domain 4: AI Risk Management and Governance Implementation</div>
+    <div class="q">A financial services company is implementing an AI-powered credit scoring system that will process applications from customers across multiple countries. The system uses machine learning to assess creditworthiness. During initial testing, the risk team identifies that the model shows disparate impact against certain demographic groups. Which risk mitigation approach should be implemented FIRST to address this issue while maintaining model performance?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. Conduct fairness-aware preprocessing to balance the training dataset and implement fairness constraints during model retraining</button><button class="opt" onclick="answer(this,3,1,0)">B. Deploy the model with monthly bias audits and commit to retraining if metrics exceed thresholds</button><button class="opt" onclick="answer(this,3,2,0)">C. Replace the AI system with a rule-based scoring system to eliminate algorithmic bias</button><button class="opt" onclick="answer(this,3,3,0)">D. Add a human review layer for all decisions affecting protected demographic groups</button>
+    <div class="expl">Fairness-aware preprocessing addresses the root cause by correcting data imbalances before they propagate through the model. Implementing fairness constraints during retraining ensures the model optimizes for both accuracy and fairness metrics simultaneously. This is a proactive approach that fixes the underlying issue rather than monitoring or compensating for it downstream.</div>
+  </div>
+
+  <div class="card qcard" id="q4">
+    <div class="meta">Question 5 of 12 · Domain 5: AI Laws, Regulations, and Standards</div>
+    <div class="q">A multinational corporation is deploying an AI-powered recruitment system that will process applicant data from candidates in the EU, UK, and California. The system uses automated decision-making to rank candidates. Which combination of regulatory frameworks must the organization primarily comply with?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. GDPR only, as it has the most comprehensive AI-specific provisions and extraterritorial reach</button><button class="opt" onclick="answer(this,4,1,2)">B. Only the laws of the jurisdiction where the company is headquartered, as employment decisions are regulated at the corporate level</button><button class="opt" onclick="answer(this,4,2,2)">C. GDPR for EU applicants, UK GDPR for UK applicants, and CCPA for California applicants, with specific attention to automated decision-making rights under GDPR/UK GDPR and CPRA's ADMT provisions</button><button class="opt" onclick="answer(this,4,3,2)">D. The EU AI Act exclusively, as it specifically regulates high-risk AI systems including employment applications</button>
+    <div class="expl">Each jurisdiction has applicable laws: GDPR Article 22 restricts automated decision-making for EU residents; UK GDPR has parallel provisions post-Brexit; California's CPRA (effective 2023) includes ADMT (Automated Decision-Making Technology) provisions requiring opt-outs and disclosures. Organizations must comply with all applicable jurisdictional requirements.</div>
+  </div>
+
+  <div class="card qcard" id="q5">
+    <div class="meta">Question 6 of 12 · Domain 1: Foundations of AI Systems</div>
+    <div class="q">Which statement BEST describes the difference between Machine Learning and Deep Learning in the context of AI system architectures?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. Deep Learning is a subset of Machine Learning that uses neural networks with multiple hidden layers to automatically learn hierarchical feature representations</button><button class="opt" onclick="answer(this,5,1,0)">B. Machine Learning requires labeled data while Deep Learning works only with unlabeled data</button><button class="opt" onclick="answer(this,5,2,0)">C. Machine Learning is used for structured data while Deep Learning is exclusively for unstructured data</button><button class="opt" onclick="answer(this,5,3,0)">D. Deep Learning always produces more accurate results than traditional Machine Learning across all problem types</button>
+    <div class="expl">This accurately defines the relationship between ML and DL. Deep Learning is indeed a subset of Machine Learning characterized by neural networks with multiple hidden layers that can automatically learn feature hierarchies without manual feature engineering. This is a foundational concept for understanding AI system architectures.</div>
+  </div>
+
+  <div class="card qcard" id="q6">
+    <div class="meta">Question 7 of 12 · Domain 2: AI Development Lifecycle</div>
+    <div class="q">An AI development team must choose a model validation approach for a loan approval system that will be deployed in multiple countries with different regulatory requirements. The model will be updated quarterly. Which validation strategy BEST balances regulatory compliance and operational efficiency?</div>
+    <button class="opt" onclick="answer(this,6,0,0)">A. Use k-fold cross-validation during development, maintain a separate holdout test set that is never used for training, and implement continuous monitoring with region-specific fairness metrics in production</button><button class="opt" onclick="answer(this,6,1,0)">B. Perform 80/20 train-test split validation once during initial development, then monitor production metrics for each quarterly update</button><button class="opt" onclick="answer(this,6,2,0)">C. Validate using only production A/B testing with random assignment to compare new model versions against the current model</button><button class="opt" onclick="answer(this,6,3,0)">D. Apply bootstrapping validation on the full dataset and rely on automated retraining pipelines with performance thresholds</button>
+    <div class="expl">This approach combines rigorous development validation (k-fold cross-validation) with untainted holdout testing and region-specific monitoring. The separate holdout set ensures unbiased performance estimation, while continuous monitoring with region-specific metrics addresses varying regulatory requirements across jurisdictions. This aligns with best practices for regulated AI systems.</div>
+  </div>
+
+  <div class="card qcard" id="q7">
+    <div class="meta">Question 8 of 12 · Domain 3: Responsible AI Principles and Impacts</div>
+    <div class="q">A financial services company plans to use a generative AI chatbot to provide investment advice to customers. The chatbot will recommend specific stocks and portfolio allocations. Which combination of responsible AI measures is MOST essential before deployment?</div>
+    <button class="opt" onclick="answer(this,7,0,0)">A. Establishing human oversight for high-stakes recommendations, implementing bias testing across customer demographics, and creating clear disclosures about AI limitations</button><button class="opt" onclick="answer(this,7,1,0)">B. Implementing rate limiting to prevent API abuse and encrypting all conversation data at rest and in transit</button><button class="opt" onclick="answer(this,7,2,0)">C. Optimizing the model for faster response times and training customer service staff on how to troubleshoot chatbot errors</button><button class="opt" onclick="answer(this,7,3,0)">D. Conducting A/B testing to maximize user engagement and implementing multi-factor authentication for chatbot access</button>
+    <div class="expl">Investment advice is high-stakes with significant financial consequences. Responsible deployment requires: (1) human oversight for consequential decisions (accountability), (2) fairness testing to ensure equitable service across demographics, and (3) transparency through clear disclosures about AI capabilities and limitations. These measures address the core responsible AI principles most relevant to high-risk financial applications.</div>
+  </div>
+
+  <div class="card qcard" id="q8">
+    <div class="meta">Question 9 of 12 · Domain 4: AI Risk Management and Governance Implementation</div>
+    <div class="q">An e-commerce platform uses a generative AI system to create product descriptions. The governance team needs to establish ongoing monitoring for this system. Which combination of monitoring metrics is MOST appropriate for detecting risks specific to generative AI outputs?</div>
+    <button class="opt" onclick="answer(this,8,0,1)">A. System uptime, API latency, token consumption rates, and cost per request</button><button class="opt" onclick="answer(this,8,1,1)">B. Output factuality scores, toxicity detection rates, prompt injection attempts, and content policy violations</button><button class="opt" onclick="answer(this,8,2,1)">C. Model accuracy, precision, recall, and F1 score on validation datasets</button><button class="opt" onclick="answer(this,8,3,1)">D. User engagement metrics, click-through rates, conversion rates, and customer satisfaction scores</button>
+    <div class="expl">These metrics directly address generative AI-specific risks: hallucinations (factuality), harmful content generation (toxicity), security vulnerabilities (prompt injection), and regulatory compliance (policy violations). This monitoring approach detects the unique failure modes of large language models and generative systems.</div>
+  </div>
+
+  <div class="card qcard" id="q9">
+    <div class="meta">Question 10 of 12 · Domain 5: AI Laws, Regulations, and Standards</div>
+    <div class="q">An organization subject to the EU AI Act is developing a credit scoring system. Under the AI Act's risk classification framework, what obligations does this create?</div>
+    <button class="opt" onclick="answer(this,9,0,3)">A. Limited risk classification requiring transparency obligations only, such as disclosing that AI is being used</button><button class="opt" onclick="answer(this,9,1,3)">B. Minimal risk classification with voluntary codes of conduct as the only requirement</button><button class="opt" onclick="answer(this,9,2,3)">C. Unacceptable risk classification, making the system prohibited under Article 5 of the AI Act</button><button class="opt" onclick="answer(this,9,3,3)">D. High-risk classification requiring conformity assessment, risk management systems, data governance, technical documentation, and human oversight before market placement</button>
+    <div class="expl">Credit scoring and creditworthiness evaluation are explicitly listed in Annex III of the EU AI Act as high-risk AI systems (banking and financial services category). High-risk systems must meet strict requirements including conformity assessments, CE marking, quality management systems, record-keeping, transparency, human oversight, accuracy, robustness, and cybersecurity measures before deployment.</div>
+  </div>
+
+  <div class="card qcard" id="q10">
+    <div class="meta">Question 11 of 12 · Domain 1: Foundations of AI Systems</div>
+    <div class="q">A financial services company is implementing an AI-based credit scoring system. During testing, they discover that the model's accuracy is 92% overall, but when analyzed by demographic groups, accuracy is 95% for one group and 85% for another group. The governance team must decide on next steps. According to AI governance best practices, what should be their PRIMARY concern?</div>
+    <button class="opt" onclick="answer(this,10,0,3)">A. The 92% overall accuracy meets industry standards, so the system can be deployed as-is</button><button class="opt" onclick="answer(this,10,1,3)">B. The lower-performing group should be excluded from the system to maintain high overall accuracy</button><button class="opt" onclick="answer(this,10,2,3)">C. The accuracy difference is within acceptable variance and can be addressed through post-deployment calibration</button><button class="opt" onclick="answer(this,10,3,3)">D. The system demonstrates disparate performance across groups, indicating potential fairness issues that must be addressed before deployment</button>
+    <div class="expl">Disparate performance across demographic groups is a critical fairness concern in AI governance. A 10-percentage-point accuracy gap between groups indicates the system may produce discriminatory outcomes. AI governance frameworks require identifying and mitigating such disparities before deployment, especially in high-stakes domains like financial services where regulatory requirements (e.g., fair lending laws) apply.</div>
+  </div>
+
+  <div class="card qcard" id="q11">
+    <div class="meta">Question 12 of 12 · Domain 2: AI Development Lifecycle</div>
+    <div class="q">During the model development phase, a team building a content moderation AI discovers their precision is 0.91 but recall is 0.64 for detecting policy violations. The business stakeholder states that failing to catch violations (false negatives) creates significant legal and brand risk. What is the MOST appropriate action?</div>
+    <button class="opt" onclick="answer(this,11,0,1)">A. Retrain the model with a larger dataset to improve both precision and recall simultaneously without trade-offs</button><button class="opt" onclick="answer(this,11,1,1)">B. Adjust the decision threshold to increase recall, accepting that precision will decrease, then implement a human review process for flagged content</button><button class="opt" onclick="answer(this,11,2,1)">C. Deploy the current model since 91% precision indicates high quality, and add a user reporting mechanism for missed violations</button><button class="opt" onclick="answer(this,11,3,1)">D. Switch to an ensemble approach combining multiple models to achieve both high precision and high recall</button>
+    <div class="expl">Given the business requirement that false negatives pose significant risk, increasing recall (catching more violations) is the priority. Adjusting the decision threshold is a direct, effective method to shift the precision-recall trade-off. Pairing this with human review addresses the expected increase in false positives (lower precision), creating a practical solution that aligns model performance with business risk tolerance.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/iapp-aigp-certification-eu-ai-act/?referralCode=0B6A80F71D9FCB827C55" rel="sponsored">Get the full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script>
+function answer(btn, qi, oi, correct){
+  const qdiv=document.getElementById('q'+qi);
+  if(qdiv.dataset.done) return;
+  qdiv.dataset.done='1';
+  const opts=qdiv.querySelectorAll('.opt');
+  opts[correct].classList.add('correct');
+  if(oi!==correct) btn.classList.add('wrong');
+  qdiv.querySelector('.expl').style.display='block';
+  window.__score=(window.__score||0)+(oi===correct?1:0);
+  window.__answered=(window.__answered||0)+1;
+  const total=document.querySelectorAll('.qcard').length;
+  if(window.__answered===total){
+    const s=document.getElementById('score');
+    s.textContent='Your score: '+window.__score+' / '+total+(window.__score>=total*0.7?' — on track. ':' — the full course covers every gap. ');
+    s.scrollIntoView({behavior:'smooth'});
+  }
+}</script></body></html>
