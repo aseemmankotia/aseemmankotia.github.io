@@ -2,144 +2,103 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Free AWS Certified AI Practitioner (AIF-C01) Practice Test — 12 Real Exam-Style Questions</title>
 <meta name="description" content="Free AWS Certified AI Practitioner (AIF-C01) practice questions with detailed explanations. Test yourself before the real exam.">
-<style>
-:root{--bg:#0f172a;--card:#1e293b;--txt:#e2e8f0;--dim:#94a3b8;--acc:#38bdf8;--ok:#4ade80;--bad:#f87171;--btn:#0ea5e9}
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--txt);line-height:1.6}
-.wrap{max-width:760px;margin:0 auto;padding:24px 16px 64px}
-header{padding:28px 0 8px}h1{font-size:1.5rem}h1 a{color:var(--txt);text-decoration:none}
-.sub{color:var(--dim);margin:4px 0 20px}
-.card{background:var(--card);border-radius:12px;padding:20px;margin:14px 0}
-.card h2{font-size:1.05rem;margin-bottom:4px}.card p{color:var(--dim);font-size:.92rem}
-.card a.go{display:inline-block;margin-top:10px;color:var(--acc);text-decoration:none;font-weight:600}
-.q{margin-bottom:8px;font-weight:600}
-.opt{display:block;width:100%;text-align:left;background:#0f172a;border:1px solid #334155;color:var(--txt);
- border-radius:8px;padding:10px 12px;margin:6px 0;cursor:pointer;font-size:.95rem}
-.opt:hover{border-color:var(--acc)}
-.opt.correct{border-color:var(--ok);background:#052e16}
-.opt.wrong{border-color:var(--bad);background:#450a0a}
-.expl{display:none;background:#0f172a;border-left:3px solid var(--acc);padding:10px 12px;margin-top:8px;
- border-radius:0 8px 8px 0;font-size:.92rem;color:var(--dim)}
-.meta{font-size:.78rem;color:var(--dim);margin-bottom:6px;text-transform:uppercase;letter-spacing:.04em}
-.cta{background:linear-gradient(135deg,#0ea5e9,#6366f1);border-radius:12px;padding:22px;margin:26px 0;text-align:center}
-.cta a{display:inline-block;background:#fff;color:#0f172a;font-weight:700;text-decoration:none;
- padding:11px 22px;border-radius:8px;margin-top:10px}
-.cta p{color:#e0f2fe}
-.score{font-size:1.1rem;font-weight:700;margin:18px 0 6px}
-footer{color:var(--dim);font-size:.8rem;margin-top:44px;border-top:1px solid #1e293b;padding-top:16px}
-footer a{color:var(--dim)}
-.badge{display:inline-block;font-size:.7rem;font-weight:700;padding:2px 8px;border-radius:99px;margin-left:8px;vertical-align:middle}
-.badge.live{background:#052e16;color:var(--ok)}.badge.soon{background:#1e3a5f;color:var(--acc)}
-</style></head><body><div class="wrap">
+<link rel="canonical" href="https://aseemmankotia.github.io/aws-aif-c01.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
 <header><h1><a href="index.html">TechNuggets Academy</a></h1>
 <p class="sub">Free AWS Certified AI Practitioner (AIF-C01) practice test — 12 exam-style questions with explanations. No sign-up.</p></header>
 
-  <div class="card qcard" id="q0">
+  <div class="card qcard" id="q0" data-domain="Domain 1: Fundamentals of AI and ML">
     <div class="meta">Question 1 of 12 · Domain 1: Fundamentals of AI and ML</div>
     <div class="q">A healthcare company needs to analyze patient X-ray images to detect potential fractures. The system must learn from thousands of labeled X-ray images showing fractured and non-fractured bones, and then classify new images accordingly. Which type of machine learning approach is MOST appropriate for this requirement?</div>
     <button class="opt" onclick="answer(this,0,0,1)">A. Unsupervised learning with clustering algorithms</button><button class="opt" onclick="answer(this,0,1,1)">B. Supervised learning with classification algorithms</button><button class="opt" onclick="answer(this,0,2,1)">C. Reinforcement learning with reward-based training</button><button class="opt" onclick="answer(this,0,3,1)">D. Generative AI with foundation models</button>
     <div class="expl">Supervised learning with classification is correct because the company has labeled training data (X-rays marked as fractured/non-fractured) and needs to predict categorical outcomes (fracture detected: yes/no). Classification algorithms learn from labeled examples to categorize new inputs.</div>
   </div>
 
-  <div class="card qcard" id="q1">
+  <div class="card qcard" id="q1" data-domain="Domain 2: Fundamentals of Generative AI">
     <div class="meta">Question 2 of 12 · Domain 2: Fundamentals of Generative AI</div>
     <div class="q">A healthcare company wants to generate synthetic patient data for training purposes while ensuring the generated data maintains the statistical properties of the original dataset but doesn't expose actual patient information. Which generative AI approach is MOST appropriate for this requirement?</div>
     <button class="opt" onclick="answer(this,1,0,2)">A. Use a fine-tuned large language model to generate patient records based on prompts</button><button class="opt" onclick="answer(this,1,1,2)">B. Use a Generative Adversarial Network (GAN) to generate synthetic tabular data</button><button class="opt" onclick="answer(this,1,2,2)">C. Use a variational autoencoder with differential privacy mechanisms</button><button class="opt" onclick="answer(this,1,3,2)">D. Use prompt engineering with ChatGPT to create fictional patient profiles</button>
     <div class="expl">Variational autoencoders (VAEs) with differential privacy are specifically designed for generating synthetic data that preserves statistical properties while providing mathematical privacy guarantees. Differential privacy adds noise during training to prevent memorization of individual records, making it the best choice for sensitive healthcare data.</div>
   </div>
 
-  <div class="card qcard" id="q2">
+  <div class="card qcard" id="q2" data-domain="Domain 3: Applications of Foundation Models">
     <div class="meta">Question 3 of 12 · Domain 3: Applications of Foundation Models</div>
     <div class="q">A healthcare company needs to extract patient information from thousands of handwritten medical forms daily. The forms contain structured fields (name, date of birth) and unstructured notes. The solution must achieve 95%+ accuracy and handle various handwriting styles. Which AWS AI service BEST meets these requirements?</div>
     <button class="opt" onclick="answer(this,2,0,2)">A. Amazon Comprehend Medical with custom entity recognition</button><button class="opt" onclick="answer(this,2,1,2)">B. Amazon Rekognition Custom Labels trained on form images</button><button class="opt" onclick="answer(this,2,2,2)">C. Amazon Textract with Queries and Forms features</button><button class="opt" onclick="answer(this,2,3,2)">D. Amazon Bedrock with Claude for OCR tasks</button>
     <div class="expl">Amazon Textract is specifically designed for document analysis and OCR with specialized features for forms (key-value pairs) and handwriting recognition. The Queries feature allows extraction of specific fields, and it maintains 95%+ accuracy for handwritten content.</div>
   </div>
 
-  <div class="card qcard" id="q3">
+  <div class="card qcard" id="q3" data-domain="Domain 4: Guidelines for Responsible AI">
     <div class="meta">Question 4 of 12 · Domain 4: Guidelines for Responsible AI</div>
     <div class="q">A healthcare company is deploying an AI system to assist doctors in diagnosing rare diseases from medical images. The system will be used across multiple hospitals with diverse patient populations. During testing, the model shows 95% accuracy on the development dataset but only 78% accuracy on images from underrepresented demographic groups. What is the MOST responsible approach to address this issue before deployment?</div>
     <button class="opt" onclick="answer(this,3,0,0)">A. Collect additional training data from underrepresented groups, retrain the model, and validate performance across all demographic segments before deployment</button><button class="opt" onclick="answer(this,3,1,0)">B. Deploy the model immediately since 95% overall accuracy exceeds industry standards, and add a disclaimer about potential accuracy variations</button><button class="opt" onclick="answer(this,3,2,0)">C. Lower the confidence threshold for predictions on underrepresented groups to increase sensitivity</button><button class="opt" onclick="answer(this,3,3,0)">D. Deploy the model only in hospitals that primarily serve the majority demographic group where accuracy is highest</button>
     <div class="expl">Collecting additional representative training data and validating performance across all demographic segments directly addresses the fairness issue at its root cause. This ensures the AI system performs equitably across all patient populations before deployment, which is a core principle of responsible AI - particularly fairness and inclusiveness.</div>
   </div>
 
-  <div class="card qcard" id="q4">
+  <div class="card qcard" id="q4" data-domain="Domain 5: Security, Compliance, and Governance for AI Solutions">
     <div class="meta">Question 5 of 12 · Domain 5: Security, Compliance, and Governance for AI Solutions</div>
     <div class="q">A healthcare company is deploying an AI-powered diagnostic assistant on Amazon Bedrock that processes patient medical records. The company must ensure that all prompts and model responses containing Protected Health Information (PHI) are encrypted both in transit and at rest, with full audit trails of all access. The solution must comply with HIPAA requirements while minimizing operational overhead. Which combination of AWS services BEST meets these requirements?</div>
     <button class="opt" onclick="answer(this,4,0,1)">A. Deploy the model on Amazon SageMaker with server-side encryption, use Amazon Macie to scan for PHI, and enable VPC Flow Logs for network monitoring</button><button class="opt" onclick="answer(this,4,1,1)">B. Enable Amazon Bedrock with AWS KMS customer-managed keys for encryption, use VPC endpoints for private connectivity, and enable AWS CloudTrail for audit logging of all Bedrock API calls</button><button class="opt" onclick="answer(this,4,2,1)">C. Use Amazon Bedrock with AWS-managed encryption keys, enable Amazon GuardDuty for threat detection, and use Amazon CloudWatch Logs for audit trails</button><button class="opt" onclick="answer(this,4,3,1)">D. Implement client-side encryption before sending data to Amazon Bedrock, use AWS WAF for API protection, and enable AWS Config for compliance monitoring</button>
     <div class="expl">This solution meets all HIPAA requirements: customer-managed KMS keys provide control over encryption for data at rest, VPC endpoints ensure private connectivity without internet exposure (encryption in transit via TLS), and CloudTrail provides comprehensive API audit logs required for HIPAA compliance. This is the most complete solution with minimal operational overhead.</div>
   </div>
 
-  <div class="card qcard" id="q5">
+  <div class="card qcard" id="q5" data-domain="Domain 1: Fundamentals of AI and ML">
     <div class="meta">Question 6 of 12 · Domain 1: Fundamentals of AI and ML</div>
     <div class="q">A retail company wants to group customers into segments based on purchasing behavior without predefined categories. They have transaction history data but no labeled customer segments. Which ML approach should they use?</div>
     <button class="opt" onclick="answer(this,5,0,3)">A. Supervised learning with regression</button><button class="opt" onclick="answer(this,5,1,3)">B. Supervised learning with classification</button><button class="opt" onclick="answer(this,5,2,3)">C. Reinforcement learning with policy optimization</button><button class="opt" onclick="answer(this,5,3,3)">D. Unsupervised learning with clustering</button>
     <div class="expl">Unsupervised learning with clustering is correct because there are no predefined labels or categories. Clustering algorithms like K-means discover natural groupings in unlabeled data based on similarity patterns in purchasing behavior.</div>
   </div>
 
-  <div class="card qcard" id="q6">
+  <div class="card qcard" id="q6" data-domain="Domain 2: Fundamentals of Generative AI">
     <div class="meta">Question 7 of 12 · Domain 2: Fundamentals of Generative AI</div>
     <div class="q">A research team is comparing different foundation models for their document summarization project. They observe that Model A with 70B parameters performs better on their task than Model B with 175B parameters. What is the MOST likely explanation for this outcome?</div>
     <button class="opt" onclick="answer(this,6,0,2)">A. Model A was trained on a larger dataset than Model B</button><button class="opt" onclick="answer(this,6,1,2)">B. Model B is overfitted to its training data</button><button class="opt" onclick="answer(this,6,2,2)">C. Model A was specifically fine-tuned or optimized for summarization tasks while Model B is a general-purpose model</button><button class="opt" onclick="answer(this,6,3,2)">D. The 70B parameter model has better architecture than the 175B model</button>
     <div class="expl">Task-specific fine-tuning or optimization is the most common reason a smaller model outperforms a larger general-purpose model. A 70B model fine-tuned on summarization tasks will typically outperform a larger general-purpose model that hasn't been optimized for that specific task. This demonstrates that model size alone doesn't determine performance.</div>
   </div>
 
-  <div class="card qcard" id="q7">
+  <div class="card qcard" id="q7" data-domain="Domain 3: Applications of Foundation Models">
     <div class="meta">Question 8 of 12 · Domain 3: Applications of Foundation Models</div>
     <div class="q">A financial services firm wants to implement a chatbot that answers customer questions about investment products. The chatbot must reference the company's proprietary investment guides (500+ PDF documents) and provide accurate, source-cited responses. The firm wants to use foundation models without fine-tuning. Which approach BEST meets these requirements?</div>
     <button class="opt" onclick="answer(this,7,0,3)">A. Use Amazon Lex with Lambda functions that query a vector database</button><button class="opt" onclick="answer(this,7,1,3)">B. Fine-tune Amazon Titan on the investment guide documents</button><button class="opt" onclick="answer(this,7,2,3)">C. Use Amazon Comprehend to extract entities and Amazon Lex for responses</button><button class="opt" onclick="answer(this,7,3,3)">D. Implement Retrieval Augmented Generation (RAG) with Amazon Bedrock Knowledge Bases</button>
     <div class="expl">RAG with Bedrock Knowledge Bases is designed for this exact scenario: grounding foundation model responses in proprietary documents without fine-tuning. It automatically handles document ingestion, vectorization, retrieval, and source citation.</div>
   </div>
 
-  <div class="card qcard" id="q8">
+  <div class="card qcard" id="q8" data-domain="Domain 4: Guidelines for Responsible AI">
     <div class="meta">Question 9 of 12 · Domain 4: Guidelines for Responsible AI</div>
     <div class="q">An e-commerce company uses an AI-powered recommendation system that suggests products to customers. Users have reported that the system seems to reinforce stereotypes, such as showing baby products predominantly to women and power tools predominantly to men. Which action BEST aligns with AWS responsible AI principles?</div>
     <button class="opt" onclick="answer(this,8,0,2)">A. Add a feature allowing users to manually select their gender preferences for product categories</button><button class="opt" onclick="answer(this,8,1,2)">B. Remove gender as a feature from the model entirely and rely only on purchase history</button><button class="opt" onclick="answer(this,8,2,2)">C. Implement fairness metrics to detect and measure bias, then adjust the recommendation algorithm to reduce gender-based stereotyping while maintaining relevance</button><button class="opt" onclick="answer(this,8,3,2)">D. Increase the diversity of recommendations by randomly showing 20% of suggestions from categories users haven't browsed</button>
     <div class="expl">Implementing fairness metrics allows you to quantitatively measure bias, and adjusting the algorithm to reduce stereotyping while maintaining relevance addresses the root cause. This approach balances fairness with system effectiveness, which is a key responsible AI practice.</div>
   </div>
 
-  <div class="card qcard" id="q9">
+  <div class="card qcard" id="q9" data-domain="Domain 5: Security, Compliance, and Governance for AI Solutions">
     <div class="meta">Question 10 of 12 · Domain 5: Security, Compliance, and Governance for AI Solutions</div>
     <div class="q">A financial services company uses Amazon Bedrock to generate investment recommendations. Regulatory requirements mandate that the company must be able to explain how each AI-generated recommendation was produced and identify which training data influenced specific outputs. The company needs to implement a solution that provides explainability and traceability. Which approach BEST addresses these requirements?</div>
     <button class="opt" onclick="answer(this,9,0,3)">A. Implement prompt engineering with chain-of-thought reasoning in the prompts, store all prompts and responses in Amazon S3 with metadata tags, and use Amazon Bedrock model evaluation jobs to assess output quality</button><button class="opt" onclick="answer(this,9,1,3)">B. Use Amazon SageMaker Clarify for model explainability, implement Amazon Bedrock Guardrails to filter outputs, and enable Amazon Bedrock model invocation logging to CloudWatch</button><button class="opt" onclick="answer(this,9,2,3)">C. Fine-tune a foundation model on Amazon Bedrock with labeled training data, use Amazon SageMaker Model Monitor for drift detection, and implement custom explainability algorithms</button><button class="opt" onclick="answer(this,9,3,3)">D. Enable Amazon Bedrock Agents with detailed logging, implement retrieval-augmented generation (RAG) with Amazon Kendra to track source documents, and use provenance tracking to link outputs to specific knowledge base articles</button>
     <div class="expl">RAG with Amazon Kendra provides direct traceability to source documents, allowing the company to show exactly which data influenced each recommendation. Provenance tracking links outputs to specific knowledge base articles, and Bedrock Agents with detailed logging captures the reasoning chain. This combination directly addresses explainability and traceability requirements for regulatory compliance.</div>
   </div>
 
-  <div class="card qcard" id="q10">
+  <div class="card qcard" id="q10" data-domain="Domain 1: Fundamentals of AI and ML">
     <div class="meta">Question 11 of 12 · Domain 1: Fundamentals of AI and ML</div>
     <div class="q">What is the PRIMARY difference between AI, machine learning, and deep learning?</div>
     <button class="opt" onclick="answer(this,10,0,2)">A. Deep learning is the broadest field; ML is a specialized subset; AI is a subset of ML focused on simple tasks</button><button class="opt" onclick="answer(this,10,1,2)">B. AI and ML are the same thing; deep learning is completely separate and unrelated to both</button><button class="opt" onclick="answer(this,10,2,2)">C. AI is the broadest concept encompassing any intelligent behavior; ML is a subset using data-driven learning; deep learning is a subset of ML using neural networks with multiple layers</button><button class="opt" onclick="answer(this,10,3,2)">D. ML requires labeled data; deep learning works only with unlabeled data; AI requires no data</button>
     <div class="expl">This correctly describes the hierarchical relationship: AI is the broadest concept (any system exhibiting intelligent behavior), ML is a subset of AI (systems that learn from data), and deep learning is a subset of ML (using multi-layered neural networks for representation learning).</div>
   </div>
 
-  <div class="card qcard" id="q11">
+  <div class="card qcard" id="q11" data-domain="Domain 2: Fundamentals of Generative AI">
     <div class="meta">Question 12 of 12 · Domain 2: Fundamentals of Generative AI</div>
     <div class="q">What is the primary purpose of the temperature parameter in generative AI model inference?</div>
     <button class="opt" onclick="answer(this,11,0,3)">A. To control the computational resources used during generation</button><button class="opt" onclick="answer(this,11,1,3)">B. To adjust the training speed of the model</button><button class="opt" onclick="answer(this,11,2,3)">C. To set the maximum length of generated responses</button><button class="opt" onclick="answer(this,11,3,3)">D. To control the randomness and creativity of the model's outputs</button>
     <div class="expl">Temperature controls the randomness of predictions by scaling the logits before applying softmax. Lower temperatures (e.g., 0.1) make the model more deterministic and focused on high-probability tokens. Higher temperatures (e.g., 1.0 or above) increase randomness and creativity by flattening the probability distribution. Temperature 0 = deterministic, always picks highest probability token.</div>
   </div>
 <div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
 <div class="cta">
   <strong>Ready for the real thing?</strong>
-  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
-  <a href="https://www.udemy.com/course/aws-ai-practitioner-aif-c01-first-attempt-certification/?referralCode=003B046A1F6935BDE16F" rel="sponsored">Get the full course on Udemy →</a>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$54.99</span> <strong>$17.99</strong> with code <span class="code">FREETEST33</span> — valid through August 22.</p>
+  <a href="https://www.udemy.com/course/aws-ai-practitioner-aif-c01-first-attempt-certification/?couponCode=FREETEST33" rel="sponsored">Get the full course for $17.99 →</a>
 </div>
+<div class="domains"><span class="meta">More free practice by exam domain:</span><br><a href="aws-aif-c01-fundamentals-of-ai-and-ml.html">Fundamentals of AI and ML →</a><a href="aws-aif-c01-fundamentals-of-generative-ai.html">Fundamentals of Generative AI →</a><a href="aws-aif-c01-applications-of-foundation-models.html">Applications of Foundation Models →</a><a href="aws-aif-c01-guidelines-for-responsible-ai.html">Guidelines for Responsible AI →</a><a href="aws-aif-c01-security-compliance-and-governance-for-ai-solutions.html">Security, Compliance, and Governance for AI Solutions →</a></div>
 <footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
 Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
-</div><script>
-function answer(btn, qi, oi, correct){
-  const qdiv=document.getElementById('q'+qi);
-  if(qdiv.dataset.done) return;
-  qdiv.dataset.done='1';
-  const opts=qdiv.querySelectorAll('.opt');
-  opts[correct].classList.add('correct');
-  if(oi!==correct) btn.classList.add('wrong');
-  qdiv.querySelector('.expl').style.display='block';
-  window.__score=(window.__score||0)+(oi===correct?1:0);
-  window.__answered=(window.__answered||0)+1;
-  const total=document.querySelectorAll('.qcard').length;
-  if(window.__answered===total){
-    const s=document.getElementById('score');
-    s.textContent='Your score: '+window.__score+' / '+total+(window.__score>=total*0.7?' — on track. ':' — the full course covers every gap. ');
-    s.scrollIntoView({behavior:'smooth'});
-  }
-}</script></body></html>
+</div><script src="quiz.js"></script></body></html>

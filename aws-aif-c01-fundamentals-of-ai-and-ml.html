@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Fundamentals of AI and ML Practice Questions — AWS Certified AI Practitioner (AIF-C01)</title>
+<meta name="description" content="6 free Fundamentals of AI and ML practice questions with explanations for the AWS Certified AI Practitioner (AIF-C01) exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/aws-aif-c01-fundamentals-of-ai-and-ml.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free AWS Certified AI Practitioner (AIF-C01) practice — 6 questions on <strong>Fundamentals of AI and ML</strong>, with explanations. No sign-up.
+<a href="aws-aif-c01.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Domain 1: Fundamentals of AI and ML">
+    <div class="meta">Question 1 of 6 · Domain 1: Fundamentals of AI and ML</div>
+    <div class="q">A healthcare startup is building a system to predict patient readmission risk. They have 500,000 patient records with 45 features each, but only 3% of patients were readmitted. Initial model testing shows 97% accuracy, but the business team reports the model fails to identify most at-risk patients. What is the PRIMARY issue and appropriate solution?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. The model has high variance due to too many features. Apply L1 regularization to reduce feature count and retrain.</button><button class="opt" onclick="answer(this,0,1,1)">B. The dataset exhibits class imbalance causing the model to optimize for the majority class. Use techniques like SMOTE, class weights, or focus on precision-recall metrics instead of accuracy.</button><button class="opt" onclick="answer(this,0,2,1)">C. The 97% accuracy indicates overfitting to the training data. Increase the train-test split ratio from 80-20 to 60-40.</button><button class="opt" onclick="answer(this,0,3,1)">D. The model architecture is too simple for 45 features. Switch from logistic regression to a deep neural network with at least 5 hidden layers.</button>
+    <div class="expl">With only 3% positive cases, a model that always predicts 'no readmission' achieves 97% accuracy while being completely useless. Class imbalance is the core issue. The business complaint ('fails to identify at-risk patients') confirms low recall on the minority class. Solutions include resampling techniques (SMOTE), adjusting class weights in the loss function, or optimizing for F1-score/AUC-ROC instead of accuracy.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Domain 1: Fundamentals of AI and ML">
+    <div class="meta">Question 2 of 6 · Domain 1: Fundamentals of AI and ML</div>
+    <div class="q">An e-commerce company wants to reduce the dimensionality of their product catalog dataset containing 200 features (price, ratings, category embeddings, user interaction counts) down to 20 features for clustering analysis. They need to interpret which original features most influence each reduced dimension for business insights. Which technique should they use?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. t-SNE (t-Distributed Stochastic Neighbor Embedding) because it preserves local structure and is ideal for visualization</button><button class="opt" onclick="answer(this,1,1,2)">B. Autoencoder neural networks because they can learn non-linear feature combinations with high compression ratios</button><button class="opt" onclick="answer(this,1,2,2)">C. PCA (Principal Component Analysis) because it produces interpretable linear combinations with loadings that show feature contributions to each component</button><button class="opt" onclick="answer(this,1,3,2)">D. Random projection because it maintains pairwise distances while being computationally efficient for high-dimensional data</button>
+    <div class="expl">PCA provides feature loadings (coefficients) for each principal component, showing exactly how much each original feature contributes to each new dimension. This interpretability is critical for the business requirement to understand 'which original features most influence each reduced dimension.' PCA components are linear combinations, making them mathematically traceable back to original features.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Domain 1: Fundamentals of AI and ML">
+    <div class="meta">Question 3 of 6 · Domain 1: Fundamentals of AI and ML</div>
+    <div class="q">A financial institution is developing a loan approval model. Regulatory requirements mandate that the institution must be able to explain each individual loan decision to customers and auditors, including which specific factors led to approval or denial. The dataset has 50,000 applications with 80 features including credit score, income, debt ratios, and employment history. Which modeling approach BEST satisfies this requirement?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. Gradient Boosting Machine (XGBoost) with SHAP values to provide post-hoc feature importance explanations for each prediction</button><button class="opt" onclick="answer(this,2,1,3)">B. Decision Tree with max_depth=10 to create an inherently interpretable model structure that can be visualized</button><button class="opt" onclick="answer(this,2,2,3)">C. Deep Neural Network with attention mechanisms to highlight which features the model focuses on</button><button class="opt" onclick="answer(this,2,3,3)">D. Logistic Regression with L2 regularization to produce interpretable coefficients showing feature impact</button>
+    <div class="expl">Logistic regression provides inherent interpretability through coefficients that directly show how each feature influences the log-odds of approval. For regulatory compliance, you can state: 'A 1-unit increase in credit score increases approval probability by X%.' The model is deterministic, auditable, and the explanations are part of the model itself (not post-hoc approximations). This level of transparency is critical for regulated industries.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Domain 1: Fundamentals of AI and ML">
+    <div class="meta">Question 4 of 6 · Domain 1: Fundamentals of AI and ML</div>
+    <div class="q">A data scientist is training a CNN for medical image classification. During training, they observe: Training loss: 0.15, Validation loss: 0.14, Test accuracy: 94%, Validation accuracy: 93%. However, when deployed to a hospital using images from a different scanner model, accuracy drops to 78%. What is the MOST likely root cause?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. The model exhibits distribution shift (domain shift) where training data doesn't represent the deployment environment's data distribution</button><button class="opt" onclick="answer(this,3,1,0)">B. The model is overfitting to the training data due to insufficient regularization, causing poor generalization to new data</button><button class="opt" onclick="answer(this,3,2,0)">C. The model suffers from high bias and needs a more complex architecture with additional convolutional layers</button><button class="opt" onclick="answer(this,3,3,0)">D. The batch size during training was too large, causing the model to converge to sharp minima that don't generalize well</button>
+    <div class="expl">The key diagnostic clue is that training/validation performance are nearly identical (no overfitting), and test set performance is good (93-94%), but deployment performance dramatically drops to 78%. This indicates the test set was drawn from the same distribution as training data, but real-world deployment data (different scanner) has a different distribution. This is classic distribution/domain shift - the model learned features specific to one scanner type that don't transfer to another.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Domain 1: Fundamentals of AI and ML">
+    <div class="meta">Question 5 of 6 · Domain 1: Fundamentals of AI and ML</div>
+    <div class="q">A recommendation system uses collaborative filtering to suggest products. The user-item interaction matrix is 1,000,000 users × 500,000 items, but only 0.01% of entries are non-zero (extremely sparse). Matrix factorization via SVD is computationally prohibitive. Which approach is MOST appropriate for this scale and sparsity?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. Apply k-means clustering on users and items separately, then use cluster centroids to reduce dimensionality before applying SVD</button><button class="opt" onclick="answer(this,4,1,1)">B. Use mini-batch gradient descent with Alternating Least Squares (ALS) to iteratively factorize the matrix, processing only observed interactions</button><button class="opt" onclick="answer(this,4,2,1)">C. Convert the sparse matrix to dense format and use distributed SVD across multiple GPU nodes</button><button class="opt" onclick="answer(this,4,3,1)">D. Use item-based collaborative filtering with cosine similarity, computing similarities only for item pairs with at least 100 common users</button>
+    <div class="expl">ALS with mini-batch gradient descent is specifically designed for sparse matrix factorization at scale. It only processes observed (non-zero) entries, making it computationally feasible. ALS alternates between fixing user factors and solving for item factors (and vice versa), which is more efficient than full SVD. This is the standard approach for large-scale recommender systems (used by Spotify, Netflix).</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Domain 1: Fundamentals of AI and ML">
+    <div class="meta">Question 6 of 6 · Domain 1: Fundamentals of AI and ML</div>
+    <div class="q">A time-series forecasting model predicts hourly energy consumption. The data scientist splits data as: records 1-10,000 for training, records 10,001-12,000 for validation, records 12,001-14,000 for testing. After deployment, forecast accuracy is significantly worse than test metrics. What is the MOST critical flaw in the evaluation approach?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. The validation and test sets don't account for distribution shift over time; recent data patterns may differ from historical patterns the model learned</button><button class="opt" onclick="answer(this,5,1,0)">B. The test set is too small (2,000 records) compared to training set (10,000 records), leading to unreliable test metrics</button><button class="opt" onclick="answer(this,5,2,0)">C. Time-series data should use k-fold cross-validation instead of a single train-validation-test split to get robust performance estimates</button><button class="opt" onclick="answer(this,5,3,0)">D. The model may have data leakage from future timestamps into past predictions during training, which wouldn't occur in real-time deployment</button>
+    <div class="expl">Time-series data often exhibits non-stationarity - patterns change over time due to seasonality shifts, trend changes, or external factors. The test set (records 12,001-14,000) may have been from a specific historical period that doesn't represent current deployment conditions. The key clue is 'after deployment' performance drops, suggesting the most recent data (post-14,000) has different characteristics than the historical test set. Proper evaluation should use the most recent data as the test set.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$54.99</span> <strong>$17.99</strong> with code <span class="code">FREETEST33</span> — valid through August 22.</p>
+  <a href="https://www.udemy.com/course/aws-ai-practitioner-aif-c01-first-attempt-certification/?couponCode=FREETEST33" rel="sponsored">Get the full course for $17.99 →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>
