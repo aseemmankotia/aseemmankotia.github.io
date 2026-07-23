@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Transformer Architecture and Large Language Models Practice Questions — NVIDIA Generative AI &amp; LLMs (NCA-GENL)</title>
+<meta name="description" content="6 free Transformer Architecture and Large Language Models practice questions with explanations for the NVIDIA Generative AI &amp; LLMs (NCA-GENL) exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/nvidia-nca-genl-transformer-architecture-and-large-language-models.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free NVIDIA Generative AI &amp; LLMs (NCA-GENL) practice — 6 questions on <strong>Transformer Architecture and Large Language Models</strong>, with explanations. No sign-up.
+<a href="nvidia-nca-genl.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Transformer Architecture and Large Language Models">
+    <div class="meta">Question 1 of 6 · Transformer Architecture and Large Language Models</div>
+    <div class="q">A research team is fine-tuning a decoder-only transformer model for code generation. During training, they notice the model performs well on short code snippets but struggles with generating complete functions exceeding 2048 tokens. The team wants to maintain computational efficiency while enabling the model to handle longer contexts. Which architectural modification would BEST address this requirement?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. Implement sliding window attention with overlapping segments of 512 tokens</button><button class="opt" onclick="answer(this,0,1,2)">B. Increase the number of attention heads from 12 to 24 while keeping embedding dimensions constant</button><button class="opt" onclick="answer(this,0,2,2)">C. Replace standard attention with ALiBi (Attention with Linear Biases) positional encoding</button><button class="opt" onclick="answer(this,0,3,2)">D. Add additional encoder layers to create an encoder-decoder architecture</button>
+    <div class="expl">ALiBi removes absolute positional embeddings and uses linear biases in attention scores, allowing the model to extrapolate to sequences longer than those seen during training without architectural changes or retraining. This maintains computational efficiency while enabling better length generalization.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Transformer Architecture and Large Language Models">
+    <div class="meta">Question 2 of 6 · Transformer Architecture and Large Language Models</div>
+    <div class="q">An AI startup is deploying a mixture-of-experts (MoE) language model with 8 expert networks and a gating mechanism. During inference, they observe that only 2 of the 8 experts are consistently activated for 90% of inputs, while the other 6 experts remain underutilized. This is causing suboptimal model performance. What is the MOST likely cause of this expert collapse?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. The router network is using softmax activation instead of sigmoid, preventing multiple expert selection</button><button class="opt" onclick="answer(this,1,1,3)">B. The expert networks have insufficient parameter capacity compared to the routing network</button><button class="opt" onclick="answer(this,1,2,3)">C. The training data contains insufficient diversity, causing mode collapse in the gating function</button><button class="opt" onclick="answer(this,1,3,3)">D. The load balancing loss coefficient is set too low, failing to encourage uniform expert utilization</button>
+    <div class="expl">Expert collapse in MoE models typically occurs when the auxiliary load balancing loss is too weak. This loss term encourages equal distribution of inputs across experts. When set too low, the router learns to favor certain experts, creating a feedback loop where popular experts get better training signal and become even more preferred.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Transformer Architecture and Large Language Models">
+    <div class="meta">Question 3 of 6 · Transformer Architecture and Large Language Models</div>
+    <div class="q">A financial services company needs to deploy a large language model for contract analysis. Their compliance requirements mandate that they must be able to completely remove all knowledge about specific individuals from the model after processing. They are evaluating different architectures. Which approach would BEST meet this requirement?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. Implement differential privacy during training with a privacy budget epsilon value below 1.0</button><button class="opt" onclick="answer(this,2,1,3)">B. Deploy a fine-tuned model with periodic retraining from scratch excluding removed individuals</button><button class="opt" onclick="answer(this,2,2,3)">C. Use a mixture-of-experts architecture where individual experts can be retrained independently</button><button class="opt" onclick="answer(this,2,3,3)">D. Use a retrieval-augmented generation (RAG) system with contracts stored in a vector database that supports hard deletion</button>
+    <div class="expl">RAG systems store knowledge externally in retrievable databases rather than encoded in model weights. This allows complete and verifiable deletion of specific information by removing entries from the vector database, while the base model remains unchanged. This is the only architecture that provides true 'machine unlearning' capability.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Transformer Architecture and Large Language Models">
+    <div class="meta">Question 4 of 6 · Transformer Architecture and Large Language Models</div>
+    <div class="q">During the development of a multilingual translation model, engineers implement grouped-query attention (GQA) to reduce memory consumption. The model has 48 attention heads and they configure 8 key-value head groups. After deployment, they observe that translation quality for low-resource languages has degraded compared to the baseline multi-head attention model, while high-resource languages maintain quality. What is the MOST effective solution to address this issue?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. Increase the number of key-value head groups from 8 to 16 to provide more representational capacity</button><button class="opt" onclick="answer(this,3,1,1)">B. Implement language-specific adapter layers that operate after the GQA mechanism</button><button class="opt" onclick="answer(this,3,2,1)">C. Apply higher dropout rates specifically to the query projections for high-resource languages during training</button><button class="opt" onclick="answer(this,3,3,1)">D. Switch to multi-query attention (MQA) with a single key-value head shared across all queries</button>
+    <div class="expl">Language-specific adapter layers add trainable parameters for each language while keeping the core GQA mechanism intact. This allows low-resource languages to have dedicated representational capacity without increasing the memory costs of the attention mechanism itself. Adapters have proven effective for multilingual models where different languages have varying complexity.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Transformer Architecture and Large Language Models">
+    <div class="meta">Question 5 of 6 · Transformer Architecture and Large Language Models</div>
+    <div class="q">A machine learning team is implementing flash attention for their transformer model training pipeline. They need to process sequences of 16,384 tokens with a batch size of 32 on GPUs with 40GB of memory. The standard attention implementation causes out-of-memory errors. After implementing flash attention, they still experience memory issues during backward pass. What is the MOST likely configuration error?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. The gradient checkpointing is disabled, requiring storage of all attention matrices for backpropagation</button><button class="opt" onclick="answer(this,4,1,0)">B. The block size for tiled computation is set too large, causing intermediate activation tensors to exceed SRAM capacity</button><button class="opt" onclick="answer(this,4,2,0)">C. Flash attention is enabled only for the forward pass but not configured for the backward pass recomputation</button><button class="opt" onclick="answer(this,4,3,0)">D. The attention dropout rate is too high, requiring storage of dropout masks for all attention layers</button>
+    <div class="expl">Flash attention optimizes memory during the forward pass by avoiding materialization of the full attention matrix. However, the backward pass still requires attention matrices. Without gradient checkpointing, all intermediate activations must be stored. Flash attention with gradient checkpointing recomputes attention during backward pass, trading computation for memory—this combination is essential for long sequences.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Transformer Architecture and Large Language Models">
+    <div class="meta">Question 6 of 6 · Transformer Architecture and Large Language Models</div>
+    <div class="q">A healthcare AI company is evaluating whether to use sparse attention patterns for their clinical notes processing model. Their notes average 32,768 tokens with critical information distributed throughout the document. They are comparing different sparse attention patterns: local attention (fixed window), stride attention (dilated), and global attention (dedicated global tokens). Which pattern would provide the BEST balance between computational efficiency and the ability to capture long-range dependencies in clinical documentation?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. Local attention with a window size of 1024 tokens to capture paragraph-level context efficiently</button><button class="opt" onclick="answer(this,5,1,1)">B. Longformer-style combined pattern: local attention for all tokens plus global attention for section headers</button><button class="opt" onclick="answer(this,5,2,1)">C. Stride attention with stride-4 pattern to reduce computations while maintaining document-wide receptive field</button><button class="opt" onclick="answer(this,5,3,1)">D. Random sparse attention where each token attends to a random subset of 256 tokens across the sequence</button>
+    <div class="expl">Clinical notes have structured sections (diagnosis, history, medications, etc.) where section headers contain critical organizational information. Longformer's hybrid approach uses efficient local attention for detailed context while designated global tokens (section headers) can attend to and be attended by all tokens, enabling long-range dependencies. This matches the document structure and information flow of clinical notes.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$54.99</span> <strong>$17.99</strong> with code <span class="code">FREETEST33</span> — valid through August 23.</p>
+  <a href="https://www.udemy.com/course/nvidia-nca-genl-generative-ai-llm-certification-prep/?couponCode=FREETEST33" rel="sponsored">Get the full course for $17.99 →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

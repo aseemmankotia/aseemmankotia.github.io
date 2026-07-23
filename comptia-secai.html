@@ -1,0 +1,104 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free CompTIA SecAI+ (CY0-001) Practice Test — 12 Real Exam-Style Questions</title>
+<meta name="description" content="Free CompTIA SecAI+ (CY0-001) practice questions with detailed explanations. Test yourself before the real exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/comptia-secai.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free CompTIA SecAI+ (CY0-001) practice test — 12 exam-style questions with explanations. No sign-up.</p></header>
+
+  <div class="card qcard" id="q0" data-domain="Domain 1: Basic AI Concepts Related to Cybersecurity">
+    <div class="meta">Question 1 of 12 · Domain 1: Basic AI Concepts Related to Cybersecurity</div>
+    <div class="q">A security operations center needs to analyze 50,000 daily security events to identify potential threats. The team currently spends 6 hours manually reviewing logs, missing 40% of anomalies due to alert fatigue. Which AI approach would BEST address this challenge?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. Implement a rule-based expert system that flags events matching predefined signatures</button><button class="opt" onclick="answer(this,0,1,1)">B. Deploy a supervised machine learning model trained on labeled historical security incidents to classify threats</button><button class="opt" onclick="answer(this,0,2,1)">C. Use generative AI to create synthetic attack scenarios for penetration testing</button><button class="opt" onclick="answer(this,0,3,1)">D. Apply reinforcement learning to automatically block suspicious network traffic</button>
+    <div class="expl">Supervised learning excels at classification tasks when labeled training data exists. The SOC has historical incident data that can train a model to identify threat patterns, reducing false positives and catching anomalies humans miss. This directly addresses both the volume problem and the accuracy gap.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Domain 2: Securing AI Systems">
+    <div class="meta">Question 2 of 12 · Domain 2: Securing AI Systems</div>
+    <div class="q">A financial services company is deploying a large language model to analyze customer support tickets. The model occasionally generates responses containing fabricated account numbers and transaction details that don't exist in their database. Security policy requires all AI outputs to be verifiable against source data. Which mitigation strategy BEST addresses this risk?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. Increase the model's temperature parameter to 0.9 to generate more creative and varied responses</button><button class="opt" onclick="answer(this,1,1,3)">B. Fine-tune the model on a larger dataset of customer interactions to improve accuracy</button><button class="opt" onclick="answer(this,1,2,3)">C. Deploy multiple models in parallel and use majority voting to select the most common response</button><button class="opt" onclick="answer(this,1,3,3)">D. Implement retrieval-augmented generation (RAG) with citations to source documents and add a verification layer that checks outputs against the knowledge base</button>
+    <div class="expl">RAG with verification directly addresses hallucinations by grounding responses in retrievable source documents and adding a validation step. This prevents fabricated data from reaching users and maintains verifiability requirements.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Domain 3: AI-assisted Security">
+    <div class="meta">Question 3 of 12 · Domain 3: AI-assisted Security</div>
+    <div class="q">A security operations center is experiencing alert fatigue with over 10,000 daily alerts from multiple security tools. The team wants to implement an AI solution that can automatically correlate related alerts, reduce false positives by learning from analyst feedback, and prioritize alerts based on actual risk to business assets. Which approach BEST addresses these requirements?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. Deploy a rule-based SIEM with custom correlation rules and static thresholds for alert filtering</button><button class="opt" onclick="answer(this,2,1,3)">B. Configure signature-based intrusion detection with manual alert review queues organized by severity levels</button><button class="opt" onclick="answer(this,2,2,3)">C. Use a generative AI chatbot to summarize alerts and present them to analysts in natural language format</button><button class="opt" onclick="answer(this,2,3,3)">D. Implement a machine learning-based Security Orchestration, Automation and Response (SOAR) platform with supervised learning capabilities for alert triage and correlation</button>
+    <div class="expl">ML-based SOAR platforms specifically address alert fatigue through automated correlation, can learn from analyst feedback (supervised learning), and dynamically prioritize based on context and risk scoring. This meets all three requirements: correlation, false positive reduction through learning, and risk-based prioritization.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Domain 4: AI Governance, Risk, and Compliance">
+    <div class="meta">Question 4 of 12 · Domain 4: AI Governance, Risk, and Compliance</div>
+    <div class="q">A financial services company is deploying a generative AI system to assist with loan application processing. The system will analyze applicant data and generate preliminary risk assessments. Regulatory requirements mandate that all automated decisions must be explainable to applicants upon request. Which approach BEST satisfies this compliance requirement?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. Deploy an explainable AI (XAI) framework that provides feature importance scores and decision reasoning for each individual prediction, with human oversight for final decisions</button><button class="opt" onclick="answer(this,3,1,0)">B. Implement a model card documentation system that describes the model's training data, performance metrics, and general behavior patterns</button><button class="opt" onclick="answer(this,3,2,0)">C. Use a simpler rule-based system instead of generative AI to ensure complete transparency of all decision logic</button><button class="opt" onclick="answer(this,3,3,0)">D. Store all input data and model outputs in an audit log that can be retrieved when applicants request explanations</button>
+    <div class="expl">Explainable AI frameworks with human oversight directly address the regulatory requirement for individual decision explanations while maintaining the benefits of AI assistance. This satisfies both the technical requirement (individual explanations) and governance requirement (human oversight for accountability).</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Domain 1: Basic AI Concepts Related to Cybersecurity">
+    <div class="meta">Question 5 of 12 · Domain 1: Basic AI Concepts Related to Cybersecurity</div>
+    <div class="q">An organization's AI-powered intrusion detection system flags a legitimate software update as malware because it exhibits file modification behaviors similar to ransomware. What type of AI error is this?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. Overfitting</button><button class="opt" onclick="answer(this,4,1,1)">B. False positive</button><button class="opt" onclick="answer(this,4,2,1)">C. Underfitting</button><button class="opt" onclick="answer(this,4,3,1)">D. False negative</button>
+    <div class="expl">A false positive occurs when the system incorrectly identifies benign activity as malicious. The legitimate update was flagged as malware when it was actually safe, creating an alert that shouldn't exist.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Domain 2: Securing AI Systems">
+    <div class="meta">Question 6 of 12 · Domain 2: Securing AI Systems</div>
+    <div class="q">During a security assessment of an AI training pipeline, you discover that the training data bucket has public read access and contains 50TB of customer interaction logs with PII. The data science team reports they need this data accessible for regular model retraining. What is the MOST secure solution?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. Enable bucket versioning and lifecycle policies to archive old data after 90 days</button><button class="opt" onclick="answer(this,5,1,3)">B. Apply data masking to anonymize PII fields while keeping the bucket publicly accessible for ease of use</button><button class="opt" onclick="answer(this,5,2,3)">C. Move the data to a private subnet and implement IP whitelisting for data science team members</button><button class="opt" onclick="answer(this,5,3,3)">D. Remove public access, implement IAM roles with least privilege for the training pipeline, enable encryption at rest, and use VPC endpoints for data access</button>
+    <div class="expl">This implements defense in depth: removes public exposure (critical), enforces least privilege access, encrypts sensitive data, and isolates network access through VPC endpoints. Addresses all major risks comprehensively.</div>
+  </div>
+
+  <div class="card qcard" id="q6" data-domain="Domain 3: AI-assisted Security">
+    <div class="meta">Question 7 of 12 · Domain 3: AI-assisted Security</div>
+    <div class="q">During a security assessment, an analyst discovers that the organization's AI-powered endpoint detection system flagged a legitimate software deployment tool as malware. The tool uses PowerShell for remote execution, which triggered the alert. What is the MOST effective method to prevent future false positives while maintaining security coverage?</div>
+    <button class="opt" onclick="answer(this,6,0,0)">A. Train the model with labeled examples of legitimate administrative tool behavior and malicious PowerShell usage, then adjust the decision threshold</button><button class="opt" onclick="answer(this,6,1,0)">B. Add the PowerShell executable to a global whitelist to prevent all PowerShell-based alerts</button><button class="opt" onclick="answer(this,6,2,0)">C. Disable behavioral analysis for all administrative tools across the organization</button><button class="opt" onclick="answer(this,6,3,0)">D. Remove PowerShell execution monitoring from the detection ruleset entirely</button>
+    <div class="expl">Retraining with properly labeled data allows the ML model to distinguish between legitimate administrative use and malicious PowerShell activity. Adjusting the decision threshold fine-tunes sensitivity, reducing false positives while maintaining detection capability. This is the supervised learning approach to model improvement.</div>
+  </div>
+
+  <div class="card qcard" id="q7" data-domain="Domain 4: AI Governance, Risk, and Compliance">
+    <div class="meta">Question 8 of 12 · Domain 4: AI Governance, Risk, and Compliance</div>
+    <div class="q">An AI development team discovers that their customer service chatbot occasionally generates responses containing confidential customer information from other users' conversations. Which governance control should be implemented FIRST to address this data leakage risk?</div>
+    <button class="opt" onclick="answer(this,7,0,2)">A. Implement output filtering using a secondary model to detect and redact sensitive information before responses reach users</button><button class="opt" onclick="answer(this,7,1,2)">B. Retrain the model on a sanitized dataset with all personally identifiable information removed</button><button class="opt" onclick="answer(this,7,2,2)">C. Isolate each user's conversation context using strict session management and implement data access controls that prevent cross-user information retrieval</button><button class="opt" onclick="answer(this,7,3,2)">D. Add a disclaimer to the chatbot interface warning users that responses may contain inaccuracies and should not be relied upon for sensitive matters</button>
+    <div class="expl">Session isolation and data access controls address the root cause by preventing the model from accessing other users' data in the first place. This is a fundamental security architecture control that must be implemented first to prevent unauthorized data access.</div>
+  </div>
+
+  <div class="card qcard" id="q8" data-domain="Domain 1: Basic AI Concepts Related to Cybersecurity">
+    <div class="meta">Question 9 of 12 · Domain 1: Basic AI Concepts Related to Cybersecurity</div>
+    <div class="q">Which AI model characteristic presents the GREATEST challenge for security auditing and compliance in financial services cybersecurity applications?</div>
+    <button class="opt" onclick="answer(this,8,0,3)">A. Model inference latency exceeding 500ms</button><button class="opt" onclick="answer(this,8,1,3)">B. Training dataset size requiring 100TB of storage</button><button class="opt" onclick="answer(this,8,2,3)">C. Model requiring GPU acceleration for real-time processing</button><button class="opt" onclick="answer(this,8,3,3)">D. Neural network 'black box' decision-making process</button>
+    <div class="expl">The 'black box' nature of deep neural networks makes it impossible to explain WHY a security decision was made. Financial regulations (SOX, GDPR, etc.) require explainable decisions. Auditors cannot verify compliance if they can't trace how the AI reached its conclusions about security incidents or access decisions.</div>
+  </div>
+
+  <div class="card qcard" id="q9" data-domain="Domain 2: Securing AI Systems">
+    <div class="meta">Question 10 of 12 · Domain 2: Securing AI Systems</div>
+    <div class="q">A healthcare AI system using computer vision to analyze medical images is being targeted by adversarial attacks. Attackers are adding imperceptible noise to X-ray images that causes the model to misclassify malignant tumors as benign. Which combination of defenses provides the STRONGEST protection?</div>
+    <button class="opt" onclick="answer(this,9,0,2)">A. Increase model complexity by adding more layers to make it harder to reverse-engineer</button><button class="opt" onclick="answer(this,9,1,2)">B. Implement CAPTCHA verification before each image upload and rate limiting on API requests</button><button class="opt" onclick="answer(this,9,2,2)">C. Adversarial training with diverse attack examples, input validation with statistical anomaly detection, and ensemble models with voting mechanisms</button><button class="opt" onclick="answer(this,9,3,2)">D. Use JPEG compression on all inputs to remove high-frequency noise and deploy a WAF</button>
+    <div class="expl">This multi-layered approach addresses adversarial attacks directly: adversarial training hardens the model, input validation catches anomalies, and ensembles make it harder for a single perturbation to succeed. All three target the actual attack vector.</div>
+  </div>
+
+  <div class="card qcard" id="q10" data-domain="Domain 3: AI-assisted Security">
+    <div class="meta">Question 11 of 12 · Domain 3: AI-assisted Security</div>
+    <div class="q">A financial institution is implementing an AI system to detect fraudulent transactions. Regulators require that every automated decision to block a transaction must be explainable to customers. The current deep neural network model has 95% accuracy but operates as a black box. Which solution BEST meets both the accuracy and explainability requirements?</div>
+    <button class="opt" onclick="answer(this,10,0,1)">A. Replace the neural network with a decision tree model that provides clear if-then rules, accepting the potential accuracy decrease</button><button class="opt" onclick="answer(this,10,1,1)">B. Implement explainable AI (XAI) techniques such as SHAP or LIME to generate feature importance explanations while maintaining the neural network model</button><button class="opt" onclick="answer(this,10,2,1)">C. Continue using the neural network and provide generic fraud prevention explanations to customers without model-specific details</button><button class="opt" onclick="answer(this,10,3,1)">D. Create a parallel random forest model for explanation purposes while using the neural network for actual decisions</button>
+    <div class="expl">SHAP (SHapley Additive exPlanations) and LIME (Local Interpretable Model-agnostic Explanations) are industry-standard XAI techniques that provide interpretable explanations for complex model decisions without sacrificing accuracy. This meets regulatory requirements for explainability while maintaining high performance.</div>
+  </div>
+
+  <div class="card qcard" id="q11" data-domain="Domain 4: AI Governance, Risk, and Compliance">
+    <div class="meta">Question 12 of 12 · Domain 4: AI Governance, Risk, and Compliance</div>
+    <div class="q">A healthcare AI system trained on historical patient data shows a 15% lower accuracy rate for diagnosing conditions in patients from underrepresented demographic groups. The organization's AI ethics policy requires fairness in model performance. What is the MOST appropriate risk mitigation strategy?</div>
+    <button class="opt" onclick="answer(this,11,0,2)">A. Accept the disparity and document it in the model card as a known limitation with warnings to clinicians</button><button class="opt" onclick="answer(this,11,1,2)">B. Apply post-processing adjustments to increase prediction confidence scores for underrepresented groups to match overall accuracy rates</button><button class="opt" onclick="answer(this,11,2,2)">C. Collect additional training data from underrepresented groups, implement fairness constraints during retraining, and establish ongoing bias monitoring with demographic performance metrics</button><button class="opt" onclick="answer(this,11,3,2)">D. Deploy separate models for different demographic groups, each trained exclusively on data from that specific population</button>
+    <div class="expl">Addressing training data imbalance, implementing fairness constraints, and continuous monitoring tackles the root cause while maintaining model integrity. This approach aligns with responsible AI principles and healthcare compliance requirements for equitable care.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$109.99</span> <strong>$34.99</strong> with code <span class="code">FREETEST33</span> — valid through August 23.</p>
+  <a href="https://www.udemy.com/course/comptia-secai-cy0-001-certification-fast-track/?couponCode=FREETEST33" rel="sponsored">Get the full course for $34.99 →</a>
+</div>
+<div class="domains"><span class="meta">More free practice by exam domain:</span><br><a href="comptia-secai-basic-ai-concepts-related-to-cybersecurity.html">Basic AI Concepts Related to Cybersecurity →</a><a href="comptia-secai-securing-ai-systems.html">Securing AI Systems →</a><a href="comptia-secai-ai-assisted-security.html">AI-assisted Security →</a><a href="comptia-secai-ai-governance-risk-and-compliance.html">AI Governance, Risk, and Compliance →</a></div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

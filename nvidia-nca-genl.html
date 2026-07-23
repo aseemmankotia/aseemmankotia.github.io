@@ -1,0 +1,104 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free NVIDIA Generative AI &amp; LLMs (NCA-GENL) Practice Test — 12 Real Exam-Style Questions</title>
+<meta name="description" content="Free NVIDIA Generative AI &amp; LLMs (NCA-GENL) practice questions with detailed explanations. Test yourself before the real exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/nvidia-nca-genl.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free NVIDIA Generative AI &amp; LLMs (NCA-GENL) practice test — 12 exam-style questions with explanations. No sign-up.</p></header>
+
+  <div class="card qcard" id="q0" data-domain="Machine Learning and Neural Network Fundamentals">
+    <div class="meta">Question 1 of 12 · Machine Learning and Neural Network Fundamentals</div>
+    <div class="q">A financial services company needs to predict customer loan default risk using historical data with 47 features including income, credit score, and payment history. The model must provide probability scores and explain which features most influenced each prediction for regulatory compliance. Which approach BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. Use a deep neural network with 5 hidden layers and ReLU activation to capture complex feature interactions, then apply gradient-based attribution methods</button><button class="opt" onclick="answer(this,0,1,2)">B. Implement a simple logistic regression model since it provides natural interpretability through coefficient weights</button><button class="opt" onclick="answer(this,0,2,2)">C. Train a gradient boosting model (XGBoost or LightGBM) and use SHAP values to provide feature importance explanations for individual predictions</button><button class="opt" onclick="answer(this,0,3,2)">D. Deploy a transformer-based model fine-tuned on the tabular data with attention weights serving as explanations</button>
+    <div class="expl">Gradient boosting models excel at tabular data with mixed feature types, provide probability outputs, and SHAP (SHapley Additive exPlanations) values offer mathematically rigorous, per-prediction explanations that satisfy regulatory requirements. This combination delivers both high accuracy and interpretability.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Transformer Architecture and Large Language Models">
+    <div class="meta">Question 2 of 12 · Transformer Architecture and Large Language Models</div>
+    <div class="q">A financial services company is building a document classification system that must process 10,000-word legal contracts. The system needs to understand references between clauses that may be 8,000 words apart. Which architectural component of transformers makes this feasible compared to RNNs?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. Bidirectional processing that allows the model to read text forwards and backwards simultaneously</button><button class="opt" onclick="answer(this,1,1,2)">B. Positional encoding that maintains word order information throughout the network</button><button class="opt" onclick="answer(this,1,2,2)">C. Self-attention mechanism that computes relationships between all token pairs regardless of distance</button><button class="opt" onclick="answer(this,1,3,2)">D. Layer normalization that stabilizes training on long sequences</button>
+    <div class="expl">Self-attention allows transformers to compute direct relationships between any two tokens in O(1) steps, regardless of their distance in the sequence. This eliminates the vanishing gradient problem that prevents RNNs from learning long-range dependencies beyond a few hundred tokens.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Prompt Engineering">
+    <div class="meta">Question 3 of 12 · Prompt Engineering</div>
+    <div class="q">A developer is building an AI assistant that must generate SQL queries from natural language. Initial tests show the model frequently generates syntactically correct but logically incorrect queries (e.g., using wrong JOIN types or missing WHERE clauses). Which prompt engineering technique would BEST improve query accuracy?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. Add examples of correct natural language-to-SQL conversions in the system prompt with explanations of the logic</button><button class="opt" onclick="answer(this,2,1,0)">B. Increase the temperature parameter to 0.9 to allow more creative query generation</button><button class="opt" onclick="answer(this,2,2,0)">C. Use a longer context window by including the entire database schema documentation</button><button class="opt" onclick="answer(this,2,3,0)">D. Implement prompt chaining where one model generates the query and another model validates syntax</button>
+    <div class="expl">Few-shot learning with examples and explanations teaches the model the logical patterns needed for accurate SQL generation. Including reasoning helps the model understand WHY certain JOINs or clauses are used, directly addressing the logical correctness issue.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Alignment, Safety and Responsible AI">
+    <div class="meta">Question 4 of 12 · Alignment, Safety and Responsible AI</div>
+    <div class="q">A financial services company is deploying a generative AI system to assist loan officers in making credit decisions. The system generates explanations for recommended approval or denial of loan applications. Which approach BEST ensures the system remains aligned with the company's responsible AI principles while maintaining regulatory compliance?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. Use prompt engineering to instruct the model to avoid considering protected characteristics, then deploy the system with automated logging of all decisions</button><button class="opt" onclick="answer(this,3,1,3)">B. Fine-tune the model on historical loan data to maximize prediction accuracy, then conduct quarterly bias audits on approved applications</button><button class="opt" onclick="answer(this,3,2,3)">C. Deploy the system with confidence thresholds that automatically approve high-confidence recommendations and flag low-confidence cases for human review</button><button class="opt" onclick="answer(this,3,3,3)">D. Implement a human-in-the-loop workflow where loan officers must review and approve all AI-generated recommendations before final decisions, with mandatory documentation of any overrides</button>
+    <div class="expl">Human-in-the-loop workflows are critical for high-stakes decisions like credit approval. This approach ensures human oversight, maintains accountability, creates an audit trail, and allows humans to catch potential bias or errors before they impact customers. This aligns with responsible AI principles requiring human agency and oversight in consequential decisions.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Data Preprocessing, Feature Engineering, Analysis and Visualisation">
+    <div class="meta">Question 5 of 12 · Data Preprocessing, Feature Engineering, Analysis and Visualisation</div>
+    <div class="q">A data scientist is preparing a dataset containing customer purchase history for machine learning. The dataset has a 'purchase_date' column in ISO format (YYYY-MM-DD). To improve model performance for predicting seasonal buying patterns, which feature engineering approach would be MOST effective?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. Convert purchase_date to Unix timestamp and normalize to 0-1 range</button><button class="opt" onclick="answer(this,4,1,3)">B. One-hot encode the purchase_date column into separate binary features</button><button class="opt" onclick="answer(this,4,2,3)">C. Create a single ordinal feature ranking dates from earliest to latest</button><button class="opt" onclick="answer(this,4,3,3)">D. Extract cyclical features using sine and cosine transformations of month and day_of_week</button>
+    <div class="expl">Cyclical features using sine/cosine transformations preserve the periodic nature of temporal data (e.g., December is close to January, Sunday wraps to Monday). This is critical for seasonal patterns where the model needs to understand that month 12 and month 1 are adjacent in the cycle, not 11 months apart.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Experimentation and Evaluation">
+    <div class="meta">Question 6 of 12 · Experimentation and Evaluation</div>
+    <div class="q">A company is evaluating their generative AI chatbot that provides customer support responses. They want to measure how well the AI's answers match the quality and accuracy of responses written by their expert support team. The evaluation dataset contains 500 customer questions with corresponding expert-written reference answers. Which evaluation approach would BEST measure the similarity between AI-generated responses and expert responses?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. Use semantic similarity metrics like cosine similarity on sentence embeddings from both responses</button><button class="opt" onclick="answer(this,5,1,0)">B. Calculate BLEU score by comparing n-gram overlap between generated responses and reference answers</button><button class="opt" onclick="answer(this,5,2,0)">C. Count the exact character-level edit distance (Levenshtein distance) between responses</button><button class="opt" onclick="answer(this,5,3,0)">D. Measure response latency and token generation speed as quality indicators</button>
+    <div class="expl">Semantic similarity using embeddings (e.g., sentence-transformers, OpenAI embeddings) captures meaning and intent rather than exact wording. This is ideal for evaluating support responses where different phrasings can convey the same helpful information. Cosine similarity on embeddings is the industry standard for semantic evaluation in 2026.</div>
+  </div>
+
+  <div class="card qcard" id="q6" data-domain="LLM Integration, Deployment and the NVIDIA Software Stack">
+    <div class="meta">Question 7 of 12 · LLM Integration, Deployment and the NVIDIA Software Stack</div>
+    <div class="q">A financial services company needs to deploy a Llama 2 70B model for real-time fraud detection with sub-100ms latency requirements. The model will handle 10,000 concurrent requests during peak hours. Which NVIDIA deployment solution BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,6,0,0)">A. Deploy using NVIDIA Triton Inference Server with TensorRT-LLM optimization and dynamic batching on A100 GPUs</button><button class="opt" onclick="answer(this,6,1,0)">B. Use NVIDIA NeMo Framework with PyTorch backend on H100 GPUs without quantization</button><button class="opt" onclick="answer(this,6,2,0)">C. Deploy using standard PyTorch inference on V100 GPUs with model parallelism</button><button class="opt" onclick="answer(this,6,3,0)">D. Use NVIDIA AI Enterprise with vLLM on T4 GPUs with FP32 precision</button>
+    <div class="expl">Triton Inference Server with TensorRT-LLM provides the lowest latency for LLM inference through kernel fusion, quantization (FP8/INT8), and in-flight batching. Dynamic batching optimizes throughput for concurrent requests. A100 GPUs provide sufficient memory bandwidth for 70B models with TensorRT-LLM optimizations.</div>
+  </div>
+
+  <div class="card qcard" id="q7" data-domain="Machine Learning and Neural Network Fundamentals">
+    <div class="meta">Question 8 of 12 · Machine Learning and Neural Network Fundamentals</div>
+    <div class="q">During neural network training, validation loss decreases for 15 epochs, then increases for the next 10 epochs while training loss continues to decrease. Training accuracy is 94% and validation accuracy is 78%. What is the PRIMARY issue and the BEST solution?</div>
+    <button class="opt" onclick="answer(this,7,0,1)">A. The model has high bias and is underfitting; increase model complexity by adding more layers</button><button class="opt" onclick="answer(this,7,1,1)">B. The model is overfitting the training data; implement dropout regularization and early stopping at epoch 15</button><button class="opt" onclick="answer(this,7,2,1)">C. The model is experiencing vanishing gradients; switch from sigmoid to ReLU activation functions</button><button class="opt" onclick="answer(this,7,3,1)">D. The learning rate is too high causing unstable convergence; reduce learning rate by factor of 10</button>
+    <div class="expl">The divergence between training and validation performance (94% vs 78%) combined with increasing validation loss while training loss decreases is the classic signature of overfitting. Dropout prevents co-adaptation of neurons and early stopping would have halted training at epoch 15 when validation performance peaked.</div>
+  </div>
+
+  <div class="card qcard" id="q8" data-domain="Transformer Architecture and Large Language Models">
+    <div class="meta">Question 9 of 12 · Transformer Architecture and Large Language Models</div>
+    <div class="q">During inference, a GPT-based model generates text by sampling the next token from a probability distribution. The temperature parameter is set to 0.2. What behavior should the development team expect?</div>
+    <button class="opt" onclick="answer(this,8,0,3)">A. More creative and diverse outputs with occasional factual inconsistencies</button><button class="opt" onclick="answer(this,8,1,3)">B. Balanced outputs with moderate creativity and consistency</button><button class="opt" onclick="answer(this,8,2,3)">C. Faster inference speed due to reduced computation in the sampling layer</button><button class="opt" onclick="answer(this,8,3,3)">D. More deterministic and focused outputs that closely follow training patterns</button>
+    <div class="expl">Low temperature (0.2) sharpens the probability distribution, making the model strongly favor the highest-probability tokens. This produces more deterministic, conservative outputs that stick closely to patterns seen during training, reducing randomness.</div>
+  </div>
+
+  <div class="card qcard" id="q9" data-domain="Prompt Engineering">
+    <div class="meta">Question 10 of 12 · Prompt Engineering</div>
+    <div class="q">A company needs its LLM application to consistently return product recommendations in a specific JSON format with fields: product_id (integer), name (string), price (float), and reasoning (string). Early tests show the model sometimes returns valid JSON but with incorrect field types or missing fields. What is the MOST reliable approach to ensure consistent output format?</div>
+    <button class="opt" onclick="answer(this,9,0,0)">A. Use structured output enforcement with JSON schema validation in the API call</button><button class="opt" onclick="answer(this,9,1,0)">B. Include multiple examples of the correct JSON format in the prompt and request the model to follow them exactly</button><button class="opt" onclick="answer(this,9,2,0)">C. Set temperature to 0.0 and add a statement 'You MUST return valid JSON with all required fields'</button><button class="opt" onclick="answer(this,9,3,0)">D. Implement retry logic that re-prompts the model up to 3 times if the output doesn't match the format</button>
+    <div class="expl">Structured output modes (like OpenAI's JSON mode with schema or Anthropic's tool use) enforce the output format at the model level, guaranteeing the response matches the specified JSON schema. This is the most reliable method for consistent formatting.</div>
+  </div>
+
+  <div class="card qcard" id="q10" data-domain="Alignment, Safety and Responsible AI">
+    <div class="meta">Question 11 of 12 · Alignment, Safety and Responsible AI</div>
+    <div class="q">During red-teaming exercises, a security researcher discovers that a customer-facing chatbot can be manipulated through carefully crafted prompts to reveal training data that includes customer email addresses. What is the MOST comprehensive mitigation strategy?</div>
+    <button class="opt" onclick="answer(this,10,0,2)">A. Add a system prompt instructing the model to never reveal personal information under any circumstances</button><button class="opt" onclick="answer(this,10,1,2)">B. Rate-limit API calls from individual users to prevent automated extraction attempts</button><button class="opt" onclick="answer(this,10,2,2)">C. Implement output filtering to detect and redact email addresses and other PII patterns before responses reach users, combined with retraining on sanitized data and regular adversarial testing</button><button class="opt" onclick="answer(this,10,3,2)">D. Fine-tune the model with examples of prompt injection attempts and desired refusal responses</button>
+    <div class="expl">This defense-in-depth approach addresses the problem at multiple levels: output filtering provides immediate protection, retraining on sanitized data eliminates the root cause (PII in training data), and regular adversarial testing ensures ongoing security. This comprehensive strategy follows responsible AI safety principles by combining preventive, detective, and corrective controls.</div>
+  </div>
+
+  <div class="card qcard" id="q11" data-domain="Data Preprocessing, Feature Engineering, Analysis and Visualisation">
+    <div class="meta">Question 12 of 12 · Data Preprocessing, Feature Engineering, Analysis and Visualisation</div>
+    <div class="q">A machine learning pipeline processes streaming data with multiple numerical features that have different scales (age: 0-100, income: 20000-500000, credit_score: 300-850). The team notices that gradient-based models are converging slowly and performing poorly. Which preprocessing technique should be applied FIRST to address this issue?</div>
+    <button class="opt" onclick="answer(this,11,0,3)">A. Use Principal Component Analysis (PCA) to reduce dimensionality</button><button class="opt" onclick="answer(this,11,1,3)">B. Apply log transformation to compress the range of all features</button><button class="opt" onclick="answer(this,11,2,3)">C. Remove outliers using IQR method before any scaling</button><button class="opt" onclick="answer(this,11,3,3)">D. Apply StandardScaler to normalize all features to mean=0 and std=1</button>
+    <div class="expl">StandardScaler (z-score normalization) is the primary solution for features with different scales in gradient-based models. It transforms each feature to have mean=0 and standard deviation=1, ensuring all features contribute equally to gradient calculations and distance metrics. This directly addresses the slow convergence issue caused by scale differences.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$54.99</span> <strong>$17.99</strong> with code <span class="code">FREETEST33</span> — valid through August 23.</p>
+  <a href="https://www.udemy.com/course/nvidia-nca-genl-generative-ai-llm-certification-prep/?couponCode=FREETEST33" rel="sponsored">Get the full course for $17.99 →</a>
+</div>
+<div class="domains"><span class="meta">More free practice by exam domain:</span><br><a href="nvidia-nca-genl-machine-learning-and-neural-network-fundamentals.html">Machine Learning and Neural Network Fundamentals →</a><a href="nvidia-nca-genl-transformer-architecture-and-large-language-models.html">Transformer Architecture and Large Language Models →</a><a href="nvidia-nca-genl-prompt-engineering.html">Prompt Engineering →</a><a href="nvidia-nca-genl-data-preprocessing-feature-engineering-analysis-and-visualis.html">Data Preprocessing, Feature Engineering, Analysis and Visualisation →</a><a href="nvidia-nca-genl-llm-integration-deployment-and-the-nvidia-software-stack.html">LLM Integration, Deployment and the NVIDIA Software Stack →</a></div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

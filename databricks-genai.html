@@ -1,0 +1,104 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Databricks Certified GenAI Engineer Associate Practice Test — 12 Real Exam-Style Questions</title>
+<meta name="description" content="Free Databricks Certified GenAI Engineer Associate practice questions with detailed explanations. Test yourself before the real exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/databricks-genai.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free Databricks Certified GenAI Engineer Associate practice test — 12 exam-style questions with explanations. No sign-up.</p></header>
+
+  <div class="card qcard" id="q0" data-domain="Domain 1: Design Applications">
+    <div class="meta">Question 1 of 12 · Domain 1: Design Applications</div>
+    <div class="q">A company is building a RAG application that must retrieve context from 50,000 technical documentation PDFs. The application needs to handle 1000 concurrent users with sub-second response times. The team wants to minimize infrastructure management while maintaining high retrieval accuracy. Which architecture BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. Deploy an open-source vector database on EC2 instances, use a self-hosted embedding model, and implement custom scaling logic</button><button class="opt" onclick="answer(this,0,1,3)">B. Store all PDFs in DBFS and implement keyword search using Spark SQL full-text search capabilities</button><button class="opt" onclick="answer(this,0,2,3)">C. Use Databricks SQL with materialized views to cache document embeddings and implement cosine similarity using UDFs</button><button class="opt" onclick="answer(this,0,3,3)">D. Use Databricks Vector Search with a serving endpoint for the embedding model, store chunks in Delta tables, and implement semantic search with filters</button>
+    <div class="expl">Databricks Vector Search is specifically designed for production RAG applications at scale. It provides managed vector indexing with Delta Sync, automatic embedding updates, and sub-second retrieval. The serving endpoint handles auto-scaling for concurrent users, and semantic search with filters enables accurate retrieval from large document sets. This is the only option that meets all requirements without custom infrastructure management.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Domain 2: Data Preparation">
+    <div class="meta">Question 2 of 12 · Domain 2: Data Preparation</div>
+    <div class="q">A data engineering team is preparing a dataset of customer support transcripts for fine-tuning a large language model. The raw text data contains personally identifiable information (PII) including email addresses, phone numbers, and social security numbers that must be removed before training. Which Databricks feature should they use to systematically detect and redact PII while maintaining the conversational context of the transcripts?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. Implement Databricks data profiling with PII detection policies in Unity Catalog</button><button class="opt" onclick="answer(this,1,1,0)">B. Use Databricks SQL regex functions like REGEXP_REPLACE to manually define patterns for each PII type</button><button class="opt" onclick="answer(this,1,2,0)">C. Apply MLflow's built-in data sanitization functions during model training</button><button class="opt" onclick="answer(this,1,3,0)">D. Use Lakehouse Monitoring to identify and flag PII in the dataset</button>
+    <div class="expl">Unity Catalog provides built-in PII detection through data profiling capabilities that can automatically identify sensitive data patterns across multiple PII types. This integrates with governance policies to systematically handle PII at scale while preserving data utility for model training.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Domain 3: Application Development">
+    <div class="meta">Question 3 of 12 · Domain 3: Application Development</div>
+    <div class="q">A GenAI application needs to process user queries and generate responses using a foundation model deployed on Databricks. The application must track token usage, latency, and error rates for each request to monitor costs and performance. Which approach BEST implements this monitoring requirement?</div>
+    <button class="opt" onclick="answer(this,2,0,2)">A. Enable MLflow autologging when loading the model and query the MLflow tracking server for metrics after each inference request</button><button class="opt" onclick="answer(this,2,1,2)">B. Use the Databricks Model Serving payload logging feature and create a Delta table to store request/response data with custom metrics calculated in a separate streaming job</button><button class="opt" onclick="answer(this,2,2,2)">C. Implement inference tables on the model serving endpoint to automatically capture inputs, outputs, timestamps, and token counts, then query these tables for monitoring dashboards</button><button class="opt" onclick="answer(this,2,3,2)">D. Write custom logging code that sends metrics to a Kafka topic after each inference call, then consume the topic with a Databricks structured streaming job to aggregate metrics</button>
+    <div class="expl">Inference tables are the native Databricks Model Serving feature specifically designed to automatically capture request/response data, timestamps, and metadata including token usage for LLM endpoints. They provide immediate queryability through Delta tables without requiring custom implementation, making them the most efficient and reliable solution for monitoring GenAI applications.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Domain 4: Assembling and Deploying Applications">
+    <div class="meta">Question 4 of 12 · Domain 4: Assembling and Deploying Applications</div>
+    <div class="q">A data science team has developed a RAG application using LangChain and needs to deploy it to production with versioning, rollback capabilities, and endpoint monitoring. The application uses a Vector Search index and a foundation model from the Foundation Model API. Which deployment approach BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. Deploy the application as a Databricks Job with notebook tasks and use MLflow to track versions</button><button class="opt" onclick="answer(this,3,1,1)">B. Register the RAG chain as an MLflow model with dependencies, then deploy it to a Model Serving endpoint</button><button class="opt" onclick="answer(this,3,2,1)">C. Create a custom Docker container with the application and deploy to Databricks Container Services</button><button class="opt" onclick="answer(this,3,3,1)">D. Use Databricks Apps to host the RAG application as a web service with built-in versioning</button>
+    <div class="expl">MLflow models registered with the RAG chain as a pyfunc model can be deployed directly to Databricks Model Serving endpoints, which provide built-in versioning, A/B testing, rollback capabilities, automatic scaling, and comprehensive endpoint monitoring. This is the recommended pattern for production RAG deployments.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Domain 5: Governance">
+    <div class="meta">Question 5 of 12 · Domain 5: Governance</div>
+    <div class="q">A financial services company is deploying a RAG application that processes customer loan applications using Databricks Model Serving. The compliance team requires that all prompt inputs containing PII must be automatically redacted before being sent to the foundation model, and all model responses must be logged for audit purposes. Which combination of Databricks features BEST meets these governance requirements?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. Enable Lakehouse Monitoring on the serving endpoint and create a custom preprocessing function that detects and masks PII before inference</button><button class="opt" onclick="answer(this,4,1,3)">B. Use Unity Catalog column-level encryption on the vector database and enable Model Serving request logging to a Delta table</button><button class="opt" onclick="answer(this,4,2,3)">C. Implement a Databricks Workflow that scans inputs for PII, stores sanitized versions in a governed Unity Catalog volume, then calls the model</button><button class="opt" onclick="answer(this,4,3,3)">D. Configure AI Gateway with PII detection filters and enable inference table logging on the Model Serving endpoint</button>
+    <div class="expl">AI Gateway provides built-in PII detection and redaction filters that operate in real-time before requests reach the model, and Model Serving inference tables automatically capture all inputs and outputs to Delta tables for compliance auditing. This is the native Databricks approach for governed GenAI deployments.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Domain 6: Evaluation and Monitoring">
+    <div class="meta">Question 6 of 12 · Domain 6: Evaluation and Monitoring</div>
+    <div class="q">A company is evaluating their RAG application's responses for factual accuracy. They want to measure how well the generated answers are grounded in the retrieved context documents. Which MLflow evaluation metric should they use?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. relevance</button><button class="opt" onclick="answer(this,5,1,3)">B. answer_correctness</button><button class="opt" onclick="answer(this,5,2,3)">C. context_recall</button><button class="opt" onclick="answer(this,5,3,3)">D. faithfulness</button>
+    <div class="expl">faithfulness (also called groundedness) specifically measures whether the generated answer is factually consistent with and supported by the retrieved context. It's the primary metric for verifying that LLM responses don't hallucinate beyond what's in the source documents.</div>
+  </div>
+
+  <div class="card qcard" id="q6" data-domain="Domain 1: Design Applications">
+    <div class="meta">Question 7 of 12 · Domain 1: Design Applications</div>
+    <div class="q">An MLOps team needs to deploy a fine-tuned LLM for real-time inference with guaranteed latency SLAs. The model must serve 500 requests per second during peak hours and scale down during off-peak to control costs. Which Databricks deployment option should they choose?</div>
+    <button class="opt" onclick="answer(this,6,0,0)">A. Deploy to Databricks Model Serving with GPU-enabled provisioned throughput and configure auto-scaling policies</button><button class="opt" onclick="answer(this,6,1,0)">B. Use a Databricks job cluster that runs continuously and serves predictions via REST API endpoints</button><button class="opt" onclick="answer(this,6,2,0)">C. Deploy the model to a serverless SQL warehouse and query it using SQL AI functions</button><button class="opt" onclick="answer(this,6,3,0)">D. Create a Delta Live Tables pipeline that processes prediction requests in micro-batches</button>
+    <div class="expl">Databricks Model Serving with provisioned throughput is the only option designed for real-time inference with SLA guarantees. GPU-enabled compute handles LLM inference efficiently, auto-scaling policies handle the 500 RPS peak requirement while scaling down during off-peak (cost optimization), and the service provides latency monitoring and guarantees. This is the production-grade solution for LLM serving.</div>
+  </div>
+
+  <div class="card qcard" id="q7" data-domain="Domain 2: Data Preparation">
+    <div class="meta">Question 8 of 12 · Domain 2: Data Preparation</div>
+    <div class="q">A company is building a RAG (Retrieval-Augmented Generation) application and needs to chunk 50,000 PDF documents containing technical documentation. Each document averages 30 pages with complex tables, code snippets, and diagrams. The chunks must preserve semantic meaning across page boundaries. What is the MOST efficient approach to implement this chunking pipeline in Databricks?</div>
+    <button class="opt" onclick="answer(this,7,0,0)">A. Use Apache Spark's binary file data source to distribute PDFs across workers, then apply PyMuPDF with semantic chunking using sliding windows in a pandas UDF</button><button class="opt" onclick="answer(this,7,1,0)">B. Load all PDFs into a single-node cluster, process sequentially with LangChain's RecursiveCharacterTextSplitter, then distribute the resulting chunks</button><button class="opt" onclick="answer(this,7,2,0)">C. Use Databricks AutoLoader to ingest PDFs incrementally, extract text with OCR on each node, then chunk using fixed 512-token windows</button><button class="opt" onclick="answer(this,7,3,0)">D. Store PDFs in Delta Lake, then use Databricks SQL substring functions to create fixed-size chunks of 1000 characters each</button>
+    <div class="expl">Using Spark's binary file data source distributes PDF processing across the cluster for parallel execution. PyMuPDF handles complex PDF elements (tables, code) effectively, and pandas UDFs enable semantic chunking logic while maintaining Spark's distributed processing benefits. Sliding windows preserve context across page boundaries, which is critical for RAG quality.</div>
+  </div>
+
+  <div class="card qcard" id="q8" data-domain="Domain 3: Application Development">
+    <div class="meta">Question 9 of 12 · Domain 3: Application Development</div>
+    <div class="q">A development team is building a RAG application that retrieves documents from a Vector Search index and passes them to a foundation model. During testing, they notice that retrieved documents sometimes contain sensitive PII that should not be sent to the LLM. The team needs to redact PII before context is passed to the model while maintaining document relevance. Which solution BEST addresses this requirement?</div>
+    <button class="opt" onclick="answer(this,8,0,2)">A. Create a separate Vector Search index with pre-redacted documents and use it exclusively for retrieval in the RAG pipeline</button><button class="opt" onclick="answer(this,8,1,2)">B. Implement a post-retrieval processing step using Databricks Lakehouse Monitoring PII detection to identify and mask sensitive data before passing context to the LLM</button><button class="opt" onclick="answer(this,8,2,2)">C. Apply a Python UDF with a regex-based PII detection library in the retrieval pipeline to sanitize document chunks before embedding and after retrieval</button><button class="opt" onclick="answer(this,8,3,2)">D. Configure the Vector Search endpoint with a built-in PII filtering transformation that automatically redacts sensitive information from retrieved results</button>
+    <div class="expl">Applying PII detection and redaction as a processing step in the retrieval pipeline (both pre-embedding and post-retrieval) ensures that sensitive information is handled consistently. Using a Python UDF with established PII detection libraries provides flexibility, can be integrated into the RAG workflow, and allows for customization of redaction rules while maintaining the semantic meaning needed for retrieval relevance.</div>
+  </div>
+
+  <div class="card qcard" id="q9" data-domain="Domain 4: Assembling and Deploying Applications">
+    <div class="meta">Question 10 of 12 · Domain 4: Assembling and Deploying Applications</div>
+    <div class="q">An MLOps engineer needs to implement a CI/CD pipeline for a GenAI application that includes automated testing of prompt templates before deployment. The pipeline must validate that prompt changes don't degrade output quality. Which testing strategy should be implemented?</div>
+    <button class="opt" onclick="answer(this,9,0,3)">A. Deploy both versions to Model Serving and use traffic splitting to compare real-time metrics</button><button class="opt" onclick="answer(this,9,1,3)">B. Run unit tests on the prompt template string formatting and variable substitution logic only</button><button class="opt" onclick="answer(this,9,2,3)">C. Use Databricks Workflows to schedule daily batch inference and manually review outputs</button><button class="opt" onclick="answer(this,9,3,3)">D. Use MLflow evaluate() with a judge LLM to score outputs against golden datasets for each prompt version</button>
+    <div class="expl">MLflow's evaluate() function with LLM-as-a-judge is the standard approach for automated prompt testing. It allows you to compare prompt versions against golden test datasets using metrics like faithfulness, relevance, and correctness scored by a judge model. This provides quantitative validation before deployment.</div>
+  </div>
+
+  <div class="card qcard" id="q10" data-domain="Domain 5: Governance">
+    <div class="meta">Question 11 of 12 · Domain 5: Governance</div>
+    <div class="q">An organization has deployed multiple LLM-powered chatbots across different business units using Databricks Model Serving. The security team needs to enforce that no model can access customer data from regions outside its designated geography due to data residency requirements. What is the MOST effective governance approach?</div>
+    <button class="opt" onclick="answer(this,10,0,0)">A. Create separate Unity Catalog metastores for each region and configure Model Serving endpoints to only access tables in their regional metastore using workspace-to-metastore assignments</button><button class="opt" onclick="answer(this,10,1,0)">B. Use Delta Sharing to share only region-appropriate data to each workspace and rely on sharing permissions to enforce geographic boundaries</button><button class="opt" onclick="answer(this,10,2,0)">C. Implement row-level security using Unity Catalog dynamic views that filter data based on the serving endpoint's workspace location tag</button><button class="opt" onclick="answer(this,10,3,0)">D. Configure separate Databricks accounts for each region with cross-account IAM roles that prevent inter-region data access</button>
+    <div class="expl">Unity Catalog metastores can be deployed regionally, and workspace-to-metastore assignments create hard boundaries ensuring models in a workspace can only query data in their assigned regional metastore. This provides the strongest data residency guarantee at the architectural level.</div>
+  </div>
+
+  <div class="card qcard" id="q11" data-domain="Domain 6: Evaluation and Monitoring">
+    <div class="meta">Question 12 of 12 · Domain 6: Evaluation and Monitoring</div>
+    <div class="q">A team needs to monitor their production LLM application for potential toxic or harmful outputs. They want to implement automated monitoring that flags problematic responses in real-time. Which Databricks feature should they configure?</div>
+    <button class="opt" onclick="answer(this,11,0,1)">A. Lakehouse Monitoring with custom metrics</button><button class="opt" onclick="answer(this,11,1,1)">B. Inference Tables with toxicity detection models</button><button class="opt" onclick="answer(this,11,2,1)">C. MLflow Model Registry webhooks</button><button class="opt" onclick="answer(this,11,3,1)">D. Unity Catalog audit logs</button>
+    <div class="expl">Inference Tables automatically capture all model inputs and outputs in Delta tables, and can be configured with additional monitoring models (like toxicity classifiers) that run in real-time to flag harmful content. This is the purpose-built solution for LLM observability in Databricks.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$199.99</span> <strong>$66.99</strong> with code <span class="code">FREETEST33</span> — valid through August 23.</p>
+  <a href="https://www.udemy.com/course/databricks-genai-engineer-associate-exam-prep/?couponCode=FREETEST33" rel="sponsored">Get the full course for $66.99 →</a>
+</div>
+<div class="domains"><span class="meta">More free practice by exam domain:</span><br><a href="databricks-genai-design-applications.html">Design Applications →</a><a href="databricks-genai-data-preparation.html">Data Preparation →</a><a href="databricks-genai-application-development.html">Application Development →</a><a href="databricks-genai-assembling-and-deploying-applications.html">Assembling and Deploying Applications →</a></div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>
