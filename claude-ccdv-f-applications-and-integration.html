@@ -1,0 +1,61 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Applications and Integration Practice Questions — Claude Certified Developer (CCDV-F)</title>
+<meta name="description" content="6 free Applications and Integration practice questions with explanations for the Claude Certified Developer (CCDV-F) exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/claude-ccdv-f-applications-and-integration.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free Claude Certified Developer (CCDV-F) practice — 6 questions on <strong>Applications and Integration</strong>, with explanations. No sign-up.
+<a href="claude-ccdv-f.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Applications and Integration">
+    <div class="meta">Question 1 of 6 · Applications and Integration</div>
+    <div class="q">A developer is building a document analysis pipeline that processes 50,000 PDF files overnight using the Messages API. Each document requires vision analysis and generates approximately 8,000 tokens of output. The pipeline runs once per week. To minimize cost while meeting the overnight processing window, which approach is MOST cost-effective?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. Implement streaming responses with the Messages API and process documents sequentially to avoid rate limits</button><button class="opt" onclick="answer(this,0,1,3)">B. Use the Files API to upload all PDFs first, then reference them in individual Messages API calls with extended thinking enabled</button><button class="opt" onclick="answer(this,0,2,3)">C. Process documents in parallel using the standard Messages API with model version pinned to the latest Claude 3.5 Sonnet</button><button class="opt" onclick="answer(this,0,3,3)">D. Use Message Batches API with prompt caching enabled for system prompts, processing all documents in a single batch</button>
+    <div class="expl">Message Batches API offers 50% cost reduction compared to standard API calls and is explicitly designed for high-volume, non-realtime workloads like overnight processing. Prompt caching further reduces costs by reusing system prompts across the 50,000 requests. The overnight window (no realtime requirement) makes batching ideal.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Applications and Integration">
+    <div class="meta">Question 2 of 6 · Applications and Integration</div>
+    <div class="q">A Claude Desktop application is behaving differently than expected when compared to the same prompts tested on claude.ai. The developer notices that tool calls are being made automatically in Desktop but require explicit user confirmation on claude.ai. What is the MOST likely cause of this difference?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. Claude Desktop uses a different model version by default that has enhanced tool use capabilities</button><button class="opt" onclick="answer(this,1,1,3)">B. The settings.json configuration in Claude Desktop has tool_confirmation set to false while claude.ai enforces user confirmation for all tool executions</button><button class="opt" onclick="answer(this,1,2,3)">C. The CLAUDE.md file in the project directory is only read by Claude Desktop and contains tool use preferences that override default behavior</button><button class="opt" onclick="answer(this,1,3,3)">D. Claude Desktop implements MCP (Model Context Protocol) servers that pre-authorize tool use, while claude.ai requires runtime permission</button>
+    <div class="expl">Claude Desktop supports MCP servers which can provide tools to Claude with pre-authorized access based on server configuration. This is a key architectural difference: Desktop has local integration capabilities through MCP that claude.ai (browser-based) does not have. MCP servers define which tools are available and their permission model.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Applications and Integration">
+    <div class="meta">Question 3 of 6 · Applications and Integration</div>
+    <div class="q">A developer implements prompt caching for a RAG application that provides customer support documentation to Claude. The system prompt contains 45,000 tokens of documentation that changes once per day. The application receives approximately 1,000 user queries per day. After implementing caching with a 5-minute TTL, costs are higher than expected. What is the PRIMARY issue?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. The 5-minute TTL is too short for the usage pattern, causing the cache to expire between queries and forcing frequent cache writes at full price</button><button class="opt" onclick="answer(this,2,1,0)">B. The 5-minute TTL is too long, causing cache thrashing as new documentation updates invalidate the cache before it can be reused effectively</button><button class="opt" onclick="answer(this,2,2,0)">C. Prompt caching requires a minimum of 1,024 tokens to be cost-effective, and 45,000 tokens exceeds the maximum cacheable size</button><button class="opt" onclick="answer(this,2,3,0)">D. The documentation should be provided via the Files API instead of prompt caching, as Files API is optimized for large static content</button>
+    <div class="expl">With 1,000 queries per day, queries arrive roughly every 90 seconds on average. A 5-minute TTL means the cache frequently expires between queries, requiring cache writes (which cost the same as regular tokens) without achieving sufficient cache hits. For this usage pattern, the default TTL (5 minutes minimum, up to hours) should be extended, or documentation should be structured to maximize reuse. Cache writes cost full price; only cache reads provide savings.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Applications and Integration">
+    <div class="meta">Question 4 of 6 · Applications and Integration</div>
+    <div class="q">An application using Claude's vision capabilities needs to analyze medical imaging scans. The developer is choosing between base64-encoded image data in the Messages API versus using the Files API. Each scan is 8MB, analyzed once, and must be processed within 30 seconds. Compliance requirements mandate that image data never persists on external servers beyond the analysis request. Which approach BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. Use Files API to upload scans, as it provides faster processing for large images and automatic cleanup after 30 days</button><button class="opt" onclick="answer(this,3,1,2)">B. Use Message Batches API with base64-encoded images to achieve both compliance and cost savings on high-volume processing</button><button class="opt" onclick="answer(this,3,2,2)">C. Use base64-encoded images directly in Messages API requests, as it ensures images are processed ephemerally without server-side persistence</button><button class="opt" onclick="answer(this,3,3,2)">D. Use Files API with immediate deletion API calls after each analysis to meet compliance while benefiting from optimized image handling</button>
+    <div class="expl">Base64-encoded images in Messages API requests are processed ephemerally — they are not stored server-side after the request completes. This directly satisfies the compliance requirement that images never persist on external servers. The 30-second processing requirement is achievable with direct API calls (Files API doesn't provide faster processing for vision tasks).</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Applications and Integration">
+    <div class="meta">Question 5 of 6 · Applications and Integration</div>
+    <div class="q">A development team is implementing retry logic for Claude API calls. During testing, they observe that some requests fail with HTTP 529 (overloaded) errors during peak hours. The application currently implements exponential backoff starting at 1 second with a maximum of 5 retries. Users report that the application feels unresponsive during these retry cycles. What is the BEST improvement to the retry strategy?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. Switch to a linear backoff strategy with 2-second intervals to make retry timing more predictable for users</button><button class="opt" onclick="answer(this,4,1,1)">B. Reduce maximum retries to 3 and implement a circuit breaker pattern that fails fast after consecutive 529 errors, displaying a user-friendly error message</button><button class="opt" onclick="answer(this,4,2,1)">C. Increase the initial backoff to 5 seconds and add jitter to prevent synchronized retry storms across multiple clients</button><button class="opt" onclick="answer(this,4,3,1)">D. Implement request queuing on the client side to buffer requests during 529 errors and retry them automatically when the API recovers</button>
+    <div class="expl">HTTP 529 indicates the API is overloaded. Continuing to retry aggressively worsens the overload. A circuit breaker pattern detects repeated failures and fails fast, preventing long retry cycles that make the application feel unresponsive. Displaying a clear error message improves UX. 3 retries with exponential backoff is reasonable before opening the circuit. This balances resilience with user experience and API health.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Applications and Integration">
+    <div class="meta">Question 6 of 6 · Applications and Integration</div>
+    <div class="q">A developer is building a code review assistant that uses Claude Code via the API. The assistant needs to understand the full repository context including file structure, dependencies, and coding patterns. The repository contains 150 files totaling 2.5MB of code. Which approach provides the MOST comprehensive context to Claude while optimizing for cost and performance?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. Create a detailed CLAUDE.md file in the repository root describing architecture, patterns, and key files, then reference specific files in API calls as needed</button><button class="opt" onclick="answer(this,5,1,0)">B. Use the Files API to upload the entire codebase as a single compressed archive, then reference it in all code review requests</button><button class="opt" onclick="answer(this,5,2,0)">C. Concatenate all 150 files into the system prompt with file boundaries marked, and enable prompt caching to reuse across reviews</button><button class="opt" onclick="answer(this,5,3,0)">D. Use extended thinking mode with a curated selection of 10-15 key files provided via base64 encoding in each request</button>
+    <div class="expl">CLAUDE.md files are specifically designed to provide project context to Claude-powered tools like Claude Code. The file is automatically read and provides high-level architecture, patterns, and navigation guidance. Combined with dynamically including relevant files per request (based on what's being reviewed), this provides comprehensive context without sending unnecessary code. This is the recommended pattern for repository-aware Claude applications.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/claude-certified-developer-ccdv-f-complete-exam-prep/" rel="sponsored">Get the full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>
