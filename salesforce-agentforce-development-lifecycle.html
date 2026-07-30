@@ -1,0 +1,61 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Development Lifecycle Practice Questions — Salesforce Agentforce Specialist</title>
+<meta name="description" content="6 free Development Lifecycle practice questions with explanations for the Salesforce Agentforce Specialist exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/salesforce-agentforce-development-lifecycle.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free Salesforce Agentforce Specialist practice — 6 questions on <strong>Development Lifecycle</strong>, with explanations. No sign-up.
+<a href="salesforce-agentforce.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Development Lifecycle">
+    <div class="meta">Question 1 of 6 · Development Lifecycle</div>
+    <div class="q">A development team is building an Agentforce agent that integrates with multiple Salesforce orgs across different release cycles. The agent uses custom Apex actions that depend on a managed package. During UAT in a sandbox, the team discovers that API version mismatches are causing unexpected behavior when the agent calls deprecated methods. What is the BEST approach to ensure stable agent behavior acrossorg updates?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. Configure the agent's API version independently from the Apex actions and use @AuraEnabled(cacheable=true) to buffer API changes</button><button class="opt" onclick="answer(this,0,1,2)">B. Implement version detection logic in each Apex action using System.requestVersion() and conditionally execute code paths based on org API level</button><button class="opt" onclick="answer(this,0,2,2)">C. Pin all Apex actions to a specific API version in the action metadata and update the managed package dependency in package.xml to lock the version</button><button class="opt" onclick="answer(this,0,3,2)">D. Create separate agent versions for each API release and use deployment rules to route users to version-compatible agents</button>
+    <div class="expl">Pinning API versions in action metadata ensures consistent behavior regardless of org API updates. The package.xml dependency lock prevents automatic upgrades that could introduce breaking changes. This is the standard Salesforce practice for managing cross-org compatibility in managed solutions.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Development Lifecycle">
+    <div class="meta">Question 2 of 6 · Development Lifecycle</div>
+    <div class="q">An Agentforce agent deployment failed in production with the error 'Agent Plan validation failed: Required data source not available.' The same agent deployed successfully to three staging sandboxes. The deployment uses a change set that includes the agent definition, all custom objects, and Apex classes. What is the MOST likely cause of this deployment failure?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. The production org has a different Salesforce edition that doesn't support the agent's required features</button><button class="opt" onclick="answer(this,1,1,2)">B. The change set deployment order processed the agent definition before the dependent Apex classes were deployed</button><button class="opt" onclick="answer(this,1,2,2)">C. A Data Cloud data source referenced in the agent plan exists in staging but hasn't been configured in production</button><button class="opt" onclick="answer(this,1,3,2)">D. Production org has stricter validation rules that reject the agent's output format specifications</button>
+    <div class="expl">The error specifically mentions 'data source not available' and agents often reference Data Cloud sources in their plans. Data Cloud configurations and connections are org-specific and not included in change sets or metadata deployments. This is a common production deployment gotcha because Data Cloud sources must be manually configured in each org.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Development Lifecycle">
+    <div class="meta">Question 3 of 6 · Development Lifecycle</div>
+    <div class="q">A developer needs to test an Agentforce agent that uses Einstein Trust Layer to mask PII data before sending prompts to the LLM. The agent is configured with data masking policies for email addresses and phone numbers. In the Developer sandbox, test results show unmasked PII appearing in agent responses. Production org shows correct masking behavior. What should the developer verify FIRST?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. Confirm the sandbox has Einstein Trust Layer enabled in Setup and the masking policies are deployed with the same configuration as production</button><button class="opt" onclick="answer(this,2,1,0)">B. Check that the test user profile has 'View Masked Data' permission disabled in the sandbox</button><button class="opt" onclick="answer(this,2,2,0)">C. Verify the agent's prompt template explicitly calls the masking service before LLM invocation</button><button class="opt" onclick="answer(this,2,3,0)">D. Ensure the sandbox refresh copied the Einstein Trust Layer license from production</button>
+    <div class="expl">Einstein Trust Layer is a feature that must be explicitly enabled per org and doesn't automatically deploy with agent metadata. Masking policies are configuration that must be separately deployed. This is the first troubleshooting step because the feature might not be active in the sandbox at all, which would explain the complete absence of masking.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Development Lifecycle">
+    <div class="meta">Question 4 of 6 · Development Lifecycle</div>
+    <div class="q">A company is implementing CI/CD for Agentforce agents using Salesforce CLI and GitHub Actions. The pipeline deploys agents to integration, staging, and production orgs. After deployment, automated tests verify agent responses but frequently fail in staging with 'Agent response timeout' errors despite identical configuration across all orgs. The staging org has 10x more data volume than integration. Which optimization will MOST effectively resolve the staging test failures?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. Configure the agent's grounding service to use indexed fields and add selectivity filters to reduce data volume processed per query</button><button class="opt" onclick="answer(this,3,1,0)">B. Increase the API timeout value in the sfdx-project.json configuration file for staging deployments</button><button class="opt" onclick="answer(this,3,2,0)">C. Split the staging tests into smaller batches and run them sequentially instead of parallel execution</button><button class="opt" onclick="answer(this,3,3,0)">D. Enable caching on the agent's Einstein LLM connector to reuse responses for similar prompts</button>
+    <div class="expl">Agent response timeouts with high data volumes indicate the grounding service is processing too much data to retrieve relevant context. Indexed fields and selectivity filters directly address the root cause by making data retrieval more efficient. This is the performance optimization pattern Salesforce recommends for agents in data-heavy orgs.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Development Lifecycle">
+    <div class="meta">Question 5 of 6 · Development Lifecycle</div>
+    <div class="q">An Agentforce agent uses a custom Apex action that queries external REST APIs. During load testing, the action intermittently fails with 'Apex CPU time limit exceeded' in production but never in sandbox environments. The action has @future annotation and processes up to 200 API responses per invocation. Sandbox testing showed consistent 8-second execution times. What is the correct solution?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. Add Platform Events to decouple the API calls from the agent action execution path</button><button class="opt" onclick="answer(this,4,1,3)">B. Increase the Apex governor limits for the production org by filing a Salesforce support case</button><button class="opt" onclick="answer(this,4,2,3)">C. Convert the synchronous agent action to use continuation APIs for parallel API callouts</button><button class="opt" onclick="answer(this,4,3,3)">D. Refactor the Apex action to use Queueable interface instead of @future and implement chunking to process 50 responses per job</button>
+    <div class="expl">Queueable provides higher governor limits than @future (60 seconds CPU time vs 60 seconds for synchronous, but better monitoring and chaining). Chunking 200 responses into 50-per-job batches directly addresses the CPU limit issue. This is the standard pattern for processing large volumes in Apex while staying within governor limits.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Development Lifecycle">
+    <div class="meta">Question 6 of 6 · Development Lifecycle</div>
+    <div class="q">A development team maintains separate Git branches for three Agentforce agents that share common Apex actions and prompt templates. When merging feature branches, conflicts frequently occur in the agent metadata XML files even when developers worked on different agents. The team uses source format and deploys with SFDX. What is the BEST practice to minimize merge conflicts while maintaining proper version control?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. Store each agent definition in a separate Git repository with shared Apex actions as a Git submodule</button><button class="opt" onclick="answer(this,5,1,1)">B. Decompose agent metadata using SFDX source format's granular file structure and implement branch-per-agent with shared action library in a common directory</button><button class="opt" onclick="answer(this,5,2,1)">C. Convert to metadata format (not source format) because XML files have fewer merge conflicts than decomposed source files</button><button class="opt" onclick="answer(this,5,3,1)">D. Use Git LFS (Large File Storage) for agent metadata files to handle binary merge conflicts</button>
+    <div class="expl">SFDX source format decomposes metadata into granular files (separate files per component), which significantly reduces merge conflicts compared to monolithic XML. Branch-per-agent with shared action library allows parallel development while isolating agent-specific changes. This is the recommended Salesforce DX pattern for multi-component projects.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/salesforce-agentforce-specialist-exam-focused-preparation/" rel="sponsored">Get the full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>
