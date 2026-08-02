@@ -1,0 +1,104 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free AWS Certified Solutions Architect – Associate (SAA-C04) Practice Test — 12 Real Exam-Style Questions</title>
+<meta name="description" content="Free AWS Certified Solutions Architect – Associate (SAA-C04) practice questions with detailed explanations. Test yourself before the real exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/saa-c04.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free AWS Certified Solutions Architect – Associate (SAA-C04) practice test — 12 exam-style questions with explanations. No sign-up.</p></header>
+
+  <div class="card qcard" id="q0" data-domain="Design Secure Architectures">
+    <div class="meta">Question 1 of 12 · Design Secure Architectures</div>
+    <div class="q">A company delegates IAM user and role creation to a DevOps team but must ensure that even if the DevOps team writes an overly permissive policy, no IAM principal they create can ever exceed access to S3 and DynamoDB in a single specified region. Which mechanism should be attached to the roles the DevOps team creates?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. A service control policy attached to the DevOps team's OU in AWS Organizations</button><button class="opt" onclick="answer(this,0,1,3)">B. An identity-based policy with a Deny statement for all other services</button><button class="opt" onclick="answer(this,0,2,3)">C. A resource-based policy on the DynamoDB tables restricting access by region</button><button class="opt" onclick="answer(this,0,3,3)">D. A permissions boundary that defines the maximum allowable permissions for those roles</button>
+    <div class="expl">A permissions boundary is an IAM feature that sets the maximum permissions an identity-based policy can grant to a user or role; it applies at the exact IAM entity level and travels with any role created under it, making it the mechanism specifically designed for delegated administration scenarios like this.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Design Resilient Architectures">
+    <div class="meta">Question 2 of 12 · Design Resilient Architectures</div>
+    <div class="q">A company runs a critical order-processing application. Leadership sets an RTO of 30 minutes and an RPO of 5 minutes. The DR architect proposes a secondary region where the database continuously replicates data, and a scaled-down (minimal-capacity) version of the full application stack is already running and can be scaled up quickly during a failover. Which DR strategy does this describe?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. Warm standby</button><button class="opt" onclick="answer(this,1,1,0)">B. Backup and restore</button><button class="opt" onclick="answer(this,1,2,0)">C. Multi-site active-active</button><button class="opt" onclick="answer(this,1,3,0)">D. Pilot light</button>
+    <div class="expl">Warm standby maintains a scaled-down but fully functional copy of the entire application stack in the DR region, which can be scaled up rapidly. This matches the 30-minute RTO and 5-minute RPO with continuous DB replication.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Design High-Performing Architectures">
+    <div class="meta">Question 3 of 12 · Design High-Performing Architectures</div>
+    <div class="q">A media company stores 50 TB of video archive files that are accessed roughly once every 3-4 months for compliance review. When retrieval is needed, the files must be available in milliseconds without a separate rehydration wait. Which S3 storage class BEST meets these requirements at the lowest cost?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. S3 Glacier Instant Retrieval</button><button class="opt" onclick="answer(this,2,1,0)">B. S3 Standard-IA</button><button class="opt" onclick="answer(this,2,2,0)">C. S3 Glacier Flexible Retrieval</button><button class="opt" onclick="answer(this,2,3,0)">D. S3 Glacier Deep Archive</button>
+    <div class="expl">S3 Glacier Instant Retrieval is purpose-built for archive data accessed about once per quarter that still needs millisecond retrieval, offering lower cost than Standard-IA for this access frequency while preserving instant access.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Design Cost-Optimized Architectures">
+    <div class="meta">Question 4 of 12 · Design Cost-Optimized Architectures</div>
+    <div class="q">A media analytics company stores clickstream data in Amazon S3. Access patterns are highly unpredictable: some objects are accessed dozens of times within the first two weeks then never again, while others are accessed sporadically for years with no discernible pattern. The team wants to minimize storage cost without building custom lifecycle logic or risking retrieval fees on unpredictable access. Which solution BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. Store objects in S3 Standard and use a lifecycle rule to transition to S3 Glacier Flexible Retrieval after 30 days</button><button class="opt" onclick="answer(this,3,1,2)">B. Store all objects in S3 One Zone-IA</button><button class="opt" onclick="answer(this,3,2,2)">C. Store all objects in S3 Intelligent-Tiering</button><button class="opt" onclick="answer(this,3,3,2)">D. Store objects in S3 Standard-IA and write a Lambda function to manually move objects based on access logs</button>
+    <div class="expl">S3 Intelligent-Tiering automatically monitors access patterns at the object level and moves objects between Frequent, Infrequent, Archive Instant Access, and optional Archive/Deep Archive tiers with no retrieval fees and no operational overhead — the exact fit when access patterns are unknown or unpredictable.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Design Secure Architectures">
+    <div class="meta">Question 5 of 12 · Design Secure Architectures</div>
+    <div class="q">An application on EC2 needs to retrieve a database password that must be automatically rotated every 30 days using a Lambda rotation function, with native integration for RDS credential rotation. Which service should store this credential?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. AWS Secrets Manager</button><button class="opt" onclick="answer(this,4,1,0)">B. Systems Manager Parameter Store SecureString parameter</button><button class="opt" onclick="answer(this,4,2,0)">C. AWS KMS customer-managed key</button><button class="opt" onclick="answer(this,4,3,0)">D. AWS CloudHSM cluster</button>
+    <div class="expl">AWS Secrets Manager provides built-in automatic rotation with native Lambda rotation templates for RDS, Redshift, and DocumentDB credentials, directly matching the automated 30-day rotation requirement.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Design Resilient Architectures">
+    <div class="meta">Question 6 of 12 · Design Resilient Architectures</div>
+    <div class="q">A global e-commerce company wants DNS queries to be answered with the AWS Region that provides users the fastest network round-trip time, dynamically adjusting as network conditions change. Which Route 53 routing policy should the architect configure?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. Weighted routing</button><button class="opt" onclick="answer(this,5,1,3)">B. Geolocation routing</button><button class="opt" onclick="answer(this,5,2,3)">C. Failover routing</button><button class="opt" onclick="answer(this,5,3,3)">D. Latency-based routing</button>
+    <div class="expl">Latency-based routing returns the record associated with the AWS Region that gives the lowest network latency to the user, based on Route 53's continuously updated latency measurements between regions and users.</div>
+  </div>
+
+  <div class="card qcard" id="q6" data-domain="Design High-Performing Architectures">
+    <div class="meta">Question 7 of 12 · Design High-Performing Architectures</div>
+    <div class="q">A financial trading application requires a single EBS volume delivering up to 64,000 IOPS and 1,000 MB/s throughput with sub-millisecond latency consistency, attached to a Nitro-based EC2 instance. Which EBS volume type should the architect choose?</div>
+    <button class="opt" onclick="answer(this,6,0,3)">A. gp3</button><button class="opt" onclick="answer(this,6,1,3)">B. io1</button><button class="opt" onclick="answer(this,6,2,3)">C. st1</button><button class="opt" onclick="answer(this,6,3,3)">D. io2 Block Express</button>
+    <div class="expl">io2 Block Express is the current-generation Provisioned IOPS volume built for the highest-performance workloads, delivering up to 256,000 IOPS and 4,000 MB/s with sub-millisecond latency and 99.999% durability, comfortably meeting the stated requirement as the recommended modern option.</div>
+  </div>
+
+  <div class="card qcard" id="q7" data-domain="Design Cost-Optimized Architectures">
+    <div class="meta">Question 8 of 12 · Design Cost-Optimized Architectures</div>
+    <div class="q">A company runs a fleet of EC2 instances that must operate 24/7 for the next three years. The workload is steady-state, but the engineering team frequently changes instance families, sizes, and even regions as the application evolves. Which EC2 pricing model provides the deepest discount while preserving this flexibility?</div>
+    <button class="opt" onclick="answer(this,7,0,0)">A. Compute Savings Plans</button><button class="opt" onclick="answer(this,7,1,0)">B. On-Demand Instances</button><button class="opt" onclick="answer(this,7,2,0)">C. Standard Reserved Instances</button><button class="opt" onclick="answer(this,7,3,0)">D. Spot Instances</button>
+    <div class="expl">Compute Savings Plans offer up to the same discount level as Standard RIs (up to 66% off On-Demand) while automatically applying across any instance family, size, OS, tenancy, and AWS Region — matching the requirement for ongoing flexibility over a 3-year commitment.</div>
+  </div>
+
+  <div class="card qcard" id="q8" data-domain="Design Secure Architectures">
+    <div class="meta">Question 9 of 12 · Design Secure Architectures</div>
+    <div class="q">A company uses a customer-managed KMS key to encrypt sensitive S3 objects and wants the key's cryptographic material to be rotated automatically every year without changing the KMS key ARN referenced in existing bucket policies and applications. What should the solutions architect enable?</div>
+    <button class="opt" onclick="answer(this,8,0,2)">A. Manually create a new KMS key annually and update all references</button><button class="opt" onclick="answer(this,8,1,2)">B. AWS managed key rotation policy override</button><button class="opt" onclick="answer(this,8,2,2)">C. Automatic key rotation on the customer-managed key</button><button class="opt" onclick="answer(this,8,3,2)">D. CloudHSM key rotation scheduled via EventBridge</button>
+    <div class="expl">Enabling automatic key rotation on a customer-managed KMS key rotates the underlying cryptographic material on a scheduled interval (default annually, configurable) while keeping the same key ID/ARN, so no application or bucket policy changes are required.</div>
+  </div>
+
+  <div class="card qcard" id="q9" data-domain="Design Resilient Architectures">
+    <div class="meta">Question 10 of 12 · Design Resilient Architectures</div>
+    <div class="q">A solutions architect has configured an RDS Multi-AZ deployment for a production database. During an unplanned AZ outage affecting the primary instance, which mechanism allows the application to reconnect to the database without any changes to the application's connection string?</div>
+    <button class="opt" onclick="answer(this,9,0,0)">A. RDS flips the DNS CNAME record for the DB instance endpoint to point to the standby</button><button class="opt" onclick="answer(this,9,1,0)">B. The application must be updated with a new read replica endpoint</button><button class="opt" onclick="answer(this,9,2,0)">C. RDS reassigns the Elastic IP address of the primary to the standby instance</button><button class="opt" onclick="answer(this,9,3,0)">D. Route 53 health checks trigger a manual DNS record update by the administrator</button>
+    <div class="expl">In RDS Multi-AZ, the DB instance endpoint is a CNAME. During failover, RDS automatically updates the CNAME to resolve to the standby (now promoted primary) instance's IP address, so applications using the same endpoint reconnect transparently.</div>
+  </div>
+
+  <div class="card qcard" id="q10" data-domain="Design High-Performing Architectures">
+    <div class="meta">Question 11 of 12 · Design High-Performing Architectures</div>
+    <div class="q">A multiplayer online game uses both TCP and UDP traffic and requires consistent low-latency routing of players to the nearest healthy regional endpoint across multiple AWS Regions, with fast failover if a region becomes unhealthy. Which service should the architect implement?</div>
+    <button class="opt" onclick="answer(this,10,0,1)">A. Amazon CloudFront</button><button class="opt" onclick="answer(this,10,1,1)">B. AWS Global Accelerator</button><button class="opt" onclick="answer(this,10,2,1)">C. Amazon Route 53 latency-based routing</button><button class="opt" onclick="answer(this,10,3,1)">D. AWS Direct Connect</button>
+    <div class="expl">AWS Global Accelerator uses static anycast IP addresses and the AWS global network to route both TCP and UDP traffic to the nearest healthy endpoint, with health checks providing fast automatic failover independent of DNS caching.</div>
+  </div>
+
+  <div class="card qcard" id="q11" data-domain="Design Cost-Optimized Architectures">
+    <div class="meta">Question 12 of 12 · Design Cost-Optimized Architectures</div>
+    <div class="q">An application running on EC2 instances in a private subnet makes frequent calls to Amazon S3, generating a large monthly bill for NAT Gateway data processing charges. The security team requires that instances remain in the private subnet with no direct internet route. What is the MOST cost-effective way to reduce these charges?</div>
+    <button class="opt" onclick="answer(this,11,0,1)">A. Replace the NAT Gateway with a self-managed NAT instance</button><button class="opt" onclick="answer(this,11,1,1)">B. Add an S3 Gateway VPC Endpoint to the route table used by the private subnet</button><button class="opt" onclick="answer(this,11,2,1)">C. Increase the NAT Gateway's provisioned bandwidth</button><button class="opt" onclick="answer(this,11,3,1)">D. Move the EC2 instances into a public subnet with an internet gateway</button>
+    <div class="expl">An S3 Gateway VPC Endpoint routes S3 traffic directly over the AWS private network with no NAT Gateway data processing or per-GB egress charges, and it requires no change to instance placement or internet exposure — Gateway endpoints for S3 and DynamoDB have no hourly or per-GB charge.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$109.99</span> <strong>$34.99</strong> with code <span class="code">FREETEST33</span> — valid through September 2.</p>
+  <a href="https://www.udemy.com/course/aws-saa-c04-exam-prep-solutions-architect-associate/?couponCode=FREETEST33" rel="sponsored">Get the full course for $34.99 →</a>
+</div>
+<div class="domains"><span class="meta">More free practice by exam domain:</span><br><a href="saa-c04-design-secure-architectures.html">Design Secure Architectures →</a><a href="saa-c04-design-resilient-architectures.html">Design Resilient Architectures →</a><a href="saa-c04-design-high-performing-architectures.html">Design High-Performing Architectures →</a><a href="saa-c04-design-cost-optimized-architectures.html">Design Cost-Optimized Architectures →</a></div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>
