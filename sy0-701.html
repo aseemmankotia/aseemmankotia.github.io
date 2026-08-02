@@ -1,0 +1,104 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free CompTIA Security+ (SY0-701) Practice Test — 12 Real Exam-Style Questions</title>
+<meta name="description" content="Free CompTIA Security+ (SY0-701) practice questions with detailed explanations. Test yourself before the real exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/sy0-701.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free CompTIA Security+ (SY0-701) practice test — 12 exam-style questions with explanations. No sign-up.</p></header>
+
+  <div class="card qcard" id="q0" data-domain="General Security Concepts">
+    <div class="meta">Question 1 of 12 · General Security Concepts</div>
+    <div class="q">A data center posts signs at its perimeter stating 'Warning: This facility is under 24/7 video surveillance and armed response.' The signs themselves do not physically block entry or capture footage. What TYPE of security control does this represent?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. Preventive</button><button class="opt" onclick="answer(this,0,1,2)">B. Detective</button><button class="opt" onclick="answer(this,0,2,2)">C. Deterrent</button><button class="opt" onclick="answer(this,0,3,2)">D. Compensating</button>
+    <div class="expl">A deterrent control discourages an attacker from attempting an action by making the risk of getting caught appear high, without physically stopping or detecting the act itself. Warning signage is the textbook example.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Threats, Vulnerabilities, and Mitigations">
+    <div class="meta">Question 2 of 12 · Threats, Vulnerabilities, and Mitigations</div>
+    <div class="q">A security analyst discovers that a recently terminated employee used still-active VPN credentials to download proprietary source code from the company's Git repository three days after their last day of employment. Which threat actor category BEST describes this activity?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. Hacktivist</button><button class="opt" onclick="answer(this,1,1,3)">B. Nation-state actor</button><button class="opt" onclick="answer(this,1,2,3)">C. Organized crime</button><button class="opt" onclick="answer(this,1,3,3)">D. Insider threat</button>
+    <div class="expl">Insider threat refers to individuals with authorized (or recently authorized) access who misuse that access, including former employees exploiting credentials that were not promptly revoked.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Security Architecture">
+    <div class="meta">Question 3 of 12 · Security Architecture</div>
+    <div class="q">A company migrates a fleet of web servers to an IaaS offering, running them as virtual machines on the provider's infrastructure. Under the cloud shared responsibility model, who is responsible for patching the guest operating system on these VMs?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. The customer is responsible, since IaaS only covers the underlying hardware, virtualization, and network layers</button><button class="opt" onclick="answer(this,2,1,0)">B. The cloud provider is always responsible for OS patching in every cloud service model</button><button class="opt" onclick="answer(this,2,2,0)">C. Responsibility is always split 50/50 between customer and provider regardless of service model</button><button class="opt" onclick="answer(this,2,3,0)">D. A third-party managed service provider automatically assumes patch responsibility once a workload moves to the cloud</button>
+    <div class="expl">In the IaaS model the provider secures and maintains the physical infrastructure, virtualization/hypervisor layer, and physical network. Everything above that line — guest OS, middleware, applications, and data — is the customer's responsibility, including OS patching.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Security Operations">
+    <div class="meta">Question 4 of 12 · Security Operations</div>
+    <div class="q">A security analyst wants to prevent employees from copying sensitive customer records to USB flash drives while still allowing normal use of USB keyboards, mice, and other peripherals. Which solution BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. Configure a host-based DLP agent with content-inspection rules for USB mass storage devices</button><button class="opt" onclick="answer(this,3,1,0)">B. Disable all USB ports in the BIOS on every workstation</button><button class="opt" onclick="answer(this,3,2,0)">C. Deploy Network Access Control (NAC) to block USB devices at the switch port</button><button class="opt" onclick="answer(this,3,3,0)">D. Implement full disk encryption on all removable media</button>
+    <div class="expl">Host-based DLP with content inspection can selectively block file transfers to USB mass storage devices based on data classification while leaving other USB device classes (HID keyboards/mice) unaffected.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Security Program Management and Oversight">
+    <div class="meta">Question 5 of 12 · Security Program Management and Oversight</div>
+    <div class="q">A risk analyst calculates the following for a data center flood scenario: Asset Value = $500,000, Exposure Factor = 20%, and Annualized Rate of Occurrence = 0.5. What is the Annualized Loss Expectancy (ALE)?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. $50,000</button><button class="opt" onclick="answer(this,4,1,0)">B. $10,000</button><button class="opt" onclick="answer(this,4,2,0)">C. $100,000</button><button class="opt" onclick="answer(this,4,3,0)">D. $500,000</button>
+    <div class="expl">SLE = Asset Value x Exposure Factor = $500,000 x 0.20 = $100,000. ALE = SLE x ARO = $100,000 x 0.5 = $50,000.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="General Security Concepts">
+    <div class="meta">Question 6 of 12 · General Security Concepts</div>
+    <div class="q">An organization deploys a Zero Trust architecture per NIST SP 800-207. A user requests access to a sensitive file server. Which component evaluates the request against configured trust algorithms and policy, then issues the allow/deny decision?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. Policy enforcement point (PEP)</button><button class="opt" onclick="answer(this,5,1,1)">B. Policy engine (PE)</button><button class="opt" onclick="answer(this,5,2,1)">C. Policy administrator (PA)</button><button class="opt" onclick="answer(this,5,3,1)">D. Data plane</button>
+    <div class="expl">The policy engine is the decision-making component of the zero trust control plane — it evaluates the access request against policy and trust algorithms and outputs a decision.</div>
+  </div>
+
+  <div class="card qcard" id="q6" data-domain="Threats, Vulnerabilities, and Mitigations">
+    <div class="meta">Question 7 of 12 · Threats, Vulnerabilities, and Mitigations</div>
+    <div class="q">Employees at a manufacturing company routinely visit an industry trade association website to check equipment safety recalls. Attackers compromise this website and inject malicious JavaScript that only executes for visitors from the manufacturing company's IP range. Which type of attack does this describe?</div>
+    <button class="opt" onclick="answer(this,6,0,0)">A. Watering hole attack</button><button class="opt" onclick="answer(this,6,1,0)">B. Business email compromise</button><button class="opt" onclick="answer(this,6,2,0)">C. Typosquatting</button><button class="opt" onclick="answer(this,6,3,0)">D. Vishing</button>
+    <div class="expl">A watering hole attack compromises a legitimate website frequently visited by a specific target group and delivers malicious content selectively to those targets.</div>
+  </div>
+
+  <div class="card qcard" id="q7" data-domain="Security Architecture">
+    <div class="meta">Question 8 of 12 · Security Architecture</div>
+    <div class="q">An inline IDS appliance inspects all traffic to and from a hospital's patient-monitoring network segment before it reaches the core switch. The security team must decide how the device should behave if it loses power or crashes. Patient safety requires monitoring traffic to keep flowing even if inspection capability is lost. Which failure mode should be configured on this device?</div>
+    <button class="opt" onclick="answer(this,7,0,3)">A. Configure the device to fail-closed so all traffic is blocked on failure</button><button class="opt" onclick="answer(this,7,1,3)">B. Configure the device in an active-active cluster to eliminate the need for a failure mode decision</button><button class="opt" onclick="answer(this,7,2,3)">C. Configure the device to deny all traffic by default until manually reset</button><button class="opt" onclick="answer(this,7,3,3)">D. Configure the device to fail-open so traffic continues to pass without inspection</button>
+    <div class="expl">Fail-open allows traffic to continue flowing uninspected if the device fails, prioritizing availability. In life-safety environments like patient monitoring, an outage of network connectivity can be more dangerous than a temporary loss of inspection, so fail-open is the appropriate choice here.</div>
+  </div>
+
+  <div class="card qcard" id="q8" data-domain="Security Operations">
+    <div class="meta">Question 9 of 12 · Security Operations</div>
+    <div class="q">A company is migrating its enterprise wireless network to WPA3-Enterprise and wants centralized, per-user authentication using digital certificates instead of a shared passphrase. Which combination of technologies should be implemented?</div>
+    <button class="opt" onclick="answer(this,8,0,0)">A. 802.1X with EAP-TLS authenticating against a RADIUS server</button><button class="opt" onclick="answer(this,8,1,0)">B. WPA3-Personal with SAE</button><button class="opt" onclick="answer(this,8,2,0)">C. WPA2-PSK combined with MAC address filtering</button><button class="opt" onclick="answer(this,8,3,0)">D. Open authentication with a captive portal</button>
+    <div class="expl">802.1X provides the port-based authentication framework, EAP-TLS supplies mutual certificate-based authentication for each user/device, and RADIUS acts as the AAA server validating credentials centrally — this is the standard architecture for WPA3-Enterprise.</div>
+  </div>
+
+  <div class="card qcard" id="q9" data-domain="Security Program Management and Oversight">
+    <div class="meta">Question 10 of 12 · Security Program Management and Oversight</div>
+    <div class="q">A company hires a contractor for a specific project and needs a document defining the exact deliverables, timeline, milestones, and payment schedule for that engagement. Which agreement type should be used?</div>
+    <button class="opt" onclick="answer(this,9,0,2)">A. Memorandum of Understanding (MOU)</button><button class="opt" onclick="answer(this,9,1,2)">B. Master Service Agreement (MSA)</button><button class="opt" onclick="answer(this,9,2,2)">C. Statement of Work (SOW)</button><button class="opt" onclick="answer(this,9,3,2)">D. Non-Disclosure Agreement (NDA)</button>
+    <div class="expl">A Statement of Work (SOW) specifies the exact scope, deliverables, timeline, and payment terms for a particular project or engagement.</div>
+  </div>
+
+  <div class="card qcard" id="q10" data-domain="General Security Concepts">
+    <div class="meta">Question 11 of 12 · General Security Concepts</div>
+    <div class="q">A development team must store user passwords in a database in a way that resists both brute-force cracking and precomputed rainbow table attacks. Which approach BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,10,0,0)">A. Salt each password and apply a key-stretching hash algorithm such as bcrypt or Argon2</button><button class="opt" onclick="answer(this,10,1,0)">B. Encrypt the passwords with AES-256 using a stored symmetric key</button><button class="opt" onclick="answer(this,10,2,0)">C. Hash the passwords once with SHA-256 and store the digest</button><button class="opt" onclick="answer(this,10,3,0)">D. Store passwords as reversible tokens mapped to a lookup table</button>
+    <div class="expl">Salting ensures identical passwords produce different hashes (defeating rainbow tables), and key stretching (deliberately slow, iterative hashing like bcrypt/Argon2/PBKDF2) makes brute-force attacks computationally expensive per guess.</div>
+  </div>
+
+  <div class="card qcard" id="q11" data-domain="Threats, Vulnerabilities, and Mitigations">
+    <div class="meta">Question 12 of 12 · Threats, Vulnerabilities, and Mitigations</div>
+    <div class="q">A developer writes code that checks whether a file exists and then, in a separate step, opens that file for writing. An attacker replaces the file with a symbolic link to a sensitive system file in the brief window between the check and the open operation. Which vulnerability type does this scenario describe?</div>
+    <button class="opt" onclick="answer(this,11,0,3)">A. Buffer overflow</button><button class="opt" onclick="answer(this,11,1,3)">B. Memory injection</button><button class="opt" onclick="answer(this,11,2,3)">C. SQL injection</button><button class="opt" onclick="answer(this,11,3,3)">D. Race condition (TOCTOU)</button>
+    <div class="expl">This is a classic time-of-check-to-time-of-use (TOCTOU) race condition, where the state of a resource changes between validation and use, allowing an attacker to manipulate the outcome.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$109.99</span> <strong>$34.99</strong> with code <span class="code">FREETEST33</span> — valid through September 2.</p>
+  <a href="https://www.udemy.com/course/comptia-security-sy0-701-exam-focused-prep/?couponCode=FREETEST33" rel="sponsored">Get the full course for $34.99 →</a>
+</div>
+<div class="domains"><span class="meta">More free practice by exam domain:</span><br><a href="sy0-701-threats-vulnerabilities-and-mitigations.html">Threats, Vulnerabilities, and Mitigations →</a><a href="sy0-701-security-architecture.html">Security Architecture →</a><a href="sy0-701-security-operations.html">Security Operations →</a><a href="sy0-701-security-program-management-and-oversight.html">Security Program Management and Oversight →</a></div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>
