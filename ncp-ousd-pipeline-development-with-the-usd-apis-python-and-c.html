@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Pipeline Development with the USD APIs (Python and C++) Practice Questions — NVIDIA-Certified Professional: OpenUSD Development</title>
+<meta name="description" content="6 free Pipeline Development with the USD APIs (Python and C++) practice questions with explanations for the NVIDIA-Certified Professional: OpenUSD Development exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/ncp-ousd-pipeline-development-with-the-usd-apis-python-and-c.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free NVIDIA-Certified Professional: OpenUSD Development practice — 6 questions on <strong>Pipeline Development with the USD APIs (Python and C++)</strong>, with explanations. No sign-up.
+<a href="ncp-ousd.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Pipeline Development with the USD APIs (Python and C++)">
+    <div class="meta">Question 1 of 6 · Pipeline Development with the USD APIs (Python and C++)</div>
+    <div class="q">A pipeline tool needs to rename a prim from /World/Geo/OldName to /World/Geo/NewName on a stage composed from multiple sublayers, and any relationship targets or attribute connections elsewhere in the stage that point at /World/Geo/OldName (or its descendants) must automatically be updated to the new path across all contributing layers. Which API is the correct choice?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. Sdf.Layer.Apply(SdfBatchNamespaceEdit) called once on the stage's root layer</button><button class="opt" onclick="answer(this,0,1,3)">B. Usd.Prim.SetName() on the prim returned by stage.GetPrimAtPath()</button><button class="opt" onclick="answer(this,0,2,3)">C. Usd.EditContext to set the edit target, then Sdf.CopySpec the prim spec to the new path</button><button class="opt" onclick="answer(this,0,3,3)">D. Usd.NamespaceEditor, using RenamePrim() followed by ApplyEdits()</button>
+    <div class="expl">Usd.NamespaceEditor is the high-level stage-aware API purpose-built for renames/reparents/deletes; it inspects the full composed stage, edits the relevant opinions in every contributing layer, and automatically fixes up relationship targets and attribute connections that reference the moved path anywhere in the scene.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Pipeline Development with the USD APIs (Python and C++)">
+    <div class="meta">Question 2 of 6 · Pipeline Development with the USD APIs (Python and C++)</div>
+    <div class="q">You are authoring a rig's local transform in Python so that Maya, Houdini, and Omniverse Kit all interpret the pivot, rotation, and scale identically without any DCC-specific reinterpretation. Which authoring approach guarantees this canonical, cross-application-compatible xformOpOrder?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. Call UsdGeom.Xformable(prim).AddRotateXYZOp() and AddScaleOp() in the order you want them evaluated</button><button class="opt" onclick="answer(this,1,1,3)">B. Directly author the 'xformOpOrder' attribute as a Vt.TokenArray listing the ops in whatever sequence is convenient</button><button class="opt" onclick="answer(this,1,2,3)">C. Author separate xformOp:translate and xformOp:transform (4x4 matrix) ops on the same prim and let USD resolve precedence</button><button class="opt" onclick="answer(this,1,3,3)">D. Use UsdGeom.XformCommonAPI(prim).SetXformVectors() to set translation, rotation, scale, and pivot</button>
+    <div class="expl">UsdGeom.XformCommonAPI enforces the single canonical op ordering (translate, pivot, rotateXYZ, scale, inverse-pivot) that every USD-compliant DCC and Hydra imaging plugin is required to recognize, guaranteeing consistent interpretation across tools.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Pipeline Development with the USD APIs (Python and C++)">
+    <div class="meta">Question 3 of 6 · Pipeline Development with the USD APIs (Python and C++)</div>
+    <div class="q">An attribute 'points' already has time samples authored at frames 1 through 24. In a later pipeline pass you run: attr.Set(Vt.Vec3fArray([...])) with no time argument. When the stage is subsequently queried at UsdTimeCode(12), what value does UsdAttribute.Get() return?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. The value passed in the later Set() call, because the most recently authored opinion always wins regardless of time</button><button class="opt" onclick="answer(this,2,1,1)">B. An interpolated value from the existing time samples at frames 1-24, unaffected by the later call, since that call only authored the default value</button><button class="opt" onclick="answer(this,2,2,1)">C. An error, because you cannot author a default value on an attribute that already has time samples</button><button class="opt" onclick="answer(this,2,3,1)">D. The average of the default value and the interpolated time-sample value at frame 12</button>
+    <div class="expl">Calling Set() without a UsdTimeCode argument authors the attribute's *default* opinion (equivalent to UsdTimeCode.Default()). When time samples exist, they take precedence for any non-default time query; the default value is only ever returned when no time samples exist or when explicitly querying Default time, so frame 12 still resolves from the 1-24 sample range.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Pipeline Development with the USD APIs (Python and C++)">
+    <div class="meta">Question 4 of 6 · Pipeline Development with the USD APIs (Python and C++)</div>
+    <div class="q">A pipeline validation script needs to traverse the stage and visit every prim exactly as stage.Traverse() would by default -- skipping inactive prims, undefined overs, abstract classes, and unloaded payloads -- but the author wants to make the predicate explicit in the code for clarity. Which call is equivalent to the default behavior of stage.Traverse()?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. stage.TraverseAll()</button><button class="opt" onclick="answer(this,3,1,2)">B. Usd.PrimRange.Stage(stage, Usd.TraverseInstanceProxies())</button><button class="opt" onclick="answer(this,3,2,2)">C. Usd.PrimRange(stage.GetPseudoRoot(), Usd.PrimDefaultPredicate)</button><button class="opt" onclick="answer(this,3,3,2)">D. stage.Traverse(Usd.PrimIsActive)</button>
+    <div class="expl">Usd.PrimDefaultPredicate is exactly the composed predicate (active &amp;&amp; defined &amp;&amp; loaded &amp;&amp; !abstract) that stage.Traverse() applies internally by default, so explicitly passing it to Usd.PrimRange reproduces the same traversal set.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Pipeline Development with the USD APIs (Python and C++)">
+    <div class="meta">Question 5 of 6 · Pipeline Development with the USD APIs (Python and C++)</div>
+    <div class="q">You need to determine whether the attribute 'displayColor' has an opinion authored directly in a specific sublayer (contents.usda), independent of any stronger opinions from other sublayers or the session layer. Which approach correctly answers this?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. stage.GetEditTarget().GetLayer().GetAttributeAtPath(path) after setting the edit target to contents.usda</button><button class="opt" onclick="answer(this,4,1,1)">B. Open contents.usda directly as an Sdf.Layer and call layer.GetAttributeAtPath(path) to inspect its spec</button><button class="opt" onclick="answer(this,4,2,1)">C. prim.GetAttribute('displayColor').Get(), since GetAttribute() returns the value visible from that layer</button><button class="opt" onclick="answer(this,4,3,1)">D. stage.GetPrimAtPath(primPath).GetAttribute('displayColor').HasAuthoredValue()</button>
+    <div class="expl">Opening the layer directly with Sdf.Layer.FindOrOpen and querying GetAttributeAtPath operates purely on that layer's raw specs, showing exactly what is authored in contents.usda with no composition applied -- which is what's needed to check a single layer's opinion in isolation.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Pipeline Development with the USD APIs (Python and C++)">
+    <div class="meta">Question 6 of 6 · Pipeline Development with the USD APIs (Python and C++)</div>
+    <div class="q">In the Hydra rendering architecture used by UsdImagingGLEngine, which component is responsible for translating composed USD prims into Hydra's internal Rprim/Sprim representations that get registered in the render index?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. The Scene Delegate (UsdImagingDelegate)</button><button class="opt" onclick="answer(this,5,1,0)">B. The Render Delegate (e.g., HdStormRendererPlugin)</button><button class="opt" onclick="answer(this,5,2,0)">C. The Render Index</button><button class="opt" onclick="answer(this,5,3,0)">D. The Hydra Engine (UsdImagingGLEngine)</button>
+    <div class="expl">The Scene Delegate, implemented by UsdImagingDelegate, walks the composed USD stage and uses prim adapters to convert each supported prim type into Hydra Rprims/Sprims/Bprims, which it then populates into the render index for consumption by any render delegate.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$109.99</span> <strong>$34.99</strong> with code <span class="code">FREETEST33</span> — valid through September 7.</p>
+  <a href="https://www.udemy.com/course/ncp-ousd-nvidia-openusd-development-certification-prep/?couponCode=FREETEST33" rel="sponsored">Get the full course for $34.99 →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

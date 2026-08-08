@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Advanced and Graph Analytics Practice Questions — NVIDIA-Certified Associate: Accelerated Data Science</title>
+<meta name="description" content="6 free Advanced and Graph Analytics practice questions with explanations for the NVIDIA-Certified Associate: Accelerated Data Science exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/nca-ads-advanced-and-graph-analytics.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free NVIDIA-Certified Associate: Accelerated Data Science practice — 6 questions on <strong>Advanced and Graph Analytics</strong>, with explanations. No sign-up.
+<a href="nca-ads.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Advanced and Graph Analytics">
+    <div class="meta">Question 1 of 6 · Advanced and Graph Analytics</div>
+    <div class="q">A GPU data science team uses cuML to analyze 50 million credit-card transactions for potential fraud. They want an unsupervised technique that flags transactions in low-density regions of feature space as suspicious, without requiring a pre-labeled fraud dataset or specifying the number of anomaly clusters in advance. Which cuML approach BEST fits this requirement?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. cuml.cluster.DBSCAN, treating points labeled -1 (noise) as fraud candidates</button><button class="opt" onclick="answer(this,0,1,0)">B. cuml.cluster.KMeans with k set to 2, treating the smaller cluster as fraud</button><button class="opt" onclick="answer(this,0,2,0)">C. cuml.linear_model.LogisticRegression trained on transaction amount alone</button><button class="opt" onclick="answer(this,0,3,0)">D. cuml.decomposition.PCA to reduce dimensionality and manually inspect components</button>
+    <div class="expl">DBSCAN is density-based, requires no predefined cluster count, and naturally labels points in low-density regions as noise (-1), which directly serve as anomaly/fraud candidates — matching every stated requirement.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Advanced and Graph Analytics">
+    <div class="meta">Question 2 of 6 · Advanced and Graph Analytics</div>
+    <div class="q">A citation network analysis needs to determine paper importance based on the structure of citation links, where a paper is considered more important if it is cited by other important papers (recursive, link-based importance). Which cuGraph algorithm best fits this requirement?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. Betweenness Centrality</button><button class="opt" onclick="answer(this,1,1,2)">B. Triangle Counting</button><button class="opt" onclick="answer(this,1,2,2)">C. PageRank</button><button class="opt" onclick="answer(this,1,3,2)">D. Jaccard Similarity</button>
+    <div class="expl">PageRank explicitly computes node importance recursively, weighting incoming links by the importance of the source nodes — the exact definition of the scenario.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Advanced and Graph Analytics">
+    <div class="meta">Question 3 of 6 · Advanced and Graph Analytics</div>
+    <div class="q">A network resilience scenario requires identifying the small set of nodes whose removal would most likely fragment the network, because these nodes lie on the largest number of shortest paths between other node pairs. Which cuGraph centrality algorithm should be used?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. Degree Centrality</button><button class="opt" onclick="answer(this,2,1,3)">B. PageRank</button><button class="opt" onclick="answer(this,2,2,3)">C. Katz Centrality</button><button class="opt" onclick="answer(this,2,3,3)">D. Betweenness Centrality</button>
+    <div class="expl">Betweenness centrality quantifies how often a node lies on shortest paths between other pairs — high values identify critical bridge/bottleneck nodes whose removal fragments the graph.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Advanced and Graph Analytics">
+    <div class="meta">Question 4 of 6 · Advanced and Graph Analytics</div>
+    <div class="q">You build a cuGraph Graph from an edge list containing large, sparse, non-contiguous vertex identifiers (e.g., customer IDs like 8834471 and 92110345), calling G.from_cudf_edgelist() with default settings. What actually happens, and why does this matter for the exam?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. The call fails immediately with a ValueError because cuGraph requires contiguous vertex IDs to be pre-supplied by the user</button><button class="opt" onclick="answer(this,3,1,2)">B. cuGraph silently drops all edges referencing IDs above 2^31 to fit them into a 32-bit index</button><button class="opt" onclick="answer(this,3,2,2)">C. cuGraph automatically renumbers vertices internally to a contiguous 0-based range because renumber=True by default, improving memory efficiency and algorithm performance</button><button class="opt" onclick="answer(this,3,3,2)">D. cuGraph converts all vertex IDs to strings automatically to preserve the original sparse identifiers without renumbering</button>
+    <div class="expl">By default renumber=True in cuGraph's Graph construction, automatically mapping arbitrary/sparse vertex IDs into a compact contiguous internal index range, which dramatically improves GPU memory usage and algorithm performance — a key internal behavior the exam tests.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Advanced and Graph Analytics">
+    <div class="meta">Question 5 of 6 · Advanced and Graph Analytics</div>
+    <div class="q">A social network analysis task requires community detection where every returned community must be internally well-connected, with no disconnected or poorly-connected subsets under a single community label — a known limitation observed with modularity-based Louvain on large graphs. Which cuGraph algorithm should be selected instead?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. cugraph.louvain</button><button class="opt" onclick="answer(this,4,1,1)">B. cugraph.leiden</button><button class="opt" onclick="answer(this,4,2,1)">C. cugraph.spectralBalancedCutClustering</button><button class="opt" onclick="answer(this,4,3,1)">D. cugraph.ecg</button>
+    <div class="expl">cuGraph's Leiden implementation directly addresses Louvain's documented weakness of sometimes producing internally disconnected communities, guaranteeing well-connected community output.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Advanced and Graph Analytics">
+    <div class="meta">Question 6 of 6 · Advanced and Graph Analytics</div>
+    <div class="q">In cuGraph, what is the fundamental difference between calling cugraph.bfs() versus cugraph.sssp() on the same graph object to compute distances from a source vertex?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. bfs() only works on directed graphs, while sssp() only works on undirected graphs</button><button class="opt" onclick="answer(this,5,1,1)">B. bfs() computes hop-count distances assuming all edges have equal weight, while sssp() computes true shortest-path distances using edge weight values</button><button class="opt" onclick="answer(this,5,2,1)">C. bfs() runs on CPU while sssp() runs on GPU for the same graph object</button><button class="opt" onclick="answer(this,5,3,1)">D. bfs() and sssp() always produce identical results; the only difference is that sssp() also returns predecessor vertices</button>
+    <div class="expl">BFS traverses level-by-level, treating every edge as weight 1, and is intended for unweighted graphs. SSSP (Dijkstra-based) uses actual edge weight values to compute minimum-weight paths on weighted graphs — this is the core distinction tested on the exam.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$99.99</span> <strong>$34.99</strong> with code <span class="code">FREETEST33</span> — valid through September 7.</p>
+  <a href="https://www.udemy.com/course/nca-ads-nvidia-accelerated-data-science-exam-prep/?couponCode=FREETEST33" rel="sponsored">Get the full course for $34.99 →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

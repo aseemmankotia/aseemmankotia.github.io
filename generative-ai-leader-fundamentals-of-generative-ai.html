@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Fundamentals of generative AI Practice Questions — Google Cloud Generative AI Leader</title>
+<meta name="description" content="6 free Fundamentals of generative AI practice questions with explanations for the Google Cloud Generative AI Leader exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/generative-ai-leader-fundamentals-of-generative-ai.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free Google Cloud Generative AI Leader practice — 6 questions on <strong>Fundamentals of generative AI</strong>, with explanations. No sign-up.
+<a href="generative-ai-leader.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Fundamentals of generative AI">
+    <div class="meta">Question 1 of 6 · Fundamentals of generative AI</div>
+    <div class="q">A retail executive asks why their generative AI chatbot occasionally claims the company offers services they discontinued two years ago. The model was last trained in early 2023. What concept BEST explains this behavior?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. Knowledge cutoff preventing the model from accessing information after its training date</button><button class="opt" onclick="answer(this,0,1,0)">B. Hallucination caused by insufficient training parameters in the foundation model</button><button class="opt" onclick="answer(this,0,2,0)">C. Bias in the training data over-representing historical service offerings</button><button class="opt" onclick="answer(this,0,3,0)">D. Context window limitations preventing the model from retaining conversation history</button>
+    <div class="expl">Knowledge cutoff is the specific concept describing a model's inability to know facts or events that occurred after its training data collection ended. A 2023-trained model cannot know about 2024-2026 business changes without fine-tuning or retrieval-augmented generation (RAG).</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Fundamentals of generative AI">
+    <div class="meta">Question 2 of 6 · Fundamentals of generative AI</div>
+    <div class="q">A product manager wants to understand how a large language model processes the sentence 'AI transforms business' during inference. At the most fundamental level, what does the model convert this sentence into before generating a response?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. A sequence of numerical embeddings representing semantic meaning in high-dimensional vector space</button><button class="opt" onclick="answer(this,1,1,3)">B. A probability distribution across all possible next words in the model's vocabulary</button><button class="opt" onclick="answer(this,1,2,3)">C. A graph structure linking entities (AI, business) with relationship edges (transforms)</button><button class="opt" onclick="answer(this,1,3,3)">D. A series of discrete tokens mapped to integer identifiers from the model's tokenizer vocabulary</button>
+    <div class="expl">Tokenization is the FIRST step: text is split into tokens (words, subwords, or characters) and each token is mapped to an integer ID. This happens before embeddings (which convert token IDs to vectors) or probability calculations. Leaders must understand tokens are the atomic units of LLM processing and directly impact costs and context limits.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Fundamentals of generative AI">
+    <div class="meta">Question 3 of 6 · Fundamentals of generative AI</div>
+    <div class="q">An enterprise architect is comparing Google's Gemini models to earlier text-only LLMs. A stakeholder asks what 'multimodal' fundamentally means for their use cases. Which explanation is MOST accurate for a business leader?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. The model can switch between multiple operational modes: creative writing, code generation, data analysis, and question answering</button><button class="opt" onclick="answer(this,2,1,1)">B. The model can accept and generate content across different types of data—text, images, audio, video—within a single unified architecture</button><button class="opt" onclick="answer(this,2,2,1)">C. The model can be deployed in multiple inference modes: streaming, batch, and real-time prediction serving</button><button class="opt" onclick="answer(this,2,3,1)">D. The model supports multiple natural languages (multilingual) and can translate between them fluently</button>
+    <div class="expl">Multimodal specifically refers to handling multiple MODALITIES of data (text, image, audio, video, code) as native inputs and outputs. Gemini 1.5 Pro, for example, can natively process a video and answer questions about it, or generate images from text—this cross-modality capability is what 'multimodal' means architecturally.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Fundamentals of generative AI">
+    <div class="meta">Question 4 of 6 · Fundamentals of generative AI</div>
+    <div class="q">During a board presentation on responsible AI, a director asks how Google's principles specifically address the risk of generative AI producing harmful content. Which principle directly mandates proactive steps to prevent models from generating unsafe outputs?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. Be accountable to people—ensuring human oversight and the ability to appeal automated decisions</button><button class="opt" onclick="answer(this,3,1,3)">B. Avoid creating or reinforcing unfair bias in model training data and outputs</button><button class="opt" onclick="answer(this,3,2,3)">C. Uphold high standards of scientific excellence and make AI knowledge openly available</button><button class="opt" onclick="answer(this,3,3,3)">D. Be built and tested for safety—designing models with safeguards against harmful or dangerous content generation</button>
+    <div class="expl">Google's 'Be built and tested for safety' principle explicitly addresses designing safeguards to prevent harmful content generation (violence, hate speech, dangerous instructions). This includes safety classifiers, content filters, and red-teaming. It's the principle most directly about preventing unsafe outputs.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Fundamentals of generative AI">
+    <div class="meta">Question 5 of 6 · Fundamentals of generative AI</div>
+    <div class="q">A CFO reviewing a generative AI initiative asks, 'What actually makes these models so expensive to create compared to traditional machine learning models we've built before?' Which factor is the PRIMARY driver of foundation model training costs?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. The computational resources required to perform trillions of operations across billions of parameters during pre-training</button><button class="opt" onclick="answer(this,4,1,0)">B. The cost of acquiring and licensing large proprietary training datasets from third-party vendors</button><button class="opt" onclick="answer(this,4,2,0)">C. The human labor costs for thousands of domain experts to hand-label training examples</button><button class="opt" onclick="answer(this,4,3,0)">D. The infrastructure costs for serving inference requests at scale after deployment</button>
+    <div class="expl">Pre-training foundation models (GPT, PaLM, Gemini) requires massive compute: months on thousands of specialized accelerators (TPUs/GPUs) performing matrix operations across billions of parameters on trillions of tokens. This is the dominant cost—easily tens to hundreds of millions of dollars. Traditional ML models have far fewer parameters and train much faster.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Fundamentals of generative AI">
+    <div class="meta">Question 6 of 6 · Fundamentals of generative AI</div>
+    <div class="q">A marketing leader asks their AI team to explain why a well-crafted prompt can dramatically change model outputs without retraining. What core transformer mechanism enables the model to dynamically adjust its response based on the specific prompt context provided?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. Gradient descent optimization that adjusts model weights based on prompt feedback signals</button><button class="opt" onclick="answer(this,5,1,1)">B. The attention mechanism that weighs relevance of different tokens in the prompt and prior context when generating each new token</button><button class="opt" onclick="answer(this,5,2,1)">C. Transfer learning layers that fine-tune output distributions for domain-specific prompts</button><button class="opt" onclick="answer(this,5,3,1)">D. Reinforcement learning from human feedback (RLHF) that rewards outputs matching prompt intent</button>
+    <div class="expl">The attention mechanism is the core innovation of transformers that allows models to consider the ENTIRE input prompt and conversation context when generating each token. Attention weights determine which parts of the prompt are most relevant to the current generation step—this is why prompt engineering works at inference time with no retraining. Leaders should understand attention as 'selective focus' across the context.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$99.99</span> <strong>$34.99</strong> with code <span class="code">FREETEST33</span> — valid through September 2.</p>
+  <a href="https://www.udemy.com/course/google-cloud-generative-ai-leader-exam-prep-2026/?couponCode=FREETEST33" rel="sponsored">Get the full course for $34.99 →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

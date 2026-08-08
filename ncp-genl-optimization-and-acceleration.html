@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Optimization and Acceleration Practice Questions — NVIDIA-Certified Professional: Generative AI and LLMs</title>
+<meta name="description" content="6 free Optimization and Acceleration practice questions with explanations for the NVIDIA-Certified Professional: Generative AI and LLMs exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/ncp-genl-optimization-and-acceleration.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free NVIDIA-Certified Professional: Generative AI and LLMs practice — 6 questions on <strong>Optimization and Acceleration</strong>, with explanations. No sign-up.
+<a href="ncp-genl.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Optimization and Acceleration">
+    <div class="meta">Question 1 of 6 · Optimization and Acceleration</div>
+    <div class="q">A team trains a 70B-parameter model on 64 GPUs arranged as 8 nodes of 8 GPUs each, with NVLink connecting GPUs within a node and InfiniBand connecting nodes. The model does not fit on a single GPU due to activation memory even after optimizer-state sharding. Which parallelism mapping minimizes cross-node communication overhead while still fitting the model in memory?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. Pipeline parallelism degree 8 within each node, tensor parallelism degree 8 across nodes</button><button class="opt" onclick="answer(this,0,1,3)">B. Data parallelism degree 64 with ZeRO-3 only, no model parallelism</button><button class="opt" onclick="answer(this,0,2,3)">C. Tensor parallelism degree 64 flat across all 64 GPUs</button><button class="opt" onclick="answer(this,0,3,3)">D. Tensor parallelism degree 8 within each node (NVLink), pipeline parallelism degree 8 across nodes, data parallelism degree 1</button>
+    <div class="expl">Tensor parallelism requires frequent, latency-sensitive all-reduce operations best suited to the high-bandwidth, low-latency NVLink within a node. Pipeline parallelism has lower communication volume (only activations/gradients at stage boundaries) and tolerates the higher latency of InfiniBand across nodes, giving an efficient 3D-parallel mapping.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Optimization and Acceleration">
+    <div class="meta">Question 2 of 6 · Optimization and Acceleration</div>
+    <div class="q">An engineer needs to reduce GPU memory consumed by optimizer states and gradients during training but wants to avoid the parameter all-gather communication overhead that occurs during the forward pass. Which ZeRO stage should be selected?</div>
+    <button class="opt" onclick="answer(this,1,0,1)">A. ZeRO Stage 1 (optimizer state sharding only)</button><button class="opt" onclick="answer(this,1,1,1)">B. ZeRO Stage 2 (optimizer state + gradient sharding)</button><button class="opt" onclick="answer(this,1,2,1)">C. ZeRO Stage 3 (optimizer state + gradient + parameter sharding)</button><button class="opt" onclick="answer(this,1,3,1)">D. ZeRO-Infinity (NVMe offload of optimizer states and parameters)</button>
+    <div class="expl">ZeRO Stage 2 shards both optimizer states and gradients across data-parallel ranks, delivering substantial memory savings while keeping full parameters replicated locally, so no parameter all-gather is needed during the forward pass.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Optimization and Acceleration">
+    <div class="meta">Question 3 of 6 · Optimization and Acceleration</div>
+    <div class="q">When enabling FP8 mixed-precision training on H100 GPUs using NVIDIA Transformer Engine, which components are typically kept in FP8 and which remain in higher precision to preserve model accuracy?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. FP8 for GEMM operations in linear layers, while layer normalization, softmax, and master weights remain in BF16/FP32</button><button class="opt" onclick="answer(this,2,1,0)">B. FP8 for all operations including normalization and softmax, to maximize throughput</button><button class="opt" onclick="answer(this,2,2,0)">C. FP8 only for the embedding layer, with all other operations remaining in FP32</button><button class="opt" onclick="answer(this,2,3,0)">D. FP8 for gradient accumulation only, with the forward pass remaining in FP32</button>
+    <div class="expl">Transformer Engine applies FP8 with per-tensor dynamic scaling specifically to the compute-heavy GEMM operations in linear layers, since these tolerate reduced precision well, while numerically sensitive operations (layer norm, softmax) and the master copy of weights are kept in BF16/FP32 to maintain training stability and convergence.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Optimization and Acceleration">
+    <div class="meta">Question 4 of 6 · Optimization and Acceleration</div>
+    <div class="q">A team implements speculative decoding for a 70B-parameter model to reduce per-token latency using a smaller draft model. During testing, only 20% of speculated tokens are accepted, and overall latency INCREASES compared to standard autoregressive decoding. What is the most likely cause?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. KV cache is disabled, which is a strict requirement for speculative decoding to function</button><button class="opt" onclick="answer(this,3,1,1)">B. The draft model is too large or slow relative to its acceptance rate, so verification overhead exceeds the savings from skipped target-model calls</button><button class="opt" onclick="answer(this,3,2,1)">C. Speculative decoding requires FP8 quantization to function, and it was not applied to the target model</button><button class="opt" onclick="answer(this,3,3,1)">D. Continuous batching interferes with speculative decoding and must be disabled</button>
+    <div class="expl">With only a 20% acceptance rate, most speculated tokens are rejected and must be recomputed by the target model anyway. If the draft model itself is not cheap/fast enough relative to this low acceptance rate, the added draft-model inference cost plus rejection-driven recomputation can exceed the latency of plain autoregressive decoding, producing a net slowdown.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Optimization and Acceleration">
+    <div class="meta">Question 5 of 6 · Optimization and Acceleration</div>
+    <div class="q">A team needs to quantize a large language model's weights to 4 bits for deployment on memory-constrained GPUs. The model exhibits significant activation outliers in certain channels, and accuracy degradation must be minimized without an extensive calibration process. Which quantization approach is BEST suited?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. Naive INT4 round-to-nearest (RTN) quantization applied uniformly to all weights</button><button class="opt" onclick="answer(this,4,1,2)">B. GPTQ, which requires a per-layer calibration dataset and iterative weight reconstruction</button><button class="opt" onclick="answer(this,4,2,2)">C. AWQ (Activation-aware Weight Quantization), which scales weight channels based on activation magnitude to protect salient channels</button><button class="opt" onclick="answer(this,4,3,2)">D. FP8 quantization applied uniformly to both weights and activations</button>
+    <div class="expl">AWQ identifies and protects the small subset of weight channels that correspond to large-magnitude activations by scaling them before quantization, preserving accuracy at 4-bit precision with a lightweight calibration process, making it well suited to models with pronounced activation outliers.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Optimization and Acceleration">
+    <div class="meta">Question 6 of 6 · Optimization and Acceleration</div>
+    <div class="q">Gradient checkpointing (activation recomputation) reduces GPU memory usage during training by discarding intermediate activations and recomputing them during the backward pass. What is the primary tradeoff of enabling this technique?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. Increased GPU memory usage due to storing extra checkpoint tensors</button><button class="opt" onclick="answer(this,5,1,3)">B. Reduced model accuracy due to lossy activation compression</button><button class="opt" onclick="answer(this,5,2,3)">C. Incompatibility with mixed-precision training</button><button class="opt" onclick="answer(this,5,3,3)">D. Increased training time, typically 20-30% overhead, due to redundant forward-pass computation performed again during the backward pass</button>
+    <div class="expl">Gradient checkpointing trades compute for memory: activations are recomputed via an extra forward pass through the checkpointed segments during backpropagation, which typically adds roughly 20-30% additional training time in exchange for substantial memory savings.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$129.99</span> <strong>$34.99</strong> with code <span class="code">FREETEST33</span> — valid through September 7.</p>
+  <a href="https://www.udemy.com/course/ncp-genl-nvidia-generative-ai-llms-cert-prep/?couponCode=FREETEST33" rel="sponsored">Get the full course for $34.99 →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

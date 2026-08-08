@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Threats, Vulnerabilities, and Mitigations Practice Questions — CompTIA Security+ (SY0-701)</title>
+<meta name="description" content="6 free Threats, Vulnerabilities, and Mitigations practice questions with explanations for the CompTIA Security+ (SY0-701) exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/sy0-701-threats-vulnerabilities-and-mitigations.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free CompTIA Security+ (SY0-701) practice — 6 questions on <strong>Threats, Vulnerabilities, and Mitigations</strong>, with explanations. No sign-up.
+<a href="sy0-701.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Threats, Vulnerabilities, and Mitigations">
+    <div class="meta">Question 1 of 6 · Threats, Vulnerabilities, and Mitigations</div>
+    <div class="q">A developer writes code that checks whether a file exists and is owned by the requesting user, then opens that file for writing in a separate subsequent operation. A local attacker replaces the file with a symbolic link to /etc/shadow between the check and the open call, causing the privileged process to overwrite the system password file. Which vulnerability class does this describe?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. Buffer overflow</button><button class="opt" onclick="answer(this,0,1,2)">B. SQL injection</button><button class="opt" onclick="answer(this,0,2,2)">C. Time-of-check to time-of-use (TOCTOU) race condition</button><button class="opt" onclick="answer(this,0,3,2)">D. Memory injection via DLL sideloading</button>
+    <div class="expl">TOCTOU race conditions occur when a security check and the corresponding action are separated in time, allowing an attacker to swap the resource between the check and use — exactly the symlink-swap scenario described.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Threats, Vulnerabilities, and Mitigations">
+    <div class="meta">Question 2 of 6 · Threats, Vulnerabilities, and Mitigations</div>
+    <div class="q">A security team attributes an intrusion to a group that used custom zero-day exploits, maintained persistence for over a year without detection, and exfiltrated intellectual property related to a competing country's defense contracts, with no ransom demand or financial motive evident. Which threat actor is MOST consistent with this profile?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. Unskilled attacker (script kiddie)</button><button class="opt" onclick="answer(this,1,1,2)">B. Hacktivist</button><button class="opt" onclick="answer(this,1,2,2)">C. Nation-state actor</button><button class="opt" onclick="answer(this,1,3,2)">D. Organized crime group</button>
+    <div class="expl">Nation-state actors are characterized by high sophistication (zero-days), long dwell time/persistence, and espionage motives such as stealing defense-related IP rather than financial gain.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Threats, Vulnerabilities, and Mitigations">
+    <div class="meta">Question 3 of 6 · Threats, Vulnerabilities, and Mitigations</div>
+    <div class="q">A cloud storage bucket was found publicly accessible after an audit revealed the default access policy was never changed from 'allow all authenticated AWS users' during initial setup, exposing sensitive customer records for months. Which category of vulnerability does this incident represent?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. Zero-day vulnerability</button><button class="opt" onclick="answer(this,2,1,3)">B. Firmware vulnerability</button><button class="opt" onclick="answer(this,2,2,3)">C. Race condition</button><button class="opt" onclick="answer(this,2,3,3)">D. Cloud misconfiguration</button>
+    <div class="expl">Leaving default overly permissive access policies unchanged on cloud storage is a textbook cloud misconfiguration — a known, preventable issue caused by improper configuration rather than a flaw in the platform itself.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Threats, Vulnerabilities, and Mitigations">
+    <div class="meta">Question 4 of 6 · Threats, Vulnerabilities, and Mitigations</div>
+    <div class="q">An attacker intercepts a TLS handshake and forces the client and server to negotiate SSLv3 instead of TLS 1.3, then exploits known weaknesses in the older protocol to decrypt session traffic. Which type of cryptographic attack is being performed?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. Birthday attack</button><button class="opt" onclick="answer(this,3,1,3)">B. Collision attack</button><button class="opt" onclick="answer(this,3,2,3)">C. Known-plaintext attack</button><button class="opt" onclick="answer(this,3,3,3)">D. Downgrade attack</button>
+    <div class="expl">A downgrade attack forces two parties to fall back to a weaker, less secure protocol or cipher version so the attacker can exploit known weaknesses in that older standard — precisely what happened by forcing SSLv3 negotiation.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Threats, Vulnerabilities, and Mitigations">
+    <div class="meta">Question 5 of 6 · Threats, Vulnerabilities, and Mitigations</div>
+    <div class="q">A software vendor's build server is compromised, and attackers insert malicious code into a legitimate, digitally-signed update that is then distributed to thousands of customers through the vendor's normal automatic update mechanism. Which threat vector BEST describes this attack?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. Supply chain attack</button><button class="opt" onclick="answer(this,4,1,0)">B. Watering hole attack</button><button class="opt" onclick="answer(this,4,2,0)">C. Business email compromise (BEC)</button><button class="opt" onclick="answer(this,4,3,0)">D. Pretexting</button>
+    <div class="expl">Compromising a trusted vendor's build/update process to distribute malicious code to downstream customers is the defining characteristic of a supply chain attack, since it abuses the trust relationship in the software distribution pipeline.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Threats, Vulnerabilities, and Mitigations">
+    <div class="meta">Question 6 of 6 · Threats, Vulnerabilities, and Mitigations</div>
+    <div class="q">A security engineer notices thousands of login attempts across many user accounts, each account tried with only one or two common passwords like 'Summer2026!' to avoid triggering per-account lockout thresholds. Which mitigation is MOST effective specifically against this attack pattern?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. Implementing rate-based detection and blocking based on login velocity across the whole account population, combined with MFA</button><button class="opt" onclick="answer(this,5,1,0)">B. Increasing per-account lockout threshold to 10 failed attempts</button><button class="opt" onclick="answer(this,5,2,0)">C. Enforcing a longer minimum password length policy only</button><button class="opt" onclick="answer(this,5,3,0)">D. Disabling password expiration policies</button>
+    <div class="expl">This describes a password spraying attack, which deliberately uses few passwords across many accounts to stay under per-account lockout thresholds; detecting abnormal authentication velocity across the account population and requiring MFA directly counters this technique regardless of per-account thresholds.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$109.99</span> <strong>$34.99</strong> with code <span class="code">FREETEST33</span> — valid through September 2.</p>
+  <a href="https://www.udemy.com/course/comptia-security-sy0-701-exam-focused-prep/?couponCode=FREETEST33" rel="sponsored">Get the full course for $34.99 →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

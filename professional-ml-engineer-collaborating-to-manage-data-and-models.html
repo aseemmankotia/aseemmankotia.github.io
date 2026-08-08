@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Collaborating to manage data and models Practice Questions — Google Cloud Professional Machine Learning Engineer</title>
+<meta name="description" content="6 free Collaborating to manage data and models practice questions with explanations for the Google Cloud Professional Machine Learning Engineer exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/professional-ml-engineer-collaborating-to-manage-data-and-models.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free Google Cloud Professional Machine Learning Engineer practice — 6 questions on <strong>Collaborating to manage data and models</strong>, with explanations. No sign-up.
+<a href="professional-ml-engineer.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Collaborating to manage data and models">
+    <div class="meta">Question 1 of 6 · Collaborating to manage data and models</div>
+    <div class="q">A fraud-detection model requires online feature lookups with p99 latency under 10ms, features are ingested continuously from Pub/Sub, and the training pipeline must generate point-in-time-correct feature snapshots to avoid label leakage. Which architecture BEST satisfies all these requirements on Google Cloud?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. Use BigQuery ML exclusively, with materialized views serving as the low-latency online lookup layer</button><button class="opt" onclick="answer(this,0,1,2)">B. Write features as Parquet files to Cloud Storage and query them directly during online prediction requests</button><button class="opt" onclick="answer(this,0,2,2)">C. Stream features into Vertex AI Feature Store using Dataflow from Pub/Sub, use its low-latency online store for serving, and use point-in-time lookup APIs to build training datasets</button><button class="opt" onclick="answer(this,0,3,2)">D. Use Cloud SQL with read replicas as the feature store, syncing hourly from BigQuery</button>
+    <div class="expl">Vertex AI Feature Store is purpose-built for this pattern: streaming ingestion (via Dataflow/Pub/Sub) populates the online store optimized for single-digit-millisecond lookups, and its point-in-time lookup capability generates training data without leaking future information.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Collaborating to manage data and models">
+    <div class="meta">Question 2 of 6 · Collaborating to manage data and models</div>
+    <div class="q">A financial services organization has ML training data scattered across BigQuery datasets, Cloud Storage buckets, and Dataproc-managed Hive tables across multiple projects. Auditors require centralized data discovery, automated data quality checks, and end-to-end lineage tracking for compliance, without migrating any underlying data. Which service should be used?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. Vertex AI Feature Store</button><button class="opt" onclick="answer(this,1,1,2)">B. Dataproc Metastore</button><button class="opt" onclick="answer(this,1,2,2)">C. Dataplex</button><button class="opt" onclick="answer(this,1,3,2)">D. Cloud Data Fusion</button>
+    <div class="expl">Dataplex provides a unified data governance layer across BigQuery, Cloud Storage, and Dataproc metastore sources in-place, offering data discovery/cataloging, automated data quality tasks, and lineage tracking without requiring data migration.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Collaborating to manage data and models">
+    <div class="meta">Question 3 of 6 · Collaborating to manage data and models</div>
+    <div class="q">A team has 50TB of feature-engineering logic already implemented as PySpark jobs reading from Cloud Storage. They need to migrate to GCP with minimal code rewrite while orchestrating the jobs as steps within Vertex AI Pipelines, and without managing persistent Spark clusters. Which service should they choose for the Spark workload?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. Rewrite the logic in Apache Beam and run it on Cloud Dataflow</button><button class="opt" onclick="answer(this,2,1,3)">B. BigQuery ML TRANSFORM clauses</button><button class="opt" onclick="answer(this,2,2,3)">C. Vertex AI Feature Store batch ingestion API</button><button class="opt" onclick="answer(this,2,3,3)">D. Dataproc Serverless for Spark</button>
+    <div class="expl">Dataproc Serverless for Spark runs existing PySpark code as-is without provisioning or managing clusters, and can be invoked as a step within Vertex AI Pipelines, satisfying the minimal-rewrite and no-cluster-management requirements.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Collaborating to manage data and models">
+    <div class="meta">Question 4 of 6 · Collaborating to manage data and models</div>
+    <div class="q">Multiple versions of a churn-prediction model are registered in Vertex AI Model Registry. The team wants their CI/CD deployment pipeline to always deploy 'the current production model' by referencing a stable identifier, while still being able to instantly roll back by repointing that identifier to a previous version. What should they configure?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. Hardcode the current model version ID in the pipeline and manually update it on every release</button><button class="opt" onclick="answer(this,3,1,3)">B. Delete all non-production model versions to avoid ambiguity</button><button class="opt" onclick="answer(this,3,2,3)">C. Store the production version number in a Cloud Storage config file that the pipeline reads at deploy time</button><button class="opt" onclick="answer(this,3,3,3)">D. Assign a model alias such as 'production' to the desired version in Vertex AI Model Registry and reference the alias from the deployment pipeline</button>
+    <div class="expl">Vertex AI Model Registry supports aliases (e.g., 'production', 'default') that point to a specific model version; deployment pipelines can reference the alias, and rollback is achieved simply by reassigning the alias to a different version, with no pipeline code changes.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Collaborating to manage data and models">
+    <div class="meta">Question 5 of 6 · Collaborating to manage data and models</div>
+    <div class="q">A data science team wants a fully managed, serverless notebook environment that requires no compute instance management, supports sharing via IAM permissions, and integrates natively with BigQuery Studio for querying without additional setup. Which Google Cloud notebook environment BEST fits these requirements?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. Colab Enterprise</button><button class="opt" onclick="answer(this,4,1,0)">B. Vertex AI Workbench instance-based (user-managed) notebooks</button><button class="opt" onclick="answer(this,4,2,0)">C. Cloud Shell Editor</button><button class="opt" onclick="answer(this,4,3,0)">D. Self-managed JupyterHub deployed on GKE</button>
+    <div class="expl">Colab Enterprise is a serverless notebook environment tightly integrated with BigQuery Studio and Vertex AI, requiring no underlying VM management, and access is controlled entirely through IAM, matching all stated requirements.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Collaborating to manage data and models">
+    <div class="meta">Question 6 of 6 · Collaborating to manage data and models</div>
+    <div class="q">A healthcare ML team must train a model using patient records in BigQuery containing PII (names, SSNs, medical record numbers). Regulations require that feature-engineering data scientists never see raw PII, but the training pipeline still needs a consistent identifier per patient to correctly join data across multiple tables. What is the BEST approach?</div>
+    <button class="opt" onclick="answer(this,5,0,2)">A. Grant all data scientists the BigQuery Data Viewer role at the project level and rely on manual data handling policies</button><button class="opt" onclick="answer(this,5,1,2)">B. Export the tables to CSV files and have an analyst manually redact PII columns before sharing them with the team</button><button class="opt" onclick="answer(this,5,2,2)">C. Use Cloud DLP to apply deterministic (format-preserving) tokenization to PII fields, enabling consistent joins on tokens, combined with BigQuery column-level security or Dataplex policy tags to restrict raw PII access</button><button class="opt" onclick="answer(this,5,3,2)">D. Store PII in a separately encrypted CSV file and have data scientists decrypt values manually whenever a join is required</button>
+    <div class="expl">Cloud DLP's deterministic encryption/tokenization produces consistent pseudonymous tokens for the same input value, preserving referential integrity for joins, while column-level security or Dataplex policy tags on BigQuery ensure only authorized roles can ever view the raw PII values, satisfying both the technical and regulatory requirements.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$129.99</span> <strong>$34.99</strong> with code <span class="code">FREETEST33</span> — valid through September 7.</p>
+  <a href="https://www.udemy.com/course/google-cloud-professional-ml-engineer-exam-prep/?couponCode=FREETEST33" rel="sponsored">Get the full course for $34.99 →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free LLM Foundations and Architecture Practice Questions — NVIDIA-Certified Professional: Generative AI and LLMs</title>
+<meta name="description" content="6 free LLM Foundations and Architecture practice questions with explanations for the NVIDIA-Certified Professional: Generative AI and LLMs exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/ncp-genl-llm-foundations-and-architecture.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free NVIDIA-Certified Professional: Generative AI and LLMs practice — 6 questions on <strong>LLM Foundations and Architecture</strong>, with explanations. No sign-up.
+<a href="ncp-genl.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="LLM Foundations and Architecture">
+    <div class="meta">Question 1 of 6 · LLM Foundations and Architecture</div>
+    <div class="q">A team deploying a 70B-parameter decoder-only LLM for high-throughput inference finds that KV cache memory dominates GPU memory when serving long contexts at batch size 64. They need to cut KV cache size substantially while retaining quality close to full multi-head attention. Which architectural choice best addresses this?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. Switch to Grouped-Query Attention (GQA) with a small number of shared KV head groups</button><button class="opt" onclick="answer(this,0,1,0)">B. Increase the number of attention heads while keeping head_dim constant</button><button class="opt" onclick="answer(this,0,2,0)">C. Replace self-attention with global average pooling across the sequence</button><button class="opt" onclick="answer(this,0,3,0)">D. Enable Multi-Query Attention only during training, then revert to MHA for inference</button>
+    <div class="expl">GQA groups query heads to share a smaller set of K/V projections, cutting KV cache memory roughly by the grouping factor while preserving quality much closer to full MHA than MQA does.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="LLM Foundations and Architecture">
+    <div class="meta">Question 2 of 6 · LLM Foundations and Architecture</div>
+    <div class="q">A pretrained model uses RoPE (rotary position embeddings) with a native training context of 4K tokens. The team must serve 32K-token contexts without retraining the model from scratch. Which approach is most appropriate?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. Remove positional encodings entirely so the model generalizes to any length</button><button class="opt" onclick="answer(this,1,1,3)">B. Increase the tokenizer vocabulary size to represent longer sequences</button><button class="opt" onclick="answer(this,1,2,3)">C. Replace RoPE with absolute learned positional embeddings at inference time</button><button class="opt" onclick="answer(this,1,3,3)">D. Apply RoPE frequency base scaling (e.g., NTK-aware interpolation or YaRN) and lightly fine-tune on longer sequences</button>
+    <div class="expl">RoPE scaling methods (NTK-aware interpolation, YaRN) adjust the rotation base/frequencies so position encodings remain well-conditioned at longer lengths, and brief fine-tuning adapts the model to the extended range cheaply compared to full retraining.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="LLM Foundations and Architecture">
+    <div class="meta">Question 3 of 6 · LLM Foundations and Architecture</div>
+    <div class="q">Profiling a transformer training run on H100 GPUs shows the attention operation is bottlenecked not by FLOPs but by repeated reads/writes of the O(n^2) attention score matrix to HBM. Which technique specifically targets this bottleneck?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. FlashAttention, which tiles computation and fuses kernels to keep intermediate scores in SRAM, avoiding materialization of the full attention matrix in HBM</button><button class="opt" onclick="answer(this,2,1,0)">B. Mixed precision training using FP16 weights only</button><button class="opt" onclick="answer(this,2,2,0)">C. Increasing batch size to better utilize tensor cores</button><button class="opt" onclick="answer(this,2,3,0)">D. Gradient checkpointing to reduce activation memory</button>
+    <div class="expl">FlashAttention is an IO-aware algorithm designed specifically to reduce HBM read/write traffic by computing attention in tiles within fast on-chip SRAM, directly addressing memory-bandwidth-bound attention rather than compute-bound bottlenecks.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="LLM Foundations and Architecture">
+    <div class="meta">Question 4 of 6 · LLM Foundations and Architecture</div>
+    <div class="q">A sparse Mixture-of-Experts model uses top-2 routing among 8 experts per layer with a capacity factor of 1.25. During training, many tokens are dropped due to expert overflow, hurting quality. Which configuration change most directly reduces token dropping while keeping the same number of experts?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. Decrease the number of experts from 8 to 4</button><button class="opt" onclick="answer(this,3,1,1)">B. Increase the capacity factor (e.g., to 2.0) so each expert can accept more tokens per batch</button><button class="opt" onclick="answer(this,3,2,1)">C. Reduce top-k routing from 2 to 1</button><button class="opt" onclick="answer(this,3,3,1)">D. Switch from top-k routing to random expert assignment</button>
+    <div class="expl">Capacity factor directly sets the per-expert token buffer size in a training batch; raising it (e.g., from 1.25 to 2.0) gives experts more headroom to accept tokens before overflow forces drops, directly reducing dropped-token quality loss.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="LLM Foundations and Architecture">
+    <div class="meta">Question 5 of 6 · LLM Foundations and Architecture</div>
+    <div class="q">Comparing byte-pair encoding (BPE) with SentencePiece's unigram language model tokenizer for a multilingual LLM handling low-resource, morphologically rich languages, which statement is most accurate?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. BPE and unigram SentencePiece always produce identical vocabularies for the same training corpus</button><button class="opt" onclick="answer(this,4,1,2)">B. BPE requires whitespace pre-tokenization and therefore cannot be applied to languages without spaces, such as Japanese or Thai</button><button class="opt" onclick="answer(this,4,2,2)">C. Unigram-based SentencePiece evaluates multiple candidate segmentations and selects the most probable one, often yielding better subword boundaries for morphologically rich languages than greedy BPE merges</button><button class="opt" onclick="answer(this,4,3,2)">D. SentencePiece can only be used with encoder-decoder architectures, not decoder-only LLMs</button>
+    <div class="expl">The unigram model treats tokenization probabilistically over multiple candidate segmentations and picks the most likely one under a learned vocabulary, which tends to produce more linguistically coherent subwords for complex morphology than BPE's deterministic greedy merge process.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="LLM Foundations and Architecture">
+    <div class="meta">Question 6 of 6 · LLM Foundations and Architecture</div>
+    <div class="q">Given a fixed training compute budget C, Chinchilla scaling law research found that many earlier large models (e.g., GPT-3 175B) were compute-suboptimal because they were:</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. Undertrained relative to their parameter count — compute-optimal training requires scaling both parameters and training tokens roughly proportionally</button><button class="opt" onclick="answer(this,5,1,0)">B. Trained on too many tokens relative to parameter count, causing overfitting</button><button class="opt" onclick="answer(this,5,2,0)">C. Using too few attention heads for their hidden dimension size</button><button class="opt" onclick="answer(this,5,3,0)">D. Trained with a context window too short for their parameter count</button>
+    <div class="expl">Chinchilla's analysis showed that for a fixed compute budget, model size and training token count should scale together roughly proportionally; earlier large models allocated too much compute to parameters and too little to training tokens, making them undertrained relative to compute-optimal allocation.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$129.99</span> <strong>$34.99</strong> with code <span class="code">FREETEST33</span> — valid through September 7.</p>
+  <a href="https://www.udemy.com/course/ncp-genl-nvidia-generative-ai-llms-cert-prep/?couponCode=FREETEST33" rel="sponsored">Get the full course for $34.99 →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

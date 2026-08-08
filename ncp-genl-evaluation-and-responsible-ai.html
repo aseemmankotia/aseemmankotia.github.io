@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Evaluation and Responsible AI Practice Questions — NVIDIA-Certified Professional: Generative AI and LLMs</title>
+<meta name="description" content="6 free Evaluation and Responsible AI practice questions with explanations for the NVIDIA-Certified Professional: Generative AI and LLMs exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/ncp-genl-evaluation-and-responsible-ai.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free NVIDIA-Certified Professional: Generative AI and LLMs practice — 6 questions on <strong>Evaluation and Responsible AI</strong>, with explanations. No sign-up.
+<a href="ncp-genl.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Evaluation and Responsible AI">
+    <div class="meta">Question 1 of 6 · Evaluation and Responsible AI</div>
+    <div class="q">A financial services company deployed a customer-facing LLM assistant. They need the assistant to refuse specific stock buy/sell recommendations while still allowing general financial education topics, and must catch this both when users ask indirectly and when generated responses drift toward recommendations mid-conversation. Which NeMo Guardrails configuration BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. Define only an input rail that blocks messages containing stock ticker symbols</button><button class="opt" onclick="answer(this,0,1,2)">B. Rely solely on the base LLM's built-in safety tuning without additional guardrails</button><button class="opt" onclick="answer(this,0,2,2)">C. Define dialogue rails with Colang flows for topical boundaries combined with output rails that check generated responses for prohibited recommendation patterns</button><button class="opt" onclick="answer(this,0,3,2)">D. Use execution rails to sandbox any code execution requests</button>
+    <div class="expl">Combining dialogue/topical rails (conversation-level intent control) with output rails (catching drift in generated content) addresses both indirect requests and responses that drift into prohibited territory during generation.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Evaluation and Responsible AI">
+    <div class="meta">Question 2 of 6 · Evaluation and Responsible AI</div>
+    <div class="q">A team must evaluate a summarization LLM's output for factual consistency against 50,000 source documents, but budget does not allow full human review of every summary. They still need confidence that automated scores correlate with human judgment. Which evaluation strategy is BEST?</div>
+    <button class="opt" onclick="answer(this,1,0,1)">A. Use human evaluation on the full 50,000-sample set</button><button class="opt" onclick="answer(this,1,1,1)">B. Use LLM-as-judge for full-dataset scoring, validated against a human-annotated stratified subsample to measure judge-human agreement</button><button class="opt" onclick="answer(this,1,2,1)">C. Use only ROUGE score since it is a summarization-specific metric</button><button class="opt" onclick="answer(this,1,3,1)">D. Use LLM-as-judge on the full dataset with no validation against human labels</button>
+    <div class="expl">A hybrid approach scales via automated judging while a calibration subsample validates reliability by measuring agreement with human raters — the standard practice for trustworthy large-scale LLM-as-judge evaluation.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Evaluation and Responsible AI">
+    <div class="meta">Question 3 of 6 · Evaluation and Responsible AI</div>
+    <div class="q">Which technique is most effective for detecting hallucinations in a RAG-based LLM system that must ground its responses in retrieved documents?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. Measure output perplexity alone</button><button class="opt" onclick="answer(this,2,1,1)">B. Compute attribution/grounding scores measuring overlap and entailment between generated claims and the retrieved source passages</button><button class="opt" onclick="answer(this,2,2,1)">C. Increase generation temperature to reduce repetitive phrasing</button><button class="opt" onclick="answer(this,2,3,1)">D. Compute BLEU score against a fixed set of reference summaries</button>
+    <div class="expl">Attribution/grounding scoring (e.g., NLI entailment or citation checking between generated claims and retrieved context) directly measures whether output is supported by sources, which is the core mechanism for detecting RAG hallucinations.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Evaluation and Responsible AI">
+    <div class="meta">Question 4 of 6 · Evaluation and Responsible AI</div>
+    <div class="q">You are configuring NeMo Guardrails to detect and block jailbreak attempts (e.g., 'ignore previous instructions' prompt-injection patterns) before the LLM generates a response. Where should this primary detection logic be implemented?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. As a retrieval rail that filters documents returned by the vector database</button><button class="opt" onclick="answer(this,3,1,3)">B. As an execution rail that restricts tool call permissions</button><button class="opt" onclick="answer(this,3,2,3)">C. As an output rail that filters the final generated text after the LLM has responded</button><button class="opt" onclick="answer(this,3,3,3)">D. As an input rail using a jailbreak detection flow that intercepts and evaluates the user message before it reaches the LLM</button>
+    <div class="expl">Input rails intercept and evaluate the user message before it is passed into the core LLM prompt, making them the correct place to catch prompt-injection and jailbreak patterns before generation occurs.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Evaluation and Responsible AI">
+    <div class="meta">Question 5 of 6 · Evaluation and Responsible AI</div>
+    <div class="q">In responsible AI evaluation for LLMs, 'allocational bias' specifically refers to:</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. Bias introduced solely during the tokenization process</button><button class="opt" onclick="answer(this,4,1,3)">B. Bias caused by using stale training data that no longer reflects current events</button><button class="opt" onclick="answer(this,4,2,3)">C. Overrepresentation of certain writing styles in generated text</button><button class="opt" onclick="answer(this,4,3,3)">D. Unequal distribution of resources, opportunities, or outcomes across demographic groups as a result of model decisions</button>
+    <div class="expl">Allocational bias refers to disparities in how resources, opportunities, or outcomes (e.g., loan approvals, hiring recommendations) are distributed across groups as a result of model decisions, distinct from representational bias.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Evaluation and Responsible AI">
+    <div class="meta">Question 6 of 6 · Evaluation and Responsible AI</div>
+    <div class="q">During error analysis of an LLM used to generate resume screening summaries, the team wants to detect whether the model exhibits differential performance across gender-associated names in input resumes. What is the BEST evaluation approach?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. Run a single LLM-as-judge pass without demographic stratification and assume equal treatment</button><button class="opt" onclick="answer(this,5,1,1)">B. Perform stratified evaluation by perturbing gender-associated names while holding all other resume content constant, comparing output quality and sentiment across groups</button><button class="opt" onclick="answer(this,5,2,1)">C. Increase the model's context window to include more resume detail</button><button class="opt" onclick="answer(this,5,3,1)">D. Compute overall aggregate accuracy across the full test set and compare it to a published benchmark score</button>
+    <div class="expl">Counterfactual/stratified perturbation testing (swapping only the sensitive attribute while holding content constant) isolates the effect of that attribute and is the standard technique for detecting demographic disparate treatment.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$129.99</span> <strong>$34.99</strong> with code <span class="code">FREETEST33</span> — valid through September 7.</p>
+  <a href="https://www.udemy.com/course/ncp-genl-nvidia-generative-ai-llms-cert-prep/?couponCode=FREETEST33" rel="sponsored">Get the full course for $34.99 →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

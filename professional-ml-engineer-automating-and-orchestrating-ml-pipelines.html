@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Automating and orchestrating ML pipelines Practice Questions — Google Cloud Professional Machine Learning Engineer</title>
+<meta name="description" content="6 free Automating and orchestrating ML pipelines practice questions with explanations for the Google Cloud Professional Machine Learning Engineer exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/professional-ml-engineer-automating-and-orchestrating-ml-pipelines.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free Google Cloud Professional Machine Learning Engineer practice — 6 questions on <strong>Automating and orchestrating ML pipelines</strong>, with explanations. No sign-up.
+<a href="professional-ml-engineer.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Automating and orchestrating ML pipelines">
+    <div class="meta">Question 1 of 6 · Automating and orchestrating ML pipelines</div>
+    <div class="q">A Vertex AI Pipelines job defined with the KFP SDK v2 has caching enabled by default for all components. During a debugging session, a data scientist needs to force every step to re-execute for a single pipeline run without modifying the pipeline definition file. Which approach achieves this?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. Call aiplatform.PipelineJob(..., enable_caching=False) when submitting that specific run.</button><button class="opt" onclick="answer(this,0,1,0)">B. Delete the pipeline's Vertex ML Metadata artifacts before submitting the run.</button><button class="opt" onclick="answer(this,0,2,0)">C. Add @dsl.component(cache=False) decorator to every component and recompile the pipeline.</button><button class="opt" onclick="answer(this,0,3,0)">D. Set the environment variable KFP_DISABLE_CACHE=true in Cloud Build.</button>
+    <div class="expl">The enable_caching parameter on the PipelineJob object overrides component-level caching settings for that specific run, without touching the compiled pipeline definition.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Automating and orchestrating ML pipelines">
+    <div class="meta">Question 2 of 6 · Automating and orchestrating ML pipelines</div>
+    <div class="q">A retail company's ML workflow must: (1) run a Vertex AI custom training job, (2) execute a data validation step in BigQuery, and (3) trigger a legacy on-premises Hadoop MapReduce job over Cloud VPN before promoting the model, with complex branching logic depending on the Hadoop job's exit code. Which orchestration tool should manage this end-to-end workflow?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. Cloud Scheduler chaining Cloud Functions</button><button class="opt" onclick="answer(this,1,1,3)">B. Cloud Build triggers chained via Cloud Deploy</button><button class="opt" onclick="answer(this,1,2,3)">C. Vertex AI Pipelines using only google_cloud_pipeline_components</button><button class="opt" onclick="answer(this,1,3,3)">D. Cloud Composer with Airflow operators for BigQuery, Vertex AI, and SSH/Hadoop connectivity</button>
+    <div class="expl">Cloud Composer (managed Airflow) provides mature operators and hooks for BigQuery, Vertex AI, and SSH/on-prem connectivity, plus native support for complex conditional branching based on task exit codes/XComs.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Automating and orchestrating ML pipelines">
+    <div class="meta">Question 3 of 6 · Automating and orchestrating ML pipelines</div>
+    <div class="q">After evaluating a new model version, an ML engineer needs to designate it as the version served in production, replacing the previous production model, while keeping the old version available under its own identifier for rollback. Which action correctly accomplishes this using Vertex AI Model Registry?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. Upload the new model as a completely new Model resource with a new display name.</button><button class="opt" onclick="answer(this,2,1,1)">B. Assign the alias &quot;default&quot; to the new model version via the Model Registry API; Vertex AI automatically moves the alias from the old version.</button><button class="opt" onclick="answer(this,2,2,1)">C. Call model_version.update(version_aliases=[&quot;default&quot;]) on the previous version to demote it first.</button><button class="opt" onclick="answer(this,2,3,1)">D. Use model.versions.list() and manually delete the previous production version.</button>
+    <div class="expl">Model Registry aliases are unique per Model resource; assigning &quot;default&quot; to the new version automatically detaches it from whichever version previously held it, and the old version remains queryable by its version ID for rollback.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Automating and orchestrating ML pipelines">
+    <div class="meta">Question 4 of 6 · Automating and orchestrating ML pipelines</div>
+    <div class="q">In Vertex ML Metadata, a pipeline run produces a trained model artifact from a training dataset artifact. Which statement correctly describes how this relationship is represented in the lineage graph?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. The dataset and model are both Context nodes connected by an Event.</button><button class="opt" onclick="answer(this,3,1,3)">B. The dataset artifact directly links to the model artifact through a parent-child Artifact relationship, with no Execution node required.</button><button class="opt" onclick="answer(this,3,2,3)">C. Vertex ML Metadata only tracks Artifacts; Executions are stored separately in Cloud Logging.</button><button class="opt" onclick="answer(this,3,3,3)">D. The training step is represented as an Execution node with input and output Events connecting it to Artifact nodes for the dataset and model.</button>
+    <div class="expl">Vertex ML Metadata models lineage using Artifacts (data/model objects), Executions (steps like training), and Events (typed INPUT/OUTPUT links) connecting Executions to Artifacts, plus Contexts for grouping runs.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Automating and orchestrating ML pipelines">
+    <div class="meta">Question 5 of 6 · Automating and orchestrating ML pipelines</div>
+    <div class="q">A Cloud Build pipeline compiles and pushes a new KFP pipeline template whenever code is merged to main. Before the new model version can be used for production predictions, an ML lead must manually review evaluation metrics and approve the promotion. Which design best implements this human-in-the-loop approval gate using Vertex AI capabilities?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. Configure the training pipeline to automatically assign the &quot;default&quot; alias to every new model version so it's always production-ready.</button><button class="opt" onclick="answer(this,4,1,1)">B. Have the pipeline register the model version without an alias, then require a separate authorized process (console action or API call) to attach the &quot;default&quot; alias only after manual review.</button><button class="opt" onclick="answer(this,4,2,1)">C. Add a Cloud Build manual approval step before compiling the pipeline template.</button><button class="opt" onclick="answer(this,4,3,1)">D. Use Cloud Scheduler to delay pipeline execution by 24 hours to allow time for review.</button>
+    <div class="expl">Registering the model version without the production alias means it is not served until a human explicitly reviews metrics and attaches the alias, cleanly implementing an approval gate at the promotion boundary.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Automating and orchestrating ML pipelines">
+    <div class="meta">Question 6 of 6 · Automating and orchestrating ML pipelines</div>
+    <div class="q">New labeled training data is uploaded to a Cloud Storage bucket at unpredictable intervals, sometimes multiple times per day, sometimes not for a week. The team wants the retraining Vertex AI Pipeline to start automatically within minutes of new data arriving, without polling on a fixed schedule. Which architecture best satisfies this requirement?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. Cloud Scheduler triggers the pipeline every 15 minutes to check for new files.</button><button class="opt" onclick="answer(this,5,1,3)">B. Cloud Composer polls the bucket every hour using a GCS sensor operator.</button><button class="opt" onclick="answer(this,5,2,3)">C. A Vertex AI Pipeline component checks the bucket contents at the start of every scheduled run.</button><button class="opt" onclick="answer(this,5,3,3)">D. A Cloud Storage event notification publishes to Pub/Sub, which invokes a Cloud Function (or Eventarc trigger) that calls the Vertex AI Pipelines API to start a run.</button>
+    <div class="expl">Cloud Storage object-finalize notifications to Pub/Sub, consumed by an Eventarc-triggered Cloud Function that calls the Vertex AI Pipelines API, is a true event-driven design that starts a run within moments of new data landing, with no polling or wasted invocations.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$129.99</span> <strong>$34.99</strong> with code <span class="code">FREETEST33</span> — valid through September 7.</p>
+  <a href="https://www.udemy.com/course/google-cloud-professional-ml-engineer-exam-prep/?couponCode=FREETEST33" rel="sponsored">Get the full course for $34.99 →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

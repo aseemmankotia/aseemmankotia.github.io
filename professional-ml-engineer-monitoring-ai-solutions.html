@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Monitoring AI solutions Practice Questions — Google Cloud Professional Machine Learning Engineer</title>
+<meta name="description" content="6 free Monitoring AI solutions practice questions with explanations for the Google Cloud Professional Machine Learning Engineer exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/professional-ml-engineer-monitoring-ai-solutions.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free Google Cloud Professional Machine Learning Engineer practice — 6 questions on <strong>Monitoring AI solutions</strong>, with explanations. No sign-up.
+<a href="professional-ml-engineer.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Monitoring AI solutions">
+    <div class="meta">Question 1 of 6 · Monitoring AI solutions</div>
+    <div class="q">A team deploys a tabular model to a Vertex AI endpoint with both prediction drift monitoring and feature attribution drift monitoring enabled. Feature attribution drift alerts begin firing for a feature that has historically had low predictive importance, even though overall prediction drift remains within threshold. What is the MOST likely explanation and correct action?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. Feature attribution monitoring is redundant with prediction drift monitoring and should be disabled since prediction drift is within threshold</button><button class="opt" onclick="answer(this,0,1,1)">B. Feature attribution drift measures changes in the relative importance/direction of a feature's contribution over time, independent of prediction drift — investigate whether an upstream pipeline change altered that feature's distribution before it visibly moves final predictions</button><button class="opt" onclick="answer(this,0,2,1)">C. The alert means the deployed model artifact is corrupted and must be redeployed immediately</button><button class="opt" onclick="answer(this,0,3,1)">D. Attribution drift thresholds only apply to training-serving skew jobs, not continuous monitoring jobs, so the alert is a false positive and can be ignored</button>
+    <div class="expl">Feature attribution drift tracks how much a feature's contribution to model output changes over time using Vertex Explainable AI values, which can shift before the change is large enough to move overall prediction distributions — it's an early-warning signal distinct from prediction drift.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Monitoring AI solutions">
+    <div class="meta">Question 2 of 6 · Monitoring AI solutions</div>
+    <div class="q">A team has an AutoML tabular model deployed to a Vertex AI endpoint. They want Model Monitoring to detect drift in feature attributions over time, not just drift in raw feature or prediction value distributions. What must they configure?</div>
+    <button class="opt" onclick="answer(this,1,0,1)">A. Enable prediction drift detection and set a categorical feature threshold override</button><button class="opt" onclick="answer(this,1,1,1)">B. Enable Vertex Explainable AI on the endpoint and configure a feature-attribution monitoring objective in the ModelDeploymentMonitoringJob</button><button class="opt" onclick="answer(this,1,2,1)">C. Write a custom Cloud Logging log-based metric that manually extracts and tracks SHAP values from prediction logs</button><button class="opt" onclick="answer(this,1,3,1)">D. Use a BigQuery ML TRANSFORM clause to precompute attribution baselines before enabling monitoring</button>
+    <div class="expl">Feature attribution drift monitoring in Vertex AI requires Explainable AI to be enabled on the endpoint so attribution values can be computed for serving requests, plus configuring the attribution-score monitoring objective on the monitoring job — this is native functionality, not something built manually.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Monitoring AI solutions">
+    <div class="meta">Question 3 of 6 · Monitoring AI solutions</div>
+    <div class="q">A Vertex AI endpoint serves roughly 50,000 predictions per hour. Model Monitoring's request-response logging to BigQuery is driving up storage and query costs, but the team still needs statistically meaningful training-serving skew and drift detection. What should they change in the monitoring job configuration?</div>
+    <button class="opt" onclick="answer(this,2,0,2)">A. Set the prediction sampling rate to 1.0 so every request is logged for maximum accuracy</button><button class="opt" onclick="answer(this,2,1,2)">B. Disable request-response logging entirely and rely only on a training-serving skew job with no ongoing drift detection</button><button class="opt" onclick="answer(this,2,2,2)">C. Lower the prediction sampling rate (e.g., to 0.1 or lower) so a representative subset of requests is logged instead of every request</button><button class="opt" onclick="answer(this,2,3,2)">D. Increase the monitoring interval (monitoring frequency in days) to reduce the number of samples logged per request</button>
+    <div class="expl">The predictionSamplingRate parameter controls what fraction of serving requests are logged to BigQuery for monitoring; lowering it reduces logging volume and cost while still providing a statistically representative sample for skew and drift statistics.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Monitoring AI solutions">
+    <div class="meta">Question 4 of 6 · Monitoring AI solutions</div>
+    <div class="q">An organization's Vertex AI resources sit inside a VPC Service Controls perimeter. After enabling Model Monitoring, monitoring jobs fail with a VPC Service Controls violation when attempting to write results to BigQuery. What is the correct fix?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. Add the BigQuery service and the target dataset's project into the same perimeter (or configure an appropriate ingress/egress rule) so monitoring results can be written within the trust boundary</button><button class="opt" onclick="answer(this,3,1,0)">B. Remove the Vertex AI endpoint from the VPC Service Controls perimeter so it can reach BigQuery unrestricted</button><button class="opt" onclick="answer(this,3,2,0)">C. Grant the Vertex AI service account roles/bigquery.admin, since VPC Service Controls violations are always caused by insufficient IAM permissions</button><button class="opt" onclick="answer(this,3,3,0)">D. Switch Model Monitoring to write results only to Cloud Logging, since Cloud Logging is exempt from VPC Service Controls restrictions</button>
+    <div class="expl">VPC Service Controls enforce a service perimeter around resources regardless of IAM grants; to allow Model Monitoring's BigQuery writes, BigQuery and the target project must be inside the same perimeter or covered by an explicit ingress/egress access level.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Monitoring AI solutions">
+    <div class="meta">Question 5 of 6 · Monitoring AI solutions</div>
+    <div class="q">Which statement correctly distinguishes training-serving skew detection from prediction drift detection in Vertex AI Model Monitoring?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. Skew compares live serving feature distributions against the original training dataset baseline; drift compares current serving distributions against a prior window of serving data over time</button><button class="opt" onclick="answer(this,4,1,0)">B. Skew detects changes in the model's accuracy metrics; drift detects changes in the model's version number in the registry</button><button class="opt" onclick="answer(this,4,2,0)">C. Skew only applies to categorical features while drift only applies to numerical features</button><button class="opt" onclick="answer(this,4,3,0)">D. Skew is computed continuously in real time per individual prediction; drift is computed only once, at deployment time</button>
+    <div class="expl">Training-serving skew uses the training dataset as the fixed baseline for comparison, catching cases where serving data no longer resembles what the model was trained on, while prediction drift compares serving data against itself over successive time windows to detect gradual distributional change.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Monitoring AI solutions">
+    <div class="meta">Question 6 of 6 · Monitoring AI solutions</div>
+    <div class="q">A newly rolled-out model version on a Vertex AI endpoint begins producing predictions with error rates far above SLA within an hour, triggering a Cloud Monitoring alert. The team must restore service immediately with minimal risk while preserving an audit trail for post-incident review. What should they do?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. Delete the faulty model version from Vertex AI Model Registry so the endpoint automatically falls back to a cached prior version</button><button class="opt" onclick="answer(this,5,1,1)">B. Update the endpoint's traffic split to route 100% of traffic back to the previously known-good deployed model version, keeping the faulty version deployed (but with zero traffic) for investigation</button><button class="opt" onclick="answer(this,5,2,1)">C. Immediately retrain the model from scratch using the same training pipeline and redeploy within the hour</button><button class="opt" onclick="answer(this,5,3,1)">D. Increase the endpoint's machine type and replica count to absorb the increased error volume while the team investigates</button>
+    <div class="expl">Vertex AI endpoints support traffic splitting across multiple deployed model versions; redirecting all traffic back to the known-good version is the fastest, lowest-risk rollback, and leaving the faulty version deployed (at 0% traffic) preserves it for root-cause analysis and audit purposes.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$129.99</span> <strong>$34.99</strong> with code <span class="code">FREETEST33</span> — valid through September 7.</p>
+  <a href="https://www.udemy.com/course/google-cloud-professional-ml-engineer-exam-prep/?couponCode=FREETEST33" rel="sponsored">Get the full course for $34.99 →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

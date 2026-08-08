@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free GPU Architecture, Environments, and Performance Practice Questions — NVIDIA-Certified Associate: Accelerated Data Science</title>
+<meta name="description" content="6 free GPU Architecture, Environments, and Performance practice questions with explanations for the NVIDIA-Certified Associate: Accelerated Data Science exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/nca-ads-gpu-architecture-environments-and-performance.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free NVIDIA-Certified Associate: Accelerated Data Science practice — 6 questions on <strong>GPU Architecture, Environments, and Performance</strong>, with explanations. No sign-up.
+<a href="nca-ads.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="GPU Architecture, Environments, and Performance">
+    <div class="meta">Question 1 of 6 · GPU Architecture, Environments, and Performance</div>
+    <div class="q">A data scientist runs a cuDF ETL pipeline on a single A100 GPU with 40GB of memory. A groupby-join on a 60GB dataset throws a CUDA out-of-memory error even though RMM's pool allocator is already enabled. Which change is MOST likely to resolve this without adding more GPUs?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. Switch to dask-cudf with device-to-host memory spilling (or UVM-backed managed memory) so data beyond GPU capacity spills to host RAM</button><button class="opt" onclick="answer(this,0,1,0)">B. Disable RMM entirely and fall back to the default CUDA allocator</button><button class="opt" onclick="answer(this,0,2,0)">C. Shrink the RMM pool's initial_pool_size so more raw device memory stays unallocated</button><button class="opt" onclick="answer(this,0,3,0)">D. Increase the CUDA stack size via cudaDeviceSetLimit(cudaLimitStackSize, ...)</button>
+    <div class="expl">When a dataset exceeds physical GPU memory, dask-cuda's out-of-core spilling (or Unified Memory oversubscription) lets data that doesn't fit spill to host memory automatically, letting the join complete instead of crashing.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="GPU Architecture, Environments, and Performance">
+    <div class="meta">Question 2 of 6 · GPU Architecture, Environments, and Performance</div>
+    <div class="q">A team scales a cuML training job across 8 GPUs connected via NVLink on a single DGX node using dask-cuda. Which communication configuration should they enable to maximize GPU-to-GPU transfer throughput between workers?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. UCX with NVLink (and InfiniBand, if present) transports enabled</button><button class="opt" onclick="answer(this,1,1,0)">B. Plain TCP sockets between Dask workers</button><button class="opt" onclick="answer(this,1,2,0)">C. gRPC as the inter-worker transport</button><button class="opt" onclick="answer(this,1,3,0)">D. InfiniBand RDMA configured while explicitly disabling UCX</button>
+    <div class="expl">dask-cuda is designed to use UCX, which automatically selects the fastest available transport — NVLink for intra-node GPU-to-GPU transfers and InfiniBand/RDMA for inter-node — giving far higher bandwidth than generic networking stacks.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="GPU Architecture, Environments, and Performance">
+    <div class="meta">Question 3 of 6 · GPU Architecture, Environments, and Performance</div>
+    <div class="q">An engineer suspects a custom CUDA kernel invoked inside a cuML estimator has low occupancy and high register pressure. Which NVIDIA tool provides kernel-level metrics such as achieved occupancy and registers-per-thread to diagnose this?</div>
+    <button class="opt" onclick="answer(this,2,0,2)">A. nvidia-smi</button><button class="opt" onclick="answer(this,2,1,2)">B. Nsight Systems</button><button class="opt" onclick="answer(this,2,2,2)">C. Nsight Compute</button><button class="opt" onclick="answer(this,2,3,2)">D. DLProf</button>
+    <div class="expl">Nsight Compute is the kernel-level profiler that reports detailed per-kernel metrics — occupancy, register usage, memory throughput, and warp stall reasons — exactly what's needed to diagnose kernel-level bottlenecks.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="GPU Architecture, Environments, and Performance">
+    <div class="meta">Question 4 of 6 · GPU Architecture, Environments, and Performance</div>
+    <div class="q">When initializing RMM's pool allocator for a RAPIDS workflow that performs many repeated small allocations, which configuration approach is recommended to minimize fragmentation and allocation overhead?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. Set initial_pool_size to a large fraction (e.g., 80-90%) of available GPU memory up front</button><button class="opt" onclick="answer(this,3,1,0)">B. Set initial_pool_size to a small value (e.g., 1MB) and rely entirely on dynamic growth as needed</button><button class="opt" onclick="answer(this,3,2,0)">C. Disable the pool allocator so every allocation calls cudaMalloc directly</button><button class="opt" onclick="answer(this,3,3,0)">D. Set the pool size equal to total host system RAM rather than GPU memory</button>
+    <div class="expl">Pre-reserving a large upfront pool (well above the smallest workload needs) lets RMM sub-allocate from a single large device buffer, avoiding repeated cudaMalloc/cudaFree calls and reducing fragmentation from many small allocations.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="GPU Architecture, Environments, and Performance">
+    <div class="meta">Question 5 of 6 · GPU Architecture, Environments, and Performance</div>
+    <div class="q">Why do data-parallel workloads such as cuDF dataframe operations achieve large speedups on GPUs compared to CPUs?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. GPUs eliminate the need for any data transfer between host and device memory</button><button class="opt" onclick="answer(this,4,1,1)">B. GPU HBM memory provides far higher memory bandwidth than CPU DRAM, combined with thousands of lightweight cores that process many data elements concurrently</button><button class="opt" onclick="answer(this,4,2,1)">C. GPUs have larger per-core L1 caches than CPUs, which reduces memory access latency</button><button class="opt" onclick="answer(this,4,3,1)">D. GPUs only support single-precision floating point, which is inherently faster than any CPU instruction</button>
+    <div class="expl">GPUs pair high-bandwidth HBM memory (on the order of terabytes/sec versus tens of GB/s for typical CPU DRAM channels) with thousands of parallel cores, so the same column/element-wise operation can be applied to massive amounts of data simultaneously — the core reason data-parallel operations like cuDF column transforms scale so well.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="GPU Architecture, Environments, and Performance">
+    <div class="meta">Question 6 of 6 · GPU Architecture, Environments, and Performance</div>
+    <div class="q">A company is deploying a multi-node RAPIDS cluster on cloud GPU instances and must guarantee every worker node runs an identical, driver-compatible software stack with minimal setup time per node. Which environment strategy BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. Manually install RAPIDS via conda on each node independently as instances are provisioned</button><button class="opt" onclick="answer(this,5,1,3)">B. Build cuDF and cuML from source on each node to exactly match that node's installed driver</button><button class="opt" onclick="answer(this,5,2,3)">C. Use a CPU-only base container image and install RAPIDS afterward via pip on each node</button><button class="opt" onclick="answer(this,5,3,3)">D. Pull the official RAPIDS container image from NGC (e.g., rapidsai/base or rapidsai/notebooks) on each node</button>
+    <div class="expl">Pulling the same pre-built, version-pinned RAPIDS container from NGC on every node guarantees an identical CUDA/RAPIDS/driver-compatible stack with fast, repeatable deployment — the standard recommended approach for reproducible multi-node RAPIDS clusters.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$99.99</span> <strong>$34.99</strong> with code <span class="code">FREETEST33</span> — valid through September 7.</p>
+  <a href="https://www.udemy.com/course/nca-ads-nvidia-accelerated-data-science-exam-prep/?couponCode=FREETEST33" rel="sponsored">Get the full course for $34.99 →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

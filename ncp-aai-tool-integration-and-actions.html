@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Tool Integration and Actions Practice Questions — NVIDIA-Certified Professional: Agentic AI</title>
+<meta name="description" content="6 free Tool Integration and Actions practice questions with explanations for the NVIDIA-Certified Professional: Agentic AI exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/ncp-aai-tool-integration-and-actions.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free NVIDIA-Certified Professional: Agentic AI practice — 6 questions on <strong>Tool Integration and Actions</strong>, with explanations. No sign-up.
+<a href="ncp-aai.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Tool Integration and Actions">
+    <div class="meta">Question 1 of 6 · Tool Integration and Actions</div>
+    <div class="q">A company builds an agent that calls a payment processing tool. The agent occasionally retries tool calls due to transient network timeouts, risking duplicate charges. Which design BEST prevents duplicate side effects when retries occur?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. Generate a unique idempotency key per logical operation and pass it with every retry attempt so the downstream service can deduplicate</button><button class="opt" onclick="answer(this,0,1,0)">B. Increase the tool call timeout so retries happen less frequently</button><button class="opt" onclick="answer(this,0,2,0)">C. Wrap the tool call in a try/except block and log the retry count for later manual reconciliation</button><button class="opt" onclick="answer(this,0,3,0)">D. Disable automatic retries entirely so the agent only ever attempts each tool call once</button>
+    <div class="expl">An idempotency key ties every retry of the same logical operation to a single execution on the downstream service, so duplicate attempts are safely deduplicated regardless of how many times the client resends the request.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Tool Integration and Actions">
+    <div class="meta">Question 2 of 6 · Tool Integration and Actions</div>
+    <div class="q">An agent has a 'code execution' tool that runs untrusted, LLM-generated Python code to answer data analysis questions. Which combination of controls BEST mitigates the risk of this tool being used to exfiltrate data or damage the host system?</div>
+    <button class="opt" onclick="answer(this,1,0,1)">A. Rely on the LLM's system prompt instructing it not to write malicious code</button><button class="opt" onclick="answer(this,1,1,1)">B. Execute the code in an isolated sandbox (e.g., a microVM) with no outbound network access, a read-only filesystem except a scratch directory, and enforced CPU/memory/time limits</button><button class="opt" onclick="answer(this,1,2,1)">C. Run the code in an unrestricted container with full network access so all analysis libraries function correctly</button><button class="opt" onclick="answer(this,1,3,1)">D. Log all code executions to an audit trail after execution completes, without runtime restriction</button>
+    <div class="expl">A hardened, network-isolated sandbox with resource limits establishes an actual security boundary that contains malicious or buggy generated code regardless of what the model produces.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Tool Integration and Actions">
+    <div class="meta">Question 3 of 6 · Tool Integration and Actions</div>
+    <div class="q">A team needs to connect their agent to a dozen enterprise data sources (a ticketing system, a CRM, and an internal wiki), and wants new tools to be discoverable and pluggable by any MCP-compatible agent framework without writing framework-specific glue code for each integration. Which approach BEST fits this requirement?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. Write a single monolithic Python function per data source and register it directly as a native function-call inside one specific agent framework</button><button class="opt" onclick="answer(this,2,1,3)">B. Build a shared internal SDK that each team imports directly into their agent's codebase to call the data sources</button><button class="opt" onclick="answer(this,2,2,3)">C. Store data source credentials in the agent framework's config and let the LLM generate raw HTTP requests to each API directly</button><button class="opt" onclick="answer(this,2,3,3)">D. Implement each integration as a standalone MCP server exposing standardized resources, tools, and prompts, and connect the agent framework as an MCP client</button>
+    <div class="expl">Standalone MCP servers expose a standardized protocol contract, so any MCP-compatible client (agent framework) can discover and use them without custom, framework-specific integration code — exactly the pluggability the requirement calls for.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Tool Integration and Actions">
+    <div class="meta">Question 4 of 6 · Tool Integration and Actions</div>
+    <div class="q">When defining a function-calling tool schema for an agent, a developer wants to guarantee that the LLM's output arguments strictly conform to the declared JSON schema (correct types, no missing or extra required fields) before the tool ever executes. Which configuration achieves this most reliably?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. Add a natural-language instruction in the system prompt asking the model to 'always return valid JSON matching the schema'</button><button class="opt" onclick="answer(this,3,1,2)">B. Increase the sampling temperature so the model has more flexibility to self-correct JSON errors</button><button class="opt" onclick="answer(this,3,2,2)">C. Enable constrained/structured decoding (e.g., grammar- or JSON-schema-constrained generation) so output tokens are restricted to only schema-conforming sequences</button><button class="opt" onclick="answer(this,3,3,2)">D. Post-process the model's free-text output with a regex to extract the closest JSON-like substring</button>
+    <div class="expl">Constrained decoding enforces schema conformance at the token-generation level itself, making it structurally impossible for the model to emit output that violates the schema.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Tool Integration and Actions">
+    <div class="meta">Question 5 of 6 · Tool Integration and Actions</div>
+    <div class="q">In the context of agentic tool integration, 'least-privilege tool scoping' refers to which practice?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. Granting every registered tool the same broad set of permissions so the agent never hits permission errors mid-task</button><button class="opt" onclick="answer(this,4,1,3)">B. Issuing the agent a single long-lived credential with admin-level access to all downstream systems for simplicity</button><button class="opt" onclick="answer(this,4,2,3)">C. Allowing the LLM to decide at runtime which permission level it needs and self-elevate access as tasks require</button><button class="opt" onclick="answer(this,4,3,3)">D. Granting each tool only the minimum set of scopes and data access required for its specific function, using short-lived, narrowly scoped credentials per tool or session</button>
+    <div class="expl">Least-privilege scoping means each tool receives narrowly bounded, time-limited access matched exactly to what it needs, minimizing blast radius if the tool or agent is compromised or misused.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Tool Integration and Actions">
+    <div class="meta">Question 6 of 6 · Tool Integration and Actions</div>
+    <div class="q">An agent's search tool calls a third-party API that enforces a strict rate limit and returns HTTP 429 with a Retry-After header when exceeded. During a burst of concurrent multi-agent tasks, the tool integration begins failing frequently. Which retry strategy BEST handles this scenario while remaining a good API citizen?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. Immediately retry the failed call in a tight loop until it succeeds</button><button class="opt" onclick="answer(this,5,1,1)">B. Respect the Retry-After header when present, otherwise apply exponential backoff with jitter, and cap total retries with a circuit breaker to fail fast under sustained throttling</button><button class="opt" onclick="answer(this,5,2,1)">C. Treat every 429 as a permanent failure and surface it directly to the end user with no retry attempt</button><button class="opt" onclick="answer(this,5,3,1)">D. Poll the API every second regardless of the Retry-After value to check if the limit has reset</button>
+    <div class="expl">Honoring the server's explicit Retry-After guidance, falling back to jittered exponential backoff otherwise, and bounding retries with a circuit breaker recovers from transient throttling without contributing to a thundering-herd overload of the API.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$129.99</span> <strong>$34.99</strong> with code <span class="code">FREETEST33</span> — valid through September 7.</p>
+  <a href="https://www.udemy.com/course/nvidia-ncp-aai-agentic-ai-certification-prep/?couponCode=FREETEST33" rel="sponsored">Get the full course for $34.99 →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

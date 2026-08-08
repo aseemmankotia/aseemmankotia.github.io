@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Composition and Composition Arcs Practice Questions — NVIDIA-Certified Professional: OpenUSD Development</title>
+<meta name="description" content="6 free Composition and Composition Arcs practice questions with explanations for the NVIDIA-Certified Professional: OpenUSD Development exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/ncp-ousd-composition-and-composition-arcs.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free NVIDIA-Certified Professional: OpenUSD Development practice — 6 questions on <strong>Composition and Composition Arcs</strong>, with explanations. No sign-up.
+<a href="ncp-ousd.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Composition and Composition Arcs">
+    <div class="meta">Question 1 of 6 · Composition and Composition Arcs</div>
+    <div class="q">On the stage, /World/Props/Chair inherits from /World/_class_/BaseChair, which authors radius = 5.0 on a Sphere child. Chair also has a reference arc to an external layer Sphere_ext.usd that authors radius = 2.0 on the same child prim, and neither layer authors radius directly on Chair itself. What is the composed value of radius?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. 2.0, because references always outrank inherits in LIVRPS</button><button class="opt" onclick="answer(this,0,1,2)">B. An error is raised because inherits and references cannot target overlapping opinions</button><button class="opt" onclick="answer(this,0,2,2)">C. 5.0, because Inherits is stronger than References in LIVRPS strength ordering</button><button class="opt" onclick="answer(this,0,3,2)">D. 2.0, because the reference was authored later in the layer and last-authored wins</button>
+    <div class="expl">LIVRPS orders arcs strongest-to-weakest as Local, Inherits, Variants, References, Payloads, Specializes. Since neither layer authors a direct local opinion on Chair, the inherited opinion (5.0) beats the referenced opinion (2.0) purely because Inherits outranks References.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Composition and Composition Arcs">
+    <div class="meta">Question 2 of 6 · Composition and Composition Arcs</div>
+    <div class="q">The strongest layer in a layer stack authors: references.prepend = [&quot;C.usd&quot;]. A weaker sublayer authors: references = [&quot;A.usd&quot;, &quot;B.usd&quot;] (a plain, op-less assignment). What is the final composed reference list, ordered strongest to weakest?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. [C.usd]  — the explicit list from the weaker layer is entirely discarded once a stronger layer edits the list</button><button class="opt" onclick="answer(this,1,1,3)">B. [A.usd, B.usd, C.usd]</button><button class="opt" onclick="answer(this,1,2,3)">C. [C.usd, B.usd, A.usd]</button><button class="opt" onclick="answer(this,1,3,3)">D. [C.usd, A.usd, B.usd]</button>
+    <div class="expl">A plain (op-less) list assignment is treated as an explicit list at that point in the layer stack; stronger layers can still prepend or append relative to it. The prepend item is inserted before the explicit base list in strength order, giving [C.usd, A.usd, B.usd], preserving the weak layer's own internal ordering.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Composition and Composition Arcs">
+    <div class="meta">Question 3 of 6 · Composition and Composition Arcs</div>
+    <div class="q">/World/Robot carries both a payload (robot_payload.usd, which sets jointCount = 6) and a reference (robot_ref.usd, which sets jointCount = 8) on the same prim, with no local opinion authored directly on Robot. Both arcs are currently loaded. What is the resolved value of jointCount?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. 8, because References are stronger than Payloads in LIVRPS strength ordering</button><button class="opt" onclick="answer(this,2,1,0)">B. 6, because payloads always load after references and their late-binding opinion wins</button><button class="opt" onclick="answer(this,2,2,0)">C. Undefined, since references and payloads cannot coexist on the same prim</button><button class="opt" onclick="answer(this,2,3,0)">D. It depends on which arc appears first in the prim's metadata list</button>
+    <div class="expl">LIVRPS places References ahead of Payloads in strength (Local, Inherits, Variants, References, Payloads, Specializes). Regardless of load timing, once both are loaded the reference's opinion (8) wins over the payload's opinion (6) purely by arc-type strength.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Composition and Composition Arcs">
+    <div class="meta">Question 4 of 6 · Composition and Composition Arcs</div>
+    <div class="q">You are designing a shading library where downstream prims should be able to pick up common default shader parameters from a shared base prim, but ANY opinion introduced later via a reference or payload on those downstream prims must always win over the base defaults — while the base prim should still propagate live edits if it is later modified. Which composition arc should link the downstream prims to the shared base?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. Specializes</button><button class="opt" onclick="answer(this,3,1,0)">B. Inherits</button><button class="opt" onclick="answer(this,3,2,0)">C. A reference</button><button class="opt" onclick="answer(this,3,3,0)">D. A variant set</button>
+    <div class="expl">Specializes is the weakest arc in LIVRPS — weaker than References and Payloads — so any opinion from those arcs will always override it, exactly as required. Like inherits, it still composes live opinions from the target (not a static copy), making it the correct choice for fallback base/default patterns.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Composition and Composition Arcs">
+    <div class="meta">Question 5 of 6 · Composition and Composition Arcs</div>
+    <div class="q">The session layer of a stage authors variantSelection = &quot;damaged&quot; for the &quot;shadingVariant&quot; variant set on /World/Prop. The root layer (weaker in the layer stack) authors variantSelection = &quot;pristine&quot; as its default selection for the same variant set. Which variant is composed onto the prim?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. &quot;pristine&quot;, because default selections authored on the variant set's owning prim always take precedence</button><button class="opt" onclick="answer(this,4,1,3)">B. Neither — USD raises a composition error when two layers disagree on variant selection</button><button class="opt" onclick="answer(this,4,2,3)">C. Both variants are composed and merged into a single combined result</button><button class="opt" onclick="answer(this,4,3,3)">D. &quot;damaged&quot;, because the session layer is the strongest sublayer in the local layer stack</button>
+    <div class="expl">Variant selections are ordinary metadata opinions subject to normal LIVRPS/local layer-stack strength rules. The session layer sits above the root layer as the strongest sublayer, so its selection (&quot;damaged&quot;) wins over the root layer's default (&quot;pristine&quot;).</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Composition and Composition Arcs">
+    <div class="meta">Question 6 of 6 · Composition and Composition Arcs</div>
+    <div class="q">/World/City carries a payload targeting City_payload.usd. Inside that payload layer, the prim /World/City/Building has its own reference arc pointing to Building_lib.usd for detailed geometry. If the City payload is left unloaded when the stage is opened, what happens to the content from Building_lib.usd?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. It causes a composition error, because nested arcs are not permitted inside a payload target</button><button class="opt" onclick="answer(this,5,1,3)">B. Only the reference's default prim metadata loads, while the geometry itself stays deferred</button><button class="opt" onclick="answer(this,5,2,3)">C. It still composes normally, because references always take priority over an unloaded payload</button><button class="opt" onclick="answer(this,5,3,3)">D. It is not composed at all — nothing within an unloaded payload's subtree is evaluated, including any arcs nested inside it</button>
+    <div class="expl">Payloads defer composition of their entire target subtree. While unloaded, none of that subtree — including any nested composition arcs such as the Building reference — is composed onto the stage at all. Loading only occurs once the payload arc itself is loaded.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$109.99</span> <strong>$34.99</strong> with code <span class="code">FREETEST33</span> — valid through September 7.</p>
+  <a href="https://www.udemy.com/course/ncp-ousd-nvidia-openusd-development-certification-prep/?couponCode=FREETEST33" rel="sponsored">Get the full course for $34.99 →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

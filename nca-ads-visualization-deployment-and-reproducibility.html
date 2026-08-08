@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Visualization, Deployment, and Reproducibility Practice Questions — NVIDIA-Certified Associate: Accelerated Data Science</title>
+<meta name="description" content="6 free Visualization, Deployment, and Reproducibility practice questions with explanations for the NVIDIA-Certified Associate: Accelerated Data Science exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/nca-ads-visualization-deployment-and-reproducibility.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free NVIDIA-Certified Associate: Accelerated Data Science practice — 6 questions on <strong>Visualization, Deployment, and Reproducibility</strong>, with explanations. No sign-up.
+<a href="nca-ads.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Visualization, Deployment, and Reproducibility">
+    <div class="meta">Question 1 of 6 · Visualization, Deployment, and Reproducibility</div>
+    <div class="q">A cuDF DataFrame holds 500 million GPS ping records. The team needs an interactive scatter plot showing the full spatial density pattern (no downsampling, no loss of outlier clusters) without transferring the full dataset to host memory. Which approach BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. Call .to_pandas() on the full cuDF DataFrame and plot with matplotlib's scatter function</button><button class="opt" onclick="answer(this,0,1,1)">B. Use cuxfilter to render the plot with GPU-accelerated datashading directly against the cuDF DataFrame</button><button class="opt" onclick="answer(this,0,2,1)">C. Randomly sample 1% of rows into a pandas DataFrame and plot with seaborn's scatterplot</button><button class="opt" onclick="answer(this,0,3,1)">D. Export the data to CSV and load an aggregated version into Tableau</button>
+    <div class="expl">cuxfilter builds on datashader and renders directly from cuDF/GPU memory, aggregating pixel-bin density on the GPU so the full 500M-row dataset can be visualized interactively without host transfer or downsampling.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Visualization, Deployment, and Reproducibility">
+    <div class="meta">Question 2 of 6 · Visualization, Deployment, and Reproducibility</div>
+    <div class="q">A cuGraph graph has 50 million edges representing a social network. A data scientist needs an interactive, GPU-accelerated visualization of the graph structure without exporting the entire edge list to a desktop tool. Which option is correct?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. Use the graphistry integration, which renders cuGraph-backed graphs with millions of edges interactively using GPU-accelerated layout and rendering</button><button class="opt" onclick="answer(this,1,1,0)">B. Convert the cuGraph graph to a NetworkX graph and call nx.draw() on it</button><button class="opt" onclick="answer(this,1,2,0)">C. Export the edge list to CSV and open it in Gephi without any GPU acceleration</button><button class="opt" onclick="answer(this,1,3,0)">D. Call cuDF's built-in .plot() method directly on the edge list DataFrame</button>
+    <div class="expl">Graphistry is the graph-visualization partner integration in the RAPIDS ecosystem and can accept cuGraph objects directly, rendering large graphs (millions of edges) interactively using GPU-accelerated layout algorithms.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Visualization, Deployment, and Reproducibility">
+    <div class="meta">Question 3 of 6 · Visualization, Deployment, and Reproducibility</div>
+    <div class="q">A team needs an environment.yml file that reproduces an identical RAPIDS GPU stack on any machine with a compatible driver. Which set of practices is required to guarantee this reproducibility?</div>
+    <button class="opt" onclick="answer(this,2,0,2)">A. Pin only the top-level rapids meta-package version and allow conda to resolve all other package versions automatically</button><button class="opt" onclick="answer(this,2,1,2)">B. Run pip freeze after installing RAPIDS via conda and reinstall later using pip install -r requirements.txt</button><button class="opt" onclick="answer(this,2,2,2)">C. Pin exact versions for rapids, python, and cuda-version, and list channels in the fixed order rapidsai, conda-forge, nvidia</button><button class="opt" onclick="answer(this,2,3,2)">D. Pin only the host machine's CUDA driver version, since conda packages are driver-agnostic</button>
+    <div class="expl">Full reproducibility requires pinning the rapids meta-package, python, and cuda-version explicitly, plus a fixed channel priority order (rapidsai, conda-forge, nvidia), since channel order affects which package builds conda resolves.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Visualization, Deployment, and Reproducibility">
+    <div class="meta">Question 4 of 6 · Visualization, Deployment, and Reproducibility</div>
+    <div class="q">A team trained a cuML RandomForestClassifier and must deploy it for real-time inference in a serverless environment that has no GPU access. Which deployment approach is correct?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. Pickle the cuML model directly and load it on the CPU-only serverless nodes</button><button class="opt" onclick="answer(this,3,1,3)">B. Deploy the model on a serverless GPU instance running the full cuML runtime</button><button class="opt" onclick="answer(this,3,2,3)">C. Use cudf.pandas accelerator mode during inference to speed up CPU execution of the tree model</button><button class="opt" onclick="answer(this,3,3,3)">D. Convert the model to Treelite format for CPU-optimized inference without requiring a GPU at inference time</button>
+    <div class="expl">Treelite compiles tree-based models (including cuML's RandomForest) into a portable, CPU-optimized format for fast inference, exactly matching the no-GPU serverless constraint.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Visualization, Deployment, and Reproducibility">
+    <div class="meta">Question 5 of 6 · Visualization, Deployment, and Reproducibility</div>
+    <div class="q">A data scientist has an exploratory notebook that trains models across multiple GPU workers using Dask-CUDA. It must become a reproducible pipeline that runs nightly, accepts different parameters per run, and logs metrics and model artifacts for comparison. Which combination BEST satisfies this?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. Manually re-run the notebook each night and save screenshots of the output cells as documentation</button><button class="opt" onclick="answer(this,4,1,1)">B. Use papermill to parameterize and execute the notebook on a schedule, and MLflow to track parameters, metrics, and artifacts for each run</button><button class="opt" onclick="answer(this,4,2,1)">C. Spin up a LocalCUDACluster nightly and rely on its worker logs as the sole record of each run</button><button class="opt" onclick="answer(this,4,3,1)">D. Store the notebook in Git and rely on the visible cell execution order to guarantee reproducibility</button>
+    <div class="expl">Papermill provides parameterized, scheduled notebook execution, while MLflow captures per-run parameters, metrics, and artifacts, together giving both automation and experiment tracking/reproducibility.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Visualization, Deployment, and Reproducibility">
+    <div class="meta">Question 6 of 6 · Visualization, Deployment, and Reproducibility</div>
+    <div class="q">From a reproducibility and deployment standpoint, what is a key risk of relying on cudf.pandas accelerator mode (zero-code-change GPU acceleration) in a production pipeline, compared to using the explicit cuDF API?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. cudf.pandas requires rewriting all pandas code into explicit cuDF syntax, increasing the risk of bugs during the rewrite</button><button class="opt" onclick="answer(this,5,1,1)">B. cudf.pandas silently falls back to CPU pandas execution for unsupported operations, so identical code can show different performance behavior across environments without an explicit error</button><button class="opt" onclick="answer(this,5,2,1)">C. cudf.pandas cannot be combined with Dask-CUDA under any circumstances, forcing teams to permanently choose one or the other</button><button class="opt" onclick="answer(this,5,3,1)">D. cudf.pandas refuses to import unless the host machine has a specific fixed CUDA driver version</button>
+    <div class="expl">cudf.pandas is a proxy layer that transparently falls back to CPU pandas for operations it doesn't yet support on GPU, so pipeline performance can silently vary by environment or pandas usage pattern, making behavior harder to reproduce and profile than with explicit cuDF calls.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$99.99</span> <strong>$34.99</strong> with code <span class="code">FREETEST33</span> — valid through September 7.</p>
+  <a href="https://www.udemy.com/course/nca-ads-nvidia-accelerated-data-science-exam-prep/?couponCode=FREETEST33" rel="sponsored">Get the full course for $34.99 →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

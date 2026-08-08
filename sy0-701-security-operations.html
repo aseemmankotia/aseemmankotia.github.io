@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Security Operations Practice Questions — CompTIA Security+ (SY0-701)</title>
+<meta name="description" content="6 free Security Operations practice questions with explanations for the CompTIA Security+ (SY0-701) exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/sy0-701-security-operations.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free CompTIA Security+ (SY0-701) practice — 6 questions on <strong>Security Operations</strong>, with explanations. No sign-up.
+<a href="sy0-701.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Security Operations">
+    <div class="meta">Question 1 of 6 · Security Operations</div>
+    <div class="q">A company uses a third-party marketing platform to send emails on behalf of its domain, corp-example.com. SPF passes because the platform's sending IP is included in the SPF record, and DKIM passes because the platform signs with its own valid key. However, DMARC still fails and legitimate marketing emails are being rejected. The company's DMARC record includes 'adkim=s; aspf=s' (strict alignment for both). Which change would resolve the alignment failure while keeping DMARC enforcement effective?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. Change the DMARC policy tag to p=none so failing messages are no longer rejected</button><button class="opt" onclick="answer(this,0,1,2)">B. Remove the SPF record entirely since DKIM alone is sufficient for DMARC to pass</button><button class="opt" onclick="answer(this,0,2,2)">C. Change adkim and aspf to relaxed alignment (r) so subdomains of the organizational domain can align, or have the platform sign DKIM using a subdomain of corp-example.com</button><button class="opt" onclick="answer(this,0,3,2)">D. Add the marketing platform's sending domain to the DMARC record's 'rua' reporting tag</button>
+    <div class="expl">Strict alignment (s) requires the DKIM d= domain (or SPF envelope-from) to exactly match the visible From: header domain. Relaxed alignment (r) permits any subdomain of the same organizational domain to align. Since the marketing platform signs with its own domain, either switching to relaxed alignment or having them sign using a corp-example.com subdomain fixes the mismatch without disabling DMARC enforcement.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Security Operations">
+    <div class="meta">Question 2 of 6 · Security Operations</div>
+    <div class="q">A vulnerability management team identifies two critical findings, both with a CVSS v3.1 base score of 9.8. Vulnerability A has a vector string containing 'S:C' (Scope Changed) and Vulnerability B has 'S:U' (Scope Unchanged). Patching resources are limited to one system this week. Which factor justifies prioritizing Vulnerability A first?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. Vulnerability A requires no privileges to exploit, while Vulnerability B requires low privileges</button><button class="opt" onclick="answer(this,1,1,3)">B. Vulnerability A has a lower attack complexity rating than Vulnerability B</button><button class="opt" onclick="answer(this,1,2,3)">C. Vulnerability A has an assigned CVE identifier while Vulnerability B is only documented in a vendor advisory</button><button class="opt" onclick="answer(this,1,3,3)">D. Vulnerability A allows the exploited component to impact resources beyond its own security scope, such as escaping a container or hypervisor boundary</button>
+    <div class="expl">The Scope metric in CVSS indicates whether a vulnerability in one security authority (e.g., a VM, container, or sandboxed process) can affect resources managed by a different security authority. S:C means successful exploitation has a blast radius beyond the vulnerable component itself, which increases real-world impact and justifies prioritization even at an identical base score.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Security Operations">
+    <div class="meta">Question 3 of 6 · Security Operations</div>
+    <div class="q">During an active incident, a threat hunter suspects data was exfiltrated over HTTPS to an external IP address. NetFlow records confirm a large outbound data transfer occurred to that IP, but the hunter needs to determine exactly what data was sent in order to assess the scope of the breach. Which data source should the hunter request next?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. Full packet capture (PCAP) covering the session, if available, along with TLS session keys or a decrypting proxy log</button><button class="opt" onclick="answer(this,2,1,0)">B. Additional NetFlow records covering a wider time range</button><button class="opt" onclick="answer(this,2,2,0)">C. SNMP polling data from the affected host's network interface</button><button class="opt" onclick="answer(this,2,3,0)">D. SIEM correlation rule alerts triggered during the transfer window</button>
+    <div class="expl">NetFlow provides metadata (source/destination, ports, byte counts, timing) but not payload content. To determine the actual data exfiltrated, the hunter needs full packet capture and, since the traffic is encrypted via HTTPS, either captured session keys, a TLS-inspecting proxy log, or endpoint DLP logs to reconstruct the actual content sent.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Security Operations">
+    <div class="meta">Question 4 of 6 · Security Operations</div>
+    <div class="q">A single-page web application (SPA) needs to call a separate backend REST API on behalf of a logged-in user, without the SPA ever handling or storing the user's actual password. The API must be able to independently verify that the request is authorized and issued for a specific, limited scope of access. Which mechanism BEST satisfies this requirement?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. OAuth 2.0 Authorization Code flow with PKCE, issuing a scoped access token to the SPA for API calls</button><button class="opt" onclick="answer(this,3,1,0)">B. LDAP simple bind performed directly from the SPA using the user's credentials</button><button class="opt" onclick="answer(this,3,2,0)">C. SAML 2.0 with an IdP-initiated SSO flow authenticating directly to the API endpoint</button><button class="opt" onclick="answer(this,3,3,0)">D. Storing the user's hashed password in browser local storage and sending it with each API request</button>
+    <div class="expl">OAuth 2.0's Authorization Code flow with PKCE is designed specifically for public clients like SPAs. It allows the SPA to obtain a short-lived, scope-limited access token after user authentication, without ever exposing or storing the user's password, and the API can validate the token and its scopes independently.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Security Operations">
+    <div class="meta">Question 5 of 6 · Security Operations</div>
+    <div class="q">During incident response on a compromised production server, the responder must collect evidence following the order of volatility. Which of the following should be collected FIRST, before any other listed source?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. A full disk image of the server's storage volume</button><button class="opt" onclick="answer(this,4,1,3)">B. Log files forwarded to a remote syslog server the previous day</button><button class="opt" onclick="answer(this,4,2,3)">C. Archived backup tapes from the last scheduled backup job</button><button class="opt" onclick="answer(this,4,3,3)">D. Contents of system RAM</button>
+    <div class="expl">The order of volatility dictates collecting the most transient evidence first. RAM contents (running processes, network connections, encryption keys, injected malware) are lost immediately on reboot or power-off, making them the highest priority to capture before any other listed source.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Security Operations">
+    <div class="meta">Question 6 of 6 · Security Operations</div>
+    <div class="q">An organization's MFA provider experiences a multi-hour outage, locking all administrators out of the privileged access management (PAM) vault during a critical outage requiring emergency configuration changes. Which control should have been in place to allow secure access during this event?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. A break-glass emergency account with credentials sealed in a physically secured location, exempt from the outage-affected MFA method, with mandatory post-use log review and password rotation</button><button class="opt" onclick="answer(this,5,1,0)">B. A shared local administrator password documented in an internal wiki page for emergencies</button><button class="opt" onclick="answer(this,5,2,0)">C. Disabling MFA enforcement organization-wide until the provider outage is resolved</button><button class="opt" onclick="answer(this,5,3,0)">D. Granting all administrators standing local admin rights on production systems to avoid future dependency on the PAM vault</button>
+    <div class="expl">A break-glass account is a documented emergency-access control: credentials are sealed (e.g., in a safe or secure escrow), used only when normal privileged access paths fail, and every use triggers mandatory logging, review, and credential rotation afterward. This maintains security oversight while ensuring availability during outages.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$109.99</span> <strong>$34.99</strong> with code <span class="code">FREETEST33</span> — valid through September 2.</p>
+  <a href="https://www.udemy.com/course/comptia-security-sy0-701-exam-focused-prep/?couponCode=FREETEST33" rel="sponsored">Get the full course for $34.99 →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Design Resilient Architectures Practice Questions — AWS Certified Solutions Architect – Associate (SAA-C04)</title>
+<meta name="description" content="6 free Design Resilient Architectures practice questions with explanations for the AWS Certified Solutions Architect – Associate (SAA-C04) exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/saa-c04-design-resilient-architectures.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free AWS Certified Solutions Architect – Associate (SAA-C04) practice — 6 questions on <strong>Design Resilient Architectures</strong>, with explanations. No sign-up.
+<a href="saa-c04.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Design Resilient Architectures">
+    <div class="meta">Question 1 of 6 · Design Resilient Architectures</div>
+    <div class="q">A company's order-processing platform must meet a strict recovery requirement: RTO of 5 minutes and RPO of 1 minute. The disaster recovery environment must be able to scale to full production capacity within the RTO window, but the company wants to avoid paying for fully running production-scale infrastructure in the DR region at all times. Which DR strategy BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. Pilot light — keep only core data stores replicated and running, and launch full compute capacity from AMIs at failover time</button><button class="opt" onclick="answer(this,0,1,3)">B. Multi-site active-active — run full production capacity in both regions simultaneously at all times</button><button class="opt" onclick="answer(this,0,2,3)">C. Backup and restore — take periodic backups and restore infrastructure from scratch in the DR region during a disaster</button><button class="opt" onclick="answer(this,0,3,3)">D. Warm standby — run a scaled-down but fully functional copy of the full stack in the DR region continuously, then scale it up on failover</button>
+    <div class="expl">Warm standby keeps a scaled-down version of the entire stack (compute, database, etc.) always running, so scaling to full capacity happens quickly (minutes), fitting a 5-minute RTO, while costing less than full active-active.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Design Resilient Architectures">
+    <div class="meta">Question 2 of 6 · Design Resilient Architectures</div>
+    <div class="q">A global application serves users from ALB endpoints deployed in three AWS Regions. The company wants users routed to whichever region provides the lowest network latency under normal conditions, but wants Route 53 to automatically stop sending traffic to any region whose ALB becomes unhealthy, without manual intervention. Which Route 53 configuration BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. Weighted routing policy with equal weights assigned to each regional record</button><button class="opt" onclick="answer(this,1,1,3)">B. Simple routing policy returning all three regional IP addresses to the client</button><button class="opt" onclick="answer(this,1,2,3)">C. Failover routing policy with one primary and one secondary record configured</button><button class="opt" onclick="answer(this,1,3,3)">D. Latency-based routing policy with a health check associated with each regional record</button>
+    <div class="expl">Latency-based routing directs users to the region with the lowest latency, and associating a health check with each latency record makes Route 53 automatically exclude unhealthy regions from DNS responses, satisfying both requirements.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Design Resilient Architectures">
+    <div class="meta">Question 3 of 6 · Design Resilient Architectures</div>
+    <div class="q">A financial services company runs a MySQL-compatible relational workload and needs a cross-region disaster recovery solution with a target RPO of about 1 second and the ability to promote the secondary region to be writable within roughly 1 minute during a regional outage. Which solution BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,2,0,2)">A. RDS for MySQL Multi-AZ deployment with a standby replica</button><button class="opt" onclick="answer(this,2,1,2)">B. Cross-Region Automated Backups with point-in-time restore in the secondary region</button><button class="opt" onclick="answer(this,2,2,2)">C. Aurora Global Database with a secondary region for cross-region replication</button><button class="opt" onclick="answer(this,2,3,2)">D. DynamoDB Global Tables configured across the two regions</button>
+    <div class="expl">Aurora Global Database uses dedicated storage-layer replication with typical lag under 1 second and supports promoting a secondary region to full read/write in about 1 minute, meeting both the RPO and RTO targets for a relational workload.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Design Resilient Architectures">
+    <div class="meta">Question 4 of 6 · Design Resilient Architectures</div>
+    <div class="q">A company uses DynamoDB Global Tables replicated across two Regions to support active-active writes. During a network partition, the same item is updated in both Regions at nearly the same time before replication completes. How does DynamoDB Global Tables resolve this write conflict once connectivity is restored?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. DynamoDB requires the application to implement optimistic locking with conditional writes to prevent any conflicting writes</button><button class="opt" onclick="answer(this,3,1,1)">B. DynamoDB uses a last-writer-wins reconciliation based on the internal timestamp of each write</button><button class="opt" onclick="answer(this,3,2,1)">C. DynamoDB rejects both writes and returns a ConditionalCheckFailedException to both regions</button><button class="opt" onclick="answer(this,3,3,1)">D. DynamoDB holds a quorum vote across replicas and applies the write accepted by the majority of regions</button>
+    <div class="expl">DynamoDB Global Tables use a last-writer-wins conflict resolution approach, where the write with the latest internal timestamp across regions is the one that persists after replication converges.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Design Resilient Architectures">
+    <div class="meta">Question 5 of 6 · Design Resilient Architectures</div>
+    <div class="q">A company must insert third-party virtual firewall appliances transparently in-line for all inbound VPC traffic, inspecting and filtering packets at the network layer, while preserving the original source and destination IP addresses and scaling the appliance fleet automatically with demand. Which AWS load balancing solution BEST supports this requirement?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. Gateway Load Balancer using GENEVE encapsulation to distribute traffic to the appliance fleet</button><button class="opt" onclick="answer(this,4,1,0)">B. Application Load Balancer distributing traffic across the appliance fleet</button><button class="opt" onclick="answer(this,4,2,0)">C. Network Load Balancer performing Layer 4 TCP/UDP load balancing to the appliances</button><button class="opt" onclick="answer(this,4,3,0)">D. Classic Load Balancer configured in TCP passthrough mode</button>
+    <div class="expl">Gateway Load Balancer is purpose-built to distribute traffic to fleets of third-party virtual appliances (firewalls, IDS/IPS) using GENEVE encapsulation on port 6081, preserving original packet headers while transparently load balancing and auto scaling the appliance layer.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Design Resilient Architectures">
+    <div class="meta">Question 6 of 6 · Design Resilient Architectures</div>
+    <div class="q">An S3 bucket already contains one million existing objects and has versioning enabled. The company now enables Cross-Region Replication (CRR) to a bucket in another Region. Which statement correctly describes the resulting replication behavior?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. The existing one million objects will not be replicated automatically; S3 Batch Replication must be used to copy them, and delete markers will only replicate if delete marker replication is explicitly enabled in the rule</button><button class="opt" onclick="answer(this,5,1,0)">B. All objects, including the pre-existing one million, are replicated automatically within 15 minutes by default, since CRR always includes S3 Replication Time Control</button><button class="opt" onclick="answer(this,5,2,0)">C. All objects, including pre-existing ones, are replicated automatically, and delete markers always replicate by default to keep both buckets identical</button><button class="opt" onclick="answer(this,5,3,0)">D. CRR cannot be enabled on a bucket that already contains objects; the source bucket must be emptied before configuring replication</button>
+    <div class="expl">S3 CRR only replicates objects created or updated after the replication rule is enabled; pre-existing objects require S3 Batch Replication to backfill them. Delete marker replication is an opt-in setting within the replication rule, not enabled by default.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$109.99</span> <strong>$34.99</strong> with code <span class="code">FREETEST33</span> — valid through September 2.</p>
+  <a href="https://www.udemy.com/course/aws-saa-c04-exam-prep-solutions-architect-associate/?couponCode=FREETEST33" rel="sponsored">Get the full course for $34.99 →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

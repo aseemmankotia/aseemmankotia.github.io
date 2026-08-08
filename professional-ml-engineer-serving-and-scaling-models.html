@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Serving and scaling models Practice Questions — Google Cloud Professional Machine Learning Engineer</title>
+<meta name="description" content="6 free Serving and scaling models practice questions with explanations for the Google Cloud Professional Machine Learning Engineer exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/professional-ml-engineer-serving-and-scaling-models.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free Google Cloud Professional Machine Learning Engineer practice — 6 questions on <strong>Serving and scaling models</strong>, with explanations. No sign-up.
+<a href="professional-ml-engineer.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Serving and scaling models">
+    <div class="meta">Question 1 of 6 · Serving and scaling models</div>
+    <div class="q">A team deploys 40 low-traffic fraud-detection models, one per merchant, each needing its own Vertex AI endpoint for separate IAM and monitoring. Deploying each model to a dedicated n1-standard-4 machine type is costing far more than expected because most models receive only a few requests per hour. What should they do to reduce compute cost while keeping the models on separate endpoints?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. Combine all 40 models into a single multi-output custom container so only one endpoint is billed</button><button class="opt" onclick="answer(this,0,1,3)">B. Switch every endpoint's machine type to a GPU-backed instance to increase throughput per node</button><button class="opt" onclick="answer(this,0,2,3)">C. Set max_replica_count to 1 on each endpoint to force Vertex AI to consolidate them onto shared hardware automatically</button><button class="opt" onclick="answer(this,0,3,3)">D. Create a Deployment Resource Pool and deploy the 40 models to share the same underlying compute resources across their separate endpoints</button>
+    <div class="expl">Deployment Resource Pools let multiple deployed models (even across different endpoints) share the same set of VM/accelerator resources, which is exactly the pattern for many low-QPS models that don't each need dedicated nodes -- the endpoints and IAM stay separate, but compute is pooled.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Serving and scaling models">
+    <div class="meta">Question 2 of 6 · Serving and scaling models</div>
+    <div class="q">A healthcare company must call its Vertex AI online prediction endpoint from an on-premises data center connected via Cloud Interconnect, and network security requires that prediction traffic never traverse the public internet or receive a publicly routable IP. Which Vertex AI serving configuration satisfies this requirement?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. A public endpoint protected by a VPC Service Controls perimeter</button><button class="opt" onclick="answer(this,1,1,2)">B. A public endpoint with an API key restricted to the on-prem IP range</button><button class="opt" onclick="answer(this,1,2,2)">C. A private endpoint using Private Service Connect into the customer's VPC</button><button class="opt" onclick="answer(this,1,3,2)">D. A batch prediction job scheduled to run inside the on-prem data center</button>
+    <div class="expl">Vertex AI private endpoints exposed via Private Service Connect place prediction traffic entirely on private Google network paths reachable from a peered/connected VPC, with no public IP involved -- this is the supported pattern for on-prem-to-Vertex AI serving over Interconnect without touching the public internet.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Serving and scaling models">
+    <div class="meta">Question 3 of 6 · Serving and scaling models</div>
+    <div class="q">A team deploys a model on Vertex AI Prediction using n1-standard-8 nodes each with one NVIDIA T4 GPU attached. They configure autoscaling based only on CPU utilization with a 60% target, but during load tests the endpoint fails to scale up even though GPU-bound inference latency spikes badly under load. What is the most likely cause and fix?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. GPUs cannot be used with Vertex AI autoscaling at all; the team must switch to CPU-only nodes</button><button class="opt" onclick="answer(this,2,1,3)">B. The target utilization of 60% is too high; it should be lowered to 10% for GPU-backed deployments</button><button class="opt" onclick="answer(this,2,2,3)">C. Autoscaling requires min_replica_count and max_replica_count to be equal when GPUs are attached</button><button class="opt" onclick="answer(this,2,3,3)">D. CPU utilization stays low because the bottleneck is the GPU; autoscaling should instead target the GPU duty cycle metric</button>
+    <div class="expl">When a deployment uses accelerators, CPU utilization is often a poor proxy for load because the GPU is the actual bottleneck; Vertex AI supports autoscaling on the accelerator duty cycle metric (aiplatform.googleapis.com/prediction/online/accelerator/duty_cycle), which is the correct signal to configure for GPU-backed endpoints.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Serving and scaling models">
+    <div class="meta">Question 4 of 6 · Serving and scaling models</div>
+    <div class="q">A retailer has Model V1 serving 100% of traffic on a Vertex AI endpoint. They want to gradually roll out Model V2, sending it only 5% of live traffic initially so they can compare business KPIs before a full cutover, without redeploying V1. What is the correct way to do this on Vertex AI?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. Deploy V2 to a completely separate endpoint and manually route 5% of client requests to it using client-side random sampling</button><button class="opt" onclick="answer(this,3,1,2)">B. Deploy V2 as a batch prediction job and compare its output offline before touching the online endpoint</button><button class="opt" onclick="answer(this,3,2,2)">C. Deploy V2 to the same endpoint and update the endpoint's traffic split so V1 gets 95% and V2 gets 5%</button><button class="opt" onclick="answer(this,3,3,2)">D. Replace V1 with V2 on the endpoint, then use endpoint versioning to roll back if V2 underperforms</button>
+    <div class="expl">Vertex AI endpoints support deploying multiple models simultaneously and setting a traffic_split map (e.g., {v1_id: 95, v2_id: 5}) so a percentage of live prediction requests is routed to each deployed model automatically -- this is the native mechanism for canary/A-B rollout without any client-side logic or redeployment.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Serving and scaling models">
+    <div class="meta">Question 5 of 6 · Serving and scaling models</div>
+    <div class="q">An image classification model deployed on a Vertex AI endpoint with an NVIDIA T4 GPU must respond in under 50ms at the 95th percentile for a mobile app, but current p95 latency is 120ms even after increasing max_replica_count. Profiling shows the GPU itself, not queuing, is the bottleneck per-request. What should the team try next to reduce per-request latency without changing the model's architecture?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. Increase min_replica_count so more replicas are always warm and ready</button><button class="opt" onclick="answer(this,4,1,2)">B. Switch the endpoint to CPU-only n2-highcpu machines, which have lower cold-start latency than GPU nodes</button><button class="opt" onclick="answer(this,4,2,2)">C. Convert the model to use an optimized runtime such as TensorRT with INT8 quantization to cut per-inference compute time on the same hardware</button><button class="opt" onclick="answer(this,4,3,2)">D. Increase the request timeout setting on the endpoint so slow requests are less likely to be dropped</button>
+    <div class="expl">Since queuing was ruled out and the bottleneck is per-request GPU compute time, the fix must reduce the actual inference compute cost. Converting to an optimized inference runtime (e.g., TensorRT) with INT8 quantization reduces per-request latency on the same GPU by using faster kernels and lower-precision math, directly addressing a compute-bound bottleneck.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Serving and scaling models">
+    <div class="meta">Question 6 of 6 · Serving and scaling models</div>
+    <div class="q">A logistics company needs to score 200 million shipment records nightly with a trained tabular model, writing predictions back to BigQuery. There is no requirement for sub-second responses, and the pipeline must run unattended on a schedule with minimal ongoing infrastructure cost. Which serving approach best fits these requirements?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. Deploy the model to a Vertex AI online endpoint with autoscaling set to a high max_replica_count and call it from a scheduled Cloud Function</button><button class="opt" onclick="answer(this,5,1,1)">B. Use Vertex AI batch prediction, reading directly from and writing directly to BigQuery on a nightly schedule</button><button class="opt" onclick="answer(this,5,2,1)">C. Deploy the model behind a private endpoint and score records one at a time from a Dataflow streaming pipeline</button><button class="opt" onclick="answer(this,5,3,1)">D. Keep an online endpoint running 24/7 with min_replica_count set to handle peak nightly load</button>
+    <div class="expl">Vertex AI batch prediction is purpose-built for large-scale, non-latency-sensitive scoring jobs, natively supports BigQuery as both input and output, runs on-demand without keeping infrastructure always on, and is the most cost-efficient option for a scheduled nightly job over 200M rows.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$129.99</span> <strong>$34.99</strong> with code <span class="code">FREETEST33</span> — valid through September 7.</p>
+  <a href="https://www.udemy.com/course/google-cloud-professional-ml-engineer-exam-prep/?couponCode=FREETEST33" rel="sponsored">Get the full course for $34.99 →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

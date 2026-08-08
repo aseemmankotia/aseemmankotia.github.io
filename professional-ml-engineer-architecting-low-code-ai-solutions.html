@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Architecting low-code AI solutions Practice Questions — Google Cloud Professional Machine Learning Engineer</title>
+<meta name="description" content="6 free Architecting low-code AI solutions practice questions with explanations for the Google Cloud Professional Machine Learning Engineer exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/professional-ml-engineer-architecting-low-code-ai-solutions.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free Google Cloud Professional Machine Learning Engineer practice — 6 questions on <strong>Architecting low-code AI solutions</strong>, with explanations. No sign-up.
+<a href="professional-ml-engineer.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Architecting low-code AI solutions">
+    <div class="meta">Question 1 of 6 · Architecting low-code AI solutions</div>
+    <div class="q">A retail company's transaction data already lives in BigQuery. The data science team wants to train a churn-prediction model using AutoML's automated feature engineering and neural architecture search, but the ML engineer insists on keeping the entire workflow in SQL without exporting data or moving to the Vertex AI console. Which approach satisfies this requirement?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. Use BigQuery ML CREATE MODEL with model_type='AUTOML_CLASSIFIER' (or AUTOML_REGRESSOR) directly on the BigQuery table</button><button class="opt" onclick="answer(this,0,1,0)">B. Export the BigQuery table to Cloud Storage and train an AutoML Tabular model in the Vertex AI console</button><button class="opt" onclick="answer(this,0,2,0)">C. Use BigQuery ML CREATE MODEL with model_type='BOOSTED_TREE_CLASSIFIER' and manually tune hyperparameters</button><button class="opt" onclick="answer(this,0,3,0)">D. Use BigQuery ML CREATE MODEL with model_type='LOGISTIC_REG' since it is the closest SQL-native equivalent to AutoML</button>
+    <div class="expl">BigQuery ML supports training AutoML Tables models directly from SQL using model_type='AUTOML_CLASSIFIER' or 'AUTOML_REGRESSOR' in CREATE MODEL, giving automated feature engineering and architecture search without leaving BigQuery or exporting data.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Architecting low-code AI solutions">
+    <div class="meta">Question 2 of 6 · Architecting low-code AI solutions</div>
+    <div class="q">A finance team receives invoices from thousands of different vendors, each with a distinct layout. They need to extract structured fields like invoice number, vendor name, line items, and total amount with high accuracy and minimal engineering effort. Which solution BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. Use the Vertex AI Vision OCR pretrained API to extract raw text, then write custom regex parsing logic</button><button class="opt" onclick="answer(this,1,1,2)">B. Train a custom AutoML Vision object detection model to locate and label invoice fields</button><button class="opt" onclick="answer(this,1,2,2)">C. Use Document AI's specialized pretrained Invoice parser processor</button><button class="opt" onclick="answer(this,1,3,2)">D. Train an AutoML Document custom extractor model using a labeled dataset of the vendor invoices</button>
+    <div class="expl">Document AI provides specialized, pretrained processors for common document types including invoices, which already understand key-value fields like invoice number, vendor, and totals across varying layouts — requiring no training data or custom labeling.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Architecting low-code AI solutions">
+    <div class="meta">Question 3 of 6 · Architecting low-code AI solutions</div>
+    <div class="q">A team trains a BigQuery ML linear regression model using CREATE MODEL with a TRANSFORM clause that includes ML.STANDARD_SCALER and ML.BUCKETIZE on input columns. At prediction time, they call ML.PREDICT on new raw data. What happens to the preprocessing logic defined in TRANSFORM?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. It is saved as part of the model and automatically applied to the input data at prediction time, eliminating train/serve skew</button><button class="opt" onclick="answer(this,2,1,0)">B. It is ignored during prediction, so the raw input data must be manually rescaled and bucketized before calling ML.PREDICT</button><button class="opt" onclick="answer(this,2,2,0)">C. It only applies to numeric columns; categorical transformations must be reapplied manually before prediction</button><button class="opt" onclick="answer(this,2,3,0)">D. It is applied only once during training and baked permanently into the model weights, requiring retraining if the transform logic changes</button>
+    <div class="expl">The TRANSFORM clause in BigQuery ML CREATE MODEL captures preprocessing steps and persists them with the model. ML.PREDICT automatically applies these same transformations to new input data, ensuring consistency between training and serving and avoiding train/serve skew.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Architecting low-code AI solutions">
+    <div class="meta">Question 4 of 6 · Architecting low-code AI solutions</div>
+    <div class="q">An ML engineer is evaluating Model Garden in Vertex AI as part of a low-code strategy. Which statement BEST describes what Model Garden provides compared to AutoML?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. Model Garden trains new custom models from a customer's labeled dataset using automated architecture search, exactly like AutoML</button><button class="opt" onclick="answer(this,3,1,1)">B. Model Garden is a catalog of foundation, open-source, and task-specific models (such as Gemini, Imagen, and third-party/open models) that can be discovered, tested, deployed, or fine-tuned, without requiring the customer to train a model from scratch</button><button class="opt" onclick="answer(this,3,2,1)">C. Model Garden is limited exclusively to Google's proprietary Gemini models and cannot be used with any open-source or third-party models</button><button class="opt" onclick="answer(this,3,3,1)">D. Model Garden replaces BigQuery ML entirely for SQL-based tabular model training</button>
+    <div class="expl">Model Garden is Vertex AI's model catalog offering access to Google first-party foundation models, third-party partner models, and open-source models — enabling discovery, testing, one-click deployment, or fine-tuning, in contrast to AutoML which trains a custom model from your own labeled dataset.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Architecting low-code AI solutions">
+    <div class="meta">Question 5 of 6 · Architecting low-code AI solutions</div>
+    <div class="q">A video-sharing platform needs to automatically flag uploaded videos containing explicit or violent content at scale, with results needed within hours of launch and no labeled training data available. Which approach BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. Train an AutoML Video Classification model using a custom taxonomy of explicit/violent content labels</button><button class="opt" onclick="answer(this,4,1,2)">B. Extract video frames and run them through the Vision API's SafeSearch detection feature frame-by-frame</button><button class="opt" onclick="answer(this,4,2,2)">C. Use the Video Intelligence API's built-in Explicit Content Detection feature</button><button class="opt" onclick="answer(this,4,3,2)">D. Build a custom video classification model using Vertex AI custom training with a pretrained checkpoint from Model Garden</button>
+    <div class="expl">The Video Intelligence API includes a pretrained Explicit Content Detection feature specifically designed to flag adult/violent content in videos out of the box, requiring no training data and enabling immediate deployment.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Architecting low-code AI solutions">
+    <div class="meta">Question 6 of 6 · Architecting low-code AI solutions</div>
+    <div class="q">A developer is preparing a minimal proof-of-concept using AutoML Vision (single-label image classification) and needs to know the exam-tested minimum data requirement. What is the minimum number of training images required per label to successfully train an AutoML Vision image classification model (though Google recommends far more for production accuracy)?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. 1,000 images per label</button><button class="opt" onclick="answer(this,5,1,1)">B. 10 images per label</button><button class="opt" onclick="answer(this,5,2,1)">C. 100 images per label</button><button class="opt" onclick="answer(this,5,3,1)">D. 50 images per label</button>
+    <div class="expl">AutoML Vision requires a minimum of 10 training images per label to begin training a single-label image classification model, though Google explicitly recommends at least 100 images per label for reliable production-quality accuracy.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$129.99</span> <strong>$34.99</strong> with code <span class="code">FREETEST33</span> — valid through September 7.</p>
+  <a href="https://www.udemy.com/course/google-cloud-professional-ml-engineer-exam-prep/?couponCode=FREETEST33" rel="sponsored">Get the full course for $34.99 →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

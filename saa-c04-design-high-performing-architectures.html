@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Design High-Performing Architectures Practice Questions — AWS Certified Solutions Architect – Associate (SAA-C04)</title>
+<meta name="description" content="6 free Design High-Performing Architectures practice questions with explanations for the AWS Certified Solutions Architect – Associate (SAA-C04) exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/saa-c04-design-high-performing-architectures.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free AWS Certified Solutions Architect – Associate (SAA-C04) practice — 6 questions on <strong>Design High-Performing Architectures</strong>, with explanations. No sign-up.
+<a href="saa-c04.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Design High-Performing Architectures">
+    <div class="meta">Question 1 of 6 · Design High-Performing Architectures</div>
+    <div class="q">A genomics research company runs a PostgreSQL database on EC2 that requires sustained 220,000 IOPS and sub-millisecond latency for variant-calling queries. Which EBS volume type meets this requirement?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. gp3 volume with maximum provisioned IOPS</button><button class="opt" onclick="answer(this,0,1,3)">B. Instance store (NVMe SSD) volume</button><button class="opt" onclick="answer(this,0,2,3)">C. st1 throughput-optimized HDD volume</button><button class="opt" onclick="answer(this,0,3,3)">D. io2 Block Express volume</button>
+    <div class="expl">io2 Block Express supports up to 256,000 IOPS and 4,000 MB/s throughput with sub-millisecond latency on Nitro-based instances, meeting both the IOPS and latency requirements.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Design High-Performing Architectures">
+    <div class="meta">Question 2 of 6 · Design High-Performing Architectures</div>
+    <div class="q">A serverless order-processing Lambda function experiences cold-start latency spikes of 3-5 seconds during flash-sale traffic bursts, causing checkout timeouts. The function must respond in under 200ms consistently even during rapid scale-out events. Which configuration BEST resolves this?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. Increase the function's reserved concurrency limit</button><button class="opt" onclick="answer(this,1,1,3)">B. Increase the Lambda memory allocation to the maximum 10,240 MB</button><button class="opt" onclick="answer(this,1,2,3)">C. Switch the function's trigger to an SQS FIFO queue to throttle bursts</button><button class="opt" onclick="answer(this,1,3,3)">D. Enable Provisioned Concurrency and configure Application Auto Scaling to scale it based on utilization</button>
+    <div class="expl">Provisioned Concurrency keeps execution environments pre-initialized so new invocations skip the cold-start init phase; pairing it with Application Auto Scaling lets the pool grow ahead of predictable traffic bursts like flash sales.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Design High-Performing Architectures">
+    <div class="meta">Question 3 of 6 · Design High-Performing Architectures</div>
+    <div class="q">A mobile multiplayer game uses a custom UDP-based protocol for real-time player position updates and needs consistent low-latency global routing to the nearest healthy regional endpoint, with static IP addresses for firewall allowlisting. Which service should the solutions architect select?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. AWS Global Accelerator</button><button class="opt" onclick="answer(this,2,1,0)">B. Amazon CloudFront with UDP origin failover</button><button class="opt" onclick="answer(this,2,2,0)">C. Amazon Route 53 latency-based routing</button><button class="opt" onclick="answer(this,2,3,0)">D. Elastic Load Balancing with cross-zone load balancing enabled</button>
+    <div class="expl">Global Accelerator provides static anycast IP addresses and routes non-HTTP TCP/UDP traffic over the AWS global network to the nearest healthy endpoint, with fast automatic failover — ideal for real-time gaming and IoT protocols.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Design High-Performing Architectures">
+    <div class="meta">Question 4 of 6 · Design High-Performing Architectures</div>
+    <div class="q">An e-commerce product catalog service backed by DynamoDB experiences read latency of 5-10ms during peak traffic, but the business requires microsecond-level response times for read-heavy catalog lookups without extensive application refactoring. Which solution BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. Deploy an Amazon ElastiCache for Redis cluster and update the application to check cache before querying DynamoDB</button><button class="opt" onclick="answer(this,3,1,1)">B. Enable DynamoDB Accelerator (DAX) in front of the DynamoDB table</button><button class="opt" onclick="answer(this,3,2,1)">C. Switch the table to DynamoDB Standard-Infrequent Access table class</button><button class="opt" onclick="answer(this,3,3,1)">D. Enable DynamoDB auto scaling on the table's read capacity</button>
+    <div class="expl">DAX is a DynamoDB-native, API-compatible in-memory cache that delivers microsecond read latency; because it's API-compatible, applications typically only need to swap the DynamoDB client for the DAX client, requiring minimal refactoring.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Design High-Performing Architectures">
+    <div class="meta">Question 5 of 6 · Design High-Performing Architectures</div>
+    <div class="q">A logistics company ingests GPS telemetry from 50,000 delivery vehicles, producing highly variable throughput throughout the day (from 5,000 to 500,000 records/second). Data must land in S3 within 60 seconds of ingestion for near-real-time dashboards, and the team wants to avoid managing shard capacity manually. Which solution meets these requirements with the LEAST operational overhead?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. Amazon Kinesis Data Streams in provisioned mode with manual shard scaling</button><button class="opt" onclick="answer(this,4,1,2)">B. Amazon Kinesis Data Streams in on-demand mode, with a separate Lambda consumer writing to S3</button><button class="opt" onclick="answer(this,4,2,2)">C. Amazon Data Firehose with a direct PUT source delivering to S3</button><button class="opt" onclick="answer(this,4,3,2)">D. Amazon MSK (Managed Streaming for Kafka) with auto-scaling brokers</button>
+    <div class="expl">Data Firehose automatically scales to handle variable throughput, requires no shard or consumer management, and buffers data with a minimum interval of 60 seconds before delivering to S3 — directly matching the near-real-time and low-ops requirements.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Design High-Performing Architectures">
+    <div class="meta">Question 6 of 6 · Design High-Performing Architectures</div>
+    <div class="q">A media company in Sydney needs to upload large 4K video files (50-100 GB each) to an S3 bucket in the us-east-1 region several times per day. Setting up a dedicated network connection would take weeks and isn't justified for this workload volume. Which approach provides the FASTEST uploads with the LEAST setup time?</div>
+    <button class="opt" onclick="answer(this,5,0,2)">A. Provision an AWS Direct Connect connection between the Sydney office and us-east-1</button><button class="opt" onclick="answer(this,5,1,2)">B. Use AWS Snowball devices shipped between Sydney and us-east-1</button><button class="opt" onclick="answer(this,5,2,2)">C. Enable S3 Transfer Acceleration on the destination bucket and upload via the s3-accelerate endpoint</button><button class="opt" onclick="answer(this,5,3,2)">D. Set up a Site-to-Site VPN connection to a VPC in us-east-1 and upload through an EC2 bastion</button>
+    <div class="expl">S3 Transfer Acceleration routes uploads through the nearest CloudFront edge location and over the AWS global network backbone to the destination bucket, dramatically improving upload speed over long distances, and can be enabled in minutes with no infrastructure to provision.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$109.99</span> <strong>$34.99</strong> with code <span class="code">FREETEST33</span> — valid through September 2.</p>
+  <a href="https://www.udemy.com/course/aws-saa-c04-exam-prep-solutions-architect-associate/?couponCode=FREETEST33" rel="sponsored">Get the full course for $34.99 →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

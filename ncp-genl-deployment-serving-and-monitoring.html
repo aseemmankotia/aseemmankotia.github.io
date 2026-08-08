@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Deployment, Serving, and Monitoring Practice Questions — NVIDIA-Certified Professional: Generative AI and LLMs</title>
+<meta name="description" content="6 free Deployment, Serving, and Monitoring practice questions with explanations for the NVIDIA-Certified Professional: Generative AI and LLMs exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/ncp-genl-deployment-serving-and-monitoring.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free NVIDIA-Certified Professional: Generative AI and LLMs practice — 6 questions on <strong>Deployment, Serving, and Monitoring</strong>, with explanations. No sign-up.
+<a href="ncp-genl.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Deployment, Serving, and Monitoring">
+    <div class="meta">Question 1 of 6 · Deployment, Serving, and Monitoring</div>
+    <div class="q">A team serves an LLM via Triton Inference Server behind a strict 50ms p99 latency SLA. Throughput is inadequate at low concurrency even though GPU utilization is low. Which config.pbtxt change BEST increases throughput while still respecting the SLA?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. Set max_queue_delay_microseconds to a high value like 500000 microseconds to maximize batch fill before execution</button><button class="opt" onclick="answer(this,0,1,3)">B. Disable dynamic batching entirely and rely solely on increasing the instance_group count</button><button class="opt" onclick="answer(this,0,2,3)">C. Set max_batch_size to 1 to guarantee the lowest possible per-request latency</button><button class="opt" onclick="answer(this,0,3,3)">D. Enable dynamic_batching with preferred_batch_size tuned to common request sizes and max_queue_delay_microseconds set well below the SLA's remaining latency budget (e.g., 10000 microseconds)</button>
+    <div class="expl">Dynamic batching with a preferred_batch_size matched to real traffic and a small max_queue_delay_microseconds fills batches for throughput gains without exceeding the millisecond-scale latency budget left after the SLA.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Deployment, Serving, and Monitoring">
+    <div class="meta">Question 2 of 6 · Deployment, Serving, and Monitoring</div>
+    <div class="q">A financial services company must replace a production LLM (v1) with a newly fine-tuned version (v2) with zero downtime, and needs the ability to instantly roll back if the hallucination rate exceeds a threshold once observed on real user traffic. Which deployment pattern BEST satisfies these requirements?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. Blue-green deployment that switches 100% of traffic from v1 to v2 at once after passing offline evaluation</button><button class="opt" onclick="answer(this,1,1,2)">B. Shadow deployment that duplicates all traffic to v2 without returning any v2 responses to users, then fully switches after one week regardless of findings</button><button class="opt" onclick="answer(this,1,2,2)">C. Canary rollout that routes a small percentage (e.g., 5%) of live traffic to v2 while monitoring quality metrics, with automated rollback triggers tied to the hallucination threshold</button><button class="opt" onclick="answer(this,1,3,2)">D. A/B testing that permanently splits traffic 50/50 between v1 and v2 to gather long-term user preference data</button>
+    <div class="expl">Canary rollout exposes only a small fraction of live users to v2, lets real-traffic quality metrics (like hallucination rate) be measured against a defined threshold, and supports automated, near-instant rollback with zero downtime.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Deployment, Serving, and Monitoring">
+    <div class="meta">Question 3 of 6 · Deployment, Serving, and Monitoring</div>
+    <div class="q">A platform must serve 200 customer-specific LoRA-adapted variants of the same base LLM cost-effectively, with sub-second adapter switching and without loading 200 full model copies onto GPUs. Which approach BEST meets this on the NVIDIA stack?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. Use NVIDIA NIM's multi-LoRA serving to host a single shared base model with adapters dynamically loaded from shared GPU memory</button><button class="opt" onclick="answer(this,2,1,0)">B. Deploy 200 separate Triton model instances, each loading its own full copy of the base model plus adapter</button><button class="opt" onclick="answer(this,2,2,0)">C. Merge all 200 LoRA adapters into the base weights offline and deploy 200 fully merged model checkpoints</button><button class="opt" onclick="answer(this,2,3,0)">D. Compile a separate optimized TensorRT-LLM engine per adapter and store all 200 engines in the Triton model repository</button>
+    <div class="expl">NIM's multi-LoRA support serves one shared base model on GPU and hot-swaps lightweight adapter weights per request, minimizing memory footprint and enabling fast, dynamic switching across many tenants.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Deployment, Serving, and Monitoring">
+    <div class="meta">Question 4 of 6 · Deployment, Serving, and Monitoring</div>
+    <div class="q">In Triton Inference Server, what is the key functional difference between 'dynamic batching' and 'concurrent model execution' (instance groups)?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. Both mechanisms refer to the same process of splitting a single request's computation across multiple GPUs</button><button class="opt" onclick="answer(this,3,1,3)">B. Dynamic batching only applies to CPU-deployed models, while concurrent execution only applies to GPU-deployed models</button><button class="opt" onclick="answer(this,3,2,3)">C. Concurrent execution merges incoming requests into batches, while dynamic batching creates additional model instances</button><button class="opt" onclick="answer(this,3,3,3)">D. Dynamic batching combines multiple incoming inference requests into a single batch before execution, while concurrent execution runs multiple separate instances of the same model in parallel to serve independent requests</button>
+    <div class="expl">Dynamic batching groups independent requests into a batch for a single execution to raise throughput; instance groups configure how many parallel copies of the model run to serve concurrent requests independently — the two are complementary but distinct mechanisms.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Deployment, Serving, and Monitoring">
+    <div class="meta">Question 5 of 6 · Deployment, Serving, and Monitoring</div>
+    <div class="q">A production RAG-based LLM system's monitoring dashboard shows a gradual increase in retrieval-answer mismatch rate over three weeks, with no code, model, or infrastructure changes deployed in that period. What is the MOST likely root cause and appropriate MLOps action?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. GPU hardware degradation; the action is to replace GPUs and redeploy the identical model with no other changes</button><button class="opt" onclick="answer(this,4,1,2)">B. Network latency increase between Triton and the vector database; the action is to horizontally scale the load balancer</button><button class="opt" onclick="answer(this,4,2,2)">C. Data drift in the underlying knowledge corpus or user query distribution; the action is to trigger corpus re-indexing and evaluate whether the retriever or LLM needs re-tuning</button><button class="opt" onclick="answer(this,4,3,2)">D. Model container image corruption; the action is to redeploy the container from the same image tag</button>
+    <div class="expl">A slow, steady degradation in answer quality with no infra or code change is the textbook signature of data or concept drift — the corpus or query patterns have shifted away from what the retriever/model were tuned on, warranting re-indexing and a retraining/re-tuning evaluation per standard LLM lifecycle practice.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Deployment, Serving, and Monitoring">
+    <div class="meta">Question 6 of 6 · Deployment, Serving, and Monitoring</div>
+    <div class="q">An LLM inference service running Triton on Kubernetes experiences bursty traffic. The team configured the Horizontal Pod Autoscaler (HPA) using average CPU utilization, but users still see latency spikes during bursts even though CPU stays below 40%. What is the BEST fix?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. Increase the CPU utilization scale-out threshold from 40% to 60% to make scaling more conservative</button><button class="opt" onclick="answer(this,5,1,3)">B. Remove HPA entirely and manually scale the deployment to a fixed high replica count at all times</button><button class="opt" onclick="answer(this,5,2,3)">C. Increase the number of CPU cores allocated to each pod without changing the autoscaling metric</button><button class="opt" onclick="answer(this,5,3,3)">D. Switch the autoscaling metric to a custom metric such as GPU utilization or Triton's inference queue depth/pending request count, since CPU is not representative of GPU-bound LLM inference load</button>
+    <div class="expl">LLM inference load is GPU-bound, so CPU utilization is a poor autoscaling signal; scaling on GPU utilization or Triton's queue depth (via a custom metrics adapter or KEDA) accurately reflects real inference pressure and triggers timely scale-out during bursts.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$129.99</span> <strong>$34.99</strong> with code <span class="code">FREETEST33</span> — valid through September 7.</p>
+  <a href="https://www.udemy.com/course/ncp-genl-nvidia-generative-ai-llms-cert-prep/?couponCode=FREETEST33" rel="sponsored">Get the full course for $34.99 →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

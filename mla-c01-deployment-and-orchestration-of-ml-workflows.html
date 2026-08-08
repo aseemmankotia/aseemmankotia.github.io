@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Deployment and Orchestration of ML Workflows Practice Questions — AWS Certified Machine Learning Engineer - Associate</title>
+<meta name="description" content="6 free Deployment and Orchestration of ML Workflows practice questions with explanations for the AWS Certified Machine Learning Engineer - Associate exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/mla-c01-deployment-and-orchestration-of-ml-workflows.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free AWS Certified Machine Learning Engineer - Associate practice — 6 questions on <strong>Deployment and Orchestration of ML Workflows</strong>, with explanations. No sign-up.
+<a href="mla-c01.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Deployment and Orchestration of ML Workflows">
+    <div class="meta">Question 1 of 6 · Deployment and Orchestration of ML Workflows</div>
+    <div class="q">An ML team serves a fraud-detection model where individual inference requests carry payloads up to 500 MB (batches of transaction images) and can take up to 20 minutes to process. Traffic arrives in unpredictable bursts with long idle periods overnight, and the team wants to avoid paying for idle compute during those periods. Which deployment option BEST satisfies these requirements?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. Deploy a SageMaker serverless inference endpoint so capacity scales to zero automatically between requests</button><button class="opt" onclick="answer(this,0,1,2)">B. Deploy a SageMaker real-time endpoint with a target-tracking auto scaling policy with MinCapacity set to 1</button><button class="opt" onclick="answer(this,0,2,2)">C. Deploy a SageMaker asynchronous inference endpoint and configure the auto scaling policy with MinCapacity set to 0</button><button class="opt" onclick="answer(this,0,3,2)">D. Run a SageMaker batch transform job on a schedule to process incoming requests every hour</button>
+    <div class="expl">Asynchronous inference supports payloads up to 1 GB and processing times up to one hour, queues requests in S3, and its auto scaling can be configured with MinCapacity=0 so no instances run (and no cost is incurred) during idle periods, resuming automatically when a request arrives.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Deployment and Orchestration of ML Workflows">
+    <div class="meta">Question 2 of 6 · Deployment and Orchestration of ML Workflows</div>
+    <div class="q">A company trains a separate XGBoost model per customer (currently 400 customers, growing weekly). All requests use the same container image and framework, but each request must be routed to that specific customer's model artifact, and idle models should not consume dedicated compute. Which hosting pattern minimizes cost and operational overhead?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. A multi-model endpoint (MME) with all customer model artifacts stored in S3 and selected via the TargetModel parameter on invocation</button><button class="opt" onclick="answer(this,1,1,0)">B. A multi-container endpoint with each customer's model deployed as a separate container behind the same endpoint</button><button class="opt" onclick="answer(this,1,2,0)">C. One dedicated SageMaker real-time endpoint per customer to guarantee isolation</button><button class="opt" onclick="answer(this,1,3,0)">D. A multi-variant endpoint using production variants to split traffic across customer models</button>
+    <div class="expl">Multi-model endpoints are purpose-built for hosting many models sharing the same framework/container behind a single endpoint; artifacts are stored in S3, loaded on demand, and cached, with the specific model selected per request via the TargetModel parameter -- this scales to thousands of models cost-effectively.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Deployment and Orchestration of ML Workflows">
+    <div class="meta">Question 3 of 6 · Deployment and Orchestration of ML Workflows</div>
+    <div class="q">A data science lead must manually review and approve each new model version before it can be promoted to production. The team wants deployment to CodePipeline to trigger automatically and ONLY when that manual approval occurs in SageMaker Model Registry, with no other trigger causing a production deployment. Which configuration correctly implements this?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. Create an EventBridge rule that matches the &quot;SageMaker Model Package State Change&quot; event with a detail filter on ModelApprovalStatus equal to Approved, with CodePipeline as the target</button><button class="opt" onclick="answer(this,2,1,0)">B. Configure SageMaker Pipelines to set ModelApprovalStatus to Approved automatically after training completes, then trigger CodePipeline on every new model package version</button><button class="opt" onclick="answer(this,2,2,0)">C. Create a CloudWatch alarm on the model's training job CompletionTime metric that invokes CodePipeline once the threshold is breached</button><button class="opt" onclick="answer(this,2,3,0)">D. Schedule a CodeBuild job to run nightly, checking all registered model packages and redeploying the most recent one regardless of approval status</button>
+    <div class="expl">SageMaker emits a native &quot;SageMaker Model Package State Change&quot; event to EventBridge whenever ModelApprovalStatus changes; filtering that rule specifically on Approved and targeting CodePipeline ensures the pipeline runs only in response to the intended manual approval action, with no polling or unrelated triggers.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Deployment and Orchestration of ML Workflows">
+    <div class="meta">Question 4 of 6 · Deployment and Orchestration of ML Workflows</div>
+    <div class="q">A team has compiled a transformer model with the AWS Neuron SDK and needs to host it for real-time inference, prioritizing the lowest cost per inference while still meeting a strict low-latency SLA. Which instance family should they select for the SageMaker endpoint?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. ml.inf2 (AWS Inferentia2-based instances)</button><button class="opt" onclick="answer(this,3,1,0)">B. ml.c6i (compute-optimized CPU instances)</button><button class="opt" onclick="answer(this,3,2,0)">C. ml.p4d (GPU instances optimized for large-scale distributed training)</button><button class="opt" onclick="answer(this,3,3,0)">D. ml.g5 (general-purpose GPU instances)</button>
+    <div class="expl">Inferentia2-based ml.inf2 instances are purpose-built accelerators for inference and are used specifically with models compiled via the Neuron SDK, delivering the lowest cost-per-inference for supported deep learning models such as transformers while meeting low-latency requirements.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Deployment and Orchestration of ML Workflows">
+    <div class="meta">Question 5 of 6 · Deployment and Orchestration of ML Workflows</div>
+    <div class="q">A SageMaker real-time endpoint hosts a GPU-backed model. The team observes that GPU utilization spikes and saturates well before the SageMakerVariantInvocationsPerInstance metric reaches levels that would trigger the existing target-tracking auto scaling policy, causing latency SLA breaches during bursts. What is the MOST effective fix?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. Switch the endpoint to serverless inference so SageMaker manages GPU scaling automatically</button><button class="opt" onclick="answer(this,4,1,1)">B. Configure a target-tracking scaling policy using a custom CloudWatch metric (e.g., GPU utilization) published from the endpoint instead of relying solely on invocations-per-instance</button><button class="opt" onclick="answer(this,4,2,1)">C. Increase only the MaxCapacity value on the existing auto scaling policy without changing the metric used</button><button class="opt" onclick="answer(this,4,3,1)">D. Switch to step scaling based on the same SageMakerVariantInvocationsPerInstance metric with smaller step adjustments</button>
+    <div class="expl">When the default invocations-per-instance metric doesn't correlate well with the actual resource bottleneck (GPU saturation), SageMaker auto scaling supports target tracking on a custom CloudWatch metric, allowing scaling decisions to be driven by the metric that actually reflects load, resolving the mismatch.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Deployment and Orchestration of ML Workflows">
+    <div class="meta">Question 6 of 6 · Deployment and Orchestration of ML Workflows</div>
+    <div class="q">A team wants to safely roll out a new model version to a production SageMaker real-time endpoint by shifting live traffic gradually in fixed percentage increments over time (e.g., 10% every 5 minutes) and automatically rolling back if a CloudWatch alarm on error rate fires, all without introducing an external deployment service. Which approach correctly achieves this using native SageMaker capabilities?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. Call UpdateEndpoint with a DeploymentConfig specifying BlueGreenUpdatePolicy, TrafficRoutingConfiguration Type set to LINEAR, and an AutoRollbackConfiguration referencing the CloudWatch alarm</button><button class="opt" onclick="answer(this,5,1,0)">B. Deploy the new model using an AWS CodeDeploy blue/green deployment application configured to manage the SageMaker endpoint</button><button class="opt" onclick="answer(this,5,2,0)">C. Call UpdateEndpoint with DeploymentConfig TrafficRoutingConfiguration Type set to ALL_AT_ONCE and monitor manually for errors</button><button class="opt" onclick="answer(this,5,3,0)">D. Manually create two production variants and adjust their InitialVariantWeight values by hand every 5 minutes</button>
+    <div class="expl">SageMaker endpoints support native deployment guardrails via UpdateEndpoint's DeploymentConfig: BlueGreenUpdatePolicy with TrafficRoutingConfiguration Type=LINEAR shifts traffic in equal fixed percentage steps at a configured interval, and AutoRollbackConfiguration tied to CloudWatch alarms triggers an automatic rollback -- exactly matching the requirement without any external deployment tooling.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$109.99</span> <strong>$34.99</strong> with code <span class="code">FREETEST33</span> — valid through September 7.</p>
+  <a href="https://www.udemy.com/course/aws-certified-ml-engineer-associate-mla-c01-prep/?couponCode=FREETEST33" rel="sponsored">Get the full course for $34.99 →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

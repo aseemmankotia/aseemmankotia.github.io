@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Design Cost-Optimized Architectures Practice Questions — AWS Certified Solutions Architect – Associate (SAA-C04)</title>
+<meta name="description" content="6 free Design Cost-Optimized Architectures practice questions with explanations for the AWS Certified Solutions Architect – Associate (SAA-C04) exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/saa-c04-design-cost-optimized-architectures.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free AWS Certified Solutions Architect – Associate (SAA-C04) practice — 6 questions on <strong>Design Cost-Optimized Architectures</strong>, with explanations. No sign-up.
+<a href="saa-c04.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Design Cost-Optimized Architectures">
+    <div class="meta">Question 1 of 6 · Design Cost-Optimized Architectures</div>
+    <div class="q">An organization runs EC2 instances in private subnets that make heavy, constant calls to S3 for object storage. A NAT Gateway currently handles this traffic, and Cost Explorer shows NAT Gateway data processing charges are the largest line item in the VPC. The traffic never needs to leave AWS's network. Which change eliminates this specific cost with the least operational overhead?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. Create a Gateway VPC Endpoint for S3 and update the route table for the private subnets</button><button class="opt" onclick="answer(this,0,1,0)">B. Replace the NAT Gateway with a self-managed NAT instance to reduce hourly charges</button><button class="opt" onclick="answer(this,0,2,0)">C. Create an Interface VPC Endpoint (AWS PrivateLink) for S3 in each private subnet</button><button class="opt" onclick="answer(this,0,3,0)">D. Increase the NAT Gateway's bandwidth allocation to handle traffic more efficiently</button>
+    <div class="expl">A Gateway VPC Endpoint for S3 has no hourly charge and no per-GB data processing fee. Traffic routes directly to S3 over the AWS network backbone, completely bypassing the NAT Gateway and its data processing charges.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Design Cost-Optimized Architectures">
+    <div class="meta">Question 2 of 6 · Design Cost-Optimized Architectures</div>
+    <div class="q">A company runs a fleet of EC2 instances with steady, predictable baseline utilization. Over the next 3 years, the team expects to change instance families as new generations are released, shift some workloads to AWS Fargate, and potentially move some services to a different AWS Region. They want the maximum discount with the maximum commitment flexibility. Which purchasing option BEST fits?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. Standard Reserved Instances (3-year, All Upfront)</button><button class="opt" onclick="answer(this,1,1,2)">B. Convertible Reserved Instances (3-year)</button><button class="opt" onclick="answer(this,1,2,2)">C. Compute Savings Plans (3-year)</button><button class="opt" onclick="answer(this,1,3,2)">D. Spot Instances with a Savings Plan fallback</button>
+    <div class="expl">Compute Savings Plans provide up to 66% discount and apply automatically to usage regardless of instance family, size, OS, tenancy, Region, and even extend to Fargate and Lambda usage — the broadest flexibility of any commitment-based discount.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Design Cost-Optimized Architectures">
+    <div class="meta">Question 3 of 6 · Design Cost-Optimized Architectures</div>
+    <div class="q">A media company stores millions of objects in S3 whose access patterns are unpredictable and change over time — some objects go unused for months, others suddenly become hot again. All objects must remain retrievable within milliseconds at any time, and the company wants automatic cost optimization without writing or maintaining lifecycle rules. Which storage configuration BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. S3 Standard-Infrequent Access with a 30-day lifecycle rule from S3 Standard</button><button class="opt" onclick="answer(this,2,1,1)">B. S3 Intelligent-Tiering with default access tiers (no archive tiers enabled)</button><button class="opt" onclick="answer(this,2,2,1)">C. S3 Glacier Instant Retrieval selected manually at upload time</button><button class="opt" onclick="answer(this,2,3,1)">D. S3 One Zone-Infrequent Access with versioning enabled</button>
+    <div class="expl">S3 Intelligent-Tiering monitors access patterns and automatically moves objects between Frequent and Infrequent Access tiers with no retrieval fees and no operational effort, while keeping millisecond retrieval at all times — exactly matching unpredictable, changing access patterns.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Design Cost-Optimized Architectures">
+    <div class="meta">Question 4 of 6 · Design Cost-Optimized Architectures</div>
+    <div class="q">A genomics research company runs large-scale batch data processing jobs that can be interrupted and resumed at any point without data loss, using EC2 Auto Scaling groups. Jobs can run at any time within a multi-day window. The company wants to minimize compute cost as much as possible for this workload. Which configuration is MOST cost-effective?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. Auto Scaling group using only On-Demand Instances with a scheduled scaling policy</button><button class="opt" onclick="answer(this,3,1,1)">B. Auto Scaling group with a mixed instances policy using Spot Instances and a capacity-optimized allocation strategy</button><button class="opt" onclick="answer(this,3,2,1)">C. Dedicated Hosts reserved for 1 year to guarantee capacity for the batch window</button><button class="opt" onclick="answer(this,3,3,1)">D. Standard Reserved Instances covering peak batch capacity year-round</button>
+    <div class="expl">Spot Instances offer up to 90% savings over On-Demand and are ideal for fault-tolerant, interruptible batch workloads. A mixed instances policy with capacity-optimized allocation minimizes interruption frequency by drawing from the deepest available Spot capacity pools.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Design Cost-Optimized Architectures">
+    <div class="meta">Question 5 of 6 · Design Cost-Optimized Architectures</div>
+    <div class="q">A three-tier application has application servers deployed across three Availability Zones for high availability. All three app tiers query a single RDS database instance located in one AZ. Cost Explorer reveals significant inter-AZ data transfer charges from this read-heavy, latency-sensitive traffic. High availability across all three AZs must be preserved. Which change BEST reduces this specific cost?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. Deploy an RDS read replica in each AZ where app servers run, and route each AZ's read traffic to its local replica</button><button class="opt" onclick="answer(this,4,1,0)">B. Consolidate all application servers into the single AZ where the RDS instance runs</button><button class="opt" onclick="answer(this,4,2,0)">C. Enable RDS Multi-AZ to add a synchronous standby replica in a second AZ</button><button class="opt" onclick="answer(this,4,3,0)">D. Deploy an ElastiCache cluster in the RDS instance's AZ to cache all query results</button>
+    <div class="expl">Placing a read replica in each AZ lets app servers query a replica within the same AZ, eliminating the charged cross-AZ transfer for the read-heavy workload. Only write traffic and replication continue to cross AZs, and RDS does not charge for replication traffic between AZs — replicas preserve HA across all three zones.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Design Cost-Optimized Architectures">
+    <div class="meta">Question 6 of 6 · Design Cost-Optimized Architectures</div>
+    <div class="q">A finance team needs hourly, resource-level billing data broken down by cost allocation tags, delivered automatically to an S3 bucket so it can be ingested into a custom BI tool for cross-business-unit chargeback reporting. Which AWS service or feature BEST satisfies this requirement?</div>
+    <button class="opt" onclick="answer(this,5,0,2)">A. AWS Cost Explorer's hourly granularity view exported as CSV</button><button class="opt" onclick="answer(this,5,1,2)">B. AWS Budgets with a custom cost budget and SNS notifications</button><button class="opt" onclick="answer(this,5,2,2)">C. AWS Cost and Usage Report (CUR) delivered to an S3 bucket</button><button class="opt" onclick="answer(this,5,3,2)">D. AWS Trusted Advisor cost optimization check results</button>
+    <div class="expl">The Cost and Usage Report is the most granular billing data AWS offers — line-item, resource-level detail including cost allocation tags, at hourly granularity, delivered automatically to an S3 bucket in CSV or Parquet format, purpose-built for feeding external BI tools.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$109.99</span> <strong>$34.99</strong> with code <span class="code">FREETEST33</span> — valid through September 2.</p>
+  <a href="https://www.udemy.com/course/aws-saa-c04-exam-prep-solutions-architect-associate/?couponCode=FREETEST33" rel="sponsored">Get the full course for $34.99 →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

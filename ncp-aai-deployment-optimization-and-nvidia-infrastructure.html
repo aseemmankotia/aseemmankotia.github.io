@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Deployment, Optimization, and NVIDIA Infrastructure Practice Questions — NVIDIA-Certified Professional: Agentic AI</title>
+<meta name="description" content="6 free Deployment, Optimization, and NVIDIA Infrastructure practice questions with explanations for the NVIDIA-Certified Professional: Agentic AI exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/ncp-aai-deployment-optimization-and-nvidia-infrastructure.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free NVIDIA-Certified Professional: Agentic AI practice — 6 questions on <strong>Deployment, Optimization, and NVIDIA Infrastructure</strong>, with explanations. No sign-up.
+<a href="ncp-aai.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Deployment, Optimization, and NVIDIA Infrastructure">
+    <div class="meta">Question 1 of 6 · Deployment, Optimization, and NVIDIA Infrastructure</div>
+    <div class="q">A production multi-agent system runs on Triton Inference Server with a TensorRT-LLM backend. During load testing, CUDA out-of-memory errors appear once concurrency crosses roughly 40 simultaneous agent sessions, even though aggregate GPU memory usage reported by nvidia-smi is well below capacity. In-flight batching is enabled and requests have highly variable output lengths. What is the MOST likely root cause and fix?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. Switch from in-flight batching to static batching so memory allocation per batch becomes predictable and fixed</button><button class="opt" onclick="answer(this,0,1,2)">B. Raise max_batch_size further so the scheduler can pack more requests into each batch and reduce per-request overhead</button><button class="opt" onclick="answer(this,0,2,2)">C. Memory is fragmented because KV cache blocks are allocated as static contiguous reservations per sequence; enable paged KV cache management and tune kv_cache_free_gpu_mem_fraction to allow dynamic block allocation across sequences</button><button class="opt" onclick="answer(this,0,3,2)">D. Disable KV cache reuse and disable in-flight batching entirely to force one sequence to fully complete before the next begins</button>
+    <div class="expl">Variable-length outputs under naive contiguous KV cache allocation cause fragmentation long before aggregate memory is exhausted. TensorRT-LLM's paged KV cache (block-based, page-attention style) eliminates this fragmentation by allocating/releasing fixed-size pages on demand, and tuning the reserved GPU memory fraction lets the scheduler admit more concurrent sequences safely.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Deployment, Optimization, and NVIDIA Infrastructure">
+    <div class="meta">Question 2 of 6 · Deployment, Optimization, and NVIDIA Infrastructure</div>
+    <div class="q">An agentic pipeline uses a router LLM, a retrieval reranker model, and a code-generation LLM, each with different latency/throughput profiles and independent release cadences. The team needs each model to scale, version, and roll back independently with minimal shared operational surface area. Which deployment approach best satisfies these requirements?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. Combine all three models into a single custom TensorRT-LLM engine file so one process serves all agent needs</button><button class="opt" onclick="answer(this,1,1,3)">B. Load all three as manually configured Triton Python backends sharing one GPU memory pool for simplicity</button><button class="opt" onclick="answer(this,1,2,3)">C. Deploy all three models inside one Triton ensemble so the full pipeline executes as a single scheduled unit</button><button class="opt" onclick="answer(this,1,3,3)">D. Package each model as its own NIM microservice with its own TensorRT-LLM engine and container, called independently by the agent orchestration layer</button>
+    <div class="expl">Packaging each model as its own NIM microservice gives independent containers, independent TensorRT-LLM engines, independent autoscaling, and independent versioning/rollback — exactly what's needed when models have different profiles and release cycles, with the agent orchestrator calling each endpoint as needed.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Deployment, Optimization, and NVIDIA Infrastructure">
+    <div class="meta">Question 3 of 6 · Deployment, Optimization, and NVIDIA Infrastructure</div>
+    <div class="q">An agent pipeline invokes NeMo Guardrails with three sequential rail checks (topical, jailbreak, moderation) on the final LLM output before returning a response to the user. This adds 300ms of latency and causes the pipeline to miss an 800ms end-to-end SLA. Safety coverage cannot be reduced. What is the BEST way to reduce added latency?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. Remove the output rails and depend only on input rails, since that halves the guardrails latency</button><button class="opt" onclick="answer(this,2,1,3)">B. Move all guardrail checks to an asynchronous nightly batch audit job run against logged conversations</button><button class="opt" onclick="answer(this,2,2,3)">C. Increase the LLM's inference batch size so the guardrail model calls execute faster as part of the same batch</button><button class="opt" onclick="answer(this,2,3,3)">D. Run the independent rail checks concurrently as parallel async calls, gating the final response only on the checks that must block output, rather than executing them strictly in sequence</button>
+    <div class="expl">Topical, jailbreak, and moderation rails are typically independent classifiers that don't depend on each other's output; executing them concurrently instead of sequentially collapses their latency to roughly the slowest single check instead of the sum, while still gating the response on required checks before it's returned.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Deployment, Optimization, and NVIDIA Infrastructure">
+    <div class="meta">Question 4 of 6 · Deployment, Optimization, and NVIDIA Infrastructure</div>
+    <div class="q">A team must deploy a 70B-parameter model on a single 80GB Hopper-class GPU using TensorRT-LLM. The agent frequently emits structured JSON tool-call arguments where small numeric precision errors break downstream parsing, so accuracy must be preserved as much as possible while still fitting weights and KV cache in memory. Which quantization configuration BEST balances memory footprint and output accuracy for this use case?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. INT8 SmoothQuant with per-channel weight-only quantization and activations left in FP16</button><button class="opt" onclick="answer(this,3,1,3)">B. Full FP32 precision combined with tensor parallelism across GPU compute streams</button><button class="opt" onclick="answer(this,3,2,3)">C. INT4 AWQ weight-only quantization</button><button class="opt" onclick="answer(this,3,3,3)">D. FP8 weight and activation quantization using Hopper's native FP8 tensor cores</button>
+    <div class="expl">FP8 on Hopper is natively supported in hardware, giving roughly 2x memory reduction versus FP16 with substantially lower accuracy degradation than INT4 methods, making it the recommended tradeoff for use cases sensitive to precision (like structured tool-call generation) while still meeting the memory budget.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Deployment, Optimization, and NVIDIA Infrastructure">
+    <div class="meta">Question 5 of 6 · Deployment, Optimization, and NVIDIA Infrastructure</div>
+    <div class="q">A multi-agent system spans a planner agent, several tool-calling sub-agents, and a NeMo Retriever call, each deployed as a separate NIM/Triton endpoint. During an incident, engineers need to reconstruct the full call graph, per-hop latency, and per-step cost attribution across all agent hops. Which approach aligns with recommended production observability practice for this scenario?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. Instrument each agent step and NIM/Triton call with OpenTelemetry spans that propagate a shared trace/correlation ID across services, exported to a tracing backend that reconstructs the full step-by-step agent trace</button><button class="opt" onclick="answer(this,4,1,0)">B. Rely solely on Triton's built-in Prometheus GPU utilization metrics endpoint to diagnose the incident</button><button class="opt" onclick="answer(this,4,2,0)">C. Enable verbose stdout logging in each container and manually correlate log lines by timestamp across pods</button><button class="opt" onclick="answer(this,4,3,0)">D. Poll each NIM microservice's health check endpoint every 5 seconds to detect which service is failing</button>
+    <div class="expl">Distributed tracing with OpenTelemetry spans and a propagated correlation/trace ID across every agent hop and model-serving call is what reconstructs the full call graph with per-hop latency and cost, which is exactly what's needed to debug a multi-agent incident.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Deployment, Optimization, and NVIDIA Infrastructure">
+    <div class="meta">Question 6 of 6 · Deployment, Optimization, and NVIDIA Infrastructure</div>
+    <div class="q">An agent occasionally produces different tool-call sequences for identical repeated input prompts even though temperature is set to 0 (greedy decoding) on a TensorRT-LLM-served model with in-flight batching enabled. What is the MOST likely root cause of this residual non-determinism?</div>
+    <button class="opt" onclick="answer(this,5,0,2)">A. The retrieval step returns different documents each run due to embedding drift in the vector index</button><button class="opt" onclick="answer(this,5,1,2)">B. The random sampling seed was never explicitly fixed in the client request</button><button class="opt" onclick="answer(this,5,2,2)">C. Differing batch composition under in-flight batching changes floating-point accumulation order in batched matrix operations, occasionally flipping a near-tied greedy argmax decision</button><button class="opt" onclick="answer(this,5,3,2)">D. The agent framework's conversation memory buffer randomly reorders prior turns between runs</button>
+    <div class="expl">Under in-flight batching, which sequences are grouped together and in what order changes run to run, and floating-point arithmetic is not strictly associative; this can shift accumulated logit values by tiny amounts, occasionally flipping which token wins a near-tied greedy argmax — a well-documented source of residual non-determinism in high-throughput batched inference even at temperature 0.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$129.99</span> <strong>$34.99</strong> with code <span class="code">FREETEST33</span> — valid through September 7.</p>
+  <a href="https://www.udemy.com/course/nvidia-ncp-aai-agentic-ai-certification-prep/?couponCode=FREETEST33" rel="sponsored">Get the full course for $34.99 →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

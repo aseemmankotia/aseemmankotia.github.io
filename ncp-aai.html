@@ -1,0 +1,104 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free NVIDIA-Certified Professional: Agentic AI Practice Test — 12 Real Exam-Style Questions</title>
+<meta name="description" content="Free NVIDIA-Certified Professional: Agentic AI practice questions with detailed explanations. Test yourself before the real exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/ncp-aai.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free NVIDIA-Certified Professional: Agentic AI practice test — 12 exam-style questions with explanations. No sign-up.</p></header>
+
+  <div class="card qcard" id="q0" data-domain="Agent Design and Cognition">
+    <div class="meta">Question 1 of 12 · Agent Design and Cognition</div>
+    <div class="q">An agent must answer a question requiring current stock prices. It needs to alternate between generating a thought, invoking a price-lookup tool, observing the result, and refining its next thought before producing a final answer. Which reasoning paradigm is being implemented?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. Tree-of-thought</button><button class="opt" onclick="answer(this,0,1,3)">B. Self-consistency decoding</button><button class="opt" onclick="answer(this,0,2,3)">C. Retrieval-augmented generation with no tool loop</button><button class="opt" onclick="answer(this,0,3,3)">D. ReAct (Reason+Act)</button>
+    <div class="expl">ReAct explicitly interleaves reasoning traces (thoughts) with actions (tool calls) and observations in a loop, which matches the described think-act-observe cycle.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Orchestration and Multi-Agent Systems">
+    <div class="meta">Question 2 of 12 · Orchestration and Multi-Agent Systems</div>
+    <div class="q">An insurance company is building a claims-processing agentic system. A central agent receives each claim, determines which specialized agents are needed (document verification, fraud detection, payout calculation), sends work to them, then combines their outputs into a final decision. Which orchestration pattern does this describe?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. Sequential pipeline pattern, where each agent runs in a fixed order on every claim</button><button class="opt" onclick="answer(this,1,1,3)">B. Debate/critique pattern, where two agents iteratively challenge each other's conclusions</button><button class="opt" onclick="answer(this,1,2,3)">C. Fully decentralized peer-to-peer handoff, where agents pass the claim directly to each other with no central coordinator</button><button class="opt" onclick="answer(this,1,3,3)">D. Supervisor/worker pattern, where a central agent dynamically delegates and aggregates results from specialized worker agents</button>
+    <div class="expl">A single coordinating agent that inspects the task, routes work to specialized workers, and aggregates their outputs into a final decision is the defining characteristic of the supervisor/worker pattern.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Planning, Memory, and Retrieval">
+    <div class="meta">Question 3 of 12 · Planning, Memory, and Retrieval</div>
+    <div class="q">An agent orchestrated with NVIDIA NeMo Agent toolkit must complete a 40-step data migration workflow. After step 25, the agent begins optimizing for a sub-task that contradicts the original migration goal stated in the initial prompt. Which architectural change BEST prevents this drift?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. Increase the LLM's temperature to encourage more creative problem-solving on later steps</button><button class="opt" onclick="answer(this,2,1,3)">B. Remove the system prompt after the first 10 steps to reduce token usage</button><button class="opt" onclick="answer(this,2,2,3)">C. Restart the entire workflow from step 1 whenever a sub-task is completed</button><button class="opt" onclick="answer(this,2,3,3)">D. Maintain an explicit, persistent plan/goal-state object that the planner re-validates each step against the original objective</button>
+    <div class="expl">Long-horizon agents need an explicit, externally tracked plan/goal-state (not just implicit context) that is checked at each step so sub-goal execution is validated against the original objective, preventing goal drift over many steps.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Tool Integration and Actions">
+    <div class="meta">Question 4 of 12 · Tool Integration and Actions</div>
+    <div class="q">An agent orchestrates payments through a third-party billing API tool. During a network blip, the agent times out waiting for a response and automatically retries the same tool call. The billing API has no built-in duplicate detection. Which design change BEST prevents a duplicate charge from being processed?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. Increase the tool call timeout so retries happen less frequently</button><button class="opt" onclick="answer(this,3,1,2)">B. Disable retries entirely and surface every timeout as a failed turn to the user</button><button class="opt" onclick="answer(this,3,2,2)">C. Have the agent generate and pass a unique idempotency key with each logical request, and configure the tool wrapper to reuse the same key across retries of that request</button><button class="opt" onclick="answer(this,3,3,2)">D. Log every tool call to a database and have a human review logs nightly for duplicates</button>
+    <div class="expl">Idempotency keys let the downstream service (or an idempotency-aware wrapper) recognize that a retried request is a repeat of an in-flight or completed operation, so it can safely return the original result instead of re-executing the side effect. This is the standard pattern for making non-idempotent APIs safe to retry in agentic tool execution.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Deployment, Optimization, and NVIDIA Infrastructure">
+    <div class="meta">Question 5 of 12 · Deployment, Optimization, and NVIDIA Infrastructure</div>
+    <div class="q">A team is deploying an open-weights LLM for a customer-support agent that must sustain sub-200ms per-token latency under high concurrent load. Which deployment approach BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. Deploy the model as a NIM microservice, which applies TensorRT-LLM optimizations and in-flight batching under Triton</button><button class="opt" onclick="answer(this,4,1,0)">B. Serve the model directly from a custom Flask app running PyTorch in eager mode</button><button class="opt" onclick="answer(this,4,2,0)">C. Rely on NeMo Guardrails alone to filter and speed up responses</button><button class="opt" onclick="answer(this,4,3,0)">D. Deploy the model on CPU nodes using ONNX Runtime for portability</button>
+    <div class="expl">NIM microservices package TensorRT-LLM-optimized engines behind a Triton-backed serving layer with in-flight (continuous) batching, which is the supported path to hit low-latency, high-concurrency LLM SLAs on NVIDIA infrastructure.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Governance, Safety, and Evaluation">
+    <div class="meta">Question 6 of 12 · Governance, Safety, and Evaluation</div>
+    <div class="q">A multi-agent system autonomously initiates financial trades based on market analysis. The risk team requires that no trade above $50,000 executes without explicit human authorization, while smaller trades can proceed autonomously. Which control BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. Add an output content filter that blocks messages mentioning trade amounts over $50,000</button><button class="opt" onclick="answer(this,5,1,1)">B. Insert a human-in-the-loop approval gate on the trade-execution tool call that pauses the agent and requires sign-off when the trade value exceeds the threshold</button><button class="opt" onclick="answer(this,5,2,1)">C. Use an LLM-as-judge to score the trade recommendation for quality before logging it</button><button class="opt" onclick="answer(this,5,3,1)">D. Add a topical rail restricting the agent's conversation to finance-related subjects only</button>
+    <div class="expl">High-risk, high-value autonomous actions require a human-in-the-loop approval checkpoint tied to the actual tool/action invocation (an execution-level control), not a text filter. This ensures the agent cannot complete the action until a human authorizes it, directly enforcing the policy threshold.</div>
+  </div>
+
+  <div class="card qcard" id="q6" data-domain="Agent Design and Cognition">
+    <div class="meta">Question 7 of 12 · Agent Design and Cognition</div>
+    <div class="q">A team is automating a multi-step data migration workflow where all steps and their order are known in advance, but any individual step can fail and require the entire remaining plan to be recomputed with the new state. Which agent control pattern should they implement?</div>
+    <button class="opt" onclick="answer(this,6,0,2)">A. A purely reactive agent that decides the next single action based only on the latest observation</button><button class="opt" onclick="answer(this,6,1,2)">B. A single chain-of-thought prompt with no execution loop</button><button class="opt" onclick="answer(this,6,2,2)">C. A plan-and-execute agent that generates a full plan upfront and re-plans when execution deviates from expectations</button><button class="opt" onclick="answer(this,6,3,2)">D. A tree-of-thought agent that only explores plans without ever executing actions</button>
+    <div class="expl">Plan-and-execute agents separate planning from execution, generate a multi-step plan upfront, and support re-planning when a step's outcome diverges from the plan — exactly the failure-and-recompute behavior described.</div>
+  </div>
+
+  <div class="card qcard" id="q7" data-domain="Orchestration and Multi-Agent Systems">
+    <div class="meta">Question 8 of 12 · Orchestration and Multi-Agent Systems</div>
+    <div class="q">A workflow requires conditional branching, multiple retry loops around failing sub-tasks, and the ability to persist and resume execution state after a crash. Which orchestration framework is BEST suited to implement this as an explicit stateful graph?</div>
+    <button class="opt" onclick="answer(this,7,0,1)">A. CrewAI, using its default sequential process</button><button class="opt" onclick="answer(this,7,1,1)">B. LangGraph, using conditional edges and a built-in checkpointer for persisted state</button><button class="opt" onclick="answer(this,7,2,1)">C. AutoGen, using a group chat manager for agent conversations</button><button class="opt" onclick="answer(this,7,3,1)">D. NVIDIA NeMo Agent toolkit (AgentIQ) used as the primary graph engine</button>
+    <div class="expl">LangGraph models workflows as an explicit graph of nodes and conditional edges, supports cycles for retries, and provides a checkpointer to persist and resume state across runs, matching all stated requirements.</div>
+  </div>
+
+  <div class="card qcard" id="q8" data-domain="Planning, Memory, and Retrieval">
+    <div class="meta">Question 9 of 12 · Planning, Memory, and Retrieval</div>
+    <div class="q">In an agentic memory architecture, which statement correctly distinguishes episodic memory from semantic memory?</div>
+    <button class="opt" onclick="answer(this,8,0,3)">A. Episodic memory stores generalized domain facts, while semantic memory stores timestamped records of specific past interactions</button><button class="opt" onclick="answer(this,8,1,3)">B. Episodic and semantic memory are interchangeable terms for the same short-term context buffer</button><button class="opt" onclick="answer(this,8,2,3)">C. Semantic memory only exists in the LLM's context window, while episodic memory only exists in the vector database</button><button class="opt" onclick="answer(this,8,3,3)">D. Episodic memory stores specific past experiences/interactions with temporal context, while semantic memory stores generalized, decontextualized facts and knowledge</button>
+    <div class="expl">Episodic memory captures specific, time-bound events (e.g., 'user reported issue X on date Y'), whereas semantic memory holds generalized facts and relationships abstracted away from any single event -- a core distinction tested for agent memory design.</div>
+  </div>
+
+  <div class="card qcard" id="q9" data-domain="Tool Integration and Actions">
+    <div class="meta">Question 10 of 12 · Tool Integration and Actions</div>
+    <div class="q">A tool exposed to an agent allows arbitrary Python code execution to help with data analysis tasks. Which implementation BEST satisfies safe tool execution requirements for this capability?</div>
+    <button class="opt" onclick="answer(this,9,0,3)">A. Run the code directly in the same process as the agent orchestrator for lowest latency</button><button class="opt" onclick="answer(this,9,1,3)">B. Require the user to manually approve each line of code before execution</button><button class="opt" onclick="answer(this,9,2,3)">C. Only allow the code execution tool to be called once per conversation to limit exposure</button><button class="opt" onclick="answer(this,9,3,3)">D. Execute the code in an ephemeral, network-restricted container with CPU/memory/time limits and no access to the host filesystem or credentials</button>
+    <div class="expl">Sandboxed, resource-limited, network-restricted ephemeral containers isolate arbitrary code execution from the host environment, agent process, and sensitive credentials, containing the blast radius of malicious or buggy generated code — the core principle of safe tool execution for code-running tools.</div>
+  </div>
+
+  <div class="card qcard" id="q10" data-domain="Deployment, Optimization, and NVIDIA Infrastructure">
+    <div class="meta">Question 11 of 12 · Deployment, Optimization, and NVIDIA Infrastructure</div>
+    <div class="q">Which NVIDIA component is specifically responsible for compiling and optimizing an LLM's transformer layers — fusing kernels and applying quantization — for maximum GPU inference throughput?</div>
+    <button class="opt" onclick="answer(this,10,0,3)">A. NeMo Guardrails</button><button class="opt" onclick="answer(this,10,1,3)">B. Triton Inference Server</button><button class="opt" onclick="answer(this,10,2,3)">C. NeMo Retriever</button><button class="opt" onclick="answer(this,10,3,3)">D. TensorRT-LLM</button>
+    <div class="expl">TensorRT-LLM is the library purpose-built to optimize transformer inference through kernel fusion, quantization (e.g., FP8/INT8), and in-flight batching to maximize GPU throughput.</div>
+  </div>
+
+  <div class="card qcard" id="q11" data-domain="Governance, Safety, and Evaluation">
+    <div class="meta">Question 12 of 12 · Governance, Safety, and Evaluation</div>
+    <div class="q">Before releasing an agentic system to production, a security team wants to automatically probe the deployed LLM and its tool-use pipeline for susceptibility to prompt injection, jailbreaks, and data leakage, generating a vulnerability report. Which NVIDIA tool is purpose-built for this task?</div>
+    <button class="opt" onclick="answer(this,11,0,3)">A. NVIDIA Triton Inference Server</button><button class="opt" onclick="answer(this,11,1,3)">B. NeMo Guardrails runtime rails</button><button class="opt" onclick="answer(this,11,2,3)">C. NVIDIA NIM microservice</button><button class="opt" onclick="answer(this,11,3,3)">D. NVIDIA garak LLM vulnerability scanner</button>
+    <div class="expl">garak is NVIDIA's open-source LLM vulnerability scanner designed to automatically probe models and pipelines for weaknesses like prompt injection, jailbreaks, data leakage, and toxic output generation, producing a structured vulnerability report suitable for pre-release security review.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$129.99</span> <strong>$34.99</strong> with code <span class="code">FREETEST33</span> — valid through September 7.</p>
+  <a href="https://www.udemy.com/course/nvidia-ncp-aai-agentic-ai-certification-prep/?couponCode=FREETEST33" rel="sponsored">Get the full course for $34.99 →</a>
+</div>
+<div class="domains"><span class="meta">More free practice by exam domain:</span><br><a href="ncp-aai-agent-design-and-cognition.html">Agent Design and Cognition →</a><a href="ncp-aai-orchestration-and-multi-agent-systems.html">Orchestration and Multi-Agent Systems →</a><a href="ncp-aai-planning-memory-and-retrieval.html">Planning, Memory, and Retrieval →</a><a href="ncp-aai-tool-integration-and-actions.html">Tool Integration and Actions →</a><a href="ncp-aai-deployment-optimization-and-nvidia-infrastructure.html">Deployment, Optimization, and NVIDIA Infrastructure →</a></div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

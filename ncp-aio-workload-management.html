@@ -1,0 +1,93 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Workload Management Practice Questions — NVIDIA AI Operations Professional (NCP-AIO)</title>
+<meta name="description" content="6 free Workload Management practice questions with explanations for the NVIDIA AI Operations Professional (NCP-AIO) exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/ncp-aio-workload-management.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free NVIDIA AI Operations Professional (NCP-AIO) practice — 6 questions on <strong>Workload Management</strong>, with explanations. No sign-up.
+<a href="ncp-aio.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Workload Management">
+    <div class="meta">Question 1 of 6 · Workload Management</div>
+    <div class="q">A data science team reports that their multi-node NCCL training job running across 4 DGX nodes consistently hangs during the allreduce operation after 2-3 epochs. You run 'dcgmi diag -r 3' and observe intermittent PCIe link width degradation on GPU 2 of node dgx-03. The Slurm job was submitted with '--ntasks-per-node=8 --gpus-per-task=1'. Which action will MOST effectively resolve this issue?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. Set NCCL_P2P_DISABLE=1 and NCCL_SHM_DISABLE=1 in the job environment to force network-based communication bypassing the degraded PCIe link</button><button class="opt" onclick="answer(this,0,1,3)">B. Modify the Slurm job script to use '--exclusive --ntasks-per-node=7' to avoid scheduling tasks on the problematic GPU while keeping the node in service</button><button class="opt" onclick="answer(this,0,2,3)">C. Increase NCCL_SOCKET_NTHREADS to 8 and set NCCL_NSOCKS_PERTHREAD=4 to provide additional bandwidth for the allreduce collective operation</button><button class="opt" onclick="answer(this,0,3,3)">D. Drain node dgx-03 with 'scontrol update NodeName=dgx-03 State=DRAIN Reason=&quot;PCIe degradation GPU2&quot;', physically reseat the affected GPU or check PCIe riser card, then run hardware diagnostics before returning to service</button>
+    <div class="expl">PCIe link width degradation detected by DCGM diagnostics indicates a hardware issue that will cause unreliable GPU communication. The correct procedure is to drain the node (removing it from scheduling while preserving running jobs), physically address the hardware problem (reseating GPU or checking riser card connection), verify with diagnostics, then return to production. Running jobs on degraded hardware leads to data corruption and training failures.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Workload Management">
+    <div class="meta">Question 2 of 6 · Workload Management</div>
+    <div class="q">Your organization uses Run:ai to manage GPU resources across three departments. The ML Research team (department-a) has a guaranteed quota of 16 GPUs but frequently submits jobs requesting 32 GPUs during off-peak hours. The Platform team wants to allow over-quota usage when resources are idle but ensure department-b's guaranteed 8 GPUs are immediately available when needed. Which Run:ai configuration achieves this?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. Create a node-pool for department-b with node affinity rules and set department-a's jobs to use runai submit --preemptible flag when requesting more than 16 GPUs</button><button class="opt" onclick="answer(this,1,1,3)">B. Configure department-a with deserved-gpus=16 and allow-over-quota=true, set department-b with deserved-gpus=8 and over-quota-priority=high, then enable the fairness algorithm globally</button><button class="opt" onclick="answer(this,1,2,3)">C. Set department-a GPU limit to 32 during off-peak using runai update project department-a --gpu-over-quota-weight=0.5, then schedule a cron job to reset to 16 during business hours</button><button class="opt" onclick="answer(this,1,3,3)">D. Set department-a deserved-gpus=16 with over-quota-priority=1 and department-b deserved-gpus=8 with over-quota-priority=0, enabling preemption on department-a's project</button>
+    <div class="expl">Run:ai's deserved-gpus defines guaranteed allocation, and over-quota-priority determines which department's over-quota jobs get preempted first when guaranteed resources are needed. Setting department-a's over-quota-priority=1 (lower priority) and department-b's to 0 (higher) ensures department-a's over-quota jobs are preempted when department-b needs its guaranteed 8 GPUs. Enabling preemption on department-a's project allows Run:ai to automatically reclaim resources.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Workload Management">
+    <div class="meta">Question 3 of 6 · Workload Management</div>
+    <div class="q">You are deploying Triton Inference Server on Kubernetes to serve 3 different models: model-a (ONNX, 2GB), model-b (TensorRT, 8GB), and model-c (PyTorch, 12GB). The cluster has nodes with A100-40GB and A100-80GB GPUs. Model-c requires CUDA 12.2 features, while model-a and model-b run on CUDA 11.8. To minimize GPU memory waste while ensuring all models have dedicated GPU access, which deployment strategy is BEST?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. Deploy model-a and model-b together in one Triton pod on an A100-40GB node with CUDA 11.8, and deploy model-c in a separate pod on an A100-80GB node with CUDA 12.2, both using whole GPU allocation</button><button class="opt" onclick="answer(this,2,1,0)">B. Deploy 3 separate Triton pods each with nodeSelector for A100-80GB nodes, setting model-a and model-b pods to request 0.25 GPU using MIG (3g.20gb profile) and model-c pod to request 1 whole GPU with CUDA 12.2 container image</button><button class="opt" onclick="answer(this,2,2,0)">C. Deploy a single Triton pod on an A100-80GB node loading all 3 models in the model repository, using Triton's dynamic batching to share the GPU, and set instance_group count=2 for each model</button><button class="opt" onclick="answer(this,2,3,0)">D. Deploy model-c on an A100-80GB node with CUDA 12.2, and deploy model-a and model-b in separate Triton pods on A100-40GB nodes with CUDA 11.8, using Kubernetes GPU time-slicing to allow both pods to share one A100-40GB GPU</button>
+    <div class="expl">Model-a (2GB) + model-b (8GB) = 10GB total, fitting comfortably on one A100-40GB with CUDA 11.8. Model-c (12GB) requires CUDA 12.2 and fits on A100-40GB but using A100-80GB provides headroom for concurrent requests. This approach minimizes waste: one A100-40GB serves two models (30GB free for batching/overhead), one A100-80GB serves model-c (68GB free for large batches). Separating by CUDA version prevents container conflicts.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Workload Management">
+    <div class="meta">Question 4 of 6 · Workload Management</div>
+    <div class="q">A researcher submits a Slurm job using 'sbatch --partition=gpu --gres=gpu:4 --nodes=2 train.sh' that launches a PyTorch DistributedDataParallel training job. The job starts but only utilizes GPUs on the first allocated node. Checking the Slurm output shows both nodes allocated (node-[05-06]), and 'srun --jobid=12345 hostname' returns both hostnames. The train.sh script uses 'torchrun --nproc_per_node=4 train.py'. What is the MOST likely cause?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. The --gres=gpu:4 flag allocates 4 GPUs total across both nodes (2 per node), but torchrun --nproc_per_node=4 attempts to spawn 4 processes per node, causing processes on node-06 to fail without allocated GPUs</button><button class="opt" onclick="answer(this,3,1,1)">B. The torchrun command must be launched with srun to distribute across Slurm-allocated nodes; using torchrun directly only launches processes on the node executing train.sh (the first allocated node)</button><button class="opt" onclick="answer(this,3,2,1)">C. The PyTorch NCCL backend requires NCCL_SOCKET_IFNAME to be set to the high-speed network interface (e.g., ib0) in multi-node jobs; without this, NCCL initialization on node-06 times out</button><button class="opt" onclick="answer(this,3,3,1)">D. Slurm --nodes=2 allocates nodes but --ntasks was not specified, defaulting to 1 task total; this single task runs on node-05 only, and torchrun spawns local processes unaware of the second node allocation</button>
+    <div class="expl">In Slurm, torchrun (or python -m torch.distributed.launch) runs only on the node where the script executes unless wrapped with srun. The correct pattern for multi-node PyTorch DDP with Slurm is 'srun torchrun --nproc_per_node=4 train.py' or use srun with --ntasks-per-node and torch.distributed.launch. Without srun, train.sh runs on the first allocated node only, and torchrun spawns 4 local processes there, leaving node-06's GPUs idle. Exam tests this Slurm+PyTorch integration pattern.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Workload Management">
+    <div class="meta">Question 5 of 6 · Workload Management</div>
+    <div class="q">Your team is deploying NVIDIA NIM microservices for Llama-2-70B from NGC on a Kubernetes cluster. After pulling the NIM container and creating a deployment with 'resources.limits.nvidia.com/gpu: 2', the pod remains in Pending state. Running 'kubectl describe pod' shows 'insufficient nvidia.com/gpu'. You verify 4 A100-80GB GPUs are available on the node using 'nvidia-smi'. Which configuration issue is MOST likely preventing the pod from scheduling?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. The NVIDIA device plugin is not installed or not running on the node; install it using 'kubectl apply -f https://raw.githubusercontent.com/NVIDIA/k8s-device-plugin/v0.14.0/nvidia-device-plugin.yml' to expose GPUs as schedulable resources</button><button class="opt" onclick="answer(this,4,1,0)">B. NIM containers require privileged security context to access GPU hardware; add 'securityContext: privileged: true' to the pod spec</button><button class="opt" onclick="answer(this,4,2,0)">C. The NGC NIM container requires an NGC API key mounted as a secret; without valid authentication, Kubernetes refuses to schedule pods using NGC private registry images</button><button class="opt" onclick="answer(this,4,3,0)">D. The resource limit key should be 'nvidia.com/gpu: 2' not 'resources.limits.nvidia.com/gpu: 2'; the full path is only used in the pod spec YAML structure, not as a flat key</button>
+    <div class="expl">Kubernetes does not natively understand GPUs as schedulable resources. The NVIDIA device plugin daemonset runs on each GPU node, detects GPUs via nvidia-smi, and advertises them to the kubelet as 'nvidia.com/gpu' extended resources. Without the device plugin running, GPUs are invisible to the scheduler even though they exist physically. The 'insufficient nvidia.com/gpu' error specifically indicates the resource type is not available in the cluster's allocatable resources. Exam tests understanding that device plugin is mandatory infrastructure.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Workload Management">
+    <div class="meta">Question 6 of 6 · Workload Management</div>
+    <div class="q">You need to run a multi-node benchmark using NCCL tests (nccl-tests/build/all_reduce_perf) across 8 DGX A100 nodes with 8 GPUs each to validate InfiniBand fabric performance before deploying production training workloads. The Slurm cluster uses 'gpu' partition with nodes dgx-[01-16]. Which sbatch script configuration will correctly execute the all_reduce_perf test using all 64 GPUs with proper MPI and NCCL settings?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. #!/bin/bash
+#SBATCH --partition=gpu
+#SBATCH --nodes=8
+#SBATCH --ntasks=64
+#SBATCH --gres=gpu:8
+#SBATCH --exclusive
+
+export NCCL_DEBUG=INFO
+mpirun -np 64 --map-by ppr:8:node --bind-to none ./all_reduce_perf -b 8 -e 8G -f 2 -g 1</button><button class="opt" onclick="answer(this,5,1,1)">B. #!/bin/bash
+#SBATCH --partition=gpu
+#SBATCH --nodes=8
+#SBATCH --ntasks-per-node=8
+#SBATCH --gpus-per-task=1
+#SBATCH --exclusive
+
+srun --mpi=pmix ./all_reduce_perf -b 8 -e 8G -f 2 -g 1</button><button class="opt" onclick="answer(this,5,2,1)">C. #!/bin/bash
+#SBATCH --partition=gpu
+#SBATCH --nodes=8
+#SBATCH --gpus=64
+#SBATCH --exclusive
+
+export NCCL_IB_DISABLE=0
+export NCCL_NET_GDR_LEVEL=5
+srun --mpi=pmi2 -n 64 ./all_reduce_perf -b 8 -e 8G -f 2 -g 1</button><button class="opt" onclick="answer(this,5,3,1)">D. #!/bin/bash
+#SBATCH --partition=gpu
+#SBATCH --nodes=8
+#SBATCH --ntasks-per-node=1
+#SBATCH --gres=gpu:8
+#SBATCH --exclusive
+
+export NCCL_IB_DISABLE=0
+srun bash -c 'CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7 ./all_reduce_perf -b 8 -e 8G -f 2 -g 8'</button>
+    <div class="expl">NCCL tests use MPI for multi-node process launching but NCCL for GPU communication. The correct pattern: --nodes=8 (8 nodes), --ntasks-per-node=8 (one MPI rank per GPU), --gpus-per-task=1 (each rank gets exclusive GPU access), --exclusive (no sharing). Using 'srun --mpi=pmix' leverages Slurm's native MPI support (pmix is modern default). The -g 1 flag tells all_reduce_perf each rank uses 1 GPU. This creates 64 MPI ranks (8 nodes × 8 tasks), each with one GPU, which is the standard pattern for NCCL multi-node benchmarks.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$199.99</span> <strong>$34.99</strong> with code <span class="code">FREETEST33</span> — valid through September 2.</p>
+  <a href="https://www.udemy.com/course/ncp-aio-nvidia-ai-operations-professional-certification/?couponCode=FREETEST33" rel="sponsored">Get the full course for $34.99 →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

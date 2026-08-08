@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Scaling prototypes into ML models Practice Questions — Google Cloud Professional Machine Learning Engineer</title>
+<meta name="description" content="6 free Scaling prototypes into ML models practice questions with explanations for the Google Cloud Professional Machine Learning Engineer exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/professional-ml-engineer-scaling-prototypes-into-ml-models.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free Google Cloud Professional Machine Learning Engineer practice — 6 questions on <strong>Scaling prototypes into ML models</strong>, with explanations. No sign-up.
+<a href="professional-ml-engineer.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Scaling prototypes into ML models">
+    <div class="meta">Question 1 of 6 · Scaling prototypes into ML models</div>
+    <div class="q">A team trains a large deep learning model using multi-node, multi-GPU training on Vertex AI Custom Training with 4 A100 GPUs per node across 8 nodes. Profiling shows the all-reduce step consumes most of the step time due to network bandwidth saturation between nodes. Which change should they make to reduce this overhead with minimal code changes?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. Consolidate to a single VM with all GPUs attached to avoid cross-node communication entirely</button><button class="opt" onclick="answer(this,0,1,1)">B. Enable Reduction Server by adding dedicated reducer VMs to the training job configuration so gradient aggregation is offloaded from worker-to-worker all-reduce</button><button class="opt" onclick="answer(this,0,2,1)">C. Increase the per-replica batch size and reduce the number of worker nodes to cut communication frequency</button><button class="opt" onclick="answer(this,0,3,1)">D. Switch to Cloud TPU Pods since TPUs eliminate the need for gradient synchronization across chips</button>
+    <div class="expl">Reduction Server is a Vertex AI feature that adds lightweight reducer VMs specifically to offload the all-reduce gradient aggregation from GPU workers, cutting network communication time for synchronous distributed training with minimal code changes (just a strategy/config change).</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Scaling prototypes into ML models">
+    <div class="meta">Question 2 of 6 · Scaling prototypes into ML models</div>
+    <div class="q">A prototype PyTorch model uses a custom CUDA kernel to implement a specialized loss function that has no equivalent XLA op. The team must scale training on Vertex AI from days to hours while keeping this custom kernel. Which hardware choice is correct?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. Multiple NVIDIA A100 GPUs using data-parallel distributed training</button><button class="opt" onclick="answer(this,1,1,0)">B. Cloud TPU v5e Pods, since TPUs offer the highest throughput per dollar for large models</button><button class="opt" onclick="answer(this,1,2,0)">C. CPU-based distributed training with Reduction Server to guarantee full operator compatibility</button><button class="opt" onclick="answer(this,1,3,0)">D. A single Cloud TPU v4 chip to simplify the training setup</button>
+    <div class="expl">Custom CUDA kernels only run on NVIDIA GPUs; TPUs require ops to be expressible in XLA, so any custom CUDA/C++ kernel is unsupported there. GPUs with data-parallel distribution meet both the compatibility requirement and the throughput requirement.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Scaling prototypes into ML models">
+    <div class="meta">Question 3 of 6 · Scaling prototypes into ML models</div>
+    <div class="q">You are configuring a Vertex AI hyperparameter tuning job. The 'optimizer' parameter is categorical (adam, sgd), and the 'momentum' parameter is only meaningful when optimizer=sgd. You want Vizier to avoid wasting trials searching momentum values when optimizer=adam. What should you configure?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. Use conditional parameter specifications in the study configuration so momentum is only added to the search space as a child parameter of optimizer=sgd</button><button class="opt" onclick="answer(this,2,1,0)">B. Run two fully separate hyperparameter tuning jobs, one per optimizer, and manually compare best trials afterward</button><button class="opt" onclick="answer(this,2,2,0)">C. Set the momentum parameter's default value so the training code ignores it when optimizer=adam, without changing the search space definition</button><button class="opt" onclick="answer(this,2,3,0)">D. Switch the search algorithm from Bayesian optimization to grid search so all parameter combinations are covered exhaustively</button>
+    <div class="expl">Vertex AI Vizier supports conditional (parent-child) parameter specifications, letting you declare that a parameter like momentum is only sampled when its parent parameter (optimizer) takes a specific value, preventing wasted trials on invalid combinations.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Scaling prototypes into ML models">
+    <div class="meta">Question 4 of 6 · Scaling prototypes into ML models</div>
+    <div class="q">A team fine-tunes a pretrained ResNet-50 (ImageNet) on 500 labeled medical images by unfreezing all layers and training with the same high learning rate originally used for pretraining. Validation accuracy ends up worse than a baseline that only trained a new classification head on frozen features. What is the most likely cause and best fix?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. Catastrophic forgetting occurred because a high learning rate applied to the entire unfrozen network destroyed useful pretrained features; fine-tune with a much lower learning rate and/or unfreeze layers gradually</button><button class="opt" onclick="answer(this,3,1,0)">B. The dataset is too small and variance is high; the only fix is to add L2 weight decay</button><button class="opt" onclick="answer(this,3,2,0)">C. The pretrained weights are fundamentally unsuited to the medical domain; the model should be trained from scratch instead</button><button class="opt" onclick="answer(this,3,3,0)">D. The model is underfitting due to too few training epochs; increasing epochs substantially will resolve it</button>
+    <div class="expl">Fully unfreezing a pretrained network and training with the original (typically large) pretraining learning rate is the classic recipe for catastrophic forgetting — large gradient updates overwrite the useful pretrained representations. The standard fix is a small fine-tuning learning rate (often 10-100x smaller) and/or gradual unfreezing.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Scaling prototypes into ML models">
+    <div class="meta">Question 5 of 6 · Scaling prototypes into ML models</div>
+    <div class="q">During training, both training loss and validation loss plateau at high values and neither improves with more epochs, even after increasing model capacity (adding layers). The team then removes dropout (originally set to 0.5 on every layer) and adds data augmentation; both training and validation loss drop substantially and the model performs well. What was the underlying issue?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. Exploding gradients were destabilizing training, and removing dropout coincidentally stabilized the gradient flow</button><button class="opt" onclick="answer(this,4,1,3)">B. The model was overfitting, and removing dropout removed a needed regularizer, which counterintuitively still helped</button><button class="opt" onclick="answer(this,4,2,3)">C. The learning rate schedule was decaying too aggressively, converging early to a poor local minimum unrelated to dropout</button><button class="opt" onclick="answer(this,4,3,3)">D. The model was underfitting due to excessive regularization — dropout of 0.5 across every layer was restricting model capacity too much, and reducing it allowed the model to actually fit the data</button>
+    <div class="expl">Both training and validation loss being high and plateaued together (not diverging) is the signature of underfitting, not overfitting. Excessive dropout across every layer over-regularizes the network, capping its effective capacity; reducing it lets the model fit the training data, which is why both curves improved together.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Scaling prototypes into ML models">
+    <div class="meta">Question 6 of 6 · Scaling prototypes into ML models</div>
+    <div class="q">A data scientist has a Jupyter notebook prototype that uses scikit-learn for feature engineering and XGBoost with a custom objective function not supported by any prebuilt Vertex AI training container. To scale this into a reproducible, production-grade Vertex AI Custom Training workload with full control over the runtime environment and pinned dependency versions, what should be done first?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. Schedule the notebook itself to run on a recurring basis using Vertex AI Workbench managed notebook execution as the production training mechanism</button><button class="opt" onclick="answer(this,5,1,1)">B. Package the training code and pinned dependencies into a custom container image via a Dockerfile, push it to Artifact Registry, and submit it as a Vertex AI custom training job</button><button class="opt" onclick="answer(this,5,2,1)">C. Convert the notebook directly into a prebuilt XGBoost container training job and pass the custom objective as a hyperparameter</button><button class="opt" onclick="answer(this,5,3,1)">D. Export the notebook as a Vertex AI Pipelines component without containerization, since Pipelines automatically packages arbitrary Python code and dependencies</button>
+    <div class="expl">A custom objective function unsupported by prebuilt containers requires full control over the runtime, which Vertex AI achieves via custom containers: a Dockerfile pins exact dependency versions and packages the custom logic, and the image is pushed to Artifact Registry for use in a Vertex AI custom training job — the standard, reproducible path for scaling beyond prebuilt container capabilities.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$129.99</span> <strong>$34.99</strong> with code <span class="code">FREETEST33</span> — valid through September 7.</p>
+  <a href="https://www.udemy.com/course/google-cloud-professional-ml-engineer-exam-prep/?couponCode=FREETEST33" rel="sponsored">Get the full course for $34.99 →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

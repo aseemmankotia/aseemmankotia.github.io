@@ -85,4 +85,56 @@
   <url><loc>https://aseemmankotia.github.io/ai-103-implement-text-analysis-solutions.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://aseemmankotia.github.io/ai-103-implement-information-extraction-solutions.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://aseemmankotia.github.io/ai-103.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://aseemmankotia.github.io/nca-ads-gpu-accelerated-data-manipulation-and-preparation.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/nca-ads-etl-and-scalable-gpu-pipelines.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/nca-ads-machine-learning-with-cuml-and-feature-engineering.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/nca-ads-advanced-and-graph-analytics.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/nca-ads-gpu-architecture-environments-and-performance.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/nca-ads-visualization-deployment-and-reproducibility.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/nca-ads.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://aseemmankotia.github.io/ncp-ousd-openusd-fundamentals-and-data-modeling.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/ncp-ousd-composition-and-composition-arcs.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/ncp-ousd-content-aggregation-assembly-and-instancing.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/ncp-ousd-data-exchange-and-interoperability.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/ncp-ousd-pipeline-development-with-the-usd-apis-python-and-c.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/ncp-ousd.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://aseemmankotia.github.io/cdpm-digital-product-management-foundations.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/cdpm-customer-discovery-jtbd-and-design-thinking.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/cdpm-lean-mvp-and-experimentation.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/cdpm-agile-delivery-backlog-and-roadmapping.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/cdpm-product-analytics-metrics-and-growth.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/cdpm-digital-product-design-emerging-tech-and-responsible-ai.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/cdpm.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://aseemmankotia.github.io/cpm-product-management-foundations-and-the-prodbok-life-cycle.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/cpm-market-research-and-competitive-analysis.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/cpm-product-strategy-and-business-planning.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/cpm-product-definition-and-requirements.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/cpm-roadmapping-planning-and-cross-functional-execution.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/cpm-go-to-market-launch-and-pricing.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/cpm.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://aseemmankotia.github.io/ncp-aai-agent-design-and-cognition.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/ncp-aai-orchestration-and-multi-agent-systems.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/ncp-aai-planning-memory-and-retrieval.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/ncp-aai-tool-integration-and-actions.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/ncp-aai-deployment-optimization-and-nvidia-infrastructure.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/ncp-aai.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://aseemmankotia.github.io/ncp-genl-llm-foundations-and-architecture.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/ncp-genl-prompt-engineering-and-adaptation.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/ncp-genl-data-preparation-and-fine-tuning.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/ncp-genl-optimization-and-acceleration.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/ncp-genl-deployment-serving-and-monitoring.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/ncp-genl-evaluation-and-responsible-ai.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/ncp-genl.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://aseemmankotia.github.io/mla-c01-data-preparation-for-machine-learning-ml.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/mla-c01-ml-model-development.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/mla-c01-deployment-and-orchestration-of-ml-workflows.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/mla-c01-ml-solution-monitoring-maintenance-and-security.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/mla-c01.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://aseemmankotia.github.io/professional-ml-engineer-architecting-low-code-ai-solutions.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/professional-ml-engineer-collaborating-to-manage-data-and-models.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/professional-ml-engineer-scaling-prototypes-into-ml-models.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/professional-ml-engineer-serving-and-scaling-models.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/professional-ml-engineer-automating-and-orchestrating-ml-pipelines.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/professional-ml-engineer-monitoring-ai-solutions.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://aseemmankotia.github.io/professional-ml-engineer.html</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
 </urlset>

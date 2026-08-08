@@ -1,0 +1,104 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free NVIDIA-Certified Professional: Generative AI and LLMs Practice Test — 12 Real Exam-Style Questions</title>
+<meta name="description" content="Free NVIDIA-Certified Professional: Generative AI and LLMs practice questions with detailed explanations. Test yourself before the real exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/ncp-genl.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free NVIDIA-Certified Professional: Generative AI and LLMs practice test — 12 exam-style questions with explanations. No sign-up.</p></header>
+
+  <div class="card qcard" id="q0" data-domain="LLM Foundations and Architecture">
+    <div class="meta">Question 1 of 12 · LLM Foundations and Architecture</div>
+    <div class="q">A team is deploying a 70B-parameter LLM for real-time chat inference on GPUs with limited KV-cache memory bandwidth. They need to substantially reduce memory traffic during autoregressive decoding while keeping output quality close to standard multi-head attention. Which attention variant BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. Grouped-Query Attention (GQA), where heads are grouped to share KV pairs</button><button class="opt" onclick="answer(this,0,1,0)">B. Multi-Query Attention (MQA), where all heads share a single KV pair</button><button class="opt" onclick="answer(this,0,2,0)">C. Standard Multi-Head Attention (MHA) with no KV sharing</button><button class="opt" onclick="answer(this,0,3,0)">D. Local sliding-window attention with a fixed window size</button>
+    <div class="expl">GQA groups query heads into clusters that share KV projections, cutting KV-cache memory and bandwidth substantially versus full MHA while retaining most heads' representational diversity, giving a much smaller quality drop than MQA's single shared KV pair.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Prompt Engineering and Adaptation">
+    <div class="meta">Question 2 of 12 · Prompt Engineering and Adaptation</div>
+    <div class="q">A financial news aggregator answers customer questions about market events that change every hour. The knowledge base is updated continuously, answers must cite the specific source article, and the team cannot afford to retrain a model every hour. Which adaptation strategy BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,1,0,1)">A. Fine-tune the base model nightly on the day's news articles</button><button class="opt" onclick="answer(this,1,1,1)">B. Retrieval-augmented generation over a continuously indexed news corpus</button><button class="opt" onclick="answer(this,1,2,1)">C. Use zero-shot prompting only, relying on the model's pretrained knowledge</button><button class="opt" onclick="answer(this,1,3,1)">D. Few-shot prompting with hand-picked examples from last month's top stories</button>
+    <div class="expl">RAG decouples knowledge freshness from model weights: updating the vector index is near-instant and cheap compared to retraining, and retrieved passages naturally provide citable sources for grounding the answer.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Data Preparation and Fine-Tuning">
+    <div class="meta">Question 3 of 12 · Data Preparation and Fine-Tuning</div>
+    <div class="q">A team needs to adapt a 70B-parameter foundation model to a specialized domain using only 500 labeled examples, and their entire training budget is a single 80GB A100 GPU. Which customization approach BEST meets these constraints?</div>
+    <button class="opt" onclick="answer(this,2,0,2)">A. Full fine-tuning of all 70B parameters using gradient checkpointing</button><button class="opt" onclick="answer(this,2,1,2)">B. Continued pretraining on a large unlabeled corpus in the target domain</button><button class="opt" onclick="answer(this,2,2,2)">C. QLoRA: 4-bit quantization of the base model combined with LoRA adapters</button><button class="opt" onclick="answer(this,2,3,2)">D. P-tuning with virtual tokens prepended to every input prompt</button>
+    <div class="expl">QLoRA quantizes the frozen base model weights to 4-bit precision and trains only small LoRA adapter matrices in higher precision, dramatically reducing memory footprint so a 70B model can be fine-tuned on a single 80GB GPU, and it works well with small labeled datasets.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Optimization and Acceleration">
+    <div class="meta">Question 4 of 12 · Optimization and Acceleration</div>
+    <div class="q">A team is training a 70B-parameter dense model across 4 nodes with 8 GPUs each (32 GPUs total, NVLink within node, InfiniBand between nodes). The model does not fit on a single GPU even with sharded optimizer states, and the team wants to minimize expensive inter-node communication. Which parallelism configuration BEST fits this hardware topology?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. Apply data parallelism only, using ZeRO-3 across all 32 GPUs</button><button class="opt" onclick="answer(this,3,1,3)">B. Apply tensor parallelism across all 32 GPUs regardless of node boundaries</button><button class="opt" onclick="answer(this,3,2,3)">C. Apply pipeline parallelism across all 32 GPUs with a single pipeline stage per GPU and no tensor parallelism</button><button class="opt" onclick="answer(this,3,3,3)">D. Apply tensor parallelism within each 8-GPU node and pipeline parallelism across the 4 nodes, with data parallelism layered on top if replicas are needed</button>
+    <div class="expl">Tensor parallelism requires frequent, low-latency all-reduce communication, so it should be confined to the high-bandwidth NVLink domain within a node. Pipeline parallelism only exchanges activations at stage boundaries, making it tolerant of the lower-bandwidth inter-node InfiniBand links. This 3D-parallelism pattern (TP intra-node, PP inter-node, DP for scaling) is the standard NVIDIA-recommended topology-aware strategy.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Deployment, Serving, and Monitoring">
+    <div class="meta">Question 5 of 12 · Deployment, Serving, and Monitoring</div>
+    <div class="q">A team serves an LLM with NVIDIA Triton Inference Server behind a Kubernetes-based NIM deployment. They need to roll out a new fine-tuned model version to production while minimizing risk of regressions, and they want the ability to automatically roll back based on live error-rate metrics without manual intervention. Which deployment strategy BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. Canary rollout that routes a small percentage of traffic to the new version, monitors error rate and latency via automated metrics, and auto-rolls-back on threshold breach</button><button class="opt" onclick="answer(this,4,1,0)">B. Blue-green deployment with a manual cutover after a fixed 24-hour soak period</button><button class="opt" onclick="answer(this,4,2,0)">C. Shadow deployment where the new model only logs predictions without ever serving live traffic</button><button class="opt" onclick="answer(this,4,3,0)">D. In-place replacement of the model files in the existing Triton model repository during a maintenance window</button>
+    <div class="expl">Canary rollouts combined with automated metric-based rollback provide progressive exposure and closed-loop safety without requiring a human to watch dashboards, directly satisfying the 'automatic rollback based on live metrics' requirement.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Evaluation and Responsible AI">
+    <div class="meta">Question 6 of 12 · Evaluation and Responsible AI</div>
+    <div class="q">A team fine-tuned an LLM for a medical Q&amp;A chatbot. During testing, the model confidently generates plausible-sounding drug dosages that are not supported by any retrieved source document. Which evaluation approach BEST detects this specific failure mode before production deployment?</div>
+    <button class="opt" onclick="answer(this,5,0,2)">A. Measure BLEU score against reference answers</button><button class="opt" onclick="answer(this,5,1,2)">B. Measure inference latency under load</button><button class="opt" onclick="answer(this,5,2,2)">C. Run a hallucination-detection evaluation that cross-checks generated claims against retrieved source documents</button><button class="opt" onclick="answer(this,5,3,2)">D. Run a toxicity classifier on the model outputs</button>
+    <div class="expl">Hallucination detection specifically evaluates whether generated claims are grounded in and supported by retrieved/source context, which is exactly the failure described (confident but unsupported factual claims).</div>
+  </div>
+
+  <div class="card qcard" id="q6" data-domain="LLM Foundations and Architecture">
+    <div class="meta">Question 7 of 12 · LLM Foundations and Architecture</div>
+    <div class="q">An organization wants to increase total model capacity to handle multiple domains (code, math, general chat) but must keep per-token inference compute close to that of a much smaller dense model. Which architecture choice BEST satisfies this constraint?</div>
+    <button class="opt" onclick="answer(this,6,0,0)">A. A Mixture-of-Experts (MoE) model with sparse token-level routing</button><button class="opt" onclick="answer(this,6,1,0)">B. A dense transformer scaled to greater depth and width</button><button class="opt" onclick="answer(this,6,2,0)">C. An encoder-decoder model with parameter sharing between encoder and decoder</button><button class="opt" onclick="answer(this,6,3,0)">D. A dense model using Multi-Query Attention only</button>
+    <div class="expl">MoE architectures activate only a small subset of experts per token via a learned router, so total parameter count (capacity) can scale into the hundreds of billions while active FLOPs per token stay near a much smaller dense model's cost.</div>
+  </div>
+
+  <div class="card qcard" id="q7" data-domain="Prompt Engineering and Adaptation">
+    <div class="meta">Question 8 of 12 · Prompt Engineering and Adaptation</div>
+    <div class="q">A legal document classification service must apply a very specific, consistent tagging taxonomy to every document, has 50,000 labeled examples available, and requires sub-100ms inference latency in production with no external calls. Which approach is MOST appropriate?</div>
+    <button class="opt" onclick="answer(this,7,0,1)">A. Retrieval-augmented generation pulling similar labeled examples at inference time</button><button class="opt" onclick="answer(this,7,1,1)">B. Fine-tune the model on the labeled dataset to internalize the taxonomy</button><button class="opt" onclick="answer(this,7,2,1)">C. Chain-of-thought prompting to reason through the taxonomy at inference time</button><button class="opt" onclick="answer(this,7,3,1)">D. Zero-shot prompting with a detailed description of the taxonomy in the system prompt</button>
+    <div class="expl">With abundant labeled data, a fixed consistent output format, and a hard low-latency/no-external-call constraint, fine-tuning bakes the behavior directly into the weights, eliminating retrieval latency and long reasoning chains while maximizing consistency.</div>
+  </div>
+
+  <div class="card qcard" id="q8" data-domain="Data Preparation and Fine-Tuning">
+    <div class="meta">Question 9 of 12 · Data Preparation and Fine-Tuning</div>
+    <div class="q">A company wants to align a model's outputs to human preference data but does not have the resources to train a separate reward model and run PPO-based reinforcement learning. Which preference optimization technique should they use instead?</div>
+    <button class="opt" onclick="answer(this,8,0,3)">A. RLHF with a trained reward model and PPO</button><button class="opt" onclick="answer(this,8,1,3)">B. Standard supervised fine-tuning on the chosen responses only</button><button class="opt" onclick="answer(this,8,2,3)">C. P-tuning conditioned on preference labels</button><button class="opt" onclick="answer(this,8,3,3)">D. Direct Preference Optimization (DPO)</button>
+    <div class="expl">DPO directly optimizes the policy model on preference pairs (chosen vs. rejected responses) using a closed-form loss derived from the RLHF objective, eliminating the need for a separate reward model or an RL training loop like PPO.</div>
+  </div>
+
+  <div class="card qcard" id="q9" data-domain="Optimization and Acceleration">
+    <div class="meta">Question 10 of 12 · Optimization and Acceleration</div>
+    <div class="q">Which post-training weight quantization technique identifies salient weight channels based on activation magnitude statistics and protects those channels from precision loss, rather than minimizing layer-wise weight reconstruction error via a Hessian-based approach?</div>
+    <button class="opt" onclick="answer(this,9,0,1)">A. GPTQ</button><button class="opt" onclick="answer(this,9,1,1)">B. AWQ</button><button class="opt" onclick="answer(this,9,2,1)">C. Naive round-to-nearest INT8 quantization</button><button class="opt" onclick="answer(this,9,3,1)">D. FP8 dynamic per-tensor quantization</button>
+    <div class="expl">AWQ (Activation-aware Weight Quantization) observes activation magnitudes to determine which weight channels are most salient and scales/protects those channels, avoiding the costly per-layer Hessian-based reconstruction optimization that GPTQ performs.</div>
+  </div>
+
+  <div class="card qcard" id="q10" data-domain="Deployment, Serving, and Monitoring">
+    <div class="meta">Question 11 of 12 · Deployment, Serving, and Monitoring</div>
+    <div class="q">An LLM inference service on Triton Inference Server receives many concurrent small requests. GPU utilization is low despite high request volume, and per-request latency is acceptable but overall throughput is far below the GPU's theoretical capacity. Which Triton feature should be enabled FIRST to increase throughput without changing the model itself?</div>
+    <button class="opt" onclick="answer(this,10,0,2)">A. Increase the number of CPU worker threads in the client application</button><button class="opt" onclick="answer(this,10,1,2)">B. Switch the model backend from TensorRT to plain ONNX Runtime</button><button class="opt" onclick="answer(this,10,2,2)">C. Enable dynamic batching so incoming requests are grouped into larger batches before GPU execution</button><button class="opt" onclick="answer(this,10,3,2)">D. Reduce the model's maximum sequence length to shrink memory footprint</button>
+    <div class="expl">Dynamic batching aggregates concurrent requests into larger GPU batches, improving GPU utilization and throughput, which is exactly the symptom described (low utilization despite high request volume).</div>
+  </div>
+
+  <div class="card qcard" id="q11" data-domain="Evaluation and Responsible AI">
+    <div class="meta">Question 12 of 12 · Evaluation and Responsible AI</div>
+    <div class="q">An organization needs to evaluate the quality of open-ended, creative summaries generated by an LLM at scale, where no single reference answer exists and nuanced judgment (coherence, relevance, style) is required. Which evaluation method is MOST appropriate for this requirement?</div>
+    <button class="opt" onclick="answer(this,11,0,3)">A. Exact-match accuracy against a gold-label dataset</button><button class="opt" onclick="answer(this,11,1,3)">B. ROUGE score computed against a single reference summary</button><button class="opt" onclick="answer(this,11,2,3)">C. Perplexity measured on a held-out validation set</button><button class="opt" onclick="answer(this,11,3,3)">D. LLM-as-judge evaluation using a strong reference model with a scoring rubric</button>
+    <div class="expl">LLM-as-judge is designed for open-ended generation tasks lacking a single correct answer, using a rubric to approximate nuanced human-like judgment at scale, which fits creative summarization evaluation.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$129.99</span> <strong>$34.99</strong> with code <span class="code">FREETEST33</span> — valid through September 7.</p>
+  <a href="https://www.udemy.com/course/ncp-genl-nvidia-generative-ai-llms-cert-prep/?couponCode=FREETEST33" rel="sponsored">Get the full course for $34.99 →</a>
+</div>
+<div class="domains"><span class="meta">More free practice by exam domain:</span><br><a href="ncp-genl-llm-foundations-and-architecture.html">LLM Foundations and Architecture →</a><a href="ncp-genl-prompt-engineering-and-adaptation.html">Prompt Engineering and Adaptation →</a><a href="ncp-genl-data-preparation-and-fine-tuning.html">Data Preparation and Fine-Tuning →</a><a href="ncp-genl-optimization-and-acceleration.html">Optimization and Acceleration →</a><a href="ncp-genl-deployment-serving-and-monitoring.html">Deployment, Serving, and Monitoring →</a><a href="ncp-genl-evaluation-and-responsible-ai.html">Evaluation and Responsible AI →</a></div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

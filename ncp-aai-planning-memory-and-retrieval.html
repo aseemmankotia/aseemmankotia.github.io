@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Planning, Memory, and Retrieval Practice Questions — NVIDIA-Certified Professional: Agentic AI</title>
+<meta name="description" content="6 free Planning, Memory, and Retrieval practice questions with explanations for the NVIDIA-Certified Professional: Agentic AI exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/ncp-aai-planning-memory-and-retrieval.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free NVIDIA-Certified Professional: Agentic AI practice — 6 questions on <strong>Planning, Memory, and Retrieval</strong>, with explanations. No sign-up.
+<a href="ncp-aai.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Planning, Memory, and Retrieval">
+    <div class="meta">Question 1 of 6 · Planning, Memory, and Retrieval</div>
+    <div class="q">An agent executes a 40-step autonomous research task spanning multiple tool calls and sub-agent handoffs. After step 25, the agent begins pursuing a tangential sub-goal that technically relates to an earlier tool output but no longer serves the original user objective. Which architectural pattern BEST prevents this goal drift in long-horizon planning?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. Increase the temperature of the planner LLM so it generates more diverse sub-tasks at each step</button><button class="opt" onclick="answer(this,0,1,2)">B. Store the full 40-step transcript verbatim in the context window so nothing is ever lost</button><button class="opt" onclick="answer(this,0,2,2)">C. Use a hierarchical planner that periodically re-grounds each sub-task against the original goal statement stored in a dedicated goal-tracking memory slot</button><button class="opt" onclick="answer(this,0,3,2)">D. Replace the planner with a single-shot prompt that generates all 40 steps upfront before execution begins</button>
+    <div class="expl">Long-horizon agents drift because intermediate context dominates over the original objective. Hierarchical planning with periodic re-grounding checkpoints against a persistent, explicitly stored goal representation is the standard mitigation tested on the exam for maintaining goal fidelity across many steps.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Planning, Memory, and Retrieval">
+    <div class="meta">Question 2 of 6 · Planning, Memory, and Retrieval</div>
+    <div class="q">A retrieval pipeline combines BM25 keyword search results with dense vector similarity search results to answer agent queries over a mixed technical/legal corpus. The two systems produce scores on incompatible scales. Which fusion method should be used to merge the two ranked lists without requiring score normalization?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. Weighted linear combination of raw BM25 and cosine similarity scores</button><button class="opt" onclick="answer(this,1,1,3)">B. Take the union of both result sets and sort alphabetically by document title</button><button class="opt" onclick="answer(this,1,2,3)">C. Discard the BM25 results entirely and rely only on the dense vector scores since they are already normalized</button><button class="opt" onclick="answer(this,1,3,3)">D. Reciprocal Rank Fusion (RRF), which combines results based on each document's rank position in each list</button>
+    <div class="expl">RRF fuses ranked lists using only rank position (1/(k+rank)), sidestepping the need to normalize incompatible scoring scales between sparse and dense retrievers. This is the standard hybrid retrieval fusion technique tested for agentic RAG pipelines.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Planning, Memory, and Retrieval">
+    <div class="meta">Question 3 of 6 · Planning, Memory, and Retrieval</div>
+    <div class="q">You are building the retrieval component for an agent that answers questions over long legal contracts where clauses frequently reference terms defined many paragraphs earlier. Naive fixed-size chunking with no overlap is producing poor grounding because definitions get separated from the clauses that use them. What is the BEST chunking configuration to fix this?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. Use larger, section-aware chunks with overlapping windows so referenced definitions remain adjacent to the clauses citing them</button><button class="opt" onclick="answer(this,2,1,0)">B. Reduce chunk size further to 50 tokens so retrieval is more precise</button><button class="opt" onclick="answer(this,2,2,0)">C. Switch entirely to a single embedding for the whole document instead of chunking</button><button class="opt" onclick="answer(this,2,3,0)">D. Keep fixed-size chunking but increase the number of retrieved chunks (top-k) from 3 to 5</button>
+    <div class="expl">Section-aware chunking respects document structure (e.g., clause/definition boundaries), and overlap ensures cross-references aren't split apart mid-context. This directly addresses the failure mode of definitions being separated from usage, which is a core exam topic on chunking strategy selection.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Planning, Memory, and Retrieval">
+    <div class="meta">Question 4 of 6 · Planning, Memory, and Retrieval</div>
+    <div class="q">An agent's long-term memory store contains two types of entries: (1) records of specific past user interactions with timestamps and situational context, and (2) generalized distilled facts learned across many interactions with no reference to when or how they were learned. Which memory types do these two categories represent, respectively?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. Semantic memory, then episodic memory</button><button class="opt" onclick="answer(this,3,1,2)">B. Working memory, then long-term memory</button><button class="opt" onclick="answer(this,3,2,2)">C. Episodic memory, then semantic memory</button><button class="opt" onclick="answer(this,3,3,2)">D. Short-term memory, then episodic memory</button>
+    <div class="expl">Episodic memory stores specific, time-and-context-bound events (what happened, when), while semantic memory stores generalized, decontextualized facts and knowledge distilled over time — a core distinction tested for agentic memory architecture design.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Planning, Memory, and Retrieval">
+    <div class="meta">Question 5 of 6 · Planning, Memory, and Retrieval</div>
+    <div class="q">An agent performing an extended multi-turn tool-use loop is approaching its context window limit, driving up both latency and per-call cost as the conversation grows. The agent still needs to recall key facts and decisions from early in the session to complete the task correctly. Which strategy BEST balances context-window constraints with retention of critical information?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. Progressively summarize older turns into a compact rolling summary while retaining recent turns verbatim, updating the summary as the session continues</button><button class="opt" onclick="answer(this,4,1,0)">B. Truncate the oldest turns entirely once the context window is full, keeping only the most recent N turns</button><button class="opt" onclick="answer(this,4,2,0)">C. Always include the full unmodified conversation history regardless of context window size, relying on the model's maximum context length</button><button class="opt" onclick="answer(this,4,3,0)">D. Generate a single fixed summary at the very start of the session and never update it as new information arrives</button>
+    <div class="expl">Progressive/rolling summarization (compaction) preserves salient early information in condensed form while keeping recent context verbatim for fidelity, directly reducing token count and cost/latency without losing critical earlier facts — the standard exam-tested context management technique for long sessions.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Planning, Memory, and Retrieval">
+    <div class="meta">Question 6 of 6 · Planning, Memory, and Retrieval</div>
+    <div class="q">A retrieval pipeline uses a bi-encoder to fetch the top 50 candidate passages from a vector store for each agent query, but downstream answer accuracy is still poor because the top few results are often not the most relevant ones. Which addition to the pipeline BEST improves precision at low added cost, given that cross-encoders are too slow to run over the full corpus?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. Apply a cross-encoder re-ranker to score and reorder only the top 50 bi-encoder candidates before passing the top few to the agent</button><button class="opt" onclick="answer(this,5,1,0)">B. Replace the bi-encoder entirely with a cross-encoder for the initial full-corpus retrieval step</button><button class="opt" onclick="answer(this,5,2,0)">C. Increase the bi-encoder's embedding dimensionality to improve initial retrieval accuracy</button><button class="opt" onclick="answer(this,5,3,0)">D. Skip retrieval entirely and let the agent generate answers from parametric knowledge only</button>
+    <div class="expl">Cross-encoders jointly encode query and passage for higher precision but are too expensive to run over an entire corpus. The standard pattern is bi-encoder retrieval for recall over the full corpus, followed by cross-encoder re-ranking over a small candidate set (e.g., top 50) to boost precision at low marginal cost — a core hybrid/re-ranked retrieval concept tested on the exam.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$129.99</span> <strong>$34.99</strong> with code <span class="code">FREETEST33</span> — valid through September 7.</p>
+  <a href="https://www.udemy.com/course/nvidia-ncp-aai-agentic-ai-certification-prep/?couponCode=FREETEST33" rel="sponsored">Get the full course for $34.99 →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

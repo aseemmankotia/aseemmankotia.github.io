@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Data Preparation and Fine-Tuning Practice Questions — NVIDIA-Certified Professional: Generative AI and LLMs</title>
+<meta name="description" content="6 free Data Preparation and Fine-Tuning practice questions with explanations for the NVIDIA-Certified Professional: Generative AI and LLMs exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/ncp-genl-data-preparation-and-fine-tuning.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free NVIDIA-Certified Professional: Generative AI and LLMs practice — 6 questions on <strong>Data Preparation and Fine-Tuning</strong>, with explanations. No sign-up.
+<a href="ncp-genl.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Data Preparation and Fine-Tuning">
+    <div class="meta">Question 1 of 6 · Data Preparation and Fine-Tuning</div>
+    <div class="q">A team is curating a 2TB web-crawled corpus for continued pretraining and needs to remove near-duplicate documents at scale without relying on exact string matching. Which approach is most appropriate?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. Exact hash-based deduplication using MD5 checksums on full documents</button><button class="opt" onclick="answer(this,0,1,2)">B. Removing all documents shorter than 100 tokens</button><button class="opt" onclick="answer(this,0,2,2)">C. MinHash with Locality-Sensitive Hashing (LSH) to identify near-duplicate document pairs based on n-gram similarity</button><button class="opt" onclick="answer(this,0,3,2)">D. Sorting documents alphabetically and removing consecutive duplicates</button>
+    <div class="expl">MinHash+LSH approximates Jaccard similarity between document n-gram sets efficiently at scale, allowing near-duplicate (not just exact) documents to be clustered and filtered — the standard fuzzy deduplication approach used in large-scale corpus curation (e.g., NeMo Curator's fuzzy dedup module).</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Data Preparation and Fine-Tuning">
+    <div class="meta">Question 2 of 6 · Data Preparation and Fine-Tuning</div>
+    <div class="q">A company has only 500 labeled instruction-response pairs for a niche legal domain and a single A100 80GB GPU. They want to adapt a 13B-parameter LLM without overfitting or requiring massive compute. Which customization strategy is BEST?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. Full fine-tuning of all model parameters on the 500 examples</button><button class="opt" onclick="answer(this,1,1,2)">B. Continued pretraining on unlabeled legal text followed by RLHF</button><button class="opt" onclick="answer(this,1,2,2)">C. LoRA or QLoRA fine-tuning targeting attention projection layers with a low rank</button><button class="opt" onclick="answer(this,1,3,2)">D. Training a new tokenizer from scratch on the 500 examples</button>
+    <div class="expl">With a tiny labeled dataset and limited compute, LoRA/QLoRA updates only a small number of low-rank adapter parameters, drastically reducing overfitting risk and memory/compute cost compared to full fine-tuning, while still adapting behavior to the instruction format.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Data Preparation and Fine-Tuning">
+    <div class="meta">Question 3 of 6 · Data Preparation and Fine-Tuning</div>
+    <div class="q">During LoRA fine-tuning in NeMo, increasing the rank (r) hyperparameter primarily affects which trade-off?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. Higher rank increases the number of trainable parameters and expressive capacity, at the cost of more memory and higher risk of overfitting on small datasets</button><button class="opt" onclick="answer(this,2,1,0)">B. Higher rank reduces tokenization overhead during preprocessing</button><button class="opt" onclick="answer(this,2,2,0)">C. Higher rank always reduces GPU memory usage during training</button><button class="opt" onclick="answer(this,2,3,0)">D. Higher rank has no impact on model capacity, only on inference latency</button>
+    <div class="expl">LoRA rank sets the dimensionality of the low-rank update matrices (A and B); a higher rank means more trainable parameters and greater capacity to fit complex adaptations, but also more memory usage and greater overfitting risk when training data is limited.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Data Preparation and Fine-Tuning">
+    <div class="meta">Question 4 of 6 · Data Preparation and Fine-Tuning</div>
+    <div class="q">A team wants to align a fine-tuned LLM to human preferences but lacks the infrastructure to train and maintain a separate reward model or run PPO-based reinforcement learning. They do have a dataset of paired chosen/rejected responses. Which approach best fits their constraints?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. Full RLHF with PPO, since it is required whenever preference data exists</button><button class="opt" onclick="answer(this,3,1,2)">B. P-tuning using virtual tokens conditioned on preference labels</button><button class="opt" onclick="answer(this,3,2,2)">C. Direct Preference Optimization (DPO), which directly optimizes the policy on preference pairs without a separate reward model or RL loop</button><button class="opt" onclick="answer(this,3,3,2)">D. Supervised fine-tuning only, ignoring the preference labels entirely</button>
+    <div class="expl">DPO reformulates preference alignment as a classification-style loss directly on chosen/rejected pairs, avoiding the need for a separate reward model and the instability/complexity of PPO-based RL, making it well-suited to teams without RLHF infrastructure.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Data Preparation and Fine-Tuning">
+    <div class="meta">Question 5 of 6 · Data Preparation and Fine-Tuning</div>
+    <div class="q">How does p-tuning differ from LoRA as a parameter-efficient fine-tuning method?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. P-tuning is only compatible with encoder-only models while LoRA works only with decoder-only models</button><button class="opt" onclick="answer(this,4,1,1)">B. P-tuning learns continuous virtual token embeddings prepended to the input via a small prompt encoder, while LoRA injects low-rank update matrices into existing weight layers</button><button class="opt" onclick="answer(this,4,2,1)">C. P-tuning modifies attention weights directly via full backpropagation, while LoRA freezes all model parameters</button><button class="opt" onclick="answer(this,4,3,1)">D. P-tuning requires modifying the vocabulary and tokenizer, while LoRA does not require any prompt engineering</button>
+    <div class="expl">P-tuning trains a small set of continuous virtual token embeddings (via a prompt encoder such as an LSTM/MLP) that are prepended to the input sequence, leaving the base model frozen, whereas LoRA freezes the base weights but injects trainable low-rank matrices into the weight layers (e.g., attention projections) themselves.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Data Preparation and Fine-Tuning">
+    <div class="meta">Question 6 of 6 · Data Preparation and Fine-Tuning</div>
+    <div class="q">When using NVIDIA NeMo Curator to prepare a pretraining dataset, which stage is responsible for identifying and filtering out documents containing toxic or unsafe content before deduplication and training?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. Tokenization and shuffling stage</button><button class="opt" onclick="answer(this,5,1,1)">B. Quality and classifier-based filtering, which applies heuristic and model-based filters including toxicity/safety classifiers</button><button class="opt" onclick="answer(this,5,2,1)">C. Blending multiple data sources by weighted sampling</button><button class="opt" onclick="answer(this,5,3,1)">D. Exact substring deduplication using suffix arrays</button>
+    <div class="expl">NeMo Curator's quality filtering stage applies heuristic rules and trained classifiers (including toxicity/safety and quality classifiers) to score and remove undesirable documents from the corpus before it moves on to deduplication and downstream blending steps.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$129.99</span> <strong>$34.99</strong> with code <span class="code">FREETEST33</span> — valid through September 7.</p>
+  <a href="https://www.udemy.com/course/ncp-genl-nvidia-generative-ai-llms-cert-prep/?couponCode=FREETEST33" rel="sponsored">Get the full course for $34.99 →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

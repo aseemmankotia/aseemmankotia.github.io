@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Security Architecture Practice Questions — CompTIA Security+ (SY0-701)</title>
+<meta name="description" content="6 free Security Architecture practice questions with explanations for the CompTIA Security+ (SY0-701) exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/sy0-701-security-architecture.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free CompTIA Security+ (SY0-701) practice — 6 questions on <strong>Security Architecture</strong>, with explanations. No sign-up.
+<a href="sy0-701.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Security Architecture">
+    <div class="meta">Question 1 of 6 · Security Architecture</div>
+    <div class="q">A hospital's perimeter firewall protects life-support monitoring systems and receives real-time vitals feeds from bedside devices. The firewall appliance suffers a hardware fault. Patient safety policy mandates that monitoring data must never be blocked, even if it means temporarily bypassing security inspection. Which failure mode should this firewall be configured to use?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. Active-passive HA pair</button><button class="opt" onclick="answer(this,0,1,1)">B. Fail-open</button><button class="opt" onclick="answer(this,0,2,1)">C. Load balancer failover</button><button class="opt" onclick="answer(this,0,3,1)">D. Fail-closed</button>
+    <div class="expl">Fail-open allows traffic to continue passing when the device fails, prioritizing availability — appropriate when uninterrupted data flow (e.g., life-support telemetry) is more critical than blocking potentially malicious traffic during the outage window.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Security Architecture">
+    <div class="meta">Question 2 of 6 · Security Architecture</div>
+    <div class="q">A payment processor wants analytics teams to work with substitute values for stored primary account numbers (PANs). The substitute values must be reversible ONLY by the payment processor's settlement system, which maps each substitute back to the original PAN via a securely stored value vault. Which data protection technique is being described?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. Tokenization</button><button class="opt" onclick="answer(this,1,1,0)">B. Encryption at rest</button><button class="opt" onclick="answer(this,1,2,0)">C. Data masking</button><button class="opt" onclick="answer(this,1,3,0)">D. Obfuscation</button>
+    <div class="expl">Tokenization replaces sensitive data with a non-sensitive token that has no mathematical relationship to the original value; only the token vault (held by the authorized system) can map the token back to the real PAN — matching the reversible, vault-based description in the scenario.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Security Architecture">
+    <div class="meta">Question 3 of 6 · Security Architecture</div>
+    <div class="q">A fully remote workforce needs identity-aware access to both SaaS applications and internal apps, with security policy (SWG, CASB, ZTNA) enforced at points of presence close to each user rather than backhauling traffic through a central data center. Which architecture BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. SASE</button><button class="opt" onclick="answer(this,2,1,0)">B. SD-WAN only</button><button class="opt" onclick="answer(this,2,2,0)">C. Site-to-site IPSec VPN</button><button class="opt" onclick="answer(this,2,3,0)">D. Traditional hub network with centralized firewall</button>
+    <div class="expl">SASE (Secure Access Service Edge) combines SD-WAN networking with a cloud-delivered security stack (SWG, CASB, ZTNA, FWaaS) enforced at distributed edge nodes near the user, providing identity-aware policy without backhauling traffic.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Security Architecture">
+    <div class="meta">Question 4 of 6 · Security Architecture</div>
+    <div class="q">During a cloud security audit, an engineer finds that running EC2/VM configurations no longer match the versioned Terraform templates stored in the repository — extra open ports and manually added rules exist that were never committed to source control. What is this phenomenon called, and what should be done first?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. VM sprawl; decommission excess instances</button><button class="opt" onclick="answer(this,3,1,3)">B. Zero-day exploit; patch immediately</button><button class="opt" onclick="answer(this,3,2,3)">C. Privilege escalation; rotate IAM credentials</button><button class="opt" onclick="answer(this,3,3,3)">D. Configuration drift; run a plan/state comparison against the IaC templates and remediate discrepancies</button>
+    <div class="expl">Configuration drift occurs when live infrastructure deviates from its Infrastructure-as-Code (IaC) definition, typically from manual out-of-band changes. The correct first step is comparing actual state against the IaC template (e.g., 'terraform plan') to identify and reconcile the drift.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Security Architecture">
+    <div class="meta">Question 5 of 6 · Security Architecture</div>
+    <div class="q">Which statement BEST describes the primary architectural difference between load balancing and clustering when both are used to achieve high availability?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. Clustering requires cloud infrastructure only; load balancing works only on-premises</button><button class="opt" onclick="answer(this,4,1,3)">B. Load balancing and clustering are functionally identical techniques with different marketing names</button><button class="opt" onclick="answer(this,4,2,3)">C. Load balancing operates only at Layer 2; clustering operates only at Layer 3</button><button class="opt" onclick="answer(this,4,3,3)">D. Load balancing distributes traffic across multiple active nodes to improve performance and availability; clustering groups nodes to operate as a single logical system that can fail over shared state</button>
+    <div class="expl">Load balancing spreads incoming requests across multiple independent active nodes to improve throughput and availability, while clustering ties nodes together (often sharing state/storage) so that if one node fails, another can seamlessly take over — a distinct HA mechanism from simple traffic distribution.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Security Architecture">
+    <div class="meta">Question 6 of 6 · Security Architecture</div>
+    <div class="q">A power utility's SCADA network must periodically transmit telemetry readings to a corporate reporting network, but the SCADA network must NEVER receive any inbound traffic from the corporate side, even in the event of a misconfiguration, to prevent malware ingress into the control system. Which control BEST enforces this requirement?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. VLAN segmentation with ACLs</button><button class="opt" onclick="answer(this,5,1,3)">B. Air-gapped network</button><button class="opt" onclick="answer(this,5,2,3)">C. Next-gen firewall with default-deny inbound rules</button><button class="opt" onclick="answer(this,5,3,3)">D. Data diode</button>
+    <div class="expl">A data diode is a hardware device that physically permits data flow in only one direction, making reverse traffic physically impossible regardless of software misconfiguration — the strongest guarantee of unidirectional flow for SCADA-to-corporate telemetry.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$109.99</span> <strong>$34.99</strong> with code <span class="code">FREETEST33</span> — valid through September 2.</p>
+  <a href="https://www.udemy.com/course/comptia-security-sy0-701-exam-focused-prep/?couponCode=FREETEST33" rel="sponsored">Get the full course for $34.99 →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

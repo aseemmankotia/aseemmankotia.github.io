@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Agent Design and Cognition Practice Questions — NVIDIA-Certified Professional: Agentic AI</title>
+<meta name="description" content="6 free Agent Design and Cognition practice questions with explanations for the NVIDIA-Certified Professional: Agentic AI exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/ncp-aai-agent-design-and-cognition.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free NVIDIA-Certified Professional: Agentic AI practice — 6 questions on <strong>Agent Design and Cognition</strong>, with explanations. No sign-up.
+<a href="ncp-aai.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Agent Design and Cognition">
+    <div class="meta">Question 1 of 6 · Agent Design and Cognition</div>
+    <div class="q">An agent must solve a puzzle where an early move can be wrong and only becomes apparent several steps later, requiring exploration of multiple candidate move sequences and the ability to abandon bad branches mid-solution. Which reasoning paradigm BEST fits this requirement?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. ReAct (interleaved reasoning and acting)</button><button class="opt" onclick="answer(this,0,1,2)">B. Chain-of-Thought (single linear reasoning trace)</button><button class="opt" onclick="answer(this,0,2,2)">C. Tree-of-Thought (branching exploration with backtracking)</button><button class="opt" onclick="answer(this,0,3,2)">D. Plan-and-Execute (upfront plan then sequential execution)</button>
+    <div class="expl">Tree-of-Thought explicitly maintains multiple partial solution branches and allows evaluating and discarding weak branches, which matches the need to backtrack after a bad early move.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Agent Design and Cognition">
+    <div class="meta">Question 2 of 6 · Agent Design and Cognition</div>
+    <div class="q">A finance team needs an agent to generate a quarterly report by pulling data from four known APIs in a fixed order, aggregating results, and producing a PDF. The steps and dependencies are fully known in advance and do not change based on intermediate results, and minimizing per-step LLM token cost is a priority. Which control pattern is BEST?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. Plan-and-execute: generate the full plan once, then execute the fixed steps deterministically</button><button class="opt" onclick="answer(this,1,1,0)">B. A ReAct loop that reasons before every single action</button><button class="opt" onclick="answer(this,1,2,0)">C. Tree-of-Thought exploration of multiple possible report structures</button><button class="opt" onclick="answer(this,1,3,0)">D. A fully autonomous reactive agent with no upfront plan</button>
+    <div class="expl">Since the steps and dependencies are fully known and unlikely to change, planning once and executing deterministically avoids repeated LLM reasoning calls, directly satisfying the cost-minimization requirement.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Agent Design and Cognition">
+    <div class="meta">Question 3 of 6 · Agent Design and Cognition</div>
+    <div class="q">You are designing a tool-calling schema for an agent that invokes a 'create_refund' function. To minimize the chance the model invokes the function with an invalid or missing amount field, which schema design choice is MOST effective?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. Describe the amount format only in the system prompt's narrative text</button><button class="opt" onclick="answer(this,2,1,3)">B. Allow amount to be an optional free-text string parsed later</button><button class="opt" onclick="answer(this,2,2,3)">C. Rely on the model's few-shot examples alone without schema constraints</button><button class="opt" onclick="answer(this,2,3,3)">D. Make amount a required field with a numeric type constraint enforced via the function's JSON schema</button>
+    <div class="expl">Enforcing a required, typed field at the JSON schema level allows the calling framework to structurally validate and reject malformed calls before execution, independent of prompt phrasing.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Agent Design and Cognition">
+    <div class="meta">Question 4 of 6 · Agent Design and Cognition</div>
+    <div class="q">A company wants an assistant that independently reasons about legal compliance, technical troubleshooting, and billing disputes, each requiring distinct specialized prompting, tool access, and safety guardrails. Users submit tickets covering all three domains simultaneously. Which architecture is BEST?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. A single agent with one large system prompt covering all three domains</button><button class="opt" onclick="answer(this,3,1,3)">B. Three independent agents running in parallel with no coordination, merging outputs by concatenation</button><button class="opt" onclick="answer(this,3,2,3)">C. A single agent using only chain-of-thought to reason through all domains sequentially in one context</button><button class="opt" onclick="answer(this,3,3,3)">D. A multi-agent system with a router/orchestrator agent delegating to domain-specialist sub-agents</button>
+    <div class="expl">Distinct specialized personas, tools, and guardrails per domain, combined with the need for a coordinated final answer, argue for an orchestrator delegating to domain-specialist sub-agents.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Agent Design and Cognition">
+    <div class="meta">Question 5 of 6 · Agent Design and Cognition</div>
+    <div class="q">An agent architecture adds a self-critique step where the model reviews and revises its own draft answer before returning it. Which statement about this pattern is MOST accurate for exam purposes?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. Self-critique increases latency and token cost and improves output quality on reasoning/format errors, but does not guarantee elimination of factual hallucinations without external grounding</button><button class="opt" onclick="answer(this,4,1,0)">B. Self-critique guarantees factual correctness because the model verifies its own output against ground truth</button><button class="opt" onclick="answer(this,4,2,0)">C. Self-critique replaces the need for external grounding or retrieval since the model checks itself</button><button class="opt" onclick="answer(this,4,3,0)">D. Self-critique should always be run at temperature 0 with no additional passes to avoid extra cost</button>
+    <div class="expl">Self-critique adds an extra generation pass, raising latency and cost, and is effective at catching reasoning/format errors, but it has no access to ground truth, so it cannot reliably fix factual hallucinations without external grounding.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Agent Design and Cognition">
+    <div class="meta">Question 6 of 6 · Agent Design and Cognition</div>
+    <div class="q">An agent is being designed to execute stock trades exceeding $50,000 based on market signal analysis. Regulatory requirements mandate human review before any irreversible high-value action. Which control design is BEST?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. Full agentic autonomy: let the agent execute trades directly whenever its confidence score exceeds a threshold</button><button class="opt" onclick="answer(this,5,1,1)">B. A deterministic guardrail that routes any trade above the threshold to a human-approval step before execution, with the agent only proposing the action</button><button class="opt" onclick="answer(this,5,2,1)">C. A ReAct loop that reasons and acts without any checkpoint, relying on the LLM's judgment on when to seek approval</button><button class="opt" onclick="answer(this,5,3,1)">D. Remove the threshold and let a self-critique pass decide whether human review is needed</button>
+    <div class="expl">A hard, rule-based deterministic checkpoint reliably enforces the regulatory mandate for human review before irreversible high-value actions, with the agent constrained to only proposing the trade.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$129.99</span> <strong>$34.99</strong> with code <span class="code">FREETEST33</span> — valid through September 7.</p>
+  <a href="https://www.udemy.com/course/nvidia-ncp-aai-agentic-ai-certification-prep/?couponCode=FREETEST33" rel="sponsored">Get the full course for $34.99 →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

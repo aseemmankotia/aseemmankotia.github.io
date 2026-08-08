@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free GPU-Accelerated Data Manipulation and Preparation Practice Questions — NVIDIA-Certified Associate: Accelerated Data Science</title>
+<meta name="description" content="6 free GPU-Accelerated Data Manipulation and Preparation practice questions with explanations for the NVIDIA-Certified Associate: Accelerated Data Science exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/nca-ads-gpu-accelerated-data-manipulation-and-preparation.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free NVIDIA-Certified Associate: Accelerated Data Science practice — 6 questions on <strong>GPU-Accelerated Data Manipulation and Preparation</strong>, with explanations. No sign-up.
+<a href="nca-ads.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="GPU-Accelerated Data Manipulation and Preparation">
+    <div class="meta">Question 1 of 6 · GPU-Accelerated Data Manipulation and Preparation</div>
+    <div class="q">A data science team has an existing pandas ETL script that calls a third-party plotting library, which internally manipulates pandas objects. They want to accelerate the script using `cudf.pandas` (`%load_ext cudf.pandas` / `python -m cudf.pandas script.py`) without modifying the third-party library. When `cudf.pandas` encounters an operation inside that library which is not implemented on the GPU, what actually happens?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. cudf.pandas transparently falls back to the CPU pandas implementation for that specific operation and execution continues</button><button class="opt" onclick="answer(this,0,1,0)">B. The entire script raises a NotImplementedError and must be rewritten to avoid any unsupported call</button><button class="opt" onclick="answer(this,0,2,0)">C. The developer must wrap the third-party call in a `with cudf.no_gpu():` context manager to bypass it</button><button class="opt" onclick="answer(this,0,3,0)">D. The operation runs on GPU anyway but silently returns incorrect results with no warning</button>
+    <div class="expl">cudf.pandas is a proxy layer that dispatches each operation to cuDF when supported and falls back per-operation to CPU pandas when not, so unsupported calls in third-party code do not break the script.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="GPU-Accelerated Data Manipulation and Preparation">
+    <div class="meta">Question 2 of 6 · GPU-Accelerated Data Manipulation and Preparation</div>
+    <div class="q">A cuDF Series holding free-text log messages is queried with `series.str.contains(pattern, regex=True)`, where `pattern` uses a Python-specific regex feature such as a lookahead assertion `(?=...)`. What is the most likely outcome?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. It executes normally with identical results and performance to Python's `re` module used by pandas</button><button class="opt" onclick="answer(this,1,1,3)">B. cuDF automatically rewrites the pattern into an equivalent non-lookahead pattern before executing it on the GPU</button><button class="opt" onclick="answer(this,1,2,3)">C. cuDF silently converts the entire column to a pandas object whenever a regex operation is requested</button><button class="opt" onclick="answer(this,1,3,3)">D. cuDF raises an error or produces incorrect matches because its libcudf string regex engine supports only a subset of regex syntax and does not support lookahead/lookbehind assertions</button>
+    <div class="expl">cuDF's GPU string regex engine implements a restricted regex grammar for performance and does not support advanced constructs like lookahead/lookbehind, so such patterns either error out or behave unexpectedly.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="GPU-Accelerated Data Manipulation and Preparation">
+    <div class="meta">Question 3 of 6 · GPU-Accelerated Data Manipulation and Preparation</div>
+    <div class="q">A developer notices that in pandas, adding a missing value to an integer column forces pandas to upcast the entire column to float64 (using NaN as the missing-value sentinel), but performing the same operation in cuDF keeps the column as int64 with missing entries intact. What explains cuDF's behavior?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. cuDF does not support nulls in integer columns and silently drops any row containing a missing value</button><button class="opt" onclick="answer(this,2,1,1)">B. cuDF uses an Arrow-style validity bitmask that tracks nullness independently of the underlying data buffer, so integer columns can hold nulls without upcasting to float</button><button class="opt" onclick="answer(this,2,2,1)">C. cuDF performs the same float64 upcast as pandas internally but hides this detail from the displayed dtype</button><button class="opt" onclick="answer(this,2,3,1)">D. cuDF stores missing integer values using an INT64_MIN sentinel value embedded directly in the data buffer</button>
+    <div class="expl">cuDF adopts the Arrow columnar memory model, where each column carries a separate validity (null) bitmask alongside its data buffer, allowing nulls to be represented in any dtype — including integers — without needing a float sentinel like NaN.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="GPU-Accelerated Data Manipulation and Preparation">
+    <div class="meta">Question 4 of 6 · GPU-Accelerated Data Manipulation and Preparation</div>
+    <div class="q">A pipeline runs `left.merge(right, on='id', how='inner')` on two cuDF DataFrames, and downstream code assumes the resulting row order matches the row order of `left`. This assumption held with the equivalent pandas merge but occasionally breaks when running the same logic with cuDF on GPU. What is the correct explanation and recommended fix?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. cuDF merge always preserves the left DataFrame's order deterministically, so the bug must be caused by something unrelated to the merge</button><button class="opt" onclick="answer(this,3,1,1)">B. cuDF's default hash-based join implementation does not guarantee stable row ordering the way pandas does; the developer should pass `sort=True` or explicitly re-sort the result by the join key afterward if order matters</button><button class="opt" onclick="answer(this,3,2,1)">C. cuDF requires both DataFrames to be pre-sorted by the join key before `merge()` can be called at all</button><button class="opt" onclick="answer(this,3,3,1)">D. Switching from `how='inner'` to `how='outer'` restores pandas-identical row ordering</button>
+    <div class="expl">cuDF merges typically use GPU hash-join algorithms whose output row order is not guaranteed to match either input DataFrame's order; code that depends on order must request sorting explicitly or re-sort after the merge.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="GPU-Accelerated Data Manipulation and Preparation">
+    <div class="meta">Question 5 of 6 · GPU-Accelerated Data Manipulation and Preparation</div>
+    <div class="q">A benchmarking task requires generating a large synthetic timeseries DataFrame directly in GPU memory — including an id column, a timestamp index, and several random float columns — without first constructing it in pandas and copying it to the GPU. Which RAPIDS approach is the intended, native way to accomplish this?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. Use `cudf.datasets.timeseries()` to generate a GPU-resident synthetic timeseries DataFrame with configurable size and columns</button><button class="opt" onclick="answer(this,4,1,0)">B. Generate the data with `numpy.random`, build a pandas DataFrame, then call `cudf.from_pandas()` to move it to the GPU</button><button class="opt" onclick="answer(this,4,2,0)">C. Use `cuml.datasets.make_classification()` and manually append a timestamp column to the result afterward</button><button class="opt" onclick="answer(this,4,3,0)">D. There is no native RAPIDS API for synthetic data generation; you must use `dask.dataframe.from_delayed()` with custom generator functions</button>
+    <div class="expl">cuDF ships `cudf.datasets.timeseries()`, which generates a synthetic timeseries DataFrame directly on the GPU for benchmarking and testing, avoiding a CPU-to-GPU copy step.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="GPU-Accelerated Data Manipulation and Preparation">
+    <div class="meta">Question 6 of 6 · GPU-Accelerated Data Manipulation and Preparation</div>
+    <div class="q">A team needs to apply a custom Python function to each group of a cuDF `groupby` object to perform a non-trivial numeric transformation not available as a built-in cuDF aggregation. Calling `.apply(custom_func)` directly (as they would in pandas) runs extremely slowly. What is the recommended RAPIDS approach to accelerate this workload?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. Convert the cuDF GroupBy result to a pandas GroupBy using `.to_pandas()` and apply the function there, since UDFs are always faster on CPU</button><button class="opt" onclick="answer(this,5,1,3)">B. cuDF's groupby object has no `apply()` method at all, so this transformation is impossible on the GPU</button><button class="opt" onclick="answer(this,5,2,3)">C. Wrap the function call in a `cudf.multiprocessing.Pool` to parallelize the CPU-bound work while the data remains resident on the GPU</button><button class="opt" onclick="answer(this,5,3,3)">D. Rewrite the custom function using Numba-compatible operations and invoke cuDF's JIT-compiled groupby `apply` path so the function compiles down to GPU kernels</button>
+    <div class="expl">cuDF supports JIT-compiling user-defined functions via Numba for groupby `apply`, generating actual GPU kernels for the UDF; writing the function in a Numba-compatible style is the recommended way to get GPU-accelerated performance instead of falling back to slow, non-compiled execution.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$99.99</span> <strong>$34.99</strong> with code <span class="code">FREETEST33</span> — valid through September 7.</p>
+  <a href="https://www.udemy.com/course/nca-ads-nvidia-accelerated-data-science-exam-prep/?couponCode=FREETEST33" rel="sponsored">Get the full course for $34.99 →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

@@ -1,0 +1,104 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Google Cloud Professional Machine Learning Engineer Practice Test — 12 Real Exam-Style Questions</title>
+<meta name="description" content="Free Google Cloud Professional Machine Learning Engineer practice questions with detailed explanations. Test yourself before the real exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/professional-ml-engineer.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free Google Cloud Professional Machine Learning Engineer practice test — 12 exam-style questions with explanations. No sign-up.</p></header>
+
+  <div class="card qcard" id="q0" data-domain="Architecting low-code AI solutions">
+    <div class="meta">Question 1 of 12 · Architecting low-code AI solutions</div>
+    <div class="q">A retail company receives thousands of customer support emails daily and wants to automatically classify them by sentiment (positive, negative, neutral) with minimal ML engineering effort and no model training or labeled dataset. Which approach BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. Train a custom TensorFlow text classification model using Vertex AI custom training</button><button class="opt" onclick="answer(this,0,1,3)">B. Use BigQuery ML to create a logistic regression model on generated text embeddings</button><button class="opt" onclick="answer(this,0,2,3)">C. Build a Vertex AI AutoML Text model using labeled sentiment training data</button><button class="opt" onclick="answer(this,0,3,3)">D. Call the Natural Language API's analyzeSentiment method directly on the email text</button>
+    <div class="expl">The Natural Language API provides a pre-trained, ready-to-use sentiment analysis endpoint (analyzeSentiment) that requires zero training data, zero model management, and can be called immediately, matching the 'minimal effort, no training' requirement exactly.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Collaborating to manage data and models">
+    <div class="meta">Question 2 of 12 · Collaborating to manage data and models</div>
+    <div class="q">A retail company built a fraud-detection model that must score transactions online with p99 latency under 10ms. The features (customer lifetime spend, rolling 7-day transaction count) are computed by a batch pipeline and must be identical between training and serving to avoid training-serving skew. Which solution BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,1,0,1)">A. Query BigQuery directly at prediction time to compute features on the fly</button><button class="opt" onclick="answer(this,1,1,1)">B. Store precomputed features in Vertex AI Feature Store and use online serving for low-latency lookups at prediction time</button><button class="opt" onclick="answer(this,1,2,1)">C. Write a custom low-latency service backed by Cloud Bigtable and maintain feature logic separately for training and serving</button><button class="opt" onclick="answer(this,1,3,1)">D. Use a Dataflow streaming pipeline to write features to Cloud SQL and query it during prediction</button>
+    <div class="expl">Vertex AI Feature Store is purpose-built for this scenario: it stores precomputed feature values with an online serving layer optimized for low-latency (single-digit ms) lookups, and the same feature definitions are used for both batch training reads and online serving, eliminating training-serving skew.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Scaling prototypes into ML models">
+    <div class="meta">Question 3 of 12 · Scaling prototypes into ML models</div>
+    <div class="q">A team trains an image classification model on Vertex AI using 8 NVIDIA A100 GPUs spread across 4 worker nodes with synchronous data-parallel training in TensorFlow. Profiling shows that most of the step time is spent on gradient synchronization across nodes (all-reduce), not on compute. Which change should they make to reduce this communication bottleneck with minimal code changes?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. Switch to TPU v5e pods since TPUs eliminate all-reduce overhead entirely</button><button class="opt" onclick="answer(this,2,1,3)">B. Reduce the global batch size to zero so no gradients need to be synchronized</button><button class="opt" onclick="answer(this,2,2,3)">C. Switch from synchronous to fully asynchronous parameter server training with no code changes required</button><button class="opt" onclick="answer(this,2,3,3)">D. Enable Reduction Server by adding reduction server worker pool replicas to the Vertex AI custom training job configuration</button>
+    <div class="expl">Vertex AI Reduction Server is purpose-built to accelerate all-reduce operations in multi-node, multi-GPU synchronous data-parallel training. It runs dedicated reduction worker VMs that offload and parallelize the gradient aggregation, cutting network bottleneck time without requiring changes to the training script (it works transparently with NCCL-based frameworks like TensorFlow and PyTorch when the appropriate worker pool is added to the job spec).</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Serving and scaling models">
+    <div class="meta">Question 4 of 12 · Serving and scaling models</div>
+    <div class="q">You deploy a TensorFlow model to a Vertex AI online endpoint. Traffic is bursty overnight and near-zero for several hours each day, and you want to minimize idle cost while keeping p99 latency low during traffic spikes. Which deployment configuration should you use?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. Set both min_replica_count and max_replica_count to 10 so nodes never need to scale up mid-spike</button><button class="opt" onclick="answer(this,3,1,2)">B. Set min_replica_count=0 so the endpoint scales to zero nodes during idle hours and eliminates cost</button><button class="opt" onclick="answer(this,3,2,2)">C. Set min_replica_count=1, max_replica_count=10, and leave autoscaling_target_cpu_utilization at its default of 60%</button><button class="opt" onclick="answer(this,3,3,2)">D. Replace the online endpoint with a batch prediction job that runs every 60 seconds to simulate real-time serving</button>
+    <div class="expl">Vertex AI online endpoints require min_replica_count of at least 1 (they cannot scale to zero), and letting max_replica_count and the default 60% CPU utilization target handle bursts is the standard cost/latency balance for variable traffic.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Automating and orchestrating ML pipelines">
+    <div class="meta">Question 5 of 12 · Automating and orchestrating ML pipelines</div>
+    <div class="q">A data science team built a Vertex AI Pipeline that retrains a fraud model daily using data that lands in BigQuery overnight. They want the simplest solution with the least additional infrastructure to run the pipeline on this fixed daily cadence. Which approach BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. Provision a Compute Engine VM with a cron job that calls the Vertex AI Pipelines API</button><button class="opt" onclick="answer(this,4,1,3)">B. Write a Cloud Function triggered by Cloud Scheduler that polls BigQuery every minute and starts a pipeline run once new data appears</button><button class="opt" onclick="answer(this,4,2,3)">C. Deploy Cloud Composer and build a DAG that triggers the pipeline daily using the PipelineJobOperator</button><button class="opt" onclick="answer(this,4,3,3)">D. Create a Vertex AI Pipelines schedule (PipelineJobSchedule) that triggers the pipeline run at the desired daily cadence</button>
+    <div class="expl">Vertex AI Pipelines supports native recurring schedules (PipelineJobSchedule, exposed via the SDK's create_schedule or gcloud ai pipeline-job-schedules), letting you specify a cron expression to trigger runs without provisioning Composer environments, Cloud Functions, or VMs.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Monitoring AI solutions">
+    <div class="meta">Question 6 of 12 · Monitoring AI solutions</div>
+    <div class="q">A company deploys a fraud detection model to a Vertex AI endpoint. They want to compare the distribution of incoming request features against the distribution of features used during model training, and receive an alert if the divergence exceeds a threshold. Which type of Vertex AI Model Monitoring should they enable?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. Training-serving skew detection</button><button class="opt" onclick="answer(this,5,1,0)">B. Prediction drift detection</button><button class="opt" onclick="answer(this,5,2,0)">C. Feature attribution drift detection</button><button class="opt" onclick="answer(this,5,3,0)">D. Data quality validation using a fixed TFDV schema only</button>
+    <div class="expl">Training-serving skew detection specifically compares the statistical distribution of features seen in production requests against the distribution of features in the original training dataset, which is exactly what the scenario requires.</div>
+  </div>
+
+  <div class="card qcard" id="q6" data-domain="Architecting low-code AI solutions">
+    <div class="meta">Question 7 of 12 · Architecting low-code AI solutions</div>
+    <div class="q">A finance team needs to extract structured key-value pairs — invoice number, vendor name, total amount, due date — from scanned PDF invoices that arrive in many different layouts, without building or training a custom model. Which service should they use?</div>
+    <button class="opt" onclick="answer(this,6,0,0)">A. Document AI Invoice Parser</button><button class="opt" onclick="answer(this,6,1,0)">B. Vision API with TEXT_DETECTION (OCR)</button><button class="opt" onclick="answer(this,6,2,0)">C. AutoML Text with custom entity extraction</button><button class="opt" onclick="answer(this,6,3,0)">D. BigQuery ML with a text classification model</button>
+    <div class="expl">Document AI's specialized Invoice Parser is a pre-built processor trained specifically to extract structured, labeled fields (invoice number, totals, vendor, dates) from varied invoice layouts out of the box, with no training required.</div>
+  </div>
+
+  <div class="card qcard" id="q7" data-domain="Collaborating to manage data and models">
+    <div class="meta">Question 8 of 12 · Collaborating to manage data and models</div>
+    <div class="q">A data engineering team has an existing, mature Apache Spark codebase performing complex ETL and feature engineering on petabytes of log data stored in Cloud Storage. The ML team wants to reuse this exact Spark logic with minimal rewrite to prepare training data on Google Cloud. Which service should they use?</div>
+    <button class="opt" onclick="answer(this,7,0,2)">A. BigQuery, rewriting the Spark logic as SQL transformations</button><button class="opt" onclick="answer(this,7,1,2)">B. Dataflow, converting the Spark jobs to Apache Beam pipelines</button><button class="opt" onclick="answer(this,7,2,2)">C. Dataproc, running the existing Spark jobs with minimal changes</button><button class="opt" onclick="answer(this,7,3,2)">D. Vertex AI Workbench, running the Spark jobs inside a managed notebook instance</button>
+    <div class="expl">Dataproc is a managed Hadoop/Spark service designed exactly for this use case — running existing Spark/Hadoop code on Google Cloud with little to no code rewrite, at scale.</div>
+  </div>
+
+  <div class="card qcard" id="q8" data-domain="Scaling prototypes into ML models">
+    <div class="meta">Question 9 of 12 · Scaling prototypes into ML models</div>
+    <div class="q">A research team needs to train a very large Transformer model on TensorFlow using enormous matrix multiplication workloads, with a training budget that favors maximum throughput per dollar for sustained large-batch training over many days, and the model is written to be XLA-compatible from the start. Which hardware choice on Vertex AI is MOST appropriate?</div>
+    <button class="opt" onclick="answer(this,8,0,3)">A. Preemptible A2 GPU VMs only</button><button class="opt" onclick="answer(this,8,1,3)">B. CPU-only n2-highmem instances</button><button class="opt" onclick="answer(this,8,2,3)">C. A single T4 GPU with mixed precision</button><button class="opt" onclick="answer(this,8,3,3)">D. TPU v5e or v5p pods</button>
+    <div class="expl">TPUs are custom ASICs optimized specifically for large matrix multiplications and are most cost-efficient for sustained, large-batch, XLA-compiled TensorFlow training at scale, which matches every constraint given in the scenario.</div>
+  </div>
+
+  <div class="card qcard" id="q9" data-domain="Serving and scaling models">
+    <div class="meta">Question 10 of 12 · Serving and scaling models</div>
+    <div class="q">A retailer needs to score 50 million user profiles once per day to generate recommendations for an overnight email campaign. There is no requirement for sub-second responses. Which Vertex AI approach minimizes cost and operational overhead?</div>
+    <button class="opt" onclick="answer(this,9,0,3)">A. Deploy the model to an online endpoint with autoscaling configured up to 50 nodes</button><button class="opt" onclick="answer(this,9,1,3)">B. Deploy the model behind a private endpoint using VPC Peering</button><button class="opt" onclick="answer(this,9,2,3)">C. Deploy two model versions to the same endpoint with a 50/50 traffic split</button><button class="opt" onclick="answer(this,9,3,3)">D. Submit a Vertex AI batch prediction job reading input from BigQuery and writing results back to BigQuery</button>
+    <div class="expl">Batch prediction jobs are designed for large, non-latency-sensitive scoring workloads, running only for the duration of the job with no standing endpoint cost, and integrate directly with BigQuery for input and output.</div>
+  </div>
+
+  <div class="card qcard" id="q10" data-domain="Automating and orchestrating ML pipelines">
+    <div class="meta">Question 11 of 12 · Automating and orchestrating ML pipelines</div>
+    <div class="q">In Vertex ML Metadata, what does an Execution node represent within a pipeline's lineage graph?</div>
+    <button class="opt" onclick="answer(this,10,0,0)">A. A single run of a pipeline component/step, capturing its parameters and the artifacts it consumed or produced</button><button class="opt" onclick="answer(this,10,1,0)">B. A logical grouping mechanism used to organize related artifacts and executions, such as by experiment</button><button class="opt" onclick="answer(this,10,2,0)">C. A versioned dataset or model file produced by the pipeline</button><button class="opt" onclick="answer(this,10,3,0)">D. The overall pipeline definition template stored as a compiled YAML/JSON spec</button>
+    <div class="expl">Vertex ML Metadata models lineage using three node types: Artifacts (data/model outputs), Executions (a run of a step/component with its parameters), and Contexts (logical groupings like pipeline runs or experiments). An Execution specifically represents a single component run.</div>
+  </div>
+
+  <div class="card qcard" id="q11" data-domain="Monitoring AI solutions">
+    <div class="meta">Question 12 of 12 · Monitoring AI solutions</div>
+    <div class="q">A team wants to detect when the relative importance of input features to a deployed model's predictions changes significantly over time, which could indicate the model is now relying on different signals than it did during training, even if raw feature values look similar. Which Vertex AI Model Monitoring capability should they enable?</div>
+    <button class="opt" onclick="answer(this,11,0,3)">A. Training-serving skew detection on raw feature distributions</button><button class="opt" onclick="answer(this,11,1,3)">B. Cloud Logging request and response payload logging</button><button class="opt" onclick="answer(this,11,2,3)">C. Prediction drift detection on the output label distribution only</button><button class="opt" onclick="answer(this,11,3,3)">D. Feature attribution drift monitoring using Vertex Explainable AI</button>
+    <div class="expl">Feature attribution drift monitoring, built on Vertex Explainable AI, tracks changes in feature attribution scores over time and alerts when the relative influence of features shifts, independent of raw feature value distributions.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$129.99</span> <strong>$34.99</strong> with code <span class="code">FREETEST33</span> — valid through September 7.</p>
+  <a href="https://www.udemy.com/course/google-cloud-professional-ml-engineer-exam-prep/?couponCode=FREETEST33" rel="sponsored">Get the full course for $34.99 →</a>
+</div>
+<div class="domains"><span class="meta">More free practice by exam domain:</span><br><a href="professional-ml-engineer-architecting-low-code-ai-solutions.html">Architecting low-code AI solutions →</a><a href="professional-ml-engineer-collaborating-to-manage-data-and-models.html">Collaborating to manage data and models →</a><a href="professional-ml-engineer-scaling-prototypes-into-ml-models.html">Scaling prototypes into ML models →</a><a href="professional-ml-engineer-serving-and-scaling-models.html">Serving and scaling models →</a><a href="professional-ml-engineer-automating-and-orchestrating-ml-pipelines.html">Automating and orchestrating ML pipelines →</a><a href="professional-ml-engineer-monitoring-ai-solutions.html">Monitoring AI solutions →</a></div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

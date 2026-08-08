@@ -1,0 +1,104 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free AWS Certified Machine Learning Engineer - Associate Practice Test — 12 Real Exam-Style Questions</title>
+<meta name="description" content="Free AWS Certified Machine Learning Engineer - Associate practice questions with detailed explanations. Test yourself before the real exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/mla-c01.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free AWS Certified Machine Learning Engineer - Associate practice test — 12 exam-style questions with explanations. No sign-up.</p></header>
+
+  <div class="card qcard" id="q0" data-domain="Data Preparation for Machine Learning (ML)">
+    <div class="meta">Question 1 of 12 · Data Preparation for Machine Learning (ML)</div>
+    <div class="q">A ride-sharing company needs to ingest mobile app clickstream events at approximately 500,000 events per second. The data must be retained so that multiple independent consumer applications (fraud detection, personalization, and analytics) can each read the same stream and replay from different offsets as needed. Which service BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. Amazon Kinesis Data Firehose</button><button class="opt" onclick="answer(this,0,1,3)">B. Amazon SQS standard queue</button><button class="opt" onclick="answer(this,0,2,3)">C. Amazon SNS</button><button class="opt" onclick="answer(this,0,3,3)">D. Amazon Kinesis Data Streams</button>
+    <div class="expl">Kinesis Data Streams retains records (up to 365 days with extended retention) and supports multiple independent consumers reading the same stream at different offsets via enhanced fan-out, meeting both the throughput and replay requirements.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="ML Model Development">
+    <div class="meta">Question 2 of 12 · ML Model Development</div>
+    <div class="q">A retail company needs to forecast weekly demand for 10,000 SKUs across 200 stores. Each SKU has related time series data such as promotions, price changes, and holiday indicators, and the business wants probabilistic forecasts (e.g., P10, P50, P90 quantiles) rather than single point estimates. Which SageMaker built-in algorithm BEST fits this requirement?</div>
+    <button class="opt" onclick="answer(this,1,0,1)">A. Random Cut Forest</button><button class="opt" onclick="answer(this,1,1,1)">B. DeepAR Forecasting algorithm</button><button class="opt" onclick="answer(this,1,2,1)">C. XGBoost regression</button><button class="opt" onclick="answer(this,1,3,1)">D. Linear Learner regression</button>
+    <div class="expl">DeepAR is purpose-built for forecasting problems involving multiple related time series, natively supports categorical/dynamic features, and produces probabilistic (quantile) forecasts rather than single-point predictions.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Deployment and Orchestration of ML Workflows">
+    <div class="meta">Question 3 of 12 · Deployment and Orchestration of ML Workflows</div>
+    <div class="q">An ML team hosts a fraud-detection model that receives sporadic traffic — sometimes no requests for hours, sometimes bursts of a few hundred requests per minute. Payloads are only a few KB, and an occasional cold-start delay of a few seconds is acceptable. The team wants to minimize cost during idle periods and avoid managing any scaling policies. Which deployment option BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,2,0,2)">A. A SageMaker real-time endpoint with a target-tracking auto scaling policy scaled between 2 and 10 instances</button><button class="opt" onclick="answer(this,2,1,2)">B. A SageMaker Asynchronous Inference endpoint with an SQS-based invocation queue</button><button class="opt" onclick="answer(this,2,2,2)">C. A SageMaker Serverless Inference endpoint</button><button class="opt" onclick="answer(this,2,3,2)">D. A SageMaker Batch Transform job scheduled hourly via EventBridge</button>
+    <div class="expl">Serverless Inference automatically provisions and scales compute capacity in response to traffic, scales down to zero when idle, and charges only for the compute consumed during inference — ideal for small-payload, unpredictable, bursty workloads where a few seconds of cold-start latency is tolerable and the team doesn't want to manage scaling policies.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="ML Solution Monitoring, Maintenance, and Security">
+    <div class="meta">Question 4 of 12 · ML Solution Monitoring, Maintenance, and Security</div>
+    <div class="q">A company deployed a SageMaker endpoint for a fraud-detection model. Three months after launch, the fraud team reports the model is flagging far more false positives than during initial testing. The input feature statistics (means, distributions) have not changed significantly, but the relationship between features and the fraud label has shifted due to new fraud patterns. Which SageMaker Model Monitor capability specifically detects this situation?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. Data quality monitoring, which compares incoming feature statistics to a training baseline</button><button class="opt" onclick="answer(this,3,1,1)">B. Model quality monitoring, which compares model predictions to ground truth labels over time</button><button class="opt" onclick="answer(this,3,2,1)">C. Bias drift monitoring, which checks for changes in bias metrics against a baseline</button><button class="opt" onclick="answer(this,3,3,1)">D. Feature attribution drift monitoring using SageMaker Clarify integration</button>
+    <div class="expl">Model quality monitoring specifically compares model predictions to actual ground truth labels (once available) to detect degradation in accuracy/precision/recall, which is exactly what's happening here — the input distribution is stable but the concept (relationship between inputs and correct output) has shifted, causing prediction quality to degrade.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Data Preparation for Machine Learning (ML)">
+    <div class="meta">Question 5 of 12 · Data Preparation for Machine Learning (ML)</div>
+    <div class="q">A team is training a computer vision model using distributed training across 8 GPU instances that must concurrently read millions of small image files with high throughput and low latency shared file access. Which storage option should back the training job for the best performance?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. Amazon S3 Standard</button><button class="opt" onclick="answer(this,4,1,2)">B. Amazon EFS</button><button class="opt" onclick="answer(this,4,2,2)">C. Amazon FSx for Lustre</button><button class="opt" onclick="answer(this,4,3,2)">D. Amazon EBS</button>
+    <div class="expl">FSx for Lustre is a high-performance, POSIX-compliant parallel file system designed for sub-millisecond latencies and sustained high throughput/IOPS across many compute nodes, making it ideal for distributed training on large numbers of small files.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="ML Model Development">
+    <div class="meta">Question 6 of 12 · ML Model Development</div>
+    <div class="q">During a SageMaker training job, training accuracy steadily rises to 99% while validation loss decreases initially but begins increasing after epoch 20, even as training loss keeps falling. Which action would MOST effectively address this issue?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. Increase the number of training epochs without other changes</button><button class="opt" onclick="answer(this,5,1,1)">B. Add L2 regularization and enable early stopping based on validation loss</button><button class="opt" onclick="answer(this,5,2,1)">C. Reduce the size of the training dataset</button><button class="opt" onclick="answer(this,5,3,1)">D. Increase the learning rate significantly</button>
+    <div class="expl">The gap between rising training accuracy and worsening validation loss is the classic signature of overfitting. Adding L2 regularization penalizes large weights to improve generalization, and early stopping halts training at the point of best validation performance, directly addressing overfitting.</div>
+  </div>
+
+  <div class="card qcard" id="q6" data-domain="Deployment and Orchestration of ML Workflows">
+    <div class="meta">Question 7 of 12 · Deployment and Orchestration of ML Workflows</div>
+    <div class="q">A media company needs to run inference on video files up to 800 MB in size, with processing times up to 45 minutes per request. Requests arrive irregularly, near-real-time responses are not required, and the company needs results automatically stored with an SNS notification sent when each job completes. Which SageMaker inference option should be used?</div>
+    <button class="opt" onclick="answer(this,6,0,1)">A. Batch Transform</button><button class="opt" onclick="answer(this,6,1,1)">B. Asynchronous Inference</button><button class="opt" onclick="answer(this,6,2,1)">C. Serverless Inference</button><button class="opt" onclick="answer(this,6,3,1)">D. A real-time endpoint with an increased MaxPayloadInMB setting</button>
+    <div class="expl">Asynchronous Inference natively supports payloads up to 1 GB and processing times up to 60 minutes, queues incoming requests, and has built-in SNS success/failure notifications with results written to S3 — an exact match for large, long-running, irregular inference jobs.</div>
+  </div>
+
+  <div class="card qcard" id="q7" data-domain="ML Solution Monitoring, Maintenance, and Security">
+    <div class="meta">Question 8 of 12 · ML Solution Monitoring, Maintenance, and Security</div>
+    <div class="q">A financial services company runs SageMaker training jobs that take up to 8 hours and are tolerant of interruptions. The ML team wants to reduce training costs by up to 90% while ensuring that if a Spot instance is reclaimed, the job resumes from where it left off instead of restarting. Which configuration BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,7,0,3)">A. Use On-Demand instances with a Savings Plan and enable SageMaker automatic model tuning</button><button class="opt" onclick="answer(this,7,1,3)">B. Use EC2 Spot Fleet directly instead of SageMaker training jobs, with a custom checkpoint script</button><button class="opt" onclick="answer(this,7,2,3)">C. Enable SageMaker Managed Spot Training without checkpointing and rely on automatic job restart from the beginning</button><button class="opt" onclick="answer(this,7,3,3)">D. Enable SageMaker Managed Spot Training with checkpointing configured to save state to Amazon S3, and set MaxWaitTimeInSeconds greater than MaxRuntimeInSeconds</button>
+    <div class="expl">Managed Spot Training in SageMaker can cut costs up to 90% versus On-Demand. Checkpointing to S3 (via the checkpoint_s3_uri parameter) allows the training job to resume from the last saved checkpoint if interrupted, and MaxWaitTimeInSeconds must be set higher than MaxRuntimeInSeconds to allow time for Spot interruptions and restarts.</div>
+  </div>
+
+  <div class="card qcard" id="q8" data-domain="Data Preparation for Machine Learning (ML)">
+    <div class="meta">Question 9 of 12 · Data Preparation for Machine Learning (ML)</div>
+    <div class="q">A fraud detection training dataset has 2% positive fraud labels and 98% negative labels, causing the model to predict the majority class almost every time. Which action should the ML engineer take in SageMaker Data Wrangler prior to training to address this issue?</div>
+    <button class="opt" onclick="answer(this,8,0,0)">A. Apply SMOTE (Synthetic Minority Oversampling Technique) transform</button><button class="opt" onclick="answer(this,8,1,0)">B. Increase the training batch size</button><button class="opt" onclick="answer(this,8,2,0)">C. Apply one-hot encoding to all features</button><button class="opt" onclick="answer(this,8,3,0)">D. Increase the number of estimators in the model</button>
+    <div class="expl">SMOTE generates synthetic samples of the minority class, rebalancing the label distribution so the model learns to distinguish both classes instead of defaulting to the majority class.</div>
+  </div>
+
+  <div class="card qcard" id="q9" data-domain="ML Model Development">
+    <div class="meta">Question 10 of 12 · ML Model Development</div>
+    <div class="q">A company wants to build a domain-specific sentiment classifier for customer reviews. They have only 2,000 labeled examples and need a solution that achieves good accuracy quickly with minimal training infrastructure management. Which approach is BEST?</div>
+    <button class="opt" onclick="answer(this,9,0,3)">A. Train a deep learning model from scratch using only the 2,000 labeled examples</button><button class="opt" onclick="answer(this,9,1,3)">B. Use Amazon Bedrock's base foundation model directly without any fine-tuning or prompt engineering</button><button class="opt" onclick="answer(this,9,2,3)">C. Use the SageMaker built-in Linear Learner algorithm on raw text token counts</button><button class="opt" onclick="answer(this,9,3,3)">D. Use SageMaker JumpStart to fine-tune a pre-trained text classification foundation model with the labeled data</button>
+    <div class="expl">SageMaker JumpStart provides pre-trained foundation models that can be fine-tuned with a small labeled dataset, leveraging transfer learning to achieve strong accuracy with limited data and infrastructure effort — exactly matching the constraints described.</div>
+  </div>
+
+  <div class="card qcard" id="q10" data-domain="Deployment and Orchestration of ML Workflows">
+    <div class="meta">Question 11 of 12 · Deployment and Orchestration of ML Workflows</div>
+    <div class="q">A company uses SageMaker Model Registry to manage model versions. They configure an EventBridge rule to automatically trigger a CodePipeline deployment pipeline whenever a model version becomes ready for production. Which specific model package event/state should the EventBridge rule filter on to invoke the pipeline?</div>
+    <button class="opt" onclick="answer(this,10,0,2)">A. A ModelPackageGroup creation event</button><button class="opt" onclick="answer(this,10,1,2)">B. A ModelPackage created with status 'PendingManualApproval'</button><button class="opt" onclick="answer(this,10,2,2)">C. ModelApprovalStatus changed to 'Approved'</button><button class="opt" onclick="answer(this,10,3,2)">D. An endpoint InService status change</button>
+    <div class="expl">The standard governed MLOps pattern is for a human or automated gate to approve a model version in the Registry, changing ModelApprovalStatus to 'Approved'. EventBridge captures the 'SageMaker Model Package State Change' event on this transition and triggers the downstream deployment pipeline only for approved versions.</div>
+  </div>
+
+  <div class="card qcard" id="q11" data-domain="ML Solution Monitoring, Maintenance, and Security">
+    <div class="meta">Question 12 of 12 · ML Solution Monitoring, Maintenance, and Security</div>
+    <div class="q">A healthcare company's compliance policy requires that all traffic between their VPC and Amazon SageMaker (both the SageMaker API for training job management and the runtime API for real-time inference) must never traverse the public internet. Which solution satisfies this requirement?</div>
+    <button class="opt" onclick="answer(this,11,0,1)">A. Attach an internet gateway to the VPC and restrict access using a security group allow-list of AWS IP ranges</button><button class="opt" onclick="answer(this,11,1,1)">B. Create VPC interface endpoints (AWS PrivateLink) for both com.amazonaws.region.sagemaker.api and com.amazonaws.region.sagemaker.runtime, and update route tables/security groups accordingly</button><button class="opt" onclick="answer(this,11,2,1)">C. Configure a NAT gateway so SageMaker traffic is routed through a single controlled egress point</button><button class="opt" onclick="answer(this,11,3,1)">D. Place the SageMaker endpoint in a public subnet and rely on IAM policies alone to restrict access</button>
+    <div class="expl">AWS PrivateLink VPC interface endpoints for sagemaker.api and sagemaker.runtime allow all API calls for training job orchestration and real-time inference invocation to stay entirely within the AWS network, never traversing the public internet, which is required for strict compliance environments.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$109.99</span> <strong>$34.99</strong> with code <span class="code">FREETEST33</span> — valid through September 7.</p>
+  <a href="https://www.udemy.com/course/aws-certified-ml-engineer-associate-mla-c01-prep/?couponCode=FREETEST33" rel="sponsored">Get the full course for $34.99 →</a>
+</div>
+<div class="domains"><span class="meta">More free practice by exam domain:</span><br><a href="mla-c01-data-preparation-for-machine-learning-ml.html">Data Preparation for Machine Learning (ML) →</a><a href="mla-c01-ml-model-development.html">ML Model Development →</a><a href="mla-c01-deployment-and-orchestration-of-ml-workflows.html">Deployment and Orchestration of ML Workflows →</a><a href="mla-c01-ml-solution-monitoring-maintenance-and-security.html">ML Solution Monitoring, Maintenance, and Security →</a></div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

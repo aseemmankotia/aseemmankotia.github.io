@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Digital Product Design, Emerging Tech, and Responsible AI Practice Questions — AIPMM Certified Digital Product Manager</title>
+<meta name="description" content="6 free Digital Product Design, Emerging Tech, and Responsible AI practice questions with explanations for the AIPMM Certified Digital Product Manager exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/cdpm-digital-product-design-emerging-tech-and-responsible-ai.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free AIPMM Certified Digital Product Manager practice — 6 questions on <strong>Digital Product Design, Emerging Tech, and Responsible AI</strong>, with explanations. No sign-up.
+<a href="cdpm.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Digital Product Design, Emerging Tech, and Responsible AI">
+    <div class="meta">Question 1 of 6 · Digital Product Design, Emerging Tech, and Responsible AI</div>
+    <div class="q">A national bank's mobile deposit app must meet accessibility requirements before a public launch in the US. Legal has flagged that litigation risk is high if the app is not accessible to screen reader users, low-vision users, and users with motor impairments. The design team argues for pursuing every WCAG AAA success criterion to eliminate risk entirely. As the digital PM, what is the BEST accessibility target to set for the release?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. WCAG Level A only, since it covers the minimum legal requirement and ships fastest</button><button class="opt" onclick="answer(this,0,1,3)">B. WCAG Level AAA across the entire app, since it is the highest standard and fully eliminates legal risk</button><button class="opt" onclick="answer(this,0,2,3)">C. No formal WCAG target, since accessibility should be handled ad hoc by QA during final regression testing</button><button class="opt" onclick="answer(this,0,3,3)">D. WCAG 2.1/2.2 Level AA, since it is the widely adopted legal and industry baseline and AAA contains criteria that are impractical or even undesirable for many types of content</button>
+    <div class="expl">WCAG AA is the conformance level referenced by ADA-related settlements, Section 508, and most international accessibility regulations, making it the practical and defensible target. AAA includes criteria (e.g., sign language interpretation for all video, no timing) that W3C itself states are not achievable for all content types.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Digital Product Design, Emerging Tech, and Responsible AI">
+    <div class="meta">Question 2 of 6 · Digital Product Design, Emerging Tech, and Responsible AI</div>
+    <div class="q">A social platform's content-moderation ML classifier flags posts as 'harmful' or 'safe.' Missing a harmful post (false negative) causes serious user-safety and PR damage; incorrectly flagging a safe post (false positive) causes user annoyance but is easily appealed. As the product manager setting the launch threshold with the ML team, which approach should you prioritize?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. Set the classification threshold to prioritize recall on the harmful class, accepting more false positives, and pair it with a fast, low-friction appeals workflow</button><button class="opt" onclick="answer(this,1,1,0)">B. Maximize overall accuracy across both classes equally, since accuracy is the standard metric for classifier performance</button><button class="opt" onclick="answer(this,1,2,0)">C. Set the threshold to prioritize precision on the harmful class so that flags are rarely wrong, even if some harmful content is missed</button><button class="opt" onclick="answer(this,1,3,0)">D. Avoid setting a threshold at all and route every post to human moderators to remove model risk entirely</button>
+    <div class="expl">When the cost of a false negative (missed harmful content) is much higher than a false positive, the PM should tune the model toward recall on the harmful class and offset the resulting increase in false positives with a lightweight appeals/override path, which is a standard responsible-AI mitigation for asymmetric error costs.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Digital Product Design, Emerging Tech, and Responsible AI">
+    <div class="meta">Question 3 of 6 · Digital Product Design, Emerging Tech, and Responsible AI</div>
+    <div class="q">A payments company wants to add fraud detection to a new low-volume B2B invoicing feature. Transaction volume is small (a few hundred per week), the fraud patterns are well understood and stable (e.g., mismatched billing/shipping country plus a first-time vendor), and the compliance team requires that every flagged decision be fully explainable to auditors. Which approach should the PM recommend for the initial release?</div>
+    <button class="opt" onclick="answer(this,2,0,2)">A. A deep learning model trained from scratch on the available transactions, since ML always outperforms rules-based systems for fraud use cases</button><button class="opt" onclick="answer(this,2,1,2)">B. A third-party ML fraud-scoring API with no visibility into its scoring logic, since it will generalize better than an internal solution</button><button class="opt" onclick="answer(this,2,2,2)">C. A deterministic, rules-based engine encoding the known fraud indicators, deferring an ML model until there is enough labeled data and a need for more nuanced pattern detection</button><button class="opt" onclick="answer(this,2,3,2)">D. No fraud controls for this release, deferring the decision until volume grows large enough to train a model</button>
+    <div class="expl">When data volume is small, patterns are well understood, and full explainability is a compliance requirement, a rules-based system is the right initial approach: it needs no training data, is fully auditable, and matches the known patterns exactly. ML should be reserved for cases where patterns are complex, data volume is sufficient, and some accuracy-for-explainability tradeoff is acceptable.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Digital Product Design, Emerging Tech, and Responsible AI">
+    <div class="meta">Question 4 of 6 · Digital Product Design, Emerging Tech, and Responsible AI</div>
+    <div class="q">Your platform team maintains a public REST API used by dozens of third-party integrators. You need to ship a breaking change to a core resource's response schema. Which API change-management configuration BEST protects existing integrators while allowing the platform to evolve?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. Push the change directly to the existing endpoint and notify integrators via a changelog email sent the same day the change goes live</button><button class="opt" onclick="answer(this,3,1,2)">B. Add the new fields to v1 silently without documentation, so well-behaved integrators using strict schema validation are unaffected</button><button class="opt" onclick="answer(this,3,2,2)">C. Introduce the breaking change only in a new API version (e.g., v2), keep v1 fully functional, publish a documented deprecation timeline with a sunset date, and communicate it well in advance through developer channels</button><button class="opt" onclick="answer(this,3,3,2)">D. Require all integrators to poll a status endpoint daily to detect any schema changes, removing the need for versioning or advance notice</button>
+    <div class="expl">Standard API governance practice for breaking changes is explicit versioning plus a published deprecation/sunset policy with advance notice, so integrators can migrate on their own schedule without unplanned outages.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Digital Product Design, Emerging Tech, and Responsible AI">
+    <div class="meta">Question 5 of 6 · Digital Product Design, Emerging Tech, and Responsible AI</div>
+    <div class="q">A product team wants to improve a support chatbot by fine-tuning it on two years of real customer support chat transcripts, which include names, account numbers, and other personal data. Before approving this data reuse, what should the PM treat as the MOST critical gating consideration?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. Whether the data warehouse has enough storage capacity to hold two years of transcripts</button><button class="opt" onclick="answer(this,4,1,3)">B. Whether the transcripts are stored in a format that's convenient for the ML engineering team to parse</button><button class="opt" onclick="answer(this,4,2,3)">C. Whether the chatbot's response latency will increase after fine-tuning on a larger dataset</button><button class="opt" onclick="answer(this,4,3,3)">D. Whether the original consent/privacy notice under which the data was collected covers this new use, and whether the data needs to be de-identified or a new legal basis obtained before training</button>
+    <div class="expl">Repurposing personal data for a new use (training an AI model) beyond its original collection purpose is a core privacy/purpose-limitation issue. The PM must confirm the legal basis or consent covers this secondary use and drive de-identification/anonymization or re-consent before engineering work proceeds, since this is a compliance blocker, not a technical detail.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Digital Product Design, Emerging Tech, and Responsible AI">
+    <div class="meta">Question 6 of 6 · Digital Product Design, Emerging Tech, and Responsible AI</div>
+    <div class="q">A fintech company is launching an AI model that recommends loan approval/denial decisions to loan officers. The model's recommendations directly influence which applicants get credit, a high-stakes and legally regulated outcome. Which product design decision BEST reflects responsible-AI practice for this launch?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. Fully automate the approve/deny decision so the model's output is final, since human review would introduce inconsistency into an otherwise objective process</button><button class="opt" onclick="answer(this,5,1,3)">B. Hide the fact that a model is involved at all, since disclosing AI use could make applicants distrust the decision</button><button class="opt" onclick="answer(this,5,2,3)">C. Let the model auto-approve only, routing all denials to a human, since approvals carry no regulatory risk</button><button class="opt" onclick="answer(this,5,3,3)">D. Present the model's recommendation and key contributing factors to a human loan officer, who reviews and makes the final decision, with an audit trail capturing whether the human agreed or overrode the model</button>
+    <div class="expl">For high-stakes, regulated decisions like credit approval, responsible-AI practice calls for human-in-the-loop review with explainable contributing factors and an audit trail of agreement/override, supporting both accountability and compliance with fair-lending and adverse-action disclosure requirements.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$109.99</span> <strong>$34.99</strong> with code <span class="code">FREETEST33</span> — valid through September 7.</p>
+  <a href="https://www.udemy.com/course/aipmm-cdpm-exam-prep-digital-product-management/?couponCode=FREETEST33" rel="sponsored">Get the full course for $34.99 →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

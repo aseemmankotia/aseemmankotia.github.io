@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Techniques to improve gen AI model output Practice Questions — Google Cloud Generative AI Leader</title>
+<meta name="description" content="6 free Techniques to improve gen AI model output practice questions with explanations for the Google Cloud Generative AI Leader exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/generative-ai-leader-techniques-to-improve-gen-ai-model-output.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free Google Cloud Generative AI Leader practice — 6 questions on <strong>Techniques to improve gen AI model output</strong>, with explanations. No sign-up.
+<a href="generative-ai-leader.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Techniques to improve gen AI model output">
+    <div class="meta">Question 1 of 6 · Techniques to improve gen AI model output</div>
+    <div class="q">A retail company's product recommendation chatbot is generating plausible-sounding but factually incorrect product specifications (e.g., inventing features that don't exist). The model uses a generic foundation model with no access to the company's product catalog. Temperature is set to 0.2. Which single intervention will MOST effectively reduce these hallucinations?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. Lower the temperature to 0.0 and reduce top-p to 0.5 to make outputs more deterministic</button><button class="opt" onclick="answer(this,0,1,3)">B. Fine-tune the foundation model on six months of historical customer service transcripts</button><button class="opt" onclick="answer(this,0,2,3)">C. Add chain-of-thought prompting asking the model to explain its reasoning before answering</button><button class="opt" onclick="answer(this,0,3,3)">D. Implement grounding with retrieval-augmented generation (RAG) connected to the verified product database</button>
+    <div class="expl">Grounding with RAG directly addresses the root cause: the model lacks access to factual product data. RAG retrieves verified information from the product database before generation, ensuring responses are anchored in real data rather than the model's training corpus. This is the primary technique for connecting models to current, proprietary, or domain-specific facts.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Techniques to improve gen AI model output">
+    <div class="meta">Question 2 of 6 · Techniques to improve gen AI model output</div>
+    <div class="q">An insurance company wants its claims chatbot to generate responses that strictly follow regulatory compliance language. The team debates between fine-tuning on 10,000 compliant claim decisions versus using few-shot prompting with 5 exemplar exchanges in the system prompt. Latency and cost are secondary concerns; compliance accuracy is critical. Which approach BEST fits this requirement?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. Fine-tune the model on the 10,000 compliant decisions to internalize regulatory patterns into model weights</button><button class="opt" onclick="answer(this,1,1,0)">B. Use few-shot prompting with the 5 exemplars, iterating the examples based on compliance review feedback</button><button class="opt" onclick="answer(this,1,2,0)">C. Use zero-shot prompting with a detailed system prompt explaining all compliance rules</button><button class="opt" onclick="answer(this,1,3,0)">D. Implement RAG to retrieve the closest past compliant decision for each new claim and include it in context</button>
+    <div class="expl">Fine-tuning is justified when you need the model to deeply internalize domain-specific behavioral patterns across many scenarios. With 10,000 labeled examples and a critical requirement for consistent compliance language (not just factual retrieval), fine-tuning adjusts the model's weights to reliably produce regulation-aligned responses. This is a classic use case where fine-tuning outperforms prompting: consistent style/tone adherence across complex, nuanced requirements.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Techniques to improve gen AI model output">
+    <div class="meta">Question 3 of 6 · Techniques to improve gen AI model output</div>
+    <div class="q">A financial services firm uses embeddings and vector search to power a document Q&amp;A system over 50,000 internal policy PDFs. Users report that answers sometimes cite outdated policies that were replaced months ago. New policies are added weekly. Which solution BEST ensures the system uses only current policy information?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. Increase the number of retrieved documents (top-k) from 3 to 10 so more context is available to the model</button><button class="opt" onclick="answer(this,2,1,1)">B. Implement a metadata filter in the vector search that excludes embeddings for documents marked as superseded or archived</button><button class="opt" onclick="answer(this,2,2,1)">C. Re-embed all 50,000 documents monthly using the latest embedding model version to improve retrieval accuracy</button><button class="opt" onclick="answer(this,2,3,1)">D. Raise the temperature parameter to 0.9 so the model generates more creative interpretations of policy intent</button>
+    <div class="expl">Metadata filtering at retrieval time is the correct architectural solution for data freshness in RAG systems. By tagging superseded documents and filtering them out during vector search, you ensure the model only sees current policies in its context window. This is a standard RAG best practice for managing evolving knowledge bases where older information should be excluded, not just deprioritized.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Techniques to improve gen AI model output">
+    <div class="meta">Question 4 of 6 · Techniques to improve gen AI model output</div>
+    <div class="q">A logistics company is experimenting with top-k and top-p (nucleus) sampling to optimize route recommendation outputs. The model should balance creativity (exploring alternative routes) with reliability (not suggesting impossible routes). Current settings: temperature=0.7, top-k=40, top-p=0.9. Users complain outputs are too random. Which adjustment will make outputs more focused while preserving some route diversity?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. Reduce top-p to 0.7 and keep temperature and top-k unchanged</button><button class="opt" onclick="answer(this,3,1,2)">B. Reduce top-k to 10 and keep temperature and top-p unchanged</button><button class="opt" onclick="answer(this,3,2,2)">C. Reduce temperature to 0.3 and keep top-k and top-p unchanged</button><button class="opt" onclick="answer(this,3,3,2)">D. Set temperature to 1.0, top-k to 5, and top-p to 0.95 to maximize determinism with narrow sampling</button>
+    <div class="expl">Temperature is the primary control for output randomness. Lowering temperature from 0.7 to 0.3 makes the probability distribution sharper, causing the model to favor higher-probability tokens more strongly. This reduces randomness while still allowing some variation (not zero-shot determinism). Temperature acts before top-k/top-p filtering, so it's the most direct lever for 'too random' problems while preserving diversity.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Techniques to improve gen AI model output">
+    <div class="meta">Question 5 of 6 · Techniques to improve gen AI model output</div>
+    <div class="q">A healthcare AI team is building a diagnostic support tool that must cite peer-reviewed medical literature for every clinical recommendation. The team compares two architectures: (A) fine-tuning a foundation model on 100,000 PubMed abstracts, or (B) using RAG with embeddings of the same abstracts plus real-time retrieval with citation links. Both use Gemini models on Google Cloud. Assume cost and latency are acceptable for both. Which approach BEST satisfies the citation requirement?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. Architecture A (fine-tuning) because the model internalizes medical knowledge and can generate citations from memory</button><button class="opt" onclick="answer(this,4,1,2)">B. Architecture A (fine-tuning) because it produces more accurate clinical reasoning after learning from 100,000 examples</button><button class="opt" onclick="answer(this,4,2,2)">C. Architecture B (RAG) because retrieved documents can be surfaced with source URLs, enabling verifiable citations</button><button class="opt" onclick="answer(this,4,3,2)">D. Architecture B (RAG) because embeddings improve the model's understanding of medical terminology</button>
+    <div class="expl">RAG architectures explicitly return source documents alongside generated text, enabling direct citation with verifiable links back to the retrieved literature. This is a fundamental advantage of RAG for use cases requiring attribution and groundedness verification. The retrieval step produces metadata (document IDs, URLs) that can be passed through to the user, whereas fine-tuned models cannot reliably cite sources—they generate text based on learned patterns without traceable provenance.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Techniques to improve gen AI model output">
+    <div class="meta">Question 6 of 6 · Techniques to improve gen AI model output</div>
+    <div class="q">A marketing team uses a generative AI tool to draft email campaigns. They notice that when the context window contains 15 past campaign examples (approximately 12,000 tokens), the model sometimes ignores instructions in the system prompt (e.g., 'keep subject lines under 50 characters'). When context is reduced to 5 examples (4,000 tokens), instructions are followed. The model's maximum context window is 32,000 tokens. What is the MOST likely explanation?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. The system prompt is being truncated because the combined input exceeds the 32,000 token limit</button><button class="opt" onclick="answer(this,5,1,1)">B. The model exhibits 'lost in the middle' behavior where instructions at the beginning or end of very long contexts receive less attention</button><button class="opt" onclick="answer(this,5,2,1)">C. Few-shot examples are overriding the zero-shot instruction through implicit learning during generation</button><button class="opt" onclick="answer(this,5,3,1)">D. The embedding quality degrades for prompts longer than 8,000 tokens, reducing instruction comprehension</button>
+    <div class="expl">'Lost in the middle' is a documented phenomenon in large language models where content in the middle of very long contexts receives less attention than content at the beginning or end, even well within the context window limit. When 15 examples are inserted between the system prompt and the user query, important instructions can be de-emphasized. This is a known limitation of transformer attention mechanisms at scale and explains why reducing context improves instruction-following.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$99.99</span> <strong>$34.99</strong> with code <span class="code">FREETEST33</span> — valid through September 2.</p>
+  <a href="https://www.udemy.com/course/google-cloud-generative-ai-leader-exam-prep-2026/?couponCode=FREETEST33" rel="sponsored">Get the full course for $34.99 →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

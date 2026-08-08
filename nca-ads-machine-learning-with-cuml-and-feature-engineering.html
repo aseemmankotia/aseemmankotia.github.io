@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Machine Learning with cuML and Feature Engineering Practice Questions — NVIDIA-Certified Associate: Accelerated Data Science</title>
+<meta name="description" content="6 free Machine Learning with cuML and Feature Engineering practice questions with explanations for the NVIDIA-Certified Associate: Accelerated Data Science exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/nca-ads-machine-learning-with-cuml-and-feature-engineering.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free NVIDIA-Certified Associate: Accelerated Data Science practice — 6 questions on <strong>Machine Learning with cuML and Feature Engineering</strong>, with explanations. No sign-up.
+<a href="nca-ads.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Machine Learning with cuML and Feature Engineering">
+    <div class="meta">Question 1 of 6 · Machine Learning with cuML and Feature Engineering</div>
+    <div class="q">A dataset contains clusters with noise points and significantly varying densities across clusters — some tight and dense, others sparse and spread out. The team needs GPU-accelerated clustering that does not require a single global density threshold and can still identify noise. Which cuML algorithm is the BEST fit?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. cuML KMeans</button><button class="opt" onclick="answer(this,0,1,2)">B. cuML DBSCAN</button><button class="opt" onclick="answer(this,0,2,2)">C. cuML HDBSCAN</button><button class="opt" onclick="answer(this,0,3,2)">D. cuML AgglomerativeClustering</button>
+    <div class="expl">cuML's HDBSCAN builds a hierarchy of clusters using varying density thresholds and extracts stable clusters automatically, making it robust to clusters of different densities while still labeling noise points, unlike single-eps DBSCAN.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Machine Learning with cuML and Feature Engineering">
+    <div class="meta">Question 2 of 6 · Machine Learning with cuML and Feature Engineering</div>
+    <div class="q">In cuML's RandomForestClassifier, which parameter directly controls the number of CUDA streams used to build multiple trees concurrently on the GPU, most directly impacting training-time GPU utilization?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. n_estimators</button><button class="opt" onclick="answer(this,1,1,2)">B. max_features</button><button class="opt" onclick="answer(this,1,2,2)">C. n_streams</button><button class="opt" onclick="answer(this,1,3,2)">D. n_bins</button>
+    <div class="expl">n_streams sets how many CUDA streams cuML uses to build trees in parallel on the GPU; increasing it can improve GPU utilization during forest construction (subject to available GPU resources).</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Machine Learning with cuML and Feature Engineering">
+    <div class="meta">Question 3 of 6 · Machine Learning with cuML and Feature Engineering</div>
+    <div class="q">A data science team needs to train a logistic regression model on a dataset containing 800 rows and 12 features. They are debating whether to use cuML's LogisticRegression on a GPU instance or scikit-learn's LogisticRegression on CPU. Which statement BEST describes the expected outcome?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. cuML will likely offer negligible or no meaningful speedup, since the dataset is too small to overcome GPU data transfer and kernel launch overhead</button><button class="opt" onclick="answer(this,2,1,0)">B. cuML will be dramatically faster because GPU compute always outperforms CPU compute for machine learning training</button><button class="opt" onclick="answer(this,2,2,0)">C. cuML will fail to run because LogisticRegression requires a minimum of 100,000 rows</button><button class="opt" onclick="answer(this,2,3,0)">D. scikit-learn will produce meaningfully different mathematical results because cuML uses approximate solvers by default</button>
+    <div class="expl">cuML's performance advantage scales with data size; for very small datasets (hundreds of rows), host-to-device transfer and kernel launch overhead can dominate, making cuML comparable to or even slower than scikit-learn on CPU. The exam tests recognizing that GPU acceleration benefits large-scale data, not small workloads.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Machine Learning with cuML and Feature Engineering">
+    <div class="meta">Question 4 of 6 · Machine Learning with cuML and Feature Engineering</div>
+    <div class="q">A feature engineering pipeline includes a categorical column (postal code) with roughly 30,000 unique values. The team wants to encode this feature for a GPU-accelerated model without causing a massive increase in dimensionality. Which cuML preprocessing tool is the BEST choice?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. cuml.preprocessing.OneHotEncoder</button><button class="opt" onclick="answer(this,3,1,2)">B. cuml.preprocessing.LabelEncoder</button><button class="opt" onclick="answer(this,3,2,2)">C. cuml.preprocessing.TargetEncoder</button><button class="opt" onclick="answer(this,3,3,2)">D. cuml.preprocessing.StandardScaler</button>
+    <div class="expl">cuML's TargetEncoder replaces high-cardinality categorical values with statistics derived from the target variable, producing a single informative numeric column per feature without exploding dimensionality — the standard recommended approach for very high-cardinality categoricals.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Machine Learning with cuML and Feature Engineering">
+    <div class="meta">Question 5 of 6 · Machine Learning with cuML and Feature Engineering</div>
+    <div class="q">By default, what determines the data type (e.g., NumPy array, cuDF DataFrame, CuPy array) of predictions returned by a fitted cuML estimator's .predict() method?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. The output always matches a fixed default of NumPy arrays regardless of input</button><button class="opt" onclick="answer(this,4,1,2)">B. The output type is always a cuDF DataFrame since cuML executes entirely on the GPU</button><button class="opt" onclick="answer(this,4,2,2)">C. The output type mirrors the input type provided to the fit/predict call unless explicitly overridden via the output_type parameter or global configuration</button><button class="opt" onclick="answer(this,4,3,2)">D. Output type must be manually converted every time using .to_pandas(), since cuML does not track input type</button>
+    <div class="expl">cuML estimators track the type of data passed into fit/predict and, by default, return outputs in that same type (input-mirroring behavior), unless the estimator's output_type parameter or cuml.set_global_output_type() is explicitly set to force a different type.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Machine Learning with cuML and Feature Engineering">
+    <div class="meta">Question 6 of 6 · Machine Learning with cuML and Feature Engineering</div>
+    <div class="q">A team wants to perform hyperparameter tuning for a cuML model at scale, distributing the search across multiple GPUs in a cluster rather than running it on a single GPU. Which approach correctly achieves this within the RAPIDS ecosystem?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. Use scikit-learn's GridSearchCV directly with cuML estimators to automatically distribute the search across all GPUs in the cluster</button><button class="opt" onclick="answer(this,5,1,3)">B. cuML does not support hyperparameter tuning; all data must be converted to pandas and tuned using scikit-learn only</button><button class="opt" onclick="answer(this,5,2,3)">C. Use cuGraph's Louvain community detection algorithm to parallelize the hyperparameter search across GPUs</button><button class="opt" onclick="answer(this,5,3,3)">D. Use Dask-ML's distributed hyperparameter search (e.g., dask_ml.model_selection) combined with dask_cudf datasets and cuML estimators for multi-GPU scaling</button>
+    <div class="expl">Dask-ML integrates with dask_cudf and cuML's Dask-enabled estimators to distribute hyperparameter search (e.g., grid or randomized search) and training workloads across multiple GPUs/nodes, which is the standard RAPIDS pattern for scaling tuning beyond a single GPU.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$99.99</span> <strong>$34.99</strong> with code <span class="code">FREETEST33</span> — valid through September 7.</p>
+  <a href="https://www.udemy.com/course/nca-ads-nvidia-accelerated-data-science-exam-prep/?couponCode=FREETEST33" rel="sponsored">Get the full course for $34.99 →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>
