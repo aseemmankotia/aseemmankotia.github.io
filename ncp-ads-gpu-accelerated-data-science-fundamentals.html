@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free GPU-Accelerated Data Science Fundamentals Practice Questions — NVIDIA-Certified Professional: Accelerated Data Science</title>
+<meta name="description" content="6 free GPU-Accelerated Data Science Fundamentals practice questions with explanations for the NVIDIA-Certified Professional: Accelerated Data Science exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/ncp-ads-gpu-accelerated-data-science-fundamentals.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free NVIDIA-Certified Professional: Accelerated Data Science practice — 6 questions on <strong>GPU-Accelerated Data Science Fundamentals</strong>, with explanations. No sign-up.
+<a href="ncp-ads.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="GPU-Accelerated Data Science Fundamentals">
+    <div class="meta">Question 1 of 6 · GPU-Accelerated Data Science Fundamentals</div>
+    <div class="q">A data pipeline moves NumPy arrays from host to a GPU-backed cuDF workflow using thousands of separate transfer calls, each moving less than 1MB. Profiling shows total runtime is dominated by transfer overhead rather than the achievable PCIe bandwidth. Which change BEST addresses this bottleneck?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. Read the source data directly with cuDF's GPU CSV reader instead of using NumPy at all</button><button class="opt" onclick="answer(this,0,1,3)">B. Overlap kernel execution using multiple CUDA streams while keeping the transfer pattern unchanged</button><button class="opt" onclick="answer(this,0,2,3)">C. Increase the RMM pool allocator size to cover the full GPU memory</button><button class="opt" onclick="answer(this,0,3,3)">D. Batch the small arrays into fewer, larger transfers and use pinned (page-locked) host memory buffers for the copy</button>
+    <div class="expl">Small, frequent host-to-device transfers are latency-bound because each transfer pays a fixed setup cost regardless of size. Consolidating into fewer, larger transfers amortizes that overhead, and pinned memory enables faster DMA-based copies instead of pageable-memory staging, directly targeting the measured bottleneck.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="GPU-Accelerated Data Science Fundamentals">
+    <div class="meta">Question 2 of 6 · GPU-Accelerated Data Science Fundamentals</div>
+    <div class="q">A team must deploy an identical RAPIDS environment across on-prem workstations and cloud GPU instances that run different host OS versions, and they need CUDA toolkit and driver compatibility that is validated and supported by NVIDIA. Which deployment approach BEST satisfies this requirement?</div>
+    <button class="opt" onclick="answer(this,1,0,1)">A. Install RAPIDS with pip into a Python virtual environment on each host individually</button><button class="opt" onclick="answer(this,1,1,1)">B. Pull and run the official RAPIDS container image from NGC matching the host's CUDA driver version</button><button class="opt" onclick="answer(this,1,2,1)">C. Build cuDF and cuML from source on each host to match the local CUDA driver exactly</button><button class="opt" onclick="answer(this,1,3,1)">D. Share a single conda environment.yml file via version control for each team member to install locally</button>
+    <div class="expl">NGC container images are pre-built, tested, and versioned by NVIDIA against specific CUDA toolkit and driver combinations, giving guaranteed compatibility and reproducibility across heterogeneous host OS versions without per-host build or dependency resolution work.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="GPU-Accelerated Data Science Fundamentals">
+    <div class="meta">Question 3 of 6 · GPU-Accelerated Data Science Fundamentals</div>
+    <div class="q">You initialize RMM with a pool allocator to reduce allocation fragmentation, but you want the pool to be able to grow beyond its initial size if the workload needs more memory, rather than failing or falling back to raw cudaMalloc. Which RMM configuration achieves this?</div>
+    <button class="opt" onclick="answer(this,2,0,2)">A. Call rmm.reinitialize(managed_memory=True, pool_allocator=False) to rely on CUDA Unified Memory instead</button><button class="opt" onclick="answer(this,2,1,2)">B. Call rmm.reinitialize(pool_allocator=False) so every allocation goes directly to the CUDA driver</button><button class="opt" onclick="answer(this,2,2,2)">C. Call rmm.reinitialize(pool_allocator=True, initial_pool_size=&lt;value&gt;, maximum_pool_size=&lt;value&gt;) with maximum_pool_size set higher than initial_pool_size</button><button class="opt" onclick="answer(this,2,3,2)">D. Set initial_pool_size equal to maximum_pool_size so the pool is fixed at 100% of GPU memory</button>
+    <div class="expl">RMM's pool allocator supports specifying both an initial_pool_size and a larger maximum_pool_size, letting the pool start small and expand on demand as the workload requires more memory, while still keeping allocations pooled to reduce fragmentation.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="GPU-Accelerated Data Science Fundamentals">
+    <div class="meta">Question 4 of 6 · GPU-Accelerated Data Science Fundamentals</div>
+    <div class="q">A cuDF workflow allocates a working set larger than physical GPU memory using CUDA Unified Memory (RMM managed_memory=True). When the workflow accesses data pages that are not currently resident on the GPU, what actually happens?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. The allocation call fails immediately with an out-of-memory error before any computation runs</button><button class="opt" onclick="answer(this,3,1,1)">B. The runtime automatically migrates the needed pages from host memory to device memory on-demand via page faults, adding latency</button><button class="opt" onclick="answer(this,3,2,1)">C. The oversized portion of the data is silently truncated to fit within available GPU memory</button><button class="opt" onclick="answer(this,3,3,1)">D. Execution automatically falls back to equivalent pandas CPU kernels for the oversized data</button>
+    <div class="expl">CUDA Unified Memory allows oversubscription: memory can be logically allocated beyond physical GPU capacity, and accessing non-resident pages triggers on-demand page migration between host and device, which works correctly but introduces page-fault latency that can significantly slow the workload compared to fully GPU-resident data.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="GPU-Accelerated Data Science Fundamentals">
+    <div class="meta">Question 5 of 6 · GPU-Accelerated Data Science Fundamentals</div>
+    <div class="q">A pandas workflow performs groupby and merge operations on a 50MB CSV and completes in about 2 seconds on a single CPU core. A junior engineer proposes porting this exact workflow to cuDF on an A100 GPU expecting a speedup. What is the MOST accurate assessment and recommendation?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. cuDF will be faster regardless of size because GPU cores vastly outnumber CPU cores, so the migration should proceed immediately</button><button class="opt" onclick="answer(this,4,1,3)">B. The dataset is too small for cuDF to even load; cuDF requires a minimum file size of 100MB to function</button><button class="opt" onclick="answer(this,4,2,3)">C. The workflow must first be rewritten using cuGraph before any GPU acceleration is possible</button><button class="opt" onclick="answer(this,4,3,3)">D. Host-to-device transfer and kernel launch overhead will likely make the GPU version slower for this data size; keep pandas unless data volume grows substantially</button>
+    <div class="expl">For small datasets, fixed costs — host-to-device transfer, CUDA context/kernel launch overhead — dominate over the already-fast CPU execution time, so GPU acceleration typically does not pay off until data volume and operation complexity are large enough to amortize those costs. The correct guidance is to stay on CPU (pandas) until scale justifies the switch.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="GPU-Accelerated Data Science Fundamentals">
+    <div class="meta">Question 6 of 6 · GPU-Accelerated Data Science Fundamentals</div>
+    <div class="q">A Dask-CUDA cluster (LocalCUDACluster) spans 4 GPUs and runs a groupby-aggregate job on a dataset larger than the combined GPU memory across all 4 devices. The job repeatedly fails with GPU out-of-memory errors before completing, even though total GPU memory is close to the dataset size. Which change most directly resolves this without reducing the dataset size?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. Enable device-to-host spilling (e.g., jit-unspill / device_memory_limit) so data exceeding GPU capacity is moved to host memory as needed</button><button class="opt" onclick="answer(this,5,1,0)">B. Increase the number of Dask-CUDA workers assigned per GPU to parallelize the aggregation further</button><button class="opt" onclick="answer(this,5,2,0)">C. Convert the aggregation step from cuDF operations to pandas operations inside the Dask graph</button><button class="opt" onclick="answer(this,5,3,0)">D. Restrict the cluster to a single GPU via CUDA_VISIBLE_DEVICES to simplify memory management</button>
+    <div class="expl">Dask-CUDA supports spilling GPU data to host memory (and optionally disk) when a configured device_memory_limit is reached, using mechanisms like JIT-unspill. This lets a working set larger than aggregate GPU memory complete successfully by offloading less-active data rather than erroring out, without shrinking the input dataset.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$129.99</span> <strong>$34.99</strong> with code <span class="code">FREETEST33</span> — valid through September 9.</p>
+  <a href="https://www.udemy.com/course/ncp-ads-nvidia-accelerated-data-science-prep/?couponCode=FREETEST33" rel="sponsored">Get the full course for $34.99 →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

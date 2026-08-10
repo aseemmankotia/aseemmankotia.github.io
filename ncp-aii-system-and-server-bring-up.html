@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free System and Server Bring-up Practice Questions — NVIDIA-Certified Professional: AI Infrastructure</title>
+<meta name="description" content="6 free System and Server Bring-up practice questions with explanations for the NVIDIA-Certified Professional: AI Infrastructure exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/ncp-aii-system-and-server-bring-up.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free NVIDIA-Certified Professional: AI Infrastructure practice — 6 questions on <strong>System and Server Bring-up</strong>, with explanations. No sign-up.
+<a href="ncp-aii.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="System and Server Bring-up">
+    <div class="meta">Question 1 of 6 · System and Server Bring-up</div>
+    <div class="q">A company just racked a new DGX H100 node. After OS and driver installation, engineers must verify all 8 GPUs have full NVLink connectivity through the 4 onboard NVSwitches before moving the node into production. Which command should they run to confirm the NVLink topology matches the expected DGX H100 all-to-all connectivity?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. nvidia-smi -q -d PERFORMANCE</button><button class="opt" onclick="answer(this,0,1,3)">B. ibstat</button><button class="opt" onclick="answer(this,0,2,3)">C. dcgmi discovery -l</button><button class="opt" onclick="answer(this,0,3,3)">D. nvidia-smi topo -m</button>
+    <div class="expl">nvidia-smi topo -m prints the GPU-to-GPU interconnect matrix, showing NVx entries for NVLink-connected pairs, which lets engineers confirm full NVSwitch fabric connectivity across all 8 GPUs.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="System and Server Bring-up">
+    <div class="meta">Question 2 of 6 · System and Server Bring-up</div>
+    <div class="q">After initial bring-up of an NVIDIA-Certified server with 8x H100 GPUs, the deployment team wants to run an extended hardware diagnostic that stresses the GPUs and validates NVLink bandwidth before handing the system to production workloads. Which command correctly performs this validation?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. dcgmi diag -r 3</button><button class="opt" onclick="answer(this,1,1,0)">B. nvidia-smi -pm 1</button><button class="opt" onclick="answer(this,1,2,0)">C. dcgmi diag -r 1</button><button class="opt" onclick="answer(this,1,3,0)">D. nvidia-bug-report.sh</button>
+    <div class="expl">dcgmi diag -r 3 runs DCGM's 'long' diagnostic level, which includes memory, PCIe, and NVLink bandwidth stress tests appropriate for thorough bring-up validation before production use.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="System and Server Bring-up">
+    <div class="meta">Question 3 of 6 · System and Server Bring-up</div>
+    <div class="q">During BIOS validation on a new NVIDIA-Certified server intended for multi-GPU training with GPUDirect RDMA over InfiniBand, engineers observe that GPU peer-to-peer communication and RDMA throughput are far below expected values. Which BIOS/PCIe setting should be checked and corrected first?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. Enable Access Control Services (ACS) on all PCIe root ports</button><button class="opt" onclick="answer(this,2,1,3)">B. Enable SR-IOV on the GPU PCIe slots</button><button class="opt" onclick="answer(this,2,2,3)">C. Disable Above 4G Decoding</button><button class="opt" onclick="answer(this,2,3,3)">D. Disable Access Control Services (ACS) on the PCIe root ports used by GPUs and NICs</button>
+    <div class="expl">ACS enforces isolation between PCIe devices, forcing peer-to-peer GPU traffic and GPUDirect RDMA traffic through the root complex/CPU instead of a direct path. NVIDIA reference bring-up procedures require ACS to be disabled on the root ports serving GPUs and RDMA NICs to restore expected throughput.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="System and Server Bring-up">
+    <div class="meta">Question 4 of 6 · System and Server Bring-up</div>
+    <div class="q">While bringing up a new 4-node DGX H100 SuperPOD segment, NCCL all-reduce tests intermittently fail with topology errors on one specific node while the other three nodes complete successfully. All four nodes were imaged from the same OS and driver template. What should be investigated FIRST as the most likely root cause?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. Insufficient host DRAM capacity on the failing node</button><button class="opt" onclick="answer(this,3,1,1)">B. Mismatched GPU VBIOS or NVSwitch firmware versions on the failing node</button><button class="opt" onclick="answer(this,3,2,1)">C. A different Linux kernel scheduler configuration</button><button class="opt" onclick="answer(this,3,3,1)">D. The NCCL_DEBUG environment variable not being set</button>
+    <div class="expl">Firmware inconsistencies such as mismatched GPU VBIOS or NVSwitch firmware between otherwise identically imaged nodes are a well-known bring-up defect that causes NVLink/NVSwitch topology mismatches and intermittent NCCL failures. Firmware versions should be audited and aligned across the cluster during bring-up before deeper network debugging.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="System and Server Bring-up">
+    <div class="meta">Question 5 of 6 · System and Server Bring-up</div>
+    <div class="q">During bring-up documentation review for a DGX H100 system, a new engineer asks how NVLink and NVSwitch relate to each other. Which statement is correct?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. NVLink and NVSwitch are two names for the same physical interconnect standard</button><button class="opt" onclick="answer(this,4,1,2)">B. NVSwitch replaces NVLink entirely in H100 systems, so no NVLink connections exist</button><button class="opt" onclick="answer(this,4,2,2)">C. NVLink is the point-to-point interconnect protocol/links, while NVSwitch is the switching ASIC that interconnects multiple NVLinks to provide all-to-all GPU connectivity</button><button class="opt" onclick="answer(this,4,3,2)">D. NVLink connects GPUs to storage, while NVSwitch connects GPUs to the CPU</button>
+    <div class="expl">NVLink is the high-bandwidth GPU-to-GPU interconnect link/protocol, while NVSwitch is the on-board switching ASIC (four per DGX H100 baseboard) that interconnects multiple NVLinks so every GPU can communicate with every other GPU at full bandwidth in an all-to-all fabric.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="System and Server Bring-up">
+    <div class="meta">Question 6 of 6 · System and Server Bring-up</div>
+    <div class="q">A newly racked DGX H100 fails to complete a normal power-on sequence: the chassis fans spin up, but the system never POSTs and no output appears on console redirection. Following standard bring-up troubleshooting procedure, what should be checked FIRST via the BMC before escalating to hardware replacement?</div>
+    <button class="opt" onclick="answer(this,5,0,2)">A. Reflash the GPU VBIOS remotely via the BMC</button><button class="opt" onclick="answer(this,5,1,2)">B. Reinstall the DGX OS from the recovery ISO</button><button class="opt" onclick="answer(this,5,2,2)">C. Review the BMC System Event Log (SEL) and sensor readings for power-supply, voltage-rail, or CPU/GPU fault events</button><button class="opt" onclick="answer(this,5,3,2)">D. Run nvidia-smi -q from the host OS</button>
+    <div class="expl">Because the host never completes POST, host OS-based tools cannot run and reflashing firmware is premature. The correct first step is out-of-band troubleshooting through the BMC: review the System Event Log and sensor data for power-supply, voltage rail, or CPU/GPU fault flags to identify the hardware condition preventing POST.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$199.99</span> <strong>$34.99</strong> with code <span class="code">FREETEST33</span> — valid through September 9.</p>
+  <a href="https://www.udemy.com/course/ncp-aii-nvidia-ai-infrastructure-professional-prep/?couponCode=FREETEST33" rel="sponsored">Get the full course for $34.99 →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

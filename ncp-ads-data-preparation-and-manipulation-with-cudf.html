@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Data Preparation and Manipulation with cuDF Practice Questions — NVIDIA-Certified Professional: Accelerated Data Science</title>
+<meta name="description" content="6 free Data Preparation and Manipulation with cuDF practice questions with explanations for the NVIDIA-Certified Professional: Accelerated Data Science exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/ncp-ads-data-preparation-and-manipulation-with-cudf.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free NVIDIA-Certified Professional: Accelerated Data Science practice — 6 questions on <strong>Data Preparation and Manipulation with cuDF</strong>, with explanations. No sign-up.
+<a href="ncp-ads.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Data Preparation and Manipulation with cuDF">
+    <div class="meta">Question 1 of 6 · Data Preparation and Manipulation with cuDF</div>
+    <div class="q">You have enabled GPU acceleration with `%load_ext cudf.pandas` in a Jupyter notebook. All prior cell operations ran on a DataFrame `df` created after the extension loaded. You then call `df.style.background_gradient()`, an accessor cuDF does not implement natively. What actually happens?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. cudf.pandas seamlessly falls back to the real pandas implementation for the unsupported .style accessor, transferring data to host memory automatically with no code change required</button><button class="opt" onclick="answer(this,0,1,0)">B. The call raises a hard error because Styler objects cannot be produced from GPU-backed frames</button><button class="opt" onclick="answer(this,0,2,0)">C. cudf.pandas silently ignores the unsupported call and returns the DataFrame unmodified</button><button class="opt" onclick="answer(this,0,3,0)">D. You must manually call .to_pandas() first, since cudf.pandas only accelerates method calls, never attribute-based accessors</button>
+    <div class="expl">cudf.pandas wraps every pandas object in a proxy; when an operation isn't implemented in libcudf/cuDF, the proxy automatically falls back to the real CPU pandas execution path, moving the underlying data as needed, transparently to the user.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Data Preparation and Manipulation with cuDF">
+    <div class="meta">Question 2 of 6 · Data Preparation and Manipulation with cuDF</div>
+    <div class="q">You run `cudf.Series([1, 2, None, 4])`. What is the resulting dtype, and how does this differ from pandas' default behavior for the same input list?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. float64 with NaN representing the missing value; this is identical to pandas' default behavior</button><button class="opt" onclick="answer(this,1,1,3)">B. int64 with the null represented via pd.NA; pandas would also default to nullable int64</button><button class="opt" onclick="answer(this,1,2,3)">C. object dtype holding a literal Python None; pandas would raise a TypeError for the same input</button><button class="opt" onclick="answer(this,1,3,3)">D. int64 with a validity bitmask marking the null entry; pandas, by default, would upcast the column to float64 and represent the missing value as NaN</button>
+    <div class="expl">cuDF stores nullability via an Arrow-style validity bitmask independent of the value buffer, so integer columns keep their int64 dtype even with missing values. Pandas, without opting into nullable extension dtypes, upcasts int64 to float64 and uses NaN as the sentinel for missing data.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Data Preparation and Manipulation with cuDF">
+    <div class="meta">Question 3 of 6 · Data Preparation and Manipulation with cuDF</div>
+    <div class="q">You need to split a cuDF string column on a comma where the number of resulting substrings varies per row, and you only need the first two resulting tokens as separate columns. Which approach is correct and GPU-efficient?</div>
+    <button class="opt" onclick="answer(this,2,0,2)">A. Iterate rows in a Python for-loop, calling `.split(&quot;,&quot;)` on each extracted Python string, then reassemble the results into new columns</button><button class="opt" onclick="answer(this,2,1,2)">B. Convert the column to pandas first, because cuDF cannot handle ragged/variable-length string splits</button><button class="opt" onclick="answer(this,2,2,2)">C. Call `series.str.split(pat=&quot;,&quot;, n=2, expand=True)` and select the first two resulting columns</button><button class="opt" onclick="answer(this,2,3,2)">D. Use `series.str.rsplit()` with a variable-length regex lookbehind to bound the token count to two</button>
+    <div class="expl">cuDF's str.split supports the `n` and `expand` parameters exactly like pandas, performing the ragged split entirely on GPU via libcudf strings kernels and padding shorter rows with nulls in the extra columns — no host round-trip required.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Data Preparation and Manipulation with cuDF">
+    <div class="meta">Question 4 of 6 · Data Preparation and Manipulation with cuDF</div>
+    <div class="q">A cuDF DataFrame has a column 'transaction_id' containing 50 million unique string values and a column 'country' containing only 15 unique string values repeated across all 50 million rows. Before a large groupby, which single dtype change correctly targets GPU memory reduction?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. Convert 'transaction_id' to category dtype</button><button class="opt" onclick="answer(this,3,1,1)">B. Convert only 'country' to category dtype</button><button class="opt" onclick="answer(this,3,2,1)">C. Convert both 'transaction_id' and 'country' to category dtype</button><button class="opt" onclick="answer(this,3,3,1)">D. Category dtype conversion is unsupported in cuDF prior to a groupby operation</button>
+    <div class="expl">Category dtype benefits low-cardinality columns because it stores a small dictionary of unique values plus compact integer codes. With only 15 distinct 'country' values across 50M rows, this drastically cuts memory versus storing repeated strings; groupby on the coded column is also faster.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Data Preparation and Manipulation with cuDF">
+    <div class="meta">Question 5 of 6 · Data Preparation and Manipulation with cuDF</div>
+    <div class="q">Without using cudf.pandas, you call `.dt.to_period('M')` on a cuDF datetime64 column to bucket records into calendar months. What is the actual outcome?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. It works identically to pandas and returns a cuDF column with PeriodDtype</button><button class="opt" onclick="answer(this,4,1,3)">B. It silently converts the column to a plain string column representing the period label</button><button class="opt" onclick="answer(this,4,2,3)">C. It executes correctly because cudf.pandas is active by default in any RAPIDS environment, transparently routing the call to CPU pandas</button><button class="opt" onclick="answer(this,4,3,3)">D. It raises a NotImplementedError because cuDF does not implement pandas' Period extension dtype; you should derive year/month components (e.g., via .dt.year and .dt.month, or a truncated timestamp) instead</button>
+    <div class="expl">cuDF does not implement several pandas extension dtypes, including Period (and Interval, Sparse). Calling .dt.to_period() on a native cuDF Series raises a NotImplementedError; the standard GPU-friendly workaround is to bucket via .dt.year/.dt.month or by flooring the timestamp to the month, then group on those integer/timestamp columns.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Data Preparation and Manipulation with cuDF">
+    <div class="meta">Question 6 of 6 · Data Preparation and Manipulation with cuDF</div>
+    <div class="q">Which RAPIDS utility generates a synthetic, GPU-resident time-indexed cuDF DataFrame (with configurable id, x, and y columns) that is commonly used to benchmark cuDF groupby and join performance without loading external datasets?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. cuml.datasets.make_blobs() — generates GPU-resident clustering blobs for ML algorithms, not time-indexed tabular records</button><button class="opt" onclick="answer(this,5,1,1)">B. cudf.datasets.timeseries() — generates a synthetic time-indexed cuDF DataFrame with configurable id/x/y columns entirely on GPU</button><button class="opt" onclick="answer(this,5,2,1)">C. dask_cudf.datasets.make_timeseries() — not an existing RAPIDS API</button><button class="opt" onclick="answer(this,5,3,1)">D. cupy.random.default_rng().synthetic_frame() — not a real cuPy API</button>
+    <div class="expl">cudf.datasets.timeseries() (mirroring dask's timeseries generator) produces a synthetic time-indexed DataFrame directly on the GPU with configurable frequency and id/x/y columns, making it a standard tool for benchmarking cuDF groupby/join/rolling operations without any I/O overhead.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$129.99</span> <strong>$34.99</strong> with code <span class="code">FREETEST33</span> — valid through September 9.</p>
+  <a href="https://www.udemy.com/course/ncp-ads-nvidia-accelerated-data-science-prep/?couponCode=FREETEST33" rel="sponsored">Get the full course for $34.99 →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

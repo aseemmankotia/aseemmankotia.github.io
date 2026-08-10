@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Core Machine Learning and AI Knowledge Practice Questions — NVIDIA-Certified Associate: Generative AI Multimodal</title>
+<meta name="description" content="6 free Core Machine Learning and AI Knowledge practice questions with explanations for the NVIDIA-Certified Associate: Generative AI Multimodal exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/nca-genm-core-machine-learning-and-ai-knowledge.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free NVIDIA-Certified Associate: Generative AI Multimodal practice — 6 questions on <strong>Core Machine Learning and AI Knowledge</strong>, with explanations. No sign-up.
+<a href="nca-genm.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Core Machine Learning and AI Knowledge">
+    <div class="meta">Question 1 of 6 · Core Machine Learning and AI Knowledge</div>
+    <div class="q">A research team is building a text-to-image generation system and must choose between a GAN and a diffusion model. Their primary requirement is stable training and avoidance of collapsed output diversity across varied prompts. Which model family BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. A diffusion model trained with an iterative denoising objective</button><button class="opt" onclick="answer(this,0,1,0)">B. A conditional GAN with an adversarial discriminator network</button><button class="opt" onclick="answer(this,0,2,0)">C. An autoregressive transformer using only self-attention layers, with no diffusion or adversarial component</button><button class="opt" onclick="answer(this,0,3,0)">D. A variational autoencoder (VAE) with a fixed Gaussian prior</button>
+    <div class="expl">Diffusion models learn to reverse a gradual noising process via a denoising objective, avoiding the adversarial min-max dynamics that cause GAN training instability, and they reliably produce diverse, high-fidelity samples across prompts.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Core Machine Learning and AI Knowledge">
+    <div class="meta">Question 2 of 6 · Core Machine Learning and AI Knowledge</div>
+    <div class="q">In the original Transformer architecture, sinusoidal positional encodings are added to token embeddings instead of using learned positional embeddings. What is the primary advantage of this design choice, as commonly tested?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. Sinusoidal encodings eliminate the need for causal attention masking in the decoder</button><button class="opt" onclick="answer(this,1,1,2)">B. Sinusoidal encodings guarantee that all attention weight matrices are symmetric</button><button class="opt" onclick="answer(this,1,2,2)">C. Sinusoidal encodings add no learnable parameters and their periodic structure allows the model to generalize to sequence lengths longer than those seen during training</button><button class="opt" onclick="answer(this,1,3,2)">D. Sinusoidal encodings remove the model's need to encode positional information at all</button>
+    <div class="expl">Sinusoidal functions are parameter-free and their fixed periodicity lets the model extrapolate to positions beyond the maximum length observed during training, unlike learned positional embeddings which are only defined up to the training length.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Core Machine Learning and AI Knowledge">
+    <div class="meta">Question 3 of 6 · Core Machine Learning and AI Knowledge</div>
+    <div class="q">CLIP (Contrastive Language-Image Pretraining) learns a joint embedding space for images and text without using manually assigned class labels. Which learning paradigm does CLIP's training objective represent?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. Supervised classification using one-hot encoded class labels</button><button class="opt" onclick="answer(this,2,1,3)">B. Reinforcement learning guided by a learned reward model</button><button class="opt" onclick="answer(this,2,2,3)">C. Unsupervised clustering of raw pixel features using k-means</button><button class="opt" onclick="answer(this,2,3,3)">D. Self-supervised contrastive learning that uses naturally paired image-text data as its own supervisory signal</button>
+    <div class="expl">CLIP uses a contrastive loss that treats matched image-text pairs as positives and mismatched pairs as negatives, deriving the supervisory signal from the inherent pairing structure of the data itself, which defines self-supervised learning.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Core Machine Learning and AI Knowledge">
+    <div class="meta">Question 4 of 6 · Core Machine Learning and AI Knowledge</div>
+    <div class="q">A team has trained a diffusion-based image generation model and needs to quantitatively evaluate both the visual fidelity and the diversity of generated images relative to real images. Which evaluation metric is MOST appropriate for this scenario?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. BLEU score</button><button class="opt" onclick="answer(this,3,1,2)">B. Perplexity</button><button class="opt" onclick="answer(this,3,2,2)">C. Fréchet Inception Distance (FID)</button><button class="opt" onclick="answer(this,3,3,2)">D. Word Error Rate (WER)</button>
+    <div class="expl">FID compares the statistics (mean and covariance) of Inception-network feature embeddings between generated and real image sets, capturing both fidelity and diversity of the generative distribution.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Core Machine Learning and AI Knowledge">
+    <div class="meta">Question 5 of 6 · Core Machine Learning and AI Knowledge</div>
+    <div class="q">A multimodal model generates text captions conditioned on image content: a frozen pretrained vision encoder extracts image features, and a language decoder attends directly to those features while generating each output token. Which multimodal fusion pattern does this describe, as used in models like BLIP-2 and Flamingo?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. Early fusion at the raw input embedding layer</button><button class="opt" onclick="answer(this,4,1,2)">B. Late fusion by averaging independent unimodal predictions</button><button class="opt" onclick="answer(this,4,2,2)">C. Cross-attention fusion between modality-specific encoders and a decoder</button><button class="opt" onclick="answer(this,4,3,2)">D. Score-level fusion using ensemble voting across models</button>
+    <div class="expl">BLIP-2 and Flamingo insert cross-attention layers into the language decoder that let it attend to visual encoder features during generation, fusing modalities at an intermediate representational level rather than at input or output.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Core Machine Learning and AI Knowledge">
+    <div class="meta">Question 6 of 6 · Core Machine Learning and AI Knowledge</div>
+    <div class="q">When generating images with a diffusion model using classifier-free guidance, a practitioner increases the guidance scale far beyond the recommended range for a given prompt. What is the MOST likely effect on the output?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. The image will more closely match the natural training data distribution with no visible side effects</button><button class="opt" onclick="answer(this,5,1,3)">B. The image will show reduced adherence to the text prompt</button><button class="opt" onclick="answer(this,5,2,3)">C. The model will automatically clip the guidance scale to a safe default, so no change in output occurs</button><button class="opt" onclick="answer(this,5,3,3)">D. The image will show oversaturated colors, visual artifacts, and reduced sample diversity due to over-emphasis on the conditioning signal</button>
+    <div class="expl">Excessively high guidance scale pushes the denoising trajectory far from the unconditional score estimate, over-emphasizing prompt conditioning at the cost of naturalness, typically producing oversaturated, artifact-heavy, less diverse images.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$99.99</span> <strong>$34.99</strong> with code <span class="code">FREETEST33</span> — valid through September 9.</p>
+  <a href="https://www.udemy.com/course/nca-genm-nvidia-generative-ai-multimodal-exam-prep/?couponCode=FREETEST33" rel="sponsored">Get the full course for $34.99 →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Multimodal Data Practice Questions — NVIDIA-Certified Associate: Generative AI Multimodal</title>
+<meta name="description" content="6 free Multimodal Data practice questions with explanations for the NVIDIA-Certified Associate: Generative AI Multimodal exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/nca-genm-multimodal-data.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free NVIDIA-Certified Associate: Generative AI Multimodal practice — 6 questions on <strong>Multimodal Data</strong>, with explanations. No sign-up.
+<a href="nca-genm.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Multimodal Data">
+    <div class="meta">Question 1 of 6 · Multimodal Data</div>
+    <div class="q">A team is building a CLIP-style vision-language model. Their corpus contains 50 million images but only 2 million have paired captions; the rest are uncaptioned. Which strategy BEST maximizes use of the full dataset while preserving alignment quality for contrastive training?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. Discard the uncaptioned images and train only on the 2 million paired samples</button><button class="opt" onclick="answer(this,0,1,1)">B. Train an image captioning model on the paired subset, use it to generate pseudo-captions for the uncaptioned images, then fine-tune the contrastive model on the combined paired plus pseudo-paired set</button><button class="opt" onclick="answer(this,0,2,1)">C. Concatenate randomly selected captions to uncaptioned images to enforce a fixed batch size</button><button class="opt" onclick="answer(this,0,3,1)">D. Convert all uncaptioned images to audio spectrograms so they can be aligned acoustically instead</button>
+    <div class="expl">Self-training/pseudo-labeling with a captioning model trained on the paired subset lets the team leverage the full 50M images while generating usable, if noisy, supervision signal for contrastive fine-tuning — a standard technique for scaling multimodal alignment beyond the paired subset.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Multimodal Data">
+    <div class="meta">Question 2 of 6 · Multimodal Data</div>
+    <div class="q">A ViT-B/16 model processes a 224x224x3 RGB image using non-overlapping patches. What is the resulting patch sequence length fed into the transformer encoder, excluding the class token?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. 49</button><button class="opt" onclick="answer(this,1,1,2)">B. 256</button><button class="opt" onclick="answer(this,1,2,2)">C. 196</button><button class="opt" onclick="answer(this,1,3,2)">D. 784</button>
+    <div class="expl">With patch size 16, each spatial dimension yields 224/16 = 14 patches, giving 14x14 = 196 total patches.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Multimodal Data">
+    <div class="meta">Question 3 of 6 · Multimodal Data</div>
+    <div class="q">When extracting mel-spectrogram features for an audio-to-text pipeline, increasing the FFT hop length while keeping the window (frame) size constant primarily results in which trade-off?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. Higher frequency resolution at the cost of increased computational cost</button><button class="opt" onclick="answer(this,2,1,3)">B. An automatic increase in the number of mel filterbank bins</button><button class="opt" onclick="answer(this,2,2,3)">C. Improved robustness to background noise regardless of window size</button><button class="opt" onclick="answer(this,2,3,3)">D. Coarser time resolution, meaning fewer output frames, while frequency resolution remains unchanged</button>
+    <div class="expl">Hop length controls the stride between successive analysis windows, so a larger hop length produces fewer, more widely spaced frames (coarser time resolution); frequency resolution is governed by the window/FFT size, not the hop length.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Multimodal Data">
+    <div class="meta">Question 4 of 6 · Multimodal Data</div>
+    <div class="q">A multimodal dataset for text-to-speech alignment has 500,000 text-only samples but only 8,000 samples with paired audio recordings. The team wants to train a joint text-audio embedding without simply duplicating the scarce audio-paired examples. Which approach is the BEST practice?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. Randomly duplicate the 8,000 paired samples until modality counts match the text-only count</button><button class="opt" onclick="answer(this,3,1,1)">B. Apply weighted sampling to oversample paired examples per epoch while using audio-specific augmentation such as pitch shift, speed perturbation, and additive noise to increase paired-sample diversity</button><button class="opt" onclick="answer(this,3,2,1)">C. Drop all text-only samples so both modalities have equal, small counts</button><button class="opt" onclick="answer(this,3,3,1)">D. Convert text samples into synthetic spectrograms using a random noise generator to fill the audio gap</button>
+    <div class="expl">Combining weighted sampling of the paired subset with modality-specific augmentation increases exposure and effective diversity of the scarce paired data without introducing pure duplicates or fabricated signal, which is standard practice for imbalanced multimodal training.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Multimodal Data">
+    <div class="meta">Question 5 of 6 · Multimodal Data</div>
+    <div class="q">Which statement correctly distinguishes paired from unpaired multimodal training data?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. Paired data always comes from synthetic generation, while unpaired data is always human-annotated</button><button class="opt" onclick="answer(this,4,1,2)">B. Unpaired datasets cannot be used for training any generative model</button><button class="opt" onclick="answer(this,4,2,2)">C. Paired data requires known one-to-one correspondence between modality samples (e.g., an image and the caption describing it), enabling direct supervised contrastive losses; unpaired data lacks known correspondence and typically requires cycle-consistency or distributional alignment losses instead</button><button class="opt" onclick="answer(this,4,3,2)">D. Paired and unpaired refer only to differences in file format, not to sample correspondence</button>
+    <div class="expl">This matches the technical definitions used across the field: CLIP-style contrastive models require paired image-text data, while approaches like CycleGAN use cycle-consistency losses specifically because their image-to-image datasets are unpaired.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Multimodal Data">
+    <div class="meta">Question 6 of 6 · Multimodal Data</div>
+    <div class="q">A user submits a 120-word descriptive prompt to a text-to-image diffusion pipeline whose text encoder (a CLIP ViT-L/14 text tower) has a maximum context length of 77 tokens. The tokenized prompt exceeds this limit. What is the standard behavior in most production pipelines?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. The pipeline automatically summarizes the prompt using an LLM before tokenization</button><button class="opt" onclick="answer(this,5,1,1)">B. The tokenizer truncates the sequence to the first 77 tokens, including special tokens, and any content beyond that is silently dropped, so critical details should be placed early in the prompt</button><button class="opt" onclick="answer(this,5,2,1)">C. The model dynamically increases its positional embedding table to accommodate the full prompt</button><button class="opt" onclick="answer(this,5,3,1)">D. The pipeline throws a hard error and aborts generation for any prompt exceeding the token limit</button>
+    <div class="expl">The CLIP text encoder has a fixed context length of 77 tokens (including BOS/EOS special tokens); standard tokenizer behavior truncates excess tokens rather than erroring, which is a well-known prompt engineering consideration.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$99.99</span> <strong>$34.99</strong> with code <span class="code">FREETEST33</span> — valid through September 9.</p>
+  <a href="https://www.udemy.com/course/nca-genm-nvidia-generative-ai-multimodal-exam-prep/?couponCode=FREETEST33" rel="sponsored">Get the full course for $34.99 →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

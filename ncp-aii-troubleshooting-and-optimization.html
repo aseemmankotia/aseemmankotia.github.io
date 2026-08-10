@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Troubleshooting and Optimization Practice Questions — NVIDIA-Certified Professional: AI Infrastructure</title>
+<meta name="description" content="6 free Troubleshooting and Optimization practice questions with explanations for the NVIDIA-Certified Professional: AI Infrastructure exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/ncp-aii-troubleshooting-and-optimization.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free NVIDIA-Certified Professional: AI Infrastructure practice — 6 questions on <strong>Troubleshooting and Optimization</strong>, with explanations. No sign-up.
+<a href="ncp-aii.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Troubleshooting and Optimization">
+    <div class="meta">Question 1 of 6 · Troubleshooting and Optimization</div>
+    <div class="q">During routine health checks on a DGX H100 node, `nvidia-smi -q -d XID` reports repeated Xid 79 events on GPU 3, and the GPU subsequently disappears from `nvidia-smi -L` output until the node is rebooted. What is the correct diagnostic and remediation path?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. Reinstall the NVIDIA driver stack and reboot the node, since Xid 79 indicates a corrupted kernel module</button><button class="opt" onclick="answer(this,0,1,3)">B. Enable persistence mode and disable ECC on GPU 3 to suppress the error, then resume production workloads</button><button class="opt" onclick="answer(this,0,2,3)">C. Update NCCL to the latest release, since Xid 79 is caused by a collective communication library incompatibility</button><button class="opt" onclick="answer(this,0,3,3)">D. Confirm Xid 79 ('GPU has fallen off the bus') via system logs, then treat it as a hardware fault requiring GPU reseating or RMA rather than a software fix</button>
+    <div class="expl">Xid 79 specifically means the GPU has dropped off the PCIe/NVLink bus, which is a hardware-level fault (power, thermal, seating, or board defect). It cannot be resolved by driver or software changes and requires physical inspection, reseating, or GPU replacement.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Troubleshooting and Optimization">
+    <div class="meta">Question 2 of 6 · Troubleshooting and Optimization</div>
+    <div class="q">On an 8-GPU NVLink-connected node, `nvidia-smi nvlink --status` shows seven links reporting 'NVLink Speed: 25 GB/s' but one link between GPU0 and GPU4 reporting 'NVLink Speed: 6.25 GB/s'. All-reduce jobs using that GPU pair show measurable slowdowns. What should be checked next to isolate the cause?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. Assume this is expected variance and re-run the benchmark multiple times to average out the result</button><button class="opt" onclick="answer(this,1,1,3)">B. Reduce the NCCL_ALGO setting to Ring for all jobs to avoid using the affected link entirely</button><button class="opt" onclick="answer(this,1,2,3)">C. Increase the GPU power limit on GPU0 and GPU4 to force the link to renegotiate at full speed</button><button class="opt" onclick="answer(this,1,3,3)">D. Check `nvidia-smi nvlink -e` for that specific link's error/replay counters and inspect dmesg for Xid 74 (NVLink error) events before considering GPU or baseboard replacement</button>
+    <div class="expl">A single NVLink degrading to a fraction of its rated speed while others operate normally points to a link-layer hardware fault. The correct isolation step is checking NVLink error/replay counters and system logs for Xid 74 (NVLink error) to confirm before escalating to hardware replacement.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Troubleshooting and Optimization">
+    <div class="meta">Question 3 of 6 · Troubleshooting and Optimization</div>
+    <div class="q">A GPU cluster's multi-node NCCL all-reduce throughput measured with `all_reduce_perf` is 40% below the vendor-published expected bandwidth. Which command should be run FIRST to determine whether the bottleneck is in the physical InfiniBand fabric rather than the NCCL software stack?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. Re-run all_reduce_perf with a larger message size across all nodes</button><button class="opt" onclick="answer(this,2,1,1)">B. ib_write_bw between the two endpoint HCAs to measure raw RDMA bandwidth independent of NCCL</button><button class="opt" onclick="answer(this,2,2,1)">C. dcgmi diag -r 3 on each node to run the full GPU diagnostic level</button><button class="opt" onclick="answer(this,2,3,1)">D. nvidia-smi topo -m to print the PCIe/NVLink topology matrix</button>
+    <div class="expl">ib_write_bw (perftest) measures raw RDMA throughput directly between HCAs, isolating the physical fabric from NCCL's collective algorithm and software overhead. If raw RDMA bandwidth is also degraded, the problem is in the network; if it's healthy, the issue is in the NCCL/software layer.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Troubleshooting and Optimization">
+    <div class="meta">Question 4 of 6 · Troubleshooting and Optimization</div>
+    <div class="q">During sustained LLM training, `nvidia-smi -q -d PERFORMANCE` shows 'Clocks Throttle Reasons: SW Power Cap = Active' on all GPUs in a node, while GPU temperature stays 15°C below the thermal slowdown threshold. The rack's PDU still has 20% headroom before its circuit limit. Which action MOST directly resolves the throttling without violating power constraints?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. Replace the thermal paste on each GPU heatsink to improve cooling</button><button class="opt" onclick="answer(this,3,1,2)">B. Manually lower the GPU application clocks to reduce throttling frequency</button><button class="opt" onclick="answer(this,3,2,2)">C. Increase the GPU power limit with `nvidia-smi -pl` up toward the board's max TDP, within the available rack power headroom</button><button class="opt" onclick="answer(this,3,3,2)">D. Enable ECC memory on all GPUs to reduce overall power draw</button>
+    <div class="expl">'SW Power Cap' throttling occurs when the GPU hits its configured software power limit, not a thermal limit. Since temperatures are well within range and the rack still has power headroom, raising the power limit via nvidia-smi -pl is the direct fix that removes the artificial cap causing throttling.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Troubleshooting and Optimization">
+    <div class="meta">Question 5 of 6 · Troubleshooting and Optimization</div>
+    <div class="q">Which NVIDIA Xid error code specifically indicates an NVLink error, as opposed to a GPU memory ECC or general driver fault?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. Xid 48 (double-bit ECC error)</button><button class="opt" onclick="answer(this,4,1,1)">B. Xid 74 (NVLink error)</button><button class="opt" onclick="answer(this,4,2,1)">C. Xid 63 (row remapping event)</button><button class="opt" onclick="answer(this,4,3,1)">D. Xid 31 (GPU memory page fault)</button>
+    <div class="expl">Xid 74 is the code specifically documented as indicating an NVLink error, distinct from memory subsystem faults, and is the code an administrator should search logs for when link-level connectivity issues are suspected.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Troubleshooting and Optimization">
+    <div class="meta">Question 6 of 6 · Troubleshooting and Optimization</div>
+    <div class="q">A distributed training job scales nearly linearly up to 4 nodes but throughput plateaus beyond 8 nodes. Per-GPU SM utilization remains at 95%+ throughout, and per-node network interface counters show links are not saturated. What is the MOST likely root cause to investigate first?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. The NCCL collective algorithm selection or spine-switch congestion during all-reduce is degrading effective collective bandwidth at larger scale, even though per-link utilization looks fine</button><button class="opt" onclick="answer(this,5,1,0)">B. GPU memory is exhausted, causing repeated out-of-memory recovery on larger node counts</button><button class="opt" onclick="answer(this,5,2,0)">C. Data loader CPU throughput is the bottleneck starving the GPUs of input batches</button><button class="opt" onclick="answer(this,5,3,0)">D. A driver version mismatch exists between the newly added nodes and the original cluster nodes</button>
+    <div class="expl">High per-GPU utilization with plateauing overall throughput and non-saturated individual links is a classic signature of collective communication inefficiency at scale — either a suboptimal NCCL algorithm (e.g., Tree vs Ring selection) or congestion at the spine/core switch layer during synchronized all-reduce bursts, which per-link average counters can mask.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$199.99</span> <strong>$34.99</strong> with code <span class="code">FREETEST33</span> — valid through September 9.</p>
+  <a href="https://www.udemy.com/course/ncp-aii-nvidia-ai-infrastructure-professional-prep/?couponCode=FREETEST33" rel="sponsored">Get the full course for $34.99 →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

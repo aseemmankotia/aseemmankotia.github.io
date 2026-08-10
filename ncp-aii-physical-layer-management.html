@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Physical Layer Management Practice Questions — NVIDIA-Certified Professional: AI Infrastructure</title>
+<meta name="description" content="6 free Physical Layer Management practice questions with explanations for the NVIDIA-Certified Professional: AI Infrastructure exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/ncp-aii-physical-layer-management.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free NVIDIA-Certified Professional: AI Infrastructure practice — 6 questions on <strong>Physical Layer Management</strong>, with explanations. No sign-up.
+<a href="ncp-aii.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Physical Layer Management">
+    <div class="meta">Question 1 of 6 · Physical Layer Management</div>
+    <div class="q">A leaf switch in an InfiniBand fat-tree fabric has 40 total ports: 32 connected to compute node NICs and 8 uplinks to spine switches. What is the oversubscription ratio of this leaf switch, and what does it indicate?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. 1:1 — the fabric is non-blocking and suitable for full bisection bandwidth workloads</button><button class="opt" onclick="answer(this,0,1,3)">B. 8:1 — the fabric requires additional spine switches to reach non-blocking status</button><button class="opt" onclick="answer(this,0,2,3)">C. 1:4 — the fabric has more uplink capacity than needed, indicating overprovisioning</button><button class="opt" onclick="answer(this,0,3,3)">D. 4:1 — the fabric is oversubscribed and may bottleneck bandwidth-intensive collective operations</button>
+    <div class="expl">32 downlink ports divided by 8 uplink ports yields a 4:1 oversubscription ratio, meaning the fabric is oversubscribed and NCCL-style collective operations (all-reduce, all-gather) that saturate node-to-node bandwidth may experience congestion at the spine layer.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Physical Layer Management">
+    <div class="meta">Question 2 of 6 · Physical Layer Management</div>
+    <div class="q">In a rail-optimized fat-tree design for a DGX H100 SuperPOD, each of the 8 GPU NICs (one per rail) on a node connects to a dedicated leaf switch reserved solely for that rail. What is the primary benefit of this design for distributed training workloads?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. It reduces the total number of leaf switches required in the fabric</button><button class="opt" onclick="answer(this,1,1,2)">B. It eliminates the need for NVLink within a DGX node</button><button class="opt" onclick="answer(this,1,2,2)">C. It allows GPUs occupying the same rail position across different nodes to communicate without traversing the spine layer</button><button class="opt" onclick="answer(this,1,3,2)">D. It guarantees a 1:1 oversubscription ratio regardless of spine switch count</button>
+    <div class="expl">Rail-optimized topology places same-rail GPUs from different nodes onto the same set of leaf switches, so intra-rail collective communication (e.g., ring/tree NCCL patterns matched to GPU index) stays local to the leaf, reducing hop count and spine congestion.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Physical Layer Management">
+    <div class="meta">Question 3 of 6 · Physical Layer Management</div>
+    <div class="q">A GPU cluster's spine switches are located in a separate row of racks 50 meters from the compute racks. The fabric uses NDR (400Gb/s) InfiniBand. Which cabling solution should be used for these inter-row links?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. Passive copper DAC cables, rated for reliable operation up to 3 meters at NDR speeds</button><button class="opt" onclick="answer(this,2,1,3)">B. Active copper cables (ACC), which extend copper reach to approximately 50-70 meters at NDR speeds</button><button class="opt" onclick="answer(this,2,2,3)">C. Standard Cat6a Ethernet copper cabling, supporting 400Gb/s at distances up to 100 meters</button><button class="opt" onclick="answer(this,2,3,3)">D. Active optical cables (AOC), which integrate transceivers and support signal integrity over distances up to 100 meters</button>
+    <div class="expl">At NDR (400Gb/s), passive DAC is limited to roughly 2 meters and active copper only modestly extends that reach. A 50-meter run requires active optical cables (AOC), which integrate transceivers with the fiber assembly and reliably support distances up to about 100 meters.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Physical Layer Management">
+    <div class="meta">Question 4 of 6 · Physical Layer Management</div>
+    <div class="q">During physical-layer troubleshooting of a ConnectX-7 port suspected of marginal signal quality, which command-line utility provides RX/TX optical power levels, transceiver temperature, and per-lane symbol error counts for the specific cable?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. mlxlink</button><button class="opt" onclick="answer(this,3,1,0)">B. nvidia-smi</button><button class="opt" onclick="answer(this,3,2,0)">C. ibdiagnet</button><button class="opt" onclick="answer(this,3,3,0)">D. ethtool</button>
+    <div class="expl">mlxlink is the NVIDIA/Mellanox utility designed to query detailed per-port physical-layer diagnostics, including optical power levels, transceiver temperature, FEC/symbol error counters, and eye-margin data for a specific cable and port.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Physical Layer Management">
+    <div class="meta">Question 5 of 6 · Physical Layer Management</div>
+    <div class="q">A data center rack is fed by a 3-phase 208V PDU circuit rated at 60A per phase. Each DGX H100 system has a maximum power draw of 10.2kW. Applying the NEC 80% continuous-load derating rule, how many DGX H100 systems can this single circuit safely support?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. 1</button><button class="opt" onclick="answer(this,4,1,0)">B. 2</button><button class="opt" onclick="answer(this,4,2,0)">C. 3</button><button class="opt" onclick="answer(this,4,3,0)">D. 4</button>
+    <div class="expl">Available continuous capacity = √3 × 208V × 60A × 0.8 ≈ 17.3kW. A single DGX H100 at 10.2kW fits within that budget, but a second unit would require 20.4kW total, exceeding the derated 17.3kW limit — so only 1 system can be safely powered from this circuit.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Physical Layer Management">
+    <div class="meta">Question 6 of 6 · Physical Layer Management</div>
+    <div class="q">Which physical-layer monitoring approach correctly identifies a degrading fiber cable in an InfiniBand fabric before it causes a fatal link failure?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. Reviewing periodic ibdiagnet cable-info reports for rising symbol error counts and abnormal transceiver temperature on specific links</button><button class="opt" onclick="answer(this,5,1,0)">B. Monitoring GPU utilization metrics via DCGM to detect a drop in training throughput</button><button class="opt" onclick="answer(this,5,2,0)">C. Checking Base Command Manager job scheduler logs for failed job submissions</button><button class="opt" onclick="answer(this,5,3,0)">D. Running nvidia-smi topo -m to view the GPU topology matrix</button>
+    <div class="expl">ibdiagnet's cable-info reporting captures per-link symbol error trends and transceiver telemetry such as temperature and optical power, enabling proactive detection of degrading fiber or optics before a hard link failure occurs.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$199.99</span> <strong>$34.99</strong> with code <span class="code">FREETEST33</span> — valid through September 9.</p>
+  <a href="https://www.udemy.com/course/ncp-aii-nvidia-ai-infrastructure-professional-prep/?couponCode=FREETEST33" rel="sponsored">Get the full course for $34.99 →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

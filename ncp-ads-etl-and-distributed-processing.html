@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free ETL and Distributed Processing Practice Questions — NVIDIA-Certified Professional: Accelerated Data Science</title>
+<meta name="description" content="6 free ETL and Distributed Processing practice questions with explanations for the NVIDIA-Certified Professional: Accelerated Data Science exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/ncp-ads-etl-and-distributed-processing.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free NVIDIA-Certified Professional: Accelerated Data Science practice — 6 questions on <strong>ETL and Distributed Processing</strong>, with explanations. No sign-up.
+<a href="ncp-ads.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="ETL and Distributed Processing">
+    <div class="meta">Question 1 of 6 · ETL and Distributed Processing</div>
+    <div class="q">A team must join two datasets totaling 1.5TB on a single DGX node with 8x A100 80GB GPUs (640GB aggregate GPU memory). The join triggers a large shuffle that temporarily needs more memory than fits on any single GPU. Which configuration BEST handles this on the single node?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. LocalCUDACluster across all 8 GPUs with UCX/NVLink enabled, RMM pool allocator, and device-to-host spilling configured for the shuffle buffers</button><button class="opt" onclick="answer(this,0,1,0)">B. Load both datasets fully into one A100 80GB GPU using cuDF and perform the join in a single process</button><button class="opt" onclick="answer(this,0,2,0)">C. Provision a second DGX node and build a multi-node dask-cuda cluster over InfiniBand, since a single node cannot handle a join of this size</button><button class="opt" onclick="answer(this,0,3,0)">D. Convert both datasets to pandas DataFrames and run the join with a CPU Dask cluster to avoid GPU memory constraints</button>
+    <div class="expl">1.5TB comfortably fits within 640GB aggregate GPU memory when combined with spilling, and NVLink-connected GPUs on a single DGX node give the fastest intra-node shuffle bandwidth — no need to add nodes.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="ETL and Distributed Processing">
+    <div class="meta">Question 2 of 6 · ETL and Distributed Processing</div>
+    <div class="q">An out-of-core groupby-aggregation on a dataset larger than aggregate GPU memory keeps failing with GPU out-of-memory errors on a dask-cuda LocalCUDACluster. Which cluster configuration correctly enables automatic spilling from GPU memory to host RAM and then to disk as needed?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. LocalCUDACluster(rmm_pool_size='90GB') with no other memory limits set, to maximize the amount of data each GPU can hold</button><button class="opt" onclick="answer(this,1,1,2)">B. LocalCUDACluster(device_memory_limit=0) to disable any GPU memory ceiling and let RMM manage allocation directly</button><button class="opt" onclick="answer(this,1,2,2)">C. LocalCUDACluster(device_memory_limit='0.8', jit_unspill=True) so workers spill to host memory at 80% GPU usage and to disk when host memory is also exhausted</button><button class="opt" onclick="answer(this,1,3,2)">D. LocalCUDACluster(memory_limit='0') to give workers unlimited host memory so spilling is never triggered</button>
+    <div class="expl">device_memory_limit sets the GPU memory threshold that triggers spilling, and jit_unspill enables the just-in-time unspilling mechanism that can move data to host memory and further to disk, allowing the workload to exceed aggregate GPU memory safely.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="ETL and Distributed Processing">
+    <div class="meta">Question 3 of 6 · ETL and Distributed Processing</div>
+    <div class="q">A 500GB dataset will be written to Parquet for later ingestion by dask_cudf on GPUs with 32GB of memory each. Which write/read strategy minimizes GPU memory overhead while maximizing read throughput?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. Write CSV files instead of Parquet since CSV avoids row-group complexity entirely</button><button class="opt" onclick="answer(this,2,1,3)">B. Write a single Parquet file with one giant row group covering the entire 500GB dataset for simplest metadata handling</button><button class="opt" onclick="answer(this,2,2,3)">C. Write Parquet files with row groups under 5MB each to guarantee the smallest possible per-partition memory footprint</button><button class="opt" onclick="answer(this,2,3,3)">D. Write multiple Parquet files with row groups sized around 128-256MB, and read with dask_cudf.read_parquet using split_row_groups to control partition size</button>
+    <div class="expl">Row groups in the 128-256MB range balance GPU memory usage against per-partition scheduling overhead, and split_row_groups lets dask_cudf control how row groups are combined into partitions sized appropriately for 32GB GPUs.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="ETL and Distributed Processing">
+    <div class="meta">Question 4 of 6 · ETL and Distributed Processing</div>
+    <div class="q">An organization needs to run daily ETL processing 50TB of Parquet data with heavy shuffle-based joins and sorts. They have 4 DGX A100 nodes (8 GPUs per node, NVLink intra-node, InfiniBand inter-node). Which setup best supports this throughput requirement?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. A single-node LocalCUDACluster using only the 8 GPUs on one DGX node, repeating the job four times sequentially across nodes</button><button class="opt" onclick="answer(this,3,1,1)">B. A multi-node dask-cuda cluster spanning all 4 DGX nodes, using UCX for communication so NVLink is used intra-node and InfiniBand is used inter-node</button><button class="opt" onclick="answer(this,3,2,1)">C. A CPU-only Dask cluster spanning all 4 nodes to avoid GPU memory limitations during the large shuffle</button><button class="opt" onclick="answer(this,3,3,1)">D. Apache Spark with a generic UDF layer calling cuDF functions row-by-row on each of the 4 nodes</button>
+    <div class="expl">50TB with heavy shuffles benefits from scaling across all available GPUs, and UCX-enabled dask-cuda automatically selects the fastest available transport (NVLink within a node, InfiniBand between nodes), maximizing shuffle throughput across the full cluster.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="ETL and Distributed Processing">
+    <div class="meta">Question 5 of 6 · ETL and Distributed Processing</div>
+    <div class="q">When repartitioning a dask_cudf DataFrame before a memory-intensive shuffle operation like a sort-based join, what partition sizing guideline best balances GPU utilization against out-of-memory risk during the shuffle?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. Size partitions equal to the full memory capacity of a single GPU, so each partition maximizes hardware utilization</button><button class="opt" onclick="answer(this,4,1,1)">B. Size partitions to roughly 1/4 to 1/3 of a single GPU's memory, leaving headroom for intermediate shuffle buffers and temporary allocations</button><button class="opt" onclick="answer(this,4,2,1)">C. Size partitions as small as a few megabytes to guarantee the operation never runs out of memory regardless of GPU size</button><button class="opt" onclick="answer(this,4,3,1)">D. Partition size does not matter for shuffle operations as long as the total dataset fits in aggregate cluster GPU memory</button>
+    <div class="expl">Shuffle operations like sorts and joins require temporary buffers on top of the base partition data; sizing partitions to a fraction of GPU memory leaves headroom for these intermediates, preventing OOM while still keeping partition counts reasonable for scheduling efficiency.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="ETL and Distributed Processing">
+    <div class="meta">Question 6 of 6 · ETL and Distributed Processing</div>
+    <div class="q">A 2TB ORC dataset has 50 columns, but a downstream GPU pipeline only needs 3 columns and rows within a specific date range. Which approach minimizes I/O and GPU memory usage when loading this with dask_cudf?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. Use dask_cudf.read_orc with the columns parameter to project only the needed columns, combined with partition-level filtering on the date range after minimal projected load</button><button class="opt" onclick="answer(this,5,1,0)">B. Load the entire ORC dataset into cuDF first, then drop unneeded columns and filter rows after loading</button><button class="opt" onclick="answer(this,5,2,0)">C. Convert the ORC file to CSV first, since CSV supports easier column selection during read</button><button class="opt" onclick="answer(this,5,3,0)">D. Manually rewrite the ORC file as a single stripe containing only the 3 needed columns before every pipeline run</button>
+    <div class="expl">Projecting columns at read time via the columns parameter avoids decoding and transferring the other 47 columns from disk into GPU memory, and applying date filtering on the reduced projection minimizes both I/O and GPU memory footprint before heavier processing.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$129.99</span> <strong>$34.99</strong> with code <span class="code">FREETEST33</span> — valid through September 9.</p>
+  <a href="https://www.udemy.com/course/ncp-ads-nvidia-accelerated-data-science-prep/?couponCode=FREETEST33" rel="sponsored">Get the full course for $34.99 →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

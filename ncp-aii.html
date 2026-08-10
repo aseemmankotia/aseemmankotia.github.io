@@ -1,0 +1,104 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free NVIDIA-Certified Professional: AI Infrastructure Practice Test — 12 Real Exam-Style Questions</title>
+<meta name="description" content="Free NVIDIA-Certified Professional: AI Infrastructure practice questions with detailed explanations. Test yourself before the real exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/ncp-aii.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free NVIDIA-Certified Professional: AI Infrastructure practice test — 12 exam-style questions with explanations. No sign-up.</p></header>
+
+  <div class="card qcard" id="q0" data-domain="System and Server Bring-up">
+    <div class="meta">Question 1 of 12 · System and Server Bring-up</div>
+    <div class="q">A newly racked DGX H100 system passes POST and boots into its OS, but before joining the cluster the bring-up engineer must confirm that all NVLink connections between the eight GPUs are active. Which command should be used to validate NVLink link status?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. nvidia-smi nvlink -s</button><button class="opt" onclick="answer(this,0,1,0)">B. nvidia-smi -q -d MEMORY</button><button class="opt" onclick="answer(this,0,2,0)">C. ibstat</button><button class="opt" onclick="answer(this,0,3,0)">D. dmidecode -t processor</button>
+    <div class="expl">nvidia-smi nvlink -s reports the status (active/inactive) and speed of every NVLink connection on each GPU, which is the standard bring-up check for NVLink health.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Server and Network Installation and Configuration">
+    <div class="meta">Question 2 of 12 · Server and Network Installation and Configuration</div>
+    <div class="q">A customer is deploying a DGX H100 SuperPOD using a rail-optimized InfiniBand network design. In this topology, how should the ConnectX-7 adapter connected to GPU 0 on every node in the pod be cabled?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. Each GPU 0 NIC connects to a different leaf switch, load-balanced across all switches in the pod</button><button class="opt" onclick="answer(this,1,1,2)">B. All GPU 0 NICs connect directly to the spine switches, bypassing the leaf layer entirely</button><button class="opt" onclick="answer(this,1,2,2)">C. All GPU 0 NICs from every node connect to the same dedicated leaf switch (rail), and each GPU index maps to its own rail</button><button class="opt" onclick="answer(this,1,3,2)">D. GPU 0 NICs are cabled to the storage fabric switches, while GPU 1-7 NICs connect to the compute fabric</button>
+    <div class="expl">Rail-optimized design dedicates one leaf switch per GPU index (rail) so that all-reduce/collective traffic for a given GPU rank across nodes stays on a single switch, minimizing hops and maximizing bisection bandwidth.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Physical Layer Management">
+    <div class="meta">Question 3 of 12 · Physical Layer Management</div>
+    <div class="q">A technician is cabling a rail-optimized DGX H100 SuperPOD fabric using NDR InfiniBand (400Gb/s per port). The distance between the compute rack and the NDR leaf switch rack is 50 meters. Which cable/transceiver type should be used for this link?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. Passive copper direct-attach cable (DAC)</button><button class="opt" onclick="answer(this,2,1,1)">B. Active optical cable (AOC) or fiber transceiver</button><button class="opt" onclick="answer(this,2,2,1)">C. Passive copper splitter/breakout cable</button><button class="opt" onclick="answer(this,2,3,1)">D. RJ45 Cat6a copper patch cable</button>
+    <div class="expl">At NDR (400Gb/s) signal rates, passive copper DAC is only reliable for very short runs (roughly 1.5-2m) due to signal attenuation. Runs of 50m require active optical cables or pluggable transceivers over fiber to maintain signal integrity.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Cluster Management and Orchestration">
+    <div class="meta">Question 4 of 12 · Cluster Management and Orchestration</div>
+    <div class="q">A cloud provider runs a shared DGX-based Kubernetes cluster serving multiple untrusted tenants. Each tenant must receive a hardware-isolated GPU partition with dedicated memory and fault isolation, and no tenant may observe another's workload activity. Which GPU Operator feature BEST satisfies these requirements?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. CUDA time-slicing configured via the GPU Operator ConfigMap</button><button class="opt" onclick="answer(this,3,1,1)">B. Multi-Instance GPU (MIG) partitioning exposing each instance as a separate schedulable resource</button><button class="opt" onclick="answer(this,3,2,1)">C. NVIDIA Multi-Process Service (MPS) shared contexts</button><button class="opt" onclick="answer(this,3,3,1)">D. Assigning the entire physical GPU node exclusively per tenant using node taints only</button>
+    <div class="expl">MIG creates hardware-partitioned instances with separate memory, cache, and compute slices, and GPU Operator exposes each MIG instance as a distinct nvidia.com/gpu resource, giving tenants real isolation.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Troubleshooting and Optimization">
+    <div class="meta">Question 5 of 12 · Troubleshooting and Optimization</div>
+    <div class="q">A DGX A100 node's NCCL-based multi-GPU training job shows a 40% throughput drop compared to baseline. GPU SM utilization looks normal, and nvidia-smi shows no thermal or power throttling. Which command should the administrator run FIRST to check for a degraded NVLink connection between GPU pairs?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. dmesg | grep -i gpu to search kernel logs for GPU messages</button><button class="opt" onclick="answer(this,4,1,3)">B. ibstat to check InfiniBand port state</button><button class="opt" onclick="answer(this,4,2,3)">C. nvidia-smi -q -d POWER to review power draw</button><button class="opt" onclick="answer(this,4,3,3)">D. nvidia-smi nvlink -s to check per-link status and error counters</button>
+    <div class="expl">nvidia-smi nvlink -s (and nvlink -e for error counts) directly reports the state and error counters of each NVLink connection per GPU, which is the fastest way to isolate a degraded intra-node link when compute utilization is normal but throughput is down.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="System and Server Bring-up">
+    <div class="meta">Question 6 of 12 · System and Server Bring-up</div>
+    <div class="q">An administrator must update the BIOS, BMC, and GPU VBIOS firmware on a DGX H100 as part of initial bring-up, before OS re-installation, using NVIDIA's officially supported firmware update mechanism for DGX and NVIDIA-Certified Systems. Which tool should be used?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. DCGM (dcgmi)</button><button class="opt" onclick="answer(this,5,1,1)">B. nvfwupd</button><button class="opt" onclick="answer(this,5,2,1)">C. nv-fabricmanager</button><button class="opt" onclick="answer(this,5,3,1)">D. MLNX_OFED installer script</button>
+    <div class="expl">nvfwupd is NVIDIA's supported firmware update utility for DGX and NVIDIA-Certified Systems, used to update BIOS, BMC, GPU VBIOS, and other system firmware components as part of bring-up.</div>
+  </div>
+
+  <div class="card qcard" id="q6" data-domain="Server and Network Installation and Configuration">
+    <div class="meta">Question 7 of 12 · Server and Network Installation and Configuration</div>
+    <div class="q">A customer's data center standardized on Ethernet switches and wants to build a lossless RDMA fabric for GPU-to-GPU communication without deploying a separate InfiniBand network. Which technology should be configured to meet this requirement?</div>
+    <button class="opt" onclick="answer(this,6,0,2)">A. TCP/IP with standard Ethernet flow control</button><button class="opt" onclick="answer(this,6,1,2)">B. InfiniBand EDR overlaid on the existing Ethernet switches</button><button class="opt" onclick="answer(this,6,2,2)">C. RoCEv2 with Priority Flow Control (PFC) and ECN configured end-to-end</button><button class="opt" onclick="answer(this,6,3,2)">D. NVIDIA GPUDirect Storage over NFS</button>
+    <div class="expl">RoCEv2 (RDMA over Converged Ethernet v2) enables RDMA over standard Ethernet infrastructure but requires a lossless fabric, achieved by configuring Priority Flow Control (802.1Qbb) and ECN/DCQCN congestion control end-to-end on switches and NICs.</div>
+  </div>
+
+  <div class="card qcard" id="q7" data-domain="Physical Layer Management">
+    <div class="meta">Question 8 of 12 · Physical Layer Management</div>
+    <div class="q">During bring-up validation of a new NDR InfiniBand leaf-spine fabric, a port that should negotiate at 400Gb/s instead links up at 200Gb/s (HDR speed), and `mlxlink` output shows elevated raw bit error rate (BER) on that port. What is the MOST likely physical layer cause?</div>
+    <button class="opt" onclick="answer(this,7,0,0)">A. A faulty or contaminated transceiver/cable causing signal integrity degradation, forcing auto-downtraining</button><button class="opt" onclick="answer(this,7,1,0)">B. The OpenSM subnet manager is using an incorrect routing algorithm</button><button class="opt" onclick="answer(this,7,2,0)">C. The host channel adapter (HCA) has an incorrect MTU configured</button><button class="opt" onclick="answer(this,7,3,0)">D. The node is running an outdated MLNX_OFED driver version</button>
+    <div class="expl">Elevated raw BER combined with a link auto-downtraining to a lower speed is a classic physical layer symptom of a dirty/damaged optical connector, degraded fiber, or a cable exceeding its rated length/signal budget — the link firmware falls back to a lower, more reliable speed.</div>
+  </div>
+
+  <div class="card qcard" id="q8" data-domain="Cluster Management and Orchestration">
+    <div class="meta">Question 9 of 12 · Cluster Management and Orchestration</div>
+    <div class="q">Which NVIDIA GPU Operator component continuously exports per-GPU utilization, memory, temperature, and ECC error metrics for consumption by Prometheus in a BCM-managed Kubernetes cluster?</div>
+    <button class="opt" onclick="answer(this,8,0,2)">A. Node Feature Discovery (NFD)</button><button class="opt" onclick="answer(this,8,1,2)">B. GPU Feature Discovery (GFD)</button><button class="opt" onclick="answer(this,8,2,2)">C. DCGM Exporter</button><button class="opt" onclick="answer(this,8,3,2)">D. NVIDIA Container Toolkit</button>
+    <div class="expl">DCGM Exporter, deployed as part of the GPU Operator, wraps NVIDIA Data Center GPU Manager to expose Prometheus-format metrics including utilization, memory, temperature, power, and ECC/Xid errors per GPU.</div>
+  </div>
+
+  <div class="card qcard" id="q9" data-domain="Troubleshooting and Optimization">
+    <div class="meta">Question 10 of 12 · Troubleshooting and Optimization</div>
+    <div class="q">An administrator managing a Base Command Manager-controlled GPU cluster wants a single tool that can run multi-level GPU health diagnostics — including memory bandwidth tests, NVLink validation, and extended stress tests — and can be scheduled cluster-wide for proactive health monitoring. Which tool should be used?</div>
+    <button class="opt" onclick="answer(this,9,0,0)">A. NVIDIA Data Center GPU Manager (dcgmi diag)</button><button class="opt" onclick="answer(this,9,1,0)">B. nvtop</button><button class="opt" onclick="answer(this,9,2,0)">C. nvidia-bug-report.sh</button><button class="opt" onclick="answer(this,9,3,0)">D. nvidia-smi topo -m</button>
+    <div class="expl">DCGM's dcgmi diag command offers multiple diagnostic run levels (r1 through r4/r3) covering deployment checks, integration tests, medium stress tests, and extended stress/NVLink validation, and it integrates natively with Base Command Manager for cluster-wide scheduled health checks.</div>
+  </div>
+
+  <div class="card qcard" id="q10" data-domain="System and Server Bring-up">
+    <div class="meta">Question 11 of 12 · System and Server Bring-up</div>
+    <div class="q">On a DGX H100 system with NVSwitch, GPU-to-GPU communication over NVLink will not initialize correctly if a particular system service fails to start. Which service must be running to properly bring up the NVSwitch fabric before workloads are launched?</div>
+    <button class="opt" onclick="answer(this,10,0,0)">A. nv-fabricmanager</button><button class="opt" onclick="answer(this,10,1,0)">B. rdma-core</button><button class="opt" onclick="answer(this,10,2,0)">C. nvidia-persistenced</button><button class="opt" onclick="answer(this,10,3,0)">D. nvidia-dcgm</button>
+    <div class="expl">nv-fabricmanager configures the NVSwitch interconnect fabric and must be running and healthy for GPUs to communicate over NVLink on multi-GPU NVSwitch-based systems like the DGX H100.</div>
+  </div>
+
+  <div class="card qcard" id="q11" data-domain="Server and Network Installation and Configuration">
+    <div class="meta">Question 12 of 12 · Server and Network Installation and Configuration</div>
+    <div class="q">An enterprise wants strict separation of duties so that host server administrators cannot alter the network, security, or storage virtualization functions running on a BlueField-3 DPU. Which BlueField deployment mode should be configured?</div>
+    <button class="opt" onclick="answer(this,11,0,2)">A. NIC mode</button><button class="opt" onclick="answer(this,11,1,2)">B. DPU mode (default, host has full control)</button><button class="opt" onclick="answer(this,11,2,2)">C. Zero Trust mode</button><button class="opt" onclick="answer(this,11,3,2)">D. Host mode with the Arm subsystem exposed to the host OS</button>
+    <div class="expl">Zero Trust mode isolates the DPU's Arm subsystem and control-plane functions from the host, preventing host administrators from managing or tampering with the DPU's security, network, and storage services; management is restricted to a separate trusted entity.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$199.99</span> <strong>$34.99</strong> with code <span class="code">FREETEST33</span> — valid through September 9.</p>
+  <a href="https://www.udemy.com/course/ncp-aii-nvidia-ai-infrastructure-professional-prep/?couponCode=FREETEST33" rel="sponsored">Get the full course for $34.99 →</a>
+</div>
+<div class="domains"><span class="meta">More free practice by exam domain:</span><br><a href="ncp-aii-system-and-server-bring-up.html">System and Server Bring-up →</a><a href="ncp-aii-server-and-network-installation-and-configuration.html">Server and Network Installation and Configuration →</a><a href="ncp-aii-physical-layer-management.html">Physical Layer Management →</a><a href="ncp-aii-cluster-management-and-orchestration.html">Cluster Management and Orchestration →</a><a href="ncp-aii-troubleshooting-and-optimization.html">Troubleshooting and Optimization →</a></div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

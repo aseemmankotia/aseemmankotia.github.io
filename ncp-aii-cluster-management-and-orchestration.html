@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Cluster Management and Orchestration Practice Questions — NVIDIA-Certified Professional: AI Infrastructure</title>
+<meta name="description" content="6 free Cluster Management and Orchestration practice questions with explanations for the NVIDIA-Certified Professional: AI Infrastructure exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/ncp-aii-cluster-management-and-orchestration.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free NVIDIA-Certified Professional: AI Infrastructure practice — 6 questions on <strong>Cluster Management and Orchestration</strong>, with explanations. No sign-up.
+<a href="ncp-aii.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Cluster Management and Orchestration">
+    <div class="meta">Question 1 of 6 · Cluster Management and Orchestration</div>
+    <div class="q">A company runs large-scale LLM training jobs (multi-node, multi-GPU, requiring full un-partitioned GPU access per job) and also serves many small inference microservices that each need only a fraction of a GPU. They want to run both workload types on the same physical GPU cluster managed by Kubernetes with the NVIDIA GPU Operator, without under-utilizing GPUs for inference. Which configuration BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. Enable MIG on all GPUs cluster-wide and schedule both training and inference jobs against MIG instances</button><button class="opt" onclick="answer(this,0,1,3)">B. Enable time-slicing on all nodes and let the Kubernetes scheduler oversubscribe GPUs for both training and inference</button><button class="opt" onclick="answer(this,0,2,3)">C. Abandon Kubernetes entirely and run all workloads under Slurm instead</button><button class="opt" onclick="answer(this,0,3,3)">D. Partition the cluster into node pools: MIG-enabled nodes for inference workloads and non-partitioned nodes for training workloads, using node labels/taints to steer workload placement</button>
+    <div class="expl">Separating node pools lets inference use MIG's hardware-isolated fractional GPUs for efficient sharing, while training jobs retain full, un-partitioned GPUs with full memory/NVLink access needed for multi-node scaling — labels/taints direct each workload type to the correct pool.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Cluster Management and Orchestration">
+    <div class="meta">Question 2 of 6 · Cluster Management and Orchestration</div>
+    <div class="q">A platform team needs strict per-tenant fair-share scheduling with backfill, gang scheduling for tightly-coupled multi-node MPI training jobs, and detailed job accounting across departments, on a bare-metal DGX SuperPOD. Which orchestration approach is MOST appropriate?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. Slurm workload manager integrated with Base Command Manager, using partitions, QOS, and fairshare accounting</button><button class="opt" onclick="answer(this,1,1,0)">B. Kubernetes with the default kube-scheduler and per-namespace ResourceQuotas</button><button class="opt" onclick="answer(this,1,2,0)">C. Docker Swarm with GPU resource reservations</button><button class="opt" onclick="answer(this,1,3,0)">D. Kubernetes with GPU Operator and a Horizontal Pod Autoscaler</button>
+    <div class="expl">Slurm, provisioned and managed through BCM, natively supports gang scheduling, backfill, QOS-based fairshare, and granular per-department job accounting — exactly the HPC/MPI training requirements described.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Cluster Management and Orchestration">
+    <div class="meta">Question 3 of 6 · Cluster Management and Orchestration</div>
+    <div class="q">An administrator wants to enable GPU time-slicing on a Kubernetes cluster using the NVIDIA GPU Operator so that 4 pods can share a single physical GPU for lightweight inference. Which is the correct configuration approach?</div>
+    <button class="opt" onclick="answer(this,2,0,2)">A. Set the GPU Operator's MIG strategy to 'mixed' in the ClusterPolicy</button><button class="opt" onclick="answer(this,2,1,2)">B. Manually edit the containerd runtime class to inject fractional GPU limits</button><button class="opt" onclick="answer(this,2,2,2)">C. Create a ConfigMap defining a time-slicing configuration with replicas set to 4, then reference it in the ClusterPolicy's device plugin configuration and label the target nodes accordingly</button><button class="opt" onclick="answer(this,2,3,2)">D. Set nvidia.com/gpu.count=4 as a resource limit in the pod spec</button>
+    <div class="expl">GPU Operator time-slicing is configured via a ConfigMap specifying resources and a 'replicas' value, referenced by the ClusterPolicy's devicePlugin.config, and applied to nodes via a label so the device plugin advertises multiple virtual GPU slots.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Cluster Management and Orchestration">
+    <div class="meta">Question 4 of 6 · Cluster Management and Orchestration</div>
+    <div class="q">An organization operates a cluster containing both DGX H100 and DGX A100 nodes managed under a single Base Command Manager head node. They need different software images, driver versions, and Slurm partitions for each hardware generation while maintaining a single pane of management. What is the BEST approach in BCM?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. Install a single software image with the newest driver version for both node types</button><button class="opt" onclick="answer(this,3,1,1)">B. Create separate BCM categories for H100 and A100 nodes, each with its own software image, and map categories to distinct Slurm partitions</button><button class="opt" onclick="answer(this,3,2,1)">C. Deploy two separate BCM head nodes, one for each hardware generation</button><button class="opt" onclick="answer(this,3,3,1)">D. Use identical node categories but override driver packages manually via cron jobs on each node</button>
+    <div class="expl">BCM node categories allow per-hardware-generation software images, driver versions, and kernel modules to be provisioned consistently, and categories can be mapped directly to distinct Slurm partitions — preserving a single management pane.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Cluster Management and Orchestration">
+    <div class="meta">Question 5 of 6 · Cluster Management and Orchestration</div>
+    <div class="q">Which statement correctly differentiates MIG (Multi-Instance GPU) from time-slicing for GPU sharing on NVIDIA GPUs in a Kubernetes environment?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. Time-slicing requires an Ampere or newer GPU architecture, while MIG works on any GPU generation</button><button class="opt" onclick="answer(this,4,1,1)">B. MIG provides hardware-level isolation of compute and memory into fixed instances, while time-slicing shares the full GPU's compute in a round-robin fashion with no memory isolation</button><button class="opt" onclick="answer(this,4,2,1)">C. MIG allows an unlimited number of dynamically resizable partitions, while time-slicing supports at most 2 slices per GPU</button><button class="opt" onclick="answer(this,4,3,1)">D. Both MIG and time-slicing provide identical memory isolation guarantees, differing only in the scheduling algorithm used</button>
+    <div class="expl">MIG physically partitions an Ampere/Hopper-generation GPU's SMs and memory into isolated instances with dedicated bandwidth, while time-slicing simply schedules full-GPU compute time slices across processes with no memory partitioning or isolation.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Cluster Management and Orchestration">
+    <div class="meta">Question 6 of 6 · Cluster Management and Orchestration</div>
+    <div class="q">A shared GPU Kubernetes cluster serves two tenants: Tenant A runs sensitive fine-tuning jobs that must run exclusively on H100 nodes, and Tenant B runs general inference workloads that must never be scheduled onto those H100 nodes. Both tenants use separate namespaces. Which combination of controls BEST enforces this isolation while still allowing tenant-based scheduling?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. Rely solely on per-namespace ResourceQuotas to limit each tenant's total GPU count</button><button class="opt" onclick="answer(this,5,1,1)">B. Apply node taints on the H100 nodes, grant the corresponding toleration only to Tenant A's pods via an admission control policy, and add node affinity rules in Tenant A's pod specs</button><button class="opt" onclick="answer(this,5,2,1)">C. Use only NetworkPolicies to isolate traffic between the two tenant namespaces</button><button class="opt" onclick="answer(this,5,3,1)">D. Rely on the default Kubernetes scheduler's bin-packing behavior to naturally separate workloads by resource size</button>
+    <div class="expl">Taints on H100 nodes repel any pod lacking the matching toleration, and enforcing that toleration exclusively through an admission control policy (with Tenant A's node affinity/nodeSelector further targeting those nodes) guarantees only Tenant A's pods can ever land there.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$199.99</span> <strong>$34.99</strong> with code <span class="code">FREETEST33</span> — valid through September 9.</p>
+  <a href="https://www.udemy.com/course/ncp-aii-nvidia-ai-infrastructure-professional-prep/?couponCode=FREETEST33" rel="sponsored">Get the full course for $34.99 →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

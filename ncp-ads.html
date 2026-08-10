@@ -1,0 +1,104 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free NVIDIA-Certified Professional: Accelerated Data Science Practice Test — 12 Real Exam-Style Questions</title>
+<meta name="description" content="Free NVIDIA-Certified Professional: Accelerated Data Science practice questions with detailed explanations. Test yourself before the real exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/ncp-ads.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free NVIDIA-Certified Professional: Accelerated Data Science practice test — 12 exam-style questions with explanations. No sign-up.</p></header>
+
+  <div class="card qcard" id="q0" data-domain="GPU-Accelerated Data Science Fundamentals">
+    <div class="meta">Question 1 of 12 · GPU-Accelerated Data Science Fundamentals</div>
+    <div class="q">A data scientist needs to run a single quick aggregation on a 5,000-row CSV file, one time only, as part of an ad-hoc exploratory analysis. Which approach is BEST?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. Load the CSV into cuDF and run the aggregation on GPU</button><button class="opt" onclick="answer(this,0,1,2)">B. Convert the file to Dask-cuDF and distribute it across multiple GPUs</button><button class="opt" onclick="answer(this,0,2,2)">C. Load the CSV into pandas and run the aggregation on CPU</button><button class="opt" onclick="answer(this,0,3,2)">D. Load the CSV into cuML and run the aggregation as a GPU-accelerated model</button>
+    <div class="expl">For tiny, one-off datasets, the fixed cost of host-to-device transfer and CUDA context initialization exceeds any compute savings from the GPU; pandas on CPU finishes faster and with less overhead.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Data Preparation and Manipulation with cuDF">
+    <div class="meta">Question 2 of 12 · Data Preparation and Manipulation with cuDF</div>
+    <div class="q">A team has a 4,000-line pandas ETL script that performs well on CPU but now needs to run faster on a workstation with an NVIDIA GPU. Management wants the speedup with zero code changes to the script itself. Which approach BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. Rewrite every DataFrame call to use the cudf module explicitly (import cudf as pd)</button><button class="opt" onclick="answer(this,1,1,3)">B. Convert the script to use Dask DataFrame with a distributed CPU cluster</button><button class="opt" onclick="answer(this,1,2,3)">C. Manually replace only the groupby and merge calls with cuDF equivalents</button><button class="opt" onclick="answer(this,1,3,3)">D. Run the script with `python -m cudf.pandas your_script.py` to enable the GPU accelerator for pandas</button>
+    <div class="expl">cudf.pandas is the zero-code-change GPU accelerator for pandas. Launching a script with `python -m cudf.pandas script.py` (or `%load_ext cudf.pandas` in a notebook) proxies pandas calls to cuDF on GPU-supported operations and falls back to pandas/CPU automatically for unsupported ones, requiring no source modification.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="ETL and Distributed Processing">
+    <div class="meta">Question 3 of 12 · ETL and Distributed Processing</div>
+    <div class="q">A data science team must process a 500GB CSV dataset on a workstation with a single 32GB GPU. The transformations include groupby aggregations and joins. Which approach BEST satisfies this requirement?</div>
+    <button class="opt" onclick="answer(this,2,0,2)">A. Load the entire dataset into a single cuDF DataFrame using unified memory oversubscription</button><button class="opt" onclick="answer(this,2,1,2)">B. Convert the dataset to pandas and run entirely on CPU</button><button class="opt" onclick="answer(this,2,2,2)">C. Use dask-cuDF with a LocalCUDACluster to partition the dataset into GPU-memory-sized chunks processed out-of-core</button><button class="opt" onclick="answer(this,2,3,2)">D. Load a random 32GB sample into cuDF and extrapolate results</button>
+    <div class="expl">dask-cuDF splits the dataset into partitions sized to fit in GPU memory and can spill excess partitions to host memory, enabling correct out-of-core processing of joins and groupbys far larger than a single GPU's memory.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Advanced Analytics">
+    <div class="meta">Question 4 of 12 · Advanced Analytics</div>
+    <div class="q">A payment processor wants to identify rings of colluding accounts that pass money back and forth in circular patterns to launder funds. Which approach BEST fits this requirement?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. Use cuML's ARIMA model to detect transaction volume spikes per account</button><button class="opt" onclick="answer(this,3,1,1)">B. Build a graph with accounts as nodes and transactions as edges, then run cuGraph's Louvain community detection to find tightly-connected clusters</button><button class="opt" onclick="answer(this,3,2,1)">C. Use cuDF rolling window statistics on transaction amounts to flag per-account outliers</button><button class="opt" onclick="answer(this,3,3,1)">D. Use cuSpatial to compute the geographic distance between transaction origin points</button>
+    <div class="expl">Circular, colluding money-laundering rings are a relationship pattern, not a per-account statistical or geographic anomaly. Modeling accounts/transactions as a graph and applying cuGraph community detection (Louvain) surfaces tightly-connected clusters indicative of collusion.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Model Training and Acceleration">
+    <div class="meta">Question 5 of 12 · Model Training and Acceleration</div>
+    <div class="q">A data science team has a dataset of 50 million rows that fits entirely within a single A100 GPU's 80GB memory. They need to perform density-based clustering to identify arbitrarily shaped clusters and flag outliers, without specifying the number of clusters in advance. Which cuML algorithm BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. cuML KMeans</button><button class="opt" onclick="answer(this,4,1,3)">B. cuML RandomForestClassifier</button><button class="opt" onclick="answer(this,4,2,3)">C. cuML PCA</button><button class="opt" onclick="answer(this,4,3,3)">D. cuML DBSCAN</button>
+    <div class="expl">cuML DBSCAN is a GPU-accelerated density-based clustering algorithm that discovers arbitrarily shaped clusters and natively flags noise points as outliers, without requiring a predefined cluster count.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Best Practices, Profiling, and Optimization">
+    <div class="meta">Question 6 of 12 · Best Practices, Profiling, and Optimization</div>
+    <div class="q">A data scientist notices via Nsight Systems that a significant portion of pipeline time is consumed by cudaMemcpy calls between host and device, even though the workflow uses cuDF for all transformations. Which change would BEST reduce this overhead?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. Increase the RMM pool size to pre-allocate GPU memory</button><button class="opt" onclick="answer(this,5,1,3)">B. Switch from Nsight Systems to DLProf to get more granular kernel timings</button><button class="opt" onclick="answer(this,5,2,3)">C. Enable mixed precision training to reduce transfer size</button><button class="opt" onclick="answer(this,5,3,3)">D. Ensure the entire pipeline is chained using cuDF/cuML operations without calling .to_pandas() or .values on intermediate results, keeping data resident on the GPU</button>
+    <div class="expl">Keeping intermediate results as cuDF/cuML GPU objects avoids round trips to host memory, which is the root cause of the memcpy overhead shown in the profile.</div>
+  </div>
+
+  <div class="card qcard" id="q6" data-domain="GPU-Accelerated Data Science Fundamentals">
+    <div class="meta">Question 7 of 12 · GPU-Accelerated Data Science Fundamentals</div>
+    <div class="q">Which RAPIDS library provides GPU-accelerated graph analytics algorithms such as PageRank and breadth-first search (BFS)?</div>
+    <button class="opt" onclick="answer(this,6,0,3)">A. cuML</button><button class="opt" onclick="answer(this,6,1,3)">B. cuDF</button><button class="opt" onclick="answer(this,6,2,3)">C. cuSpatial</button><button class="opt" onclick="answer(this,6,3,3)">D. cuGraph</button>
+    <div class="expl">cuGraph is the RAPIDS library dedicated to GPU-accelerated graph analytics, implementing algorithms like PageRank, BFS, connected components, and Louvain community detection.</div>
+  </div>
+
+  <div class="card qcard" id="q7" data-domain="Data Preparation and Manipulation with cuDF">
+    <div class="meta">Question 8 of 12 · Data Preparation and Manipulation with cuDF</div>
+    <div class="q">An engineer runs `df['phone'].str.extract(r'(?&lt;!\d)(\d{3}-\d{4})')` on a cuDF Series and it raises a regex compilation error, even though the identical pattern works fine on the same column in pandas. What is the MOST likely cause?</div>
+    <button class="opt" onclick="answer(this,7,0,3)">A. cuDF string columns cannot be searched with any regular expression</button><button class="opt" onclick="answer(this,7,1,3)">B. str.extract requires the column to be converted to categorical dtype first</button><button class="opt" onclick="answer(this,7,2,3)">C. cuDF requires regex patterns to be pre-compiled with the `re` module before use</button><button class="opt" onclick="answer(this,7,3,3)">D. The lookbehind assertion `(?&lt;!\d)` is not supported by cuDF's libcudf regex engine</button>
+    <div class="expl">cuDF's GPU string/regex engine (built on libcudf, not Python's `re`) supports a subset of regex syntax and does not support lookbehind/lookahead assertions among other advanced constructs. Patterns using these features that work in pandas will fail or behave differently in cuDF.</div>
+  </div>
+
+  <div class="card qcard" id="q8" data-domain="ETL and Distributed Processing">
+    <div class="meta">Question 9 of 12 · ETL and Distributed Processing</div>
+    <div class="q">A single server has 4 NVIDIA A100 GPUs. The team wants to accelerate a large ETL pipeline consisting of filtering, joins, and groupby operations across all 4 GPUs. Which setup is the correct choice?</div>
+    <button class="opt" onclick="answer(this,8,0,0)">A. dask-cuDF with LocalCUDACluster spanning all 4 GPUs</button><button class="opt" onclick="answer(this,8,1,0)">B. cuDF DataFrame within a single Python process</button><button class="opt" onclick="answer(this,8,2,0)">C. cuML with a single GPU device context</button><button class="opt" onclick="answer(this,8,3,0)">D. cuGraph running on a CPU-only backend</button>
+    <div class="expl">LocalCUDACluster spins up one Dask worker per GPU on a single node, letting dask-cuDF distribute DataFrame operations across all 4 A100s in parallel.</div>
+  </div>
+
+  <div class="card qcard" id="q9" data-domain="Advanced Analytics">
+    <div class="meta">Question 10 of 12 · Advanced Analytics</div>
+    <div class="q">You need to rank nodes in a large web-crawl graph by importance based on the structure of incoming links, where a link from an important page counts more than one from an unimportant page. Which cuGraph algorithm should you use?</div>
+    <button class="opt" onclick="answer(this,9,0,2)">A. cugraph.louvain</button><button class="opt" onclick="answer(this,9,1,2)">B. cugraph.betweenness_centrality</button><button class="opt" onclick="answer(this,9,2,2)">C. cugraph.pagerank</button><button class="opt" onclick="answer(this,9,3,2)">D. cugraph.k_truss</button>
+    <div class="expl">PageRank ranks nodes by importance based on the quantity and quality of incoming links, recursively weighting links from important nodes more heavily — exactly the described requirement.</div>
+  </div>
+
+  <div class="card qcard" id="q10" data-domain="Model Training and Acceleration">
+    <div class="meta">Question 11 of 12 · Model Training and Acceleration</div>
+    <div class="q">A team wants to train an XGBoost 2.x model using GPU acceleration for gradient boosted tree construction. Which configuration correctly enables GPU-based training?</div>
+    <button class="opt" onclick="answer(this,10,0,3)">A. tree_method='exact', device='cpu'</button><button class="opt" onclick="answer(this,10,1,3)">B. booster='dart', n_jobs=-1</button><button class="opt" onclick="answer(this,10,2,3)">C. tree_method='approx', device='cpu'</button><button class="opt" onclick="answer(this,10,3,3)">D. tree_method='hist', device='cuda'</button>
+    <div class="expl">XGBoost 2.0+ deprecated the legacy 'gpu_hist' tree method in favor of tree_method='hist' combined with the device='cuda' parameter to explicitly select GPU-accelerated training.</div>
+  </div>
+
+  <div class="card qcard" id="q11" data-domain="Best Practices, Profiling, and Optimization">
+    <div class="meta">Question 12 of 12 · Best Practices, Profiling, and Optimization</div>
+    <div class="q">A Dask-cuDF workflow processing a 200GB dataset on a cluster of GPUs with 32GB memory each begins spilling data to host memory partway through execution, causing a 5x slowdown. Nsight Systems shows large gaps where GPUs are idle waiting on host-to-device copies. What is the BEST first optimization to try?</div>
+    <button class="opt" onclick="answer(this,11,0,2)">A. Convert the workflow to use plain pandas DataFrames distributed across the cluster</button><button class="opt" onclick="answer(this,11,1,2)">B. Reduce the number of GPU workers to force larger partitions per worker</button><button class="opt" onclick="answer(this,11,2,2)">C. Configure RMM with a pool allocator and set an appropriate device_memory_limit for the Dask-CUDA workers to reduce fragmentation and control when spilling triggers</button><button class="opt" onclick="answer(this,11,3,2)">D. Disable UCX communication between workers to save memory</button>
+    <div class="expl">An RMM pool allocator with a tuned device_memory_limit reduces fragmentation and gives predictable control over when host spilling occurs, directly addressing the GPU memory pressure described without abandoning GPU acceleration.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$129.99</span> <strong>$34.99</strong> with code <span class="code">FREETEST33</span> — valid through September 9.</p>
+  <a href="https://www.udemy.com/course/ncp-ads-nvidia-accelerated-data-science-prep/?couponCode=FREETEST33" rel="sponsored">Get the full course for $34.99 →</a>
+</div>
+<div class="domains"><span class="meta">More free practice by exam domain:</span><br><a href="ncp-ads-gpu-accelerated-data-science-fundamentals.html">GPU-Accelerated Data Science Fundamentals →</a><a href="ncp-ads-data-preparation-and-manipulation-with-cudf.html">Data Preparation and Manipulation with cuDF →</a><a href="ncp-ads-etl-and-distributed-processing.html">ETL and Distributed Processing →</a><a href="ncp-ads-advanced-analytics.html">Advanced Analytics →</a></div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

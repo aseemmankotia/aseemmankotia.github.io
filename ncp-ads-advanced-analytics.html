@@ -1,0 +1,62 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Advanced Analytics Practice Questions — NVIDIA-Certified Professional: Accelerated Data Science</title>
+<meta name="description" content="6 free Advanced Analytics practice questions with explanations for the NVIDIA-Certified Professional: Accelerated Data Science exam.">
+<link rel="canonical" href="https://aseemmankotia.github.io/ncp-ads-advanced-analytics.html">
+<link rel="stylesheet" href="style.css"></head><body><div class="wrap">
+<header><h1><a href="index.html">TechNuggets Academy</a></h1>
+<p class="sub">Free NVIDIA-Certified Professional: Accelerated Data Science practice — 6 questions on <strong>Advanced Analytics</strong>, with explanations. No sign-up.
+<a href="ncp-ads.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Advanced Analytics">
+    <div class="meta">Question 1 of 6 · Advanced Analytics</div>
+    <div class="q">A financial services company runs fraud detection on a transaction graph with 50M nodes and 200M edges on a DGX cluster. Analysts need to surface tightly-connected clusters of accounts that transact heavily with each other, indicative of collusive fraud rings, rather than ranking individual account importance. Which cuGraph algorithm BEST accomplishes this?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. cugraph.bfs</button><button class="opt" onclick="answer(this,0,1,3)">B. cugraph.pagerank</button><button class="opt" onclick="answer(this,0,2,3)">C. cugraph.sssp</button><button class="opt" onclick="answer(this,0,3,3)">D. cugraph.louvain</button>
+    <div class="expl">Louvain is a community detection algorithm that partitions the graph to maximize modularity, directly surfacing tightly-connected clusters such as fraud rings.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Advanced Analytics">
+    <div class="meta">Question 2 of 6 · Advanced Analytics</div>
+    <div class="q">In a social network graph, an analyst wants to identify accounts that act as bridges connecting otherwise separate communities, since these bottleneck accounts are critical for controlling information flow between clusters. Which cuGraph centrality measure is specifically designed to score nodes based on the fraction of all shortest paths that pass through them?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. cugraph.degree_centrality</button><button class="opt" onclick="answer(this,1,1,3)">B. cugraph.pagerank</button><button class="opt" onclick="answer(this,1,2,3)">C. cugraph.katz_centrality</button><button class="opt" onclick="answer(this,1,3,3)">D. cugraph.betweenness_centrality</button>
+    <div class="expl">Betweenness centrality explicitly measures how often a node lies on the shortest path between other node pairs, making it the correct choice for identifying bridge/bottleneck nodes between communities.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Advanced Analytics">
+    <div class="meta">Question 3 of 6 · Advanced Analytics</div>
+    <div class="q">You must flag anomalous readings in a 500M-row GPU dataframe of sensor telemetry sampled every 1 minute, using a trailing 24-hour rolling z-score in cuDF for a real-time monitoring pipeline. The window must use only past and current data with no look-ahead bias. Which rolling configuration is correct?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. df.rolling(window=1440, min_periods=1, center=True)</button><button class="opt" onclick="answer(this,2,1,3)">B. df.rolling(window=24, min_periods=1, center=False)</button><button class="opt" onclick="answer(this,2,2,3)">C. df.expanding().mean()</button><button class="opt" onclick="answer(this,2,3,3)">D. df.rolling(window=1440, min_periods=1, center=False)</button>
+    <div class="expl">At 1-minute sampling, 24 hours equals 1440 periods, and center=False produces a trailing (causal) window that only uses past and current values, avoiding look-ahead bias in real-time anomaly detection.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Advanced Analytics">
+    <div class="meta">Question 4 of 6 · Advanced Analytics</div>
+    <div class="q">A geospatial team needs to determine, for millions of GPS pings, which delivery zone polygon each ping falls inside, using GPU acceleration. Which capability does cuSpatial provide to support this at an awareness level within the RAPIDS ecosystem?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. Real-time decoding of geospatial video streams</button><button class="opt" onclick="answer(this,3,1,2)">B. Native training of graph neural networks on map data</button><button class="opt" onclick="answer(this,3,2,2)">C. GPU-accelerated point-in-polygon testing and spatial joins</button><button class="opt" onclick="answer(this,3,3,2)">D. Distributed file-system indexing for GeoTIFF raster files</button>
+    <div class="expl">cuSpatial provides GPU-accelerated geospatial primitives including point-in-polygon testing, spatial joins, distance calculations, and trajectory analysis, which is exactly what determining polygon membership for GPS pings requires.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Advanced Analytics">
+    <div class="meta">Question 5 of 6 · Advanced Analytics</div>
+    <div class="q">While engineering features for a 5M-row tabular dataset in cuDF, a data scientist computes a target-mean encoding for a high-cardinality categorical column by running a single groupby on the target across the entire dataset and merging the result back onto every row before training. Model validation accuracy is suspiciously high. Which approach correctly addresses the underlying problem?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. Replace the categorical column with one-hot encoding computed the same way</button><button class="opt" onclick="answer(this,4,1,2)">B. Keep the full-dataset groupby mean encoding but merge it after train/test split instead of before</button><button class="opt" onclick="answer(this,4,2,2)">C. Compute the target-mean encoding using k-fold cross-validation, excluding each row's own fold when computing its encoded value</button><button class="opt" onclick="answer(this,4,3,2)">D. Replace the encoding with alphabetical label encoding of the category values</button>
+    <div class="expl">Computing the target-mean encoding out-of-fold (excluding each row's own fold) prevents each row's own target value from leaking into its own feature, which is the root cause of inflated validation accuracy.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Advanced Analytics">
+    <div class="meta">Question 6 of 6 · Advanced Analytics</div>
+    <div class="q">A recommendation engine needs influence scores that are biased toward relevance to a specific seed set of users who purchased Product X, rather than a global importance ranking across the entire graph. Which cuGraph approach is designed for this personalized use case?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. cugraph.pagerank with a personalization vector specifying the seed nodes</button><button class="opt" onclick="answer(this,5,1,0)">B. cugraph.triangle_count</button><button class="opt" onclick="answer(this,5,2,0)">C. cugraph.katz_centrality with default parameters</button><button class="opt" onclick="answer(this,5,3,0)">D. cugraph.pagerank with no personalization vector</button>
+    <div class="expl">cugraph.pagerank accepts a personalization parameter that biases the random-walk restart distribution toward specified seed nodes, producing personalized (topic-sensitive) PageRank scores relevant to the seed set.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>Full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$129.99</span> <strong>$34.99</strong> with code <span class="code">FREETEST33</span> — valid through September 9.</p>
+  <a href="https://www.udemy.com/course/ncp-ads-nvidia-accelerated-data-science-prep/?couponCode=FREETEST33" rel="sponsored">Get the full course for $34.99 →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>
