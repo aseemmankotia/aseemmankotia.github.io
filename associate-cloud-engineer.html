@@ -1,0 +1,123 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Google Cloud Certified - Associate Cloud Engineer Practice Test — 12 Real Exam-Style Questions</title>
+<meta name="description" content="Free Google Cloud Certified - Associate Cloud Engineer practice questions with detailed explanations. Test yourself before the real exam.">
+<link rel="canonical" href="https://technuggets.academy/associate-cloud-engineer.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Google Cloud Certified - Associate Cloud Engineer Practice Test — 12 Real Exam-Style Questions">
+<meta property="og:description" content="Free Google Cloud Certified - Associate Cloud Engineer practice questions with detailed explanations. Test yourself before the real exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/associate-cloud-engineer.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#4285F4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div><div class="hero">
+  <span class="chip">Associate Cloud Engineer</span>
+  <h1>Free Google Cloud Certified - Associate Cloud Engineer Practice Test</h1>
+  <p class="sub">12 exam-style questions with full explanations — no sign-up. Score yourself, then close your gaps with the full course.</p>
+  <div class="facts"><span class="fact">Exam fee <b>~$125</b></span><span class="fact"><b>5</b> exam domains</span><span class="fact">Level <b>Intermediate</b></span><span class="fact"><b>2</b> timed practice tests in the course</span></div>
+  <div class="cta-row"><a class="btn enroll" href="https://www.udemy.com/course/google-cloud-ace-associate-cloud-engineer-exam-prep/?couponCode=FREETEST33" rel="sponsored" target="_blank">Get my $34.99 deal →</a><a class="btn ghost" href="#practice">Try the free test →</a><span class="urgency">⏳ Deal ends September 14</span></div>
+</div><div class="trust"><span>✅ <b>Free</b> practice — no sign-up</span><span>📝 Real exam-style questions</span><span>💡 Detailed explanations</span><span>💸 30-day money-back via Udemy</span></div>
+<div id="practice"></div>
+
+  <div class="card qcard" id="q0" data-domain="Setting Up a Cloud Solution Environment">
+    <div class="meta">Question 1 of 12 · Setting Up a Cloud Solution Environment</div>
+    <div class="q">A company's resource hierarchy has an Organization node containing several department folders. The Finance folder contains 10 projects. The security team wants to grant an external auditor the Viewer role across all 10 Finance projects, without granting any access to other departments' resources. What is the BEST way to accomplish this?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. Grant the Viewer role to the auditor at the Finance folder level</button><button class="opt" onclick="answer(this,0,1,0)">B. Grant the Viewer role to the auditor at the Organization level</button><button class="opt" onclick="answer(this,0,2,0)">C. Grant the Viewer role to the auditor individually on each of the 10 projects</button><button class="opt" onclick="answer(this,0,3,0)">D. Create a custom role at the organization level scoped to Finance projects</button>
+    <div class="expl">IAM policies bound at the folder level are inherited by all projects within that folder, so granting Viewer at the Finance folder gives the auditor visibility into all 10 Finance projects without touching other departments.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Planning and Configuring a Cloud Solution">
+    <div class="meta">Question 2 of 12 · Planning and Configuring a Cloud Solution</div>
+    <div class="q">A team has containerized a stateless HTTP microservice. They want it to scale automatically from zero to handle bursty traffic, require no cluster or node management, and only pay when requests are being processed. Which deployment option BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. Deploy on Compute Engine with a managed instance group and autoscaling</button><button class="opt" onclick="answer(this,1,1,3)">B. Deploy on GKE Autopilot</button><button class="opt" onclick="answer(this,1,2,3)">C. Deploy on App Engine Standard environment</button><button class="opt" onclick="answer(this,1,3,3)">D. Deploy on Cloud Run</button>
+    <div class="expl">Cloud Run runs arbitrary containers, scales automatically to zero when idle, and charges only for actual request processing time with no infrastructure or cluster management required.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Deploying and Implementing a Cloud Solution">
+    <div class="meta">Question 3 of 12 · Deploying and Implementing a Cloud Solution</div>
+    <div class="q">A company needs to deploy a fleet of web server VMs that automatically scale out during traffic spikes and scale in during quiet periods. All VMs must use an identical boot disk image and run the same startup script. Which deployment approach BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. Create an instance template and use it to configure a managed instance group with autoscaling enabled</button><button class="opt" onclick="answer(this,2,1,0)">B. Create the VMs manually one at a time in the Console, copying settings from the first VM</button><button class="opt" onclick="answer(this,2,2,0)">C. Create an unmanaged instance group and add existing VMs to it as needed</button><button class="opt" onclick="answer(this,2,3,0)">D. Deploy the application on App Engine Standard and disable scaling</button>
+    <div class="expl">Instance templates define a reusable VM configuration (image, machine type, startup script), and managed instance groups (MIGs) built from that template support autoscaling policies based on CPU, load balancing capacity, or custom metrics — exactly matching the scale-out/scale-in requirement.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Ensuring Successful Operation of a Cloud Solution">
+    <div class="meta">Question 4 of 12 · Ensuring Successful Operation of a Cloud Solution</div>
+    <div class="q">A production VM's persistent disk is running low on space. The team needs to increase the disk size without any downtime to the running application. What should they do?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. Stop the VM, resize the persistent disk in the console, then start the VM again</button><button class="opt" onclick="answer(this,3,1,3)">B. Create a snapshot of the disk, restore it to a larger disk, and swap the disks</button><button class="opt" onclick="answer(this,3,2,3)">C. Detach the disk, use 'gcloud compute disks resize', reattach it to the VM, and reboot</button><button class="opt" onclick="answer(this,3,3,3)">D. Resize the persistent disk using 'gcloud compute disks resize' while the VM is running, then resize the file system on the running instance</button>
+    <div class="expl">Persistent disks can be resized live with 'gcloud compute disks resize DISK_NAME --size=NEW_SIZE' without stopping the VM, and the guest OS file system can then be grown online (e.g., using resize2fs on Linux) with zero downtime.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Configuring Access and Security">
+    <div class="meta">Question 5 of 12 · Configuring Access and Security</div>
+    <div class="q">A company runs a Compute Engine VM that only needs to write new objects to a specific Cloud Storage bucket. It never needs to read, list, or delete existing objects. Which IAM role should be granted to the VM's service account to follow the principle of least privilege?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. roles/storage.objectAdmin</button><button class="opt" onclick="answer(this,4,1,1)">B. roles/storage.objectCreator</button><button class="opt" onclick="answer(this,4,2,1)">C. roles/storage.admin</button><button class="opt" onclick="answer(this,4,3,1)">D. roles/editor</button>
+    <div class="expl">roles/storage.objectCreator grants only storage.objects.create, which is exactly the write-only permission the VM needs and nothing more.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Setting Up a Cloud Solution Environment">
+    <div class="meta">Question 6 of 12 · Setting Up a Cloud Solution Environment</div>
+    <div class="q">An organization runs 20 separate GCP projects across different teams. The finance team wants one consolidated itemized invoice covering all projects' costs, with the ability to link or unlink projects from billing centrally. Which setup should they use?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. Link all 20 projects to a single Cloud Billing account</button><button class="opt" onclick="answer(this,5,1,0)">B. Create a separate billing account for each project and consolidate the invoices manually</button><button class="opt" onclick="answer(this,5,2,0)">C. Enable Cloud Billing export to BigQuery on each project and merge the datasets manually</button><button class="opt" onclick="answer(this,5,3,0)">D. Use Cloud Billing sub-accounts with a separate payment profile for each project</button>
+    <div class="expl">A single Cloud Billing account can be linked to multiple projects, producing one consolidated itemized invoice while allowing admins to link or unlink individual projects as needed.</div>
+  </div>
+
+  <div class="card qcard" id="q6" data-domain="Planning and Configuring a Cloud Solution">
+    <div class="meta">Question 7 of 12 · Planning and Configuring a Cloud Solution</div>
+    <div class="q">A company ingests millions of time-series sensor readings per second from IoT devices. They need a NoSQL database that provides very high write throughput, low-latency reads at massive scale (multiple terabytes), and can scale horizontally by adding nodes. Which database should they choose?</div>
+    <button class="opt" onclick="answer(this,6,0,3)">A. Firestore</button><button class="opt" onclick="answer(this,6,1,3)">B. Cloud SQL for PostgreSQL</button><button class="opt" onclick="answer(this,6,2,3)">C. BigQuery</button><button class="opt" onclick="answer(this,6,3,3)">D. Cloud Bigtable</button>
+    <div class="expl">Cloud Bigtable is a wide-column NoSQL database purpose-built for high-throughput, low-latency workloads at petabyte scale, such as time-series and IoT sensor data, and scales horizontally by adding nodes.</div>
+  </div>
+
+  <div class="card qcard" id="q7" data-domain="Deploying and Implementing a Cloud Solution">
+    <div class="meta">Question 8 of 12 · Deploying and Implementing a Cloud Solution</div>
+    <div class="q">A development team needs to deploy a stateless HTTP container image that scales down to zero instances when idle, without managing any Kubernetes nodes or cluster infrastructure. Which service should they use?</div>
+    <button class="opt" onclick="answer(this,7,0,3)">A. Compute Engine managed instance group</button><button class="opt" onclick="answer(this,7,1,3)">B. GKE Autopilot cluster</button><button class="opt" onclick="answer(this,7,2,3)">C. App Engine Flexible environment</button><button class="opt" onclick="answer(this,7,3,3)">D. Cloud Run</button>
+    <div class="expl">Cloud Run is a fully managed serverless platform for stateless containers that automatically scales to zero when there is no traffic and requires no cluster or node management.</div>
+  </div>
+
+  <div class="card qcard" id="q8" data-domain="Ensuring Successful Operation of a Cloud Solution">
+    <div class="meta">Question 9 of 12 · Ensuring Successful Operation of a Cloud Solution</div>
+    <div class="q">A company wants all Cloud Logging entries with severity ERROR or higher from their production project to be retained for 5 years for compliance, stored cost-effectively, and queryable with SQL. Which export destination should they configure as a log sink?</div>
+    <button class="opt" onclick="answer(this,8,0,0)">A. BigQuery dataset</button><button class="opt" onclick="answer(this,8,1,0)">B. Cloud Storage bucket</button><button class="opt" onclick="answer(this,8,2,0)">C. Pub/Sub topic</button><button class="opt" onclick="answer(this,8,3,0)">D. Another Cloud Logging bucket in the same project</button>
+    <div class="expl">BigQuery is the correct sink target when logs need to be queried with SQL for analysis and compliance reporting, while also supporting long-term partitioned storage.</div>
+  </div>
+
+  <div class="card qcard" id="q9" data-domain="Configuring Access and Security">
+    <div class="meta">Question 10 of 12 · Configuring Access and Security</div>
+    <div class="q">An external auditor needs read-only access to a Cloud SQL instance for exactly one week, after which access must expire automatically without any manual intervention. What should you configure?</div>
+    <button class="opt" onclick="answer(this,9,0,1)">A. Grant roles/cloudsql.viewer and set a calendar reminder to manually remove the binding after one week</button><button class="opt" onclick="answer(this,9,1,1)">B. Grant roles/cloudsql.viewer with an IAM condition using a date/time expression that limits access to one week</button><button class="opt" onclick="answer(this,9,2,1)">C. Create a custom role with only the cloudsql.instances.get permission and grant it permanently</button><button class="opt" onclick="answer(this,9,3,1)">D. Add the auditor to a Google Group that has roles/cloudsql.admin</button>
+    <div class="expl">IAM Conditions support time-based expressions (e.g., request.time &lt; timestamp('2026-XX-XX')), allowing the binding to expire automatically at a defined date without manual cleanup.</div>
+  </div>
+
+  <div class="card qcard" id="q10" data-domain="Setting Up a Cloud Solution Environment">
+    <div class="meta">Question 11 of 12 · Setting Up a Cloud Solution Environment</div>
+    <div class="q">You frequently switch between three different GCP projects from your local workstation using the gcloud CLI, and each project requires a different default account, region, and zone. What is the MOST efficient way to manage these settings with gcloud?</div>
+    <button class="opt" onclick="answer(this,10,0,2)">A. Run gcloud config set project before every command</button><button class="opt" onclick="answer(this,10,1,2)">B. Store each project's settings as environment variables and export them manually in each terminal session</button><button class="opt" onclick="answer(this,10,2,2)">C. Create a separate gcloud configuration for each project using gcloud config configurations create, and switch between them with gcloud config configurations activate</button><button class="opt" onclick="answer(this,10,3,2)">D. Open a separate Cloud Shell session in the browser for each project</button>
+    <div class="expl">Named gcloud configurations store a full set of properties (project, account, region, zone) per profile, letting you switch instantly between complete environments with a single activate command — this is the CLI feature designed exactly for this use case.</div>
+  </div>
+
+  <div class="card qcard" id="q11" data-domain="Planning and Configuring a Cloud Solution">
+    <div class="meta">Question 12 of 12 · Planning and Configuring a Cloud Solution</div>
+    <div class="q">You create a VPC subnet with the CIDR range 10.0.0.0/24. How many usable IP addresses are available for resources (VM instances) in this subnet in Google Cloud?</div>
+    <button class="opt" onclick="answer(this,11,0,2)">A. 254</button><button class="opt" onclick="answer(this,11,1,2)">B. 256</button><button class="opt" onclick="answer(this,11,2,2)">C. 252</button><button class="opt" onclick="answer(this,11,3,2)">D. 251</button>
+    <div class="expl">A /24 range has 256 total addresses. Google Cloud reserves 4 addresses per subnet (the network address, the default gateway, the second-to-last address, and the broadcast address), leaving 252 usable addresses.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$99.99</span> <span class="price">$34.99</span> with code <span class="code">FREETEST33</span> — valid through September 14.</p>
+  <a href="https://www.udemy.com/course/google-cloud-ace-associate-cloud-engineer-exam-prep/?couponCode=FREETEST33" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<section class="faq"><h3>Associate Cloud Engineer exam — quick answers</h3><details><summary>How much does the Associate Cloud Engineer exam cost?</summary><p>The exam fee is approximately $125 and varies by region — confirm current pricing with the certification vendor before you book.</p></details><details><summary>What topics are on the exam?</summary><p>It covers 5 domains: Setting Up a Cloud Solution Environment (~18%), Planning and Configuring a Cloud Solution (~20%), Deploying and Implementing a Cloud Solution (~24%), Ensuring Successful Operation of a Cloud Solution (~22%), Configuring Access and Security (~16%). The full course has a dedicated chapter, lab and practice-test coverage for each.</p></details><details><summary>Is this practice test really free?</summary><p>Yes — all questions on this page are free with explanations and no sign-up. The paid Udemy course adds two full-length timed exams, video lessons and hands-on labs.</p></details><details><summary>How do I get the discount?</summary><p>Use code FREETEST33 at checkout for $34.99 (list $99.99) through September 14 — the enroll button applies it automatically.</p></details><details><summary>Will this prepare me for the real exam?</summary><p>The questions mirror the real exam's style and are mapped to the official domains. This is exam-focused preparation — combine the free test with the full course's timed simulations to gauge your readiness.</p></details></section>
+<div class="domains"><span class="meta">More free practice by exam domain:</span><br><a href="associate-cloud-engineer-setting-up-a-cloud-solution-environment.html">Setting Up a Cloud Solution Environment →</a><a href="associate-cloud-engineer-planning-and-configuring-a-cloud-solution.html">Planning and Configuring a Cloud Solution →</a><a href="associate-cloud-engineer-deploying-and-implementing-a-cloud-solution.html">Deploying and Implementing a Cloud Solution →</a><a href="associate-cloud-engineer-ensuring-successful-operation-of-a-cloud-solution.html">Ensuring Successful Operation of a Cloud Solution →</a><a href="associate-cloud-engineer-configuring-access-and-security.html">Configuring Access and Security →</a></div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

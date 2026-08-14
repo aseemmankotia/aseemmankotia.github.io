@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Data Security and Governance Practice Questions — AWS Certified Data Engineer - Associate</title>
+<meta name="description" content="6 free Data Security and Governance practice questions with explanations for the AWS Certified Data Engineer - Associate exam.">
+<link rel="canonical" href="https://technuggets.academy/dea-c01-data-security-and-governance.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Data Security and Governance Practice Questions — AWS Certified Data Engineer - Associate">
+<meta property="og:description" content="6 free Data Security and Governance practice questions with explanations for the AWS Certified Data Engineer - Associate exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/dea-c01-data-security-and-governance.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#FF9900}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Data Security and Governance</h1>
+<p class="sub">Free AWS Certified Data Engineer - Associate practice — 6 questions on <strong>Data Security and Governance</strong>, with explanations. No sign-up.
+<a href="dea-c01.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Data Security and Governance">
+    <div class="meta">Question 1 of 6 · Data Security and Governance</div>
+    <div class="q">A retail company stores a single 'transactions' table in the AWS Glue Data Catalog, registered in Lake Formation. A partner company in a separate AWS account needs SELECT access, but only to rows where region = 'EU'. The data engineering team must NOT duplicate the table or create a separate physical copy for the partner. Which approach BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. Create an S3 bucket policy on the underlying data bucket that restricts the partner account to objects under the /EU/ prefix</button><button class="opt" onclick="answer(this,0,1,3)">B. Export the EU rows nightly to a separate S3 location and register a new Glue table pointing only at that location for the partner account</button><button class="opt" onclick="answer(this,0,2,3)">C. Attach an IAM policy to the partner account's IAM role that uses an S3 Select expression to filter rows at query time</button><button class="opt" onclick="answer(this,0,3,3)">D. Create a Lake Formation data filter (row filter) on the table for region = 'EU', then grant the partner account SELECT on the table using that data filter via a cross-account grant</button>
+    <div class="expl">Lake Formation data cell filters support row-level (and column-level) security on a single shared table. A data filter can be attached to a cross-account grant, so the partner account only sees rows matching the filter without any data duplication, and Lake Formation enforces this centrally regardless of which query engine (Athena, Redshift Spectrum, EMR) reads the table.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Data Security and Governance">
+    <div class="meta">Question 2 of 6 · Data Security and Governance</div>
+    <div class="q">A Glue ETL job connects to an Amazon Redshift cluster using a database username and password. Security policy requires the password to be rotated automatically every 30 days without any manual intervention or job code changes when the password changes. Which solution meets this requirement with the LEAST operational overhead?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. Store the credentials in AWS Secrets Manager with automatic rotation enabled using the built-in Redshift rotation template, and have the Glue job retrieve the secret by ARN at runtime</button><button class="opt" onclick="answer(this,1,1,0)">B. Store the credentials as a SecureString parameter in AWS Systems Manager Parameter Store and manually update the value every 30 days</button><button class="opt" onclick="answer(this,1,2,0)">C. Hardcode the credentials in the Glue job script and update the script every 30 days via a CI/CD pipeline</button><button class="opt" onclick="answer(this,1,3,0)">D. Enable IAM database authentication on the Redshift cluster and store a static IAM access key in the Glue job's connection properties</button>
+    <div class="expl">AWS Secrets Manager provides native, built-in rotation templates (via a managed Lambda function) for Amazon Redshift, RDS, and DocumentDB credentials. Once configured, rotation happens automatically on a schedule (e.g., every 30 days) with zero code changes needed — the Glue job simply retrieves the current secret value by ARN at runtime using the Secrets Manager API/connector.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Data Security and Governance">
+    <div class="meta">Question 3 of 6 · Data Security and Governance</div>
+    <div class="q">A Lake Formation table 'customers' contains columns: customer_id, name, email, ssn, purchase_total. An analytics group needs SELECT access to all columns EXCEPT ssn for ad-hoc querying via Athena. Which Lake Formation configuration correctly implements this?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. Create a data cell filter on the customers table that excludes the ssn column, then grant SELECT on the table to the group using that column-level data filter</button><button class="opt" onclick="answer(this,2,1,0)">B. Grant SELECT on the table to the group's IAM role and rely on Athena workgroup settings to hide the ssn column in query results</button><button class="opt" onclick="answer(this,2,2,0)">C. Grant SELECT on the entire table, then apply an S3 bucket policy denying GetObject on any file containing the string 'ssn'</button><button class="opt" onclick="answer(this,2,3,0)">D. Create a separate Glue crawler that skips the ssn column when cataloging the table, and grant the group access to that crawler's output</button>
+    <div class="expl">Lake Formation data cell filters natively support column-level permissions by specifying an 'Exclude columns' list (or an explicit include list). Granting SELECT with this filter attached ensures the ssn column is never returned to the group across any Lake Formation-integrated engine (Athena, Redshift Spectrum, EMR), enforced centrally rather than per-client.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Data Security and Governance">
+    <div class="meta">Question 4 of 6 · Data Security and Governance</div>
+    <div class="q">AWS Glue ETL jobs run inside a private subnet with no route to an internet gateway or NAT gateway. The jobs must read and write objects in Amazon S3 without traversing the public internet. Which solution meets this requirement?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. Create a Gateway VPC endpoint for Amazon S3 and add a route to it in the private subnet's route table</button><button class="opt" onclick="answer(this,3,1,0)">B. Create an Interface VPC endpoint (AWS PrivateLink) for Amazon S3 and attach a security group allowing outbound HTTPS</button><button class="opt" onclick="answer(this,3,2,0)">C. Deploy a NAT gateway in the private subnet and configure it to route S3 traffic through AWS PrivateLink automatically</button><button class="opt" onclick="answer(this,3,3,0)">D. Enable S3 Transfer Acceleration on the target bucket so traffic bypasses the standard internet path</button>
+    <div class="expl">Amazon S3 (along with DynamoDB) supports Gateway VPC endpoints, which work by adding a prefix-list route to the subnet's route table — no ENIs, no internet gateway, and no NAT gateway required. This keeps all S3 traffic on the AWS network backbone, satisfying the private connectivity requirement at no additional cost.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Data Security and Governance">
+    <div class="meta">Question 5 of 6 · Data Security and Governance</div>
+    <div class="q">A compliance team requires an audit trail of every individual GetObject and PutObject API call made against a specific sensitive S3 bucket, including the requester identity and object key. The team checks CloudTrail's default trail but finds no record of these individual object-level calls. What is the correct explanation and fix?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. CloudTrail only logs API calls made through the AWS CLI; console and SDK calls to S3 are never logged regardless of configuration</button><button class="opt" onclick="answer(this,4,1,2)">B. S3 data events cannot be logged by CloudTrail under any configuration; VPC Flow Logs must be used instead to capture object-level S3 activity</button><button class="opt" onclick="answer(this,4,2,2)">C. By default, CloudTrail logs management (control plane) events; S3 object-level operations are data events and must be explicitly enabled on the trail for that bucket</button><button class="opt" onclick="answer(this,4,3,2)">D. CloudTrail requires the bucket to have S3 Object Lock enabled before any GetObject or PutObject activity can be recorded</button>
+    <div class="expl">CloudTrail trails capture management events by default (e.g., CreateBucket, PutBucketPolicy), but object-level data events like GetObject, PutObject, and DeleteObject are a separate category that must be explicitly configured on the trail (often scoped to specific buckets/prefixes) and typically incur additional CloudTrail charges.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Data Security and Governance">
+    <div class="meta">Question 6 of 6 · Data Security and Governance</div>
+    <div class="q">A company uses S3 Cross-Region Replication (CRR) to replicate SSE-KMS-encrypted objects from a bucket in us-east-1 to a bucket in eu-west-1 for disaster recovery. They want customer-managed keys (not AWS managed keys) in both regions, and want to minimize the operational overhead of managing entirely separate keys and key policies per region. Which approach BEST satisfies these requirements?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. Reference the exact same us-east-1 KMS key ARN as the destination encryption key in the CRR replication configuration</button><button class="opt" onclick="answer(this,5,1,3)">B. Disable server-side encryption on the destination bucket so CRR does not need to resolve any KMS key in eu-west-1</button><button class="opt" onclick="answer(this,5,2,3)">C. Use the AWS managed key aws/s3 in eu-west-1 as the destination key, since AWS managed keys are automatically kept in sync across all regions</button><button class="opt" onclick="answer(this,5,3,3)">D. Create an AWS KMS multi-Region primary key in us-east-1 and a related multi-Region replica key in eu-west-1, then specify the eu-west-1 replica key as the destination encryption key in the replication configuration</button>
+    <div class="expl">AWS KMS multi-Region keys consist of a primary key and one or more replica keys in other regions that share the same key material and key ID structure, letting encrypted data be decrypted in another region without re-encryption gymnastics. For S3 CRR, the destination key must reside in the destination region, so creating a replica key in eu-west-1 lets the company keep customer-managed keys in both regions while treating them as a single logical key for management, policy, and rotation purposes.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$109.99</span> <span class="price">$34.99</span> with code <span class="code">FREETEST33</span> — valid through September 14.</p>
+  <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-dea-c01-prep/?couponCode=FREETEST33" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

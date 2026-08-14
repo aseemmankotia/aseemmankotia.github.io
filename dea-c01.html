@@ -1,0 +1,123 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free AWS Certified Data Engineer - Associate Practice Test — 12 Real Exam-Style Questions</title>
+<meta name="description" content="Free AWS Certified Data Engineer - Associate practice questions with detailed explanations. Test yourself before the real exam.">
+<link rel="canonical" href="https://technuggets.academy/dea-c01.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free AWS Certified Data Engineer - Associate Practice Test — 12 Real Exam-Style Questions">
+<meta property="og:description" content="Free AWS Certified Data Engineer - Associate practice questions with detailed explanations. Test yourself before the real exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/dea-c01.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#FF9900}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div><div class="hero">
+  <span class="chip">DEA-C01</span>
+  <h1>Free AWS Certified Data Engineer - Associate Practice Test</h1>
+  <p class="sub">12 exam-style questions with full explanations — no sign-up. Score yourself, then close your gaps with the full course.</p>
+  <div class="facts"><span class="fact">Exam fee <b>~$150</b></span><span class="fact"><b>4</b> exam domains</span><span class="fact">Level <b>Intermediate</b></span><span class="fact"><b>2</b> timed practice tests in the course</span></div>
+  <div class="cta-row"><a class="btn enroll" href="https://www.udemy.com/course/aws-certified-data-engineer-associate-dea-c01-prep/?couponCode=FREETEST33" rel="sponsored" target="_blank">Get my $34.99 deal →</a><a class="btn ghost" href="#practice">Try the free test →</a><span class="urgency">⏳ Deal ends September 14</span></div>
+</div><div class="trust"><span>✅ <b>Free</b> practice — no sign-up</span><span>📝 Real exam-style questions</span><span>💡 Detailed explanations</span><span>💸 30-day money-back via Udemy</span></div>
+<div id="practice"></div>
+
+  <div class="card qcard" id="q0" data-domain="Data Ingestion and Transformation">
+    <div class="meta">Question 1 of 12 · Data Ingestion and Transformation</div>
+    <div class="q">A streaming application produces data at a sustained rate of 4,500 records per second, with an average record size of 800 bytes. A team is provisioning an Amazon Kinesis Data Stream in provisioned mode and needs the minimum shard count that avoids throttling. Each shard supports up to 1 MiB/s (or 1,000 records/second) for writes. How many shards are required?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. 9 shards, by summing the byte throughput requirement and the record count requirement</button><button class="opt" onclick="answer(this,0,1,2)">B. 4 shards, based on the byte throughput requirement alone</button><button class="opt" onclick="answer(this,0,2,2)">C. 5 shards, based on whichever of the two per-shard limits is the binding constraint</button><button class="opt" onclick="answer(this,0,3,2)">D. 10 shards, doubling the calculated minimum as a safety margin</button>
+    <div class="expl">Byte throughput is 4,500 x 800 bytes = 3.6 MB/s, requiring ceil(3.6/1) = 4 shards. Record count is 4,500/1,000 = 4.5, requiring 5 shards. The stream must satisfy BOTH limits per shard, so the binding (higher) requirement of 5 shards is the minimum needed.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Data Store Management">
+    <div class="meta">Question 2 of 12 · Data Store Management</div>
+    <div class="q">A company has a Redshift provisioned cluster with a fact table `orders` (500 million rows) frequently joined with a dimension table `customers` (50,000 rows) on `customer_id`. Query plans show heavy data redistribution during the join, causing slow performance. Which distribution style configuration BEST resolves this?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. Set both tables to EVEN distribution</button><button class="opt" onclick="answer(this,1,1,3)">B. Set orders to ALL distribution and customers to KEY distribution on customer_id</button><button class="opt" onclick="answer(this,1,2,3)">C. Set both tables to KEY distribution on order_id</button><button class="opt" onclick="answer(this,1,3,3)">D. Set orders to KEY distribution on customer_id and customers to ALL distribution</button>
+    <div class="expl">ALL distribution copies the small dimension table (customers) to every node, eliminating redistribution during the join. KEY distribution on the join column (customer_id) for the large fact table (orders) co-locates matching rows on the same node, minimizing data movement. This is the standard best practice for large fact / small dimension joins.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Data Operations and Support">
+    <div class="meta">Question 3 of 12 · Data Operations and Support</div>
+    <div class="q">A data engineer needs to automatically reject records that have null values in the 'customer_id' column before loading data into a Redshift table using an AWS Glue ETL job. Which approach BEST meets this requirement with the LEAST amount of custom code?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. Use AWS Glue Data Quality with a DQDL rule such as 'IsComplete &quot;customer_id&quot;' and configure the job to quarantine records that fail the rule</button><button class="opt" onclick="answer(this,2,1,0)">B. Write a custom PySpark transformation script that uses DataFrame filters to detect and remove null values</button><button class="opt" onclick="answer(this,2,2,0)">C. Use AWS Lambda to validate each record individually before invoking the Glue job</button><button class="opt" onclick="answer(this,2,3,0)">D. Enable the AWS Glue crawler's classification feature to automatically detect and flag null values</button>
+    <div class="expl">AWS Glue Data Quality lets you define declarative rules using DQDL (Data Quality Definition Language), such as IsComplete, directly in the Glue job. This built-in capability evaluates and can quarantine or fail non-compliant records with no custom transformation code required.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Data Security and Governance">
+    <div class="meta">Question 4 of 12 · Data Security and Governance</div>
+    <div class="q">A financial services company uses AWS Lake Formation to manage a Glue Data Catalog table containing sales data for all regions. Analysts in the EU team must only see rows where region='EU', while analysts in the US team must only see rows where region='US'. The company wants to enforce this using Lake Formation without creating separate copies of the table or database views. Which approach BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. Attach an S3 bucket policy that uses IAM condition keys to filter object prefixes by region</button><button class="opt" onclick="answer(this,3,1,2)">B. Create a materialized view in Athena for each region and grant SELECT on the corresponding view</button><button class="opt" onclick="answer(this,3,2,2)">C. Create a Lake Formation data filter that restricts rows by the region column, and grant SELECT with that data filter to each team's IAM role</button><button class="opt" onclick="answer(this,3,3,2)">D. Use AWS KMS grants to encrypt each region's rows with a separate customer managed key and issue keys per team</button>
+    <div class="expl">Lake Formation row-level security is implemented through data filters (also called data cell filters), which can restrict rows by a column predicate. Granting SELECT with a specific data filter attached lets you scope different row subsets to different principals on the same underlying table, with no data duplication.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Data Ingestion and Transformation">
+    <div class="meta">Question 5 of 12 · Data Ingestion and Transformation</div>
+    <div class="q">A data engineering team must migrate an on-premises PostgreSQL database to Amazon RDS and then keep the target continuously synchronized with ongoing transactional changes until cutover. Which AWS DMS migration type should be selected for the replication task?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. Replicate data changes only (CDC only)</button><button class="opt" onclick="answer(this,4,1,3)">B. Full load only, then schedule periodic full reloads</button><button class="opt" onclick="answer(this,4,2,3)">C. Full load and CDC configured as two separate, manually triggered tasks</button><button class="opt" onclick="answer(this,4,3,3)">D. Full load, migrate existing data and replicate ongoing changes</button>
+    <div class="expl">The 'Migrate existing data and replicate ongoing changes' task type performs an initial full load of existing table data and then automatically captures and applies ongoing changes (CDC) until cutover, which exactly matches the stated requirement.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Data Store Management">
+    <div class="meta">Question 6 of 12 · Data Store Management</div>
+    <div class="q">A gaming company needs single-digit-millisecond latency for player profile lookups by primary key, with traffic that spikes unpredictably up to 10x normal volume with no advance warning. Which service is BEST suited for this workload?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. Amazon RDS for MySQL Multi-AZ</button><button class="opt" onclick="answer(this,5,1,1)">B. Amazon DynamoDB with on-demand capacity mode</button><button class="opt" onclick="answer(this,5,2,1)">C. Amazon Aurora Serverless v2</button><button class="opt" onclick="answer(this,5,3,1)">D. Amazon Redshift Serverless</button>
+    <div class="expl">DynamoDB delivers consistent single-digit-millisecond latency for key-based lookups at any scale, and on-demand capacity mode automatically absorbs sudden, unpredictable traffic spikes without capacity planning or throttling risk.</div>
+  </div>
+
+  <div class="card qcard" id="q6" data-domain="Data Operations and Support">
+    <div class="meta">Question 7 of 12 · Data Operations and Support</div>
+    <div class="q">A company's AWS Glue ETL job runs nightly and occasionally fails due to transient network issues. The data engineering team wants to be notified by email within minutes whenever a job run fails, using the least operational overhead. Which solution meets this requirement?</div>
+    <button class="opt" onclick="answer(this,6,0,3)">A. Configure a CloudWatch alarm on the Glue metric 'glue.driver.aggregate.numFailedTasks' with an SNS action subscribed by email</button><button class="opt" onclick="answer(this,6,1,3)">B. Write a scheduled Lambda function that polls the Glue GetJobRuns API every minute and sends an email via Amazon SES on failure</button><button class="opt" onclick="answer(this,6,2,3)">C. Enable Glue job bookmarks and inspect the bookmark state after each scheduled run</button><button class="opt" onclick="answer(this,6,3,3)">D. Create an Amazon EventBridge rule that matches the 'Glue Job State Change' event with state FAILED, and target an Amazon SNS topic subscribed by email</button>
+    <div class="expl">AWS Glue automatically emits a 'Glue Job State Change' event to EventBridge whenever a job run completes, fails, times out, or stops. An EventBridge rule filtered on state=FAILED, targeting SNS, delivers near-real-time notification with no polling and minimal configuration.</div>
+  </div>
+
+  <div class="card qcard" id="q7" data-domain="Data Security and Governance">
+    <div class="meta">Question 8 of 12 · Data Security and Governance</div>
+    <div class="q">A company stores non-sensitive log data in S3 and wants encryption at rest enabled by default. There is no requirement to control or audit key usage, and the team wants to minimize both cost and management overhead. Which S3 encryption option should they choose?</div>
+    <button class="opt" onclick="answer(this,7,0,0)">A. SSE-S3 (Amazon S3 managed keys, SSE-AES256)</button><button class="opt" onclick="answer(this,7,1,0)">B. SSE-C with a customer-supplied key</button><button class="opt" onclick="answer(this,7,2,0)">C. SSE-KMS with a customer managed CMK</button><button class="opt" onclick="answer(this,7,3,0)">D. Client-side encryption with an externally managed key</button>
+    <div class="expl">SSE-S3 (SSE-AES256) uses keys fully managed by S3 at no additional cost and with zero key management overhead, which is ideal when there's no requirement for audit trails on key usage or custom key policies.</div>
+  </div>
+
+  <div class="card qcard" id="q8" data-domain="Data Ingestion and Transformation">
+    <div class="meta">Question 9 of 12 · Data Ingestion and Transformation</div>
+    <div class="q">A Glue ETL job has job bookmarks enabled, but every run reprocesses all files in the source S3 path instead of only the files added since the last run. What is the MOST likely cause?</div>
+    <button class="opt" onclick="answer(this,8,0,1)">A. The S3 source bucket does not have versioning enabled</button><button class="opt" onclick="answer(this,8,1,1)">B. The create_dynamic_frame call is missing the transformation_ctx argument</button><button class="opt" onclick="answer(this,8,2,1)">C. The job's worker type is G.1X instead of G.2X</button><button class="opt" onclick="answer(this,8,3,1)">D. The output format is written as Parquet instead of Avro</button>
+    <div class="expl">Glue job bookmarks track state per transformation context. If the DynamicFrame creation call omits the transformation_ctx parameter, Glue cannot associate bookmark state with that data source, so it re-reads all files on every run regardless of the bookmark setting.</div>
+  </div>
+
+  <div class="card qcard" id="q9" data-domain="Data Store Management">
+    <div class="meta">Question 10 of 12 · Data Store Management</div>
+    <div class="q">An engineer enables S3 Intelligent-Tiering on a bucket containing millions of log files, most of which are under 100KB. What is the exam-relevant behavior of Intelligent-Tiering for these small objects?</div>
+    <button class="opt" onclick="answer(this,9,0,0)">A. Objects smaller than 128KB are never monitored or auto-tiered and are always billed at the Frequent Access tier rate</button><button class="opt" onclick="answer(this,9,1,0)">B. Objects smaller than 128KB automatically move to the Archive Instant Access tier after 30 days</button><button class="opt" onclick="answer(this,9,2,0)">C. All objects, regardless of size, are monitored and charged a per-object monitoring and automation fee</button><button class="opt" onclick="answer(this,9,3,0)">D. Objects smaller than 128KB are ineligible for Intelligent-Tiering and must be stored in S3 Standard instead</button>
+    <div class="expl">S3 Intelligent-Tiering does not monitor or move objects smaller than 128KB; they remain billed at the Frequent Access tier rate with no monitoring/automation charge, since the fee only applies to objects large enough where tiering produces net savings.</div>
+  </div>
+
+  <div class="card qcard" id="q10" data-domain="Data Operations and Support">
+    <div class="meta">Question 11 of 12 · Data Operations and Support</div>
+    <div class="q">An Amazon Redshift cluster experiences periodic spikes in concurrent read-only reporting queries during month-end close, causing WLM queue wait times to increase significantly. Query performance is acceptable during the rest of the month. Which change addresses the spikes with the LEAST added ongoing cost?</div>
+    <button class="opt" onclick="answer(this,10,0,3)">A. Permanently resize the cluster to a larger node type</button><button class="opt" onclick="answer(this,10,1,3)">B. Migrate all reporting queries permanently to Amazon Athena</button><button class="opt" onclick="answer(this,10,2,3)">C. Purchase additional Reserved Instance nodes to add permanent capacity</button><button class="opt" onclick="answer(this,10,3,3)">D. Enable Concurrency Scaling on the WLM queue used by the reporting workload</button>
+    <div class="expl">Concurrency Scaling automatically adds transient, temporary clusters only during bursts of concurrent query activity and removes them when the burst ends, so you pay only for the extra capacity used during spikes (with free credit hours accrued daily), avoiding a permanent cost increase.</div>
+  </div>
+
+  <div class="card qcard" id="q11" data-domain="Data Security and Governance">
+    <div class="meta">Question 12 of 12 · Data Security and Governance</div>
+    <div class="q">A data engineer configures AWS Secrets Manager to automatically rotate the master password for an Amazon Redshift cluster using the single-user rotation strategy. During the rotation Lambda function's four-step process, which step is responsible for verifying that the newly generated password actually works before the rotation is finalized?</div>
+    <button class="opt" onclick="answer(this,11,0,3)">A. createSecret</button><button class="opt" onclick="answer(this,11,1,3)">B. setSecret</button><button class="opt" onclick="answer(this,11,2,3)">C. finishSecret</button><button class="opt" onclick="answer(this,11,3,3)">D. testSecret</button>
+    <div class="expl">The testSecret step in the Secrets Manager rotation Lambda template connects to the database using the AWSPENDING version of the secret to confirm the new credential is valid before the rotation completes.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$109.99</span> <span class="price">$34.99</span> with code <span class="code">FREETEST33</span> — valid through September 14.</p>
+  <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-dea-c01-prep/?couponCode=FREETEST33" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<section class="faq"><h3>DEA-C01 exam — quick answers</h3><details><summary>How much does the DEA-C01 exam cost?</summary><p>The exam fee is approximately $150 and varies by region — confirm current pricing with the certification vendor before you book.</p></details><details><summary>What topics are on the exam?</summary><p>It covers 4 domains: Data Ingestion and Transformation (34%), Data Store Management (26%), Data Operations and Support (22%), Data Security and Governance (18%). The full course has a dedicated chapter, lab and practice-test coverage for each.</p></details><details><summary>Is this practice test really free?</summary><p>Yes — all questions on this page are free with explanations and no sign-up. The paid Udemy course adds two full-length timed exams, video lessons and hands-on labs.</p></details><details><summary>How do I get the discount?</summary><p>Use code FREETEST33 at checkout for $34.99 (list $109.99) through September 14 — the enroll button applies it automatically.</p></details><details><summary>Will this prepare me for the real exam?</summary><p>The questions mirror the real exam's style and are mapped to the official domains. This is exam-focused preparation — combine the free test with the full course's timed simulations to gauge your readiness.</p></details></section>
+<div class="domains"><span class="meta">More free practice by exam domain:</span><br><a href="dea-c01-data-ingestion-and-transformation.html">Data Ingestion and Transformation →</a><a href="dea-c01-data-store-management.html">Data Store Management →</a><a href="dea-c01-data-operations-and-support.html">Data Operations and Support →</a><a href="dea-c01-data-security-and-governance.html">Data Security and Governance →</a></div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

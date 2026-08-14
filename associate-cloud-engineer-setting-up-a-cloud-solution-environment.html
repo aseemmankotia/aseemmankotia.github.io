@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Setting Up a Cloud Solution Environment Practice Questions — Google Cloud Certified - Associate Cloud Engineer</title>
+<meta name="description" content="6 free Setting Up a Cloud Solution Environment practice questions with explanations for the Google Cloud Certified - Associate Cloud Engineer exam.">
+<link rel="canonical" href="https://technuggets.academy/associate-cloud-engineer-setting-up-a-cloud-solution-environment.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Setting Up a Cloud Solution Environment Practice Questions — Google Cloud Certified - Associate Cloud Engineer">
+<meta property="og:description" content="6 free Setting Up a Cloud Solution Environment practice questions with explanations for the Google Cloud Certified - Associate Cloud Engineer exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/associate-cloud-engineer-setting-up-a-cloud-solution-environment.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#4285F4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Setting Up a Cloud Solution Environment</h1>
+<p class="sub">Free Google Cloud Certified - Associate Cloud Engineer practice — 6 questions on <strong>Setting Up a Cloud Solution Environment</strong>, with explanations. No sign-up.
+<a href="associate-cloud-engineer.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Setting Up a Cloud Solution Environment">
+    <div class="meta">Question 1 of 6 · Setting Up a Cloud Solution Environment</div>
+    <div class="q">An organization's Cloud Billing team wants every new Google Cloud project created inside the 'Production' folder to be automatically linked to the 'Production-Billing' billing account, and every project created inside 'Dev' or 'Test' folders to be linked to 'Dev-Billing' — with zero manual steps by engineers. Which approach BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. Grant the Billing Account Administrator role to all team leads and require them to manually link the correct billing account whenever they create a project</button><button class="opt" onclick="answer(this,0,1,3)">B. Apply an Organization Policy constraint that restricts which billing account a folder may use, causing new projects to inherit it automatically</button><button class="opt" onclick="answer(this,0,2,3)">C. Configure a budget alert scoped to each folder and have Cloud Billing automatically reassign the billing account when the alert fires</button><button class="opt" onclick="answer(this,0,3,3)">D. Create a Cloud Function subscribed to the Pub/Sub notifications published by Cloud Resource Manager on project creation, which inspects the parent folder and calls the Billing API to set the correct billing account</button>
+    <div class="expl">There is no native org-policy constraint that auto-assigns a billing account by folder. Google's documented pattern for this exact use case is a Cloud Function triggered by Pub/Sub project-creation notifications that programmatically calls projects.updateBillingInfo based on the project's parent folder.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Setting Up a Cloud Solution Environment">
+    <div class="meta">Question 2 of 6 · Setting Up a Cloud Solution Environment</div>
+    <div class="q">A team deploys a large batch of Compute Engine instances in us-central1 and the deployment fails with a 'Quota exceeded: CPUS' error, even though IAM &amp; Admin &gt; Quotas shows plenty of unused global CPU quota for the project. What is the most likely cause and correct fix?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. Requesting a regional quota increase specifically for CPUs in us-central1 via the Quotas page, since Compute Engine enforces CPU quotas per project AND per region independently</button><button class="opt" onclick="answer(this,1,1,0)">B. Requesting an increase to the global CPU quota only, since regional quotas automatically inherit from the global quota once it is raised</button><button class="opt" onclick="answer(this,1,2,0)">C. Upgrading the billing account from a free trial to a full paid account, since all quota limits are exclusively a restriction of free trial accounts</button><button class="opt" onclick="answer(this,1,3,0)">D. Deleting and recreating the project, since default quotas reset to a higher value automatically for newly created projects</button>
+    <div class="expl">Compute Engine CPU quotas are tracked both globally (per project) and per region. A project can have ample global CPU quota while a specific region's CPU quota is exhausted; the fix is requesting a regional quota increase for that specific region.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Setting Up a Cloud Solution Environment">
+    <div class="meta">Question 3 of 6 · Setting Up a Cloud Solution Environment</div>
+    <div class="q">Which command displays the current quota limits AND usage (CPUs, disks, in-use IP addresses) for a specific region within a project?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. gcloud compute project-info describe --project=PROJECT_ID</button><button class="opt" onclick="answer(this,2,1,1)">B. gcloud compute regions describe us-central1 --project=PROJECT_ID</button><button class="opt" onclick="answer(this,2,2,1)">C. gcloud services list --enabled --project=PROJECT_ID</button><button class="opt" onclick="answer(this,2,3,1)">D. gcloud compute instances list --project=PROJECT_ID --format=&quot;table(quota)&quot;</button>
+    <div class="expl">gcloud compute regions describe REGION returns a quotas array scoped to that region, including CPUS, DISKS_TOTAL_GB, and IN_USE_ADDRESSES limits and current usage.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Setting Up a Cloud Solution Environment">
+    <div class="meta">Question 4 of 6 · Setting Up a Cloud Solution Environment</div>
+    <div class="q">An organization requires that Compute Engine API and Cloud SQL Admin API be enabled automatically on every new project, without engineers performing any manual gcloud or Console steps after project creation. Which approach BEST achieves this at scale across the organization?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. Instruct every engineer to run gcloud services enable compute.googleapis.com sqladmin.googleapis.com immediately after creating any new project</button><button class="opt" onclick="answer(this,3,1,3)">B. Apply an organization policy constraint that force-enables specific APIs by default whenever a project is created under the organization</button><button class="opt" onclick="answer(this,3,2,3)">C. Configure the required APIs as 'default services' in the Organization settings page of IAM &amp; Admin, which applies them to all future projects</button><button class="opt" onclick="answer(this,3,3,3)">D. Build a project-factory pipeline (e.g., using Terraform or Deployment Manager) that creates the project and enables the required APIs as part of the same automated workflow</button>
+    <div class="expl">There is no native Console/org-policy feature that force-enables specific APIs on project creation. The standard, exam-recognized practice is an infrastructure-as-code 'project factory' pipeline that provisions the project and enables required APIs atomically as part of the same automation.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Setting Up a Cloud Solution Environment">
+    <div class="meta">Question 5 of 6 · Setting Up a Cloud Solution Environment</div>
+    <div class="q">A cloud engineer manages resources for two different clients using the same workstation. Each client requires a different default project, default region, and active user account. Which gcloud CLI feature lets the engineer instantly switch between these entire sets of settings without re-entering each value every time?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. Running gcloud config set project repeatedly for each individual property before starting work on a client</button><button class="opt" onclick="answer(this,4,1,3)">B. Maintaining separate .boto configuration files, one per client, and pointing BOTO_CONFIG at the correct file</button><button class="opt" onclick="answer(this,4,2,3)">C. Opening a separate Cloud Shell browser tab per client, since each tab maintains an independent environment automatically</button><button class="opt" onclick="answer(this,4,3,3)">D. Named gcloud configurations, created with gcloud config configurations create and switched using gcloud config configurations activate</button>
+    <div class="expl">Named gcloud configurations bundle project, region/zone, and active account into a single named profile. gcloud config configurations activate CONFIG_NAME switches the entire active set instantly.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Setting Up a Cloud Solution Environment">
+    <div class="meta">Question 6 of 6 · Setting Up a Cloud Solution Environment</div>
+    <div class="q">Which statement correctly differentiates a Google Cloud 'folder' from a 'project' in the resource hierarchy?</div>
+    <button class="opt" onclick="answer(this,5,0,2)">A. Folders can be directly linked to a billing account, while projects cannot be linked to a billing account</button><button class="opt" onclick="answer(this,5,1,2)">B. Every organization must use folders, and it is not possible to create a project directly under the organization node without a folder</button><button class="opt" onclick="answer(this,5,2,2)">C. Projects are the containers where billable resources are actually deployed and billing is attached, while folders are purely organizational containers used to group projects and other folders for policy management</button><button class="opt" onclick="answer(this,5,3,2)">D. Projects can contain folders as child resources, but folders can never contain projects</button>
+    <div class="expl">Projects are the fundamental unit for billing and resource deployment in Google Cloud. Folders exist purely to group projects and other folders for applying IAM policies and organization policies consistently — they hold no billable resources themselves.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$99.99</span> <span class="price">$34.99</span> with code <span class="code">FREETEST33</span> — valid through September 14.</p>
+  <a href="https://www.udemy.com/course/google-cloud-ace-associate-cloud-engineer-exam-prep/?couponCode=FREETEST33" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Data Engineering, ML Foundations, and Deep Learning Essentials Practice Questions — GSDC Certified Forward Deployed Engineer</title>
+<meta name="description" content="6 free Data Engineering, ML Foundations, and Deep Learning Essentials practice questions with explanations for the GSDC Certified Forward Deployed Engineer exam.">
+<link rel="canonical" href="https://technuggets.academy/cfde-data-engineering-ml-foundations-and-deep-learning-essentials.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Data Engineering, ML Foundations, and Deep Learning Essentials Practice Questions — GSDC Certified Forward Deployed Engineer">
+<meta property="og:description" content="6 free Data Engineering, ML Foundations, and Deep Learning Essentials practice questions with explanations for the GSDC Certified Forward Deployed Engineer exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/cfde-data-engineering-ml-foundations-and-deep-learning-essentials.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Data Engineering, ML Foundations, and Deep Learning Essentials</h1>
+<p class="sub">Free GSDC Certified Forward Deployed Engineer practice — 6 questions on <strong>Data Engineering, ML Foundations, and Deep Learning Essentials</strong>, with explanations. No sign-up.
+<a href="cfde.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Data Engineering, ML Foundations, and Deep Learning Essentials">
+    <div class="meta">Question 1 of 6 · Data Engineering, ML Foundations, and Deep Learning Essentials</div>
+    <div class="q">A fintech company processes credit card transactions and must flag potential fraud within 200ms of each transaction occurring, using continuously updated behavioral features. Which data pipeline pattern BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. A streaming pipeline (e.g., Kafka + stream processor) that computes and scores features in real time as events arrive</button><button class="opt" onclick="answer(this,0,1,0)">B. Nightly batch ETL job that recomputes fraud scores for all transactions from the previous day</button><button class="opt" onclick="answer(this,0,2,0)">C. Micro-batch processing every 15 minutes using scheduled Spark jobs</button><button class="opt" onclick="answer(this,0,3,0)">D. An ELT pipeline that loads raw transactions into a data warehouse for the fraud analytics team to query on demand</button>
+    <div class="expl">A streaming pipeline processes events as they arrive and can score fraud within milliseconds, meeting the 200ms latency requirement with continuously updated features.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Data Engineering, ML Foundations, and Deep Learning Essentials">
+    <div class="meta">Question 2 of 6 · Data Engineering, ML Foundations, and Deep Learning Essentials</div>
+    <div class="q">A team building a RAG chatbot needs to store 2 million document chunks and retrieve the most semantically similar chunks to a user's query in milliseconds. Which storage solution is the BEST fit?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. Relational SQL database with full-text search indexes</button><button class="opt" onclick="answer(this,1,1,2)">B. Key-value NoSQL store like Redis for caching</button><button class="opt" onclick="answer(this,1,2,2)">C. Vector database using approximate nearest neighbor (ANN) search</button><button class="opt" onclick="answer(this,1,3,2)">D. In-memory JSON store with linear string matching</button>
+    <div class="expl">Vector databases index embeddings using ANN algorithms (e.g., HNSW), enabling fast semantic similarity search at millions-of-vectors scale, which is exactly what RAG retrieval requires.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Data Engineering, ML Foundations, and Deep Learning Essentials">
+    <div class="meta">Question 3 of 6 · Data Engineering, ML Foundations, and Deep Learning Essentials</div>
+    <div class="q">You are tuning a binary classifier for a highly imbalanced dataset (2% positive class) using k-fold cross-validation. Which configuration choice is MOST important to avoid biased performance estimates?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. Increase k to 20 folds instead of 5 to get more granular estimates</button><button class="opt" onclick="answer(this,2,1,3)">B. Use leave-one-out cross-validation to maximize training data per fold</button><button class="opt" onclick="answer(this,2,2,3)">C. Use a single 80/20 train-test split instead of k-fold cross-validation</button><button class="opt" onclick="answer(this,2,3,3)">D. Use stratified k-fold so each fold preserves the original class ratio</button>
+    <div class="expl">Stratified k-fold ensures every fold maintains the same 2% positive-class ratio as the full dataset, preventing folds that contain zero or very few positive examples and producing more reliable evaluation metrics.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Data Engineering, ML Foundations, and Deep Learning Essentials">
+    <div class="meta">Question 4 of 6 · Data Engineering, ML Foundations, and Deep Learning Essentials</div>
+    <div class="q">What is the primary advantage of the self-attention mechanism in transformer architectures compared to the sequential processing in RNNs?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. It allows the model to compute relationships between all tokens in a sequence in parallel, capturing long-range dependencies more efficiently</button><button class="opt" onclick="answer(this,3,1,0)">B. It eliminates the need for positional information about word order</button><button class="opt" onclick="answer(this,3,2,0)">C. It reduces model size by removing the need for embeddings</button><button class="opt" onclick="answer(this,3,3,0)">D. It guarantees lower training loss than any RNN-based architecture</button>
+    <div class="expl">Self-attention computes weighted relationships between every pair of tokens simultaneously, enabling parallel computation (unlike RNNs' step-by-step processing) and directly modeling long-range dependencies without vanishing-gradient issues.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Data Engineering, ML Foundations, and Deep Learning Essentials">
+    <div class="meta">Question 5 of 6 · Data Engineering, ML Foundations, and Deep Learning Essentials</div>
+    <div class="q">A data scientist trained a model last quarter that performed well, but the team can no longer reproduce those exact results despite having the saved model file. Which combination of logged artifacts would have MOST reliably ensured reproducibility?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. Model accuracy score and confusion matrix screenshot</button><button class="opt" onclick="answer(this,4,1,3)">B. The final trained model weights only</button><button class="opt" onclick="answer(this,4,2,3)">C. A written summary of the modeling approach in a shared document</button><button class="opt" onclick="answer(this,4,3,3)">D. Code commit hash, exact dataset version/hash, hyperparameters, and library/environment versions</button>
+    <div class="expl">True reproducibility requires capturing the exact code version, dataset snapshot, hyperparameters, and environment/library versions — this is precisely what experiment tracking tools like MLflow or Weights &amp; Biases are designed to log automatically.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Data Engineering, ML Foundations, and Deep Learning Essentials">
+    <div class="meta">Question 6 of 6 · Data Engineering, ML Foundations, and Deep Learning Essentials</div>
+    <div class="q">A company wants to automatically route incoming support tickets into exactly 5 fixed categories based on well-defined keyword rules (e.g., the word 'refund' in a ticket always maps to 'Billing'), and these rules rarely change. Which approach is MOST appropriate?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. Deploy a rule-based system using keyword/pattern matching</button><button class="opt" onclick="answer(this,5,1,0)">B. Fine-tune a large language model for ticket classification</button><button class="opt" onclick="answer(this,5,2,0)">C. Train a deep learning transformer classifier from scratch</button><button class="opt" onclick="answer(this,5,3,0)">D. Use a vector database with semantic similarity search to find the closest category</button>
+    <div class="expl">When categories are few, fixed, and mapped by clear deterministic keyword rules that rarely change, a rule-based system is the simplest, cheapest, most maintainable, and fully explainable solution — exactly the scenario where the exam expects you to avoid over-engineering with ML/LLM.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$109.99</span> <span class="price">$34.99</span> with code <span class="code">FREETEST33</span> — valid through September 14.</p>
+  <a href="https://www.udemy.com/course/gsdc-cfde-certification-forward-deployed-engineer-prep/?couponCode=FREETEST33" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

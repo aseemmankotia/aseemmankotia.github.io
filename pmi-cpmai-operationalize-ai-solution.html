@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Operationalize AI Solution Practice Questions — PMI Certified Professional in Managing AI</title>
+<meta name="description" content="6 free Operationalize AI Solution practice questions with explanations for the PMI Certified Professional in Managing AI exam.">
+<link rel="canonical" href="https://technuggets.academy/pmi-cpmai-operationalize-ai-solution.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Operationalize AI Solution Practice Questions — PMI Certified Professional in Managing AI">
+<meta property="og:description" content="6 free Operationalize AI Solution practice questions with explanations for the PMI Certified Professional in Managing AI exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/pmi-cpmai-operationalize-ai-solution.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Operationalize AI Solution</h1>
+<p class="sub">Free PMI Certified Professional in Managing AI practice — 6 questions on <strong>Operationalize AI Solution</strong>, with explanations. No sign-up.
+<a href="pmi-cpmai.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Operationalize AI Solution">
+    <div class="meta">Question 1 of 6 · Operationalize AI Solution</div>
+    <div class="q">A fraud-detection model has been deployed to production for six months. The model's precision has dropped from 0.91 to 0.68, but investigation shows the input feature distributions remain statistically unchanged from training data. The relationship between transaction patterns and fraud outcomes has shifted due to new fraud tactics. Which phenomenon is occurring, and what governance action is MOST appropriate?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. Data drift is occurring; the team should re-validate the data pipeline for schema errors before taking further action</button><button class="opt" onclick="answer(this,0,1,1)">B. Concept drift is occurring; the team should trigger scheduled retraining with updated labeled data reflecting the new fraud patterns</button><button class="opt" onclick="answer(this,0,2,1)">C. Model decay from infrastructure latency is occurring; the team should scale up compute resources serving the model</button><button class="opt" onclick="answer(this,0,3,1)">D. Label leakage occurred during original training; the team should roll back to a previous model version immediately</button>
+    <div class="expl">When input feature distributions are stable but the underlying relationship between inputs and the target outcome has changed, this is concept drift, not data drift. The correct governance response is retraining with fresh, representative labeled data capturing the new pattern.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Operationalize AI Solution">
+    <div class="meta">Question 2 of 6 · Operationalize AI Solution</div>
+    <div class="q">An organization is deploying a new AI-powered loan-approval model to replace a legacy rules engine. Leadership wants to validate the model's real-world behavior on live production traffic without exposing customers to any risk if the model performs poorly. Which deployment strategy BEST satisfies this requirement?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. Blue-green deployment, cutting over 100% of traffic to the new model at a scheduled release window</button><button class="opt" onclick="answer(this,1,1,3)">B. Canary deployment, routing 5% of live customer traffic to the new model and monitoring outcomes</button><button class="opt" onclick="answer(this,1,2,3)">C. A/B testing, randomly splitting all customers 50/50 between the legacy engine and new model for final decisions</button><button class="opt" onclick="answer(this,1,3,3)">D. Shadow deployment, running the new model in parallel on live traffic while the legacy engine continues making all actual decisions</button>
+    <div class="expl">Shadow deployment runs the new model alongside the incumbent system on real production inputs, generating predictions for comparison without those predictions ever driving actual customer-facing decisions, eliminating customer risk entirely.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Operationalize AI Solution">
+    <div class="meta">Question 3 of 6 · Operationalize AI Solution</div>
+    <div class="q">A CPMAI practitioner is finalizing the model governance plan for a production churn-prediction model. Which trigger condition should be explicitly configured to initiate an unscheduled retraining cycle, rather than waiting for the next scheduled retraining interval?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. Monitoring dashboards detect that a performance metric has crossed a predefined degradation threshold indicating drift</button><button class="opt" onclick="answer(this,2,1,0)">B. The model's serving infrastructure completes a routine security patch with no downtime</button><button class="opt" onclick="answer(this,2,2,0)">C. A new engineer joins the MLOps team and requests access to the model repository</button><button class="opt" onclick="answer(this,2,3,0)">D. The quarterly stakeholder report is due for submission to the steering committee</button>
+    <div class="expl">Threshold-based alerting tied to monitored performance metrics is the correct configuration for triggering unscheduled, event-driven retraining, ensuring the model is refreshed as soon as measurable degradation is detected rather than waiting on a fixed calendar.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Operationalize AI Solution">
+    <div class="meta">Question 4 of 6 · Operationalize AI Solution</div>
+    <div class="q">During post-deployment monitoring, an AI-driven inventory-forecasting model begins producing recommendations that lead to significant stockouts across multiple warehouses within 48 hours of a new version release. The contingency plan for this solution defines an incident response procedure. What should the team do FIRST, according to CPMAI contingency planning best practices?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. Immediately notify the executive steering committee and schedule a lessons-learned retrospective meeting</button><button class="opt" onclick="answer(this,3,1,2)">B. Begin retraining a new model version from scratch using the most recent 90 days of inventory data</button><button class="opt" onclick="answer(this,3,2,2)">C. Execute the predefined rollback procedure to revert to the last known-stable model version while the incident is investigated</button><button class="opt" onclick="answer(this,3,3,2)">D. Update the final project report to document the incident for future reference</button>
+    <div class="expl">Contingency plans for AI incidents should define an immediate mitigation step—typically rollback to a known-stable version—to halt business harm first, before root-cause analysis, retraining, or reporting activities proceed.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Operationalize AI Solution">
+    <div class="meta">Question 5 of 6 · Operationalize AI Solution</div>
+    <div class="q">As a project transitions from the project delivery team to operational support (BAU), the CPMAI transition plan must define clear ownership. Six weeks after go-live, a model's prediction latency begins exceeding SLA thresholds. No one on the support team acted for two days because it was unclear who owned infrastructure-level performance monitoring versus who owned model-quality monitoring. What gap does this scenario BEST illustrate?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. An absence of clearly defined roles and responsibilities (e.g., RACI) in the transition plan for ongoing operational ownership</button><button class="opt" onclick="answer(this,4,1,0)">B. A failure to configure automated threshold alerting on the monitoring dashboard</button><button class="opt" onclick="answer(this,4,2,0)">C. An insufficient data preparation phase that failed to account for latency requirements</button><button class="opt" onclick="answer(this,4,3,0)">D. A missed opportunity to include the issue in the final project report and lessons learned</button>
+    <div class="expl">The delay resulted from ambiguity about who was responsible for acting on the alert, not a lack of detection. This is a classic gap in the transition plan's role definitions (RACI), which CPMAI stresses must be explicit when handing off from project team to operational support.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Operationalize AI Solution">
+    <div class="meta">Question 6 of 6 · Operationalize AI Solution</div>
+    <div class="q">An organization's AI governance framework requires quarterly disaster recovery (DR) testing for all production AI solutions classified as business-critical. During a scheduled DR test, the team simulates a full outage of the model-serving endpoint. Which outcome would indicate the contingency plan is functioning as intended?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. The fallback mechanism (e.g., cached predictions or rules-based backup) activates automatically and business operations continue within the defined recovery time objective</button><button class="opt" onclick="answer(this,5,1,0)">B. The test is postponed because simulating an outage on a live business-critical system is too risky to attempt</button><button class="opt" onclick="answer(this,5,2,0)">C. The model automatically retrains itself using synthetic data generated during the outage simulation</button><button class="opt" onclick="answer(this,5,3,0)">D. The incident is logged for the annual audit but no failover action occurs during the test itself</button>
+    <div class="expl">A successful DR test validates that predefined failover mechanisms (backup rules engine, cached results, redundant endpoints, etc.) activate and restore business continuity within the recovery time objective, which is the actual purpose of regular contingency plan testing.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$109.99</span> <span class="price">$34.99</span> with code <span class="code">FREETEST33</span> — valid through September 14.</p>
+  <a href="https://www.udemy.com/course/pmi-cpmai-certification-exam-prep-masterclass/?couponCode=FREETEST33" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

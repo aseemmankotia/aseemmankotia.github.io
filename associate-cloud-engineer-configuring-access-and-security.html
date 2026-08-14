@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Configuring Access and Security Practice Questions — Google Cloud Certified - Associate Cloud Engineer</title>
+<meta name="description" content="6 free Configuring Access and Security practice questions with explanations for the Google Cloud Certified - Associate Cloud Engineer exam.">
+<link rel="canonical" href="https://technuggets.academy/associate-cloud-engineer-configuring-access-and-security.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Configuring Access and Security Practice Questions — Google Cloud Certified - Associate Cloud Engineer">
+<meta property="og:description" content="6 free Configuring Access and Security practice questions with explanations for the Google Cloud Certified - Associate Cloud Engineer exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/associate-cloud-engineer-configuring-access-and-security.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#4285F4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Configuring Access and Security</h1>
+<p class="sub">Free Google Cloud Certified - Associate Cloud Engineer practice — 6 questions on <strong>Configuring Access and Security</strong>, with explanations. No sign-up.
+<a href="associate-cloud-engineer.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Configuring Access and Security">
+    <div class="meta">Question 1 of 6 · Configuring Access and Security</div>
+    <div class="q">A contractor's automation script running on Compute Engine needs to call APIs as a service account named data-pipeline-sa@project.iam.gserviceaccount.com, but company policy prohibits downloading or distributing service account key files. The contractor's own user account already has the Editor role on the project. What is the correct way to let the contractor's user account act as data-pipeline-sa without creating a key file?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. Grant the contractor's user account the roles/iam.serviceAccountTokenCreator role on data-pipeline-sa, then use gcloud with --impersonate-service-account</button><button class="opt" onclick="answer(this,0,1,0)">B. Grant the contractor's user account the roles/iam.serviceAccountUser role on the project, then export GOOGLE_APPLICATION_CREDENTIALS to the contractor's own credentials</button><button class="opt" onclick="answer(this,0,2,0)">C. Attach data-pipeline-sa directly to the contractor's user account using gcloud iam service-accounts add-iam-policy-binding with role roles/owner</button><button class="opt" onclick="answer(this,0,3,0)">D. Create a new key for data-pipeline-sa, encrypt it with Cloud KMS, and store it in Secret Manager for the contractor to decrypt on demand</button>
+    <div class="expl">Service account impersonation requires the principal to hold roles/iam.serviceAccountTokenCreator on the target service account (or a role containing that permission). Once granted, the user can run gcloud commands with --impersonate-service-account or generate short-lived tokens via generateAccessToken, with no key file ever created or downloaded.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Configuring Access and Security">
+    <div class="meta">Question 2 of 6 · Configuring Access and Security</div>
+    <div class="q">You need to grant a third-party auditor's group temporary read-only access (roles/viewer) to a project, but the access must automatically stop working after exactly 30 days without requiring anyone to manually revoke the IAM binding. Which approach satisfies this with the least operational overhead?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. Grant roles/viewer to the group with an IAM condition using request.time.toDate() &lt; timestamp('2026-XX-XXT00:00:00Z') as the expression</button><button class="opt" onclick="answer(this,1,1,0)">B. Grant roles/viewer to the group and create a Cloud Scheduler job that runs gcloud projects remove-iam-policy-binding after 30 days</button><button class="opt" onclick="answer(this,1,2,0)">C. Create a custom role identical to Viewer but with a 30-day validity metadata field set in the role definition</button><button class="opt" onclick="answer(this,1,3,0)">D. Grant roles/viewer to the group and set an object lifecycle rule on the project resource to delete the binding after 30 days</button>
+    <div class="expl">IAM Conditions allow attaching a CEL (Common Expression Language) expression, such as a request.time comparison against an expiration timestamp, directly to a role binding. Once the condition evaluates false, the binding no longer grants access — no manual cleanup or external automation is required.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Configuring Access and Security">
+    <div class="meta">Question 3 of 6 · Configuring Access and Security</div>
+    <div class="q">A team lead runs `gcloud iam roles create customReader --project=my-project --permissions=storage.objects.get,storage.objects.list` without specifying a --stage flag. What launch stage will the resulting custom role have by default?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. GA (General Availability)</button><button class="opt" onclick="answer(this,2,1,3)">B. BETA</button><button class="opt" onclick="answer(this,2,2,3)">C. DISABLED</button><button class="opt" onclick="answer(this,2,3,3)">D. ALPHA</button>
+    <div class="expl">When creating a custom role via gcloud iam roles create without an explicit --stage flag, the default launch stage is ALPHA. Roles in ALPHA stage are functional but marked as not production-ready and Google recommends explicitly setting the stage for clarity; this default is a specific detail the exam tests.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Configuring Access and Security">
+    <div class="meta">Question 4 of 6 · Configuring Access and Security</div>
+    <div class="q">Your security team wants to enforce, at the organization level, that no user or service account anywhere in the org can ever create a new user-managed service account key (JSON or P12), forcing all workloads to use Workload Identity or impersonation instead. Which control should they apply?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. Set an IAM Deny policy at the organization node denying iam.serviceAccounts.getAccessToken to all principals</button><button class="opt" onclick="answer(this,3,1,2)">B. Remove the roles/iam.serviceAccountKeyAdmin role from every predefined role across the organization</button><button class="opt" onclick="answer(this,3,2,2)">C. Set the organization policy constraint constraints/iam.disableServiceAccountKeyCreation to enforced at the organization node</button><button class="opt" onclick="answer(this,3,3,2)">D. Enable VPC Service Controls with a perimeter that blocks the iam.googleapis.com API for all projects</button>
+    <div class="expl">constraints/iam.disableServiceAccountKeyCreation is a boolean organization policy that, when enforced at the org node, blocks creation of new user-managed service account keys across all projects and folders that inherit the policy, which is exactly the described requirement.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Configuring Access and Security">
+    <div class="meta">Question 5 of 6 · Configuring Access and Security</div>
+    <div class="q">A compliance auditor asks you to produce a log showing every time a specific object inside a Cloud Storage bucket was read (downloaded) over the past week, including by service accounts. Which Cloud Audit Logs log type contains this information, and what must be true for it to exist?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. Admin Activity audit logs, which are always enabled by default with no configuration needed</button><button class="opt" onclick="answer(this,4,1,2)">B. System Event audit logs, which are always enabled by default and record all read operations</button><button class="opt" onclick="answer(this,4,2,2)">C. Data Access audit logs, which must be explicitly enabled for Cloud Storage since they are off by default</button><button class="opt" onclick="answer(this,4,3,2)">D. Policy Denied audit logs, which capture every successful and denied read request automatically</button>
+    <div class="expl">Reading (downloading) an object's data is a data access operation, captured in Data Access audit logs. Unlike Admin Activity logs, Data Access logs for most services (including Cloud Storage) are disabled by default and must be explicitly enabled due to their volume and potential cost, which the exam tests as a key distinction.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Configuring Access and Security">
+    <div class="meta">Question 6 of 6 · Configuring Access and Security</div>
+    <div class="q">A folder named Finance contains Project A, where a user has been granted roles/editor directly at the project level. Leadership now wants to guarantee that this specific user can never access Project A's resources, even if someone later grants them additional roles on Project A in the future, without changing or removing their existing Editor binding elsewhere in the org. Which mechanism should you use?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. Move Project A to a different folder with a more restrictive IAM policy inherited from the new parent</button><button class="opt" onclick="answer(this,5,1,3)">B. Change the user's role binding at the project level from roles/editor to roles/viewer</button><button class="opt" onclick="answer(this,5,2,3)">C. Apply an organization policy constraint that restricts which roles can be granted on Project A</button><button class="opt" onclick="answer(this,5,3,3)">D. Create an IAM Deny policy on Project A (or the Finance folder) that denies all permissions to that specific user, with no exceptions</button>
+    <div class="expl">IAM Deny policies are evaluated before allow policies and take precedence regardless of what allow bindings exist or are added later, at any level of the hierarchy. Creating a deny policy targeting that specific user on Project A (or an ancestor like the Finance folder) guarantees they cannot access the project's resources, satisfying a 'future-proof' block without touching the existing Editor binding.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$99.99</span> <span class="price">$34.99</span> with code <span class="code">FREETEST33</span> — valid through September 14.</p>
+  <a href="https://www.udemy.com/course/google-cloud-ace-associate-cloud-engineer-exam-prep/?couponCode=FREETEST33" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

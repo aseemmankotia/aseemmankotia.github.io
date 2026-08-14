@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://aseemmankotia.github.io/sitemap.xml
+Sitemap: https://technuggets.academy/sitemap.xml

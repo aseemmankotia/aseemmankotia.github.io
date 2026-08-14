@@ -1,0 +1,123 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free GSDC Certified Forward Deployed Engineer Practice Test — 12 Real Exam-Style Questions</title>
+<meta name="description" content="Free GSDC Certified Forward Deployed Engineer practice questions with detailed explanations. Test yourself before the real exam.">
+<link rel="canonical" href="https://technuggets.academy/cfde.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free GSDC Certified Forward Deployed Engineer Practice Test — 12 Real Exam-Style Questions">
+<meta property="og:description" content="Free GSDC Certified Forward Deployed Engineer practice questions with detailed explanations. Test yourself before the real exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/cfde.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div><div class="hero">
+  <span class="chip">CFDE</span>
+  <h1>Free GSDC Certified Forward Deployed Engineer Practice Test</h1>
+  <p class="sub">12 exam-style questions with full explanations — no sign-up. Score yourself, then close your gaps with the full course.</p>
+  <div class="facts"><span class="fact">Exam fee <b>~$400</b></span><span class="fact"><b>6</b> exam domains</span><span class="fact">Level <b>Intermediate</b></span><span class="fact"><b>2</b> timed practice tests in the course</span></div>
+  <div class="cta-row"><a class="btn enroll" href="https://www.udemy.com/course/gsdc-cfde-certification-forward-deployed-engineer-prep/?couponCode=FREETEST33" rel="sponsored" target="_blank">Get my $34.99 deal →</a><a class="btn ghost" href="#practice">Try the free test →</a><span class="urgency">⏳ Deal ends September 14</span></div>
+</div><div class="trust"><span>✅ <b>Free</b> practice — no sign-up</span><span>📝 Real exam-style questions</span><span>💡 Detailed explanations</span><span>💸 30-day money-back via Udemy</span></div>
+<div id="practice"></div>
+
+  <div class="card qcard" id="q0" data-domain="FDE Mindset and Problem Structuring">
+    <div class="meta">Question 1 of 12 · FDE Mindset and Problem Structuring</div>
+    <div class="q">A Forward Deployed Engineer (FDE) is embedded on-site with a logistics client. The VP of Operations says, &quot;Our dispatch process is chaotic and costing us money — fix it with AI.&quot; There is no defined dataset, no clear metric, and three different teams describe the problem differently. What should the FDE do FIRST?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. Ask the client's data team to export all dispatch logs so a predictive model can be trained immediately</button><button class="opt" onclick="answer(this,0,1,3)">B. Recommend the client purchase a commercial dispatch-optimization SaaS product to avoid building anything custom</button><button class="opt" onclick="answer(this,0,2,3)">C. Build a quick proof-of-concept model using whatever data is available so the client can see visible progress within the first week</button><button class="opt" onclick="answer(this,0,3,3)">D. Decompose the stated problem into its component sub-processes and interview each of the three teams to identify where their descriptions converge and diverge before proposing any technical solution</button>
+    <div class="expl">The FDE mindset requires structuring an ambiguous problem before reaching for technology. When three teams describe the same problem differently, the correct first move is problem decomposition and reconciling conflicting inputs (a MECE-style breakdown) to find the real, well-defined problem before any modeling or tooling decision is made.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Production Python, Backend Development, and API Design">
+    <div class="meta">Question 2 of 12 · Production Python, Backend Development, and API Design</div>
+    <div class="q">A team is building a FastAPI microservice where every route handler needs a validated database session that must be properly closed after the response is sent, and the team also needs to be able to swap in a mock session during unit tests. Which approach BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,1,0,1)">A. Open a new database connection manually at the start of every route handler function and close it explicitly at the end of the handler body</button><button class="opt" onclick="answer(this,1,1,1)">B. Define a dependency function that uses `yield` to provide a database session, wrapped with FastAPI's `Depends()`, so the session is closed after the response is sent and can be overridden in tests</button><button class="opt" onclick="answer(this,1,2,1)">C. Open a single global database connection at application startup and reuse it across all requests without per-request scoping</button><button class="opt" onclick="answer(this,1,3,1)">D. Use middleware to attach a new database connection to `request.state` for each incoming request, without adding any explicit connection-closing logic</button>
+    <div class="expl">A generator-based dependency with `yield`, injected via `Depends()`, gives FastAPI clean setup/teardown semantics — code before `yield` runs on request start, code after runs after the response — and FastAPI's dependency_overrides mechanism lets tests substitute a fake session without touching route code.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Data Engineering, ML Foundations, and Deep Learning Essentials">
+    <div class="meta">Question 3 of 12 · Data Engineering, ML Foundations, and Deep Learning Essentials</div>
+    <div class="q">A retail company ingests raw clickstream data into a cloud data warehouse with virtually unlimited elastic compute and storage (e.g., Snowflake). They want to preserve the raw, unaltered data for future reprocessing needs and let analysts transform it using SQL directly inside the warehouse. Which approach BEST fits this requirement?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. ELT — load the raw data into the warehouse first, then transform it using the warehouse's native SQL compute</button><button class="opt" onclick="answer(this,2,1,0)">B. ETL — transform the data on a separate on-premises server before loading it into the warehouse</button><button class="opt" onclick="answer(this,2,2,0)">C. ELT — stage the raw data in a NoSQL document store and transform it there before loading to the warehouse</button><button class="opt" onclick="answer(this,2,3,0)">D. ETL — stream pre-transformed events directly into a dashboard, bypassing the warehouse</button>
+    <div class="expl">Modern cloud warehouses with elastic, cheap compute favor ELT: load raw data first, then transform in-place with SQL. This preserves the raw source for reprocessing and offloads transformation to scalable warehouse compute — the exact scenario described.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Prompt Engineering, LLM Workflows, and RAG">
+    <div class="meta">Question 4 of 12 · Prompt Engineering, LLM Workflows, and RAG</div>
+    <div class="q">A team builds a RAG system over 500-page legal contracts. Users ask about a payment-terms clause but the system returns text about an unrelated warranty section. The pipeline uses fixed 512-token chunks with zero overlap and retrieves the top-3 chunks by cosine similarity. Which change is MOST likely to fix this?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. Increase chunk size to 4000 tokens so more context is captured per chunk</button><button class="opt" onclick="answer(this,3,1,1)">B. Switch to semantic or structure-aware chunking with overlap so individual clauses stay intact within a chunk</button><button class="opt" onclick="answer(this,3,2,1)">C. Increase top-k retrieval to 20 chunks so the correct one is more likely included</button><button class="opt" onclick="answer(this,3,3,1)">D. Replace the generation LLM with a larger, more capable model</button>
+    <div class="expl">Fixed-size chunking with no overlap frequently splits a clause across two chunks or mixes unrelated clauses together, destroying the semantic unit an embedding needs to represent accurately. Structure-aware chunking (splitting on clause/section boundaries) plus overlap keeps each clause coherent, so its embedding is a faithful representation and retrieval precision improves.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Agentic Systems, Rapid Prototyping, and Cloud Deployment">
+    <div class="meta">Question 5 of 12 · Agentic Systems, Rapid Prototyping, and Cloud Deployment</div>
+    <div class="q">A client needs an automated system to process incoming invoices: extract vendor name, amount, and date, validate against a fixed set of business rules, and route to one of three approval queues. The steps never change and must run in under 200ms with 100% predictable behavior. Which approach BEST fits this requirement?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. Use a deterministic pipeline with direct function calls for extraction, validation, and routing — no agent reasoning loop</button><button class="opt" onclick="answer(this,4,1,0)">B. Build a multi-agent system with a planner agent and an executor agent for flexibility</button><button class="opt" onclick="answer(this,4,2,0)">C. Use a ReAct-style agent with tool calling and automatic retries</button><button class="opt" onclick="answer(this,4,3,0)">D. Use a LangChain agent configured with long-term memory to learn invoice patterns over time</button>
+    <div class="expl">When steps are fixed, well-defined, and require low-latency deterministic behavior, a straightforward pipeline of function calls is faster, cheaper, and more predictable than an agent loop — this is the core 'when NOT to use agents' judgment call the exam tests.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Client Engagement, Consulting, and Demo Delivery">
+    <div class="meta">Question 6 of 12 · Client Engagement, Consulting, and Demo Delivery</div>
+    <div class="q">A mid-size retailer's VP of Operations requests a live demo of an AI inventory forecasting tool for the executive team next week. During prep, the FDE discovers the model's accuracy has degraded due to recent data drift. What is the BEST next step?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. Proceed with the demo using cached historical outputs so the issue isn't visible to executives</button><button class="opt" onclick="answer(this,5,1,3)">B. Cancel the entire engagement, citing unacceptable technical risk</button><button class="opt" onclick="answer(this,5,2,3)">C. Postpone indefinitely without giving the client a reason, until the model is fully retrained</button><button class="opt" onclick="answer(this,5,3,3)">D. Inform the stakeholder transparently, propose a demo with clearly caveated or delayed-refresh data, and present a concrete mitigation timeline</button>
+    <div class="expl">Transparency paired with a concrete mitigation plan preserves trust while still respecting the executive's time investment — this is the core of crisis management protocol for FDEs.</div>
+  </div>
+
+  <div class="card qcard" id="q6" data-domain="FDE Mindset and Problem Structuring">
+    <div class="meta">Question 7 of 12 · FDE Mindset and Problem Structuring</div>
+    <div class="q">Which statement most accurately distinguishes the Forward Deployed Engineer (FDE) role from a traditional Solutions Architect role, per the GSDC CFDE framing?</div>
+    <button class="opt" onclick="answer(this,6,0,3)">A. An FDE only writes documentation and design diagrams, while a Solutions Architect writes and ships production code</button><button class="opt" onclick="answer(this,6,1,3)">B. An FDE exclusively works on internal company infrastructure, while a Solutions Architect only works with external clients</button><button class="opt" onclick="answer(this,6,2,3)">C. An FDE and a Solutions Architect perform an identical function, differing only in job title used by the employer</button><button class="opt" onclick="answer(this,6,3,3)">D. An FDE is embedded directly with the client, iterating hands-on through both business translation and implementation of the solution, whereas a Solutions Architect typically designs the technical architecture and hands off implementation to other delivery teams</button>
+    <div class="expl">The CFDE framing positions the FDE as a hybrid engineer-consultant embedded with the client, doing both business-to-technical translation and hands-on implementation/iteration, unlike a Solutions Architect who typically focuses on high-level architecture and design and hands off build work to other teams.</div>
+  </div>
+
+  <div class="card qcard" id="q7" data-domain="Production Python, Backend Development, and API Design">
+    <div class="meta">Question 8 of 12 · Production Python, Backend Development, and API Design</div>
+    <div class="q">In production, Service A makes a synchronous REST call to Service B on every incoming request. When Service B experiences high latency, Service A's worker threads block waiting on the response, and the entire system becomes unresponsive. Which change BEST improves the resilience of this inter-service communication?</div>
+    <button class="opt" onclick="answer(this,7,0,0)">A. Wrap the call to Service B in a circuit breaker that enforces a request timeout and returns a fallback response when Service B is unhealthy or slow</button><button class="opt" onclick="answer(this,7,1,0)">B. Increase the HTTP client timeout in Service A's calls to Service B so requests have more time to complete</button><button class="opt" onclick="answer(this,7,2,0)">C. Migrate Service B to a faster database engine to reduce its response times</button><button class="opt" onclick="answer(this,7,3,0)">D. Deploy additional instances of Service A behind a load balancer to handle more concurrent blocked requests</button>
+    <div class="expl">A circuit breaker with an enforced timeout fails fast when Service B is unhealthy, prevents Service A's threads from blocking indefinitely, and lets the system degrade gracefully with a fallback response instead of cascading into total unavailability.</div>
+  </div>
+
+  <div class="card qcard" id="q8" data-domain="Data Engineering, ML Foundations, and Deep Learning Essentials">
+    <div class="meta">Question 9 of 12 · Data Engineering, ML Foundations, and Deep Learning Essentials</div>
+    <div class="q">A bank must detect fraudulent transactions and block them within 200 milliseconds of occurrence, before the transaction settles. Which pipeline pattern should the FDE recommend?</div>
+    <button class="opt" onclick="answer(this,8,0,2)">A. A nightly batch job using Spark to aggregate the day's transactions</button><button class="opt" onclick="answer(this,8,1,2)">B. A micro-batch job that runs every 15 minutes</button><button class="opt" onclick="answer(this,8,2,2)">C. A streaming pipeline using a message broker (e.g., Kafka) with real-time stream processing</button><button class="opt" onclick="answer(this,8,3,2)">D. A manual daily export/import process using CSV files</button>
+    <div class="expl">A sub-second latency requirement (200ms) can only be met by a true streaming architecture with an event broker and real-time stream processors that act on each event as it arrives.</div>
+  </div>
+
+  <div class="card qcard" id="q9" data-domain="Prompt Engineering, LLM Workflows, and RAG">
+    <div class="meta">Question 10 of 12 · Prompt Engineering, LLM Workflows, and RAG</div>
+    <div class="q">A team is moving a RAG prototype into production. Production requirements are: horizontal scalability to tens of millions of vectors, built-in metadata filtering on queries, multi-region replication, and no infrastructure operated by the team itself. Which option BEST satisfies these requirements?</div>
+    <button class="opt" onclick="answer(this,9,0,2)">A. FAISS, used as an in-process library within the application server</button><button class="opt" onclick="answer(this,9,1,2)">B. Chroma running as an embedded local instance on a single machine</button><button class="opt" onclick="answer(this,9,2,2)">C. Pinecone, a fully managed vector database service</button><button class="opt" onclick="answer(this,9,3,2)">D. A relational database with a manually written cosine-similarity SQL function</button>
+    <div class="expl">Pinecone is a fully managed, cloud-hosted vector database offering automatic horizontal scaling, native metadata filtering, and multi-region replication without the team managing servers -- exactly matching the stated production requirements.</div>
+  </div>
+
+  <div class="card qcard" id="q10" data-domain="Agentic Systems, Rapid Prototyping, and Cloud Deployment">
+    <div class="meta">Question 11 of 12 · Agentic Systems, Rapid Prototyping, and Cloud Deployment</div>
+    <div class="q">In a multi-agent system, a 'researcher' agent and a 'critic' agent keep passing the same task back and forth, each rejecting the other's output without converging, and the process never terminates. What is the BEST first fix?</div>
+    <button class="opt" onclick="answer(this,10,0,3)">A. Add a third agent to break the tie between the researcher and critic</button><button class="opt" onclick="answer(this,10,1,3)">B. Increase the temperature setting so the agents generate more varied responses</button><button class="opt" onclick="answer(this,10,2,3)">C. Give both agents access to additional external tools</button><button class="opt" onclick="answer(this,10,3,3)">D. Introduce a maximum iteration limit and a supervisor agent with an explicit termination condition</button>
+    <div class="expl">Unbounded agent-to-agent loops are a classic multi-agent reliability failure; the standard guardrail is a hard iteration/turn cap plus a supervisor or convergence check that forces termination.</div>
+  </div>
+
+  <div class="card qcard" id="q11" data-domain="Client Engagement, Consulting, and Demo Delivery">
+    <div class="meta">Question 12 of 12 · Client Engagement, Consulting, and Demo Delivery</div>
+    <div class="q">During a live demo, an executive asks a pointed question about data privacy compliance that the FDE cannot fully answer on the spot. What is the BEST response?</div>
+    <button class="opt" onclick="answer(this,11,0,1)">A. Improvise a plausible-sounding answer to keep the meeting's momentum and confidence high</button><button class="opt" onclick="answer(this,11,1,1)">B. Acknowledge the gap honestly, commit to a specific follow-up date with a documented action item, and continue the demo</button><button class="opt" onclick="answer(this,11,2,1)">C. Tell the executive the question isn't relevant to today's demo and move on</button><button class="opt" onclick="answer(this,11,3,1)">D. Deflect by redirecting the conversation to a different, more favorable topic</button>
+    <div class="expl">Post-demo follow-up protocol requires honest acknowledgment of unknowns plus a committed, tracked action item — this builds credibility rather than eroding it.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$109.99</span> <span class="price">$34.99</span> with code <span class="code">FREETEST33</span> — valid through September 14.</p>
+  <a href="https://www.udemy.com/course/gsdc-cfde-certification-forward-deployed-engineer-prep/?couponCode=FREETEST33" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<section class="faq"><h3>CFDE exam — quick answers</h3><details><summary>How much does the CFDE exam cost?</summary><p>The exam fee is approximately $400 and varies by region — confirm current pricing with the certification vendor before you book.</p></details><details><summary>What topics are on the exam?</summary><p>It covers 6 domains: FDE Mindset and Problem Structuring (~10%), Production Python, Backend Development, and API Design (~18%), Data Engineering, ML Foundations, and Deep Learning Essentials (~20%), Prompt Engineering, LLM Workflows, and RAG (~20%), Agentic Systems, Rapid Prototyping, and Cloud Deployment (~18%), Client Engagement, Consulting, and Demo Delivery (~14%). The full course has a dedicated chapter, lab and practice-test coverage for each.</p></details><details><summary>Is this practice test really free?</summary><p>Yes — all questions on this page are free with explanations and no sign-up. The paid Udemy course adds two full-length timed exams, video lessons and hands-on labs.</p></details><details><summary>How do I get the discount?</summary><p>Use code FREETEST33 at checkout for $34.99 (list $109.99) through September 14 — the enroll button applies it automatically.</p></details><details><summary>Will this prepare me for the real exam?</summary><p>The questions mirror the real exam's style and are mapped to the official domains. This is exam-focused preparation — combine the free test with the full course's timed simulations to gauge your readiness.</p></details></section>
+<div class="domains"><span class="meta">More free practice by exam domain:</span><br><a href="cfde-production-python-backend-development-and-api-design.html">Production Python, Backend Development, and API Design →</a><a href="cfde-data-engineering-ml-foundations-and-deep-learning-essentials.html">Data Engineering, ML Foundations, and Deep Learning Essentials →</a><a href="cfde-prompt-engineering-llm-workflows-and-rag.html">Prompt Engineering, LLM Workflows, and RAG →</a><a href="cfde-agentic-systems-rapid-prototyping-and-cloud-deployment.html">Agentic Systems, Rapid Prototyping, and Cloud Deployment →</a><a href="cfde-client-engagement-consulting-and-demo-delivery.html">Client Engagement, Consulting, and Demo Delivery →</a></div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

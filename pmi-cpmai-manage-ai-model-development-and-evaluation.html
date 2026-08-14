@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Manage AI Model Development and Evaluation Practice Questions — PMI Certified Professional in Managing AI</title>
+<meta name="description" content="6 free Manage AI Model Development and Evaluation practice questions with explanations for the PMI Certified Professional in Managing AI exam.">
+<link rel="canonical" href="https://technuggets.academy/pmi-cpmai-manage-ai-model-development-and-evaluation.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Manage AI Model Development and Evaluation Practice Questions — PMI Certified Professional in Managing AI">
+<meta property="og:description" content="6 free Manage AI Model Development and Evaluation practice questions with explanations for the PMI Certified Professional in Managing AI exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/pmi-cpmai-manage-ai-model-development-and-evaluation.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Manage AI Model Development and Evaluation</h1>
+<p class="sub">Free PMI Certified Professional in Managing AI practice — 6 questions on <strong>Manage AI Model Development and Evaluation</strong>, with explanations. No sign-up.
+<a href="pmi-cpmai.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Manage AI Model Development and Evaluation">
+    <div class="meta">Question 1 of 6 · Manage AI Model Development and Evaluation</div>
+    <div class="q">A project team is preparing to move from data preparation into model development. During final data quality review, the team discovers that 15% of records in the training dataset have missing values in a feature identified as highly predictive during business understanding, and the missingness is not random but correlates strongly with a specific customer segment. What is the BEST course of action regarding the go/no-go gate decision?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. Halt the gate decision, investigate the root cause of the non-random missingness, and remediate the bias risk before proceeding</button><button class="opt" onclick="answer(this,0,1,0)">B. Proceed to the model development gate since 85% completeness meets typical data quality thresholds</button><button class="opt" onclick="answer(this,0,2,0)">C. Proceed but flag the issue for the data scientists to handle with simple mean imputation during training</button><button class="opt" onclick="answer(this,0,3,0)">D. Reject data preparation entirely and restart the project from the business understanding phase</button>
+    <div class="expl">Non-random (MNAR) missingness correlated with a segment risks introducing systematic bias into the model. The gate discipline requires the root cause be investigated and remediated, not merely accepted or deferred, before advancing past the data quality go/no-go checkpoint.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Manage AI Model Development and Evaluation">
+    <div class="meta">Question 2 of 6 · Manage AI Model Development and Evaluation</div>
+    <div class="q">During final evaluation for the operationalization go/no-go gate, a model achieves 94% accuracy on the held-out test set, meeting the primary success criterion set during business understanding. However, on a stress-test dataset representing seasonal variation and rare edge cases, performance drops to 61%. The sponsor is eager to deploy immediately given the headline accuracy figure. What should the team recommend?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. Approve for operationalization since the primary success criterion of 94% test accuracy has been satisfied</button><button class="opt" onclick="answer(this,1,1,2)">B. Approve for operationalization but have the sponsor sign a documented waiver acknowledging the risk</button><button class="opt" onclick="answer(this,1,2,2)">C. Withhold approval; the model has not demonstrated adequate robustness and generalization across representative real-world conditions, so it fails the operationalization gate despite the headline accuracy</button><button class="opt" onclick="answer(this,1,3,2)">D. Approve for a narrow initial deployment restricted to conditions matching the training distribution, with no further evaluation required</button>
+    <div class="expl">The operationalization gate explicitly requires evaluating performance against success criteria AND robustness/generalization AND deployment readiness with documented approval. A large performance drop on edge cases and seasonal variation fails the robustness criterion, so the gate should not pass regardless of the headline test-set number.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Manage AI Model Development and Evaluation">
+    <div class="meta">Question 3 of 6 · Manage AI Model Development and Evaluation</div>
+    <div class="q">A logistics company wants a system to determine optimal delivery route sequencing. There is no historical dataset of 'correct' routes, and the system only receives feedback (total fuel cost and delivery time) after an entire day's route sequence is completed in a simulated environment. Which category of technique is MOST appropriate for this use case?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. Supervised learning, using historical route completion times as the prediction label</button><button class="opt" onclick="answer(this,2,1,3)">B. Unsupervised clustering to group delivery locations by geographic proximity</button><button class="opt" onclick="answer(this,2,2,3)">C. Semi-supervised learning combining a small set of labeled optimal routes with a larger unlabeled dataset</button><button class="opt" onclick="answer(this,2,3,3)">D. Reinforcement learning, where an agent learns a routing policy through trial-and-error interaction with the simulated environment to optimize delayed cumulative reward</button>
+    <div class="expl">Sequential decision-making with delayed, cumulative feedback and no ground-truth labels is the defining characteristic of a reinforcement learning problem, where an agent learns a policy via trial-and-error interaction with an environment.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Manage AI Model Development and Evaluation">
+    <div class="meta">Question 4 of 6 · Manage AI Model Development and Evaluation</div>
+    <div class="q">A data science team ran 40 experiments over three weeks, adjusting hyperparameters and feature sets. The AI project manager later asks why experiment version 27 outperformed version 34 despite similarly reported metrics, but no one can reconstruct what data snapshot, code version, or hyperparameters were used for version 34. Which practice should the project manager have enforced from the start to prevent this?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. Weekly status meetings where the team verbally reports experiment progress</button><button class="opt" onclick="answer(this,3,1,3)">B. Requiring every experiment to use identical hyperparameters so results remain directly comparable</button><button class="opt" onclick="answer(this,3,2,3)">C. Capping the team at a maximum of 10 experiments to reduce overall complexity</button><button class="opt" onclick="answer(this,3,3,3)">D. A rigorous experiment tracking and data/model versioning system that logs the data snapshot, code commit, hyperparameters, and evaluation metrics for every training run</button>
+    <div class="expl">Experiment tracking and data/model versioning that captures data snapshots, code versions, hyperparameters, and metrics for every run is the core practice for managing training reproducibility and enabling apples-to-apples comparison across experiments.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Manage AI Model Development and Evaluation">
+    <div class="meta">Question 5 of 6 · Manage AI Model Development and Evaluation</div>
+    <div class="q">During a peer review of model development artifacts, a senior data scientist discovers that the team performed hyperparameter tuning and feature selection using the same held-out test set that was later used to report the model's final performance metrics. What is the MOST significant risk this introduces, and what should the reviewer recommend?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. No significant risk exists, since test set reuse is standard practice as long as the test set is sufficiently large</button><button class="opt" onclick="answer(this,4,1,3)">B. The team should simply reduce the number of hyperparameter combinations evaluated to compensate for the reuse</button><button class="opt" onclick="answer(this,4,2,3)">C. The team should apply cross-validation exclusively on the test set to correct for the bias introduced</button><button class="opt" onclick="answer(this,4,3,3)">D. This constitutes data leakage; the reviewer should recommend re-splitting the data into distinct train, validation (for tuning), and test (for final unbiased evaluation) sets, and re-running the evaluation</button>
+    <div class="expl">Using the test set for tuning decisions is a form of data leakage that invalidates the final performance metric as an unbiased estimate of real-world performance. Correct remediation is a proper train/validation/test split, where the test set is untouched until final evaluation, followed by re-evaluation.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Manage AI Model Development and Evaluation">
+    <div class="meta">Question 6 of 6 · Manage AI Model Development and Evaluation</div>
+    <div class="q">A healthcare AI project is developing a model to support clinical treatment recommendations, and regulatory requirements mandate that clinicians be able to understand the reasoning behind each recommendation. A deep neural network ensemble achieves 96% accuracy, while a rule-based decision tree achieves 89% accuracy but produces human-readable decision paths. According to CPMAI principles on technique selection trade-offs, what should guide the final model selection?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. Always select the highest-accuracy model regardless of other factors, since business value depends primarily on predictive performance</button><button class="opt" onclick="answer(this,5,1,3)">B. Deploy the deep neural network and address interpretability afterward using post-hoc marketing materials aimed at clinicians</button><button class="opt" onclick="answer(this,5,2,3)">C. Average the outputs of both models to arrive at a compromise between accuracy and interpretability</button><button class="opt" onclick="answer(this,5,3,3)">D. Weigh the interpretability requirement imposed by the use case and regulatory context alongside performance; here, the accuracy gap likely does not justify sacrificing the mandated explainability, favoring the more interpretable model</button>
+    <div class="expl">CPMAI's complexity-performance-interpretability trade-off principle requires evaluating technique selection against the specific use case and regulatory context, not accuracy alone. When explainability is a hard regulatory requirement and the accuracy gap is modest, the more interpretable model is generally the appropriate choice.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$109.99</span> <span class="price">$34.99</span> with code <span class="code">FREETEST33</span> — valid through September 14.</p>
+  <a href="https://www.udemy.com/course/pmi-cpmai-certification-exam-prep-masterclass/?couponCode=FREETEST33" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

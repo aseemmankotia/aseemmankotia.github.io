@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Planning and Configuring a Cloud Solution Practice Questions — Google Cloud Certified - Associate Cloud Engineer</title>
+<meta name="description" content="6 free Planning and Configuring a Cloud Solution practice questions with explanations for the Google Cloud Certified - Associate Cloud Engineer exam.">
+<link rel="canonical" href="https://technuggets.academy/associate-cloud-engineer-planning-and-configuring-a-cloud-solution.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Planning and Configuring a Cloud Solution Practice Questions — Google Cloud Certified - Associate Cloud Engineer">
+<meta property="og:description" content="6 free Planning and Configuring a Cloud Solution practice questions with explanations for the Google Cloud Certified - Associate Cloud Engineer exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/associate-cloud-engineer-planning-and-configuring-a-cloud-solution.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#4285F4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Planning and Configuring a Cloud Solution</h1>
+<p class="sub">Free Google Cloud Certified - Associate Cloud Engineer practice — 6 questions on <strong>Planning and Configuring a Cloud Solution</strong>, with explanations. No sign-up.
+<a href="associate-cloud-engineer.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Planning and Configuring a Cloud Solution">
+    <div class="meta">Question 1 of 6 · Planning and Configuring a Cloud Solution</div>
+    <div class="q">A team is designing a VPC-native GKE cluster with alias IP ranges. They plan to scale to 400 nodes, using the default maximum of 110 Pods per node. They must choose a secondary IP range for Pods that will NOT run out of addresses as the cluster grows to this size. Which secondary range size should they provision?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. /21 (2,048 addresses)</button><button class="opt" onclick="answer(this,0,1,1)">B. /16 (65,536 addresses)</button><button class="opt" onclick="answer(this,0,2,1)">C. /17 (32,768 addresses)</button><button class="opt" onclick="answer(this,0,3,1)">D. /24 (256 addresses)</button>
+    <div class="expl">400 nodes x 110 Pods/node = 44,000 possible Pod IPs. A /16 range provides 65,536 addresses, comfortably covering this with room to grow, which is why Google's GKE sizing guidance recommends /16 as a common Pod secondary range for larger clusters.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Planning and Configuring a Cloud Solution">
+    <div class="meta">Question 2 of 6 · Planning and Configuring a Cloud Solution</div>
+    <div class="q">An IoT platform ingests time-series sensor readings from millions of devices, sustaining roughly 5 million writes per second. Reads are simple key-based lookups by device ID and timestamp range, with no need for SQL joins or multi-region strong consistency. Which database service is the MOST appropriate and cost-effective choice?</div>
+    <button class="opt" onclick="answer(this,1,0,1)">A. Cloud Spanner</button><button class="opt" onclick="answer(this,1,1,1)">B. Cloud Bigtable</button><button class="opt" onclick="answer(this,1,2,1)">C. Firestore in Native mode</button><button class="opt" onclick="answer(this,1,3,1)">D. Cloud SQL for PostgreSQL</button>
+    <div class="expl">Bigtable is a wide-column NoSQL database purpose-built for very high-throughput time-series and IoT workloads, offering linear scalability, low-latency key-based access, and lower cost per write than Spanner for this access pattern.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Planning and Configuring a Cloud Solution">
+    <div class="meta">Question 3 of 6 · Planning and Configuring a Cloud Solution</div>
+    <div class="q">A company must retain compliance archive objects that are accessed approximately once every 90 days for audits. The objects must remain available across multiple regions with the lowest possible storage cost given this access pattern. Which storage class should they select?</div>
+    <button class="opt" onclick="answer(this,2,0,2)">A. Standard storage, multi-region</button><button class="opt" onclick="answer(this,2,1,2)">B. Nearline storage</button><button class="opt" onclick="answer(this,2,2,2)">C. Coldline storage</button><button class="opt" onclick="answer(this,2,3,2)">D. Archive storage</button>
+    <div class="expl">Coldline storage is designed for data accessed less than once per quarter (90 days), providing lower storage cost than Nearline while still allowing millisecond-latency access without a retrieval/rehydration delay, matching this exact access pattern.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Planning and Configuring a Cloud Solution">
+    <div class="meta">Question 4 of 6 · Planning and Configuring a Cloud Solution</div>
+    <div class="q">A stateless HTTP API experiences highly spiky, unpredictable traffic, including periods of zero traffic overnight. The service is packaged as a custom container with specific OS-level libraries not available in a managed function runtime, and each instance must be able to handle multiple concurrent requests to control cost. Which compute option BEST fits these requirements?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. Cloud Functions (2nd gen)</button><button class="opt" onclick="answer(this,3,1,2)">B. App Engine Standard environment</button><button class="opt" onclick="answer(this,3,2,2)">C. Cloud Run</button><button class="opt" onclick="answer(this,3,3,2)">D. GKE Autopilot</button>
+    <div class="expl">Cloud Run natively runs custom containers, scales to zero during idle periods, scales up rapidly for spiky traffic, and supports configurable concurrency per instance, directly meeting all stated requirements with minimal operational overhead.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Planning and Configuring a Cloud Solution">
+    <div class="meta">Question 5 of 6 · Planning and Configuring a Cloud Solution</div>
+    <div class="q">A large organization has multiple teams, each owning a separate GCP project for billing and IAM isolation, but all workloads must communicate over internal IP addresses within a single centrally managed network, with firewall rules and subnet allocation controlled by one central networking team. Which networking design BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. Shared VPC with a host project and multiple service projects</button><button class="opt" onclick="answer(this,4,1,0)">B. VPC Peering between each project's VPC</button><button class="opt" onclick="answer(this,4,2,0)">C. Cloud VPN tunnels between each project's VPC</button><button class="opt" onclick="answer(this,4,3,0)">D. Dedicated Interconnect between each project</button>
+    <div class="expl">Shared VPC lets a host project own the VPC, subnets, and firewall rules centrally, while service projects attach resources to that shared network — giving one team centralized control over networking while preserving separate billing and IAM per project, exactly as required.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Planning and Configuring a Cloud Solution">
+    <div class="meta">Question 6 of 6 · Planning and Configuring a Cloud Solution</div>
+    <div class="q">A managed instance group of 50 Compute Engine VMs needs concurrent read-write access to a shared POSIX-compliant file system, where multiple VMs write to and read from the same files simultaneously. Which storage solution should be used?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. A single Persistent Disk attached in read-write mode to all VMs</button><button class="opt" onclick="answer(this,5,1,1)">B. Filestore</button><button class="opt" onclick="answer(this,5,2,1)">C. Cloud Storage FUSE mount on each VM</button><button class="opt" onclick="answer(this,5,3,1)">D. Cloud SQL with a shared file table</button>
+    <div class="expl">Filestore is a managed NFS file service designed specifically for concurrent, POSIX-compliant read-write access from many Compute Engine VMs simultaneously, making it the correct choice for shared file system workloads.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$99.99</span> <span class="price">$34.99</span> with code <span class="code">FREETEST33</span> — valid through September 14.</p>
+  <a href="https://www.udemy.com/course/google-cloud-ace-associate-cloud-engineer-exam-prep/?couponCode=FREETEST33" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

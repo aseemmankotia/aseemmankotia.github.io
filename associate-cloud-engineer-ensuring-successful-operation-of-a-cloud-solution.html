@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Ensuring Successful Operation of a Cloud Solution Practice Questions — Google Cloud Certified - Associate Cloud Engineer</title>
+<meta name="description" content="6 free Ensuring Successful Operation of a Cloud Solution practice questions with explanations for the Google Cloud Certified - Associate Cloud Engineer exam.">
+<link rel="canonical" href="https://technuggets.academy/associate-cloud-engineer-ensuring-successful-operation-of-a-cloud-solution.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Ensuring Successful Operation of a Cloud Solution Practice Questions — Google Cloud Certified - Associate Cloud Engineer">
+<meta property="og:description" content="6 free Ensuring Successful Operation of a Cloud Solution practice questions with explanations for the Google Cloud Certified - Associate Cloud Engineer exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/associate-cloud-engineer-ensuring-successful-operation-of-a-cloud-solution.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#4285F4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Ensuring Successful Operation of a Cloud Solution</h1>
+<p class="sub">Free Google Cloud Certified - Associate Cloud Engineer practice — 6 questions on <strong>Ensuring Successful Operation of a Cloud Solution</strong>, with explanations. No sign-up.
+<a href="associate-cloud-engineer.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Ensuring Successful Operation of a Cloud Solution">
+    <div class="meta">Question 1 of 6 · Ensuring Successful Operation of a Cloud Solution</div>
+    <div class="q">Your organization has hundreds of projects under a single Google Cloud organization. You need to export VPC Flow Logs from every current and future project to a single BigQuery dataset for centralized security analysis, with minimal ongoing maintenance. What should you do?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. Create an identical log sink in each individual project, each exporting VPC Flow Logs to the same BigQuery dataset</button><button class="opt" onclick="answer(this,0,1,2)">B. Enable Cloud Asset Inventory export to BigQuery for all projects in the organization</button><button class="opt" onclick="answer(this,0,2,2)">C. Create an aggregated log sink at the Organization node with the include-children filter enabled and destination set to a BigQuery dataset</button><button class="opt" onclick="answer(this,0,3,2)">D. Create a Cloud Monitoring workspace scoped to all projects and export flow log metrics from there</button>
+    <div class="expl">Aggregated sinks created at the org level with include-children capture logs from all descendant projects automatically, including future ones, routing to a single BigQuery dataset with the least maintenance overhead.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Ensuring Successful Operation of a Cloud Solution">
+    <div class="meta">Question 2 of 6 · Ensuring Successful Operation of a Cloud Solution</div>
+    <div class="q">You created an alerting policy in Cloud Monitoring with an email notification channel. The condition triggers correctly and the incident appears in the incident list, but the on-call engineer never receives an email. What is the most likely cause?</div>
+    <button class="opt" onclick="answer(this,1,0,1)">A. The alerting policy's condition combiner is set to AND instead of OR</button><button class="opt" onclick="answer(this,1,1,1)">B. The email notification channel was added to the policy but never verified via the confirmation link</button><button class="opt" onclick="answer(this,1,2,1)">C. The alert threshold duration is set to 0s so it never triggers</button><button class="opt" onclick="answer(this,1,3,1)">D. Cloud Monitoring silently drops notification emails after exceeding a hidden monthly free-tier quota</button>
+    <div class="expl">New email notification channels in Cloud Monitoring must be verified through a confirmation email sent to the recipient; unverified channels are attached to a policy but Cloud Monitoring will not deliver notifications through them until verification completes.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Ensuring Successful Operation of a Cloud Solution">
+    <div class="meta">Question 3 of 6 · Ensuring Successful Operation of a Cloud Solution</div>
+    <div class="q">You have a GKE Deployment with 10 replicas serving production traffic. Node autoscaling is disabled and the cluster only has enough spare CPU for one additional pod. You need to roll out a new version with zero downtime and without exceeding available capacity. Which rolling update configuration should you set?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. Set maxSurge to 25% and maxUnavailable to 25%</button><button class="opt" onclick="answer(this,2,1,3)">B. Use the Recreate deployment strategy instead of RollingUpdate</button><button class="opt" onclick="answer(this,2,2,3)">C. Set maxSurge to 0 and maxUnavailable to 1</button><button class="opt" onclick="answer(this,2,3,3)">D. Set maxSurge to 1 and maxUnavailable to 0</button>
+    <div class="expl">maxSurge=1 creates exactly one extra pod, matching the available spare capacity, while maxUnavailable=0 guarantees all 10 original replicas keep serving traffic until each new pod is ready, achieving zero downtime within the capacity limit.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Ensuring Successful Operation of a Cloud Solution">
+    <div class="meta">Question 4 of 6 · Ensuring Successful Operation of a Cloud Solution</div>
+    <div class="q">You resized a Persistent Disk attached to a running Compute Engine VM from 100GB to 500GB using gcloud compute disks resize. The Console now shows 500GB for the disk, but running df -h inside the VM still shows only 100GB available. What should you do next?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. Log in to the VM and run resize2fs (ext4) or growpart/xfs_growfs (XFS) on the disk's partition to extend the file system</button><button class="opt" onclick="answer(this,3,1,0)">B. Reboot the VM so the OS re-reads the new disk size automatically</button><button class="opt" onclick="answer(this,3,2,0)">C. Detach the disk, then reattach it to force the VM to recognize the new size</button><button class="opt" onclick="answer(this,3,3,0)">D. Create a snapshot of the resized disk and restore it to a new disk of the same size</button>
+    <div class="expl">Resizing a Persistent Disk in GCP only expands the underlying block device; the guest OS file system must be manually grown with a tool such as resize2fs or growpart/xfs_growfs for the additional space to become usable.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Ensuring Successful Operation of a Cloud Solution">
+    <div class="meta">Question 5 of 6 · Ensuring Successful Operation of a Cloud Solution</div>
+    <div class="q">A finance team wants Google Cloud to automatically stop project spending, not just alert on it, once a monthly budget is exceeded, using only native GCP tools. What should they configure?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. Configure the budget's Pub/Sub notifications and create a Cloud Function triggered on that topic that disables billing (or specific APIs/resources) for the project when the threshold is exceeded</button><button class="opt" onclick="answer(this,4,1,0)">B. Set the budget's alert threshold to 100% — Cloud Billing automatically halts spending once this threshold is reached</button><button class="opt" onclick="answer(this,4,2,0)">C. Enable BigQuery Billing export and set up a scheduled query to email finance weekly</button><button class="opt" onclick="answer(this,4,3,0)">D. Enable Active Assist cost recommendations in the Recommender API</button>
+    <div class="expl">Cloud Billing budgets only send alert notifications; they never automatically stop spending. To enforce an automatic cutoff, the budget's Pub/Sub notification must be wired to a Cloud Function that programmatically disables billing or shuts down resources when the threshold is crossed.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Ensuring Successful Operation of a Cloud Solution">
+    <div class="meta">Question 6 of 6 · Ensuring Successful Operation of a Cloud Solution</div>
+    <div class="q">A Cloud SQL for PostgreSQL primary instance is experiencing high CPU utilization due to heavy reporting queries. You want to offload these reads without impacting write performance, and you also want a way to continue serving the database if the primary's entire region becomes unavailable. What should you do?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. Create a same-region read replica only, since Cloud SQL replicas are always accessible regardless of the primary's region availability</button><button class="opt" onclick="answer(this,5,1,1)">B. Create a cross-region read replica, and manually promote it to a standalone primary instance if the primary's region becomes unavailable</button><button class="opt" onclick="answer(this,5,2,1)">C. Enable regional (HA) configuration on the primary instance only, without creating any read replica</button><button class="opt" onclick="answer(this,5,3,1)">D. Increase the primary instance's machine type (vCPU/memory) to handle both write and reporting read traffic</button>
+    <div class="expl">A cross-region read replica offloads reporting reads while also holding a copy of the data in a separate region; if the primary region fails, the replica can be manually promoted to a standalone read/write instance, providing regional disaster recovery that a same-region replica cannot.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$99.99</span> <span class="price">$34.99</span> with code <span class="code">FREETEST33</span> — valid through September 14.</p>
+  <a href="https://www.udemy.com/course/google-cloud-ace-associate-cloud-engineer-exam-prep/?couponCode=FREETEST33" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

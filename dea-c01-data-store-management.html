@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Data Store Management Practice Questions — AWS Certified Data Engineer - Associate</title>
+<meta name="description" content="6 free Data Store Management practice questions with explanations for the AWS Certified Data Engineer - Associate exam.">
+<link rel="canonical" href="https://technuggets.academy/dea-c01-data-store-management.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Data Store Management Practice Questions — AWS Certified Data Engineer - Associate">
+<meta property="og:description" content="6 free Data Store Management practice questions with explanations for the AWS Certified Data Engineer - Associate exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/dea-c01-data-store-management.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#FF9900}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Data Store Management</h1>
+<p class="sub">Free AWS Certified Data Engineer - Associate practice — 6 questions on <strong>Data Store Management</strong>, with explanations. No sign-up.
+<a href="dea-c01.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Data Store Management">
+    <div class="meta">Question 1 of 6 · Data Store Management</div>
+    <div class="q">A retail analytics team has a Redshift RA3 cluster with a 2 billion-row FACT_SALES table and a 200-row DIM_STORE table. Queries join FACT_SALES to DIM_STORE on store_id and also filter FACT_SALES by sale_date ranges. FACT_SALES is currently distributed EVEN and sorted by store_id, causing broadcast joins and full-column scans. Which redesign BEST optimizes both join performance and range-filter performance?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. Set DISTSTYLE KEY on FACT_SALES using store_id and set DIM_STORE to DISTSTYLE ALL, with FACT_SALES sort key on sale_date</button><button class="opt" onclick="answer(this,0,1,0)">B. Set DISTSTYLE ALL on FACT_SALES and change the sort key to store_id</button><button class="opt" onclick="answer(this,0,2,0)">C. Set DISTSTYLE ALL on DIM_STORE and set FACT_SALES sort key to sale_date, keeping FACT_SALES DISTSTYLE EVEN</button><button class="opt" onclick="answer(this,0,3,0)">D. Create a materialized view that pre-joins FACT_SALES and DIM_STORE and distribute it EVEN</button>
+    <div class="expl">DIM_STORE is tiny, so DISTSTYLE ALL replicates it to every slice cheaply, eliminating network shuffle for the join. FACT_SALES should use DISTKEY on store_id (the join column) so matching rows are colocated with the replicated dimension, and the sort key should be sale_date since queries filter on date ranges, enabling zone-map pruning.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Data Store Management">
+    <div class="meta">Question 2 of 6 · Data Store Management</div>
+    <div class="q">A DynamoDB table stores IoT sensor readings with partition key = device_id and sort key = timestamp. One device (device_id = 'HUB-001') generates 90% of all writes because it aggregates readings from thousands of child sensors, causing consistent ProvisionedThroughputExceededException errors on that single partition even though the table has adaptive capacity enabled. What is the MOST effective fix?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. Enable DynamoDB Accelerator (DAX) in front of the table to absorb the write spike</button><button class="opt" onclick="answer(this,1,1,2)">B. Switch the table's read/write capacity mode to on-demand and leave the key schema unchanged</button><button class="opt" onclick="answer(this,1,2,2)">C. Add a random suffix (e.g., 0-9) to device_id for this hub to create a composite partition key like 'HUB-001#3', spreading writes across multiple partitions, and aggregate at read time</button><button class="opt" onclick="answer(this,1,3,2)">D. Increase the provisioned write capacity units on the table to the maximum allowed</button>
+    <div class="expl">Adaptive capacity helps with moderately unbalanced access but cannot fully overcome a single logical partition key receiving a disproportionate share of traffic — the physical partition throughput ceiling still applies. Sharding the hot key with a random or calculated suffix distributes writes across multiple physical partitions, which is the standard DynamoDB pattern for hot-partition mitigation.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Data Store Management">
+    <div class="meta">Question 3 of 6 · Data Store Management</div>
+    <div class="q">A company uses AWS Lake Formation to manage a data lake shared across two AWS accounts. Account A owns the Glue Data Catalog and S3 data. Account B's analysts need query access, but only to rows where region = 'EU' in a customer table, and must never see the ssn column. Which Lake Formation feature combination correctly enforces this cross-account requirement?</div>
+    <button class="opt" onclick="answer(this,2,0,2)">A. Cross-account IAM role assumption combined with S3 bucket policies restricting Account B to specific prefixes</button><button class="opt" onclick="answer(this,2,1,2)">B. Grant Account B's principal SELECT on the full table via Lake Formation cross-account grants, then rely on Athena workgroup settings to hide the ssn column</button><button class="opt" onclick="answer(this,2,2,2)">C. Use Lake Formation data filters (row and column-level permissions) with a cross-account grant that specifies the region predicate and excludes the ssn column, shared via Lake Formation's resource link in Account B</button><button class="opt" onclick="answer(this,2,3,2)">D. Export a filtered, de-identified copy of the table to a separate S3 bucket in Account B using Glue ETL, then catalog that copy for Account B's use</button>
+    <div class="expl">Lake Formation supports fine-grained row-level and column-level permissions through data filters, and these can be granted cross-account. Account B accesses the shared table via a resource link, and Lake Formation enforces the row predicate (region='EU') and column exclusion (ssn) at query time for any Lake Formation-integrated engine (Athena, Redshift Spectrum, EMR), without needing to duplicate data.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Data Store Management">
+    <div class="meta">Question 4 of 6 · Data Store Management</div>
+    <div class="q">A media company stores 50 TB of video thumbnails in S3 Intelligent-Tiering. Some thumbnails are accessed unpredictably (bursty campaigns), some haven't been accessed in over 200 days, and a small subset must be retrievable within milliseconds even if unused for a year, while another subset can tolerate 12-hour retrieval delays to minimize cost further. Which configuration correctly achieves this using S3 Intelligent-Tiering's archive access tiers?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. Enable the Archive Instant Access tier for the low-latency-required subset, and enable the Deep Archive Access tier for the subset that can tolerate long retrieval delays, allowing Intelligent-Tiering to auto-move objects after configured no-access days</button><button class="opt" onclick="answer(this,3,1,0)">B. Enable only the Frequent and Infrequent Access tiers; anything unused for 200+ days is automatically deleted to save cost</button><button class="opt" onclick="answer(this,3,2,0)">C. Move all 50 TB manually to S3 Glacier Flexible Retrieval, since Intelligent-Tiering does not support archive tiers</button><button class="opt" onclick="answer(this,3,3,0)">D. Disable Intelligent-Tiering and use S3 Standard with a lifecycle policy transitioning objects to Glacier Deep Archive after 200 days</button>
+    <div class="expl">S3 Intelligent-Tiering supports optional Archive Instant Access (millisecond retrieval, similar cost profile to Glacier Instant Retrieval) and Deep Archive Access (up to 12-hour retrieval, lowest cost) tiers, which you opt into; objects automatically move into these tiers based on configurable no-access-day thresholds (minimum 90 and 180 days respectively), without manual intervention or data deletion.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Data Store Management">
+    <div class="meta">Question 5 of 6 · Data Store Management</div>
+    <div class="q">A financial services firm runs an Aurora MySQL cluster as its primary transactional database in us-east-1, serving read-heavy reporting workloads from three read replicas in the same region. Leadership now requires disaster recovery with an RPO under 1 second and the ability to serve low-latency local reads for a new APAC customer base, without re-architecting the application's write path. Which solution meets both requirements?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. Add more Aurora Replicas in us-east-1 and use Route 53 latency-based routing to direct APAC reads there</button><button class="opt" onclick="answer(this,4,1,1)">B. Deploy Aurora Global Database with a secondary region in ap-southeast-1, using the secondary's read replicas for local APAC reads and for failover with typical replication lag under 1 second</button><button class="opt" onclick="answer(this,4,2,1)">C. Set up cross-region Aurora Read Replicas (not Global Database) in ap-southeast-1, promoting them manually during a regional outage</button><button class="opt" onclick="answer(this,4,3,1)">D. Migrate to Amazon RDS for MySQL with Multi-AZ and set up a read replica in ap-southeast-1</button>
+    <div class="expl">Aurora Global Database is purpose-built for this exact scenario: it replicates data to secondary regions using dedicated storage-based replication with typical lag under 1 second (RPO &lt; 1s), the secondary region's replicas serve low-latency local reads for APAC users, and it supports managed planned/unplanned failover — all without changing the application's single write endpoint in us-east-1.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Data Store Management">
+    <div class="meta">Question 6 of 6 · Data Store Management</div>
+    <div class="q">A data engineering team queries a 40 TB dataset stored as Parquet files in S3 using Redshift Spectrum from an RA3 cluster. Query performance is poor because Spectrum scans far more data than expected for queries that filter on 'transaction_date' and 'country'. The Glue Data Catalog table for this data is currently defined as a single flat table with no partitioning. What change will MOST directly reduce the data scanned per query?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. Increase the RA3 cluster's node count to add more compute for Spectrum scans</button><button class="opt" onclick="answer(this,5,1,1)">B. Restructure the S3 objects into a Hive-style partitioned layout (e.g., s3://bucket/table/transaction_date=2026-01-01/country=US/) and update the Glue Catalog table with partition columns, then run MSCK REPAIR TABLE or a Glue Crawler to register partitions</button><button class="opt" onclick="answer(this,5,2,1)">C. Convert the Parquet files to CSV format, which Spectrum scans faster due to simpler parsing</button><button class="opt" onclick="answer(this,5,3,1)">D. Add a Redshift materialized view over the Spectrum external table and refresh it nightly</button>
+    <div class="expl">Redshift Spectrum leverages partition pruning based on the Glue Data Catalog's partition metadata — if the underlying S3 data is organized by partition keys matching common filter columns and those partitions are registered in the catalog, Spectrum skips reading files outside the matching partitions entirely, directly cutting the data scanned (and cost, since Spectrum charges per TB scanned).</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$109.99</span> <span class="price">$34.99</span> with code <span class="code">FREETEST33</span> — valid through September 14.</p>
+  <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-dea-c01-prep/?couponCode=FREETEST33" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

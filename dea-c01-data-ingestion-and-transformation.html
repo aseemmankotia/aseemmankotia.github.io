@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Data Ingestion and Transformation Practice Questions — AWS Certified Data Engineer - Associate</title>
+<meta name="description" content="6 free Data Ingestion and Transformation practice questions with explanations for the AWS Certified Data Engineer - Associate exam.">
+<link rel="canonical" href="https://technuggets.academy/dea-c01-data-ingestion-and-transformation.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Data Ingestion and Transformation Practice Questions — AWS Certified Data Engineer - Associate">
+<meta property="og:description" content="6 free Data Ingestion and Transformation practice questions with explanations for the AWS Certified Data Engineer - Associate exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/dea-c01-data-ingestion-and-transformation.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#FF9900}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Data Ingestion and Transformation</h1>
+<p class="sub">Free AWS Certified Data Engineer - Associate practice — 6 questions on <strong>Data Ingestion and Transformation</strong>, with explanations. No sign-up.
+<a href="dea-c01.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Data Ingestion and Transformation">
+    <div class="meta">Question 1 of 6 · Data Ingestion and Transformation</div>
+    <div class="q">A data engineering team has three separate applications (a Lambda function, an EMR Spark streaming job, and a Kinesis Data Analytics application) all consuming from the same Kinesis Data Stream with 8 shards. During peak load, all three consumers report ReadProvisionedThroughputExceeded errors even though the producer write rate is well within limits. Which change resolves this with the LEAST operational complexity?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. Increase the number of shards to 24 using UpdateShardCount</button><button class="opt" onclick="answer(this,0,1,1)">B. Register each consumer using Enhanced Fan-Out so each gets a dedicated 2 MB/s read throughput per shard</button><button class="opt" onclick="answer(this,0,2,1)">C. Switch all three consumers to use the Kinesis Client Library (KCL) 1.x with a shared lease table</button><button class="opt" onclick="answer(this,0,3,1)">D. Move all consumers to read from a Kinesis Data Firehose delivery stream instead</button>
+    <div class="expl">Without Enhanced Fan-Out (EFO), all consumers of a shard share the fixed 2 MB/s (or 5 transactions/second) read throughput. With three independent consumers competing for that same shared pool, throttling occurs regardless of shard count. Registering each consumer with EFO gives each one its own dedicated 2 MB/s per shard via HTTP/2 push, eliminating contention without needing to re-shard.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Data Ingestion and Transformation">
+    <div class="meta">Question 2 of 6 · Data Ingestion and Transformation</div>
+    <div class="q">A company needs to migrate an on-premises Oracle database (2 TB) to Amazon S3 as Parquet files, and then continue replicating ongoing row-level inserts, updates, and deletes from Oracle to S3 in near real time until cutover. Which AWS service and configuration BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. AWS DataSync configured with a scheduled hourly task</button><button class="opt" onclick="answer(this,1,1,3)">B. Amazon AppFlow with an on-premises connector and a daily flow trigger</button><button class="opt" onclick="answer(this,1,2,3)">C. AWS Glue crawler combined with an incremental Glue ETL job scheduled every 15 minutes</button><button class="opt" onclick="answer(this,1,3,3)">D. AWS DMS with a 'Full Load and CDC' migration task and an S3 target endpoint</button>
+    <div class="expl">AWS DMS 'Full Load and CDC' migration type performs the initial bulk load of existing data and then continuously captures ongoing changes (inserts/updates/deletes) from the source database's transaction/redo logs, applying them to the S3 target in near real time — exactly the pattern described.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Data Ingestion and Transformation">
+    <div class="meta">Question 3 of 6 · Data Ingestion and Transformation</div>
+    <div class="q">An AWS Glue crawler runs nightly against an S3 data lake where the upstream producer occasionally adds new optional columns to the Parquet files but never changes or removes existing columns. The team wants the Data Catalog table to automatically pick up these new columns without the crawler ever altering the data types of existing columns or removing partitions if files are temporarily missing. Which crawler configuration should be selected?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. Schema updates: 'Update the table definition in the data catalog'; Deletion behavior: 'Delete tables and partitions from the data catalog'</button><button class="opt" onclick="answer(this,2,1,3)">B. Schema updates: 'Ignore the change and don't update the table in the data catalog'; Deletion behavior: 'Delete tables and partitions from the data catalog'</button><button class="opt" onclick="answer(this,2,2,3)">C. Schema updates: 'Add new columns only'; Deletion behavior: 'Delete tables and partitions from the data catalog'</button><button class="opt" onclick="answer(this,2,3,3)">D. Schema updates: 'Add new columns only'; Deletion behavior: 'Ignore the change and don't update the table in the data catalog'</button>
+    <div class="expl">'Add new columns only' updates the catalog schema when new fields appear but never modifies or drops existing column definitions, matching the requirement. Pairing it with 'Ignore the change and don't update the table' for deletion behavior prevents partitions from being removed from the catalog if source files are temporarily absent, avoiding accidental partition loss.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Data Ingestion and Transformation">
+    <div class="meta">Question 4 of 6 · Data Ingestion and Transformation</div>
+    <div class="q">A company has an existing on-premises application built directly on the Apache Kafka Producer/Consumer API, using custom consumer group logic and exactly-once semantics via Kafka transactions. They want to move this workload to AWS with minimal rewriting of the application code. Which service should they migrate to?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. Amazon Kinesis Data Streams, using the Kinesis Producer Library to replace the Kafka producer code</button><button class="opt" onclick="answer(this,3,1,1)">B. Amazon Managed Streaming for Apache Kafka (MSK)</button><button class="opt" onclick="answer(this,3,2,1)">C. Amazon Managed Service for Apache Flink, ingesting directly from the on-premises brokers</button><button class="opt" onclick="answer(this,3,3,1)">D. Amazon Data Firehose with a custom Lambda transform to emulate consumer groups</button>
+    <div class="expl">Amazon MSK is a managed Apache Kafka service that is API-compatible with open-source Kafka, including consumer groups and Kafka transactions for exactly-once semantics. Applications built on the native Kafka client libraries can point to an MSK cluster with little to no code change.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Data Ingestion and Transformation">
+    <div class="meta">Question 5 of 6 · Data Ingestion and Transformation</div>
+    <div class="q">During an AWS Glue Studio ETL job design session, a developer is deciding whether to use a DynamicFrame or convert immediately to a Spark DataFrame. The source data has inconsistent field types across files (a 'price' field is sometimes a string and sometimes a double) and the exact schema is not known ahead of time. Which statement correctly explains why DynamicFrame is the appropriate starting point?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. DynamicFrame is self-describing and does not require a fixed schema up front, and it provides ResolveChoice to explicitly handle columns with ambiguous or inconsistent types like 'price'</button><button class="opt" onclick="answer(this,4,1,0)">B. DynamicFrame provides faster query performance than DataFrame because it uses columnar in-memory execution not available to Spark</button><button class="opt" onclick="answer(this,4,2,0)">C. DynamicFrame requires a rigid, pre-defined schema, which forces early detection of type mismatches like the 'price' field</button><button class="opt" onclick="answer(this,4,3,0)">D. DynamicFrame automatically deletes records with type mismatches so the downstream DataFrame is always clean</button>
+    <div class="expl">A DynamicFrame is designed for semi-structured data where the schema is not fully known or is inconsistent across records. It computes a schema on the fly and supports transforms like ResolveChoice (e.g., cast, make_struct, project) specifically to handle a field that appears with multiple types across records — exactly the 'price' scenario described.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Data Ingestion and Transformation">
+    <div class="meta">Question 6 of 6 · Data Ingestion and Transformation</div>
+    <div class="q">An EMR cluster running a Spark ETL job processes a 500 GB join between two large datasets. The job frequently spills to disk during the shuffle stage and produces tens of thousands of tiny output files in S3, causing downstream Athena queries to run slowly. The team wants Spark to automatically coalesce shuffle partitions to a more efficient number based on actual data size, without manually recalculating spark.sql.shuffle.partitions for every job. Which configuration should they enable?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. Set spark.sql.shuffle.partitions to 2001 to force Spark into high-partition-count mode</button><button class="opt" onclick="answer(this,5,1,3)">B. Disable dynamic allocation and fix the number of executors to match the number of input files</button><button class="opt" onclick="answer(this,5,2,3)">C. Set spark.default.parallelism to match the number of EMR core node vCPUs only</button><button class="opt" onclick="answer(this,5,3,3)">D. Enable spark.sql.adaptive.enabled (Adaptive Query Execution) so Spark dynamically coalesces shuffle partitions at runtime</button>
+    <div class="expl">Adaptive Query Execution (AQE), enabled via spark.sql.adaptive.enabled=true, allows Spark to inspect actual shuffle statistics at runtime and automatically coalesce small shuffle partitions into fewer, appropriately sized partitions — directly reducing the small-file problem and improving performance without manual tuning per job.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$109.99</span> <span class="price">$34.99</span> with code <span class="code">FREETEST33</span> — valid through September 14.</p>
+  <a href="https://www.udemy.com/course/aws-certified-data-engineer-associate-dea-c01-prep/?couponCode=FREETEST33" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

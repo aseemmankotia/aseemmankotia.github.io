@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Prompt Engineering, LLM Workflows, and RAG Practice Questions — GSDC Certified Forward Deployed Engineer</title>
+<meta name="description" content="6 free Prompt Engineering, LLM Workflows, and RAG practice questions with explanations for the GSDC Certified Forward Deployed Engineer exam.">
+<link rel="canonical" href="https://technuggets.academy/cfde-prompt-engineering-llm-workflows-and-rag.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Prompt Engineering, LLM Workflows, and RAG Practice Questions — GSDC Certified Forward Deployed Engineer">
+<meta property="og:description" content="6 free Prompt Engineering, LLM Workflows, and RAG practice questions with explanations for the GSDC Certified Forward Deployed Engineer exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/cfde-prompt-engineering-llm-workflows-and-rag.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Prompt Engineering, LLM Workflows, and RAG</h1>
+<p class="sub">Free GSDC Certified Forward Deployed Engineer practice — 6 questions on <strong>Prompt Engineering, LLM Workflows, and RAG</strong>, with explanations. No sign-up.
+<a href="cfde.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Prompt Engineering, LLM Workflows, and RAG">
+    <div class="meta">Question 1 of 6 · Prompt Engineering, LLM Workflows, and RAG</div>
+    <div class="q">A team needs a chain-of-thought math reasoning system to reduce output variance for numeric answers where the LLM is right about 70% of the time on a single attempt. The latency/cost budget allows up to 5x the base call cost. Which technique BEST fits this constraint?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. Run self-consistency: sample N=5 independent chain-of-thought reasoning paths and take a majority vote on the final answer</button><button class="opt" onclick="answer(this,0,1,0)">B. Increase temperature to 1.0 to encourage more diverse reasoning paths</button><button class="opt" onclick="answer(this,0,2,0)">C. Switch to zero-shot prompting to simplify the reasoning chain</button><button class="opt" onclick="answer(this,0,3,0)">D. Use a single ReAct loop that calls an external calculator tool once</button>
+    <div class="expl">Self-consistency exactly matches the pattern of sampling N reasoning paths and aggregating via majority vote, and 5 samples fits neatly within a 5x cost budget while directly reducing variance-driven errors.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Prompt Engineering, LLM Workflows, and RAG">
+    <div class="meta">Question 2 of 6 · Prompt Engineering, LLM Workflows, and RAG</div>
+    <div class="q">A RAG system retrieves the top-10 chunks (about 500 tokens each) and concatenates them into a 16K-token context window, with the highest-scoring chunk placed first and the lowest last. Users report that answers frequently miss facts clearly present in the chunk ranked 5th or 6th. Which of the following best explains this failure mode?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. The embedding model returned irrelevant chunks, so this is a retrieval failure</button><button class="opt" onclick="answer(this,1,1,2)">B. The LLM's true context limit is lower than 16K tokens, silently truncating the input</button><button class="opt" onclick="answer(this,1,2,2)">C. &quot;Lost in the middle&quot; degradation — LLMs attend less reliably to information positioned in the middle of a long context than to information near the beginning or end</button><button class="opt" onclick="answer(this,1,3,2)">D. The vector database returned duplicate chunks, reducing effective coverage of the context</button>
+    <div class="expl">This is the well-documented 'lost in the middle' effect: recall degrades for facts placed in the middle of long contexts regardless of their relevance ranking, exactly matching the symptom of a confirmed-relevant chunk at position 5-6 being missed.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Prompt Engineering, LLM Workflows, and RAG">
+    <div class="meta">Question 3 of 6 · Prompt Engineering, LLM Workflows, and RAG</div>
+    <div class="q">A legal document search RAG system must retrieve results based on both exact citation matches (e.g., 'Section 12.3(a)') and semantic similarity to natural-language queries. Pure dense (embedding-based) retrieval alone performs poorly on citation lookups. Which retrieval architecture BEST addresses this requirement?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. Increase the embedding dimensionality to improve semantic matching precision</button><button class="opt" onclick="answer(this,2,1,1)">B. Hybrid retrieval combining sparse lexical search (e.g., BM25) with dense vector search, merging results via score fusion such as reciprocal rank fusion</button><button class="opt" onclick="answer(this,2,2,1)">C. Replace the vector database with a relational database using only LIKE-based keyword queries</button><button class="opt" onclick="answer(this,2,3,1)">D. Increase chunk overlap to 50% so citation tokens appear redundantly across more chunks</button>
+    <div class="expl">Hybrid retrieval combines BM25's strength at exact token/citation matching with dense embeddings' strength at semantic similarity, fused via a method like reciprocal rank fusion — the standard fix for this exact class of problem.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Prompt Engineering, LLM Workflows, and RAG">
+    <div class="meta">Question 4 of 6 · Prompt Engineering, LLM Workflows, and RAG</div>
+    <div class="q">A RAG pipeline retrieves the top-50 candidate chunks from a vector database (optimizing for recall), and must then select a small, highly relevant subset to fit a tight LLM context budget. Which architecture correctly applies a cross-encoder re-ranker in this pipeline?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. Run the cross-encoder re-ranker on all 50 candidates first, then use its scores to rebuild the vector index for future queries</button><button class="opt" onclick="answer(this,3,1,3)">B. Skip re-ranking entirely since vector similarity scores are already precise enough for final chunk selection</button><button class="opt" onclick="answer(this,3,2,3)">C. Use the cross-encoder to re-score only the single top-ranked vector search result before passing it forward</button><button class="opt" onclick="answer(this,3,3,3)">D. Apply the cross-encoder re-ranker to score each of the 50 candidates against the query, then select the top-N (e.g., top-5) highest-scoring chunks to pass into the LLM prompt</button>
+    <div class="expl">The correct pattern is retrieve-broad-then-rerank-narrow: a bi-encoder/vector search maximizes recall over the full corpus, then a cross-encoder scores each query-chunk pair for precision, and only the top-N re-ranked chunks are forwarded to the LLM.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Prompt Engineering, LLM Workflows, and RAG">
+    <div class="meta">Question 5 of 6 · Prompt Engineering, LLM Workflows, and RAG</div>
+    <div class="q">A team builds an automated evaluation pipeline using an LLM-as-judge to score 10,000 chatbot responses for helpfulness, calibrated against 200 human-labeled examples. The judge model shows a systematic bias toward favoring longer responses regardless of actual quality. Which mitigation is MOST appropriate?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. Set the judge model's temperature to 0 to make scoring more consistent</button><button class="opt" onclick="answer(this,4,1,2)">B. Discard the human-labeled examples since the judge's scoring should be independent of human bias</button><button class="opt" onclick="answer(this,4,2,2)">C. Provide the judge with a detailed rubric explicitly instructing it to evaluate helpfulness independent of length, and include length-matched contrastive examples in the judge prompt</button><button class="opt" onclick="answer(this,4,3,2)">D. Replace the LLM-as-judge approach entirely with exact string matching against reference answers</button>
+    <div class="expl">Length bias in LLM-as-judge setups is a known failure mode; the standard mitigation is rubric engineering that explicitly decouples the scored dimension (helpfulness) from length, reinforced with contrastive calibration examples.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Prompt Engineering, LLM Workflows, and RAG">
+    <div class="meta">Question 6 of 6 · Prompt Engineering, LLM Workflows, and RAG</div>
+    <div class="q">Which statement correctly distinguishes the ReAct prompting pattern from the Reflection pattern?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. ReAct and Reflection are functionally identical, differing only in naming convention across papers</button><button class="opt" onclick="answer(this,5,1,1)">B. ReAct interleaves reasoning traces with actions (e.g., tool calls) and observes results before continuing; Reflection has the model critique and revise its own prior output after generating an initial attempt</button><button class="opt" onclick="answer(this,5,2,1)">C. ReAct is used only within RAG retrieval steps, while Reflection is used only for chain-of-thought math problems</button><button class="opt" onclick="answer(this,5,3,1)">D. Reflection requires access to external tools or an environment, while ReAct does not</button>
+    <div class="expl">ReAct follows a reason-act-observe loop where the model takes actions (typically tool/environment calls) and incorporates observations into further reasoning; Reflection is a self-critique loop where the model evaluates and revises its own prior output, generally without needing external tools.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$109.99</span> <span class="price">$34.99</span> with code <span class="code">FREETEST33</span> — valid through September 14.</p>
+  <a href="https://www.udemy.com/course/gsdc-cfde-certification-forward-deployed-engineer-prep/?couponCode=FREETEST33" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>
