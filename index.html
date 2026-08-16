@@ -118,6 +118,35 @@
 <div class="card" style="--vendor:#4285F4"><h2><span class="vchip"></span>Google Cloud Certified - Associate Cloud Engineer<span class="badge live">Course live</span><span class="badge deal">$34.99 coupon</span></h2>
   <p>Setting Up a Cloud Solution Environment, Planning and Configuring a Cloud Solution</p>
   <div class="actions"><a class="btn course" href="https://www.udemy.com/course/google-cloud-ace-associate-cloud-engineer-exam-prep/?couponCode=FREETEST33" rel="sponsored" target="_blank">Get my $34.99 deal →</a><a class="btn practice" href="associate-cloud-engineer.html">Free 12-question practice test →</a></div></div>
-
+<section id="subscribe" style="margin:28px 0;padding:24px;border:1px solid var(--line,#e2e8f0);border-radius:14px;background:var(--card,#f8fafc)">
+  <h2 style="margin:0 0 6px">Get new courses &amp; coupons — a short email every few days</h2>
+  <p style="margin:0 0 14px;color:var(--dim,#475569)">Opt in for a brief heads-up when we launch new certification prep or run a discount. No spam, and one-click unsubscribe anytime.</p>
+  <form id="subForm" style="display:flex;flex-wrap:wrap;gap:10px;align-items:flex-start">
+    <input type="email" name="email" required placeholder="you@email.com" style="flex:1 1 220px;padding:10px 12px;border:1px solid var(--line,#e2e8f0);border-radius:8px;font-size:15px">
+    <input type="text" name="name" placeholder="First name (optional)" style="flex:1 1 160px;padding:10px 12px;border:1px solid var(--line,#e2e8f0);border-radius:8px;font-size:15px">
+    <input type="text" name="company" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0" placeholder="Company">
+    <button type="submit" style="padding:10px 20px;border:0;border-radius:8px;background:var(--btn,#0ea5e9);color:#fff;font-weight:600;font-size:15px;cursor:pointer">Subscribe</button>
+    <label style="flex:1 1 100%;font-size:13px;color:var(--dim,#475569);display:flex;gap:8px;align-items:flex-start">
+      <input type="checkbox" name="consent" required style="margin-top:3px">
+      <span>I agree to receive marketing emails from TechNuggets Academy and understand I can unsubscribe at any time.</span></label>
+  </form>
+  <p id="subMsg" role="status" style="margin:12px 0 0;font-size:14px;min-height:18px"></p>
+</section>
+<script>
+(function(){
+  var f=document.getElementById('subForm'), m=document.getElementById('subMsg');
+  if(!f) return;
+  f.addEventListener('submit', function(e){
+    e.preventDefault();
+    var email=f.email.value.trim(), name=f.name.value.trim(), company=f.company?f.company.value:'';
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){ m.style.color='#dc2626'; m.textContent='Please enter a valid email.'; return; }
+    m.style.color='#475569'; m.textContent='Subscribing…';
+    fetch("https://technuggets-subscribe.technuggets.workers.dev/subscribe", {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify({email:email, name:name, company:company})})
+      .then(function(r){ return r.json().catch(function(){return {ok:r.ok};}); })
+      .then(function(d){ if(d && d.ok){ m.style.color='#16a34a'; m.textContent='You’re in! Watch your inbox for new courses and coupons.'; f.reset(); } else { throw new Error(); } })
+      .catch(function(){ m.style.color='#dc2626'; m.textContent='Something went wrong — please try again in a moment.'; });
+  });
+})();
+</script>
 <footer>© TechNuggets Academy (Aseem Mankotia). Course links may be referral links. Not affiliated with or endorsed by any certification vendor.</footer>
 </div></body></html>
