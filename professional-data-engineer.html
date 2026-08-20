@@ -1,0 +1,123 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Google Cloud Certified - Professional Data Engineer Practice Test — 12 Real Exam-Style Questions</title>
+<meta name="description" content="Free Google Cloud Certified - Professional Data Engineer practice questions with detailed explanations. Test yourself before the real exam.">
+<link rel="canonical" href="https://technuggets.academy/professional-data-engineer.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Google Cloud Certified - Professional Data Engineer Practice Test — 12 Real Exam-Style Questions">
+<meta property="og:description" content="Free Google Cloud Certified - Professional Data Engineer practice questions with detailed explanations. Test yourself before the real exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/professional-data-engineer.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#4285F4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div><div class="hero">
+  <span class="chip">Professional Data Engineer</span>
+  <h1>Free Google Cloud Certified - Professional Data Engineer Practice Test</h1>
+  <p class="sub">12 exam-style questions with full explanations — no sign-up. Score yourself, then close your gaps with the full course.</p>
+  <div class="facts"><span class="fact">Exam fee <b>~$200</b></span><span class="fact"><b>5</b> exam domains</span><span class="fact">Level <b>Advanced</b></span><span class="fact"><b>2</b> timed practice tests in the course</span></div>
+  <div class="cta-row"><a class="btn enroll" href="https://www.udemy.com/course/google-professional-data-engineer-exam-prep/?couponCode=FREETEST33" rel="sponsored" target="_blank">Get my $34.99 deal →</a><a class="btn ghost" href="#practice">Try the free test →</a><span class="urgency">⏳ Deal ends September 16</span></div>
+</div><div class="trust"><span>✅ <b>Free</b> practice — no sign-up</span><span>📝 Real exam-style questions</span><span>💡 Detailed explanations</span><span>💸 30-day money-back via Udemy</span></div>
+<div id="practice"></div>
+
+  <div class="card qcard" id="q0" data-domain="Designing data processing systems">
+    <div class="meta">Question 1 of 12 · Designing data processing systems</div>
+    <div class="q">A logistics company ingests telemetry from 2 million IoT sensors, sustaining 500,000 writes per second. Application dashboards require single-digit millisecond p99 read latency on individual sensor keys, and the dataset will grow to multiple petabytes with a flexible wide-column schema. Which storage service BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. Cloud SQL for PostgreSQL</button><button class="opt" onclick="answer(this,0,1,2)">B. Firestore in Native mode</button><button class="opt" onclick="answer(this,0,2,2)">C. Cloud Bigtable</button><button class="opt" onclick="answer(this,0,3,2)">D. BigQuery</button>
+    <div class="expl">Bigtable is a wide-column, key-value NoSQL database purpose-built for very high-throughput writes and single-digit millisecond latency at petabyte scale, which matches the sensor telemetry workload exactly.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Ingesting and processing the data">
+    <div class="meta">Question 2 of 12 · Ingesting and processing the data</div>
+    <div class="q">A retail company streams point-of-sale transactions through Pub/Sub into a Dataflow pipeline using fixed 5-minute event-time windows. Store network outages cause some transaction events to arrive up to 10 minutes after their event timestamp. Which configuration ensures the late transactions are still incorporated into results without indefinitely delaying window emission?</div>
+    <button class="opt" onclick="answer(this,1,0,1)">A. Increase the window size to 1 hour so all late data falls within the window</button><button class="opt" onclick="answer(this,1,1,1)">B. Set allowed lateness to 10 minutes and use accumulating mode with early and late firing triggers</button><button class="opt" onclick="answer(this,1,2,1)">C. Switch from event-time windows to processing-time windows</button><button class="opt" onclick="answer(this,1,3,1)">D. Rely on the default watermark behavior, which automatically retains all late data forever</button>
+    <div class="expl">Setting withAllowedLateness(10 minutes) combined with accumulating-mode triggers lets the pipeline emit an early result at the watermark and then update/re-fire the pane when late data arrives within the allowed lateness window, correctly incorporating late events while still bounding how long the pipeline waits.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Storing the data">
+    <div class="meta">Question 3 of 12 · Storing the data</div>
+    <div class="q">A company ingests IoT sensor readings into Bigtable at 50,000 writes/second across 10,000 devices. The current row key format is &lt;timestamp&gt;#&lt;device_id&gt;. Cloud Monitoring shows write throughput is uneven, with some nodes heavily overloaded while others are nearly idle. Which row key redesign BEST resolves this hotspotting?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. Redesign the key as &lt;device_id&gt;#&lt;timestamp&gt;</button><button class="opt" onclick="answer(this,2,1,0)">B. Keep the current format &lt;timestamp&gt;#&lt;device_id&gt; but store timestamps in reverse order</button><button class="opt" onclick="answer(this,2,2,0)">C. Redesign the key as &lt;hash(device_id)&gt;#&lt;timestamp&gt; to force even byte distribution</button><button class="opt" onclick="answer(this,2,3,0)">D. Use a single static prefix such as 'sensor-data' for all row keys</button>
+    <div class="expl">Placing the high-cardinality device_id first spreads writes evenly across the row-key space and thus across tablets/nodes, since monotonically increasing timestamps as the leading key element concentrate writes on the same tablet range at any given moment.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Preparing and using data for analysis and ML">
+    <div class="meta">Question 4 of 12 · Preparing and using data for analysis and ML</div>
+    <div class="q">A retail company's sales data already lives in BigQuery and is updated nightly via scheduled queries. The data science team wants to build a simple linear regression model to forecast next month's revenue per region. They have SQL skills but no experience with Python or ML frameworks, and want to avoid moving data out of BigQuery. Which approach BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. Export the BigQuery data to a Vertex AI managed dataset and train a custom TensorFlow model on Vertex AI Training</button><button class="opt" onclick="answer(this,3,1,3)">B. Move the data to Cloud Storage and use Vertex AI AutoML Tables to train the forecasting model</button><button class="opt" onclick="answer(this,3,2,3)">C. Spin up a Dataproc cluster and use Spark MLlib to train a linear regression model</button><button class="opt" onclick="answer(this,3,3,3)">D. Use BigQuery ML to create a linear regression model directly with CREATE MODEL syntax</button>
+    <div class="expl">BigQuery ML lets the team train and evaluate a linear regression model using only SQL, directly on data already in BigQuery, with no data movement and no need for Python/ML framework expertise.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Maintaining and automating data workloads; security and compliance">
+    <div class="meta">Question 5 of 12 · Maintaining and automating data workloads; security and compliance</div>
+    <div class="q">A company runs a daily Cloud Composer DAG that must complete BigQuery loads by 6 AM for downstream reporting. Recently several tasks silently failed after exhausting retries, and the data team only learned about the missed SLA the next day when analysts complained. Which change BEST ensures the team is notified within minutes of a task failure?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. Configure Airflow on_failure_callback / email_on_failure to publish to Cloud Monitoring or Pub/Sub, and create a Cloud Monitoring alerting policy on the Composer environment</button><button class="opt" onclick="answer(this,4,1,0)">B. Increase the DAG's retries and retry_delay values so failures resolve automatically without operator intervention</button><button class="opt" onclick="answer(this,4,2,0)">C. Export Cloud Logging DAG logs into BigQuery for post-hoc analysis of failures</button><button class="opt" onclick="answer(this,4,3,0)">D. Change the DAG's schedule_interval to run more frequently so a single missed run has less impact</button>
+    <div class="expl">Wiring task failure callbacks into Cloud Monitoring/Pub/Sub and attaching an alerting policy provides near-real-time, proactive notification the moment a task fails, satisfying the SLA-visibility requirement.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Designing data processing systems">
+    <div class="meta">Question 6 of 12 · Designing data processing systems</div>
+    <div class="q">A payments company must flag potentially fraudulent transactions within 2 seconds of occurrence. Transactions arrive continuously and unbounded, and the solution must support exactly-once processing with windowed aggregations over sliding time windows. Which architecture BEST satisfies these requirements?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. A Dataflow streaming pipeline consuming from Pub/Sub with windowed transforms</button><button class="opt" onclick="answer(this,5,1,0)">B. A Cloud Composer DAG that batches transactions hourly</button><button class="opt" onclick="answer(this,5,2,0)">C. A BigQuery scheduled query running every 5 minutes</button><button class="opt" onclick="answer(this,5,3,0)">D. A Dataproc Spark batch job triggered hourly</button>
+    <div class="expl">Dataflow with Pub/Sub provides a fully managed, autoscaling streaming architecture with built-in exactly-once semantics and native windowing (fixed, sliding, session), enabling sub-second-to-low-second latency decisioning.</div>
+  </div>
+
+  <div class="card qcard" id="q6" data-domain="Ingesting and processing the data">
+    <div class="meta">Question 7 of 12 · Ingesting and processing the data</div>
+    <div class="q">A company runs an on-premises Oracle database and needs near-real-time change data capture (CDC) replication of table changes into BigQuery for analytics, with minimal operational overhead and no custom code to manage.</div>
+    <button class="opt" onclick="answer(this,6,0,2)">A. Data Fusion</button><button class="opt" onclick="answer(this,6,1,2)">B. Dataproc with a custom Sqoop job scheduled hourly</button><button class="opt" onclick="answer(this,6,2,2)">C. Datastream</button><button class="opt" onclick="answer(this,6,3,2)">D. Storage Transfer Service</button>
+    <div class="expl">Datastream is Google Cloud's serverless CDC and replication service, purpose-built to capture change streams from sources like Oracle and MySQL and stream them directly into BigQuery (or GCS) in near real time without managing infrastructure.</div>
+  </div>
+
+  <div class="card qcard" id="q7" data-domain="Storing the data">
+    <div class="meta">Question 8 of 12 · Storing the data</div>
+    <div class="q">A 5-year transaction history table in BigQuery is queried mostly by a transaction_date range, then filtered further by customer_id within that range; occasionally queries filter by customer_id alone across all dates. Which table layout minimizes bytes scanned and cost for these access patterns?</div>
+    <button class="opt" onclick="answer(this,7,0,2)">A. Partition by customer_id and cluster by transaction_date</button><button class="opt" onclick="answer(this,7,1,2)">B. Do not partition; cluster by both customer_id and transaction_date</button><button class="opt" onclick="answer(this,7,2,2)">C. Partition by transaction_date (DAY) and cluster by customer_id</button><button class="opt" onclick="answer(this,7,3,2)">D. Partition by transaction_date (YEAR) and add no clustering</button>
+    <div class="expl">Date-based partitioning prunes irrelevant date ranges for the dominant query pattern, and clustering on customer_id further prunes blocks within the matching partitions, which also helps the occasional customer-only queries by skipping non-matching blocks.</div>
+  </div>
+
+  <div class="card qcard" id="q8" data-domain="Preparing and using data for analysis and ML">
+    <div class="meta">Question 9 of 12 · Preparing and using data for analysis and ML</div>
+    <div class="q">A financial services company serves multiple fraud-detection models in production. They need a centralized way to store, reuse, and serve pre-computed features with low-latency online lookups at prediction time, while also enabling batch feature retrieval for training and monitoring features for drift across teams. Which Google Cloud capability should they use?</div>
+    <button class="opt" onclick="answer(this,8,0,2)">A. A Dataflow streaming pipeline writing directly to Memorystore for Redis</button><button class="opt" onclick="answer(this,8,1,2)">B. Scheduled BigQuery queries materializing feature tables nightly</button><button class="opt" onclick="answer(this,8,2,2)">C. Vertex AI Feature Store</button><button class="opt" onclick="answer(this,8,3,2)">D. Cloud Bigtable with custom application code for feature lookups</button>
+    <div class="expl">Vertex AI Feature Store is purpose-built for this scenario: it provides centralized feature management, low-latency online serving, batch serving for training, feature reuse across teams, and built-in drift monitoring.</div>
+  </div>
+
+  <div class="card qcard" id="q9" data-domain="Maintaining and automating data workloads; security and compliance">
+    <div class="meta">Question 10 of 12 · Maintaining and automating data workloads; security and compliance</div>
+    <div class="q">A financial services company ingests raw customer support transcripts into Cloud Storage before loading them into BigQuery. Compliance requires that any Social Security numbers or credit card numbers embedded in the free text be identified and redacted prior to loading. Which Google Cloud service should be used to accomplish this requirement?</div>
+    <button class="opt" onclick="answer(this,9,0,3)">A. BigQuery column-level security with policy tags</button><button class="opt" onclick="answer(this,9,1,3)">B. VPC Service Controls perimeter around the Cloud Storage bucket</button><button class="opt" onclick="answer(this,9,2,3)">C. Cloud KMS customer-managed encryption keys on the Cloud Storage bucket</button><button class="opt" onclick="answer(this,9,3,3)">D. Cloud Data Loss Prevention (Sensitive Data Protection) to inspect and de-identify the text before load</button>
+    <div class="expl">Cloud DLP (Sensitive Data Protection) provides built-in infoType detectors for SSNs and credit card numbers and can redact or tokenize matched values in unstructured text before it is loaded, directly meeting the requirement.</div>
+  </div>
+
+  <div class="card qcard" id="q10" data-domain="Designing data processing systems">
+    <div class="meta">Question 11 of 12 · Designing data processing systems</div>
+    <div class="q">A 50 TB BigQuery orders table is queried heavily with WHERE clauses filtering on order_date over the last 30 days and equality filters on customer_id. Which table design minimizes bytes scanned and query cost?</div>
+    <button class="opt" onclick="answer(this,10,0,1)">A. Partition the table by ingestion time only, no clustering</button><button class="opt" onclick="answer(this,10,1,1)">B. Partition the table by order_date and cluster by customer_id</button><button class="opt" onclick="answer(this,10,2,1)">C. Cluster the table by order_date, do not partition</button><button class="opt" onclick="answer(this,10,3,1)">D. Denormalize into one wide table partitioned by customer_id</button>
+    <div class="expl">Partitioning by order_date lets BigQuery prune partitions outside the 30-day range, and clustering by customer_id further sorts data within each partition so equality filters on customer_id skip irrelevant blocks, minimizing scanned bytes and cost.</div>
+  </div>
+
+  <div class="card qcard" id="q11" data-domain="Ingesting and processing the data">
+    <div class="meta">Question 12 of 12 · Ingesting and processing the data</div>
+    <div class="q">A team is migrating nightly batch Spark jobs from on-premises Hadoop to Google Cloud. Each job runs for about 45 minutes once per day. The team wants to minimize cost and avoid any cluster management overhead.</div>
+    <button class="opt" onclick="answer(this,11,0,2)">A. A persistent Dataproc cluster with an autoscaling policy set to a minimum of 2 workers</button><button class="opt" onclick="answer(this,11,1,2)">B. Dataproc on GKE with a fixed node pool sized for peak load</button><button class="opt" onclick="answer(this,11,2,2)">C. Dataproc Serverless for Spark, submitting the job as a batch workload</button><button class="opt" onclick="answer(this,11,3,2)">D. One long-running shared Dataproc cluster kept alive for all nightly jobs across teams</button>
+    <div class="expl">Dataproc Serverless for Spark runs batch Spark workloads without provisioning or managing any cluster; Google Cloud automatically provisions and tears down resources per job, so you pay only for the ~45 minutes of actual compute, matching the cost-minimization and zero-management requirements exactly.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$129.99</span> <span class="price">$34.99</span> with code <span class="code">FREETEST33</span> — valid through September 16.</p>
+  <a href="https://www.udemy.com/course/google-professional-data-engineer-exam-prep/?couponCode=FREETEST33" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<section class="faq"><h3>Professional Data Engineer exam — quick answers</h3><details><summary>How much does the Professional Data Engineer exam cost?</summary><p>The exam fee is approximately $200 and varies by region — confirm current pricing with the certification vendor before you book.</p></details><details><summary>What topics are on the exam?</summary><p>It covers 5 domains: Designing data processing systems (~22%), Ingesting and processing the data (~25%), Storing the data (~20%), Preparing and using data for analysis and ML (~15%), Maintaining and automating data workloads; security and compliance (~18%). The full course has a dedicated chapter, lab and practice-test coverage for each.</p></details><details><summary>Is this practice test really free?</summary><p>Yes — all questions on this page are free with explanations and no sign-up. The paid Udemy course adds two full-length timed exams, video lessons and hands-on labs.</p></details><details><summary>How do I get the discount?</summary><p>Use code FREETEST33 at checkout for $34.99 (list $129.99) through September 16 — the enroll button applies it automatically.</p></details><details><summary>Will this prepare me for the real exam?</summary><p>The questions mirror the real exam's style and are mapped to the official domains. This is exam-focused preparation — combine the free test with the full course's timed simulations to gauge your readiness.</p></details></section>
+<div class="domains"><span class="meta">More free practice by exam domain:</span><br><a href="professional-data-engineer-designing-data-processing-systems.html">Designing data processing systems →</a><a href="professional-data-engineer-ingesting-and-processing-the-data.html">Ingesting and processing the data →</a><a href="professional-data-engineer-storing-the-data.html">Storing the data →</a><a href="professional-data-engineer-preparing-and-using-data-for-analysis-and-ml.html">Preparing and using data for analysis and ML →</a><a href="professional-data-engineer-maintaining-and-automating-data-workloads-security-and-compl.html">Maintaining and automating data workloads; security and compliance →</a></div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>
