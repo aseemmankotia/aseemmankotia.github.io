@@ -1,0 +1,123 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Microsoft Certified: Fabric Analytics Engineer Associate Practice Test — 12 Real Exam-Style Questions</title>
+<meta name="description" content="Free Microsoft Certified: Fabric Analytics Engineer Associate practice questions with detailed explanations. Test yourself before the real exam.">
+<link rel="canonical" href="https://technuggets.academy/dp-600.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Microsoft Certified: Fabric Analytics Engineer Associate Practice Test — 12 Real Exam-Style Questions">
+<meta property="og:description" content="Free Microsoft Certified: Fabric Analytics Engineer Associate practice questions with detailed explanations. Test yourself before the real exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/dp-600.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0078D4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div><div class="hero">
+  <span class="chip">DP-600</span>
+  <h1>Free Microsoft Certified: Fabric Analytics Engineer Associate Practice Test</h1>
+  <p class="sub">12 exam-style questions with full explanations — no sign-up. Score yourself, then close your gaps with the full course.</p>
+  <div class="facts"><span class="fact">Exam fee <b>~$165</b></span><span class="fact"><b>3</b> exam domains</span><span class="fact">Level <b>Intermediate</b></span><span class="fact"><b>2</b> timed practice tests in the course</span></div>
+  <div class="cta-row"><a class="btn enroll" href="https://www.udemy.com/course/dp-600-fabric-analytics-engineer-certification-prep/?couponCode=FREETEST33" rel="sponsored" target="_blank">Get my $34.99 deal →</a><a class="btn ghost" href="#practice">Try the free test →</a><span class="urgency">⏳ Deal ends September 16</span></div>
+</div><div class="trust"><span>✅ <b>Free</b> practice — no sign-up</span><span>📝 Real exam-style questions</span><span>💡 Detailed explanations</span><span>💸 30-day money-back via Udemy</span></div>
+<div id="practice"></div>
+
+  <div class="card qcard" id="q0" data-domain="Maintain a data analytics solution">
+    <div class="meta">Question 1 of 12 · Maintain a data analytics solution</div>
+    <div class="q">A Fabric workspace admin wants to add a new team member who will build and publish reports, create lakehouses, and modify semantic models, but who must NOT be able to add other users to the workspace or change workspace-level settings. Which workspace role should be assigned?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. Member</button><button class="opt" onclick="answer(this,0,1,3)">B. Admin</button><button class="opt" onclick="answer(this,0,2,3)">C. Viewer</button><button class="opt" onclick="answer(this,0,3,3)">D. Contributor</button>
+    <div class="expl">Contributor can create, edit, and publish content (reports, lakehouses, semantic models) within the workspace but cannot manage workspace access or update workspace settings.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Prepare data">
+    <div class="meta">Question 2 of 12 · Prepare data</div>
+    <div class="q">A data engineering team must transform 500 GB of raw JSON files daily using complex custom Python logic, including machine learning feature engineering, before landing the results as Delta tables in a lakehouse. Which Fabric tool should they use for this transformation?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. Notebook with PySpark</button><button class="opt" onclick="answer(this,1,1,0)">B. Pipeline Copy activity</button><button class="opt" onclick="answer(this,1,2,0)">C. Power Query in Excel</button><button class="opt" onclick="answer(this,1,3,0)">D. Dataflow Gen2</button>
+    <div class="expl">Spark notebooks support full custom Python code, distributed processing at scale, and libraries for ML feature engineering — Dataflow Gen2's Power Query M engine cannot handle this level of custom logic or volume efficiently.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Implement and manage semantic models">
+    <div class="meta">Question 3 of 12 · Implement and manage semantic models</div>
+    <div class="q">A company runs a Direct Lake semantic model on an F64 Fabric capacity. One of the underlying lakehouse tables grows beyond the row-count guardrail defined for F64. By default, what happens when a report visual queries that specific table?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. The report fails immediately with a hard error and returns no data</button><button class="opt" onclick="answer(this,2,1,3)">B. The entire semantic model permanently switches to Import mode</button><button class="opt" onclick="answer(this,2,2,3)">C. Fabric automatically upgrades the capacity to the next SKU tier</button><button class="opt" onclick="answer(this,2,3,3)">D. The query for that table automatically falls back to DirectQuery mode</button>
+    <div class="expl">When a Direct Lake table exceeds the capacity's row-count or size guardrails, Fabric automatically falls back to DirectQuery for queries against that table (fallback behavior is on by default and can be disabled).</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Maintain a data analytics solution">
+    <div class="meta">Question 4 of 12 · Maintain a data analytics solution</div>
+    <div class="q">A lakehouse contains a Files section with subfolders for Finance, HR, and Sales data. You need to grant an external audit team read-only access to only the Finance subfolder, without exposing any other folder or the SQL analytics endpoint's other tables. Which Fabric feature should you configure?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. Workspace-level Viewer role for the audit team</button><button class="opt" onclick="answer(this,3,1,2)">B. Row-level security on the lakehouse SQL analytics endpoint</button><button class="opt" onclick="answer(this,3,2,2)">C. A OneLake data access role scoped to the Finance folder path</button><button class="opt" onclick="answer(this,3,3,2)">D. A shareable link to the lakehouse item</button>
+    <div class="expl">OneLake data access roles let you define folder-level permissions inside a lakehouse (via one or more folder paths) and assign specific users or groups read access to only that scope, independent of workspace roles.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Prepare data">
+    <div class="meta">Question 5 of 12 · Prepare data</div>
+    <div class="q">A team creates a OneLake shortcut in a lakehouse that points to an existing ADLS Gen2 container containing Parquet files. What happens to the data as a result of creating this shortcut?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. Data remains in the ADLS Gen2 account and is virtually referenced from OneLake without duplication</button><button class="opt" onclick="answer(this,4,1,0)">B. Data is automatically converted to Delta format</button><button class="opt" onclick="answer(this,4,2,0)">C. Data is copied into OneLake storage</button><button class="opt" onclick="answer(this,4,3,0)">D. Data becomes read-only in the original location</button>
+    <div class="expl">Shortcuts create a virtual reference to data in its original location (ADLS Gen2, S3, or another Fabric item) so it can be accessed as if it were in OneLake, without any physical data movement or duplication.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Implement and manage semantic models">
+    <div class="meta">Question 6 of 12 · Implement and manage semantic models</div>
+    <div class="q">A financial services company continuously loads high-volume transaction data into a Fabric warehouse throughout the day. Analysts need Power BI reports that reflect changes within seconds, without scheduled refreshes and without duplicating the underlying data into the semantic model. Which storage mode should you choose?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. Import</button><button class="opt" onclick="answer(this,5,1,1)">B. Direct Lake</button><button class="opt" onclick="answer(this,5,2,1)">C. DirectQuery</button><button class="opt" onclick="answer(this,5,3,1)">D. Composite (Import + DirectQuery)</button>
+    <div class="expl">Direct Lake reads Delta Parquet files directly from OneLake with near in-memory (Vertipaq-like) query performance and no scheduled refresh or data duplication, making it the optimal choice for near-real-time reporting on lakehouse/warehouse data.</div>
+  </div>
+
+  <div class="card qcard" id="q6" data-domain="Maintain a data analytics solution">
+    <div class="meta">Question 7 of 12 · Maintain a data analytics solution</div>
+    <div class="q">You are configuring row-level security (RLS) on a Fabric semantic model. Each sales representative should see only rows in the Sales table where the SalesRepEmail column matches the email address of the signed-in Power BI Service user. Which DAX table filter expression should you use in the RLS role definition?</div>
+    <button class="opt" onclick="answer(this,6,0,1)">A. [SalesRepEmail] = USERNAME()</button><button class="opt" onclick="answer(this,6,1,1)">B. [SalesRepEmail] = USERPRINCIPALNAME()</button><button class="opt" onclick="answer(this,6,2,1)">C. [SalesRepEmail] = CUSTOMDATA()</button><button class="opt" onclick="answer(this,6,3,1)">D. [SalesRepEmail] = USERCULTURE()</button>
+    <div class="expl">USERPRINCIPALNAME() returns the UPN (typically the email address) of the signed-in user in the Power BI Service, making it the correct function to match against an email-formatted column for RLS.</div>
+  </div>
+
+  <div class="card qcard" id="q7" data-domain="Prepare data">
+    <div class="meta">Question 8 of 12 · Prepare data</div>
+    <div class="q">A team requires full T-SQL INSERT, UPDATE, and DELETE support with multi-statement transactional guarantees on their structured tables in Fabric. Which item should they create to meet this requirement?</div>
+    <button class="opt" onclick="answer(this,7,0,1)">A. Lakehouse</button><button class="opt" onclick="answer(this,7,1,1)">B. Warehouse</button><button class="opt" onclick="answer(this,7,2,1)">C. KQL Database</button><button class="opt" onclick="answer(this,7,3,1)">D. Dataflow Gen2</button>
+    <div class="expl">A Fabric Warehouse provides a full T-SQL engine with complete DML support (INSERT/UPDATE/DELETE) and multi-table transactions, matching traditional data warehouse semantics.</div>
+  </div>
+
+  <div class="card qcard" id="q8" data-domain="Implement and manage semantic models">
+    <div class="meta">Question 9 of 12 · Implement and manage semantic models</div>
+    <div class="q">You need dynamic row-level security so that each salesperson viewing a report sees only rows where Sales[SalesRegion] matches their assigned region, stored in a Regions table with a UserPrincipalName column. Which DAX filter expression should you use in the RLS role defined on the Sales table?</div>
+    <button class="opt" onclick="answer(this,8,0,2)">A. [SalesRegion] = USERNAME()</button><button class="opt" onclick="answer(this,8,1,2)">B. [SalesRegion] = USERPRINCIPALNAME()</button><button class="opt" onclick="answer(this,8,2,2)">C. [SalesRegion] = LOOKUPVALUE(Regions[Region], Regions[UserPrincipalName], USERPRINCIPALNAME())</button><button class="opt" onclick="answer(this,8,3,2)">D. FILTER(Sales, [SalesRegion] = &quot;Region&quot;)</button>
+    <div class="expl">LOOKUPVALUE correctly retrieves the region assigned to the currently signed-in user (via USERPRINCIPALNAME) from the Regions table and compares it against SalesRegion, implementing proper dynamic RLS.</div>
+  </div>
+
+  <div class="card qcard" id="q9" data-domain="Maintain a data analytics solution">
+    <div class="meta">Question 10 of 12 · Maintain a data analytics solution</div>
+    <div class="q">A Fabric Warehouse table stores customer email addresses in a column named Email. You need to ensure that users without unmask permission see a masked version of the email (e.g., aXX@XXXX.com) when querying the table, while the underlying data remains unchanged. Which T-SQL statement should you run?</div>
+    <button class="opt" onclick="answer(this,9,0,2)">A. GRANT SELECT ON dbo.Customers (Email) TO [ReadOnlyRole]</button><button class="opt" onclick="answer(this,9,1,2)">B. CREATE SECURITY POLICY EmailMaskPolicy ADD FILTER PREDICATE dbo.fn_MaskEmail(Email) ON dbo.Customers</button><button class="opt" onclick="answer(this,9,2,2)">C. ALTER TABLE dbo.Customers ALTER COLUMN Email ADD MASKED WITH (FUNCTION = 'email()')</button><button class="opt" onclick="answer(this,9,3,2)">D. ALTER TABLE dbo.Customers ADD CONSTRAINT CK_Email CHECK (Email LIKE '%@%')</button>
+    <div class="expl">Dynamic Data Masking in Fabric Warehouse (T-SQL) is applied with ALTER TABLE ... ALTER COLUMN ... ADD MASKED WITH (FUNCTION = 'email()'), which obfuscates the email format for users lacking UNMASK permission while leaving stored data intact.</div>
+  </div>
+
+  <div class="card qcard" id="q10" data-domain="Prepare data">
+    <div class="meta">Question 11 of 12 · Prepare data</div>
+    <div class="q">For a star-schema semantic model optimized for DAX performance in Fabric, which approach to handling dates is recommended?</div>
+    <button class="opt" onclick="answer(this,10,0,0)">A. Dedicated shared date dimension table marked as a date table with a single active relationship to each fact table</button><button class="opt" onclick="answer(this,10,1,0)">B. Embed date columns directly in each fact table without a separate dimension</button><button class="opt" onclick="answer(this,10,2,0)">C. Create separate date dimension tables per fact table</button><button class="opt" onclick="answer(this,10,3,0)">D. Use bidirectional relationships from the date table to all fact tables</button>
+    <div class="expl">Best practice is one shared, marked date dimension with a single-direction active relationship to each fact table's date key, enabling consistent time intelligence and efficient DAX evaluation across the model.</div>
+  </div>
+
+  <div class="card qcard" id="q11" data-domain="Implement and manage semantic models">
+    <div class="meta">Question 12 of 12 · Implement and manage semantic models</div>
+    <div class="q">What are calculation groups primarily used for in a Power BI semantic model?</div>
+    <button class="opt" onclick="answer(this,11,0,1)">A. To physically group tables together for storage optimization on disk</button><button class="opt" onclick="answer(this,11,1,1)">B. To apply reusable calculation logic, such as time intelligence or currency conversion, as calculation items across multiple measures without duplicating DAX</button><button class="opt" onclick="answer(this,11,2,1)">C. To define row-level security roles for different user groups</button><button class="opt" onclick="answer(this,11,3,1)">D. To partition large fact tables for incremental refresh</button>
+    <div class="expl">Calculation groups let you define calculation items (e.g., YTD, PY, currency conversion) once and apply them to any measure at query time, dramatically reducing measure duplication and DAX maintenance overhead.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$109.99</span> <span class="price">$34.99</span> with code <span class="code">FREETEST33</span> — valid through September 16.</p>
+  <a href="https://www.udemy.com/course/dp-600-fabric-analytics-engineer-certification-prep/?couponCode=FREETEST33" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<section class="faq"><h3>DP-600 exam — quick answers</h3><details><summary>How much does the DP-600 exam cost?</summary><p>The exam fee is approximately $165 and varies by region — confirm current pricing with the certification vendor before you book.</p></details><details><summary>What topics are on the exam?</summary><p>It covers 3 domains: Maintain a data analytics solution (25-30%), Prepare data (45-50%), Implement and manage semantic models (25-30%). The full course has a dedicated chapter, lab and practice-test coverage for each.</p></details><details><summary>Is this practice test really free?</summary><p>Yes — all questions on this page are free with explanations and no sign-up. The paid Udemy course adds two full-length timed exams, video lessons and hands-on labs.</p></details><details><summary>How do I get the discount?</summary><p>Use code FREETEST33 at checkout for $34.99 (list $109.99) through September 16 — the enroll button applies it automatically.</p></details><details><summary>Will this prepare me for the real exam?</summary><p>The questions mirror the real exam's style and are mapped to the official domains. This is exam-focused preparation — combine the free test with the full course's timed simulations to gauge your readiness.</p></details></section>
+<div class="domains"><span class="meta">More free practice by exam domain:</span><br><a href="dp-600-maintain-a-data-analytics-solution.html">Maintain a data analytics solution →</a><a href="dp-600-prepare-data.html">Prepare data →</a><a href="dp-600-implement-and-manage-semantic-models.html">Implement and manage semantic models →</a></div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>
