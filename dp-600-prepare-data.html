@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Prepare data Practice Questions — Microsoft Certified: Fabric Analytics Engineer Associate</title>
+<meta name="description" content="6 free Prepare data practice questions with explanations for the Microsoft Certified: Fabric Analytics Engineer Associate exam.">
+<link rel="canonical" href="https://technuggets.academy/dp-600-prepare-data.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Prepare data Practice Questions — Microsoft Certified: Fabric Analytics Engineer Associate">
+<meta property="og:description" content="6 free Prepare data practice questions with explanations for the Microsoft Certified: Fabric Analytics Engineer Associate exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/dp-600-prepare-data.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0078D4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Prepare data</h1>
+<p class="sub">Free Microsoft Certified: Fabric Analytics Engineer Associate practice — 6 questions on <strong>Prepare data</strong>, with explanations. No sign-up.
+<a href="dp-600.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Prepare data">
+    <div class="meta">Question 1 of 6 · Prepare data</div>
+    <div class="q">A Fabric lakehouse contains a fact table with 800 million rows that must be incrementally upserted every hour using complex merge logic based on multiple business keys and change-detection columns. The current process uses Dataflow Gen2 and is failing to complete within the required time window. Which approach BEST meets the requirement?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. Increase the Dataflow Gen2 refresh frequency and add more query steps to handle the merge logic</button><button class="opt" onclick="answer(this,0,1,1)">B. Rewrite the incremental logic in a PySpark notebook using Delta Lake MERGE, scheduled via a pipeline</button><button class="opt" onclick="answer(this,0,2,1)">C. Replace Dataflow Gen2 with a Copy Data pipeline activity using upsert mode</button><button class="opt" onclick="answer(this,0,3,1)">D. Split the fact table into smaller Dataflow Gen2 outputs and merge them using Power Query</button>
+    <div class="expl">PySpark notebooks using Delta Lake MERGE scale efficiently for very large datasets with complex conditional upsert logic and can be scheduled/orchestrated via a pipeline; the Dataflow Gen2 mashup engine is not designed for this scale of transformation.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Prepare data">
+    <div class="meta">Question 2 of 6 · Prepare data</div>
+    <div class="q">Your organization has parquet files stored in an existing Azure Data Lake Storage Gen2 account, managed and maintained by another team outside Fabric. You need these files to be queryable as native tables from within a Fabric lakehouse without copying or duplicating the underlying data. What should you do?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. Use a Dataflow Gen2 to import the parquet files into the lakehouse</button><button class="opt" onclick="answer(this,1,1,2)">B. Mount the ADLS Gen2 account as a mirrored database</button><button class="opt" onclick="answer(this,1,2,2)">C. Create a OneLake shortcut in the lakehouse pointing to the ADLS Gen2 location</button><button class="opt" onclick="answer(this,1,3,2)">D. Use a pipeline Copy activity to copy the files into the lakehouse Files section daily</button>
+    <div class="expl">OneLake shortcuts create a virtualized reference to external storage such as ADLS Gen2, exposing the files as native lakehouse tables without duplicating or moving the underlying data.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Prepare data">
+    <div class="meta">Question 3 of 6 · Prepare data</div>
+    <div class="q">A Fabric Warehouse contains a large fact table. Reporting queries that join this fact table to a dimension table on a non-key column are running slowly. The clustered columnstore index and row-group elimination are functioning correctly, but the query optimizer keeps choosing an inefficient join plan. What should you do to improve performance?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. Create statistics manually on the join column using CREATE STATISTICS</button><button class="opt" onclick="answer(this,2,1,0)">B. Rebuild the clustered columnstore index on the fact table</button><button class="opt" onclick="answer(this,2,2,0)">C. Convert the fact table to a Delta table stored in a lakehouse instead</button><button class="opt" onclick="answer(this,2,3,0)">D. Add a non-clustered index on the join column</button>
+    <div class="expl">Fabric Warehouse auto-creates some statistics, but columns used in joins or filters that lack up-to-date statistics can cause the optimizer to pick a poor plan; manually creating statistics with CREATE STATISTICS gives the optimizer better cardinality estimates.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Prepare data">
+    <div class="meta">Question 4 of 6 · Prepare data</div>
+    <div class="q">Your company ingests high-velocity IoT sensor telemetry (50,000 events/second) and requires sub-second analytical queries using time-series functions such as series_decompose() over the streaming data, with results feeding real-time dashboards. Which Fabric item should you use to store and query this data?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. A Warehouse with a materialized view refreshed every minute</button><button class="opt" onclick="answer(this,3,1,2)">B. A lakehouse table refreshed via a scheduled Dataflow Gen2</button><button class="opt" onclick="answer(this,3,2,2)">C. An Eventhouse (KQL Database) fed by an Eventstream</button><button class="opt" onclick="answer(this,3,3,2)">D. A Power BI DirectQuery semantic model connected to the source system</button>
+    <div class="expl">An Eventhouse (KQL Database) within Real-Time Intelligence is purpose-built for high-velocity streaming ingestion via Eventstream and supports native KQL time-series functions like series_decompose() with low-latency query performance.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Prepare data">
+    <div class="meta">Question 5 of 6 · Prepare data</div>
+    <div class="q">You are modeling a semantic model using a star schema. The Products dimension and the Promotions dimension have a many-to-many relationship: a product can be part of multiple promotions, and a promotion can apply to multiple products. Which modeling approach BEST resolves this while maintaining accurate filtering behavior?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. Merge Products and Promotions into a single denormalized dimension table</button><button class="opt" onclick="answer(this,4,1,1)">B. Create a bridge table containing ProductKey and PromotionKey combinations, and relate it to both dimensions</button><button class="opt" onclick="answer(this,4,2,1)">C. Set the relationship between Products and Promotions to bidirectional cross-filtering</button><button class="opt" onclick="answer(this,4,3,1)">D. Duplicate the Promotions table once for each product category</button>
+    <div class="expl">A bridge (associative) table holding the valid key combinations is the standard star-schema pattern for resolving many-to-many relationships between two dimensions while preserving correct, unambiguous filter propagation.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Prepare data">
+    <div class="meta">Question 6 of 6 · Prepare data</div>
+    <div class="q">A data engineer uses Copilot in a Fabric notebook to generate PySpark code that aggregates total sales by region from a sales fact table. The code runs successfully and produces output, but the business requirement specifies that returned orders (negative quantity) must be excluded from the total. What should the engineer do?</div>
+    <button class="opt" onclick="answer(this,5,0,2)">A. Trust the Copilot output since it executed without errors, and deploy it to production</button><button class="opt" onclick="answer(this,5,1,2)">B. Ask Copilot to regenerate the code with a different prompt, and use whichever version runs faster</button><button class="opt" onclick="answer(this,5,2,2)">C. Review the generated code, confirm it excludes returns per the business rule, and modify it if needed before deploying</button><button class="opt" onclick="answer(this,5,3,2)">D. Disable Copilot for this notebook and write all future transformations manually to avoid this issue</button>
+    <div class="expl">Copilot-generated code must always be reviewed and validated against actual business requirements; Copilot cannot infer unstated business rules such as excluding returns, so verification and correction before deployment is required.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$109.99</span> <span class="price">$34.99</span> with code <span class="code">FREETEST33</span> — valid through September 16.</p>
+  <a href="https://www.udemy.com/course/dp-600-fabric-analytics-engineer-certification-prep/?couponCode=FREETEST33" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

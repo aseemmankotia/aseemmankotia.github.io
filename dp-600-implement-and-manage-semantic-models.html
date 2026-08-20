@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Implement and manage semantic models Practice Questions — Microsoft Certified: Fabric Analytics Engineer Associate</title>
+<meta name="description" content="6 free Implement and manage semantic models practice questions with explanations for the Microsoft Certified: Fabric Analytics Engineer Associate exam.">
+<link rel="canonical" href="https://technuggets.academy/dp-600-implement-and-manage-semantic-models.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Implement and manage semantic models Practice Questions — Microsoft Certified: Fabric Analytics Engineer Associate">
+<meta property="og:description" content="6 free Implement and manage semantic models practice questions with explanations for the Microsoft Certified: Fabric Analytics Engineer Associate exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/dp-600-implement-and-manage-semantic-models.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0078D4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Implement and manage semantic models</h1>
+<p class="sub">Free Microsoft Certified: Fabric Analytics Engineer Associate practice — 6 questions on <strong>Implement and manage semantic models</strong>, with explanations. No sign-up.
+<a href="dp-600.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Implement and manage semantic models">
+    <div class="meta">Question 1 of 6 · Implement and manage semantic models</div>
+    <div class="q">A Direct Lake semantic model in Fabric runs on an F64 capacity. A developer adds a calculated column to the Sales fact table that uses the RELATED() function to pull a category name from a dimension table. After publishing, capacity metrics show the model executing DirectQuery operations instead of using Direct Lake mode. What is the MOST likely cause?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. The F64 capacity SKU does not meet the minimum guardrail for Direct Lake and must be upgraded</button><button class="opt" onclick="answer(this,0,1,3)">B. The dimension table used in RELATED() must first be optimized with V-Order before calculated columns can run in Direct Lake</button><button class="opt" onclick="answer(this,0,2,3)">C. RELATED() is a DirectQuery-only DAX function and cannot be used in any Fabric semantic model</button><button class="opt" onclick="answer(this,0,3,3)">D. Calculated columns are not supported in Direct Lake storage mode, so the engine falls back to DirectQuery to evaluate them</button>
+    <div class="expl">Calculated columns (and calculated tables) require row-by-row DAX evaluation that Direct Lake's columnar OneLake reading engine doesn't support, so any such objects force the engine to fall back to DirectQuery for the affected queries.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Implement and manage semantic models">
+    <div class="meta">Question 2 of 6 · Implement and manage semantic models</div>
+    <div class="q">You create a calculation group named 'Time Calcs' containing a calculation item 'YoY %' that returns a DIVIDE() expression producing a ratio. When report authors apply this item to the Total Sales measure, the visual displays the result as currency instead of a percentage. Which change correctly fixes the display without altering the base measure's format?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. Set the calculation item's Format String Expression property to &quot;0.0%&quot;</button><button class="opt" onclick="answer(this,1,1,0)">B. Change the base measure Total Sales to use a percentage format string</button><button class="opt" onclick="answer(this,1,2,0)">C. Add a new explicit measure that wraps the YoY % output with FORMAT() to a text string</button><button class="opt" onclick="answer(this,1,3,0)">D. Set the calculation group's precedence value to a lower number than any other calculation group</button>
+    <div class="expl">Calculation items support a Format String Expression property that lets each item dynamically override the display format of any measure it's applied to — exactly the pattern used for switching a ratio result to percentage format without touching the base measure.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Implement and manage semantic models">
+    <div class="meta">Question 3 of 6 · Implement and manage semantic models</div>
+    <div class="q">A semantic model hosted in a Fabric workspace grows to 14 GB after adding several years of transaction history. Refresh operations begin failing with an error referencing the maximum size for the current storage format. The workspace is assigned to an F64 Fabric capacity. What should you do to resolve this without reducing the amount of data in the model?</div>
+    <button class="opt" onclick="answer(this,2,0,2)">A. Move the semantic model to a Power BI Pro workspace to remove the 10 GB size restriction</button><button class="opt" onclick="answer(this,2,1,2)">B. Switch every table in the model to DirectQuery mode so Vertipaq no longer stores the data in memory</button><button class="opt" onclick="answer(this,2,2,2)">C. Enable the large semantic model storage format setting on the dataset, which is available because the workspace is on Fabric capacity</button><button class="opt" onclick="answer(this,2,3,2)">D. Reduce the number of calculation groups in the model, since each calculation group has a fixed 2 GB memory reservation</button>
+    <div class="expl">The 'Large semantic model storage format' setting removes the default dataset size limit and is only available for models hosted in workspaces on Fabric (or Premium) capacities such as F64 — exactly the situation described.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Implement and manage semantic models">
+    <div class="meta">Question 4 of 6 · Implement and manage semantic models</div>
+    <div class="q">A team is designing a semantic model with a 200 million row fact table. They want to configure an Incremental Refresh policy using RangeStart and RangeEnd parameters to only refresh recent partitions on a schedule. Which storage mode configuration supports this feature?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. Direct Lake, because incremental refresh policies control which Delta table partitions are reframed</button><button class="opt" onclick="answer(this,3,1,3)">B. DirectQuery only, because incremental refresh reduces the number of queries sent to the source</button><button class="opt" onclick="answer(this,3,2,3)">C. Any storage mode, since incremental refresh is a workspace-level setting independent of table storage mode</button><button class="opt" onclick="answer(this,3,3,3)">D. Import mode (or the Import portion of a hybrid table), because incremental refresh loads and partitions data during scheduled refreshes</button>
+    <div class="expl">Incremental refresh policies with RangeStart/RangeEnd apply to tables that are actually loaded into the model (Import mode, including the Import partitions of hybrid tables). They define how Power Query partitions and refreshes data on a schedule.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Implement and manage semantic models">
+    <div class="meta">Question 5 of 6 · Implement and manage semantic models</div>
+    <div class="q">A composite model has a large DirectQuery fact table (Sales) sourced from a Fabric warehouse and several small dimension tables (Date, Product, Region) currently also set to DirectQuery. Report performance is slow because every slicer interaction re-queries the warehouse for dimension values. What change will BEST improve performance while keeping the fact table live?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. Convert the Sales fact table to Import mode so the entire model loads into memory</button><button class="opt" onclick="answer(this,4,1,1)">B. Convert the dimension tables to Dual storage mode so Vertipaq can cache them in memory while still allowing DirectQuery joins with the fact table</button><button class="opt" onclick="answer(this,4,2,1)">C. Enable Direct Lake on the dimension tables only, leaving the fact table in DirectQuery</button><button class="opt" onclick="answer(this,4,3,1)">D. Add a bidirectional relationship between each dimension and the fact table to reduce query round-trips</button>
+    <div class="expl">Dual storage mode lets small dimension tables be cached in memory (like Import) for fast, local filtering while still being usable in DirectQuery queries against the live fact table — the standard composite-model pattern for this exact scenario.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Implement and manage semantic models">
+    <div class="meta">Question 6 of 6 · Implement and manage semantic models</div>
+    <div class="q">A Direct Lake semantic model is hosted on an F64 Fabric capacity. One lakehouse table has grown past the row-count guardrail for that capacity SKU, and the model's Fallback Behavior property is set to Automatic. A report visual queries a measure that references this oversized table. What happens?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. The visual returns an error because Direct Lake models cannot exceed capacity guardrails under any configuration</button><button class="opt" onclick="answer(this,5,1,1)">B. Fabric transparently reroutes just that table's query to DirectQuery against the same Delta table, while other tables continue to be queried in Direct Lake mode</button><button class="opt" onclick="answer(this,5,2,1)">C. The entire semantic model is automatically reprocessed and switched permanently to Import mode</button><button class="opt" onclick="answer(this,5,3,1)">D. Fabric automatically splits the oversized table into multiple partitions to bring it back under the guardrail</button>
+    <div class="expl">When a Direct Lake table exceeds capacity guardrails and Fallback Behavior is set to Automatic, Fabric silently falls back to DirectQuery for queries against that specific table so the report keeps working, while unaffected tables remain in Direct Lake mode.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$109.99</span> <span class="price">$34.99</span> with code <span class="code">FREETEST33</span> — valid through September 16.</p>
+  <a href="https://www.udemy.com/course/dp-600-fabric-analytics-engineer-certification-prep/?couponCode=FREETEST33" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

@@ -82,12 +82,12 @@ The instances are running a Java application that creates an AmazonS3Client once
     <div class="expl">This solution uses cross-account IAM role assumption (the standard AWS approach for third-party access). The external ID prevents confused deputy attacks. The maximum session duration can be set to 7 days (AWS supports 1-12 hours for user role sessions by default, but can be extended up to 12 hours for most cases; CORRECTION: maximum is 12 hours for role chaining/federation, but direct role assumption by IAM users/roles can use the role's configured duration up to 12 hours; for long-term expiration use SCP or time-based conditions). CORRECTION TO ANSWER: While maximum session duration is limited to 12 hours maximum, the time-based expiration should be handled by a Condition in the trust policy or permissions policy using DateLessThan with aws:CurrentTime, NOT by maximum session duration setting alone. The SecurityAudit managed policy provides read-only access to audit-related services including CloudTrail and Config. The MFA requirement in the trust policy Condition enforces authentication security. This is operationally simple (no manual deletion needed after 7 days if time-bound condition is used). CORRECTED: Option D as stated has a flaw - maximum session duration cannot be 7 days (max is 12 hours). However, re-reading the options, Option D is still the BEST answer IF we interpret it as requiring a trust policy condition with DateLessThan for the 7-day limit, which is the proper implementation.</div>
   </div>
 <div class="score" id="score"></div>
-<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33B"></div>
 <div class="cta">
   <strong>Ready for the real thing?</strong>
   <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
-  <p><span class="strike">$119.99</span> <span class="price">$34.99</span> with code <span class="code">FREETEST33</span> — valid through August 23.</p>
-  <a href="https://www.udemy.com/course/aws-certified-security-specialty-scs-c03-exam-prep/?couponCode=FREETEST33" rel="sponsored">Get my $34.99 deal →</a>
+  <p><span class="strike">$119.99</span> <span class="price">$34.99</span> with code <span class="code">FREETEST33B</span> — valid through September 16.</p>
+  <a href="https://www.udemy.com/course/aws-certified-security-specialty-scs-c03-exam-prep/?couponCode=FREETEST33B" rel="sponsored">Get my $34.99 deal →</a>
 </div>
 <footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
 Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>

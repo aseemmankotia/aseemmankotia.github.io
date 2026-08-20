@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Maintaining and automating data workloads; security and compliance Practice Questions — Google Cloud Certified - Professional Data Engineer</title>
+<meta name="description" content="6 free Maintaining and automating data workloads; security and compliance practice questions with explanations for the Google Cloud Certified - Professional Data Engineer exam.">
+<link rel="canonical" href="https://technuggets.academy/professional-data-engineer-maintaining-and-automating-data-workloads-security-and-compl.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Maintaining and automating data workloads; security and compliance Practice Questions — Google Cloud Certified - Professional Data Engineer">
+<meta property="og:description" content="6 free Maintaining and automating data workloads; security and compliance practice questions with explanations for the Google Cloud Certified - Professional Data Engineer exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/professional-data-engineer-maintaining-and-automating-data-workloads-security-and-compl.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#4285F4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Maintaining and automating data workloads; security and compliance</h1>
+<p class="sub">Free Google Cloud Certified - Professional Data Engineer practice — 6 questions on <strong>Maintaining and automating data workloads; security and compliance</strong>, with explanations. No sign-up.
+<a href="professional-data-engineer.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Maintaining and automating data workloads; security and compliance">
+    <div class="meta">Question 1 of 6 · Maintaining and automating data workloads; security and compliance</div>
+    <div class="q">A Cloud Composer environment hosts an hourly DAG with catchup=True (the Airflow default). The environment underwent unplanned maintenance and was offline for 30 hours. On restart, the engineer wants Airflow to execute only the single most recent scheduled interval, not all 30 missed intervals. Which change achieves this with minimal side effects?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. Set max_active_runs=1 on the DAG</button><button class="opt" onclick="answer(this,0,1,2)">B. Pause the DAG, then immediately unpause it after the environment restarts</button><button class="opt" onclick="answer(this,0,2,2)">C. Set the DAG's catchup parameter to False</button><button class="opt" onclick="answer(this,0,3,2)">D. Change schedule_interval to None for that DAG</button>
+    <div class="expl">catchup is a per-DAG setting that controls whether the scheduler backfills every missed schedule interval since the last successful run. Setting catchup=False tells the scheduler to skip missed intervals and only create a DAG run for the most recent schedule, exactly matching the requirement.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Maintaining and automating data workloads; security and compliance">
+    <div class="meta">Question 2 of 6 · Maintaining and automating data workloads; security and compliance</div>
+    <div class="q">A streaming Dataflow pipeline reads from Pub/Sub, performs windowed aggregations, and writes to BigQuery. Engineers need an early warning when the pipeline is falling behind incoming events, before downstream dashboards show stale results. Which Cloud Monitoring metric should the alerting policy be based on?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. Worker CPU utilization</button><button class="opt" onclick="answer(this,1,1,3)">B. Current number of autoscaled workers</button><button class="opt" onclick="answer(this,1,2,3)">C. Total bytes written to BigQuery sinks</button><button class="opt" onclick="answer(this,1,3,3)">D. Data freshness (job/data_watermark_age)</button>
+    <div class="expl">Data freshness (job/data_watermark_age) measures the difference between the pipeline's output watermark and real time. A growing value directly indicates the pipeline cannot keep pace with incoming events, which is exactly the 'falling behind' condition being monitored.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Maintaining and automating data workloads; security and compliance">
+    <div class="meta">Question 3 of 6 · Maintaining and automating data workloads; security and compliance</div>
+    <div class="q">A company's BigQuery dataset is created in the single region us-central1. Compliance requires that in a regional outage the dataset can be restored elsewhere with a recovery point objective (RPO) of 24 hours. What should be implemented?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. Configure a scheduled BigQuery Data Transfer Service copy job that replicates the dataset to a dataset in a different region on a daily schedule</button><button class="opt" onclick="answer(this,2,1,0)">B. Rely on BigQuery's automatic storage replication since all BigQuery datasets are inherently multi-region</button><button class="opt" onclick="answer(this,2,2,0)">C. Take nightly Persistent Disk snapshots of the BigQuery storage layer</button><button class="opt" onclick="answer(this,2,3,0)">D. Enable Cloud Storage Nearline as the default storage class for the dataset</button>
+    <div class="expl">A dataset created in a single region (us-central1) is not automatically replicated across regions. Scheduling a BigQuery Data Transfer Service dataset copy job on a daily cadence to a dataset in another region gives a concrete, verifiable RPO of 24 hours and a target location to restore from during an outage.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Maintaining and automating data workloads; security and compliance">
+    <div class="meta">Question 4 of 6 · Maintaining and automating data workloads; security and compliance</div>
+    <div class="q">Data analysts need to author and run BigQuery scheduled queries that write results into a destination dataset, but must not be able to delete the dataset or modify its IAM policy. Which role assignment best satisfies least privilege?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. roles/owner on the project</button><button class="opt" onclick="answer(this,3,1,3)">B. roles/bigquery.dataOwner on the destination dataset plus roles/bigquery.admin on the project</button><button class="opt" onclick="answer(this,3,2,3)">C. roles/bigquery.admin on the project</button><button class="opt" onclick="answer(this,3,3,3)">D. roles/bigquery.dataEditor on the destination dataset plus roles/bigquery.jobUser on the project</button>
+    <div class="expl">roles/bigquery.dataEditor on the destination dataset grants the table/data-level permissions needed to write scheduled query results, while roles/bigquery.jobUser at the project level allows running query jobs. Neither role grants dataset-level setIamPolicy or dataset-delete permissions, satisfying least privilege.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Maintaining and automating data workloads; security and compliance">
+    <div class="meta">Question 5 of 6 · Maintaining and automating data workloads; security and compliance</div>
+    <div class="q">A Dataflow job runs inside a VPC Service Controls perimeter that also protects several BigQuery datasets. The job must consume messages from a Pub/Sub topic that lives in a separate project not included in the perimeter, and that project cannot be added to the perimeter for organizational reasons. How should access be granted while keeping the perimeter's protections intact?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. Configure an egress rule on the perimeter that explicitly allows the Dataflow service account to access the specific external Pub/Sub resource</button><button class="opt" onclick="answer(this,4,1,0)">B. Disable VPC Service Controls enforcement mode for the perimeter until the job completes</button><button class="opt" onclick="answer(this,4,2,0)">C. Grant the Dataflow service account project-level Editor on the external project and rely on IAM alone</button><button class="opt" onclick="answer(this,4,3,0)">D. Enable Private Google Access on the Dataflow subnet</button>
+    <div class="expl">VPC Service Controls supports egress rules that identify a specific identity (the Dataflow service account) and a specific external resource (the Pub/Sub topic/project) that is permitted to be accessed from inside the perimeter, without adding the whole external project to the perimeter or disabling protection.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Maintaining and automating data workloads; security and compliance">
+    <div class="meta">Question 6 of 6 · Maintaining and automating data workloads; security and compliance</div>
+    <div class="q">A BigQuery table contains a national ID column. Regular analysts should see the ID with only the last 4 digits exposed, while the compliance team must see the full unmasked value for audits. Both groups need to query the same live table without maintaining separate copies. Which approach meets this requirement?</div>
+    <button class="opt" onclick="answer(this,5,0,2)">A. Run a Cloud DLP de-identification job once during ingestion to permanently mask the column for all readers</button><button class="opt" onclick="answer(this,5,1,2)">B. Apply row-level security policies that filter rows based on group membership</button><button class="opt" onclick="answer(this,5,2,2)">C. Apply a Data Catalog policy tag with a masking rule to the column, grant analysts the Masked Reader role, and grant compliance the Fine-Grained Reader role on that policy tag</button><button class="opt" onclick="answer(this,5,3,2)">D. Create two authorized views on the table, one with the column removed and one with the column included, and grant access to each view separately</button>
+    <div class="expl">BigQuery column-level security with Data Catalog policy tags supports dynamic data masking: the same underlying column is masked at query time for principals with the Masked Reader role, while principals granted Fine-Grained Reader (or Data Policy admin equivalent unmasked access) see the full value -- all against one live table with no duplication.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$129.99</span> <span class="price">$34.99</span> with code <span class="code">FREETEST33</span> — valid through September 16.</p>
+  <a href="https://www.udemy.com/course/google-professional-data-engineer-exam-prep/?couponCode=FREETEST33" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

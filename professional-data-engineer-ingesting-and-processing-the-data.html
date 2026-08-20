@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Ingesting and processing the data Practice Questions — Google Cloud Certified - Professional Data Engineer</title>
+<meta name="description" content="6 free Ingesting and processing the data practice questions with explanations for the Google Cloud Certified - Professional Data Engineer exam.">
+<link rel="canonical" href="https://technuggets.academy/professional-data-engineer-ingesting-and-processing-the-data.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Ingesting and processing the data Practice Questions — Google Cloud Certified - Professional Data Engineer">
+<meta property="og:description" content="6 free Ingesting and processing the data practice questions with explanations for the Google Cloud Certified - Professional Data Engineer exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/professional-data-engineer-ingesting-and-processing-the-data.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#4285F4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Ingesting and processing the data</h1>
+<p class="sub">Free Google Cloud Certified - Professional Data Engineer practice — 6 questions on <strong>Ingesting and processing the data</strong>, with explanations. No sign-up.
+<a href="professional-data-engineer.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Ingesting and processing the data">
+    <div class="meta">Question 1 of 6 · Ingesting and processing the data</div>
+    <div class="q">A streaming pipeline processes IoT sensor data using fixed 1-minute windows in Apache Beam on Dataflow. Some events arrive up to 10 minutes late due to unreliable field network connections. The team needs windows to emit an early result quickly, then update with a final corrected result once late data arrives, without firing on every single late element unnecessarily. Which configuration BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. Set allowed lateness to 10 minutes and configure early and late firings using triggers with accumulating mode</button><button class="opt" onclick="answer(this,0,1,0)">B. Use session windows instead of fixed windows to capture late data automatically</button><button class="opt" onclick="answer(this,0,2,0)">C. Increase window size to 10 minutes to include all late data</button><button class="opt" onclick="answer(this,0,3,0)">D. Use a global window with a count-based trigger</button>
+    <div class="expl">Allowed lateness (withAllowedLateness) extends the window's data-driven trigger horizon so late data is still accepted and merged into the pane. Combining this with an early trigger (e.g., processing-time trigger for a fast provisional result) and a late-firing trigger produces controlled emission of an early estimate followed by a corrected final result, using accumulating mode so later panes include all prior data rather than just deltas.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Ingesting and processing the data">
+    <div class="meta">Question 2 of 6 · Ingesting and processing the data</div>
+    <div class="q">A pipeline reads from Pub/Sub, processes records in Dataflow, and writes streaming inserts to a BigQuery table. The team must guarantee that no record is processed or written more than once end-to-end, even if workers restart or retries occur. Which statement correctly describes how to achieve this?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. Pub/Sub subscription's at-least-once delivery already guarantees exactly-once end-to-end</button><button class="opt" onclick="answer(this,1,1,3)">B. Configure the subscription for at-most-once delivery to avoid duplicates</button><button class="opt" onclick="answer(this,1,2,3)">C. Implement manual deduplication using Cloud Memorystore before publishing to Pub/Sub</button><button class="opt" onclick="answer(this,1,3,3)">D. Rely on Dataflow's exactly-once processing model combined with BigQueryIO's streaming insert deduplication using insertId for effectively-once end-to-end delivery</button>
+    <div class="expl">Dataflow's runner guarantees exactly-once processing of records within the pipeline itself (it dedupes retried bundles internally). For the final sink write, BigQueryIO's streaming insert API uses an insertId per row so that BigQuery's dedup logic on the streaming buffer suppresses duplicate rows from retried writes, achieving effectively-once semantics end-to-end.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Ingesting and processing the data">
+    <div class="meta">Question 3 of 6 · Ingesting and processing the data</div>
+    <div class="q">A company is migrating an on-premises Oracle database to BigQuery and needs continuous low-latency replication of inserts, updates, and deletes with minimal load placed on the source database. Which approach is the current recommended solution using Google Cloud managed CDC tooling?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. Stream CDC events to Cloud Storage as Avro files, then run a Dataflow batch job every hour to merge into BigQuery</button><button class="opt" onclick="answer(this,2,1,1)">B. Configure Datastream with BigQuery as the direct destination, letting Datastream handle continuous replication and merge operations automatically</button><button class="opt" onclick="answer(this,2,2,1)">C. Use Data Fusion to poll the Oracle database every 5 minutes and perform batch loads into BigQuery</button><button class="opt" onclick="answer(this,2,3,1)">D. Deploy a Dataproc Spark job using a JDBC connector to extract the full table nightly</button>
+    <div class="expl">Datastream supports BigQuery as a direct replication destination, natively capturing change events (inserts/updates/deletes) from Oracle's redo logs with minimal source impact and automatically applying merges into BigQuery tables, removing the need for a separate Dataflow merge pipeline for the common case.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Ingesting and processing the data">
+    <div class="meta">Question 4 of 6 · Ingesting and processing the data</div>
+    <div class="q">A team is migrating on-premises Spark ETL jobs that each run for about 30 minutes, several times per day, with idle time between runs. They currently use a persistent Dataproc cluster and want to minimize cost without managing cluster lifecycle logic. What should they do?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. Configure Dataproc Autoscaling Policies on the existing persistent cluster with a minimum of 0 secondary workers</button><button class="opt" onclick="answer(this,3,1,1)">B. Migrate the jobs to Dataproc Serverless for Spark, which runs each job as an ephemeral batch with no cluster to manage or pay for when idle</button><button class="opt" onclick="answer(this,3,2,1)">C. Use a preemptible-only cluster with autoscaling disabled to minimize compute cost</button><button class="opt" onclick="answer(this,3,3,1)">D. Increase the size of the persistent cluster so each job finishes faster, reducing total billed time</button>
+    <div class="expl">Dataproc Serverless for Spark eliminates cluster provisioning and management entirely — Google runs each batch job on transient infrastructure and bills only for the resources consumed during execution, which is ideal for short, periodic jobs with idle gaps and requires no autoscaling policy tuning.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Ingesting and processing the data">
+    <div class="meta">Question 5 of 6 · Ingesting and processing the data</div>
+    <div class="q">A Cloud Composer DAG has a downstream task that must run only after a file lands in a Cloud Storage bucket, but the file arrival time is unpredictable and can occur at any point during the day. The team wants to minimize wasted compute and worker-slot usage while reacting quickly to file arrival. What is the BEST design?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. Configure a Cloud Storage notification to publish to Pub/Sub, and use a Cloud Function to call the Airflow REST API and trigger the DAG run when the object is created</button><button class="opt" onclick="answer(this,4,1,0)">B. Use a GCSObjectExistenceSensor in poke mode, polling every 30 seconds for the duration of the DAG</button><button class="opt" onclick="answer(this,4,2,0)">C. Schedule the DAG hourly and rely on task retries until the file appears</button><button class="opt" onclick="answer(this,4,3,0)">D. Use a deferrable GCSObjectExistenceSensor in reschedule mode polling every 60 seconds</button>
+    <div class="expl">Decoupling the trigger from any polling mechanism by using a GCS event notification through Pub/Sub and a Cloud Function calling the Airflow REST API creates a true event-driven trigger, minimizing latency between file arrival and DAG execution while consuming zero compute while waiting.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Ingesting and processing the data">
+    <div class="meta">Question 6 of 6 · Ingesting and processing the data</div>
+    <div class="q">A streaming Dataflow pipeline ingests JSON events from Pub/Sub. Occasionally, upstream producers send malformed or schema-drifted records that cause exceptions in the parsing DoFn, and currently these exceptions cause bundle-level failures that stall the pipeline. The team needs the pipeline to keep processing valid records while capturing failed records for later inspection. What should they implement?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. Wrap the transform logic in a try/catch inside the DoFn, routing malformed records to a dead-letter PCollection written to a BigQuery error table or GCS while valid records continue downstream</button><button class="opt" onclick="answer(this,5,1,0)">B. Configure the Pub/Sub subscription to silently discard any message that fails JSON parsing before it reaches Dataflow</button><button class="opt" onclick="answer(this,5,2,0)">C. Rely on Dataflow's built-in retry with exponential backoff, which will eventually parse the malformed records correctly</button><button class="opt" onclick="answer(this,5,3,0)">D. Increase the number of Dataflow workers so malformed elements are processed through brute-force parallelism</button>
+    <div class="expl">Catching exceptions inside the DoFn and using a multi-output ParDo (TupleTags) to split successful and failed elements into separate PCollections is the standard dead-letter pattern in Beam/Dataflow. It isolates malformed records for review or reprocessing without stalling the main pipeline, directly addressing schema drift robustness.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$129.99</span> <span class="price">$34.99</span> with code <span class="code">FREETEST33</span> — valid through September 16.</p>
+  <a href="https://www.udemy.com/course/google-professional-data-engineer-exam-prep/?couponCode=FREETEST33" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

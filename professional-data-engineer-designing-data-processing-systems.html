@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Designing data processing systems Practice Questions — Google Cloud Certified - Professional Data Engineer</title>
+<meta name="description" content="6 free Designing data processing systems practice questions with explanations for the Google Cloud Certified - Professional Data Engineer exam.">
+<link rel="canonical" href="https://technuggets.academy/professional-data-engineer-designing-data-processing-systems.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Designing data processing systems Practice Questions — Google Cloud Certified - Professional Data Engineer">
+<meta property="og:description" content="6 free Designing data processing systems practice questions with explanations for the Google Cloud Certified - Professional Data Engineer exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/professional-data-engineer-designing-data-processing-systems.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#4285F4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Designing data processing systems</h1>
+<p class="sub">Free Google Cloud Certified - Professional Data Engineer practice — 6 questions on <strong>Designing data processing systems</strong>, with explanations. No sign-up.
+<a href="professional-data-engineer.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Designing data processing systems">
+    <div class="meta">Question 1 of 6 · Designing data processing systems</div>
+    <div class="q">An IoT platform ingests telemetry from 50 million devices into Cloud Bigtable using a row key of the form epoch_timestamp#device_id. Even though the cluster has 30 nodes, write throughput is bottlenecked on only a handful of nodes at any given moment. Which row key redesign BEST resolves this hotspotting while preserving the ability to query a device's recent readings efficiently?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. Keep timestamp#device_id but append a random salt suffix to each key</button><button class="opt" onclick="answer(this,0,1,1)">B. Redesign the key as device_id#reverse_timestamp</button><button class="opt" onclick="answer(this,0,2,1)">C. Hash the entire epoch_timestamp value and use it as the row key</button><button class="opt" onclick="answer(this,0,3,1)">D. Split telemetry into separate column families per device</button>
+    <div class="expl">Promoting the high-cardinality device_id to the front of the key spreads writes across the full tablet key range instead of all writes landing near the same monotonically-increasing timestamp prefix. Reversing the timestamp still lets you scan a device's most recent readings first with a simple prefix scan.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Designing data processing systems">
+    <div class="meta">Question 2 of 6 · Designing data processing systems</div>
+    <div class="q">A global e-commerce company needs a single system of record for inventory that supports ACID transactions across multiple rows, SQL joins, horizontal write scalability as order volume grows, and 99.999% availability with multi-region writes. Which service should be selected?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. Cloud Bigtable configured with a multi-cluster routing policy</button><button class="opt" onclick="answer(this,1,1,2)">B. Cloud SQL for PostgreSQL with cross-region read replicas</button><button class="opt" onclick="answer(this,1,2,2)">C. Cloud Spanner configured as a multi-region instance</button><button class="opt" onclick="answer(this,1,3,2)">D. BigQuery with multi-region datasets</button>
+    <div class="expl">Spanner is the only GCP database offering horizontally scalable, strongly consistent multi-row ACID transactions with SQL and a documented 99.999% multi-region SLA, making it the correct fit for global transactional inventory.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Designing data processing systems">
+    <div class="meta">Question 3 of 6 · Designing data processing systems</div>
+    <div class="q">A team of BigQuery analysts with strong SQL skills but no Python or Java experience needs to build version-controlled, testable ELT transformation pipelines that run entirely inside BigQuery, with explicit dependency graphs between transformation steps. Which tool should they use?</div>
+    <button class="opt" onclick="answer(this,2,0,2)">A. Cloud Data Fusion</button><button class="opt" onclick="answer(this,2,1,2)">B. Cloud Dataflow using SqlTransform</button><button class="opt" onclick="answer(this,2,2,2)">C. Dataform</button><button class="opt" onclick="answer(this,2,3,2)">D. Dataproc with PySpark SQL</button>
+    <div class="expl">Dataform is purpose-built for SQL-based ELT inside BigQuery: it provides dependency (DAG) management, version control integration, and built-in assertions/tests for SQL transformations without requiring general-purpose programming skills.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Designing data processing systems">
+    <div class="meta">Question 4 of 6 · Designing data processing systems</div>
+    <div class="q">A 50 TB BigQuery table holds five years of order history. Nearly every query filters on order_date, and most queries also filter or aggregate by customer_region and product_category. customer_id has extremely high cardinality. Which table design BEST optimizes cost and performance?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. No partitioning; cluster by order_date, customer_region, product_category</button><button class="opt" onclick="answer(this,3,1,1)">B. Partition by order_date, cluster by customer_region, product_category</button><button class="opt" onclick="answer(this,3,2,1)">C. Partition by product_category, cluster by order_date</button><button class="opt" onclick="answer(this,3,3,1)">D. Partition by customer_id, cluster by order_date</button>
+    <div class="expl">Date partitioning lets BigQuery prune entire partitions for the near-universal order_date filter, and clustering on the two next-most-common filter columns further prunes blocks within each partition, minimizing bytes scanned.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Designing data processing systems">
+    <div class="meta">Question 5 of 6 · Designing data processing systems</div>
+    <div class="q">A large enterprise has independent business units that each own and manage their own BigQuery datasets and GCS buckets under a data mesh model. Leadership wants centralized discovery, cataloging, data quality checks, and end-to-end lineage across all domains WITHOUT centralizing ownership or physically moving the data. Which GCP service should be used?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. Cloud Asset Inventory</button><button class="opt" onclick="answer(this,4,1,1)">B. Dataplex</button><button class="opt" onclick="answer(this,4,2,1)">C. Cloud Data Catalog as a standalone service</button><button class="opt" onclick="answer(this,4,3,1)">D. Cloud Data Fusion</button>
+    <div class="expl">Dataplex provides a unified governance layer (catalog, data quality, lineage) that spans distributed BigQuery and GCS assets across business domains while leaving the underlying data in place and owned by its respective teams, which is exactly the data mesh governance pattern.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Designing data processing systems">
+    <div class="meta">Question 6 of 6 · Designing data processing systems</div>
+    <div class="q">A company is migrating an on-premises Oracle database running heavy PL/SQL and sustaining 50,000 transactions per second. They want to minimize application rewrites by using a PostgreSQL-compatible interface, while requiring write throughput that scales horizontally beyond what a single primary instance can provide, with strong multi-row consistency. Which GCP service should they migrate to?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. AlloyDB for PostgreSQL</button><button class="opt" onclick="answer(this,5,1,3)">B. Cloud SQL for PostgreSQL</button><button class="opt" onclick="answer(this,5,2,3)">C. BigQuery with the BigQuery migration Oracle connector</button><button class="opt" onclick="answer(this,5,3,3)">D. Cloud Spanner with the PostgreSQL interface</button>
+    <div class="expl">Spanner's PostgreSQL interface offers SQL/driver compatibility to ease migration while providing true horizontal write scalability across nodes with strong multi-row consistency, which is required at 50,000 TPS beyond any single-instance limit.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$129.99</span> <span class="price">$34.99</span> with code <span class="code">FREETEST33</span> — valid through September 16.</p>
+  <a href="https://www.udemy.com/course/google-professional-data-engineer-exam-prep/?couponCode=FREETEST33" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

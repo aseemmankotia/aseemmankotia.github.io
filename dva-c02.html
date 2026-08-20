@@ -1,0 +1,123 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free AWS Certified Developer - Associate Practice Test — 12 Real Exam-Style Questions</title>
+<meta name="description" content="Free AWS Certified Developer - Associate practice questions with detailed explanations. Test yourself before the real exam.">
+<link rel="canonical" href="https://technuggets.academy/dva-c02.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free AWS Certified Developer - Associate Practice Test — 12 Real Exam-Style Questions">
+<meta property="og:description" content="Free AWS Certified Developer - Associate practice questions with detailed explanations. Test yourself before the real exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/dva-c02.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#FF9900}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div><div class="hero">
+  <span class="chip">DVA-C02</span>
+  <h1>Free AWS Certified Developer - Associate Practice Test</h1>
+  <p class="sub">12 exam-style questions with full explanations — no sign-up. Score yourself, then close your gaps with the full course.</p>
+  <div class="facts"><span class="fact">Exam fee <b>~$150</b></span><span class="fact"><b>4</b> exam domains</span><span class="fact">Level <b>Intermediate</b></span><span class="fact"><b>2</b> timed practice tests in the course</span></div>
+  <div class="cta-row"><a class="btn enroll" href="https://www.udemy.com/course/aws-certified-developer-associate-dva-c02-prep/?couponCode=FREETEST33" rel="sponsored" target="_blank">Get my $34.99 deal →</a><a class="btn ghost" href="#practice">Try the free test →</a><span class="urgency">⏳ Deal ends September 19</span></div>
+</div><div class="trust"><span>✅ <b>Free</b> practice — no sign-up</span><span>📝 Real exam-style questions</span><span>💡 Detailed explanations</span><span>💸 30-day money-back via Udemy</span></div>
+<div id="practice"></div>
+
+  <div class="card qcard" id="q0" data-domain="Development with AWS Services">
+    <div class="meta">Question 1 of 12 · Development with AWS Services</div>
+    <div class="q">A developer's Lambda function writes payment records to a legacy on-premises database that can only accept 10 concurrent connections. The Lambda function is invoked by an SQS queue that can receive thousands of messages per minute. What is the BEST way to prevent the function from overwhelming the downstream database?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. Set the Lambda function's provisioned concurrency to 10</button><button class="opt" onclick="answer(this,0,1,1)">B. Set the Lambda function's reserved concurrency to 10</button><button class="opt" onclick="answer(this,0,2,1)">C. Request an increase to the account's overall concurrent execution limit to 10</button><button class="opt" onclick="answer(this,0,3,1)">D. Set the SQS queue's visibility timeout to 10 seconds</button>
+    <div class="expl">Reserved concurrency sets a hard cap on the maximum number of concurrent executions for that specific function, throttling any invocations beyond the limit so the database never receives more than 10 simultaneous connections.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Security">
+    <div class="meta">Question 2 of 12 · Security</div>
+    <div class="q">A company must allow a partner AWS account to access resources in their account temporarily, ensuring the partner's role cannot be assumed by an unrelated third party who somehow learns the role ARN. Which approach BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,1,0,1)">A. Create an IAM user in the company's account and share its long-term access key with the partner</button><button class="opt" onclick="answer(this,1,1,1)">B. Create an IAM role with a trust policy that requires a unique external ID, and have the partner call AWS STS AssumeRole with that external ID</button><button class="opt" onclick="answer(this,1,2,1)">C. Share the AWS account root user credentials with the partner</button><button class="opt" onclick="answer(this,1,3,1)">D. Attach an identity-based policy directly to the partner's IAM users granting cross-account S3 permissions</button>
+    <div class="expl">A cross-account role with a trust policy requiring an external ID and assumed via STS AssumeRole prevents the confused deputy problem and issues short-lived, auditable temporary credentials instead of long-term keys.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Deployment">
+    <div class="meta">Question 3 of 12 · Deployment</div>
+    <div class="q">A developer configures AWS CodeDeploy to deploy a new Lambda function version. The deployment must shift 10% of traffic immediately, then the remaining 90% linearly every 10 minutes until 100% is reached, so that CloudWatch alarms have time to detect errors before full rollout. Which predefined CodeDeploy deployment configuration should be selected?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. Canary10Percent5Minutes</button><button class="opt" onclick="answer(this,2,1,1)">B. Linear10PercentEvery10Minutes</button><button class="opt" onclick="answer(this,2,2,1)">C. AllAtOnce</button><button class="opt" onclick="answer(this,2,3,1)">D. Canary10Percent10Minutes</button>
+    <div class="expl">Linear10PercentEvery10Minutes shifts traffic in equal 10% increments every 10 minutes until reaching 100%, matching the described gradual linear rollout with alarm monitoring time between increments.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Troubleshooting and Optimization">
+    <div class="meta">Question 4 of 12 · Troubleshooting and Optimization</div>
+    <div class="q">A developer instruments a Lambda function with the AWS X-Ray SDK and needs to filter traces in the X-Ray console by a custom field called order_status. Which SDK call should be used so this field is indexed and searchable?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. Call segment.put_metadata() to attach the field</button><button class="opt" onclick="answer(this,3,1,3)">B. Add the field to the segment's HTTP block</button><button class="opt" onclick="answer(this,3,2,3)">C. Log the field to CloudWatch Logs and enable Logs Insights</button><button class="opt" onclick="answer(this,3,3,3)">D. Call segment.put_annotation() to attach the field</button>
+    <div class="expl">Annotations are indexed key-value pairs on a segment or subsegment that can be used to filter and group traces in the X-Ray console or via GetTraceSummaries; this is the only mechanism designed for searchable custom fields.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Development with AWS Services">
+    <div class="meta">Question 5 of 12 · Development with AWS Services</div>
+    <div class="q">Multiple application instances update the same DynamoDB item concurrently. The team must ensure that an update only succeeds if the item has not been modified by another process since it was last read, implementing optimistic concurrency control. Which approach BEST achieves this?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. Use an UpdateItem call with a ConditionExpression that checks the item's version attribute matches the value last read, incrementing it on success</button><button class="opt" onclick="answer(this,4,1,0)">B. Enable DynamoDB Streams and have a Lambda function detect and resolve conflicting writes after they occur</button><button class="opt" onclick="answer(this,4,2,0)">C. Enable DAX write-through caching in front of the table to serialize writes</button><button class="opt" onclick="answer(this,4,3,0)">D. Add a Global Secondary Index on the version attribute and query it before writing</button>
+    <div class="expl">A ConditionExpression tied to a version number (e.g., version = :expectedVersion) makes the write atomic and conditional: DynamoDB rejects the update with a ConditionalCheckFailedException if another process already changed the item, which is the standard optimistic locking pattern tested on the exam.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Security">
+    <div class="meta">Question 6 of 12 · Security</div>
+    <div class="q">A mobile application must authenticate users with a username and password, and after login the app needs temporary AWS credentials to upload photos directly to an S3 bucket. Which combination of Amazon Cognito components should the developer implement?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. A Cognito User Pool only, using the ID token directly to sign AWS API requests</button><button class="opt" onclick="answer(this,5,1,1)">B. A Cognito User Pool for authentication, federated into a Cognito Identity Pool to obtain temporary AWS credentials</button><button class="opt" onclick="answer(this,5,2,1)">C. A Cognito Identity Pool only, configured to allow unauthenticated guest access</button><button class="opt" onclick="answer(this,5,3,1)">D. A Cognito User Pool federated with a third-party SAML provider, without configuring any S3 access</button>
+    <div class="expl">This is the standard Cognito pattern: the User Pool authenticates the user and issues JWT tokens, and those tokens are federated into an Identity Pool, which uses STS to vend temporary IAM credentials for direct S3 access.</div>
+  </div>
+
+  <div class="card qcard" id="q6" data-domain="Deployment">
+    <div class="meta">Question 7 of 12 · Deployment</div>
+    <div class="q">A CloudFormation template for a network stack exports a value named 'VPCId' using the Outputs section with an Export field. A separate application stack needs to reference this VPC ID when creating a subnet resource. Which intrinsic function should be used in the application stack to retrieve this value?</div>
+    <button class="opt" onclick="answer(this,6,0,1)">A. Fn::GetAtt</button><button class="opt" onclick="answer(this,6,1,1)">B. Fn::ImportValue</button><button class="opt" onclick="answer(this,6,2,1)">C. Fn::Sub</button><button class="opt" onclick="answer(this,6,3,1)">D. Fn::FindInMap</button>
+    <div class="expl">Fn::ImportValue retrieves values that have been exported by another stack using the Export field in Outputs, enabling cross-stack references such as sharing a VPC ID between a network stack and an application stack.</div>
+  </div>
+
+  <div class="card qcard" id="q7" data-domain="Troubleshooting and Optimization">
+    <div class="meta">Question 8 of 12 · Troubleshooting and Optimization</div>
+    <div class="q">A DynamoDB table uses a partition key of order_date (e.g., '2026-06-01'). During flash sales, the table experiences heavy write throttling even though the table's aggregate provisioned throughput is far from being exhausted. What is the MOST likely root cause?</div>
+    <button class="opt" onclick="answer(this,7,0,1)">A. The table's provisioned RCUs are set too low</button><button class="opt" onclick="answer(this,7,1,1)">B. The low-cardinality partition key concentrates all of a day's writes onto a single partition, exceeding its per-partition limit</button><button class="opt" onclick="answer(this,7,2,1)">C. The table needs a global secondary index to spread the load</button><button class="opt" onclick="answer(this,7,3,1)">D. DynamoDB Accelerator (DAX) has not been enabled for the table</button>
+    <div class="expl">Using order_date as the partition key means every write for a given day targets the same physical partition. Each partition has hard throughput limits (1,000 WCU / 3,000 RCU), so throttling occurs there even if the table's total provisioned throughput is unused elsewhere — the classic hot partition problem.</div>
+  </div>
+
+  <div class="card qcard" id="q8" data-domain="Development with AWS Services">
+    <div class="meta">Question 9 of 12 · Development with AWS Services</div>
+    <div class="q">A developer generates an S3 presigned URL using the AWS SDK, signing it with temporary credentials from an assumed IAM role that expire in 1 hour. The developer sets the URL's ExpiresIn parameter to 604800 seconds (7 days). What happens when a user attempts to use the URL 2 hours after it was generated?</div>
+    <button class="opt" onclick="answer(this,8,0,2)">A. The URL works because a presigned URL's expiration is completely independent of the credentials used to sign it</button><button class="opt" onclick="answer(this,8,1,2)">B. The URL fails because ExpiresIn cannot exceed 3600 seconds when using SigV4 signing</button><button class="opt" onclick="answer(this,8,2,2)">C. The URL fails because the underlying temporary credentials expired after 1 hour, even though the presigned URL's ExpiresIn value has not yet been reached</button><button class="opt" onclick="answer(this,8,3,2)">D. The URL works, but only for GET requests, not for PUT or POST operations</button>
+    <div class="expl">A presigned URL is only valid as long as both conditions hold: the ExpiresIn window has not elapsed AND the credentials used to sign it are still valid. Since the assumed role's temporary credentials expired after 1 hour, the request fails with an authentication error at 2 hours despite the 7-day ExpiresIn setting.</div>
+  </div>
+
+  <div class="card qcard" id="q9" data-domain="Security">
+    <div class="meta">Question 10 of 12 · Security</div>
+    <div class="q">A company requires that every object uploaded to a specific S3 bucket must be encrypted with AWS KMS (SSE-KMS), and any PutObject request that does not specify SSE-KMS encryption must be rejected outright. Which bucket policy statement satisfies this requirement?</div>
+    <button class="opt" onclick="answer(this,9,0,3)">A. Enable S3 default (bucket-level) encryption using SSE-S3 with no bucket policy changes</button><button class="opt" onclick="answer(this,9,1,3)">B. Require the Content-MD5 header to be present on all PutObject requests</button><button class="opt" onclick="answer(this,9,2,3)">C. Enable S3 bucket versioning so unencrypted objects create a new version instead of being denied</button><button class="opt" onclick="answer(this,9,3,3)">D. A Deny statement on s3:PutObject with a condition that s3:x-amz-server-side-encryption StringNotEquals &quot;aws:kms&quot;</button>
+    <div class="expl">A bucket policy Deny statement with a condition checking that the s3:x-amz-server-side-encryption header is not 'aws:kms' actively rejects any upload request that omits or misconfigures KMS encryption, enforcing the requirement at the API level.</div>
+  </div>
+
+  <div class="card qcard" id="q10" data-domain="Deployment">
+    <div class="meta">Question 11 of 12 · Deployment</div>
+    <div class="q">A serverless application defined with AWS SAM has five Lambda functions that all require the same 512 MB memory size, 10 second timeout, and identical environment variable for a table name. What is the MOST efficient way to apply these common settings across all functions without repeating them in each AWS::Serverless::Function resource?</div>
+    <button class="opt" onclick="answer(this,10,0,0)">A. Define the settings once in the Globals section of the SAM template</button><button class="opt" onclick="answer(this,10,1,0)">B. Create a nested stack containing only the shared configuration values</button><button class="opt" onclick="answer(this,10,2,0)">C. Use a CloudFormation mapping to store the shared property values</button><button class="opt" onclick="answer(this,10,3,0)">D. Add the settings as parameters that must be passed at each sam deploy</button>
+    <div class="expl">The SAM template's Globals section lets you define common properties such as MemorySize, Timeout, and Environment variables once, and SAM automatically applies them to every AWS::Serverless::Function and AWS::Serverless::Api resource in the template, unless overridden individually.</div>
+  </div>
+
+  <div class="card qcard" id="q11" data-domain="Troubleshooting and Optimization">
+    <div class="meta">Question 12 of 12 · Troubleshooting and Optimization</div>
+    <div class="q">An S3 PUT event asynchronously invokes a Lambda function that occasionally fails due to a downstream service outage. The team needs failed events automatically captured together with the invocation result (Lambda response payload, error type, and stack trace) for automated reprocessing, without adding any custom error-handling code to the function. What should the developer configure?</div>
+    <button class="opt" onclick="answer(this,11,0,0)">A. A Lambda on-failure destination pointing to an SQS queue or SNS topic</button><button class="opt" onclick="answer(this,11,1,0)">B. An SQS dead-letter queue attached to the function's event source mapping</button><button class="opt" onclick="answer(this,11,2,0)">C. Increase the function's reserved concurrency</button><button class="opt" onclick="answer(this,11,3,0)">D. Wrap the function code in a try/catch block that publishes to SNS on failure</button>
+    <div class="expl">Lambda destinations for asynchronous invocations capture a full invocation record — including the original event, the response payload, and error details — and route it to SQS, SNS, another Lambda function, or EventBridge, all without any code changes.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$109.99</span> <span class="price">$34.99</span> with code <span class="code">FREETEST33</span> — valid through September 19.</p>
+  <a href="https://www.udemy.com/course/aws-certified-developer-associate-dva-c02-prep/?couponCode=FREETEST33" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<section class="faq"><h3>DVA-C02 exam — quick answers</h3><details><summary>How much does the DVA-C02 exam cost?</summary><p>The exam fee is approximately $150 and varies by region — confirm current pricing with the certification vendor before you book.</p></details><details><summary>What topics are on the exam?</summary><p>It covers 4 domains: Development with AWS Services (32%), Security (26%), Deployment (24%), Troubleshooting and Optimization (18%). The full course has a dedicated chapter, lab and practice-test coverage for each.</p></details><details><summary>Is this practice test really free?</summary><p>Yes — all questions on this page are free with explanations and no sign-up. The paid Udemy course adds two full-length timed exams, video lessons and hands-on labs.</p></details><details><summary>How do I get the discount?</summary><p>Use code FREETEST33 at checkout for $34.99 (list $109.99) through September 19 — the enroll button applies it automatically.</p></details><details><summary>Will this prepare me for the real exam?</summary><p>The questions mirror the real exam's style and are mapped to the official domains. This is exam-focused preparation — combine the free test with the full course's timed simulations to gauge your readiness.</p></details></section>
+<div class="domains"><span class="meta">More free practice by exam domain:</span><br><a href="dva-c02-development-with-aws-services.html">Development with AWS Services →</a><a href="dva-c02-security.html">Security →</a><a href="dva-c02-deployment.html">Deployment →</a><a href="dva-c02-troubleshooting-and-optimization.html">Troubleshooting and Optimization →</a></div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

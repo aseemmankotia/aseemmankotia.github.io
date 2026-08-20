@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Deployment Practice Questions — AWS Certified Developer - Associate</title>
+<meta name="description" content="6 free Deployment practice questions with explanations for the AWS Certified Developer - Associate exam.">
+<link rel="canonical" href="https://technuggets.academy/dva-c02-deployment.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Deployment Practice Questions — AWS Certified Developer - Associate">
+<meta property="og:description" content="6 free Deployment practice questions with explanations for the AWS Certified Developer - Associate exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/dva-c02-deployment.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#FF9900}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Deployment</h1>
+<p class="sub">Free AWS Certified Developer - Associate practice — 6 questions on <strong>Deployment</strong>, with explanations. No sign-up.
+<a href="dva-c02.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Deployment">
+    <div class="meta">Question 1 of 6 · Deployment</div>
+    <div class="q">A developer deploys an update to a Lambda function using AWS CodeDeploy with an AppSpec file that defines a BeforeAllowTraffic hook. The hook function runs integration tests against the new Lambda version's alias before traffic shifts. The hook function returns a failure status. What happens to the deployment?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. CodeDeploy logs a warning but proceeds to shift traffic to the new version anyway</button><button class="opt" onclick="answer(this,0,1,2)">B. The AfterAllowTraffic hook is triggered instead to compensate for the failure</button><button class="opt" onclick="answer(this,0,2,2)">C. The deployment fails and rolls back; traffic remains pointed at the original Lambda version</button><button class="opt" onclick="answer(this,0,3,2)">D. CodeDeploy retries the BeforeAllowTraffic hook indefinitely until it succeeds</button>
+    <div class="expl">Lifecycle hook failures (BeforeAllowTraffic, AfterAllowTraffic) cause CodeDeploy to fail the deployment and roll back, so traffic is never shifted to the new version — this is how validation gates protect production traffic.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Deployment">
+    <div class="meta">Question 2 of 6 · Deployment</div>
+    <div class="q">A CloudFormation stack named NetworkStack exports a subnet ID value using the Export field in its Outputs section. Another stack, AppStack, imports this value with Fn::ImportValue. A developer attempts to update NetworkStack to change the exported subnet ID value. What is the result?</div>
+    <button class="opt" onclick="answer(this,1,0,1)">A. The update succeeds and CloudFormation automatically updates AppStack to use the new value</button><button class="opt" onclick="answer(this,1,1,1)">B. The update fails with an error because the export is still in use by another stack</button><button class="opt" onclick="answer(this,1,2,1)">C. The update succeeds, but AppStack silently continues using the old subnet ID until manually refreshed</button><button class="opt" onclick="answer(this,1,3,1)">D. CloudFormation creates a versioned export so both the old and new values remain available</button>
+    <div class="expl">CloudFormation prevents you from modifying or deleting an exported output value while any other stack has an active Fn::ImportValue reference to it — the update call fails until the dependent import is removed.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Deployment">
+    <div class="meta">Question 3 of 6 · Deployment</div>
+    <div class="q">A team wants AWS CodeDeploy to manage blue/green deployments for an Amazon ECS service, shifting traffic between task sets behind an Application Load Balancer. Which ECS service configuration setting is required to enable this?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. The service's deployment controller type must be set to ECS</button><button class="opt" onclick="answer(this,2,1,3)">B. The service must use the ROLLING update type with minimum healthy percent set to 200</button><button class="opt" onclick="answer(this,2,2,3)">C. The service must be configured with the EXTERNAL deployment controller type</button><button class="opt" onclick="answer(this,2,3,3)">D. The service's deployment controller type must be set to CODE_DEPLOY</button>
+    <div class="expl">ECS services support three deployment controller types: ECS (rolling), CODE_DEPLOY (blue/green), and EXTERNAL. To let CodeDeploy manage traffic shifting via an AppSpec file and a load balancer, the service must explicitly use the CODE_DEPLOY controller type.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Deployment">
+    <div class="meta">Question 4 of 6 · Deployment</div>
+    <div class="q">A company wants to standardize on AWS CodeArtifact as the single package source for its build systems, while still allowing developers to pull public npm packages through that same CodeArtifact repository without manually re-uploading each dependency. Which configuration meets this requirement?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. Enable public internet access directly on the CodeArtifact domain settings</button><button class="opt" onclick="answer(this,3,1,3)">B. Have developers configure npm to pull from the public registry, then run a script to manually upload each package to CodeArtifact</button><button class="opt" onclick="answer(this,3,2,3)">C. Create an upstream repository that references another private CodeArtifact repository only, bypassing npm entirely</button><button class="opt" onclick="answer(this,3,3,3)">D. Create a CodeArtifact repository and configure an external connection to the public npm registry</button>
+    <div class="expl">CodeArtifact repositories support 'external connections' to public package repositories such as npmjs, PyPI, Maven Central, and NuGet Gallery. Once configured, requests for packages not already cached are automatically fetched from the public source and cached in CodeArtifact.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Deployment">
+    <div class="meta">Question 5 of 6 · Deployment</div>
+    <div class="q">A SAM template defines AutoPublishAlias: live along with a DeploymentPreference of Type: Canary10Percent5Minutes and an Alarms list pointing to a CloudWatch alarm on function errors. During deployment, 10% of traffic is shifted to the new version. At minute 3 of the 5-minute canary window, the CloudWatch alarm enters ALARM state. What happens next?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. CodeDeploy automatically rolls back the alias, shifting traffic back to the previous Lambda version</button><button class="opt" onclick="answer(this,4,1,0)">B. CodeDeploy waits until minute 5, then shifts the remaining 90% of traffic as originally scheduled</button><button class="opt" onclick="answer(this,4,2,0)">C. The deployment pauses indefinitely until an operator manually approves or rejects it</button><button class="opt" onclick="answer(this,4,3,0)">D. The alarm is ignored because the canary phase has already started</button>
+    <div class="expl">When a CloudWatch alarm referenced in the DeploymentPreference's Alarms list enters ALARM state during a canary or linear deployment, CodeDeploy automatically triggers a rollback, repointing the alias back to the previous stable version.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Deployment">
+    <div class="meta">Question 6 of 6 · Deployment</div>
+    <div class="q">An Elastic Beanstalk environment needs a deployment policy that launches an entirely new, fully-sized set of instances in a temporary Auto Scaling group, runs health checks against them, shifts all traffic to the new instances only after they pass, and automatically terminates the old instances afterward — minimizing any risk of degrading current production capacity during the deployment. Which Elastic Beanstalk deployment policy satisfies this?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. All at once</button><button class="opt" onclick="answer(this,5,1,3)">B. Rolling with additional batch</button><button class="opt" onclick="answer(this,5,2,3)">C. Traffic splitting</button><button class="opt" onclick="answer(this,5,3,3)">D. Immutable</button>
+    <div class="expl">The Immutable deployment policy launches a full set of new instances in a separate temporary Auto Scaling group alongside the existing fleet, verifies their health, then shifts traffic and terminates the old instances — providing the safest rollback and zero impact on existing capacity during validation.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$109.99</span> <span class="price">$34.99</span> with code <span class="code">FREETEST33</span> — valid through September 19.</p>
+  <a href="https://www.udemy.com/course/aws-certified-developer-associate-dva-c02-prep/?couponCode=FREETEST33" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

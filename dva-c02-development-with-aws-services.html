@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Development with AWS Services Practice Questions — AWS Certified Developer - Associate</title>
+<meta name="description" content="6 free Development with AWS Services practice questions with explanations for the AWS Certified Developer - Associate exam.">
+<link rel="canonical" href="https://technuggets.academy/dva-c02-development-with-aws-services.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Development with AWS Services Practice Questions — AWS Certified Developer - Associate">
+<meta property="og:description" content="6 free Development with AWS Services practice questions with explanations for the AWS Certified Developer - Associate exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/dva-c02-development-with-aws-services.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#FF9900}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Development with AWS Services</h1>
+<p class="sub">Free AWS Certified Developer - Associate practice — 6 questions on <strong>Development with AWS Services</strong>, with explanations. No sign-up.
+<a href="dva-c02.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Development with AWS Services">
+    <div class="meta">Question 1 of 6 · Development with AWS Services</div>
+    <div class="q">A DynamoDB table stores inventory counts. Two Lambda functions running concurrently both read an item's 'stock' attribute and 'version' attribute, then attempt to decrement stock and increment version. Without any coordination, one update can silently overwrite the other, causing incorrect stock counts. Which approach BEST prevents this lost-update problem?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. Enable DynamoDB Streams and reconcile conflicting updates in a downstream Lambda after they occur</button><button class="opt" onclick="answer(this,0,1,2)">B. Wrap both operations in a TransactWriteItems call with no ConditionCheck items, relying on transactions alone to serialize access</button><button class="opt" onclick="answer(this,0,2,2)">C. Use UpdateItem with a ConditionExpression that checks the version attribute still equals the value read, and increment the version atomically on success</button><button class="opt" onclick="answer(this,0,3,2)">D. Add DynamoDB Accelerator (DAX) in front of the table to serialize concurrent writes through the cache layer</button>
+    <div class="expl">This is optimistic locking: read the version, then write only if the version hasn't changed (ConditionExpression version = :expectedVersion), incrementing version on success. A ConditionalCheckFailedException tells the caller to retry with fresh data, preventing lost updates.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Development with AWS Services">
+    <div class="meta">Question 2 of 6 · Development with AWS Services</div>
+    <div class="q">An order-processing platform publishes order events containing deeply nested JSON with fields like order.items[].category and order.customer.tier. Different consuming services need to react only when specific nested field values match certain patterns, and some rules must also fire on a recurring schedule independent of incoming events. Which service should be used to route and filter these events?</div>
+    <button class="opt" onclick="answer(this,1,0,1)">A. Amazon SQS standard queues with per-consumer message attribute filtering</button><button class="opt" onclick="answer(this,1,1,1)">B. Amazon EventBridge with event pattern rules matching nested JSON content and scheduled rules</button><button class="opt" onclick="answer(this,1,2,1)">C. Amazon SNS topics with subscription filter policies based on top-level message attributes</button><button class="opt" onclick="answer(this,1,3,1)">D. AWS Step Functions Standard Workflows with Choice states evaluating the event payload</button>
+    <div class="expl">EventBridge event patterns can match deeply nested JSON fields (not just top-level message attributes), route to multiple targets, and EventBridge also natively supports scheduled (cron/rate) rules on the same bus, satisfying both requirements in one service.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Development with AWS Services">
+    <div class="meta">Question 3 of 6 · Development with AWS Services</div>
+    <div class="q">A Lambda function backing a mobile app has reserved concurrency set to 50 to protect a downstream RDS database. During a marketing push, traffic spikes sharply at a known time each morning and users report multi-second delays during the first minute of the spike, even though total concurrent invocations stay under 50. What should be configured to eliminate this cold-start latency for the predictable spike?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. Configure provisioned concurrency for the function (or a published version/alias) scaled up ahead of the known traffic spike via Application Auto Scaling</button><button class="opt" onclick="answer(this,2,1,0)">B. Increase reserved concurrency from 50 to 200 so more warm environments are available</button><button class="opt" onclick="answer(this,2,2,0)">C. Enable AWS X-Ray active tracing on the function to reduce initialization overhead</button><button class="opt" onclick="answer(this,2,3,0)">D. Increase the function's memory allocation to the maximum 10,240 MB to speed up initialization</button>
+    <div class="expl">Provisioned concurrency pre-initializes a specified number of execution environments so invocations hit warm environments immediately, eliminating cold starts. Application Auto Scaling can scale provisioned concurrency on a schedule to match the known daily spike, which reserved concurrency alone does not do.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Development with AWS Services">
+    <div class="meta">Question 4 of 6 · Development with AWS Services</div>
+    <div class="q">A banking application must process withdrawal and deposit transactions for each customer account strictly in the order they occurred, but transactions for different customer accounts can be processed in any order relative to each other, and the system must handle thousands of accounts with high overall throughput. Which SQS configuration meets this requirement?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. A standard SQS queue, since standard queues process messages roughly in the order sent for the majority of cases</button><button class="opt" onclick="answer(this,3,1,3)">B. A FIFO queue with a single fixed MessageGroupId for all transactions to guarantee global ordering</button><button class="opt" onclick="answer(this,3,2,3)">C. An SNS topic fanning out to one SQS queue per customer account, created dynamically as new customers register</button><button class="opt" onclick="answer(this,3,3,3)">D. A FIFO queue using the customer account ID as the MessageGroupId, allowing parallel processing across groups while preserving order within each group</button>
+    <div class="expl">FIFO queues guarantee strict ordering within a message group. Using the account ID as MessageGroupId means each account's messages are delivered/processed in order among themselves, while separate groups (different accounts) can be processed in parallel, maximizing throughput.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Development with AWS Services">
+    <div class="meta">Question 5 of 6 · Development with AWS Services</div>
+    <div class="q">A developer is deciding between a DynamoDB Local Secondary Index (LSI) and a Global Secondary Index (GSI) for a new access pattern. Which statement correctly distinguishes the two?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. An LSI can be added to a table at any time after creation, while a GSI must be defined when the table is created</button><button class="opt" onclick="answer(this,4,1,1)">B. An LSI must share the base table's partition key and can be queried with strong consistency, while a GSI can use a completely different partition key but only supports eventually consistent reads</button><button class="opt" onclick="answer(this,4,2,1)">C. A GSI supports strongly consistent reads by default, while an LSI only supports eventually consistent reads</button><button class="opt" onclick="answer(this,4,3,1)">D. Both LSIs and GSIs consume the base table's provisioned throughput and cannot have independent read/write capacity settings</button>
+    <div class="expl">LSIs share the table's partition key (only the sort key differs), must be defined at table creation, are limited to 5 per table, and uniquely among indexes support strongly consistent reads. GSIs can use any partition/sort key combination, can be added or removed anytime, but only support eventually consistent reads and have their own provisioned/on-demand capacity.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Development with AWS Services">
+    <div class="meta">Question 6 of 6 · Development with AWS Services</div>
+    <div class="q">A web application allows users to upload video files up to 2GB directly to S3 from the browser using presigned URLs. On unreliable mobile connections, uploads frequently fail partway through, forcing users to restart the entire upload from byte zero, causing high abandonment. Which change to the upload approach BEST solves this?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. Generate a single presigned PUT URL with a longer expiration time so the browser has more time to retry the whole upload</button><button class="opt" onclick="answer(this,5,1,1)">B. Use S3 multipart upload: split the file into parts (minimum 5MB each, except the last part), generate a presigned URL per part, and retry only the failed parts before completing the upload</button><button class="opt" onclick="answer(this,5,2,1)">C. Switch to S3 Transfer Acceleration for the presigned URL to speed up the single PUT request and reduce failure likelihood</button><button class="opt" onclick="answer(this,5,3,1)">D. Store the file temporarily in Amazon EFS during upload, then copy it to S3 once the transfer is fully validated as complete</button>
+    <div class="expl">S3 multipart upload lets a large object be uploaded in independent parts (5MB minimum, except the last, up to 10,000 parts, 5TB object max), each with its own presigned URL. If a part fails, only that part needs to be retried — not the whole file — dramatically improving resilience on unreliable connections, and parts can even upload in parallel.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$109.99</span> <span class="price">$34.99</span> with code <span class="code">FREETEST33</span> — valid through September 19.</p>
+  <a href="https://www.udemy.com/course/aws-certified-developer-associate-dva-c02-prep/?couponCode=FREETEST33" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

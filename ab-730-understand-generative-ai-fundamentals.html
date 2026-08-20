@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Understand generative AI fundamentals Practice Questions — Microsoft Certified: AI Business Professional</title>
+<meta name="description" content="6 free Understand generative AI fundamentals practice questions with explanations for the Microsoft Certified: AI Business Professional exam.">
+<link rel="canonical" href="https://technuggets.academy/ab-730-understand-generative-ai-fundamentals.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Understand generative AI fundamentals Practice Questions — Microsoft Certified: AI Business Professional">
+<meta property="og:description" content="6 free Understand generative AI fundamentals practice questions with explanations for the Microsoft Certified: AI Business Professional exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/ab-730-understand-generative-ai-fundamentals.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0078D4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Understand generative AI fundamentals</h1>
+<p class="sub">Free Microsoft Certified: AI Business Professional practice — 6 questions on <strong>Understand generative AI fundamentals</strong>, with explanations. No sign-up.
+<a href="ab-730.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Understand generative AI fundamentals">
+    <div class="meta">Question 1 of 6 · Understand generative AI fundamentals</div>
+    <div class="q">An employee opens Copilot in Word and asks: &quot;Summarize the customer contract stored in our SharePoint site, and check the latest public news about the client's parent company.&quot; Copilot returns one response that cites both the SharePoint document and a recent news article. Which statement correctly describes how Copilot handled the data protection boundary in this response?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. Copilot used Microsoft Graph grounding to retrieve the SharePoint content under enterprise protection, and performed a separate web search for the public news, keeping the two sources distinct</button><button class="opt" onclick="answer(this,0,1,0)">B. Both the SharePoint content and the web article were treated identically under enterprise data protection because the request originated inside a Microsoft 365 app</button><button class="opt" onclick="answer(this,0,2,0)">C. Copilot is technically unable to combine internal Graph-grounded content and public web content in a single response</button><button class="opt" onclick="answer(this,0,3,0)">D. Copilot should have refused the request entirely because it mixed internal organizational data with external web data</button>
+    <div class="expl">Microsoft 365 Copilot grounds work-related answers in Microsoft Graph data (documents, mail, chats the user has permission to) under the enterprise's commercial data protection commitments, while web content is fetched separately via web search and is not covered by the same enterprise data boundary. The two remain distinct sources even when blended into one answer.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Understand generative AI fundamentals">
+    <div class="meta">Question 2 of 6 · Understand generative AI fundamentals</div>
+    <div class="q">A finance manager wants a solution that checks an approvals mailbox every morning, extracts invoice data automatically, and posts a summary to a Teams channel with no one needing to type a prompt each day. Which type of Copilot experience best fits this requirement?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. A single chat prompt in Microsoft 365 Copilot that she re-runs manually each morning</button><button class="opt" onclick="answer(this,1,1,2)">B. A one-time prompt typed into Copilot for Word to summarize the mailbox</button><button class="opt" onclick="answer(this,1,2,2)">C. A declarative or custom agent configured with a scheduled or event-based trigger that runs the workflow autonomously</button><button class="opt" onclick="answer(this,1,3,2)">D. Relying on Copilot's web grounding to monitor the mailbox automatically</button>
+    <div class="expl">Agent experiences differ from chat experiences in that agents can be configured to run on a schedule or trigger and take action without a human initiating each turn, which matches the requirement for an unattended daily workflow.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Understand generative AI fundamentals">
+    <div class="meta">Question 3 of 6 · Understand generative AI fundamentals</div>
+    <div class="q">Two employees type the exact same prompt into Microsoft 365 Copilot at the same time, grounded in identical documents, yet receive answers with noticeably different wording. What best explains this?</div>
+    <button class="opt" onclick="answer(this,2,0,2)">A. Copilot randomly changes which enterprise documents it grounds each user's answer in</button><button class="opt" onclick="answer(this,2,1,2)">B. Each user's Microsoft 365 license tier changes the vocabulary the model is allowed to use</button><button class="opt" onclick="answer(this,2,2,2)">C. Large language models generate responses through probabilistic token-by-token prediction, so wording can legitimately vary between generations even with identical input and grounding</button><button class="opt" onclick="answer(this,2,3,2)">D. Microsoft Graph returns different permission sets to each user, which alters the wording of the response</button>
+    <div class="expl">LLMs predict the next token based on probability distributions rather than retrieving a single fixed answer, so even with the same prompt and the same grounding data, the generated wording can differ between runs. This is a core, non-technical concept the exam expects business users to understand about why outputs vary.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Understand generative AI fundamentals">
+    <div class="meta">Question 4 of 6 · Understand generative AI fundamentals</div>
+    <div class="q">A user asks Copilot Chat: &quot;What was our exact revenue figure last quarter, based on the internal finance report?&quot; Copilot responds with a specific confident-sounding number but provides no citation or link back to a source document. What is the most appropriate next step for the user?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. Accept the figure as accurate, since Copilot only ever answers using verified, grounded enterprise data</button><button class="opt" onclick="answer(this,3,1,1)">B. Verify the figure directly against the actual finance report before using it, since a response with no visible grounding citation carries a higher risk of being fabricated or outdated</button><button class="opt" onclick="answer(this,3,2,1)">C. Report the tool as malfunctioning to IT without further investigation</button><button class="opt" onclick="answer(this,3,3,1)">D. Ask the same question two more times, and if the number stays consistent, treat that consistency as proof of accuracy</button>
+    <div class="expl">Generative AI can hallucinate or fabricate specific-sounding details, and a lack of a citation is a signal that the figure may not be reliably grounded. Best practice, and a core exam concept, is that users must verify important facts against the authoritative source rather than trust confident-sounding output at face value.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Understand generative AI fundamentals">
+    <div class="meta">Question 5 of 6 · Understand generative AI fundamentals</div>
+    <div class="q">An employee discovers that Copilot surfaced content from a sensitive HR file they technically had view permission to but were unaware existed, surprising their manager who believed that file was restricted. Which Responsible AI consideration does this scenario primarily illustrate?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. Privacy and Security, because Copilot surfaces content based on existing (often overly broad) permissions, highlighting the risk of data oversharing</button><button class="opt" onclick="answer(this,4,1,0)">B. Fairness, because Copilot produced inconsistent output quality for different users</button><button class="opt" onclick="answer(this,4,2,0)">C. Inclusiveness, because certain employees were excluded from receiving the information</button><button class="opt" onclick="answer(this,4,3,0)">D. Accountability, because there is no way to trace or audit what Copilot retrieved</button>
+    <div class="expl">Copilot only surfaces content the requesting user already has permission to view, but this scenario shows how existing overly broad or forgotten permissions can lead to unintended access and oversharing risk — a Privacy and Security concern that organizations must address through proper permission hygiene before deploying Copilot.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Understand generative AI fundamentals">
+    <div class="meta">Question 6 of 6 · Understand generative AI fundamentals</div>
+    <div class="q">A team lead wants payroll tax withholding calculated to the cent for 500 employees, guaranteed to match authoritative published tax tables exactly for regulatory compliance. Which approach reflects the correct understanding of generative AI's limits?</div>
+    <button class="opt" onclick="answer(this,5,0,2)">A. Have Copilot chat calculate the withholding directly from a detailed prompt describing the tax rules, and treat its output as final</button><button class="opt" onclick="answer(this,5,1,2)">B. Have Copilot generate the figures and cite Microsoft Graph as the verification mechanism for correctness</button><button class="opt" onclick="answer(this,5,2,2)">C. Use a dedicated, deterministic payroll or tax calculation system rather than generative AI, since precise regulated numeric computation falls outside generative AI's reliable strengths</button><button class="opt" onclick="answer(this,5,3,2)">D. Configure an agent to run the calculation automatically, since agent experiences guarantee numeric accuracy that chat does not</button>
+    <div class="expl">Generative AI is a probabilistic text-generation technology and is not designed to guarantee exact deterministic numeric compliance calculations; regulated, to-the-cent computations should be handled by purpose-built deterministic systems, with generative AI potentially assisting with summarization or drafting around that output, not the calculation itself.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$99.99</span> <span class="price">$34.99</span> with code <span class="code">FREETEST33</span> — valid through September 19.</p>
+  <a href="https://www.udemy.com/course/ab-730-microsoft-ai-business-professional-exam-prep-k/?couponCode=FREETEST33" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

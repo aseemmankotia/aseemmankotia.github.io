@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Troubleshooting and Optimization Practice Questions — AWS Certified Developer - Associate</title>
+<meta name="description" content="6 free Troubleshooting and Optimization practice questions with explanations for the AWS Certified Developer - Associate exam.">
+<link rel="canonical" href="https://technuggets.academy/dva-c02-troubleshooting-and-optimization.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Troubleshooting and Optimization Practice Questions — AWS Certified Developer - Associate">
+<meta property="og:description" content="6 free Troubleshooting and Optimization practice questions with explanations for the AWS Certified Developer - Associate exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/dva-c02-troubleshooting-and-optimization.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#FF9900}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Troubleshooting and Optimization</h1>
+<p class="sub">Free AWS Certified Developer - Associate practice — 6 questions on <strong>Troubleshooting and Optimization</strong>, with explanations. No sign-up.
+<a href="dva-c02.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Troubleshooting and Optimization">
+    <div class="meta">Question 1 of 6 · Troubleshooting and Optimization</div>
+    <div class="q">A Lambda function is invoked asynchronously by S3 event notifications when objects are uploaded to a bucket. Occasionally the function fails after exhausting all automatic retries, and the team needs to capture the failed event along with the invocation's response payload and error details for automated reprocessing. Which solution BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. Configure a Dead Letter Queue (DLQ) on the Lambda function pointing to an SQS queue</button><button class="opt" onclick="answer(this,0,1,1)">B. Configure an on-failure Lambda Destination pointing to an SQS queue</button><button class="opt" onclick="answer(this,0,2,1)">C. Enable AWS X-Ray tracing on the function to capture failure details</button><button class="opt" onclick="answer(this,0,3,1)">D. Configure the S3 event notification to retry indefinitely until the function succeeds</button>
+    <div class="expl">Lambda Destinations for asynchronous invocations capture a full invocation record — including the original event, request/response context, and error details — and are the AWS-recommended replacement for legacy DLQs when richer failure context is needed for reprocessing.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Troubleshooting and Optimization">
+    <div class="meta">Question 2 of 6 · Troubleshooting and Optimization</div>
+    <div class="q">A DynamoDB table uses a partition key named OrderStatus that has only four possible values (NEW, PROCESSING, SHIPPED, COMPLETE). The table is experiencing ProvisionedThroughputExceededException errors even though the table's aggregate consumed capacity is well below its total provisioned capacity. Which change would BEST resolve this issue?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. Redesign the partition key to include a high-cardinality attribute, such as appending a random suffix or incorporating the OrderID</button><button class="opt" onclick="answer(this,1,1,0)">B. Switch the table's billing mode to On-Demand capacity mode</button><button class="opt" onclick="answer(this,1,2,0)">C. Enable DynamoDB Accelerator (DAX) in front of the table</button><button class="opt" onclick="answer(this,1,3,0)">D. Increase the table's provisioned WriteCapacityUnits (WCU) using auto scaling</button>
+    <div class="expl">Each DynamoDB physical partition has a hard throughput ceiling regardless of table-level provisioning. A low-cardinality key concentrates traffic on a few partitions ('hot partition'). Redistributing writes via a high-cardinality or sharded key spreads traffic across more partitions and resolves throttling.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Troubleshooting and Optimization">
+    <div class="meta">Question 3 of 6 · Troubleshooting and Optimization</div>
+    <div class="q">A Lambda function connects to an Amazon RDS MySQL database, creating a new JDBC connection inside the handler method on every invocation. Under high concurrency, the database reports 'too many connections' errors and Lambda invocations show increased latency. Which combination of changes would BEST resolve this issue?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. Increase the Lambda function's timeout value and memory allocation only</button><button class="opt" onclick="answer(this,2,1,1)">B. Move the database connection creation outside the handler to the global scope, and place Amazon RDS Proxy in front of the database</button><button class="opt" onclick="answer(this,2,2,1)">C. Increase the RDS instance's max_connections parameter to a very high value</button><button class="opt" onclick="answer(this,2,3,1)">D. Add a dead-letter queue (DLQ) to the function to catch connection failures for later retry</button>
+    <div class="expl">Initializing the connection in the global scope allows it to be reused across invocations that share a warm execution environment, and RDS Proxy pools and multiplexes connections so that Lambda's rapid concurrency scaling doesn't exhaust the database's native connection limit.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Troubleshooting and Optimization">
+    <div class="meta">Question 4 of 6 · Troubleshooting and Optimization</div>
+    <div class="q">A Lambda function is integrated with API Gateway using Lambda proxy integration. Clients intermittently receive HTTP 502 'Malformed Lambda proxy response' errors, although invoking the same function directly via the AWS CLI returns valid JSON. What is the MOST likely cause of this issue?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. The API Gateway resource policy is denying the invoking IAM role</button><button class="opt" onclick="answer(this,3,1,3)">B. The API Gateway method's request validator is rejecting invalid input schemas</button><button class="opt" onclick="answer(this,3,2,3)">C. The Lambda function's reserved concurrency limit has been reached, causing throttling</button><button class="opt" onclick="answer(this,3,3,3)">D. The Lambda function occasionally returns a response object missing the required statusCode field, or returns the body as a non-string type</button>
+    <div class="expl">Lambda proxy integration requires the function to return a specific JSON structure with an integer statusCode and a body that is a JSON-stringified string. If any code path returns a malformed structure (missing statusCode, non-string body, or an unhandled exception), API Gateway cannot parse it and returns 502 'Malformed Lambda proxy response.'</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Troubleshooting and Optimization">
+    <div class="meta">Question 5 of 6 · Troubleshooting and Optimization</div>
+    <div class="q">An application performs point lookups and query operations directly against a DynamoDB table using the DynamoDB API, and it needs microsecond-level read latency for frequently accessed items with minimal changes to existing application code. Which caching solution is BEST suited for this requirement?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. Amazon ElastiCache for Redis with manual cache-aside logic added to the application</button><button class="opt" onclick="answer(this,4,1,1)">B. Amazon DynamoDB Accelerator (DAX) as a caching layer in front of the table</button><button class="opt" onclick="answer(this,4,2,1)">C. Amazon CloudFront caching in front of the API layer</button><button class="opt" onclick="answer(this,4,3,1)">D. Amazon ElastiCache for Memcached with TTL-based cache invalidation logic</button>
+    <div class="expl">DAX is a DynamoDB-API-compatible, fully managed in-memory cache purpose-built for DynamoDB. It provides microsecond read latency and requires only swapping the DynamoDB client for the DAX client, with minimal application code changes.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Troubleshooting and Optimization">
+    <div class="meta">Question 6 of 6 · Troubleshooting and Optimization</div>
+    <div class="q">A developer instruments a Lambda function with AWS X-Ray. They want to filter traces in the X-Ray console using a custom field called customerTier (values like 'gold' or 'silver'), and they also want to attach a large debug object containing the full request payload for offline analysis, without needing it to be searchable. How should the developer add these two pieces of data to the trace segment?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. Add both customerTier and the debug payload as annotations</button><button class="opt" onclick="answer(this,5,1,1)">B. Add customerTier as an annotation and the debug payload as metadata</button><button class="opt" onclick="answer(this,5,2,1)">C. Add customerTier as metadata and the debug payload as an annotation</button><button class="opt" onclick="answer(this,5,3,1)">D. Add both customerTier and the debug payload as metadata</button>
+    <div class="expl">Annotations are indexed key-value pairs (string, number, or boolean) that can be used to filter and group traces in the X-Ray console or via GetTraceSummaries. Metadata stores arbitrary, larger data objects that are recorded with the trace but are not indexed or searchable — ideal for large debug payloads.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$109.99</span> <span class="price">$34.99</span> with code <span class="code">FREETEST33</span> — valid through September 19.</p>
+  <a href="https://www.udemy.com/course/aws-certified-developer-associate-dva-c02-prep/?couponCode=FREETEST33" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

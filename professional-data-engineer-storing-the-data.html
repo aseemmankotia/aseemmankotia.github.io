@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Storing the data Practice Questions — Google Cloud Certified - Professional Data Engineer</title>
+<meta name="description" content="6 free Storing the data practice questions with explanations for the Google Cloud Certified - Professional Data Engineer exam.">
+<link rel="canonical" href="https://technuggets.academy/professional-data-engineer-storing-the-data.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Storing the data Practice Questions — Google Cloud Certified - Professional Data Engineer">
+<meta property="og:description" content="6 free Storing the data practice questions with explanations for the Google Cloud Certified - Professional Data Engineer exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/professional-data-engineer-storing-the-data.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#4285F4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Storing the data</h1>
+<p class="sub">Free Google Cloud Certified - Professional Data Engineer practice — 6 questions on <strong>Storing the data</strong>, with explanations. No sign-up.
+<a href="professional-data-engineer.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Storing the data">
+    <div class="meta">Question 1 of 6 · Storing the data</div>
+    <div class="q">A company ingests IoT sensor readings into Bigtable using a row key composed solely of a Unix timestamp (e.g., '1706745600'). During peak ingestion, most writes land on a single tablet server, causing severe hotspotting even though the cluster has many nodes. Which row key redesign BEST resolves this?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. Reverse the digits of the timestamp before writing the row key</button><button class="opt" onclick="answer(this,0,1,1)">B. Prefix the row key with a hash of the sensor ID, followed by the timestamp (e.g., hash(sensor_id)#timestamp)</button><button class="opt" onclick="answer(this,0,2,1)">C. Add more nodes to the Bigtable cluster to spread the load</button><button class="opt" onclick="answer(this,0,3,1)">D. Append a monotonically increasing sequence number after the timestamp</button>
+    <div class="expl">Hashing (or otherwise distributing) a high-cardinality field like sensor_id and placing it before the timestamp spreads writes across the key space and thus across tablets, eliminating the hot tablet caused by monotonically increasing timestamp keys. This is the standard Bigtable anti-hotspotting pattern tested on the exam.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Storing the data">
+    <div class="meta">Question 2 of 6 · Storing the data</div>
+    <div class="q">A 50TB BigQuery fact table 'orders' grows daily. Nearly every analytical query filters on order_date over a rolling 90-day range and filters on customer_region (medium cardinality, ~50 values); a smaller subset of queries also filters on product_category (high cardinality) within that region/date scope. Which table design BEST optimizes cost and performance for this access pattern?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. Partition on customer_region; cluster on order_date</button><button class="opt" onclick="answer(this,1,1,2)">B. Partition on order_date; cluster on product_category, then customer_region</button><button class="opt" onclick="answer(this,1,2,2)">C. Partition on order_date; cluster on customer_region, then product_category</button><button class="opt" onclick="answer(this,1,3,2)">D. Cluster on order_date; partition on customer_region</button>
+    <div class="expl">Partitioning by order_date lets BigQuery prune partitions outside the 90-day window before scanning, which every query benefits from. Clustering by customer_region first (used by nearly all queries) and then product_category (used by a subset) further sorts blocks so both filters can prune data, maximizing bytes-scanned savings.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Storing the data">
+    <div class="meta">Question 3 of 6 · Storing the data</div>
+    <div class="q">A media company stores web server logs in Cloud Storage. Access patterns are unpredictable: some log files are queried heavily for weeks, others go cold within days. Logs must be retained for 7 years for compliance, and legal requires that retained objects cannot be deleted or overwritten early, even by an administrator. Which configuration BEST meets these requirements while minimizing storage cost?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. Set the default storage class to Coldline for all incoming objects</button><button class="opt" onclick="answer(this,2,1,3)">B. Use Nearline as the default class with a lifecycle rule to move objects to Archive after 30 days</button><button class="opt" onclick="answer(this,2,2,3)">C. Write manual lifecycle rules that transition objects to Coldline at 30 days and Archive at 365 days based on object age</button><button class="opt" onclick="answer(this,2,3,3)">D. Enable Autoclass on the bucket and configure a Bucket Lock retention policy</button>
+    <div class="expl">Autoclass automatically moves individual objects between Standard, Nearline, Coldline, and Archive based on actual access patterns rather than a fixed age, which is ideal when access is unpredictable — it saves cost without manual tuning. Bucket Lock enforces an immutable retention policy so objects genuinely cannot be deleted or overwritten before the 7-year period, satisfying the legal requirement — something plain lifecycle rules or storage class choice cannot do.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Storing the data">
+    <div class="meta">Question 4 of 6 · Storing the data</div>
+    <div class="q">You are designing the backend for a global multiplayer game that must maintain strongly consistent, externally consistent player-state transactions across multiple continents, support complex relational joins, and scale horizontally to petabytes with a 99.999% availability SLA. Which storage service should you choose?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. Cloud Bigtable</button><button class="opt" onclick="answer(this,3,1,1)">B. Cloud Spanner with a multi-region instance configuration</button><button class="opt" onclick="answer(this,3,2,1)">C. Cloud SQL for PostgreSQL with cross-region read replicas</button><button class="opt" onclick="answer(this,3,3,1)">D. BigQuery with a multi-region dataset</button>
+    <div class="expl">Cloud Spanner is Google's globally distributed, horizontally scalable relational database offering external consistency (true serializability) across regions, SQL joins, and up to 99.999% availability with a multi-region configuration — exactly matching all stated requirements.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Storing the data">
+    <div class="meta">Question 5 of 6 · Storing the data</div>
+    <div class="q">A dataset's time travel window is configured at the default 7 days. A critical production table was accidentally dropped 10 days ago and nobody noticed until now. What is the correct statement about recovering this table's data?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. The data may still be recoverable by contacting Google Cloud Support during the fail-safe period, but it cannot be queried directly with standard time travel SQL</button><button class="opt" onclick="answer(this,4,1,0)">B. The table data is permanently and irrecoverably deleted the moment the 7-day time travel window expires</button><button class="opt" onclick="answer(this,4,2,0)">C. You can still run a query using FOR SYSTEM_TIME AS OF against the dropped table to recover the data</button><button class="opt" onclick="answer(this,4,3,0)">D. BigQuery automatically restores dropped tables from a nightly scheduled snapshot after 7 days</button>
+    <div class="expl">After the configurable time travel window (default 7 days) expires, BigQuery enters an additional fail-safe period (up to 7 more days) during which deleted/changed data is not queryable via SQL but can still potentially be recovered by engaging Google Cloud Support — this is a specific, exam-tested nuance beyond plain time travel.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Storing the data">
+    <div class="meta">Question 6 of 6 · Storing the data</div>
+    <div class="q">A retail analytics team runs BigQuery workloads that are nearly idle most months but spike to require massive concurrent slot capacity for 3-4 days during quarterly batch reprocessing. Finance wants to avoid a long-term annual commitment while still guaranteeing capacity during the spikes. Which approach BEST fits these requirements?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. Purchase short-term flex-rate slot commitments (via BigQuery editions/reservations) only during the spike periods, with autoscaling enabled</button><button class="opt" onclick="answer(this,5,1,0)">B. Rely solely on on-demand pricing year-round with no reservations</button><button class="opt" onclick="answer(this,5,2,0)">C. Purchase an annual flat-rate slot commitment sized for the quarterly peak</button><button class="opt" onclick="answer(this,5,3,0)">D. Purchase a rolling monthly flat-rate commitment sized for the quarterly peak, active year-round</button>
+    <div class="expl">Flex-rate / short-term slot commitments (available through BigQuery editions and reservations) can be purchased for as little as 60 seconds up to a defined duration, letting you guarantee slot capacity exactly during the multi-day spike and cancel afterward — avoiding both unpredictable on-demand cost spikes and long-term (annual/monthly) commitment waste. Autoscaling reservations further let capacity flex within that window.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">$129.99</span> <span class="price">$34.99</span> with code <span class="code">FREETEST33</span> — valid through September 16.</p>
+  <a href="https://www.udemy.com/course/google-professional-data-engineer-exam-prep/?couponCode=FREETEST33" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>
