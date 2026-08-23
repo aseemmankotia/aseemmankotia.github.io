@@ -353,10 +353,7 @@ footer a:hover{color:var(--amber-deep);border-bottom-color:var(--amber)}
 .card.bundle .bundle-list a{color:var(--ink);text-decoration:none;font-weight:600}
 .card.bundle .bundle-list a:hover{color:var(--amber-deep);text-decoration:underline}
 .card.bundle .bp{color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
-.bundle-price{margin:14px 0 2px;font-size:1rem;display:flex;flex-wrap:wrap;align-items:baseline;gap:8px}
-.bundle-price .strike{text-decoration:line-through;color:var(--muted)}
-.bundle-price .now{font-weight:800;color:var(--ink);font-size:1.25rem}
-.bundle-price .save{color:var(--ok);font-weight:750;font-size:.9rem}
+.bundle-note{margin:14px 0 2px;font-size:.86rem;color:var(--muted);font-weight:600}
 
 /* ---- bundles grid + filter bar + course grid (index) ---- */
 .bundle-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px;margin-top:6px}
