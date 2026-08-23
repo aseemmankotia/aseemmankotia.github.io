@@ -1,0 +1,74 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Develop for Azure storage Practice Questions — Microsoft Certified: Azure Developer Associate</title>
+<meta name="description" content="6 free Develop for Azure storage practice questions with explanations for the Microsoft Certified: Azure Developer Associate exam.">
+<link rel="canonical" href="https://technuggets.academy/az-204-develop-for-azure-storage.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Develop for Azure storage Practice Questions — Microsoft Certified: Azure Developer Associate">
+<meta property="og:description" content="6 free Develop for Azure storage practice questions with explanations for the Microsoft Certified: Azure Developer Associate exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/az-204-develop-for-azure-storage.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0078D4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Develop for Azure storage</h1>
+<p class="sub">Free Microsoft Certified: Azure Developer Associate practice — 6 questions on <strong>Develop for Azure storage</strong>, with explanations. No sign-up.
+<a href="az-204.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Develop for Azure storage">
+    <div class="meta">Question 1 of 6 · Develop for Azure storage</div>
+    <div class="q">A global e-commerce company uses Cosmos DB with multi-region writes across three regions. They require that reads within a single client session never return data older than what that same client already wrote or read (monotonic reads, read-your-own-writes), while keeping RU consumption as low as possible. Which consistency level should they configure?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. Bounded Staleness</button><button class="opt" onclick="answer(this,0,1,3)">B. Strong</button><button class="opt" onclick="answer(this,0,2,3)">C. Consistent Prefix</button><button class="opt" onclick="answer(this,0,3,3)">D. Session</button>
+    <div class="expl">Session consistency guarantees read-your-own-writes and monotonic reads within the client's session token scope, and it is the lowest-RU consistency level that still provides these guarantees, making it the default and recommended level for most globally distributed apps.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Develop for Azure storage">
+    <div class="meta">Question 2 of 6 · Develop for Azure storage</div>
+    <div class="q">A company stores telemetry from 5 million IoT devices in Cosmos DB, each sending roughly one event per second continuously. Queries are almost always scoped to a single device over a time range. Which partition key design avoids exceeding the logical partition storage limit while still supporting efficient per-device time-range queries?</div>
+    <button class="opt" onclick="answer(this,1,0,1)">A. Partition key set to /deviceId</button><button class="opt" onclick="answer(this,1,1,1)">B. Synthetic partition key combining /deviceId and date, e.g. /deviceId_date</button><button class="opt" onclick="answer(this,1,2,1)">C. Partition key set to /eventType</button><button class="opt" onclick="answer(this,1,3,1)">D. Partition key set to /region</button>
+    <div class="expl">A synthetic key like /deviceId_date bounds the amount of data per logical partition (one bucket per device per day) so no single logical partition ever approaches the 20 GB storage limit, while still allowing efficient queries filtered by device and date range.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Develop for Azure storage">
+    <div class="meta">Question 3 of 6 · Develop for Azure storage</div>
+    <div class="q">Your application performs point reads using the container's partition key and id, averaging 5 RUs per read. A developer proposes replacing these with a SQL query filtered on a non-partition-key property, which forces Cosmos DB to fan out across all 20 physical partitions. What is the most accurate description of the RU cost impact of this change?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. RU cost stays the same because Cosmos DB parallelizes the fan-out at no extra charge</button><button class="opt" onclick="answer(this,2,1,3)">B. RU cost decreases because SQL queries are inherently cheaper than point reads</button><button class="opt" onclick="answer(this,2,2,3)">C. RU cost depends only on the number of items returned, not on how many partitions are queried</button><button class="opt" onclick="answer(this,2,3,3)">D. RU cost increases significantly because the query must be executed against every physical partition and the results merged, adding overhead per partition</button>
+    <div class="expl">A cross-partition query without a partition key filter is executed independently against every physical partition and the gateway merges results, and each partition's execution is billed in RUs — so total RU consumption scales with the number of partitions fanned out to, typically far exceeding a targeted point read.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Develop for Azure storage">
+    <div class="meta">Question 4 of 6 · Develop for Azure storage</div>
+    <div class="q">You need to process new documents inserted into a Cosmos DB container in near real time, invoking a function per document, with automatic checkpointing and load balancing across multiple compute instances handled for you. Which approach should you use?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. Cosmos DB pull-model FeedIterator, polled manually every second from a custom worker</button><button class="opt" onclick="answer(this,3,1,2)">B. A Cosmos DB pre-trigger stored procedure attached to insert operations</button><button class="opt" onclick="answer(this,3,2,2)">C. Azure Functions Cosmos DB trigger (push model)</button><button class="opt" onclick="answer(this,3,3,2)">D. A custom WebJob that queries the container using ORDER BY _ts on a timer</button>
+    <div class="expl">The Azure Functions Cosmos DB trigger is built on the Change Feed Processor library, automatically managing lease containers, checkpointing, and dynamic load balancing across multiple function instances — exactly matching the stated requirements with minimal custom code.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Develop for Azure storage">
+    <div class="meta">Question 5 of 6 · Develop for Azure storage</div>
+    <div class="q">Using the Azure Storage SDK's AcquireLeaseAsync method on a blob, what is the maximum lease duration, in seconds, you can request for a fixed-duration lease (excluding an infinite lease)?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. 60</button><button class="opt" onclick="answer(this,4,1,0)">B. 15</button><button class="opt" onclick="answer(this,4,2,0)">C. 900</button><button class="opt" onclick="answer(this,4,3,0)">D. 3600</button>
+    <div class="expl">A fixed-duration blob lease can be requested between 15 and 60 seconds; to hold a lease longer than 60 seconds you must request an infinite lease (duration of -1) and release it explicitly or renew it before expiry.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Develop for Azure storage">
+    <div class="meta">Question 6 of 6 · Develop for Azure storage</div>
+    <div class="q">A media company archived 50 TB of video files to the Archive access tier. For a compliance audit, they must retrieve one specific 2 GB file within 1 hour, and cost is not a primary concern. What should they do?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. Set the rehydrate priority to High when changing the blob's tier, enabling retrieval in under 1 hour for objects under 10 GB</button><button class="opt" onclick="answer(this,5,1,0)">B. Change the blob's tier directly to Hot and wait for standard rehydration, which can take up to 15 hours</button><button class="opt" onclick="answer(this,5,2,0)">C. Copy the blob to the Cool tier first, then move it to the Hot tier</button><button class="opt" onclick="answer(this,5,3,0)">D. Migrate the entire storage account to Azure Data Lake Storage Gen2 for faster access</button>
+    <div class="expl">Setting the rehydrate priority to High on the tier-change or copy operation typically completes rehydration of objects under 10 GB in under 1 hour, meeting the compliance deadline; Standard priority can take up to 15 hours.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/az-204-azure-developer-associate-exam-focused-prep/?referralCode=C963B2384D070A86FD31" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

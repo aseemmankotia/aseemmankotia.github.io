@@ -1,0 +1,74 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Deploy and manage Azure compute resources Practice Questions — Microsoft Certified: Azure Administrator Associate</title>
+<meta name="description" content="6 free Deploy and manage Azure compute resources practice questions with explanations for the Microsoft Certified: Azure Administrator Associate exam.">
+<link rel="canonical" href="https://technuggets.academy/az-104-deploy-and-manage-azure-compute-resources.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Deploy and manage Azure compute resources Practice Questions — Microsoft Certified: Azure Administrator Associate">
+<meta property="og:description" content="6 free Deploy and manage Azure compute resources practice questions with explanations for the Microsoft Certified: Azure Administrator Associate exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/az-104-deploy-and-manage-azure-compute-resources.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0078D4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Deploy and manage Azure compute resources</h1>
+<p class="sub">Free Microsoft Certified: Azure Administrator Associate practice — 6 questions on <strong>Deploy and manage Azure compute resources</strong>, with explanations. No sign-up.
+<a href="az-104.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Deploy and manage Azure compute resources">
+    <div class="meta">Question 1 of 6 · Deploy and manage Azure compute resources</div>
+    <div class="q">A financial services company runs a tier of 6 identical VMs in a single Azure region. The workload requires 99.99% availability SLA and must survive the complete loss of a single datacenter within that region, while VMs must still be able to communicate with low latency. Which configuration BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. Deploy VMs across three Availability Zones in the region</button><button class="opt" onclick="answer(this,0,1,0)">B. Deploy VMs in an availability set spanning multiple fault domains</button><button class="opt" onclick="answer(this,0,2,0)">C. Deploy VMs in an availability set with the maximum number of update domains</button><button class="opt" onclick="answer(this,0,3,0)">D. Deploy VMs using a proximity placement group</button>
+    <div class="expl">Availability Zones map to physically separate datacenters within a region, each with independent power, cooling, and networking. Spreading VMs across zones is the only construct that provides the 99.99% SLA and protects against full datacenter loss.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Deploy and manage Azure compute resources">
+    <div class="meta">Question 2 of 6 · Deploy and manage Azure compute resources</div>
+    <div class="q">A company needs to encrypt the OS disk, data disks, temporary disk, and disk caches of Azure VMs at rest without installing any encryption agent inside the guest OS, and with minimal performance overhead. Which feature BEST satisfies these requirements?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. Enable Azure Disk Encryption (ADE) with a customer-managed key</button><button class="opt" onclick="answer(this,1,1,2)">B. Enable Server-Side Encryption (SSE) with platform-managed keys</button><button class="opt" onclick="answer(this,1,2,2)">C. Enable Encryption at Host</button><button class="opt" onclick="answer(this,1,3,2)">D. Enable Azure Backup with encryption enabled</button>
+    <div class="expl">Encryption at Host encrypts data on the physical host itself, covering OS disks, data disks, temporary disks, and caches, all without requiring BitLocker/DM-Crypt agents inside the guest OS, and with negligible performance impact since it happens below the VM layer.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Deploy and manage Azure compute resources">
+    <div class="meta">Question 3 of 6 · Deploy and manage Azure compute resources</div>
+    <div class="q">A company built a custom VM image and now needs to distribute versions of that image to VMs in three Azure regions, control how many replicas exist per region, and share specific versions with another subscription. Which solution BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. Create a Managed Image and manually copy the VHD file to each target region</button><button class="opt" onclick="answer(this,2,1,3)">B. Push the VM disk as an artifact to Azure Container Registry</button><button class="opt" onclick="answer(this,2,2,3)">C. Store the VHD in a geo-redundant storage account and reference it directly from each region</button><button class="opt" onclick="answer(this,2,3,3)">D. Create a Shared Image Gallery, publish image versions, and configure target region replication</button>
+    <div class="expl">Shared Image Gallery supports image versioning, configurable per-region replica counts, multi-region replication, and RBAC-based sharing across subscriptions and tenants — exactly what's described.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Deploy and manage Azure compute resources">
+    <div class="meta">Question 4 of 6 · Deploy and manage Azure compute resources</div>
+    <div class="q">An administrator needs to update only the NIC configuration of a single VM in a resource group and deploys an ARM template using Complete mode. After the deployment finishes, several unrelated resources that previously existed in the resource group are gone. What is the MOST likely cause?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. Complete mode deletes any resource in the target scope that is not defined in the template</button><button class="opt" onclick="answer(this,3,1,0)">B. Incremental mode was actually applied and merged the resources incorrectly</button><button class="opt" onclick="answer(this,3,2,0)">C. The template contained a destroy() function that ran automatically</button><button class="opt" onclick="answer(this,3,3,0)">D. An Azure Policy assignment triggered automatic deletion of noncompliant resources</button>
+    <div class="expl">In Complete deployment mode, Resource Manager deletes resources that exist in the resource group but are not defined in the template. Since only the VM/NIC was included, everything else in the group was removed.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Deploy and manage Azure compute resources">
+    <div class="meta">Question 5 of 6 · Deploy and manage Azure compute resources</div>
+    <div class="q">A Virtual Machine Scale Set configured with autoscale is rapidly scaling out and then back in every few minutes in response to short CPU spikes, causing instability and unnecessary cost. Which setting should be adjusted to resolve this scale flapping?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. Increase the maximum instance count for the scale set</button><button class="opt" onclick="answer(this,4,1,1)">B. Increase the cooldown period between scaling actions</button><button class="opt" onclick="answer(this,4,2,1)">C. Change the scale-in policy from Default to NewestVM</button><button class="opt" onclick="answer(this,4,3,1)">D. Add a custom autoscale metric based on CPU</button>
+    <div class="expl">The cooldown period defines the minimum time to wait after a scale action before evaluating metrics again. A short cooldown causes autoscale to react to transient spikes, triggering rapid scale-out/scale-in cycles. Increasing it smooths out this flapping.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Deploy and manage Azure compute resources">
+    <div class="meta">Question 6 of 6 · Deploy and manage Azure compute resources</div>
+    <div class="q">A company is building a microservices application that needs event-driven autoscaling based on message queue length, built-in Dapr service-to-service invocation and state management, and must NOT require the team to provision or manage any Kubernetes cluster infrastructure. Which Azure service BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,5,0,2)">A. Azure Kubernetes Service (AKS) with the KEDA add-on enabled</button><button class="opt" onclick="answer(this,5,1,2)">B. Azure Container Instances (ACI) using a multi-container container group</button><button class="opt" onclick="answer(this,5,2,2)">C. Azure Container Apps</button><button class="opt" onclick="answer(this,5,3,2)">D. Azure App Service using a custom container</button>
+    <div class="expl">Azure Container Apps is a fully managed serverless container platform built on Kubernetes, KEDA, and Dapr under the hood, exposing KEDA-based event-driven autoscaling and Dapr integration natively — without requiring the customer to provision or manage the underlying cluster.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/az-104-azure-administrator-associate-exam-prep-g/?referralCode=D00137EB1DCF6F4CB465" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

@@ -1,0 +1,129 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free HashiCorp Certified: Terraform Associate (004) Practice Test — 12 Real Exam-Style Questions</title>
+<meta name="description" content="Free HashiCorp Certified: Terraform Associate (004) practice questions with detailed explanations. Test yourself before the real exam.">
+<link rel="canonical" href="https://technuggets.academy/ta-004.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free HashiCorp Certified: Terraform Associate (004) Practice Test — 12 Real Exam-Style Questions">
+<meta property="og:description" content="Free HashiCorp Certified: Terraform Associate (004) practice questions with detailed explanations. Test yourself before the real exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/ta-004.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div><div class="hero">
+  <span class="chip">TA-004</span>
+  <h1>Free HashiCorp Certified: Terraform Associate (004) Practice Test</h1>
+  <p class="sub">12 exam-style questions with full explanations — no sign-up. Score yourself, then close your gaps with the full course.</p>
+  <div class="facts"><span class="fact">Exam fee <b>~$70.5</b></span><span class="fact"><b>8</b> exam domains</span><span class="fact">Level <b>Beginner-Intermediate</b></span><span class="fact"><b>2</b> timed practice tests in the course</span></div>
+  <div class="cta-row"><a class="btn enroll" href="https://www.udemy.com/course/terraform-associate-004-certification-prep/?couponCode=FREETEST33" rel="sponsored" target="_blank">Get my $34.99 deal →</a><a class="btn ghost" href="#practice">Try the free test →</a><span class="urgency">⏳ Deal ends Sep 23</span></div>
+</div><div class="trust"><span>✅ <b>Free</b> practice — no sign-up</span><span>📝 Real exam-style questions</span><span>💡 Detailed explanations</span><span>💸 30-day money-back via Udemy</span></div>
+<div id="practice"></div>
+
+  <div class="card qcard" id="q0" data-domain="Understand infrastructure as code (IaC) concepts">
+    <div class="meta">Question 1 of 12 · Understand infrastructure as code (IaC) concepts</div>
+    <div class="q">A company's operations team manually configures each new server through ad-hoc SSH sessions. Over time, servers that were supposed to be identical have started behaving differently, and nobody can explain why. Which IaC advantage BEST addresses this problem?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. Cost optimization through pay-as-you-go billing</button><button class="opt" onclick="answer(this,0,1,1)">B. Declarative, version-controlled configuration that eliminates configuration drift</button><button class="opt" onclick="answer(this,0,2,1)">C. Real-time monitoring and alerting for infrastructure health</button><button class="opt" onclick="answer(this,0,3,1)">D. Automatic scaling based on traffic patterns</button>
+    <div class="expl">IaC written declaratively and stored in version control ensures every environment is provisioned from the same source of truth, eliminating the drift caused by manual, undocumented changes.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Understand Terraform's purpose (vs other IaC)">
+    <div class="meta">Question 2 of 12 · Understand Terraform's purpose (vs other IaC)</div>
+    <div class="q">A platform team currently uses shell scripts to imperatively call cloud provider APIs to create VMs, networks, and load balancers, one command at a time. They want to move to a tool that describes the desired end state of infrastructure, automatically determines the order of operations, and shows a preview of changes before anything is applied. Which approach BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. Continue using shell scripts but add version control</button><button class="opt" onclick="answer(this,1,1,3)">B. Use Ansible playbooks with imperative tasks executed in sequence</button><button class="opt" onclick="answer(this,1,2,3)">C. Use a bash-based CI/CD pipeline calling cloud CLI commands in parallel</button><button class="opt" onclick="answer(this,1,3,3)">D. Adopt Terraform's declarative configuration and run `terraform plan` before every apply</button>
+    <div class="expl">Terraform's HCL is declarative — you describe the desired end state, and Terraform's engine builds a resource graph to determine dependency order automatically. `terraform plan` generates an execution plan showing exactly what will be created, changed, or destroyed before any action is taken.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Terraform fundamentals: providers and state basics">
+    <div class="meta">Question 3 of 12 · Terraform fundamentals: providers and state basics</div>
+    <div class="q">Your team wants the AWS provider to automatically pick up patch-level bug fixes (e.g., 5.10.1, 5.10.2) but never accept a minor or major version bump like 5.11.0 or 6.0.0. Which version constraint should you use in the required_providers block?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. version = &quot;&gt;= 5.10.0&quot;</button><button class="opt" onclick="answer(this,2,1,1)">B. version = &quot;~&gt; 5.10.0&quot;</button><button class="opt" onclick="answer(this,2,2,1)">C. version = &quot;= 5.10.0&quot;</button><button class="opt" onclick="answer(this,2,3,1)">D. version = &quot;~&gt; 5.10&quot;</button>
+    <div class="expl">The pessimistic constraint operator ~&gt; 5.10.0 (three-part version) locks the rightmost segment, allowing only patch releases within 5.10.x (5.10.1, 5.10.2, etc.) while blocking 5.11.0 or higher.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="The core Terraform workflow (Write, Plan, Apply)">
+    <div class="meta">Question 4 of 12 · The core Terraform workflow (Write, Plan, Apply)</div>
+    <div class="q">A DevOps engineer runs `terraform plan` and sees a resource listed as: `-/+ resource &quot;aws_instance&quot; &quot;web&quot; will be replaced, as requested`. What does the `-/+` symbol combination indicate?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. The resource will be updated in place with zero downtime</button><button class="opt" onclick="answer(this,3,1,3)">B. Terraform detected drift and will only refresh the state file</button><button class="opt" onclick="answer(this,3,2,3)">C. The plan failed and no changes will be applied</button><button class="opt" onclick="answer(this,3,3,3)">D. The resource will be destroyed and then a new resource will be created to replace it</button>
+    <div class="expl">The `-/+` prefix in plan output means destroy-then-create replacement — the resource cannot be updated in place because a changed attribute forces recreation.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Write and maintain Terraform configuration (HCL)">
+    <div class="meta">Question 5 of 12 · Write and maintain Terraform configuration (HCL)</div>
+    <div class="q">A Terraform configuration includes this variable block:
+
+variable &quot;instance_count&quot; {
+  type = number
+}
+
+The team wants to enforce that instance_count is always greater than 0, and display a custom error message if it is not, without using a separate provider or external tool. Which block should be added inside the variable block to satisfy this requirement?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. A validation block containing condition = var.instance_count &gt; 0 and error_message = &quot;Instance count must be greater than 0.&quot;</button><button class="opt" onclick="answer(this,4,1,0)">B. A lifecycle block containing precondition = var.instance_count &gt; 0</button><button class="opt" onclick="answer(this,4,2,0)">C. A check block containing assert = var.instance_count &gt; 0</button><button class="opt" onclick="answer(this,4,3,0)">D. A validation block containing condition = var.instance_count &gt; 0 and message = &quot;Instance count must be greater than 0.&quot;</button>
+    <div class="expl">Input variable custom validation requires a validation block nested inside the variable block, and that block must contain exactly two arguments: condition (a boolean expression) and error_message (the string shown when condition is false).</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Interact with Terraform modules">
+    <div class="meta">Question 6 of 12 · Interact with Terraform modules</div>
+    <div class="q">A team wants to reuse a VPC module from the public Terraform Registry. They need to automatically receive patch-level bug fixes but must NOT automatically receive minor or major version changes. Which version constraint achieves this?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. version = &quot;~&gt; 3.0&quot;</button><button class="opt" onclick="answer(this,5,1,0)">B. version = &quot;&gt;= 3.0&quot;</button><button class="opt" onclick="answer(this,5,2,0)">C. version = &quot;= 3.0.0&quot;</button><button class="opt" onclick="answer(this,5,3,0)">D. version = &quot;&lt;= 3.0&quot;</button>
+    <div class="expl">The pessimistic constraint operator ~&gt; 3.0 (with two version segments) allows only the rightmost component to increment, permitting 3.0.1, 3.0.2, etc., but excluding 3.1.0 or 4.0.0 — exactly patch-only updates.</div>
+  </div>
+
+  <div class="card qcard" id="q6" data-domain="Manage Terraform state and remote backends">
+    <div class="meta">Question 7 of 12 · Manage Terraform state and remote backends</div>
+    <div class="q">A team of five engineers all run `terraform apply` from their local machines against the same infrastructure using the default local backend. They frequently encounter corrupted state and conflicting changes when two people apply around the same time. Which change BEST resolves this?</div>
+    <button class="opt" onclick="answer(this,6,0,3)">A. Add a `lifecycle { prevent_destroy = true }` block to every resource</button><button class="opt" onclick="answer(this,6,1,3)">B. Have each engineer run `terraform refresh` before every apply</button><button class="opt" onclick="answer(this,6,2,3)">C. Share a single `terraform.tfvars` file via email before each apply</button><button class="opt" onclick="answer(this,6,3,3)">D. Migrate to a remote backend that supports state locking, such as HCP Terraform or S3 with native locking</button>
+    <div class="expl">Remote backends with locking (HCP Terraform, or S3 with its native conditional-write locking, or the older S3+DynamoDB pattern) prevent concurrent writes to state, which is exactly the corruption/conflict scenario described.</div>
+  </div>
+
+  <div class="card qcard" id="q7" data-domain="Understand HCP Terraform (Terraform Cloud) capabilities">
+    <div class="meta">Question 8 of 12 · Understand HCP Terraform (Terraform Cloud) capabilities</div>
+    <div class="q">A platform team manages 40 HCP Terraform workspaces that all need the same AWS credentials and a shared 'environment=prod' variable, but they don't want to copy-paste these variables into every workspace individually. Which HCP Terraform feature BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,7,0,1)">A. Create a module with default variables and require every workspace to call it</button><button class="opt" onclick="answer(this,7,1,1)">B. Define a variable set containing the shared variables and apply it to the relevant workspaces</button><button class="opt" onclick="answer(this,7,2,1)">C. Use a run trigger to pass variables between workspaces</button><button class="opt" onclick="answer(this,7,3,1)">D. Store the variables in a shared remote state data source</button>
+    <div class="expl">Variable sets let you define a group of variables (including sensitive ones) once and attach them to multiple workspaces or an entire project, avoiding duplication and easing updates.</div>
+  </div>
+
+  <div class="card qcard" id="q8" data-domain="Understand infrastructure as code (IaC) concepts">
+    <div class="meta">Question 9 of 12 · Understand infrastructure as code (IaC) concepts</div>
+    <div class="q">A company needs to provision resources across AWS, Azure, and an on-premises VMware cluster using a single configuration language and workflow. Which Terraform capability makes this possible?</div>
+    <button class="opt" onclick="answer(this,8,0,1)">A. Terraform's built-in cloud-specific SDKs bundled directly into Terraform Core for AWS and Azure only</button><button class="opt" onclick="answer(this,8,1,1)">B. Terraform's provider plugin architecture, which lets one core engine manage resources across multiple platforms</button><button class="opt" onclick="answer(this,8,2,1)">C. Terraform Cloud's mandatory SaaS billing model</button><button class="opt" onclick="answer(this,8,3,1)">D. Terraform's requirement that configuration be rewritten in each vendor's native templating language</button>
+    <div class="expl">Terraform Core is provider-agnostic; provider plugins translate a single HCL workflow (init/plan/apply) into calls against each platform's API, enabling true multi-cloud and hybrid-cloud management.</div>
+  </div>
+
+  <div class="card qcard" id="q9" data-domain="Understand Terraform's purpose (vs other IaC)">
+    <div class="meta">Question 10 of 12 · Understand Terraform's purpose (vs other IaC)</div>
+    <div class="q">An organization is deciding how to divide responsibilities between Terraform and Ansible when managing both the provisioning of new AWS EC2 instances and the ongoing installation of packages on those instances. Which statement BEST describes how the two tools typically complement each other in this scenario?</div>
+    <button class="opt" onclick="answer(this,9,0,1)">A. Terraform should handle package installation while Ansible provisions the underlying infrastructure</button><button class="opt" onclick="answer(this,9,1,1)">B. Terraform is best suited for provisioning and managing infrastructure resources via state, while Ansible is best suited for configuration management tasks on top of that infrastructure</button><button class="opt" onclick="answer(this,9,2,1)">C. Terraform and Ansible are interchangeable and either can fully replace the other for both tasks</button><button class="opt" onclick="answer(this,9,3,1)">D. Ansible should be used exclusively because it does not require maintaining a state file</button>
+    <div class="expl">Terraform excels at provisioning cloud infrastructure resources and tracking their real-world state in a state file, enabling create/update/destroy planning. Ansible excels at configuration management — installing packages, managing files, and configuring software on already-provisioned hosts. Using each tool for its strength is the standard complementary pattern.</div>
+  </div>
+
+  <div class="card qcard" id="q10" data-domain="Terraform fundamentals: providers and state basics">
+    <div class="meta">Question 11 of 12 · Terraform fundamentals: providers and state basics</div>
+    <div class="q">What is the primary purpose of the .terraform.lock.hcl file?</div>
+    <button class="opt" onclick="answer(this,10,0,1)">A. It stores the current state of managed infrastructure resources so Terraform can detect drift.</button><button class="opt" onclick="answer(this,10,1,1)">B. It records the exact provider versions and package checksums selected during init, ensuring consistent provider installs across team members and CI runs.</button><button class="opt" onclick="answer(this,10,2,1)">C. It defines the minimum required Terraform CLI version for the configuration.</button><button class="opt" onclick="answer(this,10,3,1)">D. It stores sensitive variable values so they are not exposed in plan output.</button>
+    <div class="expl">The dependency lock file is generated by terraform init and records the specific provider versions and cryptographic checksums that satisfy the required_providers constraints, guaranteeing everyone on the team gets the same provider builds.</div>
+  </div>
+
+  <div class="card qcard" id="q11" data-domain="The core Terraform workflow (Write, Plan, Apply)">
+    <div class="meta">Question 12 of 12 · The core Terraform workflow (Write, Plan, Apply)</div>
+    <div class="q">Which command checks that a Terraform configuration is syntactically valid and internally consistent, without contacting any remote APIs or backends?</div>
+    <button class="opt" onclick="answer(this,11,0,0)">A. terraform validate</button><button class="opt" onclick="answer(this,11,1,0)">B. terraform init</button><button class="opt" onclick="answer(this,11,2,0)">C. terraform apply -auto-approve</button><button class="opt" onclick="answer(this,11,3,0)">D. terraform plan</button>
+    <div class="expl">terraform validate checks syntax and internal consistency (e.g., argument types, references) using only the local configuration and cached provider schema; it does not need network or backend access.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">undefined</span> <span class="price">$34.99</span> with code <span class="code">FREETEST33</span> — valid through Sep 23.</p>
+  <a href="https://www.udemy.com/course/terraform-associate-004-certification-prep/?couponCode=FREETEST33" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<section class="faq"><h3>TA-004 exam — quick answers</h3><details><summary>How much does the TA-004 exam cost?</summary><p>The exam fee is approximately $70.5 and varies by region — confirm current pricing with the certification vendor before you book.</p></details><details><summary>What topics are on the exam?</summary><p>It covers 8 domains: Understand infrastructure as code (IaC) concepts (~8%), Understand Terraform's purpose (vs other IaC) (~8%), Terraform fundamentals: providers and state basics (~14%), The core Terraform workflow (Write, Plan, Apply) (~16%), Write and maintain Terraform configuration (HCL) (~16%), Interact with Terraform modules (~12%), Manage Terraform state and remote backends (~14%), Understand HCP Terraform (Terraform Cloud) capabilities (~12%). The full course has a dedicated chapter, lab and practice-test coverage for each.</p></details><details><summary>Is this practice test really free?</summary><p>Yes — all questions on this page are free with explanations and no sign-up. The paid Udemy course adds two full-length timed exams, video lessons and hands-on labs.</p></details><details><summary>How do I get the discount?</summary><p>Use code FREETEST33 at checkout for $34.99 (list undefined) through Sep 23 — the enroll button applies it automatically.</p></details><details><summary>Will this prepare me for the real exam?</summary><p>The questions mirror the real exam's style and are mapped to the official domains. This is exam-focused preparation — combine the free test with the full course's timed simulations to gauge your readiness.</p></details></section>
+<div class="domains"><span class="meta">More free practice by exam domain:</span><br><a href="ta-004-terraform-fundamentals-providers-and-state-basics.html">Terraform fundamentals: providers and state basics →</a><a href="ta-004-the-core-terraform-workflow-write-plan-apply.html">The core Terraform workflow (Write, Plan, Apply) →</a><a href="ta-004-write-and-maintain-terraform-configuration-hcl.html">Write and maintain Terraform configuration (HCL) →</a><a href="ta-004-manage-terraform-state-and-remote-backends.html">Manage Terraform state and remote backends →</a></div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

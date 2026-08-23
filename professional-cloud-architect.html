@@ -1,0 +1,123 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Google Cloud Certified - Professional Cloud Architect Practice Test — 12 Real Exam-Style Questions</title>
+<meta name="description" content="Free Google Cloud Certified - Professional Cloud Architect practice questions with detailed explanations. Test yourself before the real exam.">
+<link rel="canonical" href="https://technuggets.academy/professional-cloud-architect.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Google Cloud Certified - Professional Cloud Architect Practice Test — 12 Real Exam-Style Questions">
+<meta property="og:description" content="Free Google Cloud Certified - Professional Cloud Architect practice questions with detailed explanations. Test yourself before the real exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/professional-cloud-architect.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#4285F4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div><div class="hero">
+  <span class="chip">Professional Cloud Architect</span>
+  <h1>Free Google Cloud Certified - Professional Cloud Architect Practice Test</h1>
+  <p class="sub">12 exam-style questions with full explanations — no sign-up. Score yourself, then close your gaps with the full course.</p>
+  <div class="facts"><span class="fact">Exam fee <b>~$200</b></span><span class="fact"><b>6</b> exam domains</span><span class="fact">Level <b>Advanced</b></span><span class="fact"><b>2</b> timed practice tests in the course</span></div>
+  <div class="cta-row"><a class="btn enroll" href="https://www.udemy.com/course/google-cloud-professional-cloud-architect-pca-prep/?couponCode=A5F51EAB51242FE60905" rel="sponsored" target="_blank">Get my $34.99 deal →</a><a class="btn ghost" href="#practice">Try the free test →</a><span class="urgency">⏳ Deal ends Sep 23</span></div>
+</div><div class="trust"><span>✅ <b>Free</b> practice — no sign-up</span><span>📝 Real exam-style questions</span><span>💡 Detailed explanations</span><span>💸 30-day money-back via Udemy</span></div>
+<div id="practice"></div>
+
+  <div class="card qcard" id="q0" data-domain="Designing and planning a cloud solution architecture">
+    <div class="meta">Question 1 of 12 · Designing and planning a cloud solution architecture</div>
+    <div class="q">A financial services company runs a critical PostgreSQL database and must meet an RPO of 15 minutes and an RTO of 1 hour in case of a regional outage. The operations team wants a fully managed solution with minimal operational overhead to configure and maintain. Which approach BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. Run self-managed PostgreSQL on Compute Engine and take persistent disk snapshots every 4 hours for cross-region recovery</button><button class="opt" onclick="answer(this,0,1,3)">B. Configure Cloud SQL automated backups only and restore from the latest backup in the event of a regional outage</button><button class="opt" onclick="answer(this,0,2,3)">C. Export the database to Cloud Storage nightly and re-import it into a new Cloud SQL instance in another region during failover</button><button class="opt" onclick="answer(this,0,3,3)">D. Use Cloud SQL for PostgreSQL with a cross-region read replica that can be promoted to a standalone primary during failover</button>
+    <div class="expl">Cloud SQL cross-region read replicas replicate continuously with very low lag, easily meeting a 15-minute RPO, and can be promoted to a standalone primary quickly to meet a 1-hour RTO, all while being fully managed by Google.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Managing and provisioning a solution infrastructure">
+    <div class="meta">Question 2 of 12 · Managing and provisioning a solution infrastructure</div>
+    <div class="q">A company has a central networking team that must control all subnets, routes, and firewall rules, while separate application teams (dev, test, prod) need to deploy Compute Engine and GKE resources into isolated projects without networking privileges. The application teams' resources must still communicate over private RFC 1918 IP space. Which topology BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,1,0,1)">A. Create separate VPCs per team and connect them using VPC Peering</button><button class="opt" onclick="answer(this,1,1,1)">B. Create a Shared VPC with the networking team owning the host project and each application team's project attached as a service project</button><button class="opt" onclick="answer(this,1,2,1)">C. Give each application team its own VPC and connect them with a full-mesh Cloud VPN</button><button class="opt" onclick="answer(this,1,3,1)">D. Put all resources in a single project with one VPC and use IAM conditions to restrict firewall edits</button>
+    <div class="expl">Shared VPC lets a host project (owned by the networking team) centrally control subnets, routes, and firewall rules while service projects (owned by app teams) deploy resources into those shared subnets, giving private connectivity without granting network admin rights to app teams.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Designing for security and compliance">
+    <div class="meta">Question 3 of 12 · Designing for security and compliance</div>
+    <div class="q">A financial services company runs workloads on GKE and needs those workloads to call Google Cloud APIs (e.g., Cloud Storage, BigQuery) without storing any downloadable service account keys in the cluster, due to a security audit requirement that prohibits long-lived credentials. Which approach BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. Enable Workload Identity Federation for GKE and bind the Kubernetes service account to a Google service account via IAM policy binding</button><button class="opt" onclick="answer(this,2,1,0)">B. Create a service account, generate a JSON key, and store it as a Kubernetes Secret mounted into the pods</button><button class="opt" onclick="answer(this,2,2,0)">C. Use the Compute Engine default service account attached to each GKE node with broad Editor role</button><button class="opt" onclick="answer(this,2,3,0)">D. Distribute the same service account key to all pods via a shared ConfigMap and rotate it every 90 days</button>
+    <div class="expl">Workload Identity (Federation) lets Kubernetes service accounts impersonate Google service accounts using short-lived, automatically rotated credentials obtained via the metadata server — no exportable JSON keys are ever created or stored, satisfying the audit requirement.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Analyzing and optimizing technical and business processes">
+    <div class="meta">Question 4 of 12 · Analyzing and optimizing technical and business processes</div>
+    <div class="q">A retail company suffers a major production outage caused by a bad deployment. Leadership wants to learn from the incident and prevent it from recurring without discouraging engineers from taking ownership of future releases. Which process should the cloud architect recommend?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. Identify the individual engineer responsible and require additional training</button><button class="opt" onclick="answer(this,3,1,3)">B. Require VP-level manual sign-off for every future deployment</button><button class="opt" onclick="answer(this,3,2,3)">C. Disable the CI/CD pipeline until an investigation committee is formed</button><button class="opt" onclick="answer(this,3,3,3)">D. Conduct a blameless postmortem that documents root cause and actionable follow-up items</button>
+    <div class="expl">A blameless postmortem focuses on identifying systemic root causes and generating concrete action items, which improves reliability while preserving a healthy engineering culture and encouraging future incident reporting.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Managing implementation">
+    <div class="meta">Question 5 of 12 · Managing implementation</div>
+    <div class="q">A company needs to deploy identical Google Cloud infrastructure across separate dev, staging, and production projects. Leadership requires a full audit history of every infrastructure change and the ability to roll back to a previous known-good state quickly. Which approach BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. Use Cloud Shell to manually run gcloud commands in each project and record the steps in a shared document</button><button class="opt" onclick="answer(this,4,1,1)">B. Define the infrastructure as code using Terraform configurations stored in a version-controlled repository, applied through a CI/CD pipeline</button><button class="opt" onclick="answer(this,4,2,1)">C. Use the Cloud Console to click through resource creation in each project and export instance templates for reuse</button><button class="opt" onclick="answer(this,4,3,1)">D. Write a collection of bash scripts using gcloud commands and store them in a Cloud Storage bucket</button>
+    <div class="expl">Terraform configs in version control give a declarative, auditable change history (via commit log) and let you roll back by reverting to a prior commit and re-applying, satisfying both requirements while remaining repeatable across projects.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Ensuring solution and operations reliability">
+    <div class="meta">Question 6 of 12 · Ensuring solution and operations reliability</div>
+    <div class="q">A financial services company runs a critical workload on Cloud SQL for PostgreSQL. The business requires an RPO of 5 minutes and an RTO of 10 minutes in the event of a full regional outage. Which configuration BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. Enable Cloud SQL high availability (regional) configuration only</button><button class="opt" onclick="answer(this,5,1,1)">B. Create a cross-region read replica and implement automated procedures to promote it to a standalone primary during a regional outage</button><button class="opt" onclick="answer(this,5,2,1)">C. Configure automated daily backups with point-in-time recovery</button><button class="opt" onclick="answer(this,5,3,1)">D. Migrate the database to a single-region Cloud Spanner instance</button>
+    <div class="expl">A cross-region read replica keeps a continuously updated copy of data in another region (satisfying the tight RPO), and an automated, tested promotion runbook/script can bring it online as the new primary well within a 10-minute RTO. This is the standard Cloud SQL pattern for regional DR.</div>
+  </div>
+
+  <div class="card qcard" id="q6" data-domain="Designing and planning a cloud solution architecture">
+    <div class="meta">Question 7 of 12 · Designing and planning a cloud solution architecture</div>
+    <div class="q">A company needs to connect its on-premises data center to its Google Cloud VPC with a dedicated 10 Gbps link, low and predictable latency, and a requirement that traffic never traverse the public internet. The company has the ability to co-locate equipment at a facility with direct access to Google's network. Which connectivity option should be selected?</div>
+    <button class="opt" onclick="answer(this,6,0,2)">A. HA VPN over the public internet</button><button class="opt" onclick="answer(this,6,1,2)">B. Cloud NAT with static outbound IP addresses</button><button class="opt" onclick="answer(this,6,2,2)">C. Dedicated Interconnect</button><button class="opt" onclick="answer(this,6,3,2)">D. Partner Interconnect through a service provider</button>
+    <div class="expl">Dedicated Interconnect provides a direct physical connection between the on-premises network and Google's network at a colocation facility, supporting 10 Gbps or 100 Gbps circuits with private, predictable-latency connectivity that never touches the public internet.</div>
+  </div>
+
+  <div class="card qcard" id="q7" data-domain="Managing and provisioning a solution infrastructure">
+    <div class="meta">Question 8 of 12 · Managing and provisioning a solution infrastructure</div>
+    <div class="q">A data engineering team ingests 50 TB of clickstream events daily and needs to run ad-hoc SQL analytics across the full historical dataset with minimal operational overhead and no need to manage servers or storage capacity in advance. Which Google Cloud service should they use?</div>
+    <button class="opt" onclick="answer(this,7,0,1)">A. Cloud Bigtable</button><button class="opt" onclick="answer(this,7,1,1)">B. BigQuery</button><button class="opt" onclick="answer(this,7,2,1)">C. Cloud SQL for PostgreSQL</button><button class="opt" onclick="answer(this,7,3,1)">D. Persistent Disk with a Compute Engine-hosted data warehouse</button>
+    <div class="expl">BigQuery is a serverless, fully managed data warehouse built for petabyte-scale SQL analytics with no infrastructure provisioning, matching the ad-hoc SQL and no-ops requirements exactly.</div>
+  </div>
+
+  <div class="card qcard" id="q8" data-domain="Designing for security and compliance">
+    <div class="meta">Question 9 of 12 · Designing for security and compliance</div>
+    <div class="q">A healthcare company must ensure that all new Cloud Storage buckets and Compute Engine resources created anywhere in its GCP organization are restricted to the us and europe-west multi-regions only, to satisfy data residency requirements. Which mechanism should the architect configure at the Organization node?</div>
+    <button class="opt" onclick="answer(this,8,0,0)">A. An Organization Policy constraint using constraints/gcp.resourceLocations set to allowed values for us and eu regions</button><button class="opt" onclick="answer(this,8,1,0)">B. A VPC Service Controls perimeter scoped to the us and europe-west regions</button><button class="opt" onclick="answer(this,8,2,0)">C. A Cloud Armor security policy that blocks requests originating from disallowed regions</button><button class="opt" onclick="answer(this,8,3,0)">D. IAM Conditions on every project's Owner role restricting resource creation by region</button>
+    <div class="expl">The gcp.resourceLocations Organization Policy constraint restricts where resources can be created across the entire org hierarchy, enforcing data residency at resource-creation time regardless of who creates it.</div>
+  </div>
+
+  <div class="card qcard" id="q9" data-domain="Analyzing and optimizing technical and business processes">
+    <div class="meta">Question 10 of 12 · Analyzing and optimizing technical and business processes</div>
+    <div class="q">A company runs a steady-state production workload on Compute Engine 24/7 and is willing to commit to a 3-year usage term in exchange for the maximum possible discount on that predictable capacity. Which purchasing option should the architect recommend?</div>
+    <button class="opt" onclick="answer(this,9,0,2)">A. Sustained use discounts</button><button class="opt" onclick="answer(this,9,1,2)">B. Preemptible VMs / Spot VMs</button><button class="opt" onclick="answer(this,9,2,2)">C. Committed use discounts (CUDs)</button><button class="opt" onclick="answer(this,9,3,2)">D. Free Tier usage credits</button>
+    <div class="expl">Committed use discounts require a 1- or 3-year commitment to a specific amount of vCPU/memory or spend, and provide the largest discount (up to ~70%) for predictable, steady-state workloads.</div>
+  </div>
+
+  <div class="card qcard" id="q10" data-domain="Managing implementation">
+    <div class="meta">Question 11 of 12 · Managing implementation</div>
+    <div class="q">A development team wants an automated pipeline that builds a container image whenever code is pushed to a Cloud Source Repositories repo, and then deploys the new image to GKE. Which Google Cloud service should orchestrate this build-and-deploy pipeline?</div>
+    <button class="opt" onclick="answer(this,10,0,2)">A. Cloud Scheduler</button><button class="opt" onclick="answer(this,10,1,2)">B. Cloud Composer</button><button class="opt" onclick="answer(this,10,2,2)">C. Cloud Build</button><button class="opt" onclick="answer(this,10,3,2)">D. Cloud Tasks</button>
+    <div class="expl">Cloud Build is Google Cloud's CI/CD service that supports triggers on repo pushes, builds container images, and can deploy them to GKE as part of a defined build pipeline (cloudbuild.yaml).</div>
+  </div>
+
+  <div class="card qcard" id="q11" data-domain="Ensuring solution and operations reliability">
+    <div class="meta">Question 12 of 12 · Ensuring solution and operations reliability</div>
+    <div class="q">A team runs services on App Engine and GKE and wants unhandled application exceptions to be automatically detected, deduplicated, and grouped by stack trace across all services, without writing custom log queries. Which Cloud Operations tool should they use?</div>
+    <button class="opt" onclick="answer(this,11,0,2)">A. Cloud Monitoring</button><button class="opt" onclick="answer(this,11,1,2)">B. Cloud Trace</button><button class="opt" onclick="answer(this,11,2,2)">C. Error Reporting</button><button class="opt" onclick="answer(this,11,3,2)">D. Cloud Profiler</button>
+    <div class="expl">Error Reporting automatically analyzes and aggregates application errors from logs across App Engine, GKE, Compute Engine, and Cloud Functions, grouping them by stack trace signature with no custom query configuration required.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="A5F51EAB51242FE60905"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">undefined</span> <span class="price">$34.99</span> with code <span class="code">A5F51EAB51242FE60905</span> — valid through Sep 23.</p>
+  <a href="https://www.udemy.com/course/google-cloud-professional-cloud-architect-pca-prep/?couponCode=A5F51EAB51242FE60905" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<section class="faq"><h3>Professional Cloud Architect exam — quick answers</h3><details><summary>How much does the Professional Cloud Architect exam cost?</summary><p>The exam fee is approximately $200 and varies by region — confirm current pricing with the certification vendor before you book.</p></details><details><summary>What topics are on the exam?</summary><p>It covers 6 domains: Designing and planning a cloud solution architecture (~24%), Managing and provisioning a solution infrastructure (~15%), Designing for security and compliance (~18%), Analyzing and optimizing technical and business processes (~18%), Managing implementation (~11%), Ensuring solution and operations reliability (~14%). The full course has a dedicated chapter, lab and practice-test coverage for each.</p></details><details><summary>Is this practice test really free?</summary><p>Yes — all questions on this page are free with explanations and no sign-up. The paid Udemy course adds two full-length timed exams, video lessons and hands-on labs.</p></details><details><summary>How do I get the discount?</summary><p>Use code A5F51EAB51242FE60905 at checkout for $34.99 (list undefined) through Sep 23 — the enroll button applies it automatically.</p></details><details><summary>Will this prepare me for the real exam?</summary><p>The questions mirror the real exam's style and are mapped to the official domains. This is exam-focused preparation — combine the free test with the full course's timed simulations to gauge your readiness.</p></details></section>
+<div class="domains"><span class="meta">More free practice by exam domain:</span><br><a href="professional-cloud-architect-designing-and-planning-a-cloud-solution-architecture.html">Designing and planning a cloud solution architecture →</a><a href="professional-cloud-architect-managing-and-provisioning-a-solution-infrastructure.html">Managing and provisioning a solution infrastructure →</a><a href="professional-cloud-architect-designing-for-security-and-compliance.html">Designing for security and compliance →</a><a href="professional-cloud-architect-analyzing-and-optimizing-technical-and-business-processes.html">Analyzing and optimizing technical and business processes →</a><a href="professional-cloud-architect-ensuring-solution-and-operations-reliability.html">Ensuring solution and operations reliability →</a></div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Designing and planning a cloud solution architecture Practice Questions — Google Cloud Certified - Professional Cloud Architect</title>
+<meta name="description" content="6 free Designing and planning a cloud solution architecture practice questions with explanations for the Google Cloud Certified - Professional Cloud Architect exam.">
+<link rel="canonical" href="https://technuggets.academy/professional-cloud-architect-designing-and-planning-a-cloud-solution-architecture.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Designing and planning a cloud solution architecture Practice Questions — Google Cloud Certified - Professional Cloud Architect">
+<meta property="og:description" content="6 free Designing and planning a cloud solution architecture practice questions with explanations for the Google Cloud Certified - Professional Cloud Architect exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/professional-cloud-architect-designing-and-planning-a-cloud-solution-architecture.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#4285F4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Designing and planning a cloud solution architecture</h1>
+<p class="sub">Free Google Cloud Certified - Professional Cloud Architect practice — 6 questions on <strong>Designing and planning a cloud solution architecture</strong>, with explanations. No sign-up.
+<a href="professional-cloud-architect.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Designing and planning a cloud solution architecture">
+    <div class="meta">Question 1 of 6 · Designing and planning a cloud solution architecture</div>
+    <div class="q">A global trading platform requires an RPO of zero and an RTO under 60 seconds for its primary transactional database, and must remain fully available even if an entire GCP region fails. The team is evaluating database options for this tier. Which design BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. Cloud SQL for PostgreSQL with a cross-region read replica that is manually promoted during a regional outage</button><button class="opt" onclick="answer(this,0,1,3)">B. Cloud Bigtable with application-level replication configured between two regional clusters</button><button class="opt" onclick="answer(this,0,2,3)">C. Compute Engine instances running a self-managed database with regional persistent disks replicated synchronously across two zones</button><button class="opt" onclick="answer(this,0,3,3)">D. Cloud Spanner configured with a multi-region instance configuration (e.g., nam3) spanning three regions</button>
+    <div class="expl">Cloud Spanner's multi-region configurations provide synchronous replication across regions with a 99.999% availability SLA, RPO of zero, and automatic failover well under a minute — the only option here that natively satisfies both RPO=0 and sub-60-second RTO across a full regional failure.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Designing and planning a cloud solution architecture">
+    <div class="meta">Question 2 of 6 · Designing and planning a cloud solution architecture</div>
+    <div class="q">A company needs a hybrid connection between its on-premises data center and GCP that meets a 99.99% availability SLA and supports 10 Gbps of dedicated, non-internet-routed bandwidth. Which configuration should the architect implement?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. Two Dedicated Interconnect connections in different edge availability domains, each connected to a separate Cloud Router</button><button class="opt" onclick="answer(this,1,1,0)">B. A single Dedicated Interconnect connection terminated at one Cloud Router</button><button class="opt" onclick="answer(this,1,2,0)">C. A single HA VPN tunnel over the public internet with Cloud Router dynamic routing</button><button class="opt" onclick="answer(this,1,3,0)">D. A single Partner Interconnect connection provisioned through a service provider at 10 Gbps</button>
+    <div class="expl">Google's SLA for Dedicated Interconnect only reaches 99.99% when two connections are provisioned in different edge availability domains (ideally different metros), each with its own Cloud Router, eliminating single points of failure at the physical and routing layers.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Designing and planning a cloud solution architecture">
+    <div class="meta">Question 3 of 6 · Designing and planning a cloud solution architecture</div>
+    <div class="q">A retailer runs a monolithic Java application on VMware with tightly coupled dependencies on the local file system and JVM configuration. The business has an 8-week deadline to exit the on-premises data center due to a lease expiration, and the team has no bandwidth to refactor the application before the deadline. Which migration approach should the architect recommend?</div>
+    <button class="opt" onclick="answer(this,2,0,2)">A. Refactor the application into microservices and deploy to Google Kubernetes Engine</button><button class="opt" onclick="answer(this,2,1,2)">B. Rewrite the application as a set of Cloud Run services to eliminate infrastructure management</button><button class="opt" onclick="answer(this,2,2,2)">C. Use Migrate to Virtual Machines to lift-and-shift the VMware VMs directly to Compute Engine</button><button class="opt" onclick="answer(this,2,3,2)">D. Deploy Anthos on-premises to modernize the application in place without migrating it to GCP</button>
+    <div class="expl">Migrate to Virtual Machines is purpose-built for rapid lift-and-shift of VMware VMs to Compute Engine with minimal application changes, making it the only option that realistically meets an 8-week hard deadline while preserving the existing tightly-coupled architecture for later modernization.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Designing and planning a cloud solution architecture">
+    <div class="meta">Question 4 of 6 · Designing and planning a cloud solution architecture</div>
+    <div class="q">An organization uses a hub-and-spoke Shared VPC design with one host project and five service projects, each owned by a different application team. The security team requires that each team can only launch VM instances into the specific subnets assigned to their team, without being able to modify firewall rules or subnet configurations in the host project. Which configuration meets this requirement?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. Grant each team's group the Compute Network Admin role on the host project</button><button class="opt" onclick="answer(this,3,1,3)">B. Create a separate VPC per team and connect all VPCs to the host VPC using VPC Peering</button><button class="opt" onclick="answer(this,3,2,3)">C. Grant each team's group the Project Owner role on the host project so they can self-manage networking</button><button class="opt" onclick="answer(this,3,3,3)">D. Grant each team's group the Compute Network User role scoped to their specific subnets in the host project</button>
+    <div class="expl">The Compute Network User role (roles/compute.networkUser) can be granted at the subnet level in a Shared VPC host project, allowing a service project team to attach VM instances to specific subnets without granting them any ability to modify firewall rules, routes, or subnet configuration.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Designing and planning a cloud solution architecture">
+    <div class="meta">Question 5 of 6 · Designing and planning a cloud solution architecture</div>
+    <div class="q">A workload runs continuously 24/7 with a stable baseline of 200 vCPUs for a committed 3-year period, plus unpredictable traffic bursts of up to 100 additional vCPUs a few times per month. The architect must minimize cost while keeping the burst capacity flexible. Which combination of purchasing options should be used?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. Apply sustained use discounts to all 300 vCPUs and rely on their automatic monthly application</button><button class="opt" onclick="answer(this,4,1,1)">B. Purchase a 3-year resource-based Committed Use Discount for the 200 vCPU baseline, and use on-demand autoscaled instances for the burst capacity</button><button class="opt" onclick="answer(this,4,2,1)">C. Purchase Reserved Instances for the full 300 vCPUs to lock in the lowest possible rate</button><button class="opt" onclick="answer(this,4,3,1)">D. Run all 300 vCPUs on Spot VMs to take advantage of the deepest available discount</button>
+    <div class="expl">A 3-year resource-based Committed Use Discount gives the deepest possible discount (up to ~57%) on the predictable steady-state baseline, while leaving the unpredictable burst capacity on on-demand autoscaled instances preserves flexibility without a long-term commitment on capacity that isn't consistently used.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Designing and planning a cloud solution architecture">
+    <div class="meta">Question 6 of 6 · Designing and planning a cloud solution architecture</div>
+    <div class="q">A financial services company must migrate its on-premises Oracle database to GCP with minimal application changes and near-zero downtime during cutover, ideally landing on a fully managed, PostgreSQL-compatible destination. Which migration approach should the architect choose?</div>
+    <button class="opt" onclick="answer(this,5,0,2)">A. Use Storage Transfer Service to move nightly Oracle export dumps into Cloud Storage, then load them into Cloud SQL</button><button class="opt" onclick="answer(this,5,1,2)">B. Write custom scripts on a Compute Engine VM to poll Oracle redo logs and replicate changes into Cloud SQL</button><button class="opt" onclick="answer(this,5,2,2)">C. Use Database Migration Service to perform a continuous, CDC-based migration from Oracle to AlloyDB for PostgreSQL</button><button class="opt" onclick="answer(this,5,3,2)">D. Use Datastream alone to stream Oracle data continuously into BigQuery for the application to query directly</button>
+    <div class="expl">Database Migration Service supports Oracle as a source for continuous, change-data-capture-based migration into AlloyDB for PostgreSQL (and Cloud SQL for PostgreSQL), enabling ongoing replication until a low-downtime cutover — directly meeting the near-zero downtime and managed-destination requirements.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="A5F51EAB51242FE60905"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">undefined</span> <span class="price">$34.99</span> with code <span class="code">A5F51EAB51242FE60905</span> — valid through Sep 23.</p>
+  <a href="https://www.udemy.com/course/google-cloud-professional-cloud-architect-pca-prep/?couponCode=A5F51EAB51242FE60905" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

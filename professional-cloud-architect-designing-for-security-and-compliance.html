@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Designing for security and compliance Practice Questions — Google Cloud Certified - Professional Cloud Architect</title>
+<meta name="description" content="6 free Designing for security and compliance practice questions with explanations for the Google Cloud Certified - Professional Cloud Architect exam.">
+<link rel="canonical" href="https://technuggets.academy/professional-cloud-architect-designing-for-security-and-compliance.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Designing for security and compliance Practice Questions — Google Cloud Certified - Professional Cloud Architect">
+<meta property="og:description" content="6 free Designing for security and compliance practice questions with explanations for the Google Cloud Certified - Professional Cloud Architect exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/professional-cloud-architect-designing-for-security-and-compliance.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#4285F4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Designing for security and compliance</h1>
+<p class="sub">Free Google Cloud Certified - Professional Cloud Architect practice — 6 questions on <strong>Designing for security and compliance</strong>, with explanations. No sign-up.
+<a href="professional-cloud-architect.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Designing for security and compliance">
+    <div class="meta">Question 1 of 6 · Designing for security and compliance</div>
+    <div class="q">A financial services company stores sensitive datasets in BigQuery within a shared VPC across multiple projects. Security team must prevent any GCP identity from copying data out of the org's BigQuery datasets into external projects or exporting it, while still permitting an on-premises fraud-detection application (connected via Dedicated Interconnect) to query the data. Which approach BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. Configure IAM Conditions on the BigQuery datasets to restrict the bigquery.tables.export permission for all users</button><button class="opt" onclick="answer(this,0,1,1)">B. Create a VPC Service Controls perimeter around the projects containing the BigQuery datasets, with an access level that requires the corporate on-prem IP range reachable via Interconnect</button><button class="opt" onclick="answer(this,0,2,1)">C. Enable Cloud DLP inspection jobs on the datasets to automatically redact sensitive fields before queries run</button><button class="opt" onclick="answer(this,0,3,1)">D. Apply an Organization Policy constraint restricting the allowed resource locations for the datasets</button>
+    <div class="expl">VPC Service Controls creates a service perimeter around BigQuery (and other supported APIs) that blocks data exfiltration to resources outside the perimeter, regardless of IAM permissions. An access level scoped to the on-prem IP range allows the Interconnect-based application through while blocking copy/export to external projects.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Designing for security and compliance">
+    <div class="meta">Question 2 of 6 · Designing for security and compliance</div>
+    <div class="q">A healthcare organization must use encryption keys that are generated and remain stored entirely within their own on-premises hardware security module (HSM), while still allowing Google Cloud services such as BigQuery and Compute Engine to perform encryption operations using those keys via API calls. Google must never have access to the raw key material at any point. Which key management approach should the architect select?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. Cloud External Key Manager (Cloud EKM) integrated with a supported external key management partner</button><button class="opt" onclick="answer(this,1,1,0)">B. Customer-managed encryption keys (CMEK) using Cloud KMS</button><button class="opt" onclick="answer(this,1,2,0)">C. Customer-supplied encryption keys (CSEK) passed with each API request</button><button class="opt" onclick="answer(this,1,3,0)">D. Google-managed default encryption at rest</button>
+    <div class="expl">Cloud EKM lets Google Cloud services call out to an external, customer-controlled key manager (including on-prem HSM-backed partners) at the time of each cryptographic operation, so the raw key material never resides inside Google Cloud infrastructure while still supporting services like BigQuery and Compute Engine.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Designing for security and compliance">
+    <div class="meta">Question 3 of 6 · Designing for security and compliance</div>
+    <div class="q">An architect wants to enforce, at the organization level, that no Compute Engine VM instance anywhere in the resource hierarchy can ever be assigned an external (public) IP address, with no project able to override this. Which Organization Policy constraint should be enforced?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. constraints/compute.vmExternalIpAccess set to deny all</button><button class="opt" onclick="answer(this,2,1,0)">B. constraints/compute.requireOsLogin</button><button class="opt" onclick="answer(this,2,2,0)">C. constraints/compute.restrictVpcPeering</button><button class="opt" onclick="answer(this,2,3,0)">D. constraints/iam.disableServiceAccountKeyCreation</button>
+    <div class="expl">constraints/compute.vmExternalIpAccess is the specific Organization Policy constraint that controls which VM instances (if any) may be assigned external IP addresses; setting it to deny-all at the org node and inheriting down enforces the requirement with no project-level override.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Designing for security and compliance">
+    <div class="meta">Question 4 of 6 · Designing for security and compliance</div>
+    <div class="q">A DevOps team runs its CI/CD pipeline in GitHub Actions and needs to deploy resources to Google Cloud. The security team mandates that no long-lived service account keys may be downloaded or stored as CI/CD secrets. Which solution allows GitHub Actions to authenticate to Google Cloud securely while meeting this requirement?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. Generate a service account key, base64-encode it, and store it as an encrypted GitHub Actions secret</button><button class="opt" onclick="answer(this,3,1,1)">B. Configure Workload Identity Federation to establish trust between GitHub's OIDC token issuer and a Google Cloud service account, exchanging short-lived tokens</button><button class="opt" onclick="answer(this,3,2,1)">C. Grant the GitHub Actions runner's static IP address access through a firewall rule and authenticate using a shared service account password</button><button class="opt" onclick="answer(this,3,3,1)">D. Use Identity-Aware Proxy to allow unauthenticated access from GitHub's published IP ranges</button>
+    <div class="expl">Workload Identity Federation allows an external identity provider (GitHub's OIDC issuer) to be trusted directly, so the pipeline exchanges a short-lived OIDC token for a short-lived Google Cloud credential impersonating a service account — no long-lived key is ever created, stored, or downloaded.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Designing for security and compliance">
+    <div class="meta">Question 5 of 6 · Designing for security and compliance</div>
+    <div class="q">Before loading customer support chat transcripts into BigQuery for analytics, a company needs to automatically identify and mask credit card numbers, email addresses, and phone numbers embedded in free-form text, without manually writing regex patterns for every possible format. Which Google Cloud service should be used in the data pipeline?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. Cloud Data Loss Prevention (Cloud DLP) API using built-in infoType detectors</button><button class="opt" onclick="answer(this,4,1,0)">B. Cloud Armor with custom WAF rules</button><button class="opt" onclick="answer(this,4,2,0)">C. BigQuery column-level security using policy tags</button><button class="opt" onclick="answer(this,4,3,0)">D. Cloud KMS envelope encryption applied to the entire transcript field</button>
+    <div class="expl">Cloud DLP provides pre-built infoType detectors (CREDIT_CARD_NUMBER, EMAIL_ADDRESS, PHONE_NUMBER, etc.) that use pattern matching, context, and checksums to find sensitive data in free text and can automatically de-identify/mask it as part of an ingestion pipeline — no custom regex required.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Designing for security and compliance">
+    <div class="meta">Question 6 of 6 · Designing for security and compliance</div>
+    <div class="q">An architect is designing IAM policies for a large enterprise with hundreds of engineers across dozens of teams. Following least-privilege best practices, which approach should be used to grant engineers only the permissions they need for their job function, avoiding both overly broad primitive roles and the excessive maintenance overhead of building fully custom roles for every function?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. Grant the primitive Editor role to every engineer at the project level, since it covers most day-to-day needs</button><button class="opt" onclick="answer(this,5,1,1)">B. Assign predefined IAM roles that closely map to job functions (e.g., roles/bigquery.dataViewer, roles/compute.instanceAdmin.v1), reserving custom roles only for specific gaps</button><button class="opt" onclick="answer(this,5,2,1)">C. Create a fully custom IAM role for every distinct job function across the organization</button><button class="opt" onclick="answer(this,5,3,1)">D. Grant the Owner role to all engineers but restrict its effect using Organization Policy constraints</button>
+    <div class="expl">Predefined roles are curated, service-specific bundles of permissions maintained by Google that align closely to common job functions, giving finer granularity than primitive roles without the ongoing maintenance burden of managing fully custom roles for every use case — custom roles are reserved for narrow gaps predefined roles don't cover.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="A5F51EAB51242FE60905"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">undefined</span> <span class="price">$34.99</span> with code <span class="code">A5F51EAB51242FE60905</span> — valid through Sep 23.</p>
+  <a href="https://www.udemy.com/course/google-cloud-professional-cloud-architect-pca-prep/?couponCode=A5F51EAB51242FE60905" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

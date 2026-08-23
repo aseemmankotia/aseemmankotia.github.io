@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Security and Compliance Practice Questions — AWS Certified SysOps Administrator - Associate</title>
+<meta name="description" content="6 free Security and Compliance practice questions with explanations for the AWS Certified SysOps Administrator - Associate exam.">
+<link rel="canonical" href="https://technuggets.academy/soa-c02-security-and-compliance.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Security and Compliance Practice Questions — AWS Certified SysOps Administrator - Associate">
+<meta property="og:description" content="6 free Security and Compliance practice questions with explanations for the AWS Certified SysOps Administrator - Associate exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/soa-c02-security-and-compliance.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#FF9900}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Security and Compliance</h1>
+<p class="sub">Free AWS Certified SysOps Administrator - Associate practice — 6 questions on <strong>Security and Compliance</strong>, with explanations. No sign-up.
+<a href="soa-c02.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Security and Compliance">
+    <div class="meta">Question 1 of 6 · Security and Compliance</div>
+    <div class="q">A company in Account A stores objects in an S3 bucket encrypted with a customer managed AWS KMS key. A SysOps administrator needs to grant an IAM role in Account B the ability to decrypt and read these objects, following least privilege. What should be configured?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. Update the KMS key policy to add the Account B IAM role as a principal allowed to perform kms:Decrypt, and attach an IAM policy in Account B granting kms:Decrypt on that key's ARN</button><button class="opt" onclick="answer(this,0,1,0)">B. Add a bucket policy on the S3 bucket in Account A that grants s3:GetObject to the Account B role; no KMS changes are needed because S3 bucket policies control all access</button><button class="opt" onclick="answer(this,0,2,0)">C. Use AWS KMS multi-Region keys to replicate the key into Account B so the account can decrypt objects independently</button><button class="opt" onclick="answer(this,0,3,0)">D. Make the S3 bucket public and use a bucket policy condition restricting access to Account B's account ID</button>
+    <div class="expl">Cross-account access to KMS-encrypted objects requires permission on BOTH sides: the KMS key policy must explicitly allow the external principal (KMS key policies are the source of truth for a customer managed key), and the calling account needs an IAM policy granting kms:Decrypt on that key ARN. S3 bucket permissions alone are not sufficient when a customer managed key is involved.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Security and Compliance">
+    <div class="meta">Question 2 of 6 · Security and Compliance</div>
+    <div class="q">An organization needs to be able to prove that CloudTrail log files delivered to S3 have not been tampered with after delivery, across all AWS Regions in the account. Which configuration BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,1,0,1)">A. Enable AWS Config to record changes to the CloudTrail trail configuration itself</button><button class="opt" onclick="answer(this,1,1,1)">B. Enable a multi-Region trail with log file validation enabled, delivering to an S3 bucket that has MFA delete enabled</button><button class="opt" onclick="answer(this,1,2,1)">C. Enable a single-Region trail and turn on CloudTrail Insights to detect unusual API activity</button><button class="opt" onclick="answer(this,1,3,1)">D. Enable CloudTrail Lake and run periodic SQL queries against the event data store to look for gaps</button>
+    <div class="expl">Log file validation generates a SHA-256/RSA digest file for each delivered log file, cryptographically proving whether the log file has been altered or deleted after delivery. Combining this with a multi-Region trail ensures every Region is covered, and MFA delete on the destination bucket adds protection against unauthorized deletion of the log objects themselves.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Security and Compliance">
+    <div class="meta">Question 3 of 6 · Security and Compliance</div>
+    <div class="q">A team needs Amazon RDS database credentials to rotate automatically every 30 days without the team writing custom rotation logic. Which AWS service should they use?</div>
+    <button class="opt" onclick="answer(this,2,0,2)">A. AWS Systems Manager Parameter Store advanced parameters with an expiration policy</button><button class="opt" onclick="answer(this,2,1,2)">B. AWS KMS automatic key rotation enabled on the customer managed key</button><button class="opt" onclick="answer(this,2,2,2)">C. AWS Secrets Manager, using its built-in rotation configuration for RDS</button><button class="opt" onclick="answer(this,2,3,2)">D. Amazon S3 Lifecycle rules to expire an encrypted object containing the credentials</button>
+    <div class="expl">AWS Secrets Manager provides native, built-in rotation templates/Lambda functions specifically for RDS, Aurora, DocumentDB, and Redshift, allowing rotation on a schedule (e.g., every 30 days) with minimal setup and no custom rotation logic required.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Security and Compliance">
+    <div class="meta">Question 4 of 6 · Security and Compliance</div>
+    <div class="q">A SysOps administrator must continuously evaluate resource configurations across multiple AWS accounts against the CIS AWS Foundations Benchmark and view aggregated compliance findings in one place. Which solution BEST satisfies this requirement?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. Amazon GuardDuty with S3 protection and EKS protection enabled</button><button class="opt" onclick="answer(this,3,1,1)">B. AWS Security Hub with the CIS AWS Foundations Benchmark standard enabled and cross-account/cross-Region aggregation configured</button><button class="opt" onclick="answer(this,3,2,1)">C. AWS Trusted Advisor security pillar checks reviewed manually in each account</button><button class="opt" onclick="answer(this,3,3,1)">D. An AWS Config conformance pack deployed only in the account currently being reviewed</button>
+    <div class="expl">AWS Security Hub is purpose-built to enable industry standards like the CIS AWS Foundations Benchmark, continuously run automated checks, and aggregate findings across multiple accounts and Regions (via Security Hub's cross-Region aggregation and integration with AWS Organizations), giving a single unified compliance dashboard.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Security and Compliance">
+    <div class="meta">Question 5 of 6 · Security and Compliance</div>
+    <div class="q">A cloud security team wants to allow a development team to create their own IAM roles, but no role the developers create should ever be able to exceed S3 read-only access, regardless of what policies they attach. Which configuration achieves this?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. Attach a Service Control Policy (SCP) in AWS Organizations to the developers' IAM users limiting them to S3 read-only actions</button><button class="opt" onclick="answer(this,4,1,2)">B. Configure S3 bucket resource policies to deny all actions except s3:GetObject and s3:ListBucket for the entire account</button><button class="opt" onclick="answer(this,4,2,2)">C. Attach a permissions boundary policy limited to S3 read-only actions to the developers, and require that iam:CreateRole calls set the same permissions boundary on any role they create</button><button class="opt" onclick="answer(this,4,3,2)">D. Enable IAM Access Analyzer, which will automatically strip overly permissive statements from any policy the developers attach to new roles</button>
+    <div class="expl">A permissions boundary is the correct IAM mechanism for capping the maximum permissions a principal can grant to itself or to entities it creates. By attaching the boundary to the developers and enforcing (via an IAM policy condition on iam:CreateRole) that any role they create must also have that same boundary attached, the effective permissions of any role they create can never exceed the boundary, no matter what permission policies are attached to it.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Security and Compliance">
+    <div class="meta">Question 6 of 6 · Security and Compliance</div>
+    <div class="q">A company runs internal-only applications on private hostnames (e.g., app.internal.example.com) that are never exposed to the public internet, and wants TLS certificates for them managed through AWS Certificate Manager. Which statement is correct?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. ACM's public certificate authority will automatically issue certificates for these internal hostnames because AWS trusts traffic originating inside a VPC</button><button class="opt" onclick="answer(this,5,1,1)">B. A private CA must be created with AWS Certificate Manager Private Certificate Authority (ACM PCA) to issue certificates for these internal hostnames, since ACM's public CA can only issue certificates for domains validated via public DNS or HTTP</button><button class="opt" onclick="answer(this,5,2,1)">C. ACM does not support internal applications at all; certificate-based encryption must instead be handled by IAM Identity Center</button><button class="opt" onclick="answer(this,5,3,1)">D. Public ACM certificates for internal hostnames renew automatically without domain validation since AWS considers internal traffic pre-trusted</button>
+    <div class="expl">ACM's standard public certificate authority only issues certificates for domain names that can be validated as owned by the requester via public DNS (CNAME) or email validation, which is not possible for private/internal-only hostnames. AWS Certificate Manager Private Certificate Authority (ACM PCA) lets an organization stand up its own private CA hierarchy to issue and manage certificates for internal hostnames trusted only within the organization's infrastructure.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="89CE4ED79F19FA855B6D"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">undefined</span> <span class="price">$34.99</span> with code <span class="code">89CE4ED79F19FA855B6D</span> — valid through Sep 23.</p>
+  <a href="https://www.udemy.com/course/aws-sysops-administrator-soa-c02-exam-prep/?couponCode=89CE4ED79F19FA855B6D" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Design business continuity solutions Practice Questions — Microsoft Certified: Azure Solutions Architect Expert</title>
+<meta name="description" content="6 free Design business continuity solutions practice questions with explanations for the Microsoft Certified: Azure Solutions Architect Expert exam.">
+<link rel="canonical" href="https://technuggets.academy/az-305-design-business-continuity-solutions.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Design business continuity solutions Practice Questions — Microsoft Certified: Azure Solutions Architect Expert">
+<meta property="og:description" content="6 free Design business continuity solutions practice questions with explanations for the Microsoft Certified: Azure Solutions Architect Expert exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/az-305-design-business-continuity-solutions.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0078D4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Design business continuity solutions</h1>
+<p class="sub">Free Microsoft Certified: Azure Solutions Architect Expert practice — 6 questions on <strong>Design business continuity solutions</strong>, with explanations. No sign-up.
+<a href="az-305.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Design business continuity solutions">
+    <div class="meta">Question 1 of 6 · Design business continuity solutions</div>
+    <div class="q">A company runs a mission-critical Azure SQL Database (PaaS, not a Managed Instance) that must automatically fail over to a paired region with an RPO of about 5 seconds and no application connection string changes. Which design meets this requirement?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. Configure an auto-failover group with active geo-replication</button><button class="opt" onclick="answer(this,0,1,0)">B. Configure Always On availability groups on Azure SQL Database</button><button class="opt" onclick="answer(this,0,2,0)">C. Configure manual active geo-replication only</button><button class="opt" onclick="answer(this,0,3,0)">D. Protect the database with Azure Site Recovery</button>
+    <div class="expl">Auto-failover groups build on active geo-replication and add a listener endpoint plus automatic (or triggered) failover, giving a low RPO (typically seconds) without changing the app's connection string.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Design business continuity solutions">
+    <div class="meta">Question 2 of 6 · Design business continuity solutions</div>
+    <div class="q">A security team is concerned that a compromised Global Administrator account could delete or disable backups in a Recovery Services vault before ransomware is detected, defeating the recovery strategy. Which single configuration change on the vault BEST mitigates this risk?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. Enable soft delete only (default 14-day retention)</button><button class="opt" onclick="answer(this,1,1,2)">B. Apply an Azure Resource Manager lock (CanNotDelete) to the Recovery Services vault</button><button class="opt" onclick="answer(this,1,2,2)">C. Enable vault immutability (locked) together with Multi-User Authorization (MUA) on the Recovery Services vault</button><button class="opt" onclick="answer(this,1,3,2)">D. Configure geo-redundant storage (GRS) for the vault</button>
+    <div class="expl">Locked immutability prevents backup data from being deleted or having its retention shortened, and MUA (via Azure Resource Guard) requires approval from a separate, isolated authority for critical operations, protecting against a single compromised account.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Design business continuity solutions">
+    <div class="meta">Question 3 of 6 · Design business continuity solutions</div>
+    <div class="q">You are configuring an Azure Site Recovery replication policy for Azure VM-to-Azure DR. The business requires the ability to recover using a recovery point up to 5 days old. Crash-consistent recovery points are generated automatically at a fixed interval that cannot be changed. What should you configure?</div>
+    <button class="opt" onclick="answer(this,2,0,2)">A. Set the crash-consistent recovery point interval to 5 days</button><button class="opt" onclick="answer(this,2,1,2)">B. Enable app-consistent snapshots every 5 days and disable crash-consistent points</button><button class="opt" onclick="answer(this,2,2,2)">C. Set 'Recovery point retention' to at least 120 hours in the replication policy, leaving the crash-consistent recovery point interval at its fixed 5-minute default</button><button class="opt" onclick="answer(this,2,3,2)">D. Configure a custom backup policy in the Recovery Services vault instead of a replication policy</button>
+    <div class="expl">For Azure VM-to-Azure replication, crash-consistent recovery points are generated automatically every 5 minutes and this interval isn't user-configurable; the retention window (how far back you can restore) is configurable up to 15 days, so setting retention to at least 120 hours satisfies the 5-day requirement.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Design business continuity solutions">
+    <div class="meta">Question 4 of 6 · Design business continuity solutions</div>
+    <div class="q">A global retail platform uses Azure Cosmos DB and requires zero data loss (RPO = 0) along with active-active multi-region writes for the lowest possible write latency worldwide. Which design should you recommend?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. Disable multi-region writes, use a single write region with Strong consistency, and add additional regions as read replicas with automatic failover for RTO</button><button class="opt" onclick="answer(this,3,1,0)">B. Enable multi-region writes with Session consistency across all regions</button><button class="opt" onclick="answer(this,3,2,0)">C. Enable multi-region writes with Strong consistency across all regions</button><button class="opt" onclick="answer(this,3,3,0)">D. Enable multi-region writes with Bounded Staleness and a staleness window of 0 seconds</button>
+    <div class="expl">Cosmos DB Strong consistency (which is required to guarantee RPO = 0) is only available with a single write region; other regions can be added as read replicas with automatic failover to satisfy RTO, but true zero-data-loss multi-master writes are not achievable.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Design business continuity solutions">
+    <div class="meta">Question 5 of 6 · Design business continuity solutions</div>
+    <div class="q">You need a VM-based application tier design that qualifies for Azure's guaranteed 99.99% compute SLA. Which configuration meets this requirement?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. Deploy two VMs with Premium SSD disks in the same Availability Set</button><button class="opt" onclick="answer(this,4,1,3)">B. Deploy a single VM using Ultra Disk storage</button><button class="opt" onclick="answer(this,4,2,3)">C. Deploy two VMs with Standard HDD disks in the same Availability Set</button><button class="opt" onclick="answer(this,4,3,3)">D. Deploy two or more VMs with Premium SSD disks, one instance in each of three Availability Zones</button>
+    <div class="expl">Azure guarantees 99.99% VM availability when instances are deployed across two or more Availability Zones within a region.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Design business continuity solutions">
+    <div class="meta">Question 6 of 6 · Design business continuity solutions</div>
+    <div class="q">Azure VMs are protected in a Recovery Services vault configured with geo-redundant storage (GRS). A regional outage occurs in the primary region, and you need to restore the VMs in the paired secondary region during the outage. What must have been configured in advance for this to be possible?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. Enable the Cross Region Restore (CRR) setting on the vault while it was still configured with GRS, before the outage occurred</button><button class="opt" onclick="answer(this,5,1,0)">B. Nothing extra — GRS automatically allows restore operations in the secondary region at any time</button><button class="opt" onclick="answer(this,5,2,0)">C. Convert the vault storage redundancy to LRS before the outage</button><button class="opt" onclick="answer(this,5,3,0)">D. Create a new Recovery Services vault in the secondary region and manually copy the backup data after the outage begins</button>
+    <div class="expl">Cross Region Restore is an explicit opt-in setting on a GRS-configured vault that must be enabled before the outage; once enabled, backup data replicated to the secondary region becomes restorable there during a regional outage.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="00651DDA8F57721374B8"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">undefined</span> <span class="price">$34.99</span> with code <span class="code">00651DDA8F57721374B8</span> — valid through Sep 23.</p>
+  <a href="https://www.udemy.com/course/az-305-azure-solutions-architect-expert-prep/?couponCode=00651DDA8F57721374B8" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

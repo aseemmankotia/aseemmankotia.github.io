@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Design data storage solutions Practice Questions — Microsoft Certified: Azure Solutions Architect Expert</title>
+<meta name="description" content="6 free Design data storage solutions practice questions with explanations for the Microsoft Certified: Azure Solutions Architect Expert exam.">
+<link rel="canonical" href="https://technuggets.academy/az-305-design-data-storage-solutions.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Design data storage solutions Practice Questions — Microsoft Certified: Azure Solutions Architect Expert">
+<meta property="og:description" content="6 free Design data storage solutions practice questions with explanations for the Microsoft Certified: Azure Solutions Architect Expert exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/az-305-design-data-storage-solutions.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0078D4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Design data storage solutions</h1>
+<p class="sub">Free Microsoft Certified: Azure Solutions Architect Expert practice — 6 questions on <strong>Design data storage solutions</strong>, with explanations. No sign-up.
+<a href="az-305.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Design data storage solutions">
+    <div class="meta">Question 1 of 6 · Design data storage solutions</div>
+    <div class="q">A global retail company uses Azure Cosmos DB (SQL API) with multi-region writes enabled across three regions. The application must guarantee that a user immediately sees their own writes on their next read within the same session, while keeping RU consumption and latency as low as possible. Which consistency level BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. Bounded staleness</button><button class="opt" onclick="answer(this,0,1,1)">B. Session consistency</button><button class="opt" onclick="answer(this,0,2,1)">C. Consistent prefix</button><button class="opt" onclick="answer(this,0,3,1)">D. Strong consistency</button>
+    <div class="expl">Session consistency guarantees read-your-own-writes and monotonic reads within the client session while still allowing multi-region writes, at far lower latency and RU cost than stronger consistency levels — ideal for user-facing write scenarios in a multi-master account.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Design data storage solutions">
+    <div class="meta">Question 2 of 6 · Design data storage solutions</div>
+    <div class="q">An IoT platform ingests telemetry from 50 million devices into a Cosmos DB container. A small percentage of devices are far more active than the rest, and queries frequently filter by device and by date. The current partition key of deviceId is causing hot partitions on the busiest devices. Which partition key strategy BEST resolves this while keeping queries efficient?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. Use deviceId alone as the partition key</button><button class="opt" onclick="answer(this,1,1,2)">B. Use date alone as the partition key</button><button class="opt" onclick="answer(this,1,2,2)">C. Use a synthetic partition key that combines deviceId and date (e.g., deviceId_date)</button><button class="opt" onclick="answer(this,1,3,2)">D. Use a randomly generated GUID as the partition key</button>
+    <div class="expl">Combining deviceId and date creates a high-cardinality synthetic key that spreads writes across many logical partitions, even for the busiest devices, while still enabling efficient queries filtered by device and date without cross-partition fan-out.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Design data storage solutions">
+    <div class="meta">Question 3 of 6 · Design data storage solutions</div>
+    <div class="q">A financial services firm must retain trade records for 7 years in Azure Blob Storage in a way that even a Storage Account Owner cannot alter or delete during that period, satisfying regulator audit requirements. During active litigation, some records also need an indefinite legal hold applied without disturbing the retention timers on unrelated blobs. Which configuration BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,2,0,2)">A. Enable soft delete on the blob container with a 2555-day retention period</button><button class="opt" onclick="answer(this,2,1,2)">B. Set the storage account to read-only using an Azure RBAC deny assignment</button><button class="opt" onclick="answer(this,2,2,2)">C. Configure version-level immutability policies with time-based retention and apply legal holds to specific blob versions</button><button class="opt" onclick="answer(this,2,3,2)">D. Enable Azure Backup for the storage account with vaulted backups</button>
+    <div class="expl">Version-level immutability policies provide WORM (write once, read many) protection that no principal, including an Owner, can override during the retention period, and legal holds can be applied per version independently of the time-based policy on other blobs — this satisfies compliant, auditable immutability.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Design data storage solutions">
+    <div class="meta">Question 4 of 6 · Design data storage solutions</div>
+    <div class="q">A company is migrating an on-premises SQL Server 2016 workload that heavily relies on SQL Server Agent jobs, cross-database transactions, linked servers, and CLR integration. The target platform must offer near-100% engine compatibility, built-in automatic high availability without manually configuring Availability Groups, no OS patching responsibility, and in-memory OLTP performance. Which target BEST meets all requirements?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. Azure SQL Database, Hyperscale service tier</button><button class="opt" onclick="answer(this,3,1,3)">B. SQL Server on an Azure VM with Always On Availability Groups</button><button class="opt" onclick="answer(this,3,2,3)">C. Azure SQL Database, serverless compute tier</button><button class="opt" onclick="answer(this,3,3,3)">D. Azure SQL Managed Instance, Business Critical service tier</button>
+    <div class="expl">Managed Instance provides near-100% SQL Server engine compatibility, including SQL Agent, cross-database transactions, linked servers, and CLR, and the Business Critical tier includes built-in automatic HA (three synchronous replicas plus in-memory OLTP) with no manual Availability Group configuration or OS patching required.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Design data storage solutions">
+    <div class="meta">Question 5 of 6 · Design data storage solutions</div>
+    <div class="q">An application running on Azure Database for PostgreSQL Flexible Server must survive a complete failure of an entire Azure availability zone with automatic failover and near-zero RPO, and the standby replica must reside in a different zone than the primary. Which configuration BEST satisfies this requirement?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. Enable Same-zone high availability</button><button class="opt" onclick="answer(this,4,1,2)">B. Configure read replicas in a different Azure region</button><button class="opt" onclick="answer(this,4,2,2)">C. Enable Zone-redundant high availability</button><button class="opt" onclick="answer(this,4,3,2)">D. Use Azure Database for PostgreSQL Single Server with geo-redundant backup</button>
+    <div class="expl">Zone-redundant HA deploys the standby replica in a different availability zone from the primary, using synchronous replication with automatic failover, providing protection against a full zone/datacenter failure with near-zero RPO.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Design data storage solutions">
+    <div class="meta">Question 6 of 6 · Design data storage solutions</div>
+    <div class="q">A media company stores read-heavy static assets in an Azure Storage account. The design must tolerate the loss of an entire datacenter within the primary region via synchronous replication, and must also allow the application to read data from a secondary region immediately during a regional outage, without waiting for a failover to complete. Which redundancy option should be selected?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. LRS (Locally Redundant Storage)</button><button class="opt" onclick="answer(this,5,1,3)">B. GRS (Geo-Redundant Storage)</button><button class="opt" onclick="answer(this,5,2,3)">C. ZRS (Zone-Redundant Storage)</button><button class="opt" onclick="answer(this,5,3,3)">D. RA-GZRS (Read-Access Geo-Zone-Redundant Storage)</button>
+    <div class="expl">RA-GZRS combines synchronous zone-redundant replication within the primary region (surviving a datacenter/zone failure) with asynchronous geo-replication to a secondary region, and the 'RA' capability grants read access to the secondary region's data at any time, even before a failover occurs.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="00651DDA8F57721374B8"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">undefined</span> <span class="price">$34.99</span> with code <span class="code">00651DDA8F57721374B8</span> — valid through Sep 23.</p>
+  <a href="https://www.udemy.com/course/az-305-azure-solutions-architect-expert-prep/?couponCode=00651DDA8F57721374B8" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

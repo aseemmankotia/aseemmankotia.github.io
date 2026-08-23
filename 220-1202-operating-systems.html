@@ -1,0 +1,74 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Operating Systems Practice Questions — CompTIA A+ (Core 2)</title>
+<meta name="description" content="6 free Operating Systems practice questions with explanations for the CompTIA A+ (Core 2) exam.">
+<link rel="canonical" href="https://technuggets.academy/220-1202-operating-systems.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Operating Systems Practice Questions — CompTIA A+ (Core 2)">
+<meta property="og:description" content="6 free Operating Systems practice questions with explanations for the CompTIA A+ (Core 2) exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/220-1202-operating-systems.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#C8202F}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Operating Systems</h1>
+<p class="sub">Free CompTIA A+ (Core 2) practice — 6 questions on <strong>Operating Systems</strong>, with explanations. No sign-up.
+<a href="220-1202.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Operating Systems">
+    <div class="meta">Question 1 of 6 · Operating Systems</div>
+    <div class="q">A technician needs to synchronize a folder structure from a file server to a backup server so that files deleted from the source are also removed from the destination during the copy job. Which robocopy switch accomplishes this?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. /E</button><button class="opt" onclick="answer(this,0,1,1)">B. /MIR</button><button class="opt" onclick="answer(this,0,2,1)">C. /S</button><button class="opt" onclick="answer(this,0,3,1)">D. /COPYALL</button>
+    <div class="expl">/MIR mirrors a directory tree, copying new/changed files and deleting files at the destination that no longer exist at the source, keeping both locations identical.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Operating Systems">
+    <div class="meta">Question 2 of 6 · Operating Systems</div>
+    <div class="q">A technician modified a Group Policy Object and now needs to verify exactly which policy settings are currently being applied to a specific user on a workstation, without forcing a new policy refresh. Which command should the technician run?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. gpupdate /force</button><button class="opt" onclick="answer(this,1,1,3)">B. gpupdate /sync</button><button class="opt" onclick="answer(this,1,2,3)">C. chkdsk /r</button><button class="opt" onclick="answer(this,1,3,3)">D. gpresult /r</button>
+    <div class="expl">gpresult /r displays the Resultant Set of Policy (RSoP) summary, showing which GPOs and settings are currently applied to the logged-on user and the computer.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Operating Systems">
+    <div class="meta">Question 3 of 6 · Operating Systems</div>
+    <div class="q">A Windows server has run out of available drive letters, but a new NTFS volume must be added and made accessible through an existing empty folder on the C: drive. Which Disk Management action should the technician perform?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. Mount the new volume to an NTFS folder</button><button class="opt" onclick="answer(this,2,1,0)">B. Convert the disk to a dynamic disk</button><button class="opt" onclick="answer(this,2,2,0)">C. Extend the existing volume</button><button class="opt" onclick="answer(this,2,3,0)">D. Assign a new drive letter to the volume</button>
+    <div class="expl">Disk Management allows a volume to be mounted to an empty NTFS folder (a mount point) instead of a drive letter, providing access to the new volume without requiring an available letter.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Operating Systems">
+    <div class="meta">Question 4 of 6 · Operating Systems</div>
+    <div class="q">A Linux administrator needs to give the file owner full read, write, and execute permissions while removing all permissions for the group and all other users. Which command accomplishes this?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. chmod 700 report.sh</button><button class="opt" onclick="answer(this,3,1,0)">B. chmod 777 report.sh</button><button class="opt" onclick="answer(this,3,2,0)">C. chown 700 report.sh</button><button class="opt" onclick="answer(this,3,3,0)">D. chmod 070 report.sh</button>
+    <div class="expl">chmod 700 sets permissions to rwx (7) for the owner and 0 (no access) for both group and others, matching the requirement exactly.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Operating Systems">
+    <div class="meta">Question 5 of 6 · Operating Systems</div>
+    <div class="q">A technician runs netstat -ano on a Windows workstation and notices an ESTABLISHED connection to an unfamiliar external IP address on port 4444, associated with PID 6120. Which tool should the technician use next to identify the process image name behind that PID?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. System Configuration (msconfig)</button><button class="opt" onclick="answer(this,4,1,1)">B. Task Manager's Details tab</button><button class="opt" onclick="answer(this,4,2,1)">C. Device Manager</button><button class="opt" onclick="answer(this,4,3,1)">D. Event Viewer</button>
+    <div class="expl">Task Manager's Details tab includes a PID column, letting the technician match the suspicious PID to its process image name and take action such as ending the task.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Operating Systems">
+    <div class="meta">Question 6 of 6 · Operating Systems</div>
+    <div class="q">A user needs to store video files larger than 4GB on a USB flash drive that will be swapped between a Windows 11 workstation and a macOS system, with full native read/write access required on both platforms. Which file system should the technician choose when formatting the drive?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. ext4</button><button class="opt" onclick="answer(this,5,1,1)">B. exFAT</button><button class="opt" onclick="answer(this,5,2,1)">C. NTFS</button><button class="opt" onclick="answer(this,5,3,1)">D. FAT32</button>
+    <div class="expl">exFAT supports files larger than 4GB and is natively readable and writable by both Windows and macOS without additional drivers, making it ideal for cross-platform removable media.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/comptia-a-core-2-220-1202-exam-prep-course/?referralCode=A5AE61D1C709A7886458" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

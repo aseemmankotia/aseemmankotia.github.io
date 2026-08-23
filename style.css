@@ -339,3 +339,46 @@ footer a:hover{color:var(--amber-deep);border-bottom-color:var(--amber)}
   body{background:#fff}
   .expl{display:block!important}
 }
+
+/* ---------------------------------------------------------- bundles section */
+#bundles{margin:30px 0 6px}
+.section-h{font-size:1.4rem;font-weight:800;letter-spacing:-.02em;margin-bottom:4px}
+.section-sub{color:var(--dim);margin:0 0 14px;max-width:66ch}
+.card.bundle .bundle-list{list-style:none;margin:12px 0 4px;padding:0}
+.card.bundle .bundle-list li{
+  display:flex;justify-content:space-between;gap:12px;
+  padding:7px 0;border-bottom:1px solid var(--line-soft);font-size:.93rem;
+}
+.card.bundle .bundle-list li:last-child{border-bottom:0}
+.card.bundle .bundle-list a{color:var(--ink);text-decoration:none;font-weight:600}
+.card.bundle .bundle-list a:hover{color:var(--amber-deep);text-decoration:underline}
+.card.bundle .bp{color:var(--muted);font-variant-numeric:tabular-nums;white-space:nowrap}
+.bundle-price{margin:14px 0 2px;font-size:1rem;display:flex;flex-wrap:wrap;align-items:baseline;gap:8px}
+.bundle-price .strike{text-decoration:line-through;color:var(--muted)}
+.bundle-price .now{font-weight:800;color:var(--ink);font-size:1.25rem}
+.bundle-price .save{color:var(--ok);font-weight:750;font-size:.9rem}
+
+/* ---- bundles grid + filter bar + course grid (index) ---- */
+.bundle-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px;margin-top:6px}
+.bundle-grid .card.bundle{margin:0}
+.filters{margin:28px 0 4px}
+.filter-head{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+#courseSearch{flex:1 1 220px;max-width:340px;padding:9px 13px;border:1px solid var(--line);border-radius:10px;font-size:.95rem;background:var(--card);color:var(--ink)}
+#courseSearch:focus{outline:none;border-color:var(--amber);box-shadow:0 0 0 3px var(--amber-100)}
+.frow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-top:12px}
+.flabel{font-size:.7rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);min-width:66px}
+.fchip{cursor:pointer;font:inherit;font-size:.85rem;font-weight:650;padding:6px 13px;border-radius:99px;border:1px solid var(--line);background:var(--card);color:var(--ink);display:inline-flex;align-items:center;gap:6px;transition:background .15s ease,color .15s ease,border-color .15s ease}
+.fchip:hover{border-color:var(--amber);color:var(--amber-deep);background:var(--amber-50)}
+.fchip.active{background:var(--ink);color:#fff;border-color:var(--ink)}
+.fchip .fc{font-size:.72rem;font-weight:700;opacity:.65}
+.fchip.active .fc{opacity:.9}
+.filter-count{color:var(--muted);font-size:.85rem;margin:14px 0 0}
+.course-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px;margin-top:10px}
+.course-grid .card{margin:0}
+.no-results{text-align:center;color:var(--dim);padding:30px 0;font-size:.95rem}
+.meta-row{display:flex;flex-wrap:wrap;gap:6px;margin:2px 0 8px}
+.pill{font-size:.7rem;font-weight:700;letter-spacing:.02em;padding:3px 9px;border-radius:99px;border:1px solid var(--line);color:var(--muted);background:var(--line-soft)}
+.pill.vendor-pill{color:var(--ink);border-color:var(--amber-200);background:var(--amber-50)}
+.badge.bundle-tag{cursor:pointer;text-decoration:none;background:var(--amber);color:#3B2205;border:1px solid var(--amber-deep)}
+.badge.bundle-tag:hover{background:var(--amber-light)}
+@media (max-width:640px){.course-grid,.bundle-grid{grid-template-columns:1fr}.flabel{min-width:auto;width:100%}}

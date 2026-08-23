@@ -1,0 +1,74 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Operational Procedures Practice Questions — CompTIA A+ (Core 2)</title>
+<meta name="description" content="6 free Operational Procedures practice questions with explanations for the CompTIA A+ (Core 2) exam.">
+<link rel="canonical" href="https://technuggets.academy/220-1202-operational-procedures.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Operational Procedures Practice Questions — CompTIA A+ (Core 2)">
+<meta property="og:description" content="6 free Operational Procedures practice questions with explanations for the CompTIA A+ (Core 2) exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/220-1202-operational-procedures.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#C8202F}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Operational Procedures</h1>
+<p class="sub">Free CompTIA A+ (Core 2) practice — 6 questions on <strong>Operational Procedures</strong>, with explanations. No sign-up.
+<a href="220-1202.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Operational Procedures">
+    <div class="meta">Question 1 of 6 · Operational Procedures</div>
+    <div class="q">A network administrator submits a change request to upgrade firmware on the core switch during a scheduled maintenance window. The change advisory board reviews and approves the request, and documentation is filed correctly. During the upgrade, the switch loses connectivity to half the network and cannot be quickly returned to its previous working state, causing a prolonged outage. Which missing element of the change management process is the BEST explanation for the extended outage?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. Risk analysis</button><button class="opt" onclick="answer(this,0,1,3)">B. Change request documentation</button><button class="opt" onclick="answer(this,0,2,3)">C. End-user acceptance</button><button class="opt" onclick="answer(this,0,3,3)">D. Backout plan</button>
+    <div class="expl">A backout (rollback) plan defines exactly how to restore the previous configuration if a change fails. Without one, the technician had no defined method to quickly revert the switch, which is why the outage extended instead of being resolved rapidly.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Operational Procedures">
+    <div class="meta">Question 2 of 6 · Operational Procedures</div>
+    <div class="q">A file server crashes on Wednesday morning. The organization follows a Grandfather-Father-Son (GFS) rotation: a full backup runs on the last day of each month (Grandfather), a full backup runs every Friday (Father), and incremental backups run Monday through Thursday (Son). The most recent Friday full backup and the Monday and Tuesday incremental backups completed successfully, but Wednesday's incremental never finished due to the crash. Which restore approach correctly recovers data through Tuesday night?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. Restore the Father (Friday) full backup, then apply the Monday and Tuesday incremental backups in chronological order</button><button class="opt" onclick="answer(this,1,1,0)">B. Restore only the most recent Grandfather (monthly) full backup</button><button class="opt" onclick="answer(this,1,2,0)">C. Restore only Tuesday's incremental backup</button><button class="opt" onclick="answer(this,1,3,0)">D. Restore the Father (Friday) full backup, then apply the incremental backups in reverse chronological order</button>
+    <div class="expl">Incremental backups only capture changes since the last backup, so they must be layered on top of the most recent full backup and applied in the order they were created — Monday's changes first, then Tuesday's — to correctly rebuild the data state.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Operational Procedures">
+    <div class="meta">Question 3 of 6 · Operational Procedures</div>
+    <div class="q">While repairing a user's workstation, a technician discovers what appears to be illicit material stored on the device. Following standard incident response procedure for a suspected policy or legal violation, what should the technician do FIRST?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. Continue the repair and document the finding in the ticket afterward</button><button class="opt" onclick="answer(this,2,1,1)">B. Preserve the current system state, stop using the device, and report the finding to the appropriate supervisor or authority</button><button class="opt" onclick="answer(this,2,2,1)">C. Immediately confront the user about the material</button><button class="opt" onclick="answer(this,2,3,1)">D. Delete the material to avoid company liability</button>
+    <div class="expl">First-response procedure requires preserving evidence and chain of custody by not altering the device further, then escalating to a supervisor, legal, or law enforcement as appropriate — the technician should never independently investigate or act on the finding.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Operational Procedures">
+    <div class="meta">Question 4 of 6 · Operational Procedures</div>
+    <div class="q">A hospital's billing system stores patient names, diagnosis codes, and treatment history. Which classification applies to this data, and which regulation primarily governs its protection in the United States?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. PHI, governed by HIPAA</button><button class="opt" onclick="answer(this,3,1,0)">B. PII, governed by GDPR</button><button class="opt" onclick="answer(this,3,2,0)">C. PCI, governed by PCI-DSS</button><button class="opt" onclick="answer(this,3,3,0)">D. PHI, governed by GDPR</button>
+    <div class="expl">Names combined with diagnosis and treatment information constitute Protected Health Information (PHI), which is governed in the U.S. by HIPAA, the regulation specifically covering healthcare data privacy and security.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Operational Procedures">
+    <div class="meta">Question 5 of 6 · Operational Procedures</div>
+    <div class="q">A user opens an email attachment named invoice.vbs, and shortly afterward, files on the shared network drive are renamed with a .locked extension. Which characteristic of VBScript files makes them a common vector for this kind of attack?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. VBScript files require administrator privileges to execute, ensuring the attack is logged before any damage occurs</button><button class="opt" onclick="answer(this,4,1,2)">B. VBScript files can only run inside a sandboxed browser environment, limiting any damage to interactive prompts</button><button class="opt" onclick="answer(this,4,2,2)">C. VBScript files can be disguised with a double extension to appear as a document and execute automatically through the Windows Script Host without requiring compilation</button><button class="opt" onclick="answer(this,4,3,2)">D. VBScript files are cryptographically signed by default, allowing them to bypass antivirus detection legitimately</button>
+    <div class="expl">VBScript (.vbs) files run natively through the Windows Script Host (wscript.exe/cscript.exe) without needing to be compiled, and attackers commonly disguise them with names like invoice.pdf.vbs so Windows' hidden file extension setting shows only 'invoice.pdf' to the user, tricking them into execution.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Operational Procedures">
+    <div class="meta">Question 6 of 6 · Operational Procedures</div>
+    <div class="q">While replacing a power supply, a technician notices smoke and small flames coming from the wall outlet wiring, and the equipment is still energized. Which class of fire extinguisher should the technician use?</div>
+    <button class="opt" onclick="answer(this,5,0,2)">A. Class A</button><button class="opt" onclick="answer(this,5,1,2)">B. Class B</button><button class="opt" onclick="answer(this,5,2,2)">C. Class C</button><button class="opt" onclick="answer(this,5,3,2)">D. Class D</button>
+    <div class="expl">Class C extinguishers are rated for electrical fires involving energized equipment; they use a non-conductive agent, making them safe to use without risk of electric shock.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/comptia-a-core-2-220-1202-exam-prep-course/?referralCode=A5AE61D1C709A7886458" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

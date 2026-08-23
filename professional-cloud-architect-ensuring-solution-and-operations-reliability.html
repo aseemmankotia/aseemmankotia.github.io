@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Ensuring solution and operations reliability Practice Questions — Google Cloud Certified - Professional Cloud Architect</title>
+<meta name="description" content="6 free Ensuring solution and operations reliability practice questions with explanations for the Google Cloud Certified - Professional Cloud Architect exam.">
+<link rel="canonical" href="https://technuggets.academy/professional-cloud-architect-ensuring-solution-and-operations-reliability.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Ensuring solution and operations reliability Practice Questions — Google Cloud Certified - Professional Cloud Architect">
+<meta property="og:description" content="6 free Ensuring solution and operations reliability practice questions with explanations for the Google Cloud Certified - Professional Cloud Architect exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/professional-cloud-architect-ensuring-solution-and-operations-reliability.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#4285F4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Ensuring solution and operations reliability</h1>
+<p class="sub">Free Google Cloud Certified - Professional Cloud Architect practice — 6 questions on <strong>Ensuring solution and operations reliability</strong>, with explanations. No sign-up.
+<a href="professional-cloud-architect.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Ensuring solution and operations reliability">
+    <div class="meta">Question 1 of 6 · Ensuring solution and operations reliability</div>
+    <div class="q">A company has an SLO of 99.95% availability for its public API measured over a rolling 28-day window. Monitoring shows the current burn rate will exhaust the entire error budget in 3 days. The product team wants to ship a major new feature this week that adds significant new code paths to the same service. What should the architect recommend?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. Halt non-critical feature launches and prioritize reliability engineering work until the error budget recovers</button><button class="opt" onclick="answer(this,0,1,0)">B. Redefine the SLI measurement window from 28 days to 90 days to reset the error budget calculation</button><button class="opt" onclick="answer(this,0,2,0)">C. Proceed with the launch since the current availability still satisfies the customer-facing SLA, which is lower than the SLO</button><button class="opt" onclick="answer(this,0,3,0)">D. Increase the SLO target to 99.99% availability to create additional error-budget headroom for future incidents</button>
+    <div class="expl">This is the standard SRE error-budget policy: when the burn rate indicates the budget will be exhausted, feature launches that add risk are paused and engineering effort shifts to reliability work until the budget recovers. This protects users while still allowing normal release velocity once risk decreases.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Ensuring solution and operations reliability">
+    <div class="meta">Question 2 of 6 · Ensuring solution and operations reliability</div>
+    <div class="q">A critical OLTP workload currently runs on a single-region Cloud SQL for PostgreSQL instance. The business now requires an RPO of 5 minutes and an RTO of 15 minutes in the event of a full regional outage, with minimal ongoing operational overhead. Which approach best meets these requirements?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. Configure a cross-region read replica for Cloud SQL and manually promote it during a regional outage</button><button class="opt" onclick="answer(this,1,1,2)">B. Rely on Cloud SQL automated backups with point-in-time recovery restored to a new instance in another region</button><button class="opt" onclick="answer(this,1,2,2)">C. Migrate the workload to Cloud Spanner configured as a multi-region instance</button><button class="opt" onclick="answer(this,1,3,2)">D. Set up a nightly cross-region database dump-and-restore process to a standby Cloud SQL instance</button>
+    <div class="expl">Cloud Spanner multi-region configurations use synchronous, Paxos-based replication across regions, providing near-zero RPO and automatic failover with minimal manual intervention, comfortably meeting a 5-minute RPO and 15-minute RTO with low ongoing operational burden.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Ensuring solution and operations reliability">
+    <div class="meta">Question 3 of 6 · Ensuring solution and operations reliability</div>
+    <div class="q">A microservices application running on GKE experiences intermittent high latency on certain user requests. The team needs to visualize the full request path across multiple services and pinpoint exactly which downstream service call is adding the delay. Which tool should they use?</div>
+    <button class="opt" onclick="answer(this,2,0,2)">A. Enable Cloud Profiler on each microservice to capture CPU and memory usage</button><button class="opt" onclick="answer(this,2,1,2)">B. Configure Cloud Monitoring dashboards with aggregated custom latency metrics per service</button><button class="opt" onclick="answer(this,2,2,2)">C. Instrument the services with Cloud Trace to visualize per-request latency across the call graph</button><button class="opt" onclick="answer(this,2,3,2)">D. Enable structured JSON logging in Cloud Logging and correlate log entries by request ID manually</button>
+    <div class="expl">Cloud Trace is purpose-built for distributed tracing: it captures per-request latency data as a request flows through multiple services and renders the call graph so the specific slow hop can be identified directly.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Ensuring solution and operations reliability">
+    <div class="meta">Question 4 of 6 · Ensuring solution and operations reliability</div>
+    <div class="q">A team runs several services on App Engine and Cloud Run. They want unhandled exceptions from all services automatically aggregated and grouped by root cause (deduplicating identical stack traces) and to be notified when a new error type first appears. Which Google Cloud tool is designed specifically for this?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. Error Reporting</button><button class="opt" onclick="answer(this,3,1,0)">B. Cloud Trace</button><button class="opt" onclick="answer(this,3,2,0)">C. Cloud Logging log-based metrics with alerting policies</button><button class="opt" onclick="answer(this,3,3,0)">D. Security Command Center</button>
+    <div class="expl">Error Reporting automatically aggregates and groups exceptions across App Engine, Cloud Run, GKE, and Compute Engine by analyzing stack traces, deduplicates recurring errors, and can notify when a new error group is first detected — exactly matching the requirement.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Ensuring solution and operations reliability">
+    <div class="meta">Question 5 of 6 · Ensuring solution and operations reliability</div>
+    <div class="q">An architect needs to configure a canary release for a service running on GKE, routing approximately 5% of traffic to the new version. No service mesh (such as Istio/Anthos Service Mesh) is installed, and native Kubernetes objects must be used. Which configuration achieves this?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. Run kubectl rollout pause on the existing Deployment update to hold 5% of pods on the new revision</button><button class="opt" onclick="answer(this,4,1,2)">B. Create a separate Ingress resource routing to a canary namespace</button><button class="opt" onclick="answer(this,4,2,2)">C. Deploy the new version as a separate Deployment sharing the same Service label selector as the stable Deployment, and scale replica counts to approximate a 5% traffic ratio</button><button class="opt" onclick="answer(this,4,3,2)">D. Configure a HorizontalPodAutoscaler to scale the canary Deployment to 5% of total replicas based on CPU utilization</button>
+    <div class="expl">Without a service mesh, the standard native-Kubernetes canary pattern is to create two Deployments with identical pod labels matched by a single Service's selector. Since a Service load-balances round-robin across all matching pod endpoints, controlling the ratio of stable-to-canary replica counts (e.g., 19 stable pods and 1 canary pod) approximates the desired traffic percentage.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Ensuring solution and operations reliability">
+    <div class="meta">Question 6 of 6 · Ensuring solution and operations reliability</div>
+    <div class="q">A production outage was caused by an engineer making a manual configuration change directly in production without following the documented change-management process. During the post-incident review, which action best aligns with Google's SRE blameless postmortem culture?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. Identify the engineer who made the unauthorized change and issue a formal written reprimand</button><button class="opt" onclick="answer(this,5,1,3)">B. Restrict production deployment access to only senior engineers going forward</button><button class="opt" onclick="answer(this,5,2,3)">C. Document the incident internally only if it breached the SLA, and keep the report private since it was resolved quickly</button><button class="opt" onclick="answer(this,5,3,3)">D. Focus the review on the systemic process and tooling gaps that allowed an unreviewed change to reach production, and implement automated safeguards</button>
+    <div class="expl">Blameless postmortems focus on identifying and fixing systemic weaknesses (e.g., lack of automated guardrails, insufficient change review enforcement) rather than assigning individual blame, since punishing individuals discourages honest reporting and doesn't prevent recurrence; the goal is durable, process-level fixes.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="A5F51EAB51242FE60905"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">undefined</span> <span class="price">$34.99</span> with code <span class="code">A5F51EAB51242FE60905</span> — valid through Sep 23.</p>
+  <a href="https://www.udemy.com/course/google-cloud-professional-cloud-architect-pca-prep/?couponCode=A5F51EAB51242FE60905" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

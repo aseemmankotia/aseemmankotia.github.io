@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Reliability and Business Continuity Practice Questions — AWS Certified SysOps Administrator - Associate</title>
+<meta name="description" content="6 free Reliability and Business Continuity practice questions with explanations for the AWS Certified SysOps Administrator - Associate exam.">
+<link rel="canonical" href="https://technuggets.academy/soa-c02-reliability-and-business-continuity.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Reliability and Business Continuity Practice Questions — AWS Certified SysOps Administrator - Associate">
+<meta property="og:description" content="6 free Reliability and Business Continuity practice questions with explanations for the AWS Certified SysOps Administrator - Associate exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/soa-c02-reliability-and-business-continuity.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#FF9900}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Reliability and Business Continuity</h1>
+<p class="sub">Free AWS Certified SysOps Administrator - Associate practice — 6 questions on <strong>Reliability and Business Continuity</strong>, with explanations. No sign-up.
+<a href="soa-c02.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Reliability and Business Continuity">
+    <div class="meta">Question 1 of 6 · Reliability and Business Continuity</div>
+    <div class="q">A financial services company runs an RDS for PostgreSQL primary database in us-east-1. Leadership requires that a single-AZ hardware or network failure be resolved automatically with minimal downtime, and that a full regional disaster be recoverable with an RPO of 5 minutes by promoting a copy in eu-west-1. Which design meets BOTH requirements?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. Deploy RDS Multi-AZ only, relying on automatic failover to the standby in the same region for all DR requirements</button><button class="opt" onclick="answer(this,0,1,1)">B. Deploy RDS Multi-AZ within the primary region for automatic AZ failover, combined with a cross-region read replica that is promoted manually during a full regional outage</button><button class="opt" onclick="answer(this,0,2,1)">C. Deploy a Read Replica in the secondary region only, promoting it manually during any outage, including single-AZ failures</button><button class="opt" onclick="answer(this,0,3,1)">D. Take manual DB snapshots every 5 minutes and copy them to the secondary region for both AZ-level and regional failover</button>
+    <div class="expl">Multi-AZ provides automatic failover to a synchronous standby within the same region in roughly 60-120 seconds, satisfying the AZ-failure requirement, while a cross-region read replica typically lags by seconds to a few minutes and can be manually promoted to meet a 5-minute RPO during a full regional disaster.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Reliability and Business Continuity">
+    <div class="meta">Question 2 of 6 · Reliability and Business Continuity</div>
+    <div class="q">An Auto Scaling group launches new EC2 instances behind an ALB target group. Application initialization via user data takes 8 minutes before the instance can pass the target group's health check (interval 30 seconds, unhealthy threshold 2). New instances are being terminated and replaced by the Auto Scaling group before initialization finishes. Which single change resolves this?</div>
+    <button class="opt" onclick="answer(this,1,0,1)">A. Reduce the ALB health check UnhealthyThresholdCount from its default so failing instances are detected sooner</button><button class="opt" onclick="answer(this,1,1,1)">B. Increase the Auto Scaling group's HealthCheckGracePeriod to at least 480 seconds so the ASG ignores health check results until initialization completes</button><button class="opt" onclick="answer(this,1,2,1)">C. Decrease the ALB HealthCheckIntervalSeconds to 5 seconds so status updates propagate faster to the ASG</button><button class="opt" onclick="answer(this,1,3,1)">D. Add a CloudWatch alarm on StatusCheckFailed_Instance to trigger an ASG replacement policy</button>
+    <div class="expl">HealthCheckGracePeriod tells the Auto Scaling group to ignore EC2 and ELB health check results for the configured number of seconds after instance launch, giving the 8-minute initialization process time to complete before the ASG can evaluate and act on health status.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Reliability and Business Continuity">
+    <div class="meta">Question 3 of 6 · Reliability and Business Continuity</div>
+    <div class="q">A company wants Route 53 failover routing to declare a primary endpoint unhealthy and shift traffic to a secondary endpoint only after approximately 90 seconds of continuous failure, using standard global health checker consensus. Which health check configuration achieves this?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. Fast health check (10-second request interval) with FailureThreshold of 3, yielding roughly 30 seconds to detect failure</button><button class="opt" onclick="answer(this,2,1,3)">B. Fast health check (10-second request interval) with FailureThreshold of 5, yielding roughly 50 seconds to detect failure</button><button class="opt" onclick="answer(this,2,2,3)">C. Standard health check (30-second request interval) with FailureThreshold of 1, yielding roughly 30 seconds to detect failure</button><button class="opt" onclick="answer(this,2,3,3)">D. Standard health check (30-second request interval) with FailureThreshold of 3, yielding roughly 90 seconds to detect failure</button>
+    <div class="expl">Route 53 health checkers evaluate at the configured request interval and declare an endpoint unhealthy after consecutive failures equal to FailureThreshold, using majority consensus among global checker locations; a 30-second interval multiplied by a threshold of 3 yields the required approximately 90-second detection window.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Reliability and Business Continuity">
+    <div class="meta">Question 4 of 6 · Reliability and Business Continuity</div>
+    <div class="q">A company runs critical EC2/EBS workloads in ap-southeast-1 and must be able to launch replacement resources in ap-southeast-2 within 15 minutes of a regional outage, using data no older than 1 hour (RPO). Which solution is the MOST operationally efficient way to meet this requirement?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. Manually create EBS snapshots via the console once daily and copy them to ap-southeast-2 using the Copy Snapshot action right before month-end reporting</button><button class="opt" onclick="answer(this,3,1,3)">B. Use Amazon Data Lifecycle Manager (DLM) to create snapshots every 24 hours with no cross-region copy action configured</button><button class="opt" onclick="answer(this,3,2,3)">C. Enable S3 Cross-Region Replication on a bucket containing exported AMI metadata, and manually rebuild instances from that metadata after an outage</button><button class="opt" onclick="answer(this,3,3,3)">D. Use AWS Backup with a backup plan that includes a cross-region copy rule scheduled hourly, storing recovery points in a backup vault in ap-southeast-2, and restore resources from there during a regional outage</button>
+    <div class="expl">AWS Backup centralizes policy-based backup scheduling and supports a native cross-region copy rule, enabling automated hourly recovery points in the DR region and a fast, repeatable restore process that meets both the 1-hour RPO and the 15-minute RTO target.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Reliability and Business Continuity">
+    <div class="meta">Question 5 of 6 · Reliability and Business Continuity</div>
+    <div class="q">A team configured S3 Cross-Region Replication (CRR) from us-east-1 (source) to us-west-2 (destination) with versioning enabled on both buckets for disaster recovery. After issuing DELETE requests without specifying version IDs on several objects in the source bucket to reduce storage costs, the team observes that destination bucket storage usage does NOT decrease, and prior object versions still appear when listed with version-aware tools. Which explanation is correct?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. CRR is misconfigured; by default, delete markers should never replicate to the destination bucket, so this behavior indicates a bucket policy error</button><button class="opt" onclick="answer(this,4,1,3)">B. DELETE requests issued without a version ID are never replicated by CRR under any configuration, so the destination bucket's data is completely unaffected by deletes in the source</button><button class="opt" onclick="answer(this,4,2,3)">C. Replication Time Control (RTC) is disabled, causing only a 15-minute propagation delay for the delete marker, after which storage usage will decrease automatically</button><button class="opt" onclick="answer(this,4,3,3)">D. This is expected: with versioning enabled on both buckets, the DELETE request replicates a delete marker to the destination (hiding the current version), but all object versions remain stored in both buckets until a lifecycle rule permanently expires noncurrent versions</button>
+    <div class="expl">By default, S3 CRR replicates delete markers created by non-versioned DELETE requests, which hides the current object version at the destination without removing any underlying version data; destination storage only decreases once noncurrent versions are explicitly expired via a lifecycle rule.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Reliability and Business Continuity">
+    <div class="meta">Question 6 of 6 · Reliability and Business Continuity</div>
+    <div class="q">An Auto Scaling group behind an ALB scales out during traffic spikes. New instances take about 3 minutes to warm up an in-memory JVM cache, causing intermittent 502 errors immediately after instances are marked healthy and begin receiving full traffic. Which single change reduces these 502 errors WITHOUT slowing down failure detection for genuinely unhealthy targets?</div>
+    <button class="opt" onclick="answer(this,5,0,2)">A. Increase HealthyThresholdCount to 10 consecutive successful checks before marking a target healthy</button><button class="opt" onclick="answer(this,5,1,2)">B. Increase the target group Deregistration Delay (connection draining) to 300 seconds</button><button class="opt" onclick="answer(this,5,2,2)">C. Enable Slow Start mode on the target group with a duration that approximates the 3-minute application warm-up period</button><button class="opt" onclick="answer(this,5,3,2)">D. Decrease HealthCheckIntervalSeconds to 5 seconds to detect a healthy state more quickly</button>
+    <div class="expl">Slow Start mode gradually increases the proportion of requests an ALB sends to a newly healthy target over the configured duration (30-900 seconds), preventing an immediate flood of traffic before the cache warm-up completes, and it does not affect how quickly the ALB detects genuinely unhealthy targets.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="89CE4ED79F19FA855B6D"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">undefined</span> <span class="price">$34.99</span> with code <span class="code">89CE4ED79F19FA855B6D</span> — valid through Sep 23.</p>
+  <a href="https://www.udemy.com/course/aws-sysops-administrator-soa-c02-exam-prep/?couponCode=89CE4ED79F19FA855B6D" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

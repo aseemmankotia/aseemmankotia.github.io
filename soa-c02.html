@@ -1,0 +1,123 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free AWS Certified SysOps Administrator - Associate Practice Test — 12 Real Exam-Style Questions</title>
+<meta name="description" content="Free AWS Certified SysOps Administrator - Associate practice questions with detailed explanations. Test yourself before the real exam.">
+<link rel="canonical" href="https://technuggets.academy/soa-c02.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free AWS Certified SysOps Administrator - Associate Practice Test — 12 Real Exam-Style Questions">
+<meta property="og:description" content="Free AWS Certified SysOps Administrator - Associate practice questions with detailed explanations. Test yourself before the real exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/soa-c02.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#FF9900}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div><div class="hero">
+  <span class="chip">SOA-C02</span>
+  <h1>Free AWS Certified SysOps Administrator - Associate Practice Test</h1>
+  <p class="sub">12 exam-style questions with full explanations — no sign-up. Score yourself, then close your gaps with the full course.</p>
+  <div class="facts"><span class="fact">Exam fee <b>~$150</b></span><span class="fact"><b>6</b> exam domains</span><span class="fact">Level <b>Intermediate</b></span><span class="fact"><b>2</b> timed practice tests in the course</span></div>
+  <div class="cta-row"><a class="btn enroll" href="https://www.udemy.com/course/aws-sysops-administrator-soa-c02-exam-prep/?couponCode=89CE4ED79F19FA855B6D" rel="sponsored" target="_blank">Get my $34.99 deal →</a><a class="btn ghost" href="#practice">Try the free test →</a><span class="urgency">⏳ Deal ends Sep 23</span></div>
+</div><div class="trust"><span>✅ <b>Free</b> practice — no sign-up</span><span>📝 Real exam-style questions</span><span>💡 Detailed explanations</span><span>💸 30-day money-back via Udemy</span></div>
+<div id="practice"></div>
+
+  <div class="card qcard" id="q0" data-domain="Monitoring, Logging, and Remediation">
+    <div class="meta">Question 1 of 12 · Monitoring, Logging, and Remediation</div>
+    <div class="q">A company wants to automatically stop EC2 instances tagged Environment=Dev outside business hours (6 PM–8 AM) with zero manual intervention, and requires an audit trail of every remediation action taken. Which solution BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. Create a CloudWatch alarm on CPUUtilization that sends an SNS notification prompting an on-call engineer to stop the instances manually</button><button class="opt" onclick="answer(this,0,1,1)">B. Create an EventBridge scheduled rule that invokes an SSM Automation runbook (AWS-StopEC2Instance) targeting instances tagged Environment=Dev, with CloudTrail enabled to log the automation's API calls</button><button class="opt" onclick="answer(this,0,2,1)">C. Create an AWS Config rule that evaluates EC2 instance state and flags non-compliant instances for manual remediation by the operations team</button><button class="opt" onclick="answer(this,0,3,1)">D. Create a Lambda function invoked by a CloudWatch Logs subscription filter that parses instance state-change log events and stops matching instances</button>
+    <div class="expl">An EventBridge scheduled (cron) rule triggering an SSM Automation runbook fully automates the stop action on a fixed schedule with no human involvement, and CloudTrail natively logs every API call the Automation makes, satisfying the audit requirement.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Reliability and Business Continuity">
+    <div class="meta">Question 2 of 12 · Reliability and Business Continuity</div>
+    <div class="q">A financial services company runs a critical Amazon RDS for MySQL database. The application team requires near-zero RPO and automatic failover during an Availability Zone outage, with no changes to the application's database connection string. Which solution BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. Create a same-Region Read Replica and manually promote it during an outage</button><button class="opt" onclick="answer(this,1,1,2)">B. Take manual DB snapshots every hour and restore from the latest snapshot during an outage</button><button class="opt" onclick="answer(this,1,2,2)">C. Enable Multi-AZ deployment for the RDS instance</button><button class="opt" onclick="answer(this,1,3,2)">D. Create a cross-Region Read Replica and update the application connection string during failover</button>
+    <div class="expl">Multi-AZ synchronously replicates data to a standby in another AZ and automatically fails over using the same DNS endpoint, delivering near-zero RPO and no application changes.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Deployment, Provisioning, and Automation">
+    <div class="meta">Question 3 of 12 · Deployment, Provisioning, and Automation</div>
+    <div class="q">A company uses AWS Organizations with dozens of member accounts across three Regions. The SysOps team must automatically deploy a standard S3 bucket and IAM role into every existing and future member account in all three Regions, without accounts having to individually assume a deployment role. Which solution meets this requirement with the LEAST ongoing operational effort?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. Write a Lambda function triggered by AWS Config that deploys a CloudFormation stack in each account when drift is detected</button><button class="opt" onclick="answer(this,2,1,3)">B. Manually create a CloudFormation stack in each account and Region using self-managed permissions and cross-account IAM roles</button><button class="opt" onclick="answer(this,2,2,3)">C. Package the resources into an AWS Elastic Beanstalk application and deploy a new environment in each account</button><button class="opt" onclick="answer(this,2,3,3)">D. Create an AWS CloudFormation StackSet with service-managed permissions and automatic deployment enabled for the organization</button>
+    <div class="expl">StackSets with service-managed permissions integrates directly with AWS Organizations, automatically deploying and updating stack instances in existing and new member accounts across specified Regions without manual role setup in each account.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Security and Compliance">
+    <div class="meta">Question 4 of 12 · Security and Compliance</div>
+    <div class="q">A company has an application running on EC2 instances in Account A that needs to read objects from an S3 bucket in Account B. Which approach BEST grants this access following least privilege?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. Create an IAM user in Account B, generate access keys, and store them in the EC2 instance's user data script</button><button class="opt" onclick="answer(this,3,1,2)">B. Make the S3 bucket public and use a bucket policy to restrict access by source IP address</button><button class="opt" onclick="answer(this,3,2,2)">C. Create an IAM role in Account B with a trust policy allowing Account A's EC2 instance role to assume it, then have the application assume the role using AWS STS</button><button class="opt" onclick="answer(this,3,3,2)">D. Copy the IAM policy from Account A to a new IAM user in Account B and share the credentials via Secrets Manager</button>
+    <div class="expl">A cross-account IAM role with a trust policy lets the Account A EC2 instance role assume temporary credentials via STS, providing least-privilege, time-limited access without any long-term credentials.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Networking and Content Delivery">
+    <div class="meta">Question 5 of 12 · Networking and Content Delivery</div>
+    <div class="q">An application running on EC2 instances in a private subnet (no NAT Gateway, no internet access) needs to read and write objects to an S3 bucket in the same Region. The company wants to avoid any data transfer charges for NAT Gateway processing and keep traffic off the public internet. Which solution meets these requirements with the LOWEST cost?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. Deploy a NAT Gateway in a public subnet and route S3 traffic through it</button><button class="opt" onclick="answer(this,4,1,2)">B. Create an Interface VPC endpoint (AWS PrivateLink) for S3 in the private subnet</button><button class="opt" onclick="answer(this,4,2,2)">C. Create a Gateway VPC endpoint for S3 and add a route in the private subnet's route table</button><button class="opt" onclick="answer(this,4,3,2)">D. Set up VPC peering with a management VPC that has internet access, then route traffic through it</button>
+    <div class="expl">A Gateway VPC endpoint for S3 has no hourly or per-GB processing charge, works entirely within the AWS network, and is configured simply by adding a route table entry pointing to the endpoint's prefix list — the standard low-cost solution for private S3 access.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Cost and Performance Optimization">
+    <div class="meta">Question 6 of 12 · Cost and Performance Optimization</div>
+    <div class="q">A company runs a fault-tolerant, flexible batch data processing job on EC2 that can be interrupted and restarted at any point without data loss. The job runs for approximately 10 hours per day, and there is no requirement for guaranteed capacity. The company wants to minimize compute costs. Which purchasing option is MOST cost-effective for this workload?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. On-Demand Instances</button><button class="opt" onclick="answer(this,5,1,1)">B. Spot Instances</button><button class="opt" onclick="answer(this,5,2,1)">C. Standard Reserved Instances with a 1-year term</button><button class="opt" onclick="answer(this,5,3,1)">D. Compute Savings Plans with a 3-year term</button>
+    <div class="expl">Spot Instances offer discounts of up to 90% off On-Demand pricing and are ideal for fault-tolerant, interruptible workloads like this batch job, which can tolerate interruption and restart.</div>
+  </div>
+
+  <div class="card qcard" id="q6" data-domain="Monitoring, Logging, and Remediation">
+    <div class="meta">Question 7 of 12 · Monitoring, Logging, and Remediation</div>
+    <div class="q">A SysOps administrator needs to run an ad-hoc query directly against an application's CloudWatch Logs group to find all ERROR entries with a response time greater than 5000ms in the last hour, and compute average latency grouped by API endpoint, without exporting the logs to any other service. Which tool should be used?</div>
+    <button class="opt" onclick="answer(this,6,0,3)">A. Amazon Athena querying logs exported to S3</button><button class="opt" onclick="answer(this,6,1,3)">B. AWS CloudTrail Lake</button><button class="opt" onclick="answer(this,6,2,3)">C. CloudWatch metric math on the log group's metric filters</button><button class="opt" onclick="answer(this,6,3,3)">D. Amazon CloudWatch Logs Insights</button>
+    <div class="expl">CloudWatch Logs Insights provides a purpose-built query language (filter, parse, stats) that runs directly against log groups in place, supporting field-based filtering and aggregation like average latency per endpoint with no export step required.</div>
+  </div>
+
+  <div class="card qcard" id="q7" data-domain="Reliability and Business Continuity">
+    <div class="meta">Question 8 of 12 · Reliability and Business Continuity</div>
+    <div class="q">An Auto Scaling group backs a web tier whose average CPU utilization must be maintained at approximately 50% regardless of load fluctuations, without manual threshold tuning. Which Auto Scaling policy type should be used?</div>
+    <button class="opt" onclick="answer(this,7,0,1)">A. Scheduled scaling</button><button class="opt" onclick="answer(this,7,1,1)">B. Target tracking scaling</button><button class="opt" onclick="answer(this,7,2,1)">C. Simple scaling</button><button class="opt" onclick="answer(this,7,3,1)">D. Step scaling</button>
+    <div class="expl">Target tracking scaling automatically adjusts capacity to keep a specified metric, such as average CPU utilization, at a chosen target value, adding or removing instances as needed without manual threshold management.</div>
+  </div>
+
+  <div class="card qcard" id="q8" data-domain="Deployment, Provisioning, and Automation">
+    <div class="meta">Question 9 of 12 · Deployment, Provisioning, and Automation</div>
+    <div class="q">A SysOps administrator manages a fleet of 500 EC2 instances running a mix of Amazon Linux 2, Windows Server, and Ubuntu. Security requires monthly OS patching on a defined schedule with a compliance report showing which instances are missing critical patches. Which AWS service should be used?</div>
+    <button class="opt" onclick="answer(this,8,0,3)">A. Amazon Inspector with a network reachability assessment</button><button class="opt" onclick="answer(this,8,1,3)">B. AWS Config with a managed rule for encrypted-volumes</button><button class="opt" onclick="answer(this,8,2,3)">C. Custom shell scripts executed manually over SSH to each instance</button><button class="opt" onclick="answer(this,8,3,3)">D. AWS Systems Manager Patch Manager with a patch baseline and maintenance window</button>
+    <div class="expl">Patch Manager automates patch scanning and installation across multiple operating systems using patch baselines, and integrates with Maintenance Windows for scheduling plus patch compliance reporting in the Systems Manager console.</div>
+  </div>
+
+  <div class="card qcard" id="q9" data-domain="Security and Compliance">
+    <div class="meta">Question 10 of 12 · Security and Compliance</div>
+    <div class="q">A financial services company must encrypt data at rest in Amazon S3 using keys for which they fully control the rotation schedule (rotating manually every 90 days) and require a complete audit trail of every key usage event. Which KMS key type should they use?</div>
+    <button class="opt" onclick="answer(this,9,0,0)">A. Customer managed keys (CMK) with imported key material and manual rotation</button><button class="opt" onclick="answer(this,9,1,0)">B. AWS managed keys (aws/s3)</button><button class="opt" onclick="answer(this,9,2,0)">C. S3 managed keys (SSE-S3)</button><button class="opt" onclick="answer(this,9,3,0)">D. AWS owned keys</button>
+    <div class="expl">Customer managed CMKs with imported key material give the customer full control over the rotation schedule (rotation must be done manually by creating and swapping key material) and every use of the key is logged in AWS CloudTrail.</div>
+  </div>
+
+  <div class="card qcard" id="q10" data-domain="Networking and Content Delivery">
+    <div class="meta">Question 11 of 12 · Networking and Content Delivery</div>
+    <div class="q">A company runs the same web application behind Application Load Balancers in us-east-1 and eu-west-1. They want Route 53 to send each user to whichever Region gives the fastest response time, and to automatically stop sending traffic to a Region if its ALB becomes unhealthy. Which Route 53 configuration meets these requirements?</div>
+    <button class="opt" onclick="answer(this,10,0,1)">A. Weighted routing policy with equal weights assigned to both ALB records</button><button class="opt" onclick="answer(this,10,1,1)">B. Latency-based routing policy with a health check associated with each record</button><button class="opt" onclick="answer(this,10,2,1)">C. Geolocation routing policy mapping continents to the nearest Region's ALB</button><button class="opt" onclick="answer(this,10,3,1)">D. Simple routing policy with both ALB IP addresses returned in round-robin fashion</button>
+    <div class="expl">Latency-based routing directs users to the Region with the lowest measured latency, and attaching a health check to each latency record lets Route 53 automatically exclude an unhealthy Region's record from answers, failing traffic over to the next-best-latency healthy Region.</div>
+  </div>
+
+  <div class="card qcard" id="q11" data-domain="Cost and Performance Optimization">
+    <div class="meta">Question 12 of 12 · Cost and Performance Optimization</div>
+    <div class="q">A company stores compliance log archives that must be retained for 7 years. The logs are almost never accessed after the first 30 days, but a few times per year auditors request retrieval, and the company must be able to retrieve the requested files within 12 hours. Which S3 storage configuration meets these requirements at the LOWEST cost?</div>
+    <button class="opt" onclick="answer(this,11,0,1)">A. Store in S3 Standard for 30 days, then transition to S3 Glacier Flexible Retrieval via a lifecycle policy</button><button class="opt" onclick="answer(this,11,1,1)">B. Store in S3 Standard for 30 days, then transition to S3 Glacier Deep Archive via a lifecycle policy</button><button class="opt" onclick="answer(this,11,2,1)">C. Store in S3 Standard-IA for the entire 7 years</button><button class="opt" onclick="answer(this,11,3,1)">D. Store in S3 One Zone-IA for the entire 7 years</button>
+    <div class="expl">S3 Glacier Deep Archive is the lowest-cost storage class (about $0.00099/GB-month) and its standard retrieval tier completes within 12 hours, exactly meeting the stated retrieval requirement at the lowest possible cost for 7-year retention.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="89CE4ED79F19FA855B6D"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">undefined</span> <span class="price">$34.99</span> with code <span class="code">89CE4ED79F19FA855B6D</span> — valid through Sep 23.</p>
+  <a href="https://www.udemy.com/course/aws-sysops-administrator-soa-c02-exam-prep/?couponCode=89CE4ED79F19FA855B6D" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<section class="faq"><h3>SOA-C02 exam — quick answers</h3><details><summary>How much does the SOA-C02 exam cost?</summary><p>The exam fee is approximately $150 and varies by region — confirm current pricing with the certification vendor before you book.</p></details><details><summary>What topics are on the exam?</summary><p>It covers 6 domains: Monitoring, Logging, and Remediation (20%), Reliability and Business Continuity (16%), Deployment, Provisioning, and Automation (18%), Security and Compliance (16%), Networking and Content Delivery (18%), Cost and Performance Optimization (12%). The full course has a dedicated chapter, lab and practice-test coverage for each.</p></details><details><summary>Is this practice test really free?</summary><p>Yes — all questions on this page are free with explanations and no sign-up. The paid Udemy course adds two full-length timed exams, video lessons and hands-on labs.</p></details><details><summary>How do I get the discount?</summary><p>Use code 89CE4ED79F19FA855B6D at checkout for $34.99 (list undefined) through Sep 23 — the enroll button applies it automatically.</p></details><details><summary>Will this prepare me for the real exam?</summary><p>The questions mirror the real exam's style and are mapped to the official domains. This is exam-focused preparation — combine the free test with the full course's timed simulations to gauge your readiness.</p></details></section>
+<div class="domains"><span class="meta">More free practice by exam domain:</span><br><a href="soa-c02-monitoring-logging-and-remediation.html">Monitoring, Logging, and Remediation →</a><a href="soa-c02-reliability-and-business-continuity.html">Reliability and Business Continuity →</a><a href="soa-c02-deployment-provisioning-and-automation.html">Deployment, Provisioning, and Automation →</a><a href="soa-c02-security-and-compliance.html">Security and Compliance →</a><a href="soa-c02-networking-and-content-delivery.html">Networking and Content Delivery →</a></div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

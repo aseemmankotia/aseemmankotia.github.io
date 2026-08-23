@@ -1,0 +1,74 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Connect to and consume Azure services and third-party services Practice Questions — Microsoft Certified: Azure Developer Associate</title>
+<meta name="description" content="6 free Connect to and consume Azure services and third-party services practice questions with explanations for the Microsoft Certified: Azure Developer Associate exam.">
+<link rel="canonical" href="https://technuggets.academy/az-204-connect-to-and-consume-azure-services-and-third-party-servic.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Connect to and consume Azure services and third-party services Practice Questions — Microsoft Certified: Azure Developer Associate">
+<meta property="og:description" content="6 free Connect to and consume Azure services and third-party services practice questions with explanations for the Microsoft Certified: Azure Developer Associate exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/az-204-connect-to-and-consume-azure-services-and-third-party-servic.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0078D4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Connect to and consume Azure services and third-party services</h1>
+<p class="sub">Free Microsoft Certified: Azure Developer Associate practice — 6 questions on <strong>Connect to and consume Azure services and third-party services</strong>, with explanations. No sign-up.
+<a href="az-204.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Connect to and consume Azure services and third-party services">
+    <div class="meta">Question 1 of 6 · Connect to and consume Azure services and third-party services</div>
+    <div class="q">An order-processing system uses an Azure Service Bus queue. Multiple concurrent worker instances read messages, but processing for a given customer must complete in strict FIFO order relative to other messages for that same customer, even though many customers are processed in parallel. Which configuration meets this requirement?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. Enable duplicate detection on the queue</button><button class="opt" onclick="answer(this,0,1,1)">B. Create the queue with RequireSession enabled and set SessionId to the customer identifier for each message</button><button class="opt" onclick="answer(this,0,2,1)">C. Increase the MaxConcurrentCalls property on the message pump</button><button class="opt" onclick="answer(this,0,3,1)">D. Enable partitioning on the queue to distribute load across message brokers</button>
+    <div class="expl">Sessions group related messages by SessionId; a session-aware receiver locks an entire session, guaranteeing FIFO delivery within that session even while other sessions (customers) are processed concurrently by other receivers.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Connect to and consume Azure services and third-party services">
+    <div class="meta">Question 2 of 6 · Connect to and consume Azure services and third-party services</div>
+    <div class="q">A manufacturing company must ingest 2 million sensor readings per second from IoT devices. Three independent analytics services must each read the entire stream on their own schedule without affecting one another, and the team needs to replay the last 24 hours of readings on demand. Which service should they use?</div>
+    <button class="opt" onclick="answer(this,1,0,1)">A. Azure Event Grid with a custom topic</button><button class="opt" onclick="answer(this,1,1,1)">B. Azure Event Hubs with multiple consumer groups</button><button class="opt" onclick="answer(this,1,2,1)">C. Azure Service Bus topic with multiple subscriptions</button><button class="opt" onclick="answer(this,1,3,1)">D. Azure Queue Storage with multiple queues</button>
+    <div class="expl">Event Hubs is built for massive-throughput streaming ingestion, supports configurable retention (up to 90 days) enabling replay, and consumer groups let multiple independent readers consume the full stream at their own pace via offsets.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Connect to and consume Azure services and third-party services">
+    <div class="meta">Question 3 of 6 · Connect to and consume Azure services and third-party services</div>
+    <div class="q">An application generates 50 million short status-update messages per day, each under 60 KB. There is no requirement for ordering, sessions, transactions, or dead-lettering, and the team wants the lowest-cost queue with at-least-once delivery. Which service should they choose?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. Azure Service Bus Premium queue</button><button class="opt" onclick="answer(this,2,1,3)">B. Azure Event Hubs standard tier</button><button class="opt" onclick="answer(this,2,2,3)">C. Azure Service Bus Standard topic with a single subscription</button><button class="opt" onclick="answer(this,2,3,3)">D. Azure Queue Storage</button>
+    <div class="expl">Azure Queue Storage supports messages up to 64 KB, provides at-least-once delivery through visibility timeouts, and is billed per storage transaction/capacity, making it the cheapest option for high-volume, simple queuing with no advanced messaging needs.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Connect to and consume Azure services and third-party services">
+    <div class="meta">Question 4 of 6 · Connect to and consume Azure services and third-party services</div>
+    <div class="q">You need to restrict a single API Management subscription key to no more than 10 calls per 60 seconds, independent of any other subscriber's usage. Which inbound policy should you configure?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. &lt;rate-limit-by-key calls=&quot;10&quot; renewal-period=&quot;60&quot; counter-key=&quot;@(context.Subscription.Id)&quot; /&gt;</button><button class="opt" onclick="answer(this,3,1,0)">B. &lt;rate-limit calls=&quot;10&quot; renewal-period=&quot;60&quot; /&gt;</button><button class="opt" onclick="answer(this,3,2,0)">C. &lt;quota calls=&quot;10&quot; renewal-period=&quot;60&quot; /&gt;</button><button class="opt" onclick="answer(this,3,3,0)">D. &lt;ip-filter action=&quot;allow&quot;&gt;&lt;address-range from=&quot;...&quot; to=&quot;...&quot; /&gt;&lt;/ip-filter&gt;</button>
+    <div class="expl">rate-limit-by-key enforces the limit per an arbitrary counter key, such as the subscription ID, giving each caller its own independent throttle bucket.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Connect to and consume Azure services and third-party services">
+    <div class="meta">Question 5 of 6 · Connect to and consume Azure services and third-party services</div>
+    <div class="q">A Service Bus queue uses default settings. A message repeatedly fails processing due to an unhandled exception and is abandoned each time. After how many unsuccessful delivery attempts will Service Bus automatically move the message to the dead-letter queue?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. 5</button><button class="opt" onclick="answer(this,4,1,2)">B. 3</button><button class="opt" onclick="answer(this,4,2,2)">C. 10</button><button class="opt" onclick="answer(this,4,3,2)">D. Unlimited — messages are never automatically dead-lettered</button>
+    <div class="expl">The default MaxDeliveryCount for a Service Bus queue or subscription is 10. Once a message has been delivered and abandoned (or its lock expires) 10 times, Service Bus automatically moves it to the dead-letter queue.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Connect to and consume Azure services and third-party services">
+    <div class="meta">Question 6 of 6 · Connect to and consume Azure services and third-party services</div>
+    <div class="q">A company exposes an API to multiple external partners through Azure API Management. Each partner needs an independently revocable key, its own daily call quota of 1,000 requests, and the ability to change terms for one partner without impacting others. What should you configure?</div>
+    <button class="opt" onclick="answer(this,5,0,2)">A. A single API Management product shared by all partners with one subscription key</button><button class="opt" onclick="answer(this,5,1,2)">B. OAuth2 client credentials flow only, without using products or subscriptions</button><button class="opt" onclick="answer(this,5,2,2)">C. Separate API Management products per partner, each with its own quota policy, and a unique subscription issued per partner</button><button class="opt" onclick="answer(this,5,3,2)">D. A single subscription key shared across all partners with IP filtering per partner</button>
+    <div class="expl">APIM products group APIs with their own usage policies (such as quota) and access terms; creating one product per partner with an individual quota policy and subscription key lets each partner's access, quota, and revocation be managed completely independently.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/az-204-azure-developer-associate-exam-focused-prep/?referralCode=C963B2384D070A86FD31" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Design infrastructure solutions Practice Questions — Microsoft Certified: Azure Solutions Architect Expert</title>
+<meta name="description" content="6 free Design infrastructure solutions practice questions with explanations for the Microsoft Certified: Azure Solutions Architect Expert exam.">
+<link rel="canonical" href="https://technuggets.academy/az-305-design-infrastructure-solutions.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Design infrastructure solutions Practice Questions — Microsoft Certified: Azure Solutions Architect Expert">
+<meta property="og:description" content="6 free Design infrastructure solutions practice questions with explanations for the Microsoft Certified: Azure Solutions Architect Expert exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/az-305-design-infrastructure-solutions.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0078D4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Design infrastructure solutions</h1>
+<p class="sub">Free Microsoft Certified: Azure Solutions Architect Expert practice — 6 questions on <strong>Design infrastructure solutions</strong>, with explanations. No sign-up.
+<a href="az-305.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Design infrastructure solutions">
+    <div class="meta">Question 1 of 6 · Design infrastructure solutions</div>
+    <div class="q">A global retailer's web application requires: SSL offload, a Web Application Firewall (WAF), path-based routing across three Azure regions, and automatic failover if a regional backend becomes unhealthy. Which single service BEST meets ALL these requirements?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. Azure Traffic Manager with priority routing</button><button class="opt" onclick="answer(this,0,1,3)">B. Application Gateway v2 deployed in each region with manual DNS failover</button><button class="opt" onclick="answer(this,0,2,3)">C. Azure Load Balancer (Standard SKU) with cross-region load balancing</button><button class="opt" onclick="answer(this,0,3,3)">D. Azure Front Door (Premium tier)</button>
+    <div class="expl">Front Door Premium operates at Layer 7, provides global anycast entry, integrated WAF, path-based/URL routing, SSL offload, and automatic health-probe-based failover across regions from a single global service.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Design infrastructure solutions">
+    <div class="meta">Question 2 of 6 · Design infrastructure solutions</div>
+    <div class="q">A company has an ExpressRoute circuit as primary connectivity and a Site-to-Site VPN Gateway configured in coexistence mode as backup, both connected to the same virtual network. During a planned ExpressRoute maintenance window, traffic did not fail over to the VPN Gateway as expected until the circuit was fully down. What is the MOST likely cause?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. BGP AS-path prepending was not configured on the VPN Gateway connection</button><button class="opt" onclick="answer(this,1,1,2)">B. The VPN Gateway SKU was too small to accept traffic during ExpressRoute maintenance</button><button class="opt" onclick="answer(this,1,2,2)">C. Azure always prefers routes learned via ExpressRoute over routes learned via the VPN Gateway, regardless of AS-path length, until the ExpressRoute path is actually unavailable</button><button class="opt" onclick="answer(this,1,3,2)">D. The Local Network Gateway was misconfigured with an incorrect address space</button>
+    <div class="expl">Azure's route selection always prioritizes ExpressRoute over VPN Gateway paths as a platform behavior, independent of any BGP AS-path prepending on the VPN side — failover only occurs once the ExpressRoute path is genuinely down, which explains the observed behavior during maintenance (brief BGP convergence delay is expected, not a misconfiguration).</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Design infrastructure solutions">
+    <div class="meta">Question 3 of 6 · Design infrastructure solutions</div>
+    <div class="q">A financial services company wants to deploy AKS such that the Kubernetes API server has NO public IP address and is reachable only from their on-premises network over an existing ExpressRoute private peering connection. Which design satisfies this requirement?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. Deploy a private AKS cluster and configure a private DNS zone linked to the on-premises network via Azure Private DNS Resolver (or a custom DNS forwarder VM)</button><button class="opt" onclick="answer(this,2,1,0)">B. Deploy a public AKS cluster and restrict access using API server authorized IP ranges scoped to the on-premises CIDR</button><button class="opt" onclick="answer(this,2,2,0)">C. Deploy AKS with an internal load balancer for the API server and expose it via Azure Front Door</button><button class="opt" onclick="answer(this,2,3,0)">D. Deploy a public AKS cluster behind Azure Firewall with DNAT rules for API traffic</button>
+    <div class="expl">A private AKS cluster provisions the API server with only a private IP in the cluster's VNet. Because the API server FQDN resolves via a private DNS zone, on-premises clients need DNS resolution forwarded to Azure (via Private DNS Resolver or a forwarder VM) over ExpressRoute private peering to reach it — satisfying the 'no public IP' requirement.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Design infrastructure solutions">
+    <div class="meta">Question 4 of 6 · Design infrastructure solutions</div>
+    <div class="q">A company must migrate a 5TB on-premises SQL Server database to Azure with the LEAST possible downtime during cutover, while allowing the source database to remain online and serving production traffic during the majority of the migration window. Which approach BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. Use Azure Migrate: Server Migration to lift-and-shift the entire VM, then restore the database from backup</button><button class="opt" onclick="answer(this,3,1,1)">B. Use Azure Database Migration Service in online (continuous replication) migration mode</button><button class="opt" onclick="answer(this,3,2,1)">C. Export a BACPAC file and import it into Azure SQL Database using SqlPackage</button><button class="opt" onclick="answer(this,3,3,1)">D. Use the Data Migration Assistant to assess compatibility, then perform a manual detach/attach migration</button>
+    <div class="expl">Azure Database Migration Service's online migration mode performs an initial full backup/restore followed by continuous transaction log replication, keeping the source database live and in sync until a brief final cutover — minimizing downtime to just the final switchover.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Design infrastructure solutions">
+    <div class="meta">Question 5 of 6 · Design infrastructure solutions</div>
+    <div class="q">An IoT platform ingests millions of telemetry events per second, needs events partitioned and processed in the exact order they arrived per device, and requires the ability to reprocess the last 5 days of events for reprocessing/debugging by resetting a stream offset. Which service BEST fits this requirement?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. Azure Event Hubs with device ID used as the partition key and extended retention configured</button><button class="opt" onclick="answer(this,4,1,0)">B. Azure Service Bus Queue with sessions enabled</button><button class="opt" onclick="answer(this,4,2,0)">C. Azure Event Grid with a custom topic and event subscriptions</button><button class="opt" onclick="answer(this,4,3,0)">D. Azure Storage Queues with poison message handling</button>
+    <div class="expl">Event Hubs is built for high-throughput event streaming, partitions events by a partition key (here, device ID) to preserve per-partition order, and supports configurable retention (up to 7 days, longer with Premium/Dedicated) that allows consumers to reset their offset and replay historical events — exactly matching the reprocessing requirement.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Design infrastructure solutions">
+    <div class="meta">Question 6 of 6 · Design infrastructure solutions</div>
+    <div class="q">A development team wants to deploy several containerized microservices that must scale to zero instances when idle, scale out automatically based on custom event metrics (such as queue length) using KEDA, and require NO Kubernetes cluster management overhead. Which compute service BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. Azure Kubernetes Service with the cluster autoscaler enabled</button><button class="opt" onclick="answer(this,5,1,1)">B. Azure Container Apps</button><button class="opt" onclick="answer(this,5,2,1)">C. Azure Functions Premium plan</button><button class="opt" onclick="answer(this,5,3,1)">D. Azure Batch with auto-scaling pools</button>
+    <div class="expl">Azure Container Apps is a fully managed serverless container platform built on Kubernetes and KEDA under the hood, supporting scale-to-zero and event-driven autoscaling (including custom KEDA scalers like queue length) without exposing any Kubernetes cluster management to the user.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="00651DDA8F57721374B8"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">undefined</span> <span class="price">$34.99</span> with code <span class="code">00651DDA8F57721374B8</span> — valid through Sep 23.</p>
+  <a href="https://www.udemy.com/course/az-305-azure-solutions-architect-expert-prep/?couponCode=00651DDA8F57721374B8" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

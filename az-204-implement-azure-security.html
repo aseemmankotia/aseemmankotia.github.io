@@ -1,0 +1,74 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Implement Azure security Practice Questions — Microsoft Certified: Azure Developer Associate</title>
+<meta name="description" content="6 free Implement Azure security practice questions with explanations for the Microsoft Certified: Azure Developer Associate exam.">
+<link rel="canonical" href="https://technuggets.academy/az-204-implement-azure-security.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Implement Azure security Practice Questions — Microsoft Certified: Azure Developer Associate">
+<meta property="og:description" content="6 free Implement Azure security practice questions with explanations for the Microsoft Certified: Azure Developer Associate exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/az-204-implement-azure-security.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0078D4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Implement Azure security</h1>
+<p class="sub">Free Microsoft Certified: Azure Developer Associate practice — 6 questions on <strong>Implement Azure security</strong>, with explanations. No sign-up.
+<a href="az-204.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Implement Azure security">
+    <div class="meta">Question 1 of 6 · Implement Azure security</div>
+    <div class="q">A web API validates an incoming JWT bearer token from a signed-in user, then needs to call Microsoft Graph as that same user to read their calendar. Which OAuth 2.0 flow should the web API use to obtain a token for Microsoft Graph?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. Client credentials flow</button><button class="opt" onclick="answer(this,0,1,1)">B. On-Behalf-Of (OBO) flow</button><button class="opt" onclick="answer(this,0,2,1)">C. Device code flow</button><button class="opt" onclick="answer(this,0,3,1)">D. Authorization code flow with PKCE</button>
+    <div class="expl">OBO flow lets the web API exchange the incoming user's access token for a new token to call a downstream API (Microsoft Graph) while preserving the user's identity and delegated permissions.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Implement Azure security">
+    <div class="meta">Question 2 of 6 · Implement Azure security</div>
+    <div class="q">A background daemon application running on an on-premises Linux server (not hosted in Azure) needs to call Microsoft Graph with application permissions, without any user sign-in. Company policy prohibits storing client secrets in configuration. Which authentication approach should you implement using MSAL?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. ConfidentialClientApplicationBuilder with a client certificate loaded from a local certificate store</button><button class="opt" onclick="answer(this,1,1,0)">B. ConfidentialClientApplicationBuilder with client secret stored in appsettings.json</button><button class="opt" onclick="answer(this,1,2,0)">C. ManagedIdentityCredential targeting Microsoft Graph</button><button class="opt" onclick="answer(this,1,3,0)">D. PublicClientApplicationBuilder with interactive browser flow</button>
+    <div class="expl">Certificate-based authentication with ConfidentialClientApplicationBuilder satisfies the app-only (client credentials) flow requirement while avoiding storage of a plaintext client secret, since the certificate is protected in the local certificate store.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Implement Azure security">
+    <div class="meta">Question 3 of 6 · Implement Azure security</div>
+    <div class="q">You enable a system-assigned managed identity on an Azure App Service and use DefaultAzureCredential in the app code to access Azure Key Vault. After deployment, calls to Key Vault fail with a 403 Forbidden error. What should you do to resolve this?</div>
+    <button class="opt" onclick="answer(this,2,0,2)">A. Regenerate the Key Vault access keys</button><button class="opt" onclick="answer(this,2,1,2)">B. Switch to a user-assigned managed identity, which has broader default permissions</button><button class="opt" onclick="answer(this,2,2,2)">C. Assign the App Service's managed identity an appropriate RBAC role (e.g., Key Vault Secrets User) on the Key Vault</button><button class="opt" onclick="answer(this,2,3,2)">D. Add the tenant ID to the app's connection string</button>
+    <div class="expl">A 403 Forbidden from Key Vault when using a managed identity means authentication succeeded but authorization failed — the identity has no RBAC role assignment granting data-plane access; assigning a role like Key Vault Secrets User resolves it.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Implement Azure security">
+    <div class="meta">Question 4 of 6 · Implement Azure security</div>
+    <div class="q">An application generates ad hoc SAS tokens for a blob container that grant read access to external partners, with expiration set 30 days in the future. Security review requires the ability to revoke all previously issued SAS tokens immediately if a partner's system is compromised, without waiting for expiration. What should you implement?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. Regenerate the storage account access keys</button><button class="opt" onclick="answer(this,3,1,1)">B. Use a stored access policy on the container and associate SAS tokens with it, so it can be revoked by deleting/modifying the policy</button><button class="opt" onclick="answer(this,3,2,1)">C. Reduce SAS expiration windows to 1 hour</button><button class="opt" onclick="answer(this,3,3,1)">D. Use a user delegation SAS instead of a service SAS</button>
+    <div class="expl">A stored access policy defines SAS permissions/expiry server-side and associates multiple SAS tokens with it; revoking access for all tokens tied to that policy is done instantly by deleting or modifying the policy, without affecting unrelated SAS tokens.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Implement Azure security">
+    <div class="meta">Question 5 of 6 · Implement Azure security</div>
+    <div class="q">A development team needs to grant an Azure Function app permission to read secrets from Key Vault, following the principle of least privilege, using the Azure RBAC permission model (not vault access policies). Which built-in role should be assigned to the function's managed identity?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. Key Vault Secrets User</button><button class="opt" onclick="answer(this,4,1,0)">B. Key Vault Administrator</button><button class="opt" onclick="answer(this,4,2,0)">C. Key Vault Contributor</button><button class="opt" onclick="answer(this,4,3,0)">D. Key Vault Reader</button>
+    <div class="expl">Key Vault Secrets User is a built-in RBAC role that grants data-plane permission to read secret contents (get/list) — the minimum privilege needed to read secrets.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Implement Azure security">
+    <div class="meta">Question 6 of 6 · Implement Azure security</div>
+    <div class="q">A company runs an application on an Azure Virtual Machine Scale Set with dynamically scaling instance count. All instances must authenticate to Azure SQL Database using the same identity so that the database's Microsoft Entra login and firewall configuration doesn't need to change as instances scale in or out, and the identity's lifecycle must be independent of any single VM instance. Which authentication approach should you implement?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. System-assigned managed identity on each VM instance</button><button class="opt" onclick="answer(this,5,1,3)">B. Service principal with client secret stored in Key Vault, retrieved by each instance</button><button class="opt" onclick="answer(this,5,2,3)">C. SQL authentication with a shared username/password</button><button class="opt" onclick="answer(this,5,3,3)">D. User-assigned managed identity assigned to the scale set</button>
+    <div class="expl">A user-assigned managed identity is a standalone Azure resource with its own lifecycle, independent of any VM. It can be assigned to all instances in a scale set, including new instances created during scale-out, so the SQL Database Microsoft Entra login is configured once and remains valid as instances scale in and out.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/az-204-azure-developer-associate-exam-focused-prep/?referralCode=C963B2384D070A86FD31" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

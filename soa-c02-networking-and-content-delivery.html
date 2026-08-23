@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Networking and Content Delivery Practice Questions — AWS Certified SysOps Administrator - Associate</title>
+<meta name="description" content="6 free Networking and Content Delivery practice questions with explanations for the AWS Certified SysOps Administrator - Associate exam.">
+<link rel="canonical" href="https://technuggets.academy/soa-c02-networking-and-content-delivery.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Networking and Content Delivery Practice Questions — AWS Certified SysOps Administrator - Associate">
+<meta property="og:description" content="6 free Networking and Content Delivery practice questions with explanations for the AWS Certified SysOps Administrator - Associate exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/soa-c02-networking-and-content-delivery.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#FF9900}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Networking and Content Delivery</h1>
+<p class="sub">Free AWS Certified SysOps Administrator - Associate practice — 6 questions on <strong>Networking and Content Delivery</strong>, with explanations. No sign-up.
+<a href="soa-c02.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Networking and Content Delivery">
+    <div class="meta">Question 1 of 6 · Networking and Content Delivery</div>
+    <div class="q">A company has EC2 instances in a private subnet with no internet gateway or NAT gateway attached. A Gateway VPC Endpoint for Amazon S3 was created and associated with the VPC. Instances in one private subnet can reach S3 successfully, but instances in a second private subnet time out when accessing S3. Both subnets have identical security groups and default NACLs. What is the MOST likely cause?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. The S3 bucket policy does not include a condition allowing the second subnet's CIDR range</button><button class="opt" onclick="answer(this,0,1,3)">B. Gateway VPC Endpoints only support one subnet per VPC and a second endpoint is required</button><button class="opt" onclick="answer(this,0,2,3)">C. The second subnet's default NACL is blocking outbound traffic to the S3 prefix list range</button><button class="opt" onclick="answer(this,0,3,3)">D. The route table associated with the second subnet does not have a route to the S3 prefix list via the gateway endpoint</button>
+    <div class="expl">A Gateway Endpoint only affects traffic from subnets whose route table has been explicitly associated with the endpoint. When you create the endpoint, you choose which route tables get the automatic pl-xxxxx route entry. If the second subnet uses a different route table that wasn't selected, no route to the endpoint exists and traffic has nowhere to go, causing timeouts.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Networking and Content Delivery">
+    <div class="meta">Question 2 of 6 · Networking and Content Delivery</div>
+    <div class="q">A company uses AWS Transit Gateway to connect a Shared Services VPC, a Production VPC, and a Development VPC. Requirements: Production and Development VPCs must both reach Shared Services, but Production and Development must NOT be able to communicate with each other. Which Transit Gateway configuration meets this requirement with the LEAST operational overhead?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. Create a single Transit Gateway route table, associate all three VPCs, and propagate all routes into it</button><button class="opt" onclick="answer(this,1,1,3)">B. Create VPC peering connections between Production-to-SharedServices and Development-to-SharedServices, bypassing Transit Gateway entirely</button><button class="opt" onclick="answer(this,1,2,3)">C. Attach an AWS Network Firewall to the Transit Gateway and write stateful rules to block Production-to-Development traffic</button><button class="opt" onclick="answer(this,1,3,3)">D. Create two separate Transit Gateway route tables — one associated with Production that only propagates Shared Services routes, and one associated with Development that only propagates Shared Services routes</button>
+    <div class="expl">Transit Gateway supports multiple route tables per attachment. By associating Production and Development with separate route tables that only propagate routes from Shared Services (not from each other), traffic between Production and Development has no route and is dropped, while both can still reach Shared Services.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Networking and Content Delivery">
+    <div class="meta">Question 3 of 6 · Networking and Content Delivery</div>
+    <div class="q">A company uses Amazon Route 53 geoproximity routing to direct traffic to resources in us-east-1 and eu-west-1. Users in France are currently routed to eu-west-1, but the company wants to shift a larger share of European traffic to us-east-1 without moving any resources or changing DNS record types. What should be done?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. Increase the bias value on the us-east-1 resource record to expand its geographic region</button><button class="opt" onclick="answer(this,2,1,0)">B. Change the routing policy from geoproximity to geolocation for the eu-west-1 record</button><button class="opt" onclick="answer(this,2,2,0)">C. Lower the TTL on the eu-west-1 record so Route 53 recalculates traffic shares more frequently</button><button class="opt" onclick="answer(this,2,3,0)">D. Add a weighted routing policy record for us-east-1 with a higher weight than eu-west-1</button>
+    <div class="expl">Geoproximity routing lets you set a bias value (-99 to 99) per resource. Increasing the bias for us-east-1 expands the geographic area from which traffic is routed to it, pulling in more traffic from nearby regions like Western Europe — without touching the actual resources or record types.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Networking and Content Delivery">
+    <div class="meta">Question 4 of 6 · Networking and Content Delivery</div>
+    <div class="q">A company has an AWS Direct Connect private VIF as its primary connection to a VPC and a Site-to-Site VPN as a backup path, both using BGP. During normal operation, all traffic must use the Direct Connect path. If Direct Connect fails, traffic must automatically fail over to the VPN. Which configuration achieves this?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. Assign a lower MTU to the VPN tunnel interfaces so Direct Connect is always selected first</button><button class="opt" onclick="answer(this,3,1,1)">B. Configure a longer AS_PATH prepend on the BGP advertisements sent over the VPN connection so the Direct Connect path is preferred under normal conditions</button><button class="opt" onclick="answer(this,3,2,1)">C. Disable route propagation on the VPN attachment and manually insert a static route that only activates during maintenance windows</button><button class="opt" onclick="answer(this,3,3,1)">D. Configure equal AS_PATH lengths on both connections and rely on ECMP to balance traffic evenly between Direct Connect and VPN</button>
+    <div class="expl">BGP path selection prefers routes with a shorter AS_PATH. By prepending extra AS numbers on the VPN's advertised routes, the VPN path appears 'longer' and less preferred, so traffic uses Direct Connect whenever it's available. If Direct Connect fails and its routes are withdrawn, the VPN becomes the only advertised path and traffic fails over automatically.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Networking and Content Delivery">
+    <div class="meta">Question 5 of 6 · Networking and Content Delivery</div>
+    <div class="q">A company hosts static content in a private S3 bucket and serves it exclusively through Amazon CloudFront. The security team requires that all requests to the S3 origin come only from the specific CloudFront distribution, and that the bucket remain fully private with no public access. Which configuration meets this requirement using current AWS best practices?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. Configure Origin Access Control (OAC) on the CloudFront distribution and update the S3 bucket policy to allow the CloudFront service principal with a condition matching the distribution's ARN</button><button class="opt" onclick="answer(this,4,1,0)">B. Enable S3 static website hosting and restrict access using a bucket policy that allows only the CloudFront domain name as the referer</button><button class="opt" onclick="answer(this,4,2,0)">C. Make the S3 bucket public but restrict access using signed URLs generated by the application for every object request</button><button class="opt" onclick="answer(this,4,3,0)">D. Create an Origin Access Identity (OAI) for the distribution and configure the bucket ACL to grant the OAI full public read access</button>
+    <div class="expl">Origin Access Control (OAC) is the current AWS-recommended method for securing S3 origins behind CloudFront. It uses SigV4 signing on every request and a bucket policy that grants access to the cloudfront.amazonaws.com service principal, scoped with an aws:SourceArn condition to the specific distribution — keeping the bucket fully private with no public access needed.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Networking and Content Delivery">
+    <div class="meta">Question 6 of 6 · Networking and Content Delivery</div>
+    <div class="q">An EC2 instance in a subnet needs to make outbound HTTPS calls to an external API. The subnet's custom Network ACL has these rules: Outbound — allow TCP 443 to 0.0.0.0/0; Inbound — allow TCP 22 from the corporate CIDR only, deny all else. The instance's security group allows all outbound traffic and has no inbound rules. Outbound connection attempts succeed at the TCP level, but no response data is ever received. What change resolves this?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. Add an inbound NACL rule allowing TCP traffic on the ephemeral port range (1024-65535) from 0.0.0.0/0</button><button class="opt" onclick="answer(this,5,1,0)">B. Add an inbound security group rule allowing TCP 443 from 0.0.0.0/0</button><button class="opt" onclick="answer(this,5,2,0)">C. Change the outbound NACL rule to allow all protocols and all ports instead of just TCP 443</button><button class="opt" onclick="answer(this,5,3,0)">D. Add an outbound security group rule explicitly allowing TCP 443, since security groups deny all outbound traffic by default</button>
+    <div class="expl">Network ACLs are stateless, so return traffic must be explicitly permitted. The external server responds from port 443 to the instance's ephemeral source port, so the NACL needs an inbound rule allowing traffic on the ephemeral range (commonly 1024-65535) from 0.0.0.0/0. Security groups are stateful and already allow the return traffic automatically since the outbound request was allowed.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="89CE4ED79F19FA855B6D"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">undefined</span> <span class="price">$34.99</span> with code <span class="code">89CE4ED79F19FA855B6D</span> — valid through Sep 23.</p>
+  <a href="https://www.udemy.com/course/aws-sysops-administrator-soa-c02-exam-prep/?couponCode=89CE4ED79F19FA855B6D" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

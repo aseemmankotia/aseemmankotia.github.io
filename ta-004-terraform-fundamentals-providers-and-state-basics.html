@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Terraform fundamentals: providers and state basics Practice Questions — HashiCorp Certified: Terraform Associate (004)</title>
+<meta name="description" content="6 free Terraform fundamentals: providers and state basics practice questions with explanations for the HashiCorp Certified: Terraform Associate (004) exam.">
+<link rel="canonical" href="https://technuggets.academy/ta-004-terraform-fundamentals-providers-and-state-basics.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Terraform fundamentals: providers and state basics Practice Questions — HashiCorp Certified: Terraform Associate (004)">
+<meta property="og:description" content="6 free Terraform fundamentals: providers and state basics practice questions with explanations for the HashiCorp Certified: Terraform Associate (004) exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/ta-004-terraform-fundamentals-providers-and-state-basics.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Terraform fundamentals: providers and state basics</h1>
+<p class="sub">Free HashiCorp Certified: Terraform Associate (004) practice — 6 questions on <strong>Terraform fundamentals: providers and state basics</strong>, with explanations. No sign-up.
+<a href="ta-004.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Terraform fundamentals: providers and state basics">
+    <div class="meta">Question 1 of 6 · Terraform fundamentals: providers and state basics</div>
+    <div class="q">Your team's Terraform configuration currently pins the AWS provider to version 4.0.0. You want Terraform to automatically pick up new minor and patch releases (e.g., 4.1.0, 4.5.2) but must never allow the provider to upgrade to the 5.x major version line. Which version constraint should you use in the required_providers block?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. ~&gt; 4.0.0</button><button class="opt" onclick="answer(this,0,1,1)">B. ~&gt; 4.0</button><button class="opt" onclick="answer(this,0,2,1)">C. &gt;= 4.0.0</button><button class="opt" onclick="answer(this,0,3,1)">D. = 4.0.0</button>
+    <div class="expl">The pessimistic constraint operator behaves differently depending on how many version segments are given. '~&gt; 4.0' (two segments) means &gt;= 4.0.0 and &lt; 5.0.0, so it allows both minor and patch upgrades within the 4.x line but blocks 5.0.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Terraform fundamentals: providers and state basics">
+    <div class="meta">Question 2 of 6 · Terraform fundamentals: providers and state basics</div>
+    <div class="q">A teammate updated the version constraint for the azurerm provider in required_providers from &quot;~&gt; 3.0&quot; to &quot;~&gt; 4.0&quot; and pushed the change. When you pull the change and run 'terraform plan', Terraform reports that the installed provider version does not satisfy the new constraints and refuses to proceed, even though your .terraform.lock.hcl still lists the old 3.x version. What is the correct command to resolve this?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. terraform state replace-provider</button><button class="opt" onclick="answer(this,1,1,3)">B. terraform validate -upgrade</button><button class="opt" onclick="answer(this,1,2,3)">C. terraform apply -auto-approve</button><button class="opt" onclick="answer(this,1,3,3)">D. terraform init -upgrade</button>
+    <div class="expl">'terraform init -upgrade' tells Terraform to consider newer provider versions that satisfy the updated constraints, download the new provider, and update the .terraform.lock.hcl file accordingly.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Terraform fundamentals: providers and state basics">
+    <div class="meta">Question 3 of 6 · Terraform fundamentals: providers and state basics</div>
+    <div class="q">You must deploy identical S3 buckets into both us-east-1 and eu-west-1 using a single AWS provider configuration block per region. You've defined a second aws provider block with alias = &quot;euwest&quot; pointing at eu-west-1. How do you tell the resource for the European bucket to use that specific provider configuration?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. Add provider = aws.euwest inside the resource block</button><button class="opt" onclick="answer(this,2,1,0)">B. Add region = &quot;eu-west-1&quot; directly inside the resource block</button><button class="opt" onclick="answer(this,2,2,0)">C. Add alias = &quot;euwest&quot; inside the resource block</button><button class="opt" onclick="answer(this,2,3,0)">D. Reference it as var.aws.euwest inside the resource block</button>
+    <div class="expl">To route a resource to a non-default (aliased) provider configuration, you set the meta-argument 'provider = &lt;PROVIDER TYPE&gt;.&lt;ALIAS&gt;' inside the resource block, e.g., provider = aws.euwest.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Terraform fundamentals: providers and state basics">
+    <div class="meta">Question 4 of 6 · Terraform fundamentals: providers and state basics</div>
+    <div class="q">Your configuration needs both the official HashiCorp AWS provider and the community-maintained GitHub provider published under the 'integrations' namespace on the Terraform Registry. Which required_providers block correctly declares both?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. terraform { required_providers { aws = { source = &quot;hashicorp/aws&quot;, version = &quot;~&gt; 5.0&quot; }, github = { source = &quot;hashicorp/github&quot;, version = &quot;~&gt; 6.0&quot; } } }</button><button class="opt" onclick="answer(this,3,1,2)">B. provider &quot;aws&quot; { source = &quot;hashicorp/aws&quot; } provider &quot;github&quot; { source = &quot;integrations/github&quot; }</button><button class="opt" onclick="answer(this,3,2,2)">C. terraform { required_providers { aws = { source = &quot;hashicorp/aws&quot;, version = &quot;~&gt; 5.0&quot; }, github = { source = &quot;integrations/github&quot;, version = &quot;~&gt; 6.0&quot; } } }</button><button class="opt" onclick="answer(this,3,3,2)">D. terraform { required_providers { aws = &quot;hashicorp/aws&quot;, github = &quot;integrations/github&quot; } }</button>
+    <div class="expl">The GitHub provider on the public registry is published under the 'integrations' namespace (source = &quot;integrations/github&quot;), not 'hashicorp'. This option correctly maps each local name to its true namespace/type using the required object syntax {source, version} inside the required_providers block.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Terraform fundamentals: providers and state basics">
+    <div class="meta">Question 5 of 6 · Terraform fundamentals: providers and state basics</div>
+    <div class="q">A resource managed by Terraform was manually deleted from the cloud console outside of Terraform's workflow. Your configuration for that resource is unchanged. What will 'terraform plan' show the next time it is run?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. A plan to create the resource again, because state still records it as existing but a refresh shows it is now missing</button><button class="opt" onclick="answer(this,4,1,0)">B. No changes, because the configuration hasn't changed since the last apply</button><button class="opt" onclick="answer(this,4,2,0)">C. An error requiring you to manually run 'terraform state rm' before plan can proceed</button><button class="opt" onclick="answer(this,4,3,0)">D. A prompt asking whether to run 'terraform import' before continuing</button>
+    <div class="expl">During plan, Terraform refreshes its view of real infrastructure. If the state file says the resource should exist but the provider reports it's gone, Terraform reconciles this by proposing to create it again to match the desired configuration — this is the core function of state as the source of truth for existing/expected resources.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Terraform fundamentals: providers and state basics">
+    <div class="meta">Question 6 of 6 · Terraform fundamentals: providers and state basics</div>
+    <div class="q">Which statement correctly describes the relationship between the required_providers block and a provider configuration block in Terraform?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. They serve the same purpose and are interchangeable; only one is needed per configuration</button><button class="opt" onclick="answer(this,5,1,1)">B. required_providers defines which provider plugins and version constraints are needed, while a provider block supplies the runtime configuration (like credentials or region) for a specific provider</button><button class="opt" onclick="answer(this,5,2,1)">C. required_providers configures credentials for the provider, while the provider block only pins the version</button><button class="opt" onclick="answer(this,5,3,1)">D. A provider block is only needed when using provider aliases; required_providers alone is sufficient for a single default provider configuration</button>
+    <div class="expl">required_providers (nested in the terraform block) declares which providers are needed by source address and version constraint, letting Terraform know what to download during init. Separately, one or more provider blocks configure how Terraform should actually talk to that provider's API (region, credentials, endpoints, aliases).</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">undefined</span> <span class="price">$34.99</span> with code <span class="code">FREETEST33</span> — valid through Sep 23.</p>
+  <a href="https://www.udemy.com/course/terraform-associate-004-certification-prep/?couponCode=FREETEST33" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

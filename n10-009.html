@@ -1,0 +1,123 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free CompTIA Network+ Practice Test — 12 Real Exam-Style Questions</title>
+<meta name="description" content="Free CompTIA Network+ practice questions with detailed explanations. Test yourself before the real exam.">
+<link rel="canonical" href="https://technuggets.academy/n10-009.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free CompTIA Network+ Practice Test — 12 Real Exam-Style Questions">
+<meta property="og:description" content="Free CompTIA Network+ practice questions with detailed explanations. Test yourself before the real exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/n10-009.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#C8202F}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div><div class="hero">
+  <span class="chip">N10-009</span>
+  <h1>Free CompTIA Network+ Practice Test</h1>
+  <p class="sub">12 exam-style questions with full explanations — no sign-up. Score yourself, then close your gaps with the full course.</p>
+  <div class="facts"><span class="fact">Exam fee <b>~$399</b></span><span class="fact"><b>5</b> exam domains</span><span class="fact">Level <b>Beginner-Intermediate</b></span><span class="fact"><b>2</b> timed practice tests in the course</span></div>
+  <div class="cta-row"><a class="btn enroll" href="https://www.udemy.com/course/comptia-network-n10-009-exam-focused-prep/?couponCode=E0363753E03D522425F4" rel="sponsored" target="_blank">Get my $34.99 deal →</a><a class="btn ghost" href="#practice">Try the free test →</a><span class="urgency">⏳ Deal ends Sep 23</span></div>
+</div><div class="trust"><span>✅ <b>Free</b> practice — no sign-up</span><span>📝 Real exam-style questions</span><span>💡 Detailed explanations</span><span>💸 30-day money-back via Udemy</span></div>
+<div id="practice"></div>
+
+  <div class="card qcard" id="q0" data-domain="Networking Fundamentals">
+    <div class="meta">Question 1 of 12 · Networking Fundamentals</div>
+    <div class="q">A network administrator assigns the subnet 192.168.10.0/27 to a department. How many usable host addresses are available in this subnet?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. 14</button><button class="opt" onclick="answer(this,0,1,3)">B. 62</button><button class="opt" onclick="answer(this,0,2,3)">C. 126</button><button class="opt" onclick="answer(this,0,3,3)">D. 30</button>
+    <div class="expl">A /27 mask (255.255.255.224) provides 32 total addresses (2^5). Subtracting the network address and broadcast address leaves 30 usable host addresses.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Network Implementations">
+    <div class="meta">Question 2 of 12 · Network Implementations</div>
+    <div class="q">A network technician installs three switches in a redundant triangle topology to provide fault tolerance. Shortly after, users report a broadcast storm and severe network slowdowns. Which action should the technician take to BEST resolve this issue while preserving redundant links?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. Enable Spanning Tree Protocol (STP)</button><button class="opt" onclick="answer(this,1,1,0)">B. Configure static routes to prevent loops</button><button class="opt" onclick="answer(this,1,2,0)">C. Disable trunking on all switch ports</button><button class="opt" onclick="answer(this,1,3,0)">D. Enable port mirroring on the uplink ports</button>
+    <div class="expl">STP detects redundant Layer 2 paths between switches and places one or more ports into a blocking state to prevent a switching loop, while keeping the redundant physical links available as backups if the primary path fails.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Network Operations">
+    <div class="meta">Question 3 of 12 · Network Operations</div>
+    <div class="q">A network administrator needs to identify which applications are consuming the most bandwidth across multiple WAN links over the past 30 days without capturing every packet. Which technology should be used?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. SNMP polling of interface counters</button><button class="opt" onclick="answer(this,2,1,3)">B. Syslog message collection</button><button class="opt" onclick="answer(this,2,2,3)">C. Full packet capture at each WAN link</button><button class="opt" onclick="answer(this,2,3,3)">D. NetFlow/IPFIX flow data</button>
+    <div class="expl">Flow data (NetFlow/IPFIX) exports per-conversation summaries (source, destination, application, bytes) with low overhead, making it ideal for long-term traffic trend and top-talker analysis.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Network Security">
+    <div class="meta">Question 4 of 12 · Network Security</div>
+    <div class="q">A company's public-facing web servers are being flooded with traffic from thousands of distributed source IP addresses, causing legitimate customers to be unable to reach the site. The internal network team has already confirmed the servers themselves are not misconfigured. Which solution BEST mitigates this attack?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. Increase the RAM and CPU allocation on each web server</button><button class="opt" onclick="answer(this,3,1,1)">B. Route traffic through a cloud-based DDoS scrubbing/mitigation service</button><button class="opt" onclick="answer(this,3,2,1)">C. Enable Spanning Tree Protocol on the core switches</button><button class="opt" onclick="answer(this,3,3,1)">D. Configure port security with a maximum of one MAC address per port</button>
+    <div class="expl">A distributed flood from many source IPs targeting availability is a DDoS attack. Cloud-based scrubbing services absorb and filter volumetric traffic upstream before it reaches the network, which is the standard mitigation for this scale of attack.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Network Troubleshooting">
+    <div class="meta">Question 5 of 12 · Network Troubleshooting</div>
+    <div class="q">A technician is troubleshooting a user's inability to access a file server. The technician has already identified the problem and established a theory that a recent firewall rule change is blocking the traffic. According to the CompTIA troubleshooting methodology, what should the technician do NEXT?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. Document the findings and close the ticket</button><button class="opt" onclick="answer(this,4,1,1)">B. Test the theory to determine the cause</button><button class="opt" onclick="answer(this,4,2,1)">C. Establish a plan of action to resolve the problem</button><button class="opt" onclick="answer(this,4,3,1)">D. Implement the solution and escalate if needed</button>
+    <div class="expl">After establishing a theory of probable cause, the next step in the methodology is to test that theory to confirm it before moving to a plan of action.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Networking Fundamentals">
+    <div class="meta">Question 6 of 12 · Networking Fundamentals</div>
+    <div class="q">A systems administrator needs to securely transfer files between two Linux servers, ensuring both the connection and the transferred data are encrypted. Which protocol and default port should be used?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. SFTP using port 22</button><button class="opt" onclick="answer(this,5,1,0)">B. TFTP using port 69</button><button class="opt" onclick="answer(this,5,2,0)">C. FTP using port 21</button><button class="opt" onclick="answer(this,5,3,0)">D. SMTP using port 25</button>
+    <div class="expl">SFTP (SSH File Transfer Protocol) runs over SSH on port 22, which encrypts both the control channel and the file data, meeting the encryption requirement.</div>
+  </div>
+
+  <div class="card qcard" id="q6" data-domain="Network Implementations">
+    <div class="meta">Question 7 of 12 · Network Implementations</div>
+    <div class="q">A network engineer must connect two buildings located approximately 8 kilometers apart using a 10 Gigabit Ethernet single-mode fiber link. Which transceiver type BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,6,0,1)">A. SFP+ SR (multimode, ~300m range)</button><button class="opt" onclick="answer(this,6,1,1)">B. SFP+ LR (single-mode, up to 10km range)</button><button class="opt" onclick="answer(this,6,2,1)">C. SFP+ ZR (single-mode, ~80km range)</button><button class="opt" onclick="answer(this,6,3,1)">D. SFP+ ER (single-mode, up to 40km range)</button>
+    <div class="expl">SFP+ LR transceivers are rated for single-mode fiber runs up to 10km, which comfortably covers the 8km distance at the lowest cost and power consumption suitable for the requirement.</div>
+  </div>
+
+  <div class="card qcard" id="q7" data-domain="Network Operations">
+    <div class="meta">Question 8 of 12 · Network Operations</div>
+    <div class="q">Which SNMP version must be deployed to meet a security requirement for authenticated and encrypted network management traffic?</div>
+    <button class="opt" onclick="answer(this,7,0,1)">A. SNMPv1</button><button class="opt" onclick="answer(this,7,1,1)">B. SNMPv3</button><button class="opt" onclick="answer(this,7,2,1)">C. SNMPv2c</button><button class="opt" onclick="answer(this,7,3,1)">D. SNMP configured with trap-only messages</button>
+    <div class="expl">SNMPv3 introduces the User-based Security Model (USM), providing authentication (e.g., SHA) and encryption (e.g., AES) of management traffic, which v1 and v2c lack.</div>
+  </div>
+
+  <div class="card qcard" id="q8" data-domain="Network Security">
+    <div class="meta">Question 9 of 12 · Network Security</div>
+    <div class="q">A penetration tester demonstrates that a crafted frame with two stacked 802.1Q tags can hop from the native VLAN onto a victim VLAN on a trunk link. Which action BEST prevents this VLAN hopping technique?</div>
+    <button class="opt" onclick="answer(this,8,0,3)">A. Enable PortFast on all trunk-facing switch interfaces</button><button class="opt" onclick="answer(this,8,1,3)">B. Increase the number of VLANs configured on the switch</button><button class="opt" onclick="answer(this,8,2,3)">C. Enable Rapid Spanning Tree Protocol network-wide</button><button class="opt" onclick="answer(this,8,3,3)">D. Change the native VLAN to an unused VLAN ID and disable Dynamic Trunking Protocol on access ports</button>
+    <div class="expl">Double-tagging VLAN hopping relies on the native VLAN being untagged on the trunk and on ports negotiating trunking automatically. Moving the native VLAN off the default/data VLAN and disabling DTP so ports don't auto-negotiate trunk status closes both prerequisites for the attack.</div>
+  </div>
+
+  <div class="card qcard" id="q9" data-domain="Network Troubleshooting">
+    <div class="meta">Question 10 of 12 · Network Troubleshooting</div>
+    <div class="q">A user reports that they cannot browse to 'intranet.company.local' by name, but they can successfully ping the server's IP address 10.10.5.20 directly. Which tool should the technician use FIRST to isolate the problem?</div>
+    <button class="opt" onclick="answer(this,9,0,2)">A. tracert</button><button class="opt" onclick="answer(this,9,1,2)">B. netstat</button><button class="opt" onclick="answer(this,9,2,2)">C. nslookup</button><button class="opt" onclick="answer(this,9,3,2)">D. tcpdump</button>
+    <div class="expl">Since the IP is reachable but the hostname fails to resolve, nslookup (or dig) is the correct tool to query the DNS server and confirm whether name resolution is functioning.</div>
+  </div>
+
+  <div class="card qcard" id="q10" data-domain="Networking Fundamentals">
+    <div class="meta">Question 11 of 12 · Networking Fundamentals</div>
+    <div class="q">Which IPv6 address type is automatically assigned to every interface and is used only for communication within the local network segment, never routed beyond it?</div>
+    <button class="opt" onclick="answer(this,10,0,0)">A. Link-local address</button><button class="opt" onclick="answer(this,10,1,0)">B. Global unicast address</button><button class="opt" onclick="answer(this,10,2,0)">C. Multicast address</button><button class="opt" onclick="answer(this,10,3,0)">D. Unique local address</button>
+    <div class="expl">Link-local addresses (fe80::/10) are automatically generated on every IPv6-enabled interface and are confined to the local link; routers never forward packets with a link-local source or destination.</div>
+  </div>
+
+  <div class="card qcard" id="q11" data-domain="Network Implementations">
+    <div class="meta">Question 12 of 12 · Network Implementations</div>
+    <div class="q">A small business is assigned a single public IPv4 address by its ISP but has 40 internal devices that all need simultaneous internet access. Which technology allows all internal devices to share the single public IP address at the same time?</div>
+    <button class="opt" onclick="answer(this,11,0,0)">A. Port Address Translation (PAT)</button><button class="opt" onclick="answer(this,11,1,0)">B. Static NAT</button><button class="opt" onclick="answer(this,11,2,0)">C. Dynamic NAT</button><button class="opt" onclick="answer(this,11,3,0)">D. VLAN trunking</button>
+    <div class="expl">PAT (also called NAT overload) maps multiple internal private IP addresses to a single public IP address by using unique source port numbers to distinguish each session, allowing many devices to share one public address simultaneously.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="E0363753E03D522425F4"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">undefined</span> <span class="price">$34.99</span> with code <span class="code">E0363753E03D522425F4</span> — valid through Sep 23.</p>
+  <a href="https://www.udemy.com/course/comptia-network-n10-009-exam-focused-prep/?couponCode=E0363753E03D522425F4" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<section class="faq"><h3>N10-009 exam — quick answers</h3><details><summary>How much does the N10-009 exam cost?</summary><p>The exam fee is approximately $399 and varies by region — confirm current pricing with the certification vendor before you book.</p></details><details><summary>What topics are on the exam?</summary><p>It covers 5 domains: Networking Fundamentals (23%), Network Implementations (21%), Network Operations (19%), Network Security (19%), Network Troubleshooting (18%). The full course has a dedicated chapter, lab and practice-test coverage for each.</p></details><details><summary>Is this practice test really free?</summary><p>Yes — all questions on this page are free with explanations and no sign-up. The paid Udemy course adds two full-length timed exams, video lessons and hands-on labs.</p></details><details><summary>How do I get the discount?</summary><p>Use code E0363753E03D522425F4 at checkout for $34.99 (list undefined) through Sep 23 — the enroll button applies it automatically.</p></details><details><summary>Will this prepare me for the real exam?</summary><p>The questions mirror the real exam's style and are mapped to the official domains. This is exam-focused preparation — combine the free test with the full course's timed simulations to gauge your readiness.</p></details></section>
+<div class="domains"><span class="meta">More free practice by exam domain:</span><br><a href="n10-009-networking-fundamentals.html">Networking Fundamentals →</a><a href="n10-009-network-implementations.html">Network Implementations →</a><a href="n10-009-network-operations.html">Network Operations →</a><a href="n10-009-network-security.html">Network Security →</a><a href="n10-009-network-troubleshooting.html">Network Troubleshooting →</a></div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

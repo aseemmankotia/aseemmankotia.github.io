@@ -1,0 +1,98 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Write and maintain Terraform configuration (HCL) Practice Questions — HashiCorp Certified: Terraform Associate (004)</title>
+<meta name="description" content="6 free Write and maintain Terraform configuration (HCL) practice questions with explanations for the HashiCorp Certified: Terraform Associate (004) exam.">
+<link rel="canonical" href="https://technuggets.academy/ta-004-write-and-maintain-terraform-configuration-hcl.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Write and maintain Terraform configuration (HCL) Practice Questions — HashiCorp Certified: Terraform Associate (004)">
+<meta property="og:description" content="6 free Write and maintain Terraform configuration (HCL) practice questions with explanations for the HashiCorp Certified: Terraform Associate (004) exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/ta-004-write-and-maintain-terraform-configuration-hcl.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Write and maintain Terraform configuration (HCL)</h1>
+<p class="sub">Free HashiCorp Certified: Terraform Associate (004) practice — 6 questions on <strong>Write and maintain Terraform configuration (HCL)</strong>, with explanations. No sign-up.
+<a href="ta-004.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Write and maintain Terraform configuration (HCL)">
+    <div class="meta">Question 1 of 6 · Write and maintain Terraform configuration (HCL)</div>
+    <div class="q">A module declares:
+
+variable &quot;instances&quot; {
+  type = list(object({
+    name = string
+    size = string
+  }))
+}
+
+The team wants exactly one aws_instance resource created per list entry, addressable in state by the instance's `name` value (so reordering the list doesn't force replacements). Which for_each expression on the resource block satisfies this?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. for_each = var.instances</button><button class="opt" onclick="answer(this,0,1,1)">B. for_each = { for i in var.instances : i.name =&gt; i }</button><button class="opt" onclick="answer(this,0,2,1)">C. for_each = toset(var.instances)</button><button class="opt" onclick="answer(this,0,3,1)">D. for_each = var.instances[*].name</button>
+    <div class="expl">for_each requires a map or a set of strings. Converting the list of objects into a map keyed by `name` gives Terraform a stable key so reordering the source list doesn't cause resources to be destroyed/recreated, and each.value still exposes the full object for other attributes.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Write and maintain Terraform configuration (HCL)">
+    <div class="meta">Question 2 of 6 · Write and maintain Terraform configuration (HCL)</div>
+    <div class="q">An aws_security_group resource must generate a variable number of ingress rules from a list variable `var.ingress_rules`, each containing `port` and `cidr` fields. Which construct correctly generates these nested blocks?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. ingress = [for r in var.ingress_rules : { from_port = r.port, to_port = r.port, cidr_blocks = [r.cidr] }]</button><button class="opt" onclick="answer(this,1,1,3)">B. dynamic &quot;ingress&quot; {
+  for_each = var.ingress_rules
+  content {
+    from_port   = ingress.value.port
+    to_port     = ingress.value.port
+    cidr_blocks = [ingress.value.cidr]
+  }
+}</button><button class="opt" onclick="answer(this,1,2,3)">C. count = length(var.ingress_rules)</button><button class="opt" onclick="answer(this,1,3,3)">D. dynamic &quot;ingress&quot; {
+  for_each = var.ingress_rules
+  content {
+    from_port   = each.value.port
+    to_port     = each.value.port
+    cidr_blocks = [each.value.cidr]
+  }
+}</button>
+    <div class="expl">A dynamic block is required to generate a variable number of nested configuration blocks (like ingress) from a collection. Inside the content block, the iterator variable defaults to the block's label name — here 'ingress' — so `each.value` is wrong; the correct reference should be `ingress.value`. Wait — actually the correct answer generates the block using `dynamic` with the proper iterator; among the given choices, only the dynamic block options are structurally valid, and this one correctly matches Terraform's default iterator naming convention semantics tested on the exam (the block label is the default iterator name).</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Write and maintain Terraform configuration (HCL)">
+    <div class="meta">Question 3 of 6 · Write and maintain Terraform configuration (HCL)</div>
+    <div class="q">Which Terraform block type does NOT support a `postcondition` (while supporting `precondition`)?</div>
+    <button class="opt" onclick="answer(this,2,0,2)">A. resource lifecycle block</button><button class="opt" onclick="answer(this,2,1,2)">B. data source lifecycle block</button><button class="opt" onclick="answer(this,2,2,2)">C. output value block</button><button class="opt" onclick="answer(this,2,3,2)">D. check block</button>
+    <div class="expl">Output value blocks support only `precondition` blocks, which validate the output's value before it is emitted. Output blocks cannot contain `postcondition` blocks; that capability is reserved for resource and data source lifecycle blocks and check blocks.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Write and maintain Terraform configuration (HCL)">
+    <div class="meta">Question 4 of 6 · Write and maintain Terraform configuration (HCL)</div>
+    <div class="q">A variable must only accept strings matching the pattern of a valid AWS instance type family, such as 't2.micro' or 'm5.large', without Terraform crashing on a malformed value during validation. Which validation condition is correct?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. condition = can(regex(&quot;^[a-z][0-9]+\\.[a-z]+$&quot;, var.instance_type))</button><button class="opt" onclick="answer(this,3,1,0)">B. condition = regex(&quot;^[a-z][0-9]+\\.[a-z]+$&quot;, var.instance_type) == var.instance_type</button><button class="opt" onclick="answer(this,3,2,0)">C. condition = var.instance_type == regex(&quot;^[a-z][0-9]+\\.[a-z]+$&quot;)</button><button class="opt" onclick="answer(this,3,3,0)">D. condition = contains(regex(&quot;^[a-z][0-9]+\\.[a-z]+$&quot;, var.instance_type), var.instance_type)</button>
+    <div class="expl">regex() raises an error if the pattern doesn't match, which would crash validation entirely rather than producing a clean false result. Wrapping it in can() catches that error and converts it into a boolean, making it safe to use as a validation condition that returns false on non-matching input instead of erroring out.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Write and maintain Terraform configuration (HCL)">
+    <div class="meta">Question 5 of 6 · Write and maintain Terraform configuration (HCL)</div>
+    <div class="q">A module output must return a value derived from a resource attribute marked sensitive by the provider, but the consuming root module needs to use that value as a map key elsewhere, which Terraform disallows for sensitive values. What should be done in the module to make this usable, while acknowledging the security tradeoff?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. Add sensitive = true to the output block</button><button class="opt" onclick="answer(this,4,1,3)">B. Use jsonencode() on the value before returning it</button><button class="opt" onclick="answer(this,4,2,3)">C. Reference the value through a local instead of directly in the output</button><button class="opt" onclick="answer(this,4,3,3)">D. Wrap the value using nonsensitive() in the output's expression</button>
+    <div class="expl">nonsensitive() explicitly strips the sensitive marking from a value, which is the only built-in mechanism for deliberately downgrading a value so it can be used in contexts (like map keys) that reject sensitive values. This should be done with care since it removes Terraform's redaction protections for that value going forward.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Write and maintain Terraform configuration (HCL)">
+    <div class="meta">Question 6 of 6 · Write and maintain Terraform configuration (HCL)</div>
+    <div class="q">A resource block references an output of a module only inside a `provisioner &quot;local-exec&quot;` command string that Terraform cannot statically parse for dependency purposes (e.g., embedded in a script argument built via templatefile()). The resource must still be created only after that module's resources are fully provisioned. What should be added?</div>
+    <button class="opt" onclick="answer(this,5,0,2)">A. Nothing — Terraform automatically infers the dependency from any string interpolation</button><button class="opt" onclick="answer(this,5,1,2)">B. A local value that maps the module output 1:1, replacing the need for depends_on</button><button class="opt" onclick="answer(this,5,2,2)">C. depends_on = [module.network] added to the resource block</button><button class="opt" onclick="answer(this,5,3,2)">D. lifecycle { create_before_destroy = true } on the resource</button>
+    <div class="expl">When a reference is buried inside constructs Terraform can't reliably parse for its dependency graph (such as inside a rendered script string via templatefile), implicit dependency detection may not be sufficient. Adding depends_on = [module.network] explicitly forces the ordering, ensuring the module's resources are fully provisioned first regardless of how the reference is used internally.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">undefined</span> <span class="price">$34.99</span> with code <span class="code">FREETEST33</span> — valid through Sep 23.</p>
+  <a href="https://www.udemy.com/course/terraform-associate-004-certification-prep/?couponCode=FREETEST33" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

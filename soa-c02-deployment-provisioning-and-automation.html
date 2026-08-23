@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Deployment, Provisioning, and Automation Practice Questions — AWS Certified SysOps Administrator - Associate</title>
+<meta name="description" content="6 free Deployment, Provisioning, and Automation practice questions with explanations for the AWS Certified SysOps Administrator - Associate exam.">
+<link rel="canonical" href="https://technuggets.academy/soa-c02-deployment-provisioning-and-automation.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Deployment, Provisioning, and Automation Practice Questions — AWS Certified SysOps Administrator - Associate">
+<meta property="og:description" content="6 free Deployment, Provisioning, and Automation practice questions with explanations for the AWS Certified SysOps Administrator - Associate exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/soa-c02-deployment-provisioning-and-automation.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#FF9900}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Deployment, Provisioning, and Automation</h1>
+<p class="sub">Free AWS Certified SysOps Administrator - Associate practice — 6 questions on <strong>Deployment, Provisioning, and Automation</strong>, with explanations. No sign-up.
+<a href="soa-c02.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Deployment, Provisioning, and Automation">
+    <div class="meta">Question 1 of 6 · Deployment, Provisioning, and Automation</div>
+    <div class="q">Your organization uses AWS Organizations with 60 member accounts across multiple OUs, and new accounts are provisioned weekly via account vending. You need a security baseline CloudFormation stack (CloudTrail, GuardDuty, Config rules) automatically deployed to every account in the 'Workloads' OU, including accounts created in the future, without manually assuming roles into each account. Which StackSets configuration meets this requirement?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. Create a self-managed StackSet and manually create AWSCloudFormationStackSetExecutionRole in each new account as it's provisioned</button><button class="opt" onclick="answer(this,0,1,3)">B. Deploy the template using a Lambda-backed custom resource triggered by an Organizations CreateAccount event in each account</button><button class="opt" onclick="answer(this,0,2,3)">C. Create a single StackSet stack instance and manually add each new account ID to the deployment targets after provisioning</button><button class="opt" onclick="answer(this,0,3,3)">D. Create a service-managed StackSet targeting the 'Workloads' OU with automatic deployment enabled</button>
+    <div class="expl">Service-managed permissions let StackSets use AWS Organizations trust to deploy without manual IAM role setup in target accounts. Enabling automatic deployment ensures the stack is automatically deployed to any new account that joins the targeted OU, with no manual intervention.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Deployment, Provisioning, and Automation">
+    <div class="meta">Question 2 of 6 · Deployment, Provisioning, and Automation</div>
+    <div class="q">A CloudFormation stack includes a custom resource of type Custom::ConfigValidator backed by a Lambda function that performs a one-time validation during stack creation. After the stack is created, an engineer runs 'aws cloudformation detect-stack-drift' on the stack. What drift status will CloudFormation report for the custom resource?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. NOT_CHECKED</button><button class="opt" onclick="answer(this,1,1,0)">B. IN_SYNC</button><button class="opt" onclick="answer(this,1,2,0)">C. DELETED</button><button class="opt" onclick="answer(this,1,3,0)">D. MODIFIED</button>
+    <div class="expl">Drift detection does not support all resource types. Custom resources (Custom::* / AWS::CloudFormation::CustomResource) are among the types CloudFormation cannot evaluate for drift, so they are always reported as NOT_CHECKED regardless of their actual state.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Deployment, Provisioning, and Automation">
+    <div class="meta">Question 3 of 6 · Deployment, Provisioning, and Automation</div>
+    <div class="q">A SysOps administrator must update a production CloudFormation stack where the change will cause an AWS::RDS::DBInstance to be replaced due to a modified engine version property, resulting in data loss if not handled carefully. Before applying the update, the administrator needs to know exactly which resources will be replaced versus modified in place. Which approach should be used?</div>
+    <button class="opt" onclick="answer(this,2,0,2)">A. Enable a stack policy that denies Replace actions on the DB instance</button><button class="opt" onclick="answer(this,2,1,2)">B. Run 'aws cloudformation detect-stack-drift' before updating the stack</button><button class="opt" onclick="answer(this,2,2,2)">C. Create and review a change set for the stack update before executing it</button><button class="opt" onclick="answer(this,2,3,2)">D. Update the stack directly and monitor the CloudFormation events console during execution</button>
+    <div class="expl">Change sets show a preview of exactly how CloudFormation will modify resources (Add, Modify, Remove) and explicitly flag whether a Modify action requires replacement, allowing the administrator to catch destructive changes like DB instance replacement before applying the update.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Deployment, Provisioning, and Automation">
+    <div class="meta">Question 4 of 6 · Deployment, Provisioning, and Automation</div>
+    <div class="q">A company requires that critical security patches only be installed on production EC2 instances 7 days after release (to allow time for internal review), and that patching only occurs during a defined Sunday 2-4 AM maintenance window. Which configuration satisfies both requirements?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. Create a custom patch baseline with a 7-day auto-approval delay for the Critical severity classification, and associate it with a Maintenance Window task that runs the AWS-RunPatchBaseline document on the defined schedule</button><button class="opt" onclick="answer(this,3,1,0)">B. Create an SSM Association running the AWS-ApplyPatchBaseline document directly, with no maintenance window attached</button><button class="opt" onclick="answer(this,3,2,0)">C. Enable EC2 instance 'automatic patching' in the console with a 7-day delay setting</button><button class="opt" onclick="answer(this,3,3,0)">D. Use the default AWS-provided patch baseline and schedule a weekly cron job on each instance to run yum/apt update</button>
+    <div class="expl">Patch Manager patch baselines support an auto-approval delay per severity/classification rule, ensuring patches aren't approved until N days after release. Pairing this baseline with a Maintenance Window task running AWS-RunPatchBaseline on a cron schedule ensures patching happens only within the defined window.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Deployment, Provisioning, and Automation">
+    <div class="meta">Question 5 of 6 · Deployment, Provisioning, and Automation</div>
+    <div class="q">A team needs to build custom hardened Linux AMIs on a recurring schedule, automatically run vulnerability scans and application-level tests against each new AMI build, and distribute the validated AMI to three other AWS Regions — all with minimal custom scripting to maintain. Which service should be used to build this pipeline?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. AWS Systems Manager Automation using the AWS-UpdateLinuxAmi automation document only</button><button class="opt" onclick="answer(this,4,1,2)">B. A manual process: launch an instance, apply updates via SSH, then call CreateImage and copy the AMI to each region</button><button class="opt" onclick="answer(this,4,2,2)">C. EC2 Image Builder with a recipe, test component, and distribution configuration</button><button class="opt" onclick="answer(this,4,3,2)">D. AWS CodePipeline with a CodeBuild stage that calls the EC2 CreateImage API</button>
+    <div class="expl">EC2 Image Builder is purpose-built for this exact use case: it defines build recipes, supports test components (including security/vulnerability testing via built-in or custom test steps), and includes a distribution configuration to automatically copy and share the validated AMI to multiple Regions on a schedule — all natively, with minimal custom scripting.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Deployment, Provisioning, and Automation">
+    <div class="meta">Question 6 of 6 · Deployment, Provisioning, and Automation</div>
+    <div class="q">An Elastic Beanstalk environment runs a fixed fleet of 4 instances behind an Application Load Balancer serving production traffic. The application must remain at full capacity throughout every deployment (no reduction in available instances), the team has a strict budget that prohibits temporarily doubling the fleet size, and any bad deployment should be caught on a small subset of instances before it reaches the rest of the fleet. Which Elastic Beanstalk deployment policy should be configured?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. Immutable deployment</button><button class="opt" onclick="answer(this,5,1,3)">B. All at once deployment</button><button class="opt" onclick="answer(this,5,2,3)">C. Rolling deployment</button><button class="opt" onclick="answer(this,5,3,3)">D. Rolling with additional batch deployment</button>
+    <div class="expl">Rolling with additional batch launches one extra batch of instances with the new version first, so total capacity never drops below the original fleet size, then performs the rolling update in batches across the rest of the fleet — catching issues in the first small batch before all instances are updated, without doubling the entire fleet's cost.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="89CE4ED79F19FA855B6D"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">undefined</span> <span class="price">$34.99</span> with code <span class="code">89CE4ED79F19FA855B6D</span> — valid through Sep 23.</p>
+  <a href="https://www.udemy.com/course/aws-sysops-administrator-soa-c02-exam-prep/?couponCode=89CE4ED79F19FA855B6D" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

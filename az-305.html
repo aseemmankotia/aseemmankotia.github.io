@@ -1,0 +1,123 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Microsoft Certified: Azure Solutions Architect Expert Practice Test — 12 Real Exam-Style Questions</title>
+<meta name="description" content="Free Microsoft Certified: Azure Solutions Architect Expert practice questions with detailed explanations. Test yourself before the real exam.">
+<link rel="canonical" href="https://technuggets.academy/az-305.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Microsoft Certified: Azure Solutions Architect Expert Practice Test — 12 Real Exam-Style Questions">
+<meta property="og:description" content="Free Microsoft Certified: Azure Solutions Architect Expert practice questions with detailed explanations. Test yourself before the real exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/az-305.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0078D4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div><div class="hero">
+  <span class="chip">AZ-305</span>
+  <h1>Free Microsoft Certified: Azure Solutions Architect Expert Practice Test</h1>
+  <p class="sub">12 exam-style questions with full explanations — no sign-up. Score yourself, then close your gaps with the full course.</p>
+  <div class="facts"><span class="fact">Exam fee <b>~$165</b></span><span class="fact"><b>4</b> exam domains</span><span class="fact">Level <b>Advanced</b></span><span class="fact"><b>2</b> timed practice tests in the course</span></div>
+  <div class="cta-row"><a class="btn enroll" href="https://www.udemy.com/course/az-305-azure-solutions-architect-expert-prep/?couponCode=00651DDA8F57721374B8" rel="sponsored" target="_blank">Get my $34.99 deal →</a><a class="btn ghost" href="#practice">Try the free test →</a><span class="urgency">⏳ Deal ends Sep 23</span></div>
+</div><div class="trust"><span>✅ <b>Free</b> practice — no sign-up</span><span>📝 Real exam-style questions</span><span>💡 Detailed explanations</span><span>💸 30-day money-back via Udemy</span></div>
+<div id="practice"></div>
+
+  <div class="card qcard" id="q0" data-domain="Design identity, governance, and monitoring solutions">
+    <div class="meta">Question 1 of 12 · Design identity, governance, and monitoring solutions</div>
+    <div class="q">A company has 5,000 users in an on-premises Active Directory domain. They need users to authenticate to Microsoft 365 and Azure resources using their existing on-premises passwords, without storing password hashes in the cloud, and authentication must continue to work even if the on-premises network link to Azure fails. Which authentication method should you recommend?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. Password hash synchronization</button><button class="opt" onclick="answer(this,0,1,1)">B. Federation with AD FS</button><button class="opt" onclick="answer(this,0,2,1)">C. Pass-through Authentication with Seamless SSO</button><button class="opt" onclick="answer(this,0,3,1)">D. Pass-through Authentication with a single Authentication Agent</button>
+    <div class="expl">AD FS federation validates credentials against on-premises AD without syncing password hashes to Microsoft Entra ID, and a properly deployed AD FS farm with multiple servers/agents provides resilience so authentication is not dependent on a single link if designed with redundancy across sites.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Design data storage solutions">
+    <div class="meta">Question 2 of 12 · Design data storage solutions</div>
+    <div class="q">A global retail company uses Azure Cosmos DB for NoSQL with multi-region writes (multi-master) enabled across three Azure regions to support low-latency writes for customers worldwide. The company wants the strongest consistency guarantee that Cosmos DB supports when multi-region writes are enabled. Which consistency level should be configured?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. Strong</button><button class="opt" onclick="answer(this,1,1,3)">B. Session</button><button class="opt" onclick="answer(this,1,2,3)">C. Eventual</button><button class="opt" onclick="answer(this,1,3,3)">D. Bounded Staleness</button>
+    <div class="expl">Bounded Staleness is the strongest consistency level Cosmos DB supports when multi-region writes are enabled. Strong consistency is only available for single-write-region accounts.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Design business continuity solutions">
+    <div class="meta">Question 3 of 12 · Design business continuity solutions</div>
+    <div class="q">A company runs 200 on-premises VMs and needs to fail them over to Azure during a datacenter outage. The business requires an RTO of 1 hour and an RPO of 15 minutes. Which solution BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,2,0,2)">A. Configure Azure Backup with a daily backup policy for each VM</button><button class="opt" onclick="answer(this,2,1,2)">B. Use Azure Migrate to perform a one-time lift-and-shift migration to Azure</button><button class="opt" onclick="answer(this,2,2,2)">C. Configure Azure Site Recovery to continuously replicate the on-premises VMs to Azure</button><button class="opt" onclick="answer(this,2,3,2)">D. Create a weekly scheduled VM image export to an Azure storage account</button>
+    <div class="expl">Azure Site Recovery (ASR) performs continuous, near-real-time replication of on-premises VMs to Azure, supporting RPOs as low as 30 seconds to a few minutes and orchestrated failover that can meet a 1-hour RTO.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Design infrastructure solutions">
+    <div class="meta">Question 4 of 12 · Design infrastructure solutions</div>
+    <div class="q">A global retailer runs a web application that serves both static assets and dynamic API responses. Traffic originates from users in North America, Europe, and Asia. The company requires SSL offloading, path-based routing to different backend pools, and a Web Application Firewall (WAF) that inspects traffic before it reaches any regional backend. The solution must minimize latency for users worldwide. Which service should the architect choose?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. Azure Traffic Manager with WAF enabled on each regional backend</button><button class="opt" onclick="answer(this,3,1,2)">B. Azure Load Balancer (Standard SKU) in front of each regional App Service</button><button class="opt" onclick="answer(this,3,2,2)">C. Azure Front Door (Premium tier) with WAF policies and path-based routing rules</button><button class="opt" onclick="answer(this,3,3,2)">D. A single regional Azure Application Gateway with WAF_v2 SKU</button>
+    <div class="expl">Azure Front Door Premium is a global, Layer 7 entry point that terminates SSL at the edge, supports path-based routing, and includes an integrated WAF that inspects traffic before it is routed to the closest healthy regional backend, minimizing latency for a worldwide user base.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Design identity, governance, and monitoring solutions">
+    <div class="meta">Question 5 of 12 · Design identity, governance, and monitoring solutions</div>
+    <div class="q">An Azure Function app needs to read secrets from Azure Key Vault. The company's security policy prohibits storing any credentials, connection strings, or certificates in application code or configuration files. Which authentication mechanism should you configure for the Function app?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. A system-assigned managed identity</button><button class="opt" onclick="answer(this,4,1,0)">B. A service principal with a client secret stored in application settings</button><button class="opt" onclick="answer(this,4,2,0)">C. Shared access signature tokens generated per request</button><button class="opt" onclick="answer(this,4,3,0)">D. Azure AD B2C application registration with client credentials flow</button>
+    <div class="expl">A system-assigned managed identity is automatically created and managed by Azure, requires no credentials to be stored anywhere, and can be granted access policy or RBAC permissions on the Key Vault directly.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Design data storage solutions">
+    <div class="meta">Question 6 of 12 · Design data storage solutions</div>
+    <div class="q">A company is migrating an on-premises PostgreSQL database to Azure. Requirements: minimize application changes, support zone-redundant high availability with automatic failover, and allow read scale-out via read replicas. Which service should the solutions architect recommend?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. Azure SQL Managed Instance</button><button class="opt" onclick="answer(this,5,1,1)">B. Azure Database for PostgreSQL - Flexible Server</button><button class="opt" onclick="answer(this,5,2,1)">C. Azure Database for PostgreSQL - Single Server</button><button class="opt" onclick="answer(this,5,3,1)">D. Azure Cosmos DB for PostgreSQL</button>
+    <div class="expl">Flexible Server supports zone-redundant high availability with automatic failover and native read replicas, while remaining wire-compatible with PostgreSQL, minimizing application changes.</div>
+  </div>
+
+  <div class="card qcard" id="q6" data-domain="Design business continuity solutions">
+    <div class="meta">Question 7 of 12 · Design business continuity solutions</div>
+    <div class="q">A company wants to replicate a fleet of Azure VMs from the East US region to West US so they can be failed over as a group using an orchestrated recovery plan during a regional outage. Which Azure service should be used?</div>
+    <button class="opt" onclick="answer(this,6,0,3)">A. Azure Backup</button><button class="opt" onclick="answer(this,6,1,3)">B. Azure Traffic Manager</button><button class="opt" onclick="answer(this,6,2,3)">C. Azure Migrate</button><button class="opt" onclick="answer(this,6,3,3)">D. Azure Site Recovery</button>
+    <div class="expl">Azure Site Recovery supports Azure-to-Azure replication between region pairs and lets administrators group VMs into recovery plans for coordinated, ordered failover.</div>
+  </div>
+
+  <div class="card qcard" id="q7" data-domain="Design infrastructure solutions">
+    <div class="meta">Question 8 of 12 · Design infrastructure solutions</div>
+    <div class="q">An order-processing system has one publisher and four independent downstream services, each of which must receive a copy of every order message. Some services need to filter which messages they receive based on message properties, and undelivered messages must be moved to a dead-letter queue for later inspection. Which Azure messaging service should be used?</div>
+    <button class="opt" onclick="answer(this,7,0,1)">A. Azure Storage Queues</button><button class="opt" onclick="answer(this,7,1,1)">B. Azure Service Bus Topics and Subscriptions</button><button class="opt" onclick="answer(this,7,2,1)">C. Azure Event Hubs</button><button class="opt" onclick="answer(this,7,3,1)">D. Azure Event Grid with a webhook endpoint</button>
+    <div class="expl">Service Bus Topics implement a publish/subscribe pattern where each subscription receives a copy of every message, subscriptions can apply SQL or correlation filters, and dead-lettering is a built-in feature — matching all stated requirements.</div>
+  </div>
+
+  <div class="card qcard" id="q8" data-domain="Design identity, governance, and monitoring solutions">
+    <div class="meta">Question 9 of 12 · Design identity, governance, and monitoring solutions</div>
+    <div class="q">An organization wants administrators to have Global Administrator privileges only when needed, requiring justification and time-bound activation, with automatic expiration after 8 hours and approval from a designated approver. Which Microsoft Entra ID feature should you configure?</div>
+    <button class="opt" onclick="answer(this,8,0,1)">A. Conditional Access with sign-in frequency controls</button><button class="opt" onclick="answer(this,8,1,1)">B. Microsoft Entra Privileged Identity Management (PIM) with eligible role assignments</button><button class="opt" onclick="answer(this,8,2,1)">C. Azure Policy assignment at the tenant root management group</button><button class="opt" onclick="answer(this,8,3,1)">D. Azure AD Identity Protection risk-based policies</button>
+    <div class="expl">PIM allows configuring roles as 'eligible' rather than permanently active, requiring users to activate the role with justification, MFA, and approval, with a maximum activation duration you define (such as 8 hours) after which the role automatically deactivates.</div>
+  </div>
+
+  <div class="card qcard" id="q9" data-domain="Design data storage solutions">
+    <div class="meta">Question 10 of 12 · Design data storage solutions</div>
+    <div class="q">A company stores application telemetry logs in an Azure Storage account within a single region. The data must be synchronously replicated across three availability zones for high durability, but the company does not require the data to be readable from a secondary region. Which redundancy option should be configured?</div>
+    <button class="opt" onclick="answer(this,9,0,2)">A. LRS</button><button class="opt" onclick="answer(this,9,1,2)">B. GRS</button><button class="opt" onclick="answer(this,9,2,2)">C. ZRS</button><button class="opt" onclick="answer(this,9,3,2)">D. RA-GRS</button>
+    <div class="expl">ZRS synchronously replicates data across three availability zones within the primary region, meeting the durability requirement without needing a readable secondary region.</div>
+  </div>
+
+  <div class="card qcard" id="q10" data-domain="Design business continuity solutions">
+    <div class="meta">Question 11 of 12 · Design business continuity solutions</div>
+    <div class="q">A company backs up its Azure VMs to a Recovery Services vault and must be able to restore VMs to a secondary Azure region if the primary region becomes completely unavailable. Which vault storage redundancy setting must be configured to support this requirement?</div>
+    <button class="opt" onclick="answer(this,10,0,0)">A. Geo-redundant storage (GRS)</button><button class="opt" onclick="answer(this,10,1,0)">B. Locally-redundant storage (LRS)</button><button class="opt" onclick="answer(this,10,2,0)">C. Zone-redundant storage (ZRS)</button><button class="opt" onclick="answer(this,10,3,0)">D. Hot access tier</button>
+    <div class="expl">Cross Region Restore requires the Recovery Services vault to be configured with geo-redundant storage (GRS), which replicates backup data to a paired secondary region and allows restoring VMs there during a regional outage.</div>
+  </div>
+
+  <div class="card qcard" id="q11" data-domain="Design infrastructure solutions">
+    <div class="meta">Question 12 of 12 · Design infrastructure solutions</div>
+    <div class="q">You are designing the node subnet for an AKS cluster using Azure CNI networking. The cluster will initially run 20 nodes with a maximum of 30 pods per node, and it must be able to scale to 40 nodes without requiring a subnet resize. Which subnet size should you provision?</div>
+    <button class="opt" onclick="answer(this,11,0,2)">A. /24</button><button class="opt" onclick="answer(this,11,1,2)">B. /22</button><button class="opt" onclick="answer(this,11,2,2)">C. /21</button><button class="opt" onclick="answer(this,11,3,2)">D. /23</button>
+    <div class="expl">At 40 nodes with 30 pods each, up to 1,240 IP addresses are needed for nodes and pods combined, plus 5 addresses reserved by Azure for the subnet. A /21 provides 2,048 addresses, comfortably covering this requirement with room for cluster upgrades and surge nodes.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="00651DDA8F57721374B8"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">undefined</span> <span class="price">$34.99</span> with code <span class="code">00651DDA8F57721374B8</span> — valid through Sep 23.</p>
+  <a href="https://www.udemy.com/course/az-305-azure-solutions-architect-expert-prep/?couponCode=00651DDA8F57721374B8" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<section class="faq"><h3>AZ-305 exam — quick answers</h3><details><summary>How much does the AZ-305 exam cost?</summary><p>The exam fee is approximately $165 and varies by region — confirm current pricing with the certification vendor before you book.</p></details><details><summary>What topics are on the exam?</summary><p>It covers 4 domains: Design identity, governance, and monitoring solutions (25-30%), Design data storage solutions (25-30%), Design business continuity solutions (10-15%), Design infrastructure solutions (30-35%). The full course has a dedicated chapter, lab and practice-test coverage for each.</p></details><details><summary>Is this practice test really free?</summary><p>Yes — all questions on this page are free with explanations and no sign-up. The paid Udemy course adds two full-length timed exams, video lessons and hands-on labs.</p></details><details><summary>How do I get the discount?</summary><p>Use code 00651DDA8F57721374B8 at checkout for $34.99 (list undefined) through Sep 23 — the enroll button applies it automatically.</p></details><details><summary>Will this prepare me for the real exam?</summary><p>The questions mirror the real exam's style and are mapped to the official domains. This is exam-focused preparation — combine the free test with the full course's timed simulations to gauge your readiness.</p></details></section>
+<div class="domains"><span class="meta">More free practice by exam domain:</span><br><a href="az-305-design-identity-governance-and-monitoring-solutions.html">Design identity, governance, and monitoring solutions →</a><a href="az-305-design-data-storage-solutions.html">Design data storage solutions →</a><a href="az-305-design-business-continuity-solutions.html">Design business continuity solutions →</a><a href="az-305-design-infrastructure-solutions.html">Design infrastructure solutions →</a></div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

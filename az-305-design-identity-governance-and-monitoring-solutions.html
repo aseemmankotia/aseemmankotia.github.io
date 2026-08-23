@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Design identity, governance, and monitoring solutions Practice Questions — Microsoft Certified: Azure Solutions Architect Expert</title>
+<meta name="description" content="6 free Design identity, governance, and monitoring solutions practice questions with explanations for the Microsoft Certified: Azure Solutions Architect Expert exam.">
+<link rel="canonical" href="https://technuggets.academy/az-305-design-identity-governance-and-monitoring-solutions.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Design identity, governance, and monitoring solutions Practice Questions — Microsoft Certified: Azure Solutions Architect Expert">
+<meta property="og:description" content="6 free Design identity, governance, and monitoring solutions practice questions with explanations for the Microsoft Certified: Azure Solutions Architect Expert exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/az-305-design-identity-governance-and-monitoring-solutions.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0078D4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Design identity, governance, and monitoring solutions</h1>
+<p class="sub">Free Microsoft Certified: Azure Solutions Architect Expert practice — 6 questions on <strong>Design identity, governance, and monitoring solutions</strong>, with explanations. No sign-up.
+<a href="az-305.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Design identity, governance, and monitoring solutions">
+    <div class="meta">Question 1 of 6 · Design identity, governance, and monitoring solutions</div>
+    <div class="q">Contoso requires that access to Azure resources by IT administrators be restricted to compliant, Intune-managed devices with MFA enforced. Two emergency-access 'break-glass' accounts must remain fully accessible without these restrictions in case Microsoft Entra ID Conditional Access misconfigures access for everyone else. What should you implement?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. Create a Conditional Access policy requiring MFA and device compliance for all users, and exclude the break-glass accounts from that policy.</button><button class="opt" onclick="answer(this,0,1,0)">B. Enable Security defaults in Microsoft Entra ID and manually add the break-glass accounts to the Global Administrator role.</button><button class="opt" onclick="answer(this,0,2,0)">C. Configure Identity Protection sign-in risk policies requiring MFA for administrative roles only.</button><button class="opt" onclick="answer(this,0,3,0)">D. Apply an Azure Policy definition that denies resource creation unless an MFA claim is present in the request token.</button>
+    <div class="expl">Conditional Access policies support granular targeting (all users/admins) with explicit exclusions, allowing MFA and device-compliance enforcement while keeping break-glass accounts exempt from those controls.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Design identity, governance, and monitoring solutions">
+    <div class="meta">Question 2 of 6 · Design identity, governance, and monitoring solutions</div>
+    <div class="q">You must create a custom Azure RBAC role allowing members to read and restart virtual machines and view their metrics, while explicitly preventing them from managing VM extensions or reading boot diagnostics blob data in the storage account. Which role definition structure is correct?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. &quot;Actions&quot;: [&quot;Microsoft.Compute/virtualMachines/read&quot;, &quot;Microsoft.Compute/virtualMachines/restart/action&quot;, &quot;Microsoft.Insights/metrics/read&quot;], &quot;NotActions&quot;: [&quot;Microsoft.Compute/virtualMachines/extensions/*&quot;], &quot;DataActions&quot;: [], &quot;NotDataActions&quot;: [&quot;Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read&quot;]</button><button class="opt" onclick="answer(this,1,1,0)">B. &quot;Actions&quot;: [&quot;*&quot;], &quot;NotActions&quot;: [&quot;Microsoft.Compute/virtualMachines/extensions/*&quot;, &quot;Microsoft.Storage/*&quot;]</button><button class="opt" onclick="answer(this,1,2,0)">C. &quot;Actions&quot;: [&quot;Microsoft.Compute/virtualMachines/read&quot;, &quot;Microsoft.Compute/virtualMachines/restart/action&quot;], &quot;DataActions&quot;: [&quot;Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read&quot;], &quot;NotActions&quot;: []</button><button class="opt" onclick="answer(this,1,3,0)">D. &quot;DataActions&quot;: [&quot;Microsoft.Compute/virtualMachines/restart/action&quot;], &quot;Actions&quot;: [&quot;Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read&quot;]</button>
+    <div class="expl">This structure grants only the required management-plane Actions, uses NotActions to remove extension management, and leaves DataActions empty with NotDataActions explicitly blocking blob read, correctly separating management-plane and data-plane permissions.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Design identity, governance, and monitoring solutions">
+    <div class="meta">Question 3 of 6 · Design identity, governance, and monitoring solutions</div>
+    <div class="q">A global company enforces an Azure Policy initiative with a Deny effect requiring an 'Owner' tag on all resources, assigned at the root management group and inherited by every subscription. A subsidiary migrating a legacy ERP system needs a 60-day exclusion from just this tag requirement for one resource group, without weakening enforcement anywhere else. What should you do?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. Temporarily move the subsidiary's subscription out of the management group hierarchy.</button><button class="opt" onclick="answer(this,2,1,3)">B. Edit the policy initiative assignment at the root management group to add a resource group exclusion parameter.</button><button class="opt" onclick="answer(this,2,2,3)">C. Assign a new policy definition at the subscription level with an Audit effect to override the inherited Deny effect.</button><button class="opt" onclick="answer(this,2,3,3)">D. Create a policy exemption scoped to the subsidiary's resource group, with an expiration date and a documented exemption category.</button>
+    <div class="expl">Azure Policy exemptions provide a scoped, time-bound way to exclude a specific resource or resource group from one or more policy effects without altering the parent assignment, and support an automatic expiration date and exemption category for auditability.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Design identity, governance, and monitoring solutions">
+    <div class="meta">Question 4 of 6 · Design identity, governance, and monitoring solutions</div>
+    <div class="q">A multinational retailer must keep diagnostic and security logs from EU and US resources within their respective regions to satisfy data-residency law, but the central SOC team needs a single set of workbooks and alert rules correlating events across all regions in near real time. What should you implement?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. One global Log Analytics workspace in a central region with data export disabled.</button><button class="opt" onclick="answer(this,3,1,1)">B. Regional Log Analytics workspaces in the EU and US, with cross-workspace Kusto queries used in shared workbooks and alert rules.</button><button class="opt" onclick="answer(this,3,2,1)">C. Azure Monitor Private Link Scope only, with all diagnostic settings pointed at a single US-based workspace.</button><button class="opt" onclick="answer(this,3,3,1)">D. Application Insights classic (non-workspace-based) resources deployed independently in each region.</button>
+    <div class="expl">Deploying a workspace per region satisfies data-residency requirements since ingestion stays local, while cross-workspace Log Analytics queries allow the central SOC to build unified workbooks and alerts spanning all regional workspaces.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Design identity, governance, and monitoring solutions">
+    <div class="meta">Question 5 of 6 · Design identity, governance, and monitoring solutions</div>
+    <div class="q">The security team wants users eligible for the Global Administrator role via Privileged Identity Management to activate the role only after providing a business justification and receiving manager approval, for a maximum of 4 hours per activation, with an alert sent to security operations whenever activation occurs. Which PIM configuration meets these requirements?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. Require multi-factor authentication only, set maximum activation duration to 8 hours, and use eligible assignments.</button><button class="opt" onclick="answer(this,4,1,1)">B. Require justification and approval with designated approvers, set maximum activation duration to 4 hours, and configure activation alert notifications.</button><button class="opt" onclick="answer(this,4,2,1)">C. Require Azure AD Identity Protection risk assessment with a permanent eligible assignment and no approval required.</button><button class="opt" onclick="answer(this,4,3,1)">D. Assign the role as Active (permanent) and require a compliant device via Conditional Access.</button>
+    <div class="expl">PIM role settings support requiring justification, requiring approval from specified approvers, setting a maximum activation duration, and configuring notifications/alerts on activation — matching every stated requirement exactly.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Design identity, governance, and monitoring solutions">
+    <div class="meta">Question 6 of 6 · Design identity, governance, and monitoring solutions</div>
+    <div class="q">You create an Azure Policy assignment using a DeployIfNotExists effect that must automatically remediate non-compliant resources by deploying a diagnostic setting. Which identity does the remediation task require, and how is it typically provisioned?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. The remediation task uses the signed-in user's own Microsoft Entra ID session credentials at assignment time; no separate identity is needed.</button><button class="opt" onclick="answer(this,5,1,1)">B. A system-assigned managed identity (or an optional user-assigned managed identity) is configured for the policy assignment and must be granted the roles specified in the policy definition's roleDefinitionIds.</button><button class="opt" onclick="answer(this,5,2,1)">C. A user-assigned managed identity is mandatory, and the policy definition cannot use a DeployIfNotExists effect without one being created first.</button><button class="opt" onclick="answer(this,5,3,1)">D. A service principal with a client secret must be manually created and embedded in the policy definition's parameters.</button>
+    <div class="expl">DeployIfNotExists and Modify policy effects require a managed identity on the policy assignment — either system-assigned or user-assigned — which must be granted the role(s) listed in roleDefinitionIds so it can deploy the remediation resources on the assignment's behalf.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="00651DDA8F57721374B8"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">undefined</span> <span class="price">$34.99</span> with code <span class="code">00651DDA8F57721374B8</span> — valid through Sep 23.</p>
+  <a href="https://www.udemy.com/course/az-305-azure-solutions-architect-expert-prep/?couponCode=00651DDA8F57721374B8" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free The core Terraform workflow (Write, Plan, Apply) Practice Questions — HashiCorp Certified: Terraform Associate (004)</title>
+<meta name="description" content="6 free The core Terraform workflow (Write, Plan, Apply) practice questions with explanations for the HashiCorp Certified: Terraform Associate (004) exam.">
+<link rel="canonical" href="https://technuggets.academy/ta-004-the-core-terraform-workflow-write-plan-apply.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free The core Terraform workflow (Write, Plan, Apply) Practice Questions — HashiCorp Certified: Terraform Associate (004)">
+<meta property="og:description" content="6 free The core Terraform workflow (Write, Plan, Apply) practice questions with explanations for the HashiCorp Certified: Terraform Associate (004) exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/ta-004-the-core-terraform-workflow-write-plan-apply.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>The core Terraform workflow (Write, Plan, Apply)</h1>
+<p class="sub">Free HashiCorp Certified: Terraform Associate (004) practice — 6 questions on <strong>The core Terraform workflow (Write, Plan, Apply)</strong>, with explanations. No sign-up.
+<a href="ta-004.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="The core Terraform workflow (Write, Plan, Apply)">
+    <div class="meta">Question 1 of 6 · The core Terraform workflow (Write, Plan, Apply)</div>
+    <div class="q">A `terraform plan` shows: `-/+ aws_instance.web must be replaced` because the `ami` argument changed, and `ami` is a ForceNew attribute. Nothing else in the configuration changed. The team wants to apply only this replacement, without Terraform evaluating or touching any other resource in the state, and without editing any .tf files. Which command should they run?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. terraform taint aws_instance.web &amp;&amp; terraform apply</button><button class="opt" onclick="answer(this,0,1,1)">B. terraform apply -target=&quot;aws_instance.web&quot;</button><button class="opt" onclick="answer(this,0,2,1)">C. terraform apply -replace=&quot;aws_instance.web&quot;</button><button class="opt" onclick="answer(this,0,3,1)">D. terraform destroy -target=&quot;aws_instance.web&quot; &amp;&amp; terraform apply</button>
+    <div class="expl">-target restricts the plan/apply operation's scope to the named resource (and its dependencies), so Terraform only evaluates and applies that resource, ignoring the rest of the configuration and state — exactly what's required here since the replacement is already detected from the config diff.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="The core Terraform workflow (Write, Plan, Apply)">
+    <div class="meta">Question 2 of 6 · The core Terraform workflow (Write, Plan, Apply)</div>
+    <div class="q">An engineer wants to preview exactly what resources and attributes would be removed if `terraform destroy` were run — without actually deleting any infrastructure. Which command produces this preview?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. terraform plan -destroy</button><button class="opt" onclick="answer(this,1,1,0)">B. terraform destroy -dry-run</button><button class="opt" onclick="answer(this,1,2,0)">C. terraform validate -destroy</button><button class="opt" onclick="answer(this,1,3,0)">D. terraform show -destroy</button>
+    <div class="expl">terraform plan -destroy generates a speculative destroy plan, showing every resource that would be removed, without modifying real infrastructure or requiring confirmation.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="The core Terraform workflow (Write, Plan, Apply)">
+    <div class="meta">Question 3 of 6 · The core Terraform workflow (Write, Plan, Apply)</div>
+    <div class="q">When you run `terraform apply` directly (without passing a previously saved plan file), what does Terraform do immediately before generating and displaying the plan for your approval?</div>
+    <button class="opt" onclick="answer(this,2,0,2)">A. It automatically runs terraform init to update provider plugins to their latest versions</button><button class="opt" onclick="answer(this,2,1,2)">B. It permanently locks the state file until a human manually releases the lock</button><button class="opt" onclick="answer(this,2,2,2)">C. It performs a refresh of the managed resources to reconcile the in-memory state with real infrastructure before computing the diff</button><button class="opt" onclick="answer(this,2,3,2)">D. It skips any state reconciliation and compares only the last-applied state to the configuration</button>
+    <div class="expl">By default, terraform apply (like terraform plan) refreshes the state of managed resources against real infrastructure first (unless -refresh=false is passed), ensuring the plan is computed against current real-world values.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="The core Terraform workflow (Write, Plan, Apply)">
+    <div class="meta">Question 4 of 6 · The core Terraform workflow (Write, Plan, Apply)</div>
+    <div class="q">A CI/CD pipeline needs a full, machine-readable JSON representation of a Terraform plan (for feeding into a policy-as-code tool like OPA) rather than just log output. Which command sequence is the correct, documented way to produce this?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. terraform plan -json &gt; plan.json</button><button class="opt" onclick="answer(this,3,1,2)">B. terraform plan --format=json &gt; plan.json</button><button class="opt" onclick="answer(this,3,2,2)">C. terraform plan -out=tfplan &amp;&amp; terraform show -json tfplan &gt; plan.json</button><button class="opt" onclick="answer(this,3,3,2)">D. terraform state show -json &gt; plan.json</button>
+    <div class="expl">The documented pattern for policy-as-code integration is to save a binary plan file with -out, then convert it to a full JSON plan representation using terraform show -json &lt;planfile&gt;, which HashiCorp's policy tooling (like Sentinel/OPA integrations) is built to consume.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="The core Terraform workflow (Write, Plan, Apply)">
+    <div class="meta">Question 5 of 6 · The core Terraform workflow (Write, Plan, Apply)</div>
+    <div class="q">An engineer wants to generate a visual representation (consumable by Graphviz) of the dependency order in which Terraform will create, update, or destroy resources, without applying any changes. Which command should they use?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. terraform graph</button><button class="opt" onclick="answer(this,4,1,0)">B. terraform state graph</button><button class="opt" onclick="answer(this,4,2,0)">C. terraform plan -graph</button><button class="opt" onclick="answer(this,4,3,0)">D. terraform validate -graph</button>
+    <div class="expl">terraform graph outputs the resource dependency graph in DOT format, which can be piped into Graphviz (e.g., `terraform graph | dot -Tsvg &gt; graph.svg`) to visualize the order of operations Terraform will follow.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="The core Terraform workflow (Write, Plan, Apply)">
+    <div class="meta">Question 6 of 6 · The core Terraform workflow (Write, Plan, Apply)</div>
+    <div class="q">An engineer runs `terraform plan -out=tfplan`. Before they run `terraform apply tfplan`, a teammate applies an unrelated change directly through the cloud console, altering the real-world state of a resource referenced in that saved plan. What happens when the engineer then runs `terraform apply tfplan`?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. Terraform applies the saved plan unconditionally, since a saved plan file bypasses all state checks</button><button class="opt" onclick="answer(this,5,1,1)">B. Terraform apply fails with an error indicating the saved plan is stale, and a new plan must be generated</button><button class="opt" onclick="answer(this,5,2,1)">C. Terraform silently merges the console change into the plan and applies both sets of changes together</button><button class="opt" onclick="answer(this,5,3,1)">D. Terraform prompts interactively, asking whether to proceed with the outdated plan or regenerate it</button>
+    <div class="expl">A saved plan file is tied to the specific state snapshot it was generated against. If the real state changes before the plan is applied, Terraform detects the mismatch and errors out (commonly surfaced as a stale-plan error), forcing the user to regenerate the plan against current state rather than risk applying an outdated diff.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">undefined</span> <span class="price">$34.99</span> with code <span class="code">FREETEST33</span> — valid through Sep 23.</p>
+  <a href="https://www.udemy.com/course/terraform-associate-004-certification-prep/?couponCode=FREETEST33" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

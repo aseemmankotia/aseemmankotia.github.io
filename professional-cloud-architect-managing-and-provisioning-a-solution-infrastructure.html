@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Managing and provisioning a solution infrastructure Practice Questions — Google Cloud Certified - Professional Cloud Architect</title>
+<meta name="description" content="6 free Managing and provisioning a solution infrastructure practice questions with explanations for the Google Cloud Certified - Professional Cloud Architect exam.">
+<link rel="canonical" href="https://technuggets.academy/professional-cloud-architect-managing-and-provisioning-a-solution-infrastructure.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Managing and provisioning a solution infrastructure Practice Questions — Google Cloud Certified - Professional Cloud Architect">
+<meta property="og:description" content="6 free Managing and provisioning a solution infrastructure practice questions with explanations for the Google Cloud Certified - Professional Cloud Architect exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/professional-cloud-architect-managing-and-provisioning-a-solution-infrastructure.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#4285F4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Managing and provisioning a solution infrastructure</h1>
+<p class="sub">Free Google Cloud Certified - Professional Cloud Architect practice — 6 questions on <strong>Managing and provisioning a solution infrastructure</strong>, with explanations. No sign-up.
+<a href="professional-cloud-architect.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Managing and provisioning a solution infrastructure">
+    <div class="meta">Question 1 of 6 · Managing and provisioning a solution infrastructure</div>
+    <div class="q">A company uses Shared VPC with a host project 'net-host' and two service projects, 'team-a-svc' and 'team-b-svc'. Team A's project admins need to create and manage firewall rules that apply only to instances tagged 'team-a-web' in the Shared VPC network, without being able to view or modify firewall rules that affect Team B's resources. Which approach BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. Grant Team A's admins the Compute Security Admin role on the host project net-host, scoped with an IAM condition that restricts the grant to firewall rule resources containing the target tag 'team-a-web'.</button><button class="opt" onclick="answer(this,0,1,0)">B. Grant Team A's admins the Owner role on their own service project team-a-svc.</button><button class="opt" onclick="answer(this,0,2,0)">C. Grant Team A's admins the Compute Network User role on the host project net-host.</button><button class="opt" onclick="answer(this,0,3,0)">D. Create a separate VPC network for Team A and connect it to the Shared VPC network using VPC Network Peering.</button>
+    <div class="expl">In Shared VPC, firewall rules always live in the host project, so any admin who manages them needs a role granted on the host project. Compute Security Admin grants firewall rule management, and an IAM condition can scope that grant to resources matching a specific tag, letting Team A manage only its own rules without touching Team B's.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Managing and provisioning a solution infrastructure">
+    <div class="meta">Question 2 of 6 · Managing and provisioning a solution infrastructure</div>
+    <div class="q">An organization has three VPC networks: vpc-finance, vpc-hr, and vpc-shared-services. vpc-finance is peered with vpc-shared-services, and vpc-hr is also peered with vpc-shared-services. A new requirement states that instances in vpc-finance must reach internal load balancers in vpc-hr using internal IP addresses, and the organization expects to add several more department VPCs with similar cross-communication needs in the near future. Which solution BEST meets these requirements with minimal ongoing management overhead?</div>
+    <button class="opt" onclick="answer(this,1,0,1)">A. Rely on the existing peering configuration, since VPC Network Peering is transitive and vpc-finance can already reach vpc-hr through vpc-shared-services.</button><button class="opt" onclick="answer(this,1,1,1)">B. Migrate the department VPCs to a Shared VPC architecture with a single host project, or adopt Network Connectivity Center in a hub-and-spoke topology.</button><button class="opt" onclick="answer(this,1,2,1)">C. Create a direct VPC Network Peering connection between vpc-finance and vpc-hr.</button><button class="opt" onclick="answer(this,1,3,1)">D. Configure Cloud VPN tunnels between vpc-finance and vpc-hr using their internal RFC 1918 IP ranges.</button>
+    <div class="expl">Shared VPC or Network Connectivity Center's hub-and-spoke model centralizes connectivity so that as new departments are added, they simply attach to the shared network or hub, avoiding a growing full mesh of point-to-point connections and reducing long-term operational overhead.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Managing and provisioning a solution infrastructure">
+    <div class="meta">Question 3 of 6 · Managing and provisioning a solution infrastructure</div>
+    <div class="q">A batch-processing workload runs on Compute Engine instances that have no external IP addresses. The instances must read objects from Cloud Storage and must also download base container images from Docker Hub on the public internet during startup. Which configuration is required to satisfy both requirements?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. Configure a Cloud NAT gateway on the subnet only.</button><button class="opt" onclick="answer(this,2,1,3)">B. Enable Private Google Access on the subnet only.</button><button class="opt" onclick="answer(this,2,2,3)">C. Temporarily assign external IP addresses to the instances during the startup phase.</button><button class="opt" onclick="answer(this,2,3,3)">D. Enable Private Google Access on the subnet AND configure a Cloud NAT gateway.</button>
+    <div class="expl">Private Google Access lets instances without external IPs reach Google APIs (like Cloud Storage) over Google's internal network path without consuming Cloud NAT resources, while Cloud NAT is required separately to allow outbound connections to non-Google internet destinations like Docker Hub. Both are needed together to satisfy the full requirement.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Managing and provisioning a solution infrastructure">
+    <div class="meta">Question 4 of 6 · Managing and provisioning a solution infrastructure</div>
+    <div class="q">A platform team already manages all Kubernetes workloads through GitOps: manifests are stored in a Git repository and reconciled onto GKE clusters by a continuous delivery operator. They now want to provision GCP resources, such as Cloud SQL instances and Cloud Storage buckets, using the same GitOps workflow and the same kubectl-based tooling, with the resources' state visible through the Kubernetes API alongside their application objects. Which tool should they use to provision the GCP resources?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. Cloud Deployment Manager.</button><button class="opt" onclick="answer(this,3,1,3)">B. Terraform with the Google provider, applied through a separate CI/CD pipeline outside of Kubernetes.</button><button class="opt" onclick="answer(this,3,2,3)">C. gcloud CLI scripts triggered by Cloud Build on every Git push.</button><button class="opt" onclick="answer(this,3,3,3)">D. Config Connector.</button>
+    <div class="expl">Config Connector exposes GCP resources as Kubernetes Custom Resources, letting teams manage Cloud SQL instances, Cloud Storage buckets, and other GCP services with kubectl and standard Kubernetes-native GitOps tooling, with state tracked in the Kubernetes API alongside application manifests.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Managing and provisioning a solution infrastructure">
+    <div class="meta">Question 5 of 6 · Managing and provisioning a solution infrastructure</div>
+    <div class="q">A team uses Cloud Build to build container images and wants a fully managed continuous delivery pipeline that automatically deploys new releases to a staging GKE cluster, then requires an explicit manual approval before that same release is promoted to the production GKE cluster. Which approach implements this promotion workflow with a built-in approval gate?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. Configure two separate Cloud Build triggers, one for staging and one for production, each firing independently on push to a branch.</button><button class="opt" onclick="answer(this,4,1,1)">B. Use Google Cloud Deploy to define a delivery pipeline with staging and production targets, enabling a required approval on the production target.</button><button class="opt" onclick="answer(this,4,2,1)">C. Use Cloud Scheduler to invoke the production Cloud Build trigger a fixed number of hours after the staging deployment completes.</button><button class="opt" onclick="answer(this,4,3,1)">D. Store images in Artifact Registry and use a Cloud Function triggered on new image push to deploy directly to production.</button>
+    <div class="expl">Cloud Deploy is the managed continuous delivery service for GKE (and other runtimes) that models a pipeline of progressive targets and natively supports requiring manual approval before a release is promoted to a given target, such as production, which is exactly the described gate.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Managing and provisioning a solution infrastructure">
+    <div class="meta">Question 6 of 6 · Managing and provisioning a solution infrastructure</div>
+    <div class="q">A company requires a hybrid connection between its on-premises data center and its VPC network with these requirements: 10 Gbps aggregate throughput, traffic that never traverses the public internet, and a 99.99% availability SLA. Which configuration BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. Two Dedicated Interconnect connections, each in a different Interconnect location, configured with redundant Cloud Routers.</button><button class="opt" onclick="answer(this,5,1,0)">B. A single Dedicated Interconnect connection with 10 Gbps of capacity.</button><button class="opt" onclick="answer(this,5,2,0)">C. Two Dedicated Interconnect connections in the same metro location but attached to different edge availability domains.</button><button class="opt" onclick="answer(this,5,3,0)">D. A Partner Interconnect connection combined with a Cloud VPN tunnel configured as an automatic failover path.</button>
+    <div class="expl">Google's documented Interconnect SLA tiers require two or more Dedicated Interconnect connections located in at least two different metropolitan (Interconnect) locations, along with redundant Cloud Routers, to qualify for the 99.99% availability SLA, while keeping traffic entirely off the public internet.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="A5F51EAB51242FE60905"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">undefined</span> <span class="price">$34.99</span> with code <span class="code">A5F51EAB51242FE60905</span> — valid through Sep 23.</p>
+  <a href="https://www.udemy.com/course/google-cloud-professional-cloud-architect-pca-prep/?couponCode=A5F51EAB51242FE60905" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

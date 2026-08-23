@@ -1,0 +1,74 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Monitor, troubleshoot, and optimize Azure solutions Practice Questions — Microsoft Certified: Azure Developer Associate</title>
+<meta name="description" content="6 free Monitor, troubleshoot, and optimize Azure solutions practice questions with explanations for the Microsoft Certified: Azure Developer Associate exam.">
+<link rel="canonical" href="https://technuggets.academy/az-204-monitor-troubleshoot-and-optimize-azure-solutions.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Monitor, troubleshoot, and optimize Azure solutions Practice Questions — Microsoft Certified: Azure Developer Associate">
+<meta property="og:description" content="6 free Monitor, troubleshoot, and optimize Azure solutions practice questions with explanations for the Microsoft Certified: Azure Developer Associate exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/az-204-monitor-troubleshoot-and-optimize-azure-solutions.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0078D4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Monitor, troubleshoot, and optimize Azure solutions</h1>
+<p class="sub">Free Microsoft Certified: Azure Developer Associate practice — 6 questions on <strong>Monitor, troubleshoot, and optimize Azure solutions</strong>, with explanations. No sign-up.
+<a href="az-204.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Monitor, troubleshoot, and optimize Azure solutions">
+    <div class="meta">Question 1 of 6 · Monitor, troubleshoot, and optimize Azure solutions</div>
+    <div class="q">A web application uses Azure Cache for Redis implementing the cache-aside pattern. During peak traffic, when a popular cache key expires, hundreds of concurrent requests simultaneously miss the cache and hit the backend SQL database at the same instant, causing CPU spikes and timeouts (a cache stampede). Which approach BEST prevents this while keeping the cache-aside pattern?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. Use a distributed lock (e.g., SET key value NX with a short expiry) so only one request repopulates the cache while others wait briefly or serve stale data</button><button class="opt" onclick="answer(this,0,1,0)">B. Increase the TTL on all cache keys so expirations happen less frequently</button><button class="opt" onclick="answer(this,0,2,0)">C. Switch to Azure Cache for Redis' built-in read-through caching provider so the cache automatically repopulates itself</button><button class="opt" onclick="answer(this,0,3,0)">D. Enable Redis clustering to shard the keyspace across multiple nodes</button>
+    <div class="expl">A distributed lock (using SETNX/SET NX semantics) ensures only one client regenerates the value for an expired key while concurrent callers either wait for a short period or return slightly stale/last-known data, eliminating simultaneous duplicate backend queries. This preserves the client-managed cache-aside pattern while solving the thundering-herd problem.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Monitor, troubleshoot, and optimize Azure solutions">
+    <div class="meta">Question 2 of 6 · Monitor, troubleshoot, and optimize Azure solutions</div>
+    <div class="q">A .NET application calls a third-party REST API using a standard HttpClient instance. The Application Insights SDK is installed and configured with default settings. Which capability automatically records this outbound call as a dependency (visible in the Application Map) without any additional custom telemetry code?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. The SDK's automatic dependency collection module, which instruments HttpClient calls out of the box</button><button class="opt" onclick="answer(this,1,1,0)">B. Manually calling TrackEvent() for each outbound HTTP call</button><button class="opt" onclick="answer(this,1,2,0)">C. Enabling Live Metrics Stream in the Azure portal</button><button class="opt" onclick="answer(this,1,3,0)">D. Configuring a webhook on an Availability Test to log outbound calls</button>
+    <div class="expl">The Application Insights SDK automatically instruments common dependency calls, including outbound HttpClient requests, SQL calls, and Azure SDK client calls, via its auto-collection dependency module — no custom TrackDependency code is required for standard scenarios.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Monitor, troubleshoot, and optimize Azure solutions">
+    <div class="meta">Question 3 of 6 · Monitor, troubleshoot, and optimize Azure solutions</div>
+    <div class="q">An Azure Front Door profile caches responses from a backend API. Clients request the same resource path but with varying tracking query string parameters (e.g., ?utm_source=x, ?utm_source=y) that have no effect on the actual response content. The cache hit ratio is very low because Front Door treats each unique query string as a distinct cache entry. Which caching rule configuration fixes this?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. Leave the default 'Cache every unique URL' behavior, since it already maximizes cache freshness</button><button class="opt" onclick="answer(this,2,1,1)">B. Set the caching rule's query string caching behavior to 'Ignore Query Strings'</button><button class="opt" onclick="answer(this,2,2,1)">C. Set the behavior to 'Include specified query strings' and add 'utm_source' to the include list</button><button class="opt" onclick="answer(this,2,3,1)">D. Disable caching entirely for any request that contains a query string</button>
+    <div class="expl">Since none of the varying query string parameters affect the response body, setting the caching behavior to 'Ignore Query Strings' makes Front Door cache a single entry per path regardless of query string values, maximizing the hit ratio for this scenario.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Monitor, troubleshoot, and optimize Azure solutions">
+    <div class="meta">Question 4 of 6 · Monitor, troubleshoot, and optimize Azure solutions</div>
+    <div class="q">You need a KQL query against the Application Insights 'requests' table in Log Analytics that returns the failure rate percentage per operation name over the last 24 hours, sorted from highest to lowest failure rate. Which query is correct?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. requests | where timestamp &gt; ago(24h) | summarize Total=count(), Failed=countif(success == &quot;false&quot;) by operation_Name | extend FailureRate = 100.0 * Failed / Total | order by FailureRate desc</button><button class="opt" onclick="answer(this,3,1,2)">B. requests | where timestamp &gt; ago(24h) | summarize FailureRate = avg(success) by operation_Name | order by FailureRate asc</button><button class="opt" onclick="answer(this,3,2,2)">C. requests | where timestamp &gt; ago(24h) | summarize Total=count(), Failed=countif(success == false) by operation_Name | extend FailureRate = round(100.0 * Failed / Total, 2) | order by FailureRate desc</button><button class="opt" onclick="answer(this,3,3,2)">D. requests | summarize Total=count(), Failed=countif(resultCode &gt;= &quot;500&quot;) by operation_Name | extend FailureRate = 100.0 * Failed / Total | order by FailureRate desc</button>
+    <div class="expl">This query correctly filters to the last 24 hours, uses the boolean 'success' column (comparing to the literal 'false', not the string &quot;false&quot;), computes the failure percentage per operation_Name, rounds it for readability, and sorts descending to surface the worst-performing operations first.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Monitor, troubleshoot, and optimize Azure solutions">
+    <div class="meta">Question 5 of 6 · Monitor, troubleshoot, and optimize Azure solutions</div>
+    <div class="q">Your team must monitor a critical business workflow that requires: (1) logging into a web app, (2) navigating to a dashboard, and (3) verifying a specific value is rendered — executed on a recurring schedule from multiple global regions. Which Application Insights approach should you configure?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. A custom availability test using the TrackAvailability() API inside a timer-triggered Azure Function that scripts the login, navigation, and verification steps</button><button class="opt" onclick="answer(this,4,1,0)">B. A URL ping test pointed at the dashboard URL</button><button class="opt" onclick="answer(this,4,2,0)">C. A Standard availability test with a custom success criteria header check</button><button class="opt" onclick="answer(this,4,3,0)">D. Live Metrics Stream with a custom KQL filter targeting the dashboard endpoint</button>
+    <div class="expl">URL ping and Standard availability tests only issue a single HTTP GET/HEAD request and check status codes/response content — they cannot perform multi-step interactions like login and navigation. For complex, stateful workflows, the documented pattern is to write custom code (e.g., using a browser automation library) that executes the steps and reports results using the TrackAvailability() API, typically run on a schedule via a timer-triggered Azure Function from multiple regions.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Monitor, troubleshoot, and optimize Azure solutions">
+    <div class="meta">Question 6 of 6 · Monitor, troubleshoot, and optimize Azure solutions</div>
+    <div class="q">Your application uses Azure Cache for Redis as a session store where losing session data is unacceptable. The cache is approaching its maxmemory limit. Which maxmemory-policy setting ensures Redis rejects new write commands rather than evicting any existing keys?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. allkeys-lru</button><button class="opt" onclick="answer(this,5,1,3)">B. volatile-lru</button><button class="opt" onclick="answer(this,5,2,3)">C. allkeys-random</button><button class="opt" onclick="answer(this,5,3,3)">D. noeviction</button>
+    <div class="expl">The 'noeviction' policy causes Redis to return an error on write commands once maxmemory is reached instead of evicting any keys, which is required when losing existing data (like session state) is unacceptable — the application must handle write failures gracefully instead of risking silent data loss.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/az-204-azure-developer-associate-exam-focused-prep/?referralCode=C963B2384D070A86FD31" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

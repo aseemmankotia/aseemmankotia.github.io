@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Network Implementations Practice Questions — CompTIA Network+</title>
+<meta name="description" content="6 free Network Implementations practice questions with explanations for the CompTIA Network+ exam.">
+<link rel="canonical" href="https://technuggets.academy/n10-009-network-implementations.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Network Implementations Practice Questions — CompTIA Network+">
+<meta property="og:description" content="6 free Network Implementations practice questions with explanations for the CompTIA Network+ exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/n10-009-network-implementations.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#C8202F}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Network Implementations</h1>
+<p class="sub">Free CompTIA Network+ practice — 6 questions on <strong>Network Implementations</strong>, with explanations. No sign-up.
+<a href="n10-009.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Network Implementations">
+    <div class="meta">Question 1 of 6 · Network Implementations</div>
+    <div class="q">A network has four switches participating in STP: SW1 (priority 32768, MAC 00:11:22:33:44:55), SW2 (priority 24576, MAC 00:99:88:77:66:55), SW3 (priority 32768, MAC 00:00:11:11:22:22), and SW4 (priority 4096, MAC 00:AA:BB:CC:DD:EE). Which switch will be elected the root bridge?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. SW1, because its MAC address is numerically first among the 32768-priority switches</button><button class="opt" onclick="answer(this,0,1,1)">B. SW4, because it has the lowest bridge priority value</button><button class="opt" onclick="answer(this,0,2,1)">C. SW3, because it has the lowest MAC address of all four switches</button><button class="opt" onclick="answer(this,0,3,1)">D. SW2, because its priority is lower than SW1 and SW3</button>
+    <div class="expl">The root bridge is the switch with the lowest Bridge ID, which is priority compared first, then MAC address as a tiebreaker. SW4's priority of 4096 is the lowest of all four values, so it wins regardless of its MAC address.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Network Implementations">
+    <div class="meta">Question 2 of 6 · Network Implementations</div>
+    <div class="q">A service provider needs to exchange routing information with multiple independent autonomous systems belonging to other organizations across the internet, requiring policy-based path selection rather than pure metric-based shortest path. Which routing protocol is designed for this use case?</div>
+    <button class="opt" onclick="answer(this,1,0,1)">A. EIGRP</button><button class="opt" onclick="answer(this,1,1,1)">B. BGP</button><button class="opt" onclick="answer(this,1,2,1)">C. OSPF</button><button class="opt" onclick="answer(this,1,3,1)">D. RIP</button>
+    <div class="expl">BGP is a path-vector, exterior gateway protocol built specifically for inter-AS routing on the internet, supporting policy-based decisions (AS-path, local preference, communities) rather than simple metrics.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Network Implementations">
+    <div class="meta">Question 3 of 6 · Network Implementations</div>
+    <div class="q">Two switches are connected via an 802.1Q trunk. Switch A is configured with native VLAN 1 on the trunk port, while Switch B is configured with native VLAN 99 on the same trunk port. Untagged frames sent from Switch A are unexpectedly appearing in VLAN 99 on Switch B. What configuration issue is occurring?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. Trunk encapsulation mismatch between ISL and 802.1Q</button><button class="opt" onclick="answer(this,2,1,3)">B. An incorrect allowed VLAN list is pruning traffic on the trunk</button><button class="opt" onclick="answer(this,2,2,3)">C. Port security has placed one of the trunk ports into err-disabled state</button><button class="opt" onclick="answer(this,2,3,3)">D. A native VLAN mismatch, which causes untagged traffic to cross between the differently-numbered native VLANs</button>
+    <div class="expl">Each switch strips the tag from frames destined to its own configured native VLAN before sending untagged, and the receiving switch assumes untagged frames belong to its own native VLAN. When the native VLAN numbers differ, untagged frames effectively leak from one VLAN into another, which is exactly the described symptom and a known VLAN-hopping risk.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Network Implementations">
+    <div class="meta">Question 4 of 6 · Network Implementations</div>
+    <div class="q">A company uses PAT to allow 300 internal hosts to share a single public IP address for internet access. During peak usage, users experience intermittent connection failures, and the engineer confirms the NAT translation table is near capacity. Which explanation and remediation BEST addresses this issue?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. PAT is limited to roughly 65,536 concurrent translations per public IP address due to the 16-bit source port field; add additional public IP addresses to the NAT pool to increase available translations</button><button class="opt" onclick="answer(this,3,1,0)">B. PAT requires a static one-to-one mapping per host; convert the configuration to static NAT for each user</button><button class="opt" onclick="answer(this,3,2,0)">C. PAT only translates TCP traffic; add a firewall rule to permit UDP traffic through the same public IP</button><button class="opt" onclick="answer(this,3,3,0)">D. NAT tables on all networking devices are hard-limited to 256 entries; a firmware upgrade is required to increase this ceiling</button>
+    <div class="expl">PAT distinguishes translations using the source port number, a 16-bit field, capping concurrent sessions at roughly 65,536 per public IP. Adding more public IP addresses to the NAT pool multiplies available port space, resolving exhaustion during peak load.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Network Implementations">
+    <div class="meta">Question 5 of 6 · Network Implementations</div>
+    <div class="q">An organization needs a 10GbE link between two buildings located 300 meters apart, connected via single-mode fiber. Which transceiver should be installed to support this distance and cable type?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. SFP+ 10GBASE-SR</button><button class="opt" onclick="answer(this,4,1,3)">B. SFP+ 10GBASE-T</button><button class="opt" onclick="answer(this,4,2,3)">C. QSFP+ 40GBASE-SR4</button><button class="opt" onclick="answer(this,4,3,3)">D. SFP+ 10GBASE-LR</button>
+    <div class="expl">10GBASE-LR is designed for single-mode fiber and supports distances up to approximately 10 kilometers, comfortably covering the 300-meter run described.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Network Implementations">
+    <div class="meta">Question 6 of 6 · Network Implementations</div>
+    <div class="q">Which statement accurately describes Wi-Fi 6E as defined in the 802.11ax amendment extension?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. Wi-Fi 6E is fully backward compatible, allowing all existing 802.11n and 802.11ac devices to automatically use the new 6 GHz channels</button><button class="opt" onclick="answer(this,5,1,3)">B. Wi-Fi 6E's primary improvement over standard Wi-Fi 6 is the addition of MU-MIMO, which was not previously available</button><button class="opt" onclick="answer(this,5,2,3)">C. Wi-Fi 6E extends usable range significantly further than 2.4 GHz due to the 6 GHz band's superior propagation characteristics</button><button class="opt" onclick="answer(this,5,3,3)">D. Wi-Fi 6E adds access to the 6 GHz band, but only devices with 6E-capable radios can use it, and it provides no backward compatibility for legacy 2.4/5 GHz-only devices on that band</button>
+    <div class="expl">Wi-Fi 6E extends Wi-Fi 6 into the new 6 GHz spectrum, offering more non-overlapping channels and wider channel widths (up to 160 MHz), but only client devices with radios explicitly supporting 6 GHz can connect there; legacy devices simply cannot see or use that band.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="E0363753E03D522425F4"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">undefined</span> <span class="price">$34.99</span> with code <span class="code">E0363753E03D522425F4</span> — valid through Sep 23.</p>
+  <a href="https://www.udemy.com/course/comptia-network-n10-009-exam-focused-prep/?couponCode=E0363753E03D522425F4" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

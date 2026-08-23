@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Manage Terraform state and remote backends Practice Questions — HashiCorp Certified: Terraform Associate (004)</title>
+<meta name="description" content="6 free Manage Terraform state and remote backends practice questions with explanations for the HashiCorp Certified: Terraform Associate (004) exam.">
+<link rel="canonical" href="https://technuggets.academy/ta-004-manage-terraform-state-and-remote-backends.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Manage Terraform state and remote backends Practice Questions — HashiCorp Certified: Terraform Associate (004)">
+<meta property="og:description" content="6 free Manage Terraform state and remote backends practice questions with explanations for the HashiCorp Certified: Terraform Associate (004) exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/ta-004-manage-terraform-state-and-remote-backends.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Manage Terraform state and remote backends</h1>
+<p class="sub">Free HashiCorp Certified: Terraform Associate (004) practice — 6 questions on <strong>Manage Terraform state and remote backends</strong>, with explanations. No sign-up.
+<a href="ta-004.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Manage Terraform state and remote backends">
+    <div class="meta">Question 1 of 6 · Manage Terraform state and remote backends</div>
+    <div class="q">A team enables state locking for an S3 backend but wants to avoid provisioning a separate DynamoDB table. They are running Terraform 1.10. Which backend configuration argument enables native S3-based locking using conditional writes instead of DynamoDB?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. dynamodb_table = &quot;terraform-locks&quot;</button><button class="opt" onclick="answer(this,0,1,3)">B. lock_table = &quot;terraform-locks&quot;</button><button class="opt" onclick="answer(this,0,2,3)">C. enable_native_lock = true</button><button class="opt" onclick="answer(this,0,3,3)">D. use_lockfile = true</button>
+    <div class="expl">Terraform 1.10 introduced native S3 state locking via S3's conditional write (If-None-Match) support. Setting use_lockfile = true in the s3 backend block enables this without requiring a DynamoDB table.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Manage Terraform state and remote backends">
+    <div class="meta">Question 2 of 6 · Manage Terraform state and remote backends</div>
+    <div class="q">A resource attribute containing a database password is marked sensitive = true in an output block, but a teammate later opens the raw state file and finds the plaintext value. What is the correct explanation and remediation?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. Marking a value sensitive encrypts it inside the state file; the teammate must have used an outdated Terraform version</button><button class="opt" onclick="answer(this,1,1,2)">B. Run terraform state rm on the resource immediately after apply to purge the value from state</button><button class="opt" onclick="answer(this,1,2,2)">C. The sensitive flag only suppresses the value from CLI output and the UI — it does not encrypt state; store state in a backend with encryption at rest and restrict access via IAM policy</button><button class="opt" onclick="answer(this,1,3,2)">D. Replace the resource with a null_resource wrapper so the attribute is never written to state</button>
+    <div class="expl">The sensitive attribute only redacts values from plan/apply CLI output and the HCP Terraform UI. The state file itself always stores the real value in plaintext (in the JSON structure), so protecting it requires backend-level encryption at rest plus strict IAM/access control on who can read the state.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Manage Terraform state and remote backends">
+    <div class="meta">Question 3 of 6 · Manage Terraform state and remote backends</div>
+    <div class="q">A team is renaming a resource across a module used by 12 CI-driven environments (workspaces). They need the change to apply consistently and automatically the next time each environment's pipeline runs terraform plan, without any engineer needing to run a manual command against every workspace. Which approach BEST satisfies this requirement?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. Have each environment's engineer run terraform state mv manually before the next apply</button><button class="opt" onclick="answer(this,2,1,1)">B. Add a moved block to the configuration mapping the old address to the new one</button><button class="opt" onclick="answer(this,2,2,1)">C. Run terraform import against each workspace with the new resource address</button><button class="opt" onclick="answer(this,2,3,1)">D. Delete the resource from state with terraform state rm and let Terraform recreate it under the new name</button>
+    <div class="expl">The moved block is committed directly to the configuration, so it is version-controlled and automatically applied by Terraform's plan/apply logic in every workspace and CI run — no manual per-environment command is required.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Manage Terraform state and remote backends">
+    <div class="meta">Question 4 of 6 · Manage Terraform state and remote backends</div>
+    <div class="q">A resource block is deleted from configuration, but the team wants Terraform to stop managing the corresponding real-world infrastructure WITHOUT destroying it, and wants this decision version-controlled so every teammate and CI pipeline applies it consistently. Which approach BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. Have each engineer run terraform state rm on their own machine before applying</button><button class="opt" onclick="answer(this,3,1,2)">B. Add a moved block pointing the old address to a new address that doesn't exist</button><button class="opt" onclick="answer(this,3,2,2)">C. Add a removed block referencing the resource with a lifecycle { destroy = false } setting</button><button class="opt" onclick="answer(this,3,3,2)">D. Run terraform apply with the -refresh-only flag to detach the resource</button>
+    <div class="expl">The removed block (introduced in Terraform 1.7) is written directly in configuration and version-controlled. Setting lifecycle { destroy = false } tells Terraform to stop managing the resource and drop it from state without issuing a destroy call against the real infrastructure — and it's consistently applied by every plan/apply, including CI.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Manage Terraform state and remote backends">
+    <div class="meta">Question 5 of 6 · Manage Terraform state and remote backends</div>
+    <div class="q">What does running terraform plan -refresh-only actually produce?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. A proposed set of configuration changes to bring real infrastructure into alignment with the current .tf files</button><button class="opt" onclick="answer(this,4,1,1)">B. A report showing differences between the current state file and the real infrastructure, without proposing any configuration-driven changes</button><button class="opt" onclick="answer(this,4,2,1)">C. An automatic update of the state file to match real infrastructure, applied immediately without confirmation</button><button class="opt" onclick="answer(this,4,3,1)">D. A refreshed list of available provider plugin versions compatible with the configuration</button>
+    <div class="expl">-refresh-only mode queries real infrastructure and compares it to the state file, surfacing drift (out-of-band changes) as a plan of proposed STATE updates only — it never proposes changes derived from the .tf configuration.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Manage Terraform state and remote backends">
+    <div class="meta">Question 6 of 6 · Manage Terraform state and remote backends</div>
+    <div class="q">A team runs terraform import aws_instance.web i-0abc123456 against a configuration that has no aws_instance.web resource block defined anywhere in the .tf files. What is the result?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. Terraform automatically generates a matching HCL resource block for aws_instance.web based on the imported attributes</button><button class="opt" onclick="answer(this,5,1,1)">B. Terraform errors out, stating the resource address does not exist in the configuration, because the classic import command requires a pre-existing resource block</button><button class="opt" onclick="answer(this,5,2,1)">C. The import succeeds, and the next terraform plan will show the resource must be destroyed since no config matches it</button><button class="opt" onclick="answer(this,5,3,1)">D. The import silently fails and the state file remains completely unchanged with no error message</button>
+    <div class="expl">The classic terraform import CLI command only writes to the state file — it requires a resource block with that exact address to already exist in configuration, and errors immediately if it does not find one. Automatic HCL generation is only available via the newer `import` configuration block with the -generate-config-out flag, not the legacy import command.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">undefined</span> <span class="price">$34.99</span> with code <span class="code">FREETEST33</span> — valid through Sep 23.</p>
+  <a href="https://www.udemy.com/course/terraform-associate-004-certification-prep/?couponCode=FREETEST33" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

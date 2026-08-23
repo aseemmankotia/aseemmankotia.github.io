@@ -1,0 +1,122 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Microsoft Certified: Azure Administrator Associate Practice Test — 12 Real Exam-Style Questions</title>
+<meta name="description" content="Free Microsoft Certified: Azure Administrator Associate practice questions with detailed explanations. Test yourself before the real exam.">
+<link rel="canonical" href="https://technuggets.academy/az-104.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Microsoft Certified: Azure Administrator Associate Practice Test — 12 Real Exam-Style Questions">
+<meta property="og:description" content="Free Microsoft Certified: Azure Administrator Associate practice questions with detailed explanations. Test yourself before the real exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/az-104.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0078D4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div><div class="hero">
+  <span class="chip">AZ-104</span>
+  <h1>Free Microsoft Certified: Azure Administrator Associate Practice Test</h1>
+  <p class="sub">12 exam-style questions with full explanations — no sign-up. Score yourself, then close your gaps with the full course.</p>
+  <div class="facts"><span class="fact">Exam fee <b>~$165</b></span><span class="fact"><b>5</b> exam domains</span><span class="fact">Level <b>Intermediate</b></span><span class="fact"><b>2</b> timed practice tests in the course</span></div>
+  <div class="cta-row"><a class="btn enroll" href="https://www.udemy.com/course/az-104-azure-administrator-associate-exam-prep-g/?referralCode=D00137EB1DCF6F4CB465" rel="sponsored" target="_blank">Start my full course on Udemy →</a><a class="btn ghost" href="#practice">Try the free test →</a></div>
+</div><div class="trust"><span>✅ <b>Free</b> practice — no sign-up</span><span>📝 Real exam-style questions</span><span>💡 Detailed explanations</span><span>💸 30-day money-back via Udemy</span></div>
+<div id="practice"></div>
+
+  <div class="card qcard" id="q0" data-domain="Manage Azure identities and governance">
+    <div class="meta">Question 1 of 12 · Manage Azure identities and governance</div>
+    <div class="q">A company has a Microsoft Entra ID tenant with 5,000 users. The IT team wants to delegate password reset and basic user management permissions for only the 200 users in the Marketing department to a departmental helpdesk group, without granting them any permissions over other users in the tenant. What should the administrator configure?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. Assign the Helpdesk Administrator Microsoft Entra role to the helpdesk group at the tenant level</button><button class="opt" onclick="answer(this,0,1,3)">B. Create a custom Azure RBAC role and assign it at the resource group scope containing Marketing resources</button><button class="opt" onclick="answer(this,0,2,3)">C. Create a dynamic security group for Marketing users and assign the Owner role at the subscription scope</button><button class="opt" onclick="answer(this,0,3,3)">D. Create an administrative unit containing the Marketing users and assign the Helpdesk Administrator role scoped to that administrative unit</button>
+    <div class="expl">Administrative units let you scope a Microsoft Entra role such as Helpdesk Administrator to a defined subset of users or groups, restricting management capability to only the Marketing users.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Implement and manage storage">
+    <div class="meta">Question 2 of 12 · Implement and manage storage</div>
+    <div class="q">A company runs a mission-critical application that must remain available if an entire datacenter within the primary region fails, and must also allow read access to data from a secondary region if the primary region becomes completely unavailable. Which storage redundancy option BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,1,0,1)">A. LRS</button><button class="opt" onclick="answer(this,1,1,1)">B. RA-GZRS</button><button class="opt" onclick="answer(this,1,2,1)">C. ZRS</button><button class="opt" onclick="answer(this,1,3,1)">D. GRS</button>
+    <div class="expl">RA-GZRS combines zone-redundant storage within the primary region (protecting against datacenter/zone failure) with geo-replication to a secondary region and read access (RA) to that secondary region during an outage — the only option satisfying both requirements.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Deploy and manage Azure compute resources">
+    <div class="meta">Question 3 of 12 · Deploy and manage Azure compute resources</div>
+    <div class="q">A company runs a two-tier web application on two Azure VMs. The finance team requires the solution to meet a 99.99% uptime SLA in the event of a datacenter-level failure. Which configuration meets this requirement?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. Place both VMs in the same Availability Set with two fault domains</button><button class="opt" onclick="answer(this,2,1,1)">B. Deploy each VM into a different Availability Zone within the same region</button><button class="opt" onclick="answer(this,2,2,1)">C. Deploy both VMs in the same Availability Zone using Premium SSD disks</button><button class="opt" onclick="answer(this,2,3,1)">D. Deploy a single VM and configure Azure Site Recovery for failover</button>
+    <div class="expl">Two or more VMs deployed across different Availability Zones and running in the same zone-redundant configuration are covered by Microsoft's 99.99% SLA, since zones are physically separate datacenters with independent power, cooling, and networking.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Implement and manage virtual networking">
+    <div class="meta">Question 4 of 12 · Implement and manage virtual networking</div>
+    <div class="q">VNet-A is peered with VNet-B, and VNet-B is peered with VNet-C. VNet-A is NOT peered with VNet-C. A VM in VNet-A needs to communicate directly with a VM in VNet-C using private IP addresses. What should you do?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. Create a direct VNet peering connection between VNet-A and VNet-C</button><button class="opt" onclick="answer(this,3,1,0)">B. Do nothing — VNet peering is transitive, so VNet-A can already reach VNet-C through VNet-B</button><button class="opt" onclick="answer(this,3,2,0)">C. Deploy a VPN Gateway in VNet-B and configure gateway transit for VNet-A and VNet-C</button><button class="opt" onclick="answer(this,3,3,0)">D. Add a user-defined route in VNet-A pointing traffic for VNet-C's address space to the VNet-B gateway</button>
+    <div class="expl">Azure VNet peering is non-transitive by design. Even though A-B and B-C are peered, A and C have no relationship unless a direct peering is explicitly created between them.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Monitor and maintain Azure resources">
+    <div class="meta">Question 5 of 12 · Monitor and maintain Azure resources</div>
+    <div class="q">A company requires an RPO of under 5 minutes and an RTO of under 15 minutes for its production VMs in the event of a regional outage. Which solution BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. Azure Backup configured with a daily backup policy</button><button class="opt" onclick="answer(this,4,1,3)">B. A Recovery Services vault snapshot with weekly retention</button><button class="opt" onclick="answer(this,4,2,3)">C. Azure Backup using an enhanced policy that takes backups every 4 hours</button><button class="opt" onclick="answer(this,4,3,3)">D. Azure Site Recovery replicating the VMs to a secondary Azure region</button>
+    <div class="expl">Azure Site Recovery continuously replicates VM disk changes to a secondary region, achieving an RPO as low as 30 seconds to a few minutes, and allows failover within minutes to meet the 15-minute RTO.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Manage Azure identities and governance">
+    <div class="meta">Question 6 of 12 · Manage Azure identities and governance</div>
+    <div class="q">An organization must ensure that every resource group created in any subscription automatically includes a 'CostCenter' tag, and that resource group creation is blocked if the tag is missing. Which Azure governance feature should be used?</div>
+    <button class="opt" onclick="answer(this,5,0,2)">A. A custom Azure RBAC role that requires a tag input parameter</button><button class="opt" onclick="answer(this,5,1,2)">B. A resource lock of type CanNotDelete applied to each resource group</button><button class="opt" onclick="answer(this,5,2,2)">C. Azure Policy with a 'deny' effect requiring the CostCenter tag</button><button class="opt" onclick="answer(this,5,3,2)">D. A Microsoft Entra administrative unit scoped to the resource groups</button>
+    <div class="expl">Azure Policy with a deny effect evaluates resource creation requests and blocks non-compliant ones, making it the correct tool to enforce mandatory tagging.</div>
+  </div>
+
+  <div class="card qcard" id="q6" data-domain="Implement and manage storage">
+    <div class="meta">Question 7 of 12 · Implement and manage storage</div>
+    <div class="q">A media company stores raw video footage that is accessed frequently for editing during the first 30 days after upload, rarely accessed afterward, and must be retained for compliance after one year with access latency of several hours being acceptable. Which lifecycle management tier progression BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,6,0,1)">A. Cool tier for first 30 days, then Hot, then delete after 1 year</button><button class="opt" onclick="answer(this,6,1,1)">B. Hot tier for first 30 days, then Cool tier, then Archive tier after 1 year</button><button class="opt" onclick="answer(this,6,2,1)">C. Hot tier permanently for the entire lifecycle</button><button class="opt" onclick="answer(this,6,3,1)">D. Archive tier immediately, rehydrate to Hot after 30 days</button>
+    <div class="expl">Hot tier is optimized for frequent access during the active editing period, Cool tier reduces storage cost for infrequently accessed data after 30 days, and Archive tier offers the lowest cost for long-term compliance retention where hours-long rehydration latency is acceptable.</div>
+  </div>
+
+  <div class="card qcard" id="q7" data-domain="Deploy and manage Azure compute resources">
+    <div class="meta">Question 8 of 12 · Deploy and manage Azure compute resources</div>
+    <div class="q">A development team needs to run a single containerized batch job that executes for about 3 minutes, requires no orchestration, has no persistent state, and should be billed only for the seconds it actually runs. Which Azure service is the BEST fit?</div>
+    <button class="opt" onclick="answer(this,7,0,3)">A. Azure Kubernetes Service (AKS)</button><button class="opt" onclick="answer(this,7,1,3)">B. Azure App Service for Containers</button><button class="opt" onclick="answer(this,7,2,3)">C. Azure Container Apps</button><button class="opt" onclick="answer(this,7,3,3)">D. Azure Container Instances (ACI)</button>
+    <div class="expl">ACI is designed for running single, standalone containers with no orchestration overhead, billed per second of vCPU/memory consumption — ideal for short-lived, stateless batch jobs.</div>
+  </div>
+
+  <div class="card qcard" id="q8" data-domain="Implement and manage virtual networking">
+    <div class="meta">Question 9 of 12 · Implement and manage virtual networking</div>
+    <div class="q">You create an Azure Private DNS zone named contoso.internal and add an A record for a VM. VMs in VNet1 still cannot resolve contoso.internal names, even though they use the default Azure-provided DNS. What is the most likely cause?</div>
+    <button class="opt" onclick="answer(this,8,0,2)">A. Private DNS zones require a custom DNS server IP to be manually configured on each VM</button><button class="opt" onclick="answer(this,8,1,2)">B. The A record TTL is too high and has not expired yet</button><button class="opt" onclick="answer(this,8,2,2)">C. The private DNS zone has not been linked to VNet1 via a virtual network link</button><button class="opt" onclick="answer(this,8,3,2)">D. Private DNS zones only work with VNets that have a VPN Gateway attached</button>
+    <div class="expl">A Private DNS zone only resolves names for VNets that have an explicit virtual network link created (either with or without auto-registration). Without the link, the zone is invisible to VMs in that VNet.</div>
+  </div>
+
+  <div class="card qcard" id="q9" data-domain="Monitor and maintain Azure resources">
+    <div class="meta">Question 10 of 12 · Monitor and maintain Azure resources</div>
+    <div class="q">A VM in Azure cannot reach a specific external website. You need to test the actual network path and pinpoint whether an NSG rule, user-defined route, or other configuration is blocking the connection. Which Network Watcher tool should you use?</div>
+    <button class="opt" onclick="answer(this,9,0,0)">A. Network Watcher Connection Troubleshoot</button><button class="opt" onclick="answer(this,9,1,0)">B. Network Watcher IP Flow Verify</button><button class="opt" onclick="answer(this,9,2,0)">C. Azure Monitor Network Diagnostics</button><button class="opt" onclick="answer(this,9,3,0)">D. NSG flow logs</button>
+    <div class="expl">Connection Troubleshoot performs an actual connection test to a destination and reports hop-by-hop results, identifying whether NSGs, user-defined routes, or other configuration issues are blocking traffic.</div>
+  </div>
+
+  <div class="card qcard" id="q10" data-domain="Manage Azure identities and governance">
+    <div class="meta">Question 11 of 12 · Manage Azure identities and governance</div>
+    <div class="q">An administrator assigns an Azure Policy definition with a 'DeployIfNotExists' effect to enable diagnostic settings on all storage accounts in a subscription. After assignment, 40 pre-existing storage accounts remain non-compliant. What must the administrator do to bring these existing resources into compliance?</div>
+    <button class="opt" onclick="answer(this,10,0,1)">A. Change the policy effect to 'Deny' and reassign the policy</button><button class="opt" onclick="answer(this,10,1,1)">B. Create and run a remediation task for the policy assignment</button><button class="opt" onclick="answer(this,10,2,1)">C. Manually enable diagnostic settings on each of the 40 storage accounts</button><button class="opt" onclick="answer(this,10,3,1)">D. Wait 24 hours for the next policy compliance scan to automatically fix the resources</button>
+    <div class="expl">DeployIfNotExists and Modify effects only apply automatically to new or updated resources going forward; a remediation task must be created and run to apply the deployment action to existing non-compliant resources.</div>
+  </div>
+
+  <div class="card qcard" id="q11" data-domain="Implement and manage storage">
+    <div class="meta">Question 12 of 12 · Implement and manage storage</div>
+    <div class="q">An administrator needs to grant a third-party application temporary write access to a specific blob container for 24 hours, without exposing the storage account key and without granting access to other containers in the account. Which mechanism should be used?</div>
+    <button class="opt" onclick="answer(this,11,0,0)">A. Create a Service SAS scoped to the specific container with a 24-hour expiry</button><button class="opt" onclick="answer(this,11,1,0)">B. Grant access using the storage account key directly</button><button class="opt" onclick="answer(this,11,2,0)">C. Create an Account SAS scoped to all blob services</button><button class="opt" onclick="answer(this,11,3,0)">D. Enable public read access at the container level</button>
+    <div class="expl">A Service SAS can be scoped to a single container, granted specific permissions (such as write), and given a defined expiry time, meeting the requirement without exposing the account key or granting broader access.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/az-104-azure-administrator-associate-exam-prep-g/?referralCode=D00137EB1DCF6F4CB465" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<section class="faq"><h3>AZ-104 exam — quick answers</h3><details><summary>How much does the AZ-104 exam cost?</summary><p>The exam fee is approximately $165 and varies by region — confirm current pricing with the certification vendor before you book.</p></details><details><summary>What topics are on the exam?</summary><p>It covers 5 domains: Manage Azure identities and governance (20-25%), Implement and manage storage (15-20%), Deploy and manage Azure compute resources (20-25%), Implement and manage virtual networking (15-20%), Monitor and maintain Azure resources (10-15%). The full course has a dedicated chapter, lab and practice-test coverage for each.</p></details><details><summary>Is this practice test really free?</summary><p>Yes — all questions on this page are free with explanations and no sign-up. The paid Udemy course adds two full-length timed exams, video lessons and hands-on labs.</p></details><details><summary>Will this prepare me for the real exam?</summary><p>The questions mirror the real exam's style and are mapped to the official domains. This is exam-focused preparation — combine the free test with the full course's timed simulations to gauge your readiness.</p></details></section>
+<div class="domains"><span class="meta">More free practice by exam domain:</span><br><a href="az-104-manage-azure-identities-and-governance.html">Manage Azure identities and governance →</a><a href="az-104-implement-and-manage-storage.html">Implement and manage storage →</a><a href="az-104-deploy-and-manage-azure-compute-resources.html">Deploy and manage Azure compute resources →</a><a href="az-104-implement-and-manage-virtual-networking.html">Implement and manage virtual networking →</a><a href="az-104-monitor-and-maintain-azure-resources.html">Monitor and maintain Azure resources →</a></div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

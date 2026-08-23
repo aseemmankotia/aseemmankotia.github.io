@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Network Troubleshooting Practice Questions — CompTIA Network+</title>
+<meta name="description" content="6 free Network Troubleshooting practice questions with explanations for the CompTIA Network+ exam.">
+<link rel="canonical" href="https://technuggets.academy/n10-009-network-troubleshooting.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Network Troubleshooting Practice Questions — CompTIA Network+">
+<meta property="og:description" content="6 free Network Troubleshooting practice questions with explanations for the CompTIA Network+ exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/n10-009-network-troubleshooting.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#C8202F}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Network Troubleshooting</h1>
+<p class="sub">Free CompTIA Network+ practice — 6 questions on <strong>Network Troubleshooting</strong>, with explanations. No sign-up.
+<a href="n10-009.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Network Troubleshooting">
+    <div class="meta">Question 1 of 6 · Network Troubleshooting</div>
+    <div class="q">A fiber link between two buildings has been experiencing intermittent high error rates. A technician suspects a micro-bend or a partial break somewhere along the 2 km run and needs to pinpoint the exact distance to the fault from the near end. Which tool should be used?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. Tone generator and probe</button><button class="opt" onclick="answer(this,0,1,1)">B. OTDR (Optical Time Domain Reflectometer)</button><button class="opt" onclick="answer(this,0,2,1)">C. Cable certifier</button><button class="opt" onclick="answer(this,0,3,1)">D. Loopback adapter</button>
+    <div class="expl">An OTDR sends light pulses down the fiber and measures reflected/backscattered light to calculate the exact distance to breaks, bends, or connector faults — essential for locating faults on long fiber runs.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Network Troubleshooting">
+    <div class="meta">Question 2 of 6 · Network Troubleshooting</div>
+    <div class="q">Hosts on VLAN 20 can successfully ping hosts on VLAN 10, and packet captures on VLAN 10 confirm the ICMP echo requests arrive and echo replies are sent. However, VLAN 20 hosts report the pings time out. A stateful firewall sits between the VLANs, and each VLAN's traffic takes a different physical path to and from the firewall. What is the MOST likely cause?</div>
+    <button class="opt" onclick="answer(this,1,0,1)">A. An exhausted DHCP scope on VLAN 10</button><button class="opt" onclick="answer(this,1,1,1)">B. Asymmetric routing causing the stateful firewall to drop the return traffic</button><button class="opt" onclick="answer(this,1,2,1)">C. A duplicate IP address on VLAN 20</button><button class="opt" onclick="answer(this,1,3,1)">D. An incorrect subnet mask configured on VLAN 20 hosts</button>
+    <div class="expl">Because each direction of traffic follows a different path, the stateful firewall only sees the reply and never saw the matching outbound request in its session table, so it treats the reply as unsolicited and drops it — a classic asymmetric routing problem.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Network Troubleshooting">
+    <div class="meta">Question 3 of 6 · Network Troubleshooting</div>
+    <div class="q">A server connected to a switch port configured for 1000 Mbps/Full duplex is experiencing intermittent slow throughput. The engineer wants definitive proof that a duplex mismatch (one side running full duplex while the other runs half duplex) is the root cause. Which approach will BEST confirm this?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. Run nslookup against the server's hostname</button><button class="opt" onclick="answer(this,2,1,1)">B. Capture traffic with a protocol analyzer and look for late collisions and CRC/FCS errors</button><button class="opt" onclick="answer(this,2,2,1)">C. Check ipconfig /all on the server for its assigned IP</button><button class="opt" onclick="answer(this,2,3,1)">D. Ping the server with an increased packet size (-l 9000)</button>
+    <div class="expl">Late collisions and CRC/FCS errors captured in a protocol analyzer trace are the hallmark symptom of a duplex mismatch — one side is transmitting while the other is also transmitting because it doesn't believe collision detection is needed, corrupting frames.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Network Troubleshooting">
+    <div class="meta">Question 4 of 6 · Network Troubleshooting</div>
+    <div class="q">A network originally provisioned with a DHCP scope of 192.168.1.100–192.168.1.150 supported 50 devices. The office has since grown to 300 devices, and new devices are now receiving 169.254.x.x addresses while existing devices keep working. What is the BEST long-term solution?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. Increase the size of the DHCP scope to accommodate more addresses</button><button class="opt" onclick="answer(this,3,1,0)">B. Reduce the DHCP lease time to 5 minutes</button><button class="opt" onclick="answer(this,3,2,0)">C. Configure a DHCP relay agent on the router</button><button class="opt" onclick="answer(this,3,3,0)">D. Enable DNS round robin on the DHCP server</button>
+    <div class="expl">The 169.254.x.x (APIPA) addresses indicate the scope is fully exhausted; expanding the scope (or adding a supplemental scope/subnet) permanently resolves the shortage for a network that has genuinely outgrown its original address pool.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Network Troubleshooting">
+    <div class="meta">Question 5 of 6 · Network Troubleshooting</div>
+    <div class="q">In a high-density Wi-Fi 6 deployment with many closely spaced access points, users report high latency and excessive retransmissions even though RSSI readings show strong signal everywhere. What is the MOST likely cause, and what tool should be used to confirm it?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. Co-channel interference from overlapping APs on the same channel; confirm using a Wi-Fi analyzer to review channel utilization</button><button class="opt" onclick="answer(this,4,1,0)">B. Weak signal strength; confirm using a spectrum analyzer</button><button class="opt" onclick="answer(this,4,2,0)">C. Faulty patch cable to the AP; confirm using a cable tester</button><button class="opt" onclick="answer(this,4,3,0)">D. DNS server misconfiguration; confirm using nslookup</button>
+    <div class="expl">Strong RSSI with high latency/retransmissions in a dense deployment is the classic signature of co-channel interference (multiple APs sharing the same channel causing contention); a Wi-Fi analyzer showing channel utilization and overlapping BSSIDs on the same channel confirms this.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Network Troubleshooting">
+    <div class="meta">Question 6 of 6 · Network Troubleshooting</div>
+    <div class="q">While troubleshooting a name resolution issue, a technician runs 'dig www.example.com' against a public DNS server and receives a response containing 'flags: qr rd ra;' (notably missing the 'aa' flag) along with a populated ANSWER SECTION. What does the absence of the 'aa' flag indicate?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. DNSSEC validation has failed for the domain</button><button class="opt" onclick="answer(this,5,1,3)">B. The query failed and no record was returned</button><button class="opt" onclick="answer(this,5,2,3)">C. The response is from a server that is authoritative for example.com</button><button class="opt" onclick="answer(this,5,3,3)">D. The response is a non-authoritative (cached) answer from a recursive resolver</button>
+    <div class="expl">The 'aa' (authoritative answer) flag is set only when the responding server is authoritative for the queried zone. Its absence, combined with 'ra' (recursion available) and a populated answer, indicates a recursive resolver is returning a cached, non-authoritative answer on behalf of the authoritative server.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="E0363753E03D522425F4"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">undefined</span> <span class="price">$34.99</span> with code <span class="code">E0363753E03D522425F4</span> — valid through Sep 23.</p>
+  <a href="https://www.udemy.com/course/comptia-network-n10-009-exam-focused-prep/?couponCode=E0363753E03D522425F4" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

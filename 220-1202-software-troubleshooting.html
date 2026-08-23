@@ -1,0 +1,74 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Software Troubleshooting Practice Questions — CompTIA A+ (Core 2)</title>
+<meta name="description" content="6 free Software Troubleshooting practice questions with explanations for the CompTIA A+ (Core 2) exam.">
+<link rel="canonical" href="https://technuggets.academy/220-1202-software-troubleshooting.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Software Troubleshooting Practice Questions — CompTIA A+ (Core 2)">
+<meta property="og:description" content="6 free Software Troubleshooting practice questions with explanations for the CompTIA A+ (Core 2) exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/220-1202-software-troubleshooting.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#C8202F}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Software Troubleshooting</h1>
+<p class="sub">Free CompTIA A+ (Core 2) practice — 6 questions on <strong>Software Troubleshooting</strong>, with explanations. No sign-up.
+<a href="220-1202.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Software Troubleshooting">
+    <div class="meta">Question 1 of 6 · Software Troubleshooting</div>
+    <div class="q">A technician has already investigated symptoms and quarantined an infected workstation from the network, following CompTIA best-practice malware removal procedures. What is the correct NEXT step before remediating the system?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. Educate the end user on how the infection occurred</button><button class="opt" onclick="answer(this,0,1,3)">B. Update anti-malware software and run a full scan</button><button class="opt" onclick="answer(this,0,2,3)">C. Schedule automatic scans and run Windows Updates</button><button class="opt" onclick="answer(this,0,3,3)">D. Disable System Restore in Windows</button>
+    <div class="expl">CompTIA's official malware removal order is: 1) Identify/investigate symptoms, 2) Quarantine infected systems, 3) Disable System Restore, 4) Remediate infected systems (update anti-malware and scan), 5) Schedule scans and run updates, 6) Enable System Restore and create a restore point, 7) Educate the end user. Disabling System Restore comes immediately after quarantine so the malware isn't preserved in restore points.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Software Troubleshooting">
+    <div class="meta">Question 2 of 6 · Software Troubleshooting</div>
+    <div class="q">A user reports their laptop displayed a blue screen referencing a third-party driver file after installing a new printer, and the system now automatically reboots before the error can be read. Which troubleshooting step should the technician perform FIRST to safely diagnose the issue?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. Reinstall Windows using the recovery partition</button><button class="opt" onclick="answer(this,1,1,2)">B. Run chkdsk /f /r on the system drive immediately</button><button class="opt" onclick="answer(this,1,2,2)">C. Boot into Safe Mode and check Device Manager and Event Viewer for the faulting driver</button><button class="opt" onclick="answer(this,1,3,2)">D. Replace the laptop's RAM modules</button>
+    <div class="expl">Safe Mode loads only essential drivers, preventing the faulty third-party driver from loading and causing another crash. From Safe Mode, Event Viewer and Device Manager can be used to identify and roll back or remove the problematic driver referenced in the BSOD.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Software Troubleshooting">
+    <div class="meta">Question 3 of 6 · Software Troubleshooting</div>
+    <div class="q">A critical Windows service fails to start and Event Viewer logs Error 1053: 'The service did not respond to the start or control request in a timely fashion.' The technician checks Services.msc and finds the service it depends on is set to Disabled. What is the MOST likely fix?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. Set the dependent service's startup type to Automatic and start it, then start the original service</button><button class="opt" onclick="answer(this,2,1,0)">B. Increase the ServicesPipeTimeout registry value</button><button class="opt" onclick="answer(this,2,2,0)">C. Uninstall and reinstall the application associated with the service</button><button class="opt" onclick="answer(this,2,3,0)">D. Run System File Checker (sfc /scannow) to repair the service executable</button>
+    <div class="expl">A service depending on another service that is disabled will fail to start because its dependency chain is broken. Setting the dependency service to Automatic and starting it resolves the root cause, allowing the dependent service to start normally afterward.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Software Troubleshooting">
+    <div class="meta">Question 4 of 6 · Software Troubleshooting</div>
+    <div class="q">A user logs into their Windows 11 workstation and sees the message 'You have been logged on with a temporary profile. You cannot access your files and files created in this profile will be deleted when you log off.' Simply deleting and recreating the user profile through System Properties has not fixed the issue on repeat logins. What should the technician check next?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. The ProfileList registry key for a duplicate or corrupted SID entry ending in .bak</button><button class="opt" onclick="answer(this,3,1,0)">B. The user's password expiration policy in Local Security Policy</button><button class="opt" onclick="answer(this,3,2,0)">C. The NTFS permissions on the C:\Windows\System32 folder</button><button class="opt" onclick="answer(this,3,3,0)">D. The maximum profile size quota configured in Group Policy</button>
+    <div class="expl">Recurring temporary profile issues are commonly caused by a corrupted entry under HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProfileList, where Windows creates a duplicate SID key with a .bak suffix during a failed profile load. Renaming/removing the corrupted key and correcting the State value resolves the root cause that a simple profile deletion won't fix.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Software Troubleshooting">
+    <div class="meta">Question 5 of 6 · Software Troubleshooting</div>
+    <div class="q">Windows Update on a workstation repeatedly fails to install a cumulative update, showing the same error code after multiple restart attempts. A quick reboot did not fix it. Which sequence of actions is the BEST next troubleshooting approach?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. Immediately reinstall Windows from a recovery image to guarantee update success</button><button class="opt" onclick="answer(this,4,1,2)">B. Perform a System Restore to a point before the update was ever offered</button><button class="opt" onclick="answer(this,4,2,2)">C. Run DISM /Online /Cleanup-Image /RestoreHealth, then run SFC /scannow, then retry Windows Update</button><button class="opt" onclick="answer(this,4,3,2)">D. Disable the Windows Update service entirely so the error stops appearing</button>
+    <div class="expl">Repeated update failures often indicate corruption in the Windows component store or system files. DISM repairs the component store from Windows Update sources, and SFC then repairs system files using that repaired store, resolving most persistent update failures without a full OS reinstall.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Software Troubleshooting">
+    <div class="meta">Question 6 of 6 · Software Troubleshooting</div>
+    <div class="q">A user reports that all of their personal documents now have a '.locked' file extension, and a text file on the desktop demands cryptocurrency payment to restore access. Which category of malware does this describe?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. Ransomware</button><button class="opt" onclick="answer(this,5,1,0)">B. Rootkit</button><button class="opt" onclick="answer(this,5,2,0)">C. Keylogger</button><button class="opt" onclick="answer(this,5,3,0)">D. Trojan</button>
+    <div class="expl">Ransomware encrypts a victim's files and demands payment (often cryptocurrency) for the decryption key, exactly matching the symptoms of renamed/encrypted files and a ransom note.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/comptia-a-core-2-220-1202-exam-prep-course/?referralCode=A5AE61D1C709A7886458" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

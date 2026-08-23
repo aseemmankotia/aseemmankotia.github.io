@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Monitoring, Logging, and Remediation Practice Questions — AWS Certified SysOps Administrator - Associate</title>
+<meta name="description" content="6 free Monitoring, Logging, and Remediation practice questions with explanations for the AWS Certified SysOps Administrator - Associate exam.">
+<link rel="canonical" href="https://technuggets.academy/soa-c02-monitoring-logging-and-remediation.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Monitoring, Logging, and Remediation Practice Questions — AWS Certified SysOps Administrator - Associate">
+<meta property="og:description" content="6 free Monitoring, Logging, and Remediation practice questions with explanations for the AWS Certified SysOps Administrator - Associate exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/soa-c02-monitoring-logging-and-remediation.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#FF9900}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Monitoring, Logging, and Remediation</h1>
+<p class="sub">Free AWS Certified SysOps Administrator - Associate practice — 6 questions on <strong>Monitoring, Logging, and Remediation</strong>, with explanations. No sign-up.
+<a href="soa-c02.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Monitoring, Logging, and Remediation">
+    <div class="meta">Question 1 of 6 · Monitoring, Logging, and Remediation</div>
+    <div class="q">A SysOps administrator wants to create a CloudWatch alarm that automatically adapts to the normal traffic pattern of an application and triggers only when metric values fall outside an expected range that accounts for time-of-day and day-of-week seasonality. Which alarm configuration should the administrator use?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. Create a static threshold alarm using the metric's average statistic with a period of 300 seconds</button><button class="opt" onclick="answer(this,0,1,2)">B. Create a composite alarm that combines two static threshold alarms using AND logic</button><button class="opt" onclick="answer(this,0,2,2)">C. Create an alarm based on the ANOMALY_DETECTION_BAND metric math expression, and set the alarm condition to trigger when the metric is 'Outside the band'</button><button class="opt" onclick="answer(this,0,3,2)">D. Enable the AWS Config configuration recorder and use metric filters to detect anomalies</button>
+    <div class="expl">ANOMALY_DETECTION_BAND(m1, stdev) is a CloudWatch metric math function that builds a machine-learning-derived expected range accounting for hourly, daily, and weekly seasonality; the alarm is then configured to trigger when the metric value is outside that band.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Monitoring, Logging, and Remediation">
+    <div class="meta">Question 2 of 6 · Monitoring, Logging, and Remediation</div>
+    <div class="q">An organization must ensure the CloudWatch agent is installed and running with a specific configuration on every EC2 instance in a large fleet, including instances launched in the future, with compliance checked and enforced every 30 minutes without any manual intervention. Which Systems Manager capability should be used?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. AWS Systems Manager State Manager association targeting instances by tag, with a rate(30 minutes) schedule expression for continuous compliance enforcement</button><button class="opt" onclick="answer(this,1,1,0)">B. AWS Systems Manager Run Command, executed manually whenever a new instance launches</button><button class="opt" onclick="answer(this,1,2,0)">C. AWS Systems Manager Automation runbook triggered by an EventBridge scheduled rule every 30 minutes</button><button class="opt" onclick="answer(this,1,3,0)">D. An AWS Config conformance pack with a periodic rule evaluation frequency of 30 minutes</button>
+    <div class="expl">State Manager associations are purpose-built for continuous, fleet-wide state enforcement: they target instances by tag (so newly launched matching instances are automatically included), run on a defined schedule such as rate(30 minutes), and re-apply the desired configuration without manual steps.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Monitoring, Logging, and Remediation">
+    <div class="meta">Question 3 of 6 · Monitoring, Logging, and Remediation</div>
+    <div class="q">A SysOps administrator configures an AWS Config rule named s3-bucket-versioning-enabled to detect S3 buckets without versioning enabled. Non-compliant buckets must be automatically remediated using the AWS-ConfigureS3BucketVersioning SSM Automation document, with up to 3 attempts spaced 60 seconds apart if an attempt fails. Which remediation configuration satisfies this requirement?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. Leave Automatic remediation disabled, and manually run the SSM document from the AWS Config console whenever a bucket is found non-compliant</button><button class="opt" onclick="answer(this,2,1,1)">B. Enable Automatic remediation on the remediation action, set MaximumAutomaticAttempts to 3, and set RetryAttemptSeconds to 60</button><button class="opt" onclick="answer(this,2,2,1)">C. Create an EventBridge rule matching AWS Config compliance-change events that invokes a Lambda function to run the SSM document once, with no built-in retry logic</button><button class="opt" onclick="answer(this,2,3,1)">D. Set MaximumAutomaticAttempts to 1 and rely on the SSM document's internal loop to retry three times every 60 seconds</button>
+    <div class="expl">AWS Config remediation configurations natively support Automatic remediation with the parameters MaximumAutomaticAttempts (number of retry attempts) and RetryAttemptSeconds (delay between attempts), fully satisfying the requirement without extra custom logic.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Monitoring, Logging, and Remediation">
+    <div class="meta">Question 4 of 6 · Monitoring, Logging, and Remediation</div>
+    <div class="q">An application writes structured JSON log entries to CloudWatch Logs containing fields @timestamp, statusCode, and latencyMs. A SysOps administrator needs a CloudWatch Logs Insights query that counts requests grouped by statusCode, only for requests where latencyMs is greater than 1000, sorted by count in descending order. Which query accomplishes this?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. fields statusCode\n| stats avg(latencyMs) by statusCode\n| filter latencyMs &gt; 1000</button><button class="opt" onclick="answer(this,3,1,1)">B. fields statusCode, latencyMs\n| filter latencyMs &gt; 1000\n| stats count(*) by statusCode\n| sort count(*) desc</button><button class="opt" onclick="answer(this,3,2,1)">C. fields @timestamp, statusCode\n| filter latencyMs &gt; 1000\n| stats sum(statusCode)\n| sort desc</button><button class="opt" onclick="answer(this,3,3,1)">D. parse @message &quot;statusCode&quot;\n| filter latencyMs &gt; 1000\n| group by statusCode\n| order by count desc</button>
+    <div class="expl">Logs Insights syntax applies filter before aggregation, then uses stats count(*) by &lt;field&gt; to group counts, followed by sort &lt;function&gt; desc to order results — exactly matching the requirement to filter by latency, group by statusCode, and sort by count descending.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Monitoring, Logging, and Remediation">
+    <div class="meta">Question 5 of 6 · Monitoring, Logging, and Remediation</div>
+    <div class="q">A monitoring team manages an application with two CloudWatch alarms: one for high CPU utilization and one for high application error rate. Both alarms trigger frequently during expected traffic spikes even though the application remains healthy, causing alarm fatigue. The team wants a single alarm that enters ALARM state only when BOTH the CPU and error-rate conditions are true at the same time. What should they implement?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. Increase the number of evaluation periods on both existing alarms to reduce sensitivity</button><button class="opt" onclick="answer(this,4,1,2)">B. Combine both metrics into a single metric math expression using the SUM function and alarm on the combined value</button><button class="opt" onclick="answer(this,4,2,2)">C. Create a composite alarm with an AlarmRule expression such as ALARM(cpu-alarm) AND ALARM(error-alarm)</button><button class="opt" onclick="answer(this,4,3,2)">D. Enable CloudWatch anomaly detection independently on both metrics and turn on alarm action suppression</button>
+    <div class="expl">Composite alarms use a boolean AlarmRule expression that references the states of other alarms (ALARM(), OK(), INSUFFICIENT_DATA()); combining two alarms with AND logic means the composite alarm only enters ALARM state when both underlying conditions are true simultaneously, directly addressing the noise-reduction goal.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Monitoring, Logging, and Remediation">
+    <div class="meta">Question 6 of 6 · Monitoring, Logging, and Remediation</div>
+    <div class="q">A company wants to automatically remediate EC2 instances that transition to a 'stopped' state unexpectedly (excluding scheduled maintenance stops on instances tagged Maintenance=true) by invoking a Lambda function that restarts the instance and sends a notification. Which EventBridge-based approach correctly identifies only the unexpected stop events?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. Create a rule with source aws.ec2 and detail-type 'EC2 Instance State-change Notification' matching detail.state = 'stopped'; have the Lambda function query the EC2 DescribeTags API and exit without action if the Maintenance=true tag is present</button><button class="opt" onclick="answer(this,5,1,0)">B. Create a rule with source aws.ec2 and detail-type 'EC2 Instance State-change Notification' matching detail.state = 'stopped', and use an input transformer to filter based on the instance's tags before invoking Lambda</button><button class="opt" onclick="answer(this,5,2,0)">C. Create a rule with detail-type 'EC2 Instance State-change Notification' whose event pattern references detail.state and the instance's resource tags directly, since state-change notifications include a full tag list</button><button class="opt" onclick="answer(this,5,3,0)">D. Create a CloudTrail-based EventBridge rule matching only eventName 'StopInstances', since CloudTrail always includes full resource tags for direct pattern matching, and this reliably captures every stop scenario</button>
+    <div class="expl">EC2 Instance State-change Notification events do not include resource tag data in the event detail, so tag-based filtering cannot be done through EventBridge pattern matching alone. The Lambda function must call the EC2 API (e.g., DescribeTags) at invocation time to check for the Maintenance tag and decide whether to act — this is the standard and correct pattern.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="89CE4ED79F19FA855B6D"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">undefined</span> <span class="price">$34.99</span> with code <span class="code">89CE4ED79F19FA855B6D</span> — valid through Sep 23.</p>
+  <a href="https://www.udemy.com/course/aws-sysops-administrator-soa-c02-exam-prep/?couponCode=89CE4ED79F19FA855B6D" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

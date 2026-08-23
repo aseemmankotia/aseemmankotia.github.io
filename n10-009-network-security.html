@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Network Security Practice Questions — CompTIA Network+</title>
+<meta name="description" content="6 free Network Security practice questions with explanations for the CompTIA Network+ exam.">
+<link rel="canonical" href="https://technuggets.academy/n10-009-network-security.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Network Security Practice Questions — CompTIA Network+">
+<meta property="og:description" content="6 free Network Security practice questions with explanations for the CompTIA Network+ exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/n10-009-network-security.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#C8202F}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Network Security</h1>
+<p class="sub">Free CompTIA Network+ practice — 6 questions on <strong>Network Security</strong>, with explanations. No sign-up.
+<a href="n10-009.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Network Security">
+    <div class="meta">Question 1 of 6 · Network Security</div>
+    <div class="q">An attacker connects a laptop to an access switch port and crafts frames with two 802.1Q tags: the outer tag matches the port's native VLAN and the inner tag matches a restricted VLAN. The first switch strips the outer tag (since it matches native VLAN) and forwards the frame with the inner tag intact to the trunk, allowing the frame to land on the restricted VLAN on a downstream switch. Which single mitigation BEST prevents this specific attack?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. Change the native VLAN on trunk ports to an unused VLAN ID not assigned to any access port</button><button class="opt" onclick="answer(this,0,1,0)">B. Enable BPDU guard on all access ports</button><button class="opt" onclick="answer(this,0,2,0)">C. Enable DHCP snooping on all VLANs</button><button class="opt" onclick="answer(this,0,3,0)">D. Configure port security with a maximum of one MAC address per port</button>
+    <div class="expl">Double-tagging VLAN hopping relies on the outer tag matching the native (untagged) VLAN of the trunk so it gets stripped. Moving the native VLAN to an unused, dedicated VLAN ID removes the exploitable overlap between native VLAN and any access VLAN, defeating the technique.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Network Security">
+    <div class="meta">Question 2 of 6 · Network Security</div>
+    <div class="q">A network engineer configures port security on an access switch with a maximum of 2 MAC addresses per port. Security policy requires that when a violation occurs, the port must immediately go into an err-disabled state requiring manual administrator intervention to recover, and an SNMP trap must be generated. Which violation mode satisfies this requirement?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. restrict</button><button class="opt" onclick="answer(this,1,1,2)">B. protect</button><button class="opt" onclick="answer(this,1,2,2)">C. shutdown</button><button class="opt" onclick="answer(this,1,3,2)">D. sticky</button>
+    <div class="expl">The 'shutdown' violation mode (the Cisco default) disables the port completely (err-disabled), generates a syslog message and SNMP trap, and requires an administrator to manually re-enable the port (or configure err-disable recovery). This matches the requirement for administrator intervention and alerting.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Network Security">
+    <div class="meta">Question 3 of 6 · Network Security</div>
+    <div class="q">A rogue employee connects an unauthorized wireless router to a wired switch port in a break room. The rogue device begins issuing IP leases to nearby wired clients, causing intermittent connectivity failures across the floor as clients receive conflicting gateway information. Which switch feature, once properly configured, would have prevented this outcome?</div>
+    <button class="opt" onclick="answer(this,2,0,2)">A. Dynamic ARP Inspection (DAI)</button><button class="opt" onclick="answer(this,2,1,2)">B. 802.1X port-based authentication</button><button class="opt" onclick="answer(this,2,2,2)">C. DHCP snooping with the rogue device's port set as untrusted</button><button class="opt" onclick="answer(this,2,3,2)">D. Private VLANs (PVLANs)</button>
+    <div class="expl">DHCP snooping distinguishes trusted ports (facing legitimate DHCP servers) from untrusted ports (facing end users). DHCP server messages (OFFER, ACK) arriving on an untrusted port are dropped, which stops a rogue DHCP server plugged into an access port from handing out leases.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Network Security">
+    <div class="meta">Question 4 of 6 · Network Security</div>
+    <div class="q">A company requires an IPsec VPN tunnel that provides confidentiality (payload encryption) in addition to data integrity and origin authentication for all traffic crossing the tunnel. Which IPsec component must be used to meet this requirement?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. Authentication Header (AH)</button><button class="opt" onclick="answer(this,3,1,1)">B. Encapsulating Security Payload (ESP)</button><button class="opt" onclick="answer(this,3,2,1)">C. Internet Key Exchange (IKE) Phase 1 only</button><button class="opt" onclick="answer(this,3,3,1)">D. Security Association (SA) in transport mode only</button>
+    <div class="expl">ESP provides encryption (confidentiality) of the payload along with optional integrity and authentication, making it the only listed option capable of meeting all three stated requirements including encryption.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Network Security">
+    <div class="meta">Question 5 of 6 · Network Security</div>
+    <div class="q">In an 802.1X deployment, a switch port is configured to require authentication before granting network access to a connected laptop. The laptop runs client software that supplies credentials, and a backend server validates those credentials using RADIUS before the switch unblocks the port. Which role does the SWITCH play in this 802.1X exchange?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. Supplicant</button><button class="opt" onclick="answer(this,4,1,3)">B. Authentication server</button><button class="opt" onclick="answer(this,4,2,3)">C. RADIUS client acting as the supplicant</button><button class="opt" onclick="answer(this,4,3,3)">D. Authenticator</button>
+    <div class="expl">In 802.1X, the switch (or wireless AP) is the authenticator: it controls the physical/logical port state, relays credentials between the supplicant and the authentication server, and only unblocks the port after receiving approval from the authentication server.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Network Security">
+    <div class="meta">Question 6 of 6 · Network Security</div>
+    <div class="q">Users on a corporate campus report intermittent disconnections from the legitimate SSID, followed by automatic reconnection to a network with the identical SSID and a stronger signal, after which their traffic seems to be intercepted. Wireless spectrum analysis reveals a second access point broadcasting the same SSID and BSSID characteristics as the legitimate AP but with different backend connectivity. Which control specifically detects and helps mitigate this type of attack going forward?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. Wireless Intrusion Prevention System (WIPS)</button><button class="opt" onclick="answer(this,5,1,0)">B. WPA3-Personal with SAE</button><button class="opt" onclick="answer(this,5,2,0)">C. MAC address filtering on the legitimate AP</button><button class="opt" onclick="answer(this,5,3,0)">D. Disabling SSID broadcast on the legitimate AP</button>
+    <div class="expl">This scenario describes an evil twin / rogue AP attack combined with deauthentication to force clients to associate with the attacker's AP. A WIPS continuously monitors RF spectrum for rogue/duplicate APs and unauthorized BSSIDs, can alert administrators, and can actively contain rogue APs, making it the purpose-built control for detecting and mitigating this attack.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="E0363753E03D522425F4"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">undefined</span> <span class="price">$34.99</span> with code <span class="code">E0363753E03D522425F4</span> — valid through Sep 23.</p>
+  <a href="https://www.udemy.com/course/comptia-network-n10-009-exam-focused-prep/?couponCode=E0363753E03D522425F4" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>
