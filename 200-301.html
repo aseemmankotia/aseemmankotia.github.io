@@ -1,0 +1,131 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Cisco Certified Network Associate (CCNA) Practice Test — 12 Real Exam-Style Questions</title>
+<meta name="description" content="Free Cisco Certified Network Associate (CCNA) practice questions with detailed explanations. Test yourself before the real exam.">
+<link rel="canonical" href="https://technuggets.academy/200-301.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Cisco Certified Network Associate (CCNA) Practice Test — 12 Real Exam-Style Questions">
+<meta property="og:description" content="Free Cisco Certified Network Associate (CCNA) practice questions with detailed explanations. Test yourself before the real exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/200-301.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div><div class="hero">
+  <span class="chip">200-301</span>
+  <h1>Free Cisco Certified Network Associate (CCNA) Practice Test</h1>
+  <p class="sub">12 exam-style questions with full explanations — no sign-up. Score yourself, then close your gaps with the full course.</p>
+  <div class="facts"><span class="fact">Exam fee <b>~$300</b></span><span class="fact"><b>6</b> exam domains</span><span class="fact">Level <b>Intermediate</b></span><span class="fact"><b>2</b> timed practice tests in the course</span></div>
+  <div class="cta-row"><a class="btn enroll" href="https://www.udemy.com/course/ccna-200-301-v11-exam-prep-complete-course/" rel="sponsored" target="_blank">Start my full course on Udemy →</a><a class="btn ghost" href="#practice">Try the free test →</a></div>
+</div><div class="trust"><span>✅ <b>Free</b> practice — no sign-up</span><span>📝 Real exam-style questions</span><span>💡 Detailed explanations</span><span>💸 30-day money-back via Udemy</span></div>
+<div id="practice"></div>
+
+  <div class="card qcard" id="q0" data-domain="Network Fundamentals">
+    <div class="meta">Question 1 of 12 · Network Fundamentals</div>
+    <div class="q">A network engineer must create a subnet from 192.168.10.0/24 that supports exactly 30 usable host addresses with the least amount of wasted address space. Which subnet mask should be used?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. 255.255.255.192 (/26)</button><button class="opt" onclick="answer(this,0,1,2)">B. 255.255.255.240 (/28)</button><button class="opt" onclick="answer(this,0,2,2)">C. 255.255.255.224 (/27)</button><button class="opt" onclick="answer(this,0,3,2)">D. 255.255.255.128 (/25)</button>
+    <div class="expl">A /27 mask provides 5 host bits (2^5 - 2 = 30 usable addresses), exactly matching the requirement with the least wasted space.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Network Access">
+    <div class="meta">Question 2 of 12 · Network Access</div>
+    <div class="q">A switch port connects to a single end-user PC. The PC should belong only to VLAN 20 and should not receive any tagged frames. Which configuration is correct for this port?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. switchport mode trunk; switchport trunk allowed vlan 20</button><button class="opt" onclick="answer(this,1,1,2)">B. switchport mode dynamic desirable; switchport access vlan 20</button><button class="opt" onclick="answer(this,1,2,2)">C. switchport mode access; switchport access vlan 20</button><button class="opt" onclick="answer(this,1,3,2)">D. switchport mode trunk; switchport trunk native vlan 20</button>
+    <div class="expl">An end-user host needs an access port, not a trunk. 'switchport mode access' combined with 'switchport access vlan 20' assigns the port to VLAN 20 untagged, which is exactly what a single-host connection requires.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="IP Connectivity">
+    <div class="meta">Question 3 of 12 · IP Connectivity</div>
+    <div class="q">A router learns the following routes to reach destination network 172.16.10.0/24: an OSPF route with administrative distance 110 and metric 20, an EIGRP route with administrative distance 90 and metric 3072, and a static route with administrative distance 1 (no AD specified in the configuration). Which route is installed in the routing table?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. The static route, because it has the lowest administrative distance</button><button class="opt" onclick="answer(this,2,1,0)">B. The OSPF route, because OSPF has the best metric calculation</button><button class="opt" onclick="answer(this,2,2,0)">C. The EIGRP route, because EIGRP metrics are more granular</button><button class="opt" onclick="answer(this,2,3,0)">D. All three routes, because the router load-balances across all available paths to the same destination</button>
+    <div class="expl">When multiple sources advertise a route to the same destination, the router selects the route with the lowest administrative distance. A static route defaults to AD 1, which beats EIGRP (90) and OSPF (110), so it is installed regardless of metric.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="IP Services">
+    <div class="meta">Question 4 of 12 · IP Services</div>
+    <div class="q">A network administrator needs internal hosts on 10.1.1.0/24 to access the internet using a single public IP address, 203.0.113.5, which is already assigned to the router's outside interface. Which configuration BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. ip nat inside source static 10.1.1.0 203.0.113.5</button><button class="opt" onclick="answer(this,3,1,1)">B. ip nat inside source list 1 interface GigabitEthernet0/1 overload</button><button class="opt" onclick="answer(this,3,2,1)">C. ip nat inside source list 1 pool PUBLICPOOL overload</button><button class="opt" onclick="answer(this,3,3,1)">D. ip nat outside source list 1 interface GigabitEthernet0/1 overload</button>
+    <div class="expl">Using 'ip nat inside source list 1 interface GigabitEthernet0/1 overload' performs PAT (NAT overload) using the IP address already configured on the outside interface, allowing all hosts matched by ACL 1 to share that single public address via unique port mappings — exactly what the requirement calls for.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Security Fundamentals">
+    <div class="meta">Question 5 of 12 · Security Fundamentals</div>
+    <div class="q">A network engineer configures port security on an access-layer switch port. The requirement states: when an unauthorized MAC address is detected, the offending frames must be dropped, a syslog/SNMP notification must be generated, and the port must remain in a forwarding (up) state. Which port security violation mode satisfies this requirement?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. shutdown</button><button class="opt" onclick="answer(this,4,1,3)">B. protect</button><button class="opt" onclick="answer(this,4,2,3)">C. sticky</button><button class="opt" onclick="answer(this,4,3,3)">D. restrict</button>
+    <div class="expl">The restrict violation mode drops traffic from the unauthorized MAC address, increments the violation counter, and generates a syslog message and SNMP trap, while leaving the interface operational.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Automation and Programmability">
+    <div class="meta">Question 6 of 12 · Automation and Programmability</div>
+    <div class="q">A network engineer manages 200 switches individually via SSH and CLI, making configuration changes one device at a time, which is time consuming and error-prone. The engineer wants to push consistent VLAN configurations to all switches simultaneously from a single management platform. Which approach BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. Deploy Cisco DNA Center to manage devices via a controller-based architecture</button><button class="opt" onclick="answer(this,5,1,0)">B. Write a Python script to SSH into each switch and push CLI commands sequentially</button><button class="opt" onclick="answer(this,5,2,0)">C. Use SNMPv2 polling to monitor VLAN status on each switch</button><button class="opt" onclick="answer(this,5,3,0)">D. Configure each switch with local SPAN sessions</button>
+    <div class="expl">Cisco DNA Center provides centralized, controller-based management that lets an engineer define and push consistent configuration policies (like VLANs) to many devices at once through northbound APIs and templates, eliminating per-device CLI work.</div>
+  </div>
+
+  <div class="card qcard" id="q6" data-domain="Network Fundamentals">
+    <div class="meta">Question 7 of 12 · Network Fundamentals</div>
+    <div class="q">Which IPv6 address range is automatically assigned to every IPv6-enabled interface, is used for on-link communication such as neighbor discovery, and is never routed beyond the local segment?</div>
+    <button class="opt" onclick="answer(this,6,0,1)">A. FF00::/8</button><button class="opt" onclick="answer(this,6,1,1)">B. FE80::/10</button><button class="opt" onclick="answer(this,6,2,1)">C. FC00::/7</button><button class="opt" onclick="answer(this,6,3,1)">D. 2000::/3</button>
+    <div class="expl">FE80::/10 is the link-local address range, automatically configured on every interface and required for protocols like Neighbor Discovery Protocol; it is never forwarded by routers.</div>
+  </div>
+
+  <div class="card qcard" id="q7" data-domain="Network Access">
+    <div class="meta">Question 8 of 12 · Network Access</div>
+    <div class="q">Two switches are connected by an 802.1Q trunk. SW1 is configured with native VLAN 1 and SW2 with native VLAN 99. CDP reports a native VLAN mismatch, and untagged traffic intended for VLAN 1 is being delivered incorrectly. Which action resolves this issue?</div>
+    <button class="opt" onclick="answer(this,7,0,0)">A. Set both switches' native VLAN to the same value</button><button class="opt" onclick="answer(this,7,1,0)">B. Disable CDP on the trunk link</button><button class="opt" onclick="answer(this,7,2,0)">C. Add an allowed VLAN list that includes only the tagged VLANs</button><button class="opt" onclick="answer(this,7,3,0)">D. Change the trunk to access mode on both switches</button>
+    <div class="expl">A native VLAN mismatch occurs when each end of an 802.1Q trunk treats a different VLAN as untagged. Matching the native VLAN on both ends eliminates the mismatch and restores correct forwarding of untagged frames.</div>
+  </div>
+
+  <div class="card qcard" id="q8" data-domain="IP Connectivity">
+    <div class="meta">Question 9 of 12 · IP Connectivity</div>
+    <div class="q">A router's routing table contains the following entries: 10.1.0.0/16 via 192.168.1.1, 10.1.1.0/24 via 192.168.2.1, and 10.0.0.0/8 via 192.168.3.1. A packet arrives destined for 10.1.1.50. Which next hop does the router use to forward the packet?</div>
+    <button class="opt" onclick="answer(this,8,0,3)">A. 192.168.1.1, because it is listed first in the routing table</button><button class="opt" onclick="answer(this,8,1,3)">B. 192.168.3.1, because the /8 summary route takes priority for aggregation</button><button class="opt" onclick="answer(this,8,2,3)">C. The router load-balances the packet across all three next hops since all three prefixes match the destination</button><button class="opt" onclick="answer(this,8,3,3)">D. 192.168.2.1, because it is the longest prefix match for the destination address</button>
+    <div class="expl">By default, Cisco IOS routers use the longest match (most specific prefix) rule to forward packets. The /24 route is the most specific match for 10.1.1.50, so the router forwards via 192.168.2.1 even though the /16 and /8 routes also technically match.</div>
+  </div>
+
+  <div class="card qcard" id="q9" data-domain="IP Services">
+    <div class="meta">Question 10 of 12 · IP Services</div>
+    <div class="q">Which statement accurately describes NTP stratum levels as tested on the CCNA exam?</div>
+    <button class="opt" onclick="answer(this,9,0,2)">A. Higher stratum numbers indicate closer proximity to the authoritative time source</button><button class="opt" onclick="answer(this,9,1,2)">B. Stratum 0 servers are the devices most commonly used for client synchronization directly over the network</button><button class="opt" onclick="answer(this,9,2,2)">C. Stratum 1 servers are directly connected to an authoritative time source such as a GPS or atomic clock, and the stratum number increases by 1 for each additional hop away from that source</button><button class="opt" onclick="answer(this,9,3,2)">D. Stratum level has no effect on which time source a client selects when multiple NTP servers are available</button>
+    <div class="expl">NTP stratum defines distance from the reference clock: stratum 0 devices are the reference clocks themselves (not directly polled over the network), stratum 1 servers are directly attached to them, and each subsequent hop increases the stratum number by one, up to a maximum of 15.</div>
+  </div>
+
+  <div class="card qcard" id="q10" data-domain="Security Fundamentals">
+    <div class="meta">Question 11 of 12 · Security Fundamentals</div>
+    <div class="q">An attacker connects an unauthorized DHCP server to an access switch port and begins issuing rogue IP configurations, including a malicious default gateway, to clients on the VLAN. Which security feature should be enabled on the switch to prevent this specific attack?</div>
+    <button class="opt" onclick="answer(this,10,0,0)">A. DHCP snooping</button><button class="opt" onclick="answer(this,10,1,0)">B. Port security</button><button class="opt" onclick="answer(this,10,2,0)">C. Dynamic ARP Inspection (DAI)</button><button class="opt" onclick="answer(this,10,3,0)">D. 802.1X</button>
+    <div class="expl">DHCP snooping classifies switch ports as trusted or untrusted and blocks DHCP server responses (OFFER/ACK) arriving on untrusted ports, directly preventing rogue DHCP servers from serving clients.</div>
+  </div>
+
+  <div class="card qcard" id="q11" data-domain="Automation and Programmability">
+    <div class="meta">Question 12 of 12 · Automation and Programmability</div>
+    <div class="q">A REST API returns the following JSON data:
+{
+  &quot;interface&quot;: {
+    &quot;name&quot;: &quot;GigabitEthernet0/1&quot;,
+    &quot;status&quot;: &quot;up&quot;,
+    &quot;vlans&quot;: [10, 20, 30]
+  }
+}
+Which statement about this JSON data is correct?</div>
+    <button class="opt" onclick="answer(this,11,0,1)">A. &quot;vlans&quot; is a JSON object containing three key-value pairs</button><button class="opt" onclick="answer(this,11,1,1)">B. &quot;vlans&quot; is a JSON array containing three numeric values</button><button class="opt" onclick="answer(this,11,2,1)">C. &quot;interface&quot; is a JSON array containing three elements</button><button class="opt" onclick="answer(this,11,3,1)">D. &quot;status&quot; is a JSON array with a single string value</button>
+    <div class="expl">The value of &quot;vlans&quot; is enclosed in square brackets [10, 20, 30], which is JSON syntax for an array containing three numeric elements.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/ccna-200-301-v11-exam-prep-complete-course/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<section class="faq"><h3>200-301 exam — quick answers</h3><details><summary>How much does the 200-301 exam cost?</summary><p>The exam fee is approximately $300 and varies by region — confirm current pricing with the certification vendor before you book.</p></details><details><summary>What topics are on the exam?</summary><p>It covers 6 domains: Network Fundamentals (20%), Network Access (20%), IP Connectivity (25%), IP Services (10%), Security Fundamentals (15%), Automation and Programmability (10%). The full course has a dedicated chapter, lab and practice-test coverage for each.</p></details><details><summary>Is this practice test really free?</summary><p>Yes — all questions on this page are free with explanations and no sign-up. The paid Udemy course adds two full-length timed exams, video lessons and hands-on labs.</p></details><details><summary>Will this prepare me for the real exam?</summary><p>The questions mirror the real exam's style and are mapped to the official domains. This is exam-focused preparation — combine the free test with the full course's timed simulations to gauge your readiness.</p></details></section>
+<div class="domains"><span class="meta">More free practice by exam domain:</span><br><a href="200-301-network-fundamentals.html">Network Fundamentals →</a><a href="200-301-network-access.html">Network Access →</a><a href="200-301-ip-connectivity.html">IP Connectivity →</a><a href="200-301-security-fundamentals.html">Security Fundamentals →</a></div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

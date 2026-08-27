@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Network Fundamentals Practice Questions — Cisco Certified Network Associate (CCNA)</title>
+<meta name="description" content="6 free Network Fundamentals practice questions with explanations for the Cisco Certified Network Associate (CCNA) exam.">
+<link rel="canonical" href="https://technuggets.academy/200-301-network-fundamentals.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Network Fundamentals Practice Questions — Cisco Certified Network Associate (CCNA)">
+<meta property="og:description" content="6 free Network Fundamentals practice questions with explanations for the Cisco Certified Network Associate (CCNA) exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/200-301-network-fundamentals.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Network Fundamentals</h1>
+<p class="sub">Free Cisco Certified Network Associate (CCNA) practice — 6 questions on <strong>Network Fundamentals</strong>, with explanations. No sign-up.
+<a href="200-301.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Network Fundamentals">
+    <div class="meta">Question 1 of 6 · Network Fundamentals</div>
+    <div class="q">A network engineer is subnetting 192.168.20.0/24 using VLSM to support four LANs: Sales (100 hosts), Engineering (50 hosts), Guest (20 hosts), and a point-to-point WAN link (2 hosts). Which subnet mask should be assigned to the Engineering LAN to support exactly 50 hosts while minimizing wasted address space?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. 255.255.255.224 (/27) — supports only 30 usable hosts, insufficient for 50</button><button class="opt" onclick="answer(this,0,1,1)">B. 255.255.255.192 (/26) — supports 62 usable hosts, closest efficient fit for 50 hosts</button><button class="opt" onclick="answer(this,0,2,1)">C. 255.255.255.0 (/24) — wastes over 200 addresses on a 50-host segment</button><button class="opt" onclick="answer(this,0,3,1)">D. 255.255.255.128 (/25) — supports 126 usable hosts, wastes 76 addresses</button>
+    <div class="expl">A /26 provides 2^6-2=62 usable host addresses, the smallest standard subnet size that satisfies the 50-host requirement, minimizing wasted addresses in a VLSM design.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Network Fundamentals">
+    <div class="meta">Question 2 of 6 · Network Fundamentals</div>
+    <div class="q">A technician examines a Windows host's IPv6 configuration and finds the address FE80::A1B2:3C4D:5E6F:7A8B assigned to the network adapter with no default gateway populated for it. What best describes this address and its scope?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. Unique local address, used for routing within a private organization across multiple sites</button><button class="opt" onclick="answer(this,1,1,2)">B. Global unicast address, routable across the public internet</button><button class="opt" onclick="answer(this,1,2,2)">C. Link-local address, automatically generated, valid only on the local link and non-routable</button><button class="opt" onclick="answer(this,1,3,2)">D. Multicast address identifying a group of all IPv6 nodes on the segment</button>
+    <div class="expl">Addresses beginning with the FE80::/10 prefix are link-local, auto-generated on every IPv6-enabled interface, used for on-link functions like neighbor discovery, and never routed beyond the local segment.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Network Fundamentals">
+    <div class="meta">Question 3 of 6 · Network Fundamentals</div>
+    <div class="q">An engineer is planning a 2.4 GHz wireless deployment with three access points placed to minimize co-channel interference. Which set of channels should be configured on the APs?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. 1, 6, 11</button><button class="opt" onclick="answer(this,2,1,0)">B. 2, 7, 12</button><button class="opt" onclick="answer(this,2,2,0)">C. 3, 8, 13</button><button class="opt" onclick="answer(this,2,3,0)">D. 1, 5, 9</button>
+    <div class="expl">In the 2.4 GHz band, channels 1, 6, and 11 are the only non-overlapping 20 MHz channels in most regulatory domains, allowing adjacent APs to avoid co-channel and adjacent-channel interference.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Network Fundamentals">
+    <div class="meta">Question 4 of 6 · Network Fundamentals</div>
+    <div class="q">A company is deploying a VoIP solution and needs to select the transport protocol for the real-time voice media stream (RTP), where minimizing latency is more important than guaranteeing delivery of every packet. Which characteristic makes the correct protocol the right choice for this traffic?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. TCP, because its three-way handshake guarantees the call setup is reliable before voice data flows</button><button class="opt" onclick="answer(this,3,1,2)">B. TCP, because its sliding window and acknowledgments ensure no voice packets are ever lost</button><button class="opt" onclick="answer(this,3,2,2)">C. UDP, because it has no connection establishment or retransmission overhead, minimizing latency for time-sensitive media</button><button class="opt" onclick="answer(this,3,3,2)">D. UDP, because it guarantees in-order delivery of every voice packet</button>
+    <div class="expl">UDP is connectionless with no handshake, acknowledgments, or retransmissions, resulting in lower latency and overhead — ideal for real-time voice/video where a late packet is worse than a dropped one.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Network Fundamentals">
+    <div class="meta">Question 5 of 6 · Network Fundamentals</div>
+    <div class="q">A data center architect needs a fabric where any two servers experience the same number of hops and predictable, low latency regardless of which leaf switches they attach to. Which topology BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. Three-tier core-distribution-access hierarchy</button><button class="opt" onclick="answer(this,4,1,3)">B. Hub-and-spoke WAN topology</button><button class="opt" onclick="answer(this,4,2,3)">C. Collapsed two-tier core/access topology</button><button class="opt" onclick="answer(this,4,3,3)">D. Spine-leaf (Clos) topology with every leaf connected to every spine</button>
+    <div class="expl">In a spine-leaf design, every leaf switch connects to every spine switch, so traffic between any two leaf-attached servers always crosses exactly one spine — giving equal, predictable hop count and non-blocking east-west bandwidth.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Network Fundamentals">
+    <div class="meta">Question 6 of 6 · Network Fundamentals</div>
+    <div class="q">A service provider router hosts routing tables for multiple customers on the same physical device and must keep each customer's routes completely isolated from one another, even if customers use overlapping private IP address ranges. Which virtualization technology should be implemented on the router?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. VLAN</button><button class="opt" onclick="answer(this,5,1,3)">B. Virtual machine</button><button class="opt" onclick="answer(this,5,2,3)">C. Container</button><button class="opt" onclick="answer(this,5,3,3)">D. VRF (Virtual Routing and Forwarding)</button>
+    <div class="expl">VRF creates multiple independent routing tables on a single router, allowing overlapping IP address spaces between customers while keeping their routes and forwarding decisions completely isolated — a core technique in MPLS/VPN service provider networks.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/ccna-200-301-v11-exam-prep-complete-course/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

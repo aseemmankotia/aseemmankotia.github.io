@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Security and Compliance Practice Questions — AWS Certified Cloud Practitioner</title>
+<meta name="description" content="6 free Security and Compliance practice questions with explanations for the AWS Certified Cloud Practitioner exam.">
+<link rel="canonical" href="https://technuggets.academy/clf-c02-security-and-compliance.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Security and Compliance Practice Questions — AWS Certified Cloud Practitioner">
+<meta property="og:description" content="6 free Security and Compliance practice questions with explanations for the AWS Certified Cloud Practitioner exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/clf-c02-security-and-compliance.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#FF9900}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Security and Compliance</h1>
+<p class="sub">Free AWS Certified Cloud Practitioner practice — 6 questions on <strong>Security and Compliance</strong>, with explanations. No sign-up.
+<a href="clf-c02.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Security and Compliance">
+    <div class="meta">Question 1 of 6 · Security and Compliance</div>
+    <div class="q">A company runs its entire application on AWS Lambda, using function code that processes customer orders. Under the AWS shared responsibility model, which task is AWS responsible for?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. Managing IAM permissions assigned to the Lambda function</button><button class="opt" onclick="answer(this,0,1,2)">B. Writing secure, vulnerability-free application code</button><button class="opt" onclick="answer(this,0,2,2)">C. Patching and maintaining the underlying operating system and runtime infrastructure</button><button class="opt" onclick="answer(this,0,3,2)">D. Configuring environment variables and function-level settings</button>
+    <div class="expl">For serverless services like Lambda, AWS manages the entire underlying infrastructure, including the host OS, runtime patching, and hardware — this is part of AWS's 'security of the cloud' responsibility, which expands significantly for managed/serverless services compared to EC2.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Security and Compliance">
+    <div class="meta">Question 2 of 6 · Security and Compliance</div>
+    <div class="q">A company needs to automatically discover, classify, and alert on sensitive data such as personally identifiable information (PII) stored in Amazon S3 buckets. Which AWS service should they use?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. Amazon Macie</button><button class="opt" onclick="answer(this,1,1,0)">B. Amazon GuardDuty</button><button class="opt" onclick="answer(this,1,2,0)">C. Amazon Inspector</button><button class="opt" onclick="answer(this,1,3,0)">D. AWS Shield</button>
+    <div class="expl">Amazon Macie uses machine learning and pattern matching to automatically discover, classify, and protect sensitive data (like PII and credentials) stored in Amazon S3.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Security and Compliance">
+    <div class="meta">Question 3 of 6 · Security and Compliance</div>
+    <div class="q">A company wants its employees to sign in once using their existing corporate directory credentials and then access multiple AWS accounts without creating separate IAM users in each account. Which AWS service should they use?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. IAM Identity Center</button><button class="opt" onclick="answer(this,2,1,0)">B. AWS Organizations</button><button class="opt" onclick="answer(this,2,2,0)">C. IAM user groups</button><button class="opt" onclick="answer(this,2,3,0)">D. IAM roles assigned per employee</button>
+    <div class="expl">AWS IAM Identity Center (successor to AWS Single Sign-On) provides centralized, single sign-on access across multiple AWS accounts, integrating with existing identity providers like Active Directory, so employees don't need separate IAM users per account.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Security and Compliance">
+    <div class="meta">Question 4 of 6 · Security and Compliance</div>
+    <div class="q">A security team wants to apply the strongest recommended protection to the AWS account root user immediately after creating a new AWS account. Which action should they take?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. Enable multi-factor authentication (MFA) on the root user and avoid using it for daily tasks</button><button class="opt" onclick="answer(this,3,1,0)">B. Delete the root user after account setup</button><button class="opt" onclick="answer(this,3,2,0)">C. Add the root user to an IAM group with read-only permissions</button><button class="opt" onclick="answer(this,3,3,0)">D. Create an IAM role that assumes the root user's permissions</button>
+    <div class="expl">AWS best practice is to enable MFA on the root user immediately, secure its credentials, and avoid using the root user for everyday tasks — instead, create individual IAM users/roles with least-privilege permissions for daily operations.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Security and Compliance">
+    <div class="meta">Question 5 of 6 · Security and Compliance</div>
+    <div class="q">An e-commerce company's web application is being targeted by an attack that sends malicious HTTP requests containing SQL injection patterns to exploit its login form. Which AWS service should the company configure with rules to detect and block this specific type of application-layer attack?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. AWS Shield Standard</button><button class="opt" onclick="answer(this,4,1,1)">B. AWS WAF</button><button class="opt" onclick="answer(this,4,2,1)">C. Amazon GuardDuty</button><button class="opt" onclick="answer(this,4,3,1)">D. AWS Shield Advanced</button>
+    <div class="expl">AWS WAF (Web Application Firewall) lets customers create rules, including managed rule groups, that inspect HTTP/HTTPS requests and block patterns like SQL injection and cross-site scripting at Layer 7.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Security and Compliance">
+    <div class="meta">Question 6 of 6 · Security and Compliance</div>
+    <div class="q">A company's compliance team needs to download AWS's ISO 27001 certification report on demand to satisfy an internal audit requirement. Which AWS service provides access to this type of compliance documentation?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. AWS Config</button><button class="opt" onclick="answer(this,5,1,1)">B. AWS Artifact</button><button class="opt" onclick="answer(this,5,2,1)">C. AWS CloudTrail</button><button class="opt" onclick="answer(this,5,3,1)">D. AWS Trusted Advisor</button>
+    <div class="expl">AWS Artifact is the self-service portal that provides on-demand access to AWS's compliance reports, certifications (such as ISO 27001), and agreements, supporting the customer's audit and compliance needs.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/aws-cloud-practitioner-clf-c02-exam-focused-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

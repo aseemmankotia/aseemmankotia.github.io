@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Spectrum-X Ethernet and RoCE for AI Practice Questions — NVIDIA-Certified Professional: AI Networking</title>
+<meta name="description" content="6 free Spectrum-X Ethernet and RoCE for AI practice questions with explanations for the NVIDIA-Certified Professional: AI Networking exam.">
+<link rel="canonical" href="https://technuggets.academy/ncp-ain-spectrum-x-ethernet-and-roce-for-ai.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Spectrum-X Ethernet and RoCE for AI Practice Questions — NVIDIA-Certified Professional: AI Networking">
+<meta property="og:description" content="6 free Spectrum-X Ethernet and RoCE for AI practice questions with explanations for the NVIDIA-Certified Professional: AI Networking exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/ncp-ain-spectrum-x-ethernet-and-roce-for-ai.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#76B900}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Spectrum-X Ethernet and RoCE for AI</h1>
+<p class="sub">Free NVIDIA-Certified Professional: AI Networking practice — 6 questions on <strong>Spectrum-X Ethernet and RoCE for AI</strong>, with explanations. No sign-up.
+<a href="ncp-ain.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Spectrum-X Ethernet and RoCE for AI">
+    <div class="meta">Question 1 of 6 · Spectrum-X Ethernet and RoCE for AI</div>
+    <div class="q">A customer deploys a 2,000-GPU cluster on Spectrum-X (Spectrum-4 switches + BlueField-3 SuperNICs) running large all-reduce collectives. They observe high tail latency during collective operations despite low average link utilization across the fabric. Which action BEST addresses this specific symptom?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. Increase the PFC pause threshold to allow more buffering before pause frames are triggered</button><button class="opt" onclick="answer(this,0,1,2)">B. Switch the transport from RoCEv2 to native InfiniBand on the same Spectrum-4 switches</button><button class="opt" onclick="answer(this,0,2,2)">C. Enable NVIDIA's telemetry/RTT-based congestion control together with per-packet adaptive routing so microburst congestion is detected and traffic is redistributed in real time</button><button class="opt" onclick="answer(this,0,3,2)">D. Disable ECN marking on RoCE traffic to eliminate packet-marking overhead</button>
+    <div class="expl">High tail latency with low average utilization is the classic signature of microburst/incast congestion during collectives. Spectrum-X's value proposition is closed-loop, telemetry-based congestion control combined with fine-grained adaptive routing (packet spraying) that reacts to transient bursts far faster than average-utilization metrics suggest, smoothing tail latency.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Spectrum-X Ethernet and RoCE for AI">
+    <div class="meta">Question 2 of 6 · Spectrum-X Ethernet and RoCE for AI</div>
+    <div class="q">Which NVIDIA component is primarily responsible for performing the real-time, per-flow RTT telemetry measurement and closed-loop rate adjustment used by NVIDIA's programmable congestion control on a Spectrum-X fabric?</div>
+    <button class="opt" onclick="answer(this,1,0,1)">A. UFM (Unified Fabric Manager)</button><button class="opt" onclick="answer(this,1,1,1)">B. BlueField-3 SuperNIC</button><button class="opt" onclick="answer(this,1,2,1)">C. NVUE CLI/API on the Spectrum switch</button><button class="opt" onclick="answer(this,1,3,1)">D. The Spectrum-4 ASIC's shared packet buffer alone</button>
+    <div class="expl">NVIDIA's telemetry-based programmable congestion control is executed at the NIC: the BlueField-3 SuperNIC measures per-flow round-trip telemetry and adjusts injection rates in a closed loop, working alongside switch-based INT data.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Spectrum-X Ethernet and RoCE for AI">
+    <div class="meta">Question 3 of 6 · Spectrum-X Ethernet and RoCE for AI</div>
+    <div class="q">An architect is tuning a Spectrum-X RoCEv2 fabric where RoCE traffic is mapped to priority 3. Which configuration pairing correctly prevents both packet loss and PFC deadlock/storm conditions?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. Set ECN low/high marking thresholds below the PFC trigger threshold on priority 3, and enable the PFC watchdog with a bounded timeout to auto-recover stalled queues</button><button class="opt" onclick="answer(this,2,1,0)">B. Enable PFC only on priority 3 with ECN disabled, and set the PFC watchdog timeout to infinite for maximum protection</button><button class="opt" onclick="answer(this,2,2,0)">C. Set ECN marking thresholds equal to the PFC trigger threshold on priority 3 and disable the PFC watchdog</button><button class="opt" onclick="answer(this,2,3,0)">D. Disable PFC entirely on priority 3 and rely on RoCEv2 transport-layer retransmission for loss recovery</button>
+    <div class="expl">Best practice is to set ECN thresholds below the PFC trigger point so ECN marks and throttles senders before pause frames are ever needed, while a bounded PFC watchdog timeout detects and clears stalled/stuck queues, protecting against deadlock and PFC storms.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Spectrum-X Ethernet and RoCE for AI">
+    <div class="meta">Question 4 of 6 · Spectrum-X Ethernet and RoCE for AI</div>
+    <div class="q">A team is deploying a 64-GPU training pod with predictable, static traffic patterns. Their top priority is the lowest possible per-hop switch latency, and they do not need multi-tenant Ethernet integration or convergence with existing datacenter Ethernet services. Which fabric choice BEST fits these requirements?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. NVIDIA Quantum InfiniBand with static or adaptive routing</button><button class="opt" onclick="answer(this,3,1,0)">B. Spectrum-X with adaptive routing and RoCEv2</button><button class="opt" onclick="answer(this,3,2,0)">C. Standard Ethernet fabric using basic ECMP load balancing</button><button class="opt" onclick="answer(this,3,3,0)">D. Spectrum-X with PFC disabled to reduce switch processing overhead</button>
+    <div class="expl">For a small, deterministic pod where absolute lowest latency matters and Ethernet multi-tenancy/convergence isn't required, NVIDIA Quantum InfiniBand's native RDMA transport and lower per-hop switch latency make it the better fit than an Ethernet-based fabric.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Spectrum-X Ethernet and RoCE for AI">
+    <div class="meta">Question 5 of 6 · Spectrum-X Ethernet and RoCE for AI</div>
+    <div class="q">In a RoCEv2 lossless Ethernet fabric, what is the fundamental functional difference between PFC and ECN?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. PFC is a hop-by-hop, Layer 2 mechanism that pauses traffic on a given priority to prevent buffer overflow, while ECN is an end-to-end signal that marks packets so the receiver prompts the sender to reduce its rate without halting traffic entirely</button><button class="opt" onclick="answer(this,4,1,0)">B. PFC operates end-to-end between sender and receiver NICs, while ECN operates only hop-by-hop between adjacent switches</button><button class="opt" onclick="answer(this,4,2,0)">C. PFC and ECN mark packets identically; the only distinction is that PFC uses IPv4 headers while ECN uses IPv6 headers</button><button class="opt" onclick="answer(this,4,3,0)">D. ECN pauses entire physical links when congestion is detected, while PFC selectively marks individual packets for retransmission</button>
+    <div class="expl">PFC (IEEE 802.1Qbb) is a link-level, per-priority pause mechanism operating hop-by-hop to prevent buffer overflow and packet loss, while ECN (RFC 3168, used via DCQCN/PCC in RoCEv2) is an end-to-end congestion signal that marks packets in-flight so the sender can gracefully reduce its rate, avoiding traffic being halted outright.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Spectrum-X Ethernet and RoCE for AI">
+    <div class="meta">Question 6 of 6 · Spectrum-X Ethernet and RoCE for AI</div>
+    <div class="q">Which statement BEST describes how Spectrum-X's adaptive routing differs from traditional Ethernet ECMP hashing in AI training fabrics?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. Spectrum-X can spray packets across multiple equal-cost paths at a finer granularity (per-packet/per-flowlet) and relies on the BlueField-3 SuperNIC's RoCE transport to handle out-of-order reassembly, improving load balancing for the large elephant flows typical of AI collectives</button><button class="opt" onclick="answer(this,5,1,0)">B. Spectrum-X performs per-flow static hashing identical to ECMP, providing no additional benefit for large elephant flows</button><button class="opt" onclick="answer(this,5,2,0)">C. Spectrum-X routing decisions are made exclusively by UFM software polling on a 60-second interval, with no hardware-based adaptivity</button><button class="opt" onclick="answer(this,5,3,0)">D. Spectrum-X requires an InfiniBand-style centralized subnet manager to compute all routing tables, making it incompatible with standard Ethernet control planes</button>
+    <div class="expl">Unlike static per-flow ECMP hashing, which can create hotspots on large elephant flows, Spectrum-X spreads traffic at finer granularity across equal-cost paths and depends on the BlueField-3 NIC's RoCE transport to reassemble out-of-order packets, achieving much better load distribution for AI collective traffic.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/ncp-ain-nvidia-ai-networking-certification-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

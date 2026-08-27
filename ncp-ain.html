@@ -1,0 +1,123 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free NVIDIA-Certified Professional: AI Networking Practice Test — 12 Real Exam-Style Questions</title>
+<meta name="description" content="Free NVIDIA-Certified Professional: AI Networking practice questions with detailed explanations. Test yourself before the real exam.">
+<link rel="canonical" href="https://technuggets.academy/ncp-ain.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free NVIDIA-Certified Professional: AI Networking Practice Test — 12 Real Exam-Style Questions">
+<meta property="og:description" content="Free NVIDIA-Certified Professional: AI Networking practice questions with detailed explanations. Test yourself before the real exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/ncp-ain.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#76B900}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div><div class="hero">
+  <span class="chip">NCP-AIN</span>
+  <h1>Free NVIDIA-Certified Professional: AI Networking Practice Test</h1>
+  <p class="sub">12 exam-style questions with full explanations — no sign-up. Score yourself, then close your gaps with the full course.</p>
+  <div class="facts"><span class="fact">Exam fee <b>~$400</b></span><span class="fact"><b>5</b> exam domains</span><span class="fact">Level <b>Advanced</b></span><span class="fact"><b>2</b> timed practice tests in the course</span></div>
+  <div class="cta-row"><a class="btn enroll" href="https://www.udemy.com/course/ncp-ain-nvidia-ai-networking-certification-prep/" rel="sponsored" target="_blank">Start my full course on Udemy →</a><a class="btn ghost" href="#practice">Try the free test →</a></div>
+</div><div class="trust"><span>✅ <b>Free</b> practice — no sign-up</span><span>📝 Real exam-style questions</span><span>💡 Detailed explanations</span><span>💸 30-day money-back via Udemy</span></div>
+<div id="practice"></div>
+
+  <div class="card qcard" id="q0" data-domain="AI Data Center Network Design and Optimization">
+    <div class="meta">Question 1 of 12 · AI Data Center Network Design and Optimization</div>
+    <div class="q">An AI factory has 8 GPUs per DGX node, each connected via NVLink internally and via a separate NIC to the network fabric for inter-node communication. Which topology design connects each GPU's NIC to a dedicated leaf switch such that GPU 0 across every node connects to leaf switch 0, GPU 1 to leaf switch 1, and so on?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. Rail-optimized topology</button><button class="opt" onclick="answer(this,0,1,0)">B. Fat-tree</button><button class="opt" onclick="answer(this,0,2,0)">C. Dragonfly</button><button class="opt" onclick="answer(this,0,3,0)">D. Spine-leaf with ECMP</button>
+    <div class="expl">Rail-optimized topology explicitly aligns each GPU's NIC to a dedicated rail (leaf) switch so that same-index GPUs across all nodes share a switch, minimizing hops for collective operations like NCCL all-reduce. This is the reference design used in NVIDIA DGX SuperPOD deployments.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="InfiniBand Fabric Configuration and Management">
+    <div class="meta">Question 2 of 12 · InfiniBand Fabric Configuration and Management</div>
+    <div class="q">A customer's InfiniBand fabric runs redundant Subnet Managers (SM) for high availability: SM-A on one management node and SM-B on another. During a planned maintenance window, the administrator manually fails mastership from SM-A to SM-B before powering down SM-A. After SM-A comes back online, it immediately reclaims master status and triggers a disruptive resweep of the fabric. Which configuration change would prevent SM-A from automatically reclaiming mastership when it rejoins?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. Increase SM-A's sm_priority value in opensm.conf so it always wins arbitration</button><button class="opt" onclick="answer(this,1,1,3)">B. Set SM-A's polling_retry_number parameter to 0</button><button class="opt" onclick="answer(this,1,2,3)">C. Permanently disable the subnet manager daemon on SM-A</button><button class="opt" onclick="answer(this,1,3,3)">D. Lower SM-A's sm_priority value in opensm.conf so SM-B remains the preferred master</button>
+    <div class="expl">OpenSM master election is based on sm_priority (and GUID as tiebreaker). Lowering SM-A's priority relative to SM-B ensures SM-B stays preferred master when both are active, preventing an unwanted takeover, while still keeping SM-A available as a standby for true redundancy.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Spectrum-X Ethernet and RoCE for AI">
+    <div class="meta">Question 3 of 12 · Spectrum-X Ethernet and RoCE for AI</div>
+    <div class="q">An AI training cluster running RoCEv2 over a Spectrum-X Ethernet fabric is experiencing high tail latency at GPU-facing leaf switches, but PFC pause-frame counters remain low. The network team wants to reduce sender rates before congestion escalates to PFC pause storms and head-of-line blocking. Which approach BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. Increase the PFC buffer (headroom) size on all leaf switch ports</button><button class="opt" onclick="answer(this,2,1,3)">B. Disable ECN marking on all switch queues to reduce ASIC processing overhead</button><button class="opt" onclick="answer(this,2,2,3)">C. Replace adaptive routing with a static ECMP hash across all uplinks</button><button class="opt" onclick="answer(this,2,3,3)">D. Enable NVIDIA's programmable congestion control, which uses real-time switch telemetry and RTT/ECN feedback to throttle senders before PFC triggers</button>
+    <div class="expl">NVIDIA's programmable congestion control on Spectrum-X uses fine-grained telemetry (RTT and ECN signals) fed back to the NIC/DPU to proactively slow senders, addressing congestion before it escalates into PFC pauses and HOL blocking.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Network Automation, Monitoring, and Telemetry">
+    <div class="meta">Question 4 of 12 · Network Automation, Monitoring, and Telemetry</div>
+    <div class="q">During a large AI training job, GPUDirect RDMA traffic experiences intermittent drops. The network operations team needs to identify the exact root cause (e.g., buffer overrun vs. CRC error vs. congestion) in real time without capturing full packet traces. Which tool should they use?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. What-Just-Happened (WJH) real-time drop analytics</button><button class="opt" onclick="answer(this,3,1,0)">B. UFM historical port counter reports</button><button class="opt" onclick="answer(this,3,2,0)">C. Ansible ad-hoc 'show interface' command across all switches</button><button class="opt" onclick="answer(this,3,3,0)">D. NVUE 'nv show interface counters' on each switch manually</button>
+    <div class="expl">WJH is purpose-built for real-time, per-packet root-cause classification of drops (buffer overrun, CRC, ECN marking, tail drop, etc.) without requiring full packet capture, making it the fastest path to root cause.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Security, Troubleshooting, and Performance">
+    <div class="meta">Question 5 of 12 · Security, Troubleshooting, and Performance</div>
+    <div class="q">A cloud provider runs a multi-tenant AI training cluster on a single InfiniBand fabric. Customer A's compute nodes must never be able to communicate with Customer B's compute nodes at the fabric level, even if both are on the same physical switches. Which mechanism should be configured to enforce this isolation?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. VLAN tagging configured on the leaf switches</button><button class="opt" onclick="answer(this,4,1,1)">B. InfiniBand partition keys (P_Keys) managed through UFM/OpenSM</button><button class="opt" onclick="answer(this,4,2,1)">C. Security groups applied at the Spectrum-X switch OS layer</button><button class="opt" onclick="answer(this,4,3,1)">D. Access control lists configured on the BlueField DPU</button>
+    <div class="expl">P_Keys are the native InfiniBand mechanism for Layer 2 fabric isolation, restricting which HCAs can exchange traffic; UFM/OpenSM provisions and enforces partition membership across the subnet.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="AI Data Center Network Design and Optimization">
+    <div class="meta">Question 6 of 12 · AI Data Center Network Design and Optimization</div>
+    <div class="q">A cloud service provider must build a multi-tenant AI training-as-a-service platform that isolates tenant traffic, integrates with existing Ethernet-based operational tooling, and requires RoCEv2 for GPU-to-GPU communication. Which NVIDIA networking platform BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. NVIDIA Quantum InfiniBand platform</button><button class="opt" onclick="answer(this,5,1,3)">B. NVIDIA ConnectX-5 standalone NICs without a switch fabric</button><button class="opt" onclick="answer(this,5,2,3)">C. Legacy Ethernet switches with standard congestion control (no RoCE optimizations)</button><button class="opt" onclick="answer(this,5,3,3)">D. NVIDIA Spectrum-X Ethernet platform</button>
+    <div class="expl">Spectrum-X is purpose-built for Ethernet-based, multi-tenant AI clouds, combining adaptive routing and advanced congestion control (via Spectrum switches and BlueField DPUs) with RoCEv2 to deliver InfiniBand-like performance while keeping standard Ethernet operational tooling.</div>
+  </div>
+
+  <div class="card qcard" id="q6" data-domain="InfiniBand Fabric Configuration and Management">
+    <div class="meta">Question 7 of 12 · InfiniBand Fabric Configuration and Management</div>
+    <div class="q">A deep learning training job runs NCCL AllReduce collectives across 512 GPUs on an NVIDIA InfiniBand fabric. To offload gradient aggregation from GPU compute directly into the network switches and reduce the data volume traversing the fabric, which technology should the administrator enable?</div>
+    <button class="opt" onclick="answer(this,6,0,1)">A. DCQCN congestion control</button><button class="opt" onclick="answer(this,6,1,1)">B. SHARP (Scalable Hierarchical Aggregation and Reduction Protocol)</button><button class="opt" onclick="answer(this,6,2,1)">C. UFM Telemetry streaming</button><button class="opt" onclick="answer(this,6,3,1)">D. Adaptive Routing</button>
+    <div class="expl">SHARP is NVIDIA's in-network computing feature that performs collective reduction operations (such as AllReduce) inside the switch ASICs, cutting the amount of data GPUs must send and reducing collective completion time.</div>
+  </div>
+
+  <div class="card qcard" id="q7" data-domain="Spectrum-X Ethernet and RoCE for AI">
+    <div class="meta">Question 8 of 12 · Spectrum-X Ethernet and RoCE for AI</div>
+    <div class="q">In an NVIDIA Spectrum-X fabric, which component makes the per-packet (or per-flow) decision to spread RoCEv2 traffic across all available uplinks to avoid ECMP hash collisions?</div>
+    <button class="opt" onclick="answer(this,7,0,2)">A. The BlueField DPU packet-processing pipeline on the host</button><button class="opt" onclick="answer(this,7,1,2)">B. The NCCL communication library running on the GPU host</button><button class="opt" onclick="answer(this,7,2,2)">C. The NVIDIA Spectrum switch ASIC's adaptive routing engine</button><button class="opt" onclick="answer(this,7,3,2)">D. The UFM telemetry collector</button>
+    <div class="expl">Adaptive routing decisions that dynamically select uplinks based on real-time port load are made in the Spectrum switch ASIC's forwarding/routing engine, not on the host or DPU.</div>
+  </div>
+
+  <div class="card qcard" id="q8" data-domain="Network Automation, Monitoring, and Telemetry">
+    <div class="meta">Question 9 of 12 · Network Automation, Monitoring, and Telemetry</div>
+    <div class="q">A network team wants to deploy declarative, version-controlled configuration changes across a fleet of NVIDIA Spectrum switches running Cumulus Linux, integrated into an existing CI/CD pipeline with idempotent execution. Which approach correctly satisfies this requirement?</div>
+    <button class="opt" onclick="answer(this,8,0,0)">A. Using Ansible with the nvidia.nvue collection to apply staged NVUE configuration</button><button class="opt" onclick="answer(this,8,1,0)">B. Manually pasting CLI commands into each switch terminal in sequence</button><button class="opt" onclick="answer(this,8,2,0)">C. Using the What-Just-Happened (WJH) feature to push configuration</button><button class="opt" onclick="answer(this,8,3,0)">D. Using DOCA Telemetry Service to distribute configuration files</button>
+    <div class="expl">The nvidia.nvue Ansible collection allows declarative, idempotent NVUE configuration to be version-controlled and pushed as part of a CI/CD pipeline, matching the exact requirement.</div>
+  </div>
+
+  <div class="card qcard" id="q9" data-domain="Security, Troubleshooting, and Performance">
+    <div class="meta">Question 10 of 12 · Security, Troubleshooting, and Performance</div>
+    <div class="q">An organization wants to enforce zero-trust security policies -- including stateful firewalling and IPsec encryption -- on east-west AI training traffic, without consuming any CPU cycles on the GPU host servers. Which NVIDIA capability should be deployed to achieve this?</div>
+    <button class="opt" onclick="answer(this,9,0,1)">A. UFM Telemetry data collection</button><button class="opt" onclick="answer(this,9,1,1)">B. DOCA Flow and DOCA Firewall running on BlueField DPUs</button><button class="opt" onclick="answer(this,9,2,1)">C. NVUE-based switch configuration templates</button><button class="opt" onclick="answer(this,9,3,1)">D. GPUDirect RDMA enabled on the ConnectX NICs</button>
+    <div class="expl">DOCA Flow and DOCA Firewall are BlueField DPU-accelerated services that offload packet filtering, stateful firewalling, and encryption to the DPU's dedicated ARM cores and hardware accelerators, keeping host CPU cycles free -- this is the core of BlueField zero-trust architecture.</div>
+  </div>
+
+  <div class="card qcard" id="q10" data-domain="AI Data Center Network Design and Optimization">
+    <div class="meta">Question 11 of 12 · AI Data Center Network Design and Optimization</div>
+    <div class="q">A hyperscale AI data center design places GPU compute traffic, storage traffic, and out-of-band management traffic on physically separate fabrics. What is the PRIMARY reason for this separation?</div>
+    <button class="opt" onclick="answer(this,10,0,3)">A. It eliminates the need for adaptive routing on the compute fabric</button><button class="opt" onclick="answer(this,10,1,3)">B. It reduces the total number of cables required in the data center</button><button class="opt" onclick="answer(this,10,2,3)">C. It allows the compute fabric to use a lower link speed than storage</button><button class="opt" onclick="answer(this,10,3,3)">D. It prevents storage and management traffic from interfering with latency-sensitive GPU-to-GPU collective communication</button>
+    <div class="expl">Separating fabrics isolates bursty, latency-sensitive RDMA collective traffic on the compute fabric from best-effort storage and management traffic, preventing congestion and jitter that would degrade training performance.</div>
+  </div>
+
+  <div class="card qcard" id="q11" data-domain="InfiniBand Fabric Configuration and Management">
+    <div class="meta">Question 12 of 12 · InfiniBand Fabric Configuration and Management</div>
+    <div class="q">An administrator must define an InfiniBand partition in OpenSM's partitions.conf that assigns pkey 0x8001 with full membership to two GUIDs: 0x0011223344556677 and 0x0011223344556688, enabling IPoIB on the partition. Which line correctly implements this?</div>
+    <button class="opt" onclick="answer(this,11,0,2)">A. AI_Partition=8001,ipoib : GUID1=full, GUID2=full;</button><button class="opt" onclick="answer(this,11,1,2)">B. AI_Partition=0x8001 : 0x0011223344556677, 0x0011223344556688;</button><button class="opt" onclick="answer(this,11,2,2)">C. AI_Partition=0x8001,ipoib : 0x0011223344556677=full, 0x0011223344556688=full;</button><button class="opt" onclick="answer(this,11,3,2)">D. AI_Partition=0x0001,ipoib : 0x0011223344556677=limited, 0x0011223344556688=limited;</button>
+    <div class="expl">The correct partitions.conf syntax specifies the pkey value with the 0x prefix (0x8001, whose high bit already indicates full membership), the ipoib option to enable IP over InfiniBand, and each GUID explicitly marked as a full or limited member.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/ncp-ain-nvidia-ai-networking-certification-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<section class="faq"><h3>NCP-AIN exam — quick answers</h3><details><summary>How much does the NCP-AIN exam cost?</summary><p>The exam fee is approximately $400 and varies by region — confirm current pricing with the certification vendor before you book.</p></details><details><summary>What topics are on the exam?</summary><p>It covers 5 domains: AI Data Center Network Design and Optimization (~18%), InfiniBand Fabric Configuration and Management (~24%), Spectrum-X Ethernet and RoCE for AI (~24%), Network Automation, Monitoring, and Telemetry (~16%), Security, Troubleshooting, and Performance (~18%). The full course has a dedicated chapter, lab and practice-test coverage for each.</p></details><details><summary>Is this practice test really free?</summary><p>Yes — all questions on this page are free with explanations and no sign-up. The paid Udemy course adds two full-length timed exams, video lessons and hands-on labs.</p></details><details><summary>Will this prepare me for the real exam?</summary><p>The questions mirror the real exam's style and are mapped to the official domains. This is exam-focused preparation — combine the free test with the full course's timed simulations to gauge your readiness.</p></details></section>
+<div class="domains"><span class="meta">More free practice by exam domain:</span><br><a href="ncp-ain-ai-data-center-network-design-and-optimization.html">AI Data Center Network Design and Optimization →</a><a href="ncp-ain-infiniband-fabric-configuration-and-management.html">InfiniBand Fabric Configuration and Management →</a><a href="ncp-ain-spectrum-x-ethernet-and-roce-for-ai.html">Spectrum-X Ethernet and RoCE for AI →</a><a href="ncp-ain-network-automation-monitoring-and-telemetry.html">Network Automation, Monitoring, and Telemetry →</a><a href="ncp-ain-security-troubleshooting-and-performance.html">Security, Troubleshooting, and Performance →</a></div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

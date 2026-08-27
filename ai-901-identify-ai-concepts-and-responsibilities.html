@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Identify AI concepts and responsibilities Practice Questions — Microsoft Certified: Azure AI Fundamentals</title>
+<meta name="description" content="6 free Identify AI concepts and responsibilities practice questions with explanations for the Microsoft Certified: Azure AI Fundamentals exam.">
+<link rel="canonical" href="https://technuggets.academy/ai-901-identify-ai-concepts-and-responsibilities.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Identify AI concepts and responsibilities Practice Questions — Microsoft Certified: Azure AI Fundamentals">
+<meta property="og:description" content="6 free Identify AI concepts and responsibilities practice questions with explanations for the Microsoft Certified: Azure AI Fundamentals exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/ai-901-identify-ai-concepts-and-responsibilities.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0078D4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Identify AI concepts and responsibilities</h1>
+<p class="sub">Free Microsoft Certified: Azure AI Fundamentals practice — 6 questions on <strong>Identify AI concepts and responsibilities</strong>, with explanations. No sign-up.
+<a href="ai-901.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Identify AI concepts and responsibilities">
+    <div class="meta">Question 1 of 6 · Identify AI concepts and responsibilities</div>
+    <div class="q">A healthcare provider is deploying an AI system to analyze patient X-ray images for potential abnormalities. The system occasionally flags healthy tissue as abnormal, requiring radiologists to review false positives. Which responsible AI principle is MOST directly challenged when the system disproportionately generates false positives for patients with darker skin tones due to training data imbalance?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. Transparency, because the model's decision-making process is not explainable to medical staff</button><button class="opt" onclick="answer(this,0,1,1)">B. Fairness, because the system produces unequal accuracy across different demographic groups</button><button class="opt" onclick="answer(this,0,2,1)">C. Reliability and safety, because any false positive represents a system malfunction</button><button class="opt" onclick="answer(this,0,3,1)">D. Privacy and security, because patient demographic data is being used in the analysis</button>
+    <div class="expl">Fairness directly addresses the requirement that AI systems produce equitable outcomes across different groups. When a model shows systematically different error rates for specific demographics due to biased training data, this is a core fairness violation requiring dataset rebalancing and validation across subgroups.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Identify AI concepts and responsibilities">
+    <div class="meta">Question 2 of 6 · Identify AI concepts and responsibilities</div>
+    <div class="q">A financial services company needs to build an AI solution that analyzes quarterly earnings call transcripts to extract key financial metrics, sentiment trends, and regulatory compliance risks mentioned by executives. The solution must process both the spoken audio and presentation slides simultaneously. Which combination of AI workloads BEST addresses this scenario?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. Generative AI to summarize the entire call, computer vision to read slide text, and document intelligence for compliance detection</button><button class="opt" onclick="answer(this,1,1,3)">B. Natural language processing for transcript analysis and computer vision for optical character recognition on slides</button><button class="opt" onclick="answer(this,1,2,3)">C. Speech recognition combined with a multimodal generative AI agent that processes both audio and visual inputs</button><button class="opt" onclick="answer(this,1,3,3)">D. Speech recognition to transcribe audio, document intelligence to extract data from slides, and natural language processing to analyze sentiment and entities</button>
+    <div class="expl">This scenario requires three distinct specialized workloads: speech (converting audio to text), document intelligence (structured extraction from presentation slides including tables and forms), and NLP (sentiment analysis, entity extraction, and understanding regulatory language). Each workload is purpose-built for its task, and combining them provides the most accurate and reliable solution.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Identify AI concepts and responsibilities">
+    <div class="meta">Question 3 of 6 · Identify AI concepts and responsibilities</div>
+    <div class="q">An AI development team is evaluating whether to use a large language model (LLM) or a small language model (SLM) for a customer service chatbot that will run on mobile devices with limited connectivity. The chatbot needs to handle common product questions with 80% accuracy but must respond within 2 seconds and work offline. Which factor MOST strongly favors selecting an SLM over an LLM for this scenario?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. SLMs require fewer tokens per prompt, reducing the cost per API call to the cloud service</button><button class="opt" onclick="answer(this,2,1,1)">B. SLMs have smaller parameter counts enabling local deployment on mobile devices without cloud connectivity</button><button class="opt" onclick="answer(this,2,2,1)">C. SLMs are trained on more recent data and will provide more current product information</button><button class="opt" onclick="answer(this,2,3,1)">D. SLMs use simpler transformer architectures that are easier to fine-tune for customer service</button>
+    <div class="expl">The critical requirement is offline functionality with limited connectivity. SLMs typically have millions to low billions of parameters (vs. hundreds of billions for LLMs), making them small enough to deploy directly on mobile devices. This enables local inference without cloud API calls, meeting the offline and 2-second latency requirements. Edge deployment is the key architectural advantage of SLMs for this scenario.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Identify AI concepts and responsibilities">
+    <div class="meta">Question 4 of 6 · Identify AI concepts and responsibilities</div>
+    <div class="q">A legal firm is implementing a generative AI system to draft contract summaries from 50-page lease agreements. During testing, the system occasionally includes clauses that don't exist in the source document. The firm implements a solution where the AI must cite specific page numbers for every statement in the summary and retrieves relevant contract sections before generating each summary paragraph. Which term BEST describes this mitigation approach?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. Prompt engineering with few-shot learning examples</button><button class="opt" onclick="answer(this,3,1,3)">B. Fine-tuning the model on domain-specific legal documents</button><button class="opt" onclick="answer(this,3,2,3)">C. Implementing transparency through explainable AI techniques</button><button class="opt" onclick="answer(this,3,3,3)">D. Grounding the model with retrieval-augmented generation</button>
+    <div class="expl">Grounding with RAG (Retrieval-Augmented Generation) specifically addresses hallucination by retrieving relevant source content before generation and constraining the model to reference only retrieved information. Requiring page citations enforces grounding by making the model base responses on actual document content rather than generating plausible-sounding but fabricated clauses. This is the standard approach for reducing hallucination in document-based generative AI applications.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Identify AI concepts and responsibilities">
+    <div class="meta">Question 5 of 6 · Identify AI concepts and responsibilities</div>
+    <div class="q">A manufacturing company wants to deploy an AI agent that monitors production line cameras, detects equipment anomalies, retrieves maintenance manuals from a database, and automatically generates work orders with repair instructions. The solution must coordinate multiple steps: analyzing visual input, making decisions based on historical data, and producing structured output. Which statement BEST describes why an AI agent architecture is appropriate for this scenario compared to a single-purpose AI model?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. Agents use larger language models than single-purpose systems, providing better accuracy for complex manufacturing scenarios</button><button class="opt" onclick="answer(this,4,1,1)">B. Agents can execute multi-step workflows by orchestrating different AI models and tools, making autonomous decisions about which actions to take based on intermediate results</button><button class="opt" onclick="answer(this,4,2,1)">C. Agents store conversation history longer than standard models, enabling them to remember equipment issues across multiple production shifts</button><button class="opt" onclick="answer(this,4,3,1)">D. Agents are specifically designed for computer vision tasks and are more accurate than traditional object detection models</button>
+    <div class="expl">AI agents are characterized by their ability to autonomously plan and execute multi-step workflows, use tools (like database queries and work order systems), and make decisions about next actions based on intermediate results. This scenario requires orchestrating computer vision (anomaly detection), information retrieval (manual lookup), decision-making (severity assessment), and structured generation (work orders)—exactly what agent architectures are designed to handle through tool use and sequential reasoning.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Identify AI concepts and responsibilities">
+    <div class="meta">Question 6 of 6 · Identify AI concepts and responsibilities</div>
+    <div class="q">A university is developing an AI-powered admissions assistant that answers prospective student questions about programs, requirements, and campus life. During compliance review, legal counsel requires that every AI response include a mechanism for students to understand what information influenced the answer and a way to challenge potentially incorrect information. Which responsible AI principle is the legal requirement MOST directly enforcing?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. Accountability, because the university must be able to defend decisions made by the AI system</button><button class="opt" onclick="answer(this,5,1,3)">B. Inclusiveness, because all students must have equal ability to access and question information</button><button class="opt" onclick="answer(this,5,2,3)">C. Reliability and safety, because incorrect admissions information could harm student outcomes</button><button class="opt" onclick="answer(this,5,3,3)">D. Transparency, because users must be able to understand how the system reached its outputs</button>
+    <div class="expl">Transparency specifically requires that AI systems provide understandable information about how they operate and how decisions are made. Requiring users to understand what information influenced responses and providing challenge mechanisms directly implements transparency—it makes the system's reasoning visible and verifiable. This allows users to assess trustworthiness and detect potential errors.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/ai-901-azure-ai-fundamentals-your-gateway-to-microsoft-ai/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

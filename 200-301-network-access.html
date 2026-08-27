@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Network Access Practice Questions — Cisco Certified Network Associate (CCNA)</title>
+<meta name="description" content="6 free Network Access practice questions with explanations for the Cisco Certified Network Associate (CCNA) exam.">
+<link rel="canonical" href="https://technuggets.academy/200-301-network-access.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Network Access Practice Questions — Cisco Certified Network Associate (CCNA)">
+<meta property="og:description" content="6 free Network Access practice questions with explanations for the Cisco Certified Network Associate (CCNA) exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/200-301-network-access.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Network Access</h1>
+<p class="sub">Free Cisco Certified Network Associate (CCNA) practice — 6 questions on <strong>Network Access</strong>, with explanations. No sign-up.
+<a href="200-301.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Network Access">
+    <div class="meta">Question 1 of 6 · Network Access</div>
+    <div class="q">Two switches, SW1 and SW2, are connected via a single trunk link running 802.1Q. SW1's trunk interface is configured with the native VLAN set to 1 (default), while SW2's trunk interface has been configured with native VLAN 99. Console logs on both switches show recurring CDP native VLAN mismatch warnings, and untagged traffic destined for VLAN 1 is unexpectedly appearing in VLAN 99 on SW2. What must be done to correctly resolve this issue?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. Disable CDP on both trunk interfaces to suppress the mismatch warnings</button><button class="opt" onclick="answer(this,0,1,1)">B. Change SW2's native VLAN to VLAN 1 so it matches SW1's native VLAN configuration</button><button class="opt" onclick="answer(this,0,2,1)">C. Reconfigure the trunk encapsulation to ISL on both switches</button><button class="opt" onclick="answer(this,0,3,1)">D. Convert the link from a trunk port to an access port assigned to VLAN 99</button>
+    <div class="expl">A native VLAN mismatch occurs when the two ends of an 802.1Q trunk disagree on which VLAN is untagged. This causes CDP/LLDP warnings and can leak traffic between VLANs. The fix is to make both sides agree on the same native VLAN, in this case setting SW2 back to native VLAN 1 to match SW1.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Network Access">
+    <div class="meta">Question 2 of 6 · Network Access</div>
+    <div class="q">You are bundling four physical links between SW1 and SW2 into a single logical interface. On SW1, all four interfaces are configured with 'channel-group 1 mode active'. Which configuration on SW2's corresponding four interfaces will successfully form the EtherChannel using LACP?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. channel-group 1 mode active or channel-group 1 mode passive on all four interfaces</button><button class="opt" onclick="answer(this,1,1,0)">B. channel-group 1 mode auto on all four interfaces</button><button class="opt" onclick="answer(this,1,2,0)">C. channel-group 1 mode desirable on all four interfaces</button><button class="opt" onclick="answer(this,1,3,0)">D. channel-group 1 mode on for all four interfaces</button>
+    <div class="expl">LACP requires at least one side to be in active mode to initiate negotiation. Active-active and active-passive combinations both successfully negotiate and form the EtherChannel, since one side actively sends LACP packets and the other side (passive) responds.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Network Access">
+    <div class="meta">Question 3 of 6 · Network Access</div>
+    <div class="q">Three switches participate in Rapid PVST+ for VLAN 10: SW1 has bridge priority 32768, SW2 has bridge priority 24576, and SW3 has bridge priority 32768 with a lower MAC address than SW1. Which switch becomes the root bridge for VLAN 10?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. SW2, because it has the lowest bridge priority value</button><button class="opt" onclick="answer(this,2,1,0)">B. SW3, because when priorities tie the switch with the lowest MAC address wins</button><button class="opt" onclick="answer(this,2,2,0)">C. SW1, because it is the first switch listed in the topology</button><button class="opt" onclick="answer(this,2,3,0)">D. The switch with the highest configured port priority on its lowest-numbered port</button>
+    <div class="expl">The root bridge is elected based on the lowest bridge ID, which is priority first, then MAC address only used as a tiebreaker when priorities are equal. SW2's priority of 24576 is lower than SW1 and SW3's 32768, so SW2 wins outright regardless of MAC address comparisons.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Network Access">
+    <div class="meta">Question 4 of 6 · Network Access</div>
+    <div class="q">An access switchport connects to a user's PC. The PC is frequently powered on and off, and each time this happens the switch generates a topology change notification (TCN) that triggers unnecessary STP recalculation across the network. The administrator also wants to guarantee that if someone accidentally connects a switch to this port instead of a PC, the port is automatically disabled. Which configuration should be applied to this port?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. Configure both PortFast and BPDU Guard together</button><button class="opt" onclick="answer(this,3,1,0)">B. Configure BPDU Guard only</button><button class="opt" onclick="answer(this,3,2,0)">C. Configure PortFast only</button><button class="opt" onclick="answer(this,3,3,0)">D. Configure Root Guard on the port</button>
+    <div class="expl">PortFast causes the port to skip the listening and learning STP states and go straight to forwarding on link up, and it also prevents the port from generating TCNs on normal link up/down events for end-host connections. BPDU Guard adds protection by immediately error-disabling the port if a BPDU is ever received, which happens if a switch is plugged in by mistake. Both together satisfy both requirements in the scenario.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Network Access">
+    <div class="meta">Question 5 of 6 · Network Access</div>
+    <div class="q">A network engineer is comparing Layer 2 discovery protocols supported on Cisco switches for a mixed-vendor environment that includes some non-Cisco devices. Which statement correctly describes the two protocols?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. CDP is an IEEE standard supported by all vendors, while LLDP is Cisco-proprietary and only works between Cisco devices</button><button class="opt" onclick="answer(this,4,1,1)">B. LLDP is defined by IEEE 802.1AB and is vendor-neutral, while CDP is a Cisco-proprietary protocol supported only on Cisco equipment</button><button class="opt" onclick="answer(this,4,2,1)">C. Both CDP and LLDP require an IP address to be configured on the interface before neighbor information can be exchanged</button><button class="opt" onclick="answer(this,4,3,1)">D. CDP and LLDP both operate over TCP port 179 to exchange neighbor advertisements</button>
+    <div class="expl">LLDP (Link Layer Discovery Protocol) is defined by the IEEE 802.1AB standard and is supported across multiple vendors, making it useful in mixed environments. CDP (Cisco Discovery Protocol) is Cisco-proprietary and, in general, only Cisco devices participate in it, though CDP is still enabled by default on most Cisco platforms.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Network Access">
+    <div class="meta">Question 6 of 6 · Network Access</div>
+    <div class="q">An administrator needs to log into a Cisco Wireless LAN Controller's HTTPS-based web GUI from a laptop located on a management subnet that is different from the subnets used by the lightweight access points and wireless clients. Which WLC interface handles this type of administrative access, such as SSH, HTTPS, and SNMP traffic to the controller itself?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. The dynamic interface mapped to the client VLAN</button><button class="opt" onclick="answer(this,5,1,1)">B. The management interface, which handles administrative traffic to the controller</button><button class="opt" onclick="answer(this,5,2,1)">C. The virtual interface used for mobility and web authentication redirection</button><button class="opt" onclick="answer(this,5,3,1)">D. The AP-manager interface used to terminate CAPWAP tunnels from access points</button>
+    <div class="expl">The management interface on a WLC is the primary interface used for in-band management access to the controller, including SSH, Telnet, SNMP, and the HTTPS web GUI, regardless of which subnet the administrator's device is on, as long as IP routing/reachability exists to that interface's IP.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/ccna-200-301-v11-exam-prep-complete-course/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

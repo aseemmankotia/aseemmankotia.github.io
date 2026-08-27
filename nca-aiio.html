@@ -1,0 +1,123 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free NVIDIA-Certified Associate: AI Infrastructure and Operations Practice Test — 12 Real Exam-Style Questions</title>
+<meta name="description" content="Free NVIDIA-Certified Associate: AI Infrastructure and Operations practice questions with detailed explanations. Test yourself before the real exam.">
+<link rel="canonical" href="https://technuggets.academy/nca-aiio.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free NVIDIA-Certified Associate: AI Infrastructure and Operations Practice Test — 12 Real Exam-Style Questions">
+<meta property="og:description" content="Free NVIDIA-Certified Associate: AI Infrastructure and Operations practice questions with detailed explanations. Test yourself before the real exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/nca-aiio.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#76B900}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div><div class="hero">
+  <span class="chip">NCA-AIIO</span>
+  <h1>Free NVIDIA-Certified Associate: AI Infrastructure and Operations Practice Test</h1>
+  <p class="sub">12 exam-style questions with full explanations — no sign-up. Score yourself, then close your gaps with the full course.</p>
+  <div class="facts"><span class="fact">Exam fee <b>~$135</b></span><span class="fact"><b>3</b> exam domains</span><span class="fact">Level <b>Beginner</b></span><span class="fact"><b>2</b> timed practice tests in the course</span></div>
+  <div class="cta-row"><a class="btn enroll" href="https://www.udemy.com/course/mastering-nvidia-ai-infrastructure-operations-nca-aiio/" rel="sponsored" target="_blank">Start my full course on Udemy →</a><a class="btn ghost" href="#practice">Try the free test →</a></div>
+</div><div class="trust"><span>✅ <b>Free</b> practice — no sign-up</span><span>📝 Real exam-style questions</span><span>💡 Detailed explanations</span><span>💸 30-day money-back via Udemy</span></div>
+<div id="practice"></div>
+
+  <div class="card qcard" id="q0" data-domain="Essential AI Knowledge">
+    <div class="meta">Question 1 of 12 · Essential AI Knowledge</div>
+    <div class="q">A data science team is building an object detection model and reports 95% accuracy on their test set, but stakeholders notice the model rarely detects rare defects in manufacturing. The dataset contains 10,000 normal samples and 100 defect samples. Which metric would BEST reveal the model's actual performance on detecting defects?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. Increase the test set size to 20,000 samples to improve statistical significance</button><button class="opt" onclick="answer(this,0,1,3)">B. Use ROC-AUC score since it handles class imbalance automatically</button><button class="opt" onclick="answer(this,0,2,3)">C. Retrain with 50/50 class balance and re-measure accuracy</button><button class="opt" onclick="answer(this,0,3,3)">D. Calculate recall (sensitivity) specifically for the defect class to measure detection rate</button>
+    <div class="expl">Recall (True Positives / (True Positives + False Negatives)) directly measures the proportion of actual defects the model successfully detects. With severe class imbalance (100 defects vs 10,000 normal), a model can achieve 95% accuracy by predicting 'normal' for everything while missing all defects. Class-specific recall reveals this failure mode. For rare-event detection, recall on the minority class is the critical metric.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="AI Infrastructure">
+    <div class="meta">Question 2 of 12 · AI Infrastructure</div>
+    <div class="q">A research team is deploying a DGX H100 system for training large language models with 80B parameters. They need to maximize GPU-to-GPU communication bandwidth while minimizing latency for model parallelism across all 8 GPUs. Which interconnect technology provides the highest bandwidth in this configuration?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. PCIe Gen5 x16 providing 128 GB/s bidirectional bandwidth</button><button class="opt" onclick="answer(this,1,1,3)">B. InfiniBand HDR200 providing 400 Gb/s per port</button><button class="opt" onclick="answer(this,1,2,3)">C. 100GbE RoCE v2 providing 100 Gb/s per NIC</button><button class="opt" onclick="answer(this,1,3,3)">D. NVLink 4.0 with NVSwitch providing 900 GB/s per GPU bidirectional bandwidth</button>
+    <div class="expl">DGX H100 systems use NVLink 4.0 with fourth-generation NVSwitch, providing 900 GB/s of bidirectional bandwidth per GPU. This creates a fully connected topology where every GPU can communicate with every other GPU at maximum bandwidth, essential for model parallelism in large model training.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="AI Operations">
+    <div class="meta">Question 3 of 12 · AI Operations</div>
+    <div class="q">A production AI training cluster running on NVIDIA DGX systems shows inconsistent job completion times. The admin runs `nvidia-smi` and observes GPU temperatures cycling between 45°C and 83°C every few minutes across multiple nodes. GPU utilization drops from 95% to 40% when temperatures exceed 80°C. Which action will BEST resolve this issue?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. Increase the Kubernetes resource request limits for GPU memory to prevent thermal throttling</button><button class="opt" onclick="answer(this,2,1,1)">B. Verify datacenter HVAC is maintaining recommended ambient temperature (18-27°C) and check for blocked airflow in server racks</button><button class="opt" onclick="answer(this,2,2,1)">C. Lower the GPU power limit using `nvidia-smi -pl 250` to reduce heat generation</button><button class="opt" onclick="answer(this,2,3,1)">D. Update the NVIDIA driver to the latest version to fix thermal management bugs</button>
+    <div class="expl">Temperature cycling between 45°C and 83°C with performance drops at 80°C indicates thermal throttling caused by inadequate cooling. DGX systems require proper datacenter cooling (18-27°C ambient) and unobstructed airflow. Thermal throttling is the GPU's protective mechanism when cooling is insufficient—fixing the root cause (cooling infrastructure) is the correct operational approach.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Essential AI Knowledge">
+    <div class="meta">Question 4 of 12 · Essential AI Knowledge</div>
+    <div class="q">An AI infrastructure engineer needs to deploy a container for running TensorRT inference workloads on NVIDIA GPUs in a production environment. Which source should they use to obtain the optimized, validated container image?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. Docker Hub public repository for community TensorRT images</button><button class="opt" onclick="answer(this,3,1,2)">B. Build a custom container from scratch using the official TensorRT SDK download</button><button class="opt" onclick="answer(this,3,2,2)">C. NVIDIA NGC catalog with GPU-optimized and security-scanned containers</button><button class="opt" onclick="answer(this,3,3,2)">D. Use the default TensorFlow container and install TensorRT as a plugin</button>
+    <div class="expl">NVIDIA NGC (NVIDIA GPU Cloud) catalog is the official source for production-ready, GPU-optimized containers including TensorRT. NGC containers are pre-configured with correct CUDA, cuDNN, and TensorRT versions, tested for compatibility with NVIDIA GPUs, security-scanned, and include performance optimizations. For enterprise deployments, NGC is the recommended and supported path.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="AI Infrastructure">
+    <div class="meta">Question 5 of 12 · AI Infrastructure</div>
+    <div class="q">An AI infrastructure team needs to support multiple concurrent inference workloads on a single A100 GPU, each requiring isolation for different customer tenants with guaranteed resources. The workloads vary: one needs 20GB memory, another needs 10GB, and a third needs 10GB. Which NVIDIA technology should they implement?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. NVIDIA vGPU with virtual machine partitioning</button><button class="opt" onclick="answer(this,4,1,1)">B. NVIDIA Multi-Instance GPU (MIG) with 1x 20GB and 2x 10GB instances</button><button class="opt" onclick="answer(this,4,2,1)">C. Time-sliced GPU sharing with CUDA MPS</button><button class="opt" onclick="answer(this,4,3,1)">D. Docker containers with GPU passthrough and memory limits</button>
+    <div class="expl">MIG on A100 provides hardware-level isolation with guaranteed memory and compute resources. A100 80GB supports configurations like 1x MIG 3g.20gb instance and 2x MIG 2g.10gb instances, providing complete isolation with dedicated SM, memory, and cache partitions for each tenant—critical for multi-tenancy security and QoS.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="AI Operations">
+    <div class="meta">Question 6 of 12 · AI Operations</div>
+    <div class="q">An MLOps team needs to monitor GPU utilization, memory usage, power consumption, and temperature across a 64-GPU cluster running continuous training jobs. The monitoring solution must integrate with Prometheus for alerting and require minimal performance overhead. Which tool should they deploy?</div>
+    <button class="opt" onclick="answer(this,5,0,2)">A. Run `nvidia-smi dmon` on each node and parse output with custom scripts</button><button class="opt" onclick="answer(this,5,1,2)">B. NVIDIA Nsight Systems profiler configured to export metrics every 5 seconds</button><button class="opt" onclick="answer(this,5,2,2)">C. NVIDIA DCGM (Data Center GPU Manager) with dcgm-exporter for Prometheus integration</button><button class="opt" onclick="answer(this,5,3,2)">D. Kubernetes metrics-server with GPU device plugin annotations</button>
+    <div class="expl">DCGM is NVIDIA's purpose-built GPU monitoring solution for datacenters. The dcgm-exporter component provides native Prometheus integration, collects comprehensive metrics (utilization, memory, power, temperature, health), and is designed for low overhead on production systems. This is the standard solution for production GPU monitoring.</div>
+  </div>
+
+  <div class="card qcard" id="q6" data-domain="Essential AI Knowledge">
+    <div class="meta">Question 7 of 12 · Essential AI Knowledge</div>
+    <div class="q">A company is evaluating whether to use CPUs or GPUs for training a large transformer model with 175 billion parameters. The training dataset requires processing 500TB of text data through multiple epochs. Which architectural characteristic of GPUs provides the PRIMARY advantage for this workload?</div>
+    <button class="opt" onclick="answer(this,6,0,3)">A. Higher clock speeds allowing faster sequential instruction execution per core</button><button class="opt" onclick="answer(this,6,1,3)">B. Larger L3 cache sizes that reduce memory access latency for model parameters</button><button class="opt" onclick="answer(this,6,2,3)">C. Superior branch prediction capabilities that optimize conditional logic in neural network layers</button><button class="opt" onclick="answer(this,6,3,3)">D. Thousands of parallel cores optimized for executing identical operations across massive datasets simultaneously</button>
+    <div class="expl">GPUs contain thousands of smaller, energy-efficient cores designed for massive parallelism, whereas CPUs have fewer (tens) powerful cores optimized for sequential tasks. Training neural networks involves matrix operations (multiplications, additions) performed on millions/billions of parameters simultaneously. GPUs excel at these embarrassingly parallel workloads. For a 175B parameter model, the ability to process thousands of matrix operations in parallel across tensor cores provides 10-100x speedup over CPUs.</div>
+  </div>
+
+  <div class="card qcard" id="q7" data-domain="AI Infrastructure">
+    <div class="meta">Question 8 of 12 · AI Infrastructure</div>
+    <div class="q">A company is building a 256-GPU training cluster for computer vision models using DGX A100 systems. They need to decide between InfiniBand and Ethernet for the cluster network. Training involves frequent all-reduce operations with 50GB model gradients synchronized across all GPUs. Which statement BEST describes the networking choice?</div>
+    <button class="opt" onclick="answer(this,7,0,1)">A. 200GbE with RoCE v2 is sufficient because Ethernet has lower cost and simpler management than InfiniBand</button><button class="opt" onclick="answer(this,7,1,1)">B. InfiniBand NDR400 is required because RDMA with GPUDirect enables kernel bypass and significantly reduces collective operation latency</button><button class="opt" onclick="answer(this,7,2,1)">C. 100GbE is adequate because NVLink handles all GPU communication within nodes and network only transfers checkpoints</button><button class="opt" onclick="answer(this,7,3,1)">D. Either technology works equally well because the bottleneck is GPU computation time, not network bandwidth</button>
+    <div class="expl">InfiniBand NDR (400 Gb/s) with RDMA and GPUDirect RDMA enables direct GPU-to-GPU transfers across nodes, bypassing CPU and reducing latency for collective operations like all-reduce. For 256-GPU training with frequent synchronization, the lower latency (sub-microsecond) and higher efficiency of InfiniBand provides 30-40% faster training compared to Ethernet alternatives.</div>
+  </div>
+
+  <div class="card qcard" id="q8" data-domain="AI Operations">
+    <div class="meta">Question 9 of 12 · AI Operations</div>
+    <div class="q">A Slurm-managed AI cluster has 8 nodes with 8x A100 GPUs each. A researcher submits a distributed training job requiring 16 GPUs with `#SBATCH --gres=gpu:8` and `#SBATCH --nodes=2`. The job remains in PENDING state. `sinfo` shows all nodes are idle with all GPUs available. What is the MOST likely cause?</div>
+    <button class="opt" onclick="answer(this,8,0,1)">A. The job script is missing the `--ntasks-per-node=8` parameter to match GPU count</button><button class="opt" onclick="answer(this,8,1,1)">B. Slurm's GresTypes configuration doesn't include 'gpu' in slurm.conf</button><button class="opt" onclick="answer(this,8,2,1)">C. The partition doesn't have sufficient GPU resources allocated in partition configuration</button><button class="opt" onclick="answer(this,8,3,1)">D. The user has exceeded their GPU hour quota in Slurm accounting</button>
+    <div class="expl">For Slurm to recognize `--gres=gpu:X` requests, GresTypes must be configured in slurm.conf (e.g., `GresTypes=gpu`). Without this, Slurm doesn't understand the GPU resource type and cannot allocate GPUs, causing jobs to pend indefinitely even when GPUs are physically available. This is a common configuration oversight.</div>
+  </div>
+
+  <div class="card qcard" id="q9" data-domain="Essential AI Knowledge">
+    <div class="meta">Question 10 of 12 · Essential AI Knowledge</div>
+    <div class="q">An organization is deploying an AI-powered customer service chatbot that must respond to user queries within 200ms. The ML team has a trained model but needs to optimize it for production deployment on NVIDIA GPUs. Which component of the NVIDIA software stack is specifically designed for this use case?</div>
+    <button class="opt" onclick="answer(this,9,0,3)">A. CUDA toolkit for writing custom GPU-accelerated kernels</button><button class="opt" onclick="answer(this,9,1,3)">B. cuDNN library for accelerating training of convolutional neural networks</button><button class="opt" onclick="answer(this,9,2,3)">C. NVIDIA AI Enterprise for enterprise support and managed services</button><button class="opt" onclick="answer(this,9,3,3)">D. TensorRT for optimizing trained models to maximize inference throughput and minimize latency</button>
+    <div class="expl">TensorRT is NVIDIA's inference optimization engine that takes trained models (from TensorFlow, PyTorch, etc.) and optimizes them for production deployment. It performs layer fusion, precision calibration (FP32→FP16→INT8), kernel auto-tuning, and graph optimization to minimize latency and maximize throughput on NVIDIA GPUs. For a 200ms latency requirement in production inference, TensorRT is the correct tool—it can reduce latency by 2-10x compared to unoptimized models.</div>
+  </div>
+
+  <div class="card qcard" id="q10" data-domain="AI Infrastructure">
+    <div class="meta">Question 11 of 12 · AI Infrastructure</div>
+    <div class="q">An enterprise AI team is designing storage for a training pipeline that processes 500TB of raw image data, requires 50GB/s aggregate read throughput during training, and needs to support 100+ concurrent preprocessing jobs. Which storage architecture BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,10,0,0)">A. Parallel distributed file system (e.g., Lustre, GPFS) with NVMe SSDs across multiple storage nodes</button><button class="opt" onclick="answer(this,10,1,0)">B. Single NFS server with 100GbE network connection and RAID-6 HDDs</button><button class="opt" onclick="answer(this,10,2,0)">C. Object storage (S3-compatible) with data cached locally on each training node's NVMe</button><button class="opt" onclick="answer(this,10,3,0)">D. Direct-attached NVMe SSDs on each DGX system with data replicated to each node</button>
+    <div class="expl">Parallel file systems like Lustre or GPFS with NVMe SSDs provide the aggregate bandwidth (50GB/s+), low latency, and concurrent access patterns required for distributed training. Multiple storage servers with NVMe deliver sustained high throughput, and parallel architecture prevents bottlenecks when 100+ jobs read simultaneously. This is the standard for large-scale AI training infrastructure.</div>
+  </div>
+
+  <div class="card qcard" id="q11" data-domain="AI Operations">
+    <div class="meta">Question 12 of 12 · AI Operations</div>
+    <div class="q">During a PyTorch distributed training job across 4 nodes with 8 GPUs each (32 GPUs total), the job crashes with 'CUDA out of memory' errors despite each GPU having 80GB memory and the model requiring only 24GB per GPU. Monitoring shows GPU memory usage at 78GB per GPU before the crash. What is the BEST troubleshooting step?</div>
+    <button class="opt" onclick="answer(this,11,0,3)">A. Reduce the batch size to decrease per-GPU memory consumption</button><button class="opt" onclick="answer(this,11,1,3)">B. Enable PyTorch gradient checkpointing to reduce activation memory</button><button class="opt" onclick="answer(this,11,2,3)">C. Increase the number of GPUs to 64 to distribute memory load further</button><button class="opt" onclick="answer(this,11,3,3)">D. Check for gradient accumulation bugs causing activation tensors to accumulate without being freed</button>
+    <div class="expl">The model requires 24GB but memory usage reaches 78GB—more than 3x expected. This indicates a memory leak, most commonly from gradient accumulation implementation errors where activations aren't properly freed between accumulation steps. Checking for this specific bug addresses the root cause: why memory consumption far exceeds model requirements.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/mastering-nvidia-ai-infrastructure-operations-nca-aiio/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<section class="faq"><h3>NCA-AIIO exam — quick answers</h3><details><summary>How much does the NCA-AIIO exam cost?</summary><p>The exam fee is approximately $135 and varies by region — confirm current pricing with the certification vendor before you book.</p></details><details><summary>What topics are on the exam?</summary><p>It covers 3 domains: Essential AI Knowledge (38%), AI Infrastructure (40%), AI Operations (22%). The full course has a dedicated chapter, lab and practice-test coverage for each.</p></details><details><summary>Is this practice test really free?</summary><p>Yes — all questions on this page are free with explanations and no sign-up. The paid Udemy course adds two full-length timed exams, video lessons and hands-on labs.</p></details><details><summary>Will this prepare me for the real exam?</summary><p>The questions mirror the real exam's style and are mapped to the official domains. This is exam-focused preparation — combine the free test with the full course's timed simulations to gauge your readiness.</p></details></section>
+<div class="domains"><span class="meta">More free practice by exam domain:</span><br><a href="nca-aiio-essential-ai-knowledge.html">Essential AI Knowledge →</a><a href="nca-aiio-ai-infrastructure.html">AI Infrastructure →</a><a href="nca-aiio-ai-operations.html">AI Operations →</a></div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

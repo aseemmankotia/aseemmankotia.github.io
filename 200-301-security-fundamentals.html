@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Security Fundamentals Practice Questions — Cisco Certified Network Associate (CCNA)</title>
+<meta name="description" content="6 free Security Fundamentals practice questions with explanations for the Cisco Certified Network Associate (CCNA) exam.">
+<link rel="canonical" href="https://technuggets.academy/200-301-security-fundamentals.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Security Fundamentals Practice Questions — Cisco Certified Network Associate (CCNA)">
+<meta property="og:description" content="6 free Security Fundamentals practice questions with explanations for the Cisco Certified Network Associate (CCNA) exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/200-301-security-fundamentals.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Security Fundamentals</h1>
+<p class="sub">Free Cisco Certified Network Associate (CCNA) practice — 6 questions on <strong>Security Fundamentals</strong>, with explanations. No sign-up.
+<a href="200-301.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Security Fundamentals">
+    <div class="meta">Question 1 of 6 · Security Fundamentals</div>
+    <div class="q">A company wants to prevent rogue DHCP servers from handing out addresses on the access layer and also prevent attackers from poisoning the ARP cache of hosts in the same VLAN. Which combination of switch features and trust configuration correctly addresses both requirements?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. Enable DHCP snooping and Dynamic ARP Inspection; configure the uplink port to the DHCP server as trusted, leave access ports untrusted</button><button class="opt" onclick="answer(this,0,1,0)">B. Enable Dynamic ARP Inspection only; trust all VLAN interfaces</button><button class="opt" onclick="answer(this,0,2,0)">C. Enable DHCP snooping only; configure all access ports as trusted</button><button class="opt" onclick="answer(this,0,3,0)">D. Enable port security on all ports; trust the uplink port to the DHCP server</button>
+    <div class="expl">DHCP snooping builds a binding table of legitimate IP-to-MAC-to-port mappings by trusting only the uplink toward the real DHCP server. Dynamic ARP Inspection then uses that same binding table to validate ARP replies on untrusted (access) ports, blocking both rogue DHCP offers and spoofed ARP traffic.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Security Fundamentals">
+    <div class="meta">Question 2 of 6 · Security Fundamentals</div>
+    <div class="q">A switch port is configured with 'switchport port-security maximum 1', 'switchport port-security violation restrict', and 'switchport port-security mac-address sticky'. The port learns MAC AAAA.AAAA.AAAA from the first connected PC. Later, a different device with a new MAC address is connected to the same port while the original device is still active. What happens?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. The port drops packets from the new device, logs a violation, but the port stays up and the original device continues to be allowed</button><button class="opt" onclick="answer(this,1,1,0)">B. The interface converts the sticky MAC to a dynamic entry and relearns the new address</button><button class="opt" onclick="answer(this,1,2,0)">C. SNMP trap is sent and the port is placed into err-disabled state after 3 violations</button><button class="opt" onclick="answer(this,1,3,0)">D. The port shuts down err-disabled and must be manually re-enabled</button>
+    <div class="expl">The 'restrict' violation mode drops traffic from any MAC address that exceeds the configured maximum, increments the violation counter, and generates a syslog/SNMP message, but it does not disable the interface — the port stays operational for the already-learned address.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Security Fundamentals">
+    <div class="meta">Question 3 of 6 · Security Fundamentals</div>
+    <div class="q">A network admin needs junior engineers to be limited to 'show' commands on routers while senior engineers retain full 'configure terminal' access, along with detailed per-command accounting logs for auditing. Which Cisco AAA protocol choice best meets this requirement?</div>
+    <button class="opt" onclick="answer(this,2,0,2)">A. RADIUS, because it combines authentication and authorization in one packet</button><button class="opt" onclick="answer(this,2,1,2)">B. 802.1X, because it authenticates devices before granting network access</button><button class="opt" onclick="answer(this,2,2,2)">C. TACACS+, because it separates authentication, authorization, and accounting and supports command-level authorization</button><button class="opt" onclick="answer(this,2,3,2)">D. Kerberos, because it provides ticket-based authentication for CLI access</button>
+    <div class="expl">TACACS+ separates the AAA functions and encrypts the entire packet body, and critically it supports per-command authorization — allowing granular control such as permitting 'show' commands to one group while restricting 'configure terminal' to another, with full command-level accounting.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Security Fundamentals">
+    <div class="meta">Question 4 of 6 · Security Fundamentals</div>
+    <div class="q">A company needs to block only host 10.10.20.55 from reaching the web server 172.16.5.10 on any protocol/port, while allowing that host and all other hosts to reach every other destination normally. Which ACL configuration and placement correctly achieves this?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. access-list 101 deny tcp 10.10.20.0 0.0.0.255 host 172.16.5.10 eq 80 followed by permit ip any any, applied outbound on the router interface connected to the server</button><button class="opt" onclick="answer(this,3,1,1)">B. access-list 101 deny ip host 10.10.20.55 host 172.16.5.10 followed by permit ip any any, applied inbound on the router interface closest to 10.10.20.55</button><button class="opt" onclick="answer(this,3,2,1)">C. access-list 1 deny host 10.10.20.55 followed by permit any, applied inbound on the interface closest to the server</button><button class="opt" onclick="answer(this,3,3,1)">D. access-list 101 deny ip host 10.10.20.55 host 172.16.5.10 with no additional permit statement, applied outbound on the interface closest to the source</button>
+    <div class="expl">An extended numbered ACL can match both source and destination for any protocol. Using 'host' notation on both source and destination precisely targets only 10.10.20.55 talking to 172.16.5.10, and a trailing permit ip any any preserves all other traffic. Extended ACLs should be applied inbound as close to the source as possible for efficiency.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Security Fundamentals">
+    <div class="meta">Question 5 of 6 · Security Fundamentals</div>
+    <div class="q">Which statement accurately differentiates WPA2-Personal from WPA3-Personal?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. WPA3-Personal uses Simultaneous Authentication of Equals (SAE) to resist offline dictionary attacks, while WPA2-Personal uses a 4-way handshake with PSK vulnerable to offline capture</button><button class="opt" onclick="answer(this,4,1,0)">B. WPA2-Personal requires 802.1X authentication with a RADIUS server, whereas WPA3-Personal only supports PSK</button><button class="opt" onclick="answer(this,4,2,0)">C. WPA3-Personal disables encryption entirely for guest network compatibility</button><button class="opt" onclick="answer(this,4,3,0)">D. WPA2-Personal uses AES-256 exclusively, while WPA3-Personal uses AES-128 for backward compatibility</button>
+    <div class="expl">WPA3-Personal replaces the WPA2 4-way handshake with SAE (Simultaneous Authentication of Equals, based on Dragonfly key exchange), which provides forward secrecy and resists offline dictionary/brute-force attacks against captured handshake traffic — a well-known weakness of WPA2-PSK's 4-way handshake.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Security Fundamentals">
+    <div class="meta">Question 6 of 6 · Security Fundamentals</div>
+    <div class="q">A company connects two branch offices over the internet and needs all inter-site traffic encrypted while also allowing OSPF to form a dynamic routing adjacency between the two branch routers. Which solution meets both requirements?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. A GRE tunnel alone between the two branch routers</button><button class="opt" onclick="answer(this,5,1,3)">B. Site-to-site SSL VPN using a web browser client on each router</button><button class="opt" onclick="answer(this,5,2,3)">C. Standard IPsec tunnel mode using ESP for the site-to-site connection</button><button class="opt" onclick="answer(this,5,3,3)">D. A GRE tunnel encapsulated inside an IPsec tunnel (GRE over IPsec)</button>
+    <div class="expl">GRE supports multicast and broadcast traffic, which OSPF requires to form adjacencies (multicast to 224.0.0.5/224.0.0.6). Wrapping the GRE tunnel inside IPsec (GRE over IPsec) provides the needed encryption while still allowing OSPF to run over the GRE interface, satisfying both the security and dynamic-routing requirements.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/ccna-200-301-v11-exam-prep-complete-course/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

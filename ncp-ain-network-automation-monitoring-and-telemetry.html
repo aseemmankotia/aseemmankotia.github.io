@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Network Automation, Monitoring, and Telemetry Practice Questions — NVIDIA-Certified Professional: AI Networking</title>
+<meta name="description" content="6 free Network Automation, Monitoring, and Telemetry practice questions with explanations for the NVIDIA-Certified Professional: AI Networking exam.">
+<link rel="canonical" href="https://technuggets.academy/ncp-ain-network-automation-monitoring-and-telemetry.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Network Automation, Monitoring, and Telemetry Practice Questions — NVIDIA-Certified Professional: AI Networking">
+<meta property="og:description" content="6 free Network Automation, Monitoring, and Telemetry practice questions with explanations for the NVIDIA-Certified Professional: AI Networking exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/ncp-ain-network-automation-monitoring-and-telemetry.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#76B900}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Network Automation, Monitoring, and Telemetry</h1>
+<p class="sub">Free NVIDIA-Certified Professional: AI Networking practice — 6 questions on <strong>Network Automation, Monitoring, and Telemetry</strong>, with explanations. No sign-up.
+<a href="ncp-ain.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Network Automation, Monitoring, and Telemetry">
+    <div class="meta">Question 1 of 6 · Network Automation, Monitoring, and Telemetry</div>
+    <div class="q">During a large-scale NCCL all-reduce job, RoCEv2 traffic on a specific Spectrum switch port experiences intermittent, sub-millisecond packet drops. The team must identify the exact hardware-level drop reason (e.g., buffer exhaustion vs. ECN marking vs. CRC error) in real time, without adding capture latency or consuming additional switch CPU for deep packet inspection. Which feature should be used?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. NetQ historical trend reports generated from periodic SNMP polling</button><button class="opt" onclick="answer(this,0,1,1)">B. What-Just-Happened (WJH) ASIC-level real-time drop telemetry</button><button class="opt" onclick="answer(this,0,2,1)">C. UFM Fabric Health dashboard (InfiniBand-only fabric monitoring)</button><button class="opt" onclick="answer(this,0,3,1)">D. SPAN/port mirroring to an external packet analyzer</button>
+    <div class="expl">WJH is implemented directly in the Spectrum ASIC and classifies drop reasons (buffer, ACL, CRC, tail drop, ECN, symbol errors) at line rate, streaming the results without impacting switch performance — exactly the real-time, low-overhead visibility the scenario requires.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Network Automation, Monitoring, and Telemetry">
+    <div class="meta">Question 2 of 6 · Network Automation, Monitoring, and Telemetry</div>
+    <div class="q">An engineer runs `nv set interface swp1 link mtu 9216` on a Cumulus Linux switch managed with NVUE, then runs `nv config apply` and confirms the interface is using the new MTU. After a scheduled maintenance reboot, the switch reverts swp1 to the default MTU. Which additional command was missing from the workflow?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. nv config apply</button><button class="opt" onclick="answer(this,1,1,3)">B. nv set save</button><button class="opt" onclick="answer(this,1,2,3)">C. nv config commit</button><button class="opt" onclick="answer(this,1,3,3)">D. nv config save</button>
+    <div class="expl">`nv config apply` only activates staged changes in the running configuration. `nv config save` is required to write the applied configuration into the startup configuration so it persists across a reboot.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Network Automation, Monitoring, and Telemetry">
+    <div class="meta">Question 3 of 6 · Network Automation, Monitoring, and Telemetry</div>
+    <div class="q">A network automation team wants to manage NVUE-based configuration on 200 Cumulus Linux switches using Ansible playbooks, interacting directly with NVUE's declarative REST API (rather than scraping CLI text output) so that changes are idempotent and structured as JSON. Which Ansible collection should they use?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. community.network.nclu</button><button class="opt" onclick="answer(this,2,1,3)">B. ansible.netcommon.cli_config</button><button class="opt" onclick="answer(this,2,2,3)">C. cisco.nxos</button><button class="opt" onclick="answer(this,2,3,3)">D. nvidia.nvue Ansible collection</button>
+    <div class="expl">The nvidia.nvue collection provides modules that interact with the NVUE REST API directly, allowing idempotent, structured management of Cumulus Linux configuration state without CLI screen-scraping.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Network Automation, Monitoring, and Telemetry">
+    <div class="meta">Question 4 of 6 · Network Automation, Monitoring, and Telemetry</div>
+    <div class="q">A capacity planning team needs six months of historical port counters, PFC pause ratios, and congestion statistics from an InfiniBand fabric, exported continuously into Grafana for long-term trend analysis. Which UFM capability should be configured?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. UFM SHARP in-network aggregation offload</button><button class="opt" onclick="answer(this,3,1,2)">B. UFM WJH real-time drop-reason capture</button><button class="opt" onclick="answer(this,3,2,2)">C. UFM Telemetry streaming (Fluentd/Prometheus exporter) writing to a time-series database</button><button class="opt" onclick="answer(this,3,3,2)">D. UFM Cyber-AI anomaly detection engine</button>
+    <div class="expl">UFM Telemetry supports streaming counters and fabric health metrics via Fluentd/Prometheus-compatible exporters into an external time-series database, which is the intended mechanism for long-term, Grafana-based historical trend analysis.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Network Automation, Monitoring, and Telemetry">
+    <div class="meta">Question 5 of 6 · Network Automation, Monitoring, and Telemetry</div>
+    <div class="q">A security team wants to offload stateful connection tracking and hardware-accelerated flow rule matching (for a zero-trust firewall policy) onto a BlueField DPU, freeing host CPU cycles entirely from packet processing. Which DOCA library is designed for this purpose?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. DOCA GPUNetIO</button><button class="opt" onclick="answer(this,4,1,3)">B. DOCA Comm Channel</button><button class="opt" onclick="answer(this,4,2,3)">C. DOCA Telemetry</button><button class="opt" onclick="answer(this,4,3,3)">D. DOCA Flow</button>
+    <div class="expl">DOCA Flow provides a hardware-accelerated flow processing pipeline API used to program connection tracking, NAT, and firewall/ACL rules directly onto the BlueField DPU's flow tables, offloading this work from the host CPU.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Network Automation, Monitoring, and Telemetry">
+    <div class="meta">Question 6 of 6 · Network Automation, Monitoring, and Telemetry</div>
+    <div class="q">An operations team wants sub-second, push-based delivery of interface counters and queue-depth metrics from Cumulus Linux switches to a central collector, subscribing only to specific YANG data paths of interest, instead of periodically polling the entire MIB tree. Which telemetry approach satisfies this requirement?</div>
+    <button class="opt" onclick="answer(this,5,0,2)">A. SNMP polling every 60 seconds</button><button class="opt" onclick="answer(this,5,1,2)">B. sFlow sampling</button><button class="opt" onclick="answer(this,5,2,2)">C. gNMI-based OpenConfig streaming telemetry</button><button class="opt" onclick="answer(this,5,3,2)">D. Syslog forwarding to a SIEM</button>
+    <div class="expl">gNMI (gRPC Network Management Interface) with OpenConfig YANG models allows a collector to subscribe to specific paths and receive push-based, sub-second streaming updates, avoiding the overhead and latency of periodic full-tree polling.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/ncp-ain-nvidia-ai-networking-certification-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Describe Azure architecture and services Practice Questions — Microsoft Certified: Azure Fundamentals</title>
+<meta name="description" content="6 free Describe Azure architecture and services practice questions with explanations for the Microsoft Certified: Azure Fundamentals exam.">
+<link rel="canonical" href="https://technuggets.academy/az-900-describe-azure-architecture-and-services.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Describe Azure architecture and services Practice Questions — Microsoft Certified: Azure Fundamentals">
+<meta property="og:description" content="6 free Describe Azure architecture and services practice questions with explanations for the Microsoft Certified: Azure Fundamentals exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/az-900-describe-azure-architecture-and-services.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0078D4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Describe Azure architecture and services</h1>
+<p class="sub">Free Microsoft Certified: Azure Fundamentals practice — 6 questions on <strong>Describe Azure architecture and services</strong>, with explanations. No sign-up.
+<a href="az-900.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Describe Azure architecture and services">
+    <div class="meta">Question 1 of 6 · Describe Azure architecture and services</div>
+    <div class="q">A manufacturing company operates globally and needs to deploy Azure resources in a geography where data must remain within specific national boundaries due to legal requirements. The company cannot use standard Azure public cloud regions. Which Azure offering should they use?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. Azure region pairs in the same geography</button><button class="opt" onclick="answer(this,0,1,2)">B. Azure availability zones within a single region</button><button class="opt" onclick="answer(this,0,2,2)">C. Azure sovereign regions</button><button class="opt" onclick="answer(this,0,3,2)">D. Azure management groups with policy enforcement</button>
+    <div class="expl">Azure sovereign regions (such as Azure Government, Azure China, Azure Germany) are physically and logically isolated instances of Azure designed to meet specific compliance, sovereignty, and regulatory requirements. They operate independently from the public Azure cloud and ensure data residency within specific national boundaries.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Describe Azure architecture and services">
+    <div class="meta">Question 2 of 6 · Describe Azure architecture and services</div>
+    <div class="q">A development team needs to run a containerized microservices application that requires automatic scaling, load balancing, self-healing, and rolling updates without managing the underlying infrastructure. The team wants built-in monitoring and wants to use Kubernetes. Which Azure service BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. Azure Container Instances</button><button class="opt" onclick="answer(this,1,1,2)">B. Azure Virtual Machine Scale Sets with Docker</button><button class="opt" onclick="answer(this,1,2,2)">C. Azure Kubernetes Service (AKS)</button><button class="opt" onclick="answer(this,1,3,2)">D. Azure App Service with container support</button>
+    <div class="expl">Azure Kubernetes Service (AKS) is a managed Kubernetes orchestration service that provides automatic scaling, load balancing, self-healing, rolling updates, and built-in monitoring. AKS manages the Kubernetes control plane while you focus on your containers, meeting all requirements including the specific request for Kubernetes.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Describe Azure architecture and services">
+    <div class="meta">Question 3 of 6 · Describe Azure architecture and services</div>
+    <div class="q">A financial services company needs to connect their on-premises datacenter to Azure with a private, dedicated connection that does NOT traverse the public internet and provides predictable latency and throughput up to 100 Gbps. Which networking service should they implement?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. Azure ExpressRoute</button><button class="opt" onclick="answer(this,2,1,0)">B. Azure VPN Gateway with Site-to-Site VPN</button><button class="opt" onclick="answer(this,2,2,0)">C. Azure Virtual Network peering</button><button class="opt" onclick="answer(this,2,3,0)">D. Azure Bastion with private endpoints</button>
+    <div class="expl">Azure ExpressRoute provides private, dedicated connectivity between on-premises infrastructure and Azure through a connectivity provider. It does not traverse the public internet, offers predictable performance, supports up to 100 Gbps bandwidth, and provides lower latencies than typical internet connections - perfect for financial services requirements.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Describe Azure architecture and services">
+    <div class="meta">Question 4 of 6 · Describe Azure architecture and services</div>
+    <div class="q">A company stores 500 TB of archived compliance documents that are accessed once per year for audits. They need the lowest possible storage cost and can tolerate several hours of retrieval time. The data must be kept for 10 years. Which Azure Storage solution provides the MOST cost-effective option?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. Azure Blob Storage Hot tier with LRS redundancy</button><button class="opt" onclick="answer(this,3,1,1)">B. Azure Blob Storage Archive tier</button><button class="opt" onclick="answer(this,3,2,1)">C. Azure Blob Storage Cool tier with GRS redundancy</button><button class="opt" onclick="answer(this,3,3,1)">D. Azure Files Premium tier</button>
+    <div class="expl">Azure Blob Storage Archive tier is specifically designed for rarely accessed data with the lowest storage cost (approximately $0.00099 per GB/month as of 2026). It can tolerate retrieval times of several hours (rehydration process), making it perfect for compliance archives accessed once yearly. The 180-day minimum storage duration is acceptable for 10-year retention.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Describe Azure architecture and services">
+    <div class="meta">Question 5 of 6 · Describe Azure architecture and services</div>
+    <div class="q">A healthcare organization requires users to sign in once using their corporate credentials and then access multiple Azure services and SaaS applications without re-entering passwords. Additionally, they want to require an authentication app verification when users sign in from unknown devices. Which combination of Microsoft Entra ID features addresses these requirements?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. Microsoft Entra External Identities with passwordless authentication</button><button class="opt" onclick="answer(this,4,1,1)">B. Single Sign-On (SSO) combined with Multi-Factor Authentication (MFA)</button><button class="opt" onclick="answer(this,4,2,1)">C. Role-Based Access Control (RBAC) with Conditional Access policies</button><button class="opt" onclick="answer(this,4,3,1)">D. Microsoft Entra Domain Services with Self-Service Password Reset</button>
+    <div class="expl">Single Sign-On (SSO) allows users to sign in once with corporate credentials and access multiple applications without re-authentication. Multi-Factor Authentication (MFA) provides the additional verification requirement (authentication app) when signing in, especially from unknown devices. This combination directly addresses both stated requirements.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Describe Azure architecture and services">
+    <div class="meta">Question 6 of 6 · Describe Azure architecture and services</div>
+    <div class="q">A company is developing an application that needs to process user-uploaded images to detect inappropriate content using AI. They want to use a pre-built Azure AI service without training custom models and need to ensure they follow responsible AI principles including transparency and accountability. Which Azure service should they use and what responsibility framework must they follow?</div>
+    <button class="opt" onclick="answer(this,5,0,2)">A. Azure OpenAI Service in Azure AI Foundry with custom content filters</button><button class="opt" onclick="answer(this,5,1,2)">B. Azure Machine Learning with custom-trained moderation models</button><button class="opt" onclick="answer(this,5,2,2)">C. Azure AI Vision with Content Safety API applying Microsoft's Responsible AI Standard</button><button class="opt" onclick="answer(this,5,3,2)">D. Microsoft Copilot with enterprise data protection</button>
+    <div class="expl">Azure AI Vision includes Content Safety API (part of Azure AI services) which provides pre-built content moderation capabilities for images without requiring custom model training. Microsoft's Responsible AI Standard encompasses transparency, accountability, and other principles (fairness, reliability, privacy, inclusiveness, security) that guide the ethical use of AI services - specifically applicable to Azure AI services as of the January 2026 exam update.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/azure-fundamentals-mastery-az-900-certification-journey/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

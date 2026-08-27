@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free InfiniBand Fabric Configuration and Management Practice Questions — NVIDIA-Certified Professional: AI Networking</title>
+<meta name="description" content="6 free InfiniBand Fabric Configuration and Management practice questions with explanations for the NVIDIA-Certified Professional: AI Networking exam.">
+<link rel="canonical" href="https://technuggets.academy/ncp-ain-infiniband-fabric-configuration-and-management.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free InfiniBand Fabric Configuration and Management Practice Questions — NVIDIA-Certified Professional: AI Networking">
+<meta property="og:description" content="6 free InfiniBand Fabric Configuration and Management practice questions with explanations for the NVIDIA-Certified Professional: AI Networking exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/ncp-ain-infiniband-fabric-configuration-and-management.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#76B900}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>InfiniBand Fabric Configuration and Management</h1>
+<p class="sub">Free NVIDIA-Certified Professional: AI Networking practice — 6 questions on <strong>InfiniBand Fabric Configuration and Management</strong>, with explanations. No sign-up.
+<a href="ncp-ain.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="InfiniBand Fabric Configuration and Management">
+    <div class="meta">Question 1 of 6 · InfiniBand Fabric Configuration and Management</div>
+    <div class="q">A GPU training cluster uses NVIDIA SHARP for NCCL all-reduce acceleration over the InfiniBand fabric. Mid-training, the UFM-hosted SHARP Aggregation Manager (AM) process crashes and does not restart before the next collective operation is issued. No other fabric components fail. What is the MOST LIKELY outcome for the running job?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. NCCL/MPI's collective communication library detects the missing SHARP tree resource and transparently falls back to a software (host-based) reduction algorithm, completing the job at reduced performance</button><button class="opt" onclick="answer(this,0,1,0)">B. The AM automatically migrates the SHARP tree to a backup Aggregation Manager without any job impact</button><button class="opt" onclick="answer(this,0,2,0)">C. The job immediately aborts because SHARP hardware offload is a strict prerequisite for NCCL over InfiniBand</button><button class="opt" onclick="answer(this,0,3,0)">D. Traffic is automatically rerouted through the adaptive routing engine to bypass the failed Aggregation Manager</button>
+    <div class="expl">SHARP is an acceleration path, not the only path — MPI/NCCL collective libraries are designed to detect unavailable SHARP resources and fall back to standard host-based reduction algorithms (e.g., recursive doubling), so the job continues but loses the in-network compute speedup.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="InfiniBand Fabric Configuration and Management">
+    <div class="meta">Question 2 of 6 · InfiniBand Fabric Configuration and Management</div>
+    <div class="q">An AI training cluster's all-reduce operations show high tail latency driven by the time to complete data reduction across GPUs, not by path congestion or hot-spotting. Which InfiniBand fabric feature is SPECIFICALLY designed to reduce this by performing arithmetic reduction operations inside the switch ASICs rather than at the endpoints?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. Adaptive Routing (AR), which load-balances flows across multiple equal-cost paths</button><button class="opt" onclick="answer(this,1,1,3)">B. Explicit congestion notification (FECN/BECN), which throttles sender injection rate</button><button class="opt" onclick="answer(this,1,2,3)">C. LID-based static routing using LMC, which assigns multiple LIDs per port for path diversity</button><button class="opt" onclick="answer(this,1,3,3)">D. SHARP in-network aggregation, which offloads reduction operations to switch ASICs and cuts the data volume and hop count needed to complete a collective</button>
+    <div class="expl">SHARP (Scalable Hierarchical Aggregation and Reduction Protocol) performs the actual reduction math within the switch fabric, aggregating data from multiple sources before it reaches the destination, directly reducing collective completion time rather than just managing traffic distribution.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="InfiniBand Fabric Configuration and Management">
+    <div class="meta">Question 3 of 6 · InfiniBand Fabric Configuration and Management</div>
+    <div class="q">You are configuring two OpenSM instances, Node A and Node B, for subnet manager high availability on an InfiniBand fabric. OpenSM priority values range from 0 (lowest) to 15 (highest), and priority is the primary factor in master SM election, with port GUID used only to break ties when priorities are equal. You want Node A to always become the master SM whenever both instances are running, regardless of their GUID values. Which configuration guarantees this?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. Set both Node A and Node B to priority=15, since OpenSM only uses port GUID to break ties when priorities are equal</button><button class="opt" onclick="answer(this,2,1,1)">B. Set Node A's priority=15 and Node B's priority=14 (or any lower value); since master election is driven primarily by priority, Node A will always win regardless of GUID</button><button class="opt" onclick="answer(this,2,2,1)">C. Set Node A's priority=0 and Node B's priority=15, since the lowest priority value wins master election</button><button class="opt" onclick="answer(this,2,3,1)">D. Leave both nodes at the default priority=0 and rely solely on port GUID ordering for master election</button>
+    <div class="expl">OpenSM master election compares SM priority first; the instance with the strictly higher priority value always wins, independent of GUID. Only when priorities tie does the algorithm fall back to comparing GUIDs. Setting Node A strictly higher guarantees deterministic mastership.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="InfiniBand Fabric Configuration and Management">
+    <div class="meta">Question 4 of 6 · InfiniBand Fabric Configuration and Management</div>
+    <div class="q">A fabric administrator defines partition PKey 0x0005 (high bit clear = limited membership) on two GPU compute nodes and PKey 0x8005 (high bit set = full membership) on a storage node in the same partition. Both compute nodes can successfully open RDMA queue pairs to the storage node, but they cannot open a QP directly to each other, even though ibportstate and opensm show the partition applied correctly on all three ports. What explains this behavior?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. Full members cannot communicate with limited members because of a required SL/VL mismatch between the two membership types</button><button class="opt" onclick="answer(this,3,1,1)">B. Limited members (PKey high bit = 0) can only establish communication with full members (PKey high bit = 1) of the same partition; two limited members cannot communicate with each other</button><button class="opt" onclick="answer(this,3,2,1)">C. The PKey value 0x0005 exceeds the maximum index allowed for compute node partitions</button><button class="opt" onclick="answer(this,3,3,1)">D. RDMA transport requires both endpoints to be full members regardless of the limited/full membership rules defined by PKey semantics</button>
+    <div class="expl">InfiniBand partition membership semantics restrict limited members (high bit 0) to communicating only with full members (high bit 1) in the same partition; two limited members are explicitly prevented from establishing a QP with each other, which is exactly the isolation behavior observed.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="InfiniBand Fabric Configuration and Management">
+    <div class="meta">Question 5 of 6 · InfiniBand Fabric Configuration and Management</div>
+    <div class="q">What is the primary function of the SL2VL (Service Level to Virtual Lane) mapping table configured on each InfiniBand port to support QoS for mixed AI training and storage traffic?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. It determines the routing path priority used by the adaptive routing engine when selecting among equal-cost paths</button><button class="opt" onclick="answer(this,4,1,1)">B. It translates each packet's Service Level (SL) into the Virtual Lane (VL) used for that hop, which controls separate buffering and arbitration so high-priority traffic isn't blocked behind lower-priority traffic</button><button class="opt" onclick="answer(this,4,2,1)">C. It defines which nodes are permitted to become subnet manager master during SM election</button><button class="opt" onclick="answer(this,4,3,1)">D. It defines the PKey membership scope used to isolate tenant traffic on the fabric</button>
+    <div class="expl">SL2VL mapping determines, on a per-port/per-hop basis, which Virtual Lane a packet's Service Level is assigned to. Since each VL has independent buffering and arbitration, this mapping is the mechanism that prevents head-of-line blocking and enforces relative QoS priority between traffic classes such as storage vs. training traffic.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="InfiniBand Fabric Configuration and Management">
+    <div class="meta">Question 6 of 6 · InfiniBand Fabric Configuration and Management</div>
+    <div class="q">An ibdiagnet scan of a Quantum-2 based fabric flags a rising SymbolErrorCounter and PortXmitDiscards on port 12 of switch SW03, while ibnetdiscover still shows the link as Active at its full negotiated speed. Which command provides detailed physical-layer diagnostics — including eye margin, FEC correction statistics, and module/cable health — needed to determine whether this is a marginal cable or a transceiver hardware issue?</div>
+    <button class="opt" onclick="answer(this,5,0,2)">A. ibnetdiscover -R, to rebuild the topology discovery cache and refresh the node list</button><button class="opt" onclick="answer(this,5,1,2)">B. ibportstate &lt;lid&gt; &lt;port&gt; enable, to force the port back into the Active logical state</button><button class="opt" onclick="answer(this,5,2,2)">C. mlxlink -d &lt;device&gt; -m, which reports physical layer detail including eye opening margin, FEC error correction counters, and cable/transceiver module diagnostics</button><button class="opt" onclick="answer(this,5,3,2)">D. smpquery portinfo &lt;lid&gt;, to read the port's logical state and configured MTU</button>
+    <div class="expl">mlxlink is the ConnectX/Quantum physical-layer diagnostic tool that exposes low-level signal integrity data — eye margins, FEC pre/post-correction error counts, and module (cable/transceiver) health — which is exactly what's needed to distinguish a marginal cable from a failing switch ASIC/port when logical link state still shows Active.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/ncp-ain-nvidia-ai-networking-certification-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

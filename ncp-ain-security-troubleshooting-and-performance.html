@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Security, Troubleshooting, and Performance Practice Questions — NVIDIA-Certified Professional: AI Networking</title>
+<meta name="description" content="6 free Security, Troubleshooting, and Performance practice questions with explanations for the NVIDIA-Certified Professional: AI Networking exam.">
+<link rel="canonical" href="https://technuggets.academy/ncp-ain-security-troubleshooting-and-performance.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Security, Troubleshooting, and Performance Practice Questions — NVIDIA-Certified Professional: AI Networking">
+<meta property="og:description" content="6 free Security, Troubleshooting, and Performance practice questions with explanations for the NVIDIA-Certified Professional: AI Networking exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/ncp-ain-security-troubleshooting-and-performance.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#76B900}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Security, Troubleshooting, and Performance</h1>
+<p class="sub">Free NVIDIA-Certified Professional: AI Networking practice — 6 questions on <strong>Security, Troubleshooting, and Performance</strong>, with explanations. No sign-up.
+<a href="ncp-ain.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Security, Troubleshooting, and Performance">
+    <div class="meta">Question 1 of 6 · Security, Troubleshooting, and Performance</div>
+    <div class="q">A cloud provider runs two independent AI tenants on a shared 400G InfiniBand NDR fabric managed by UFM. Tenant A must never be able to send or receive RDMA traffic to/from Tenant B's HCAs, even if a misconfigured application attempts it. Which mechanism BEST enforces this isolation at the fabric level?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. VLAN tagging configured at each switch port for tenant traffic isolation</button><button class="opt" onclick="answer(this,0,1,3)">B. Router ACLs configured individually on each HCA to filter GID traffic</button><button class="opt" onclick="answer(this,0,2,3)">C. Deploying a completely separate physical fabric for each tenant</button><button class="opt" onclick="answer(this,0,3,3)">D. InfiniBand Partition Keys (P_Keys) configured and enforced via the UFM Partition Manager</button>
+    <div class="expl">InfiniBand has no native VLAN concept; isolation is enforced through Partition Keys (P_Keys), which the Subnet Manager (via UFM's Partition Manager) programs into every port's partition table. Membership limited/full is enforced in hardware at the HCA and switch level, so traffic between partitions is dropped before it ever reaches the destination, giving true fabric-level isolation without extra physical infrastructure.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Security, Troubleshooting, and Performance">
+    <div class="meta">Question 2 of 6 · Security, Troubleshooting, and Performance</div>
+    <div class="q">A RoCEv2-based AI cluster experiences periodic ~50ms freezes in GPU-to-GPU collective operations across many nodes simultaneously. Switch telemetry shows synchronized spikes in ingress buffer occupancy right before each freeze, and no CRC or symbol errors are reported on any link. Which condition is most likely occurring, and what should be checked to confirm it?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. ECMP hashing polarization causing traffic hot-spotting on a subset of uplinks</button><button class="opt" onclick="answer(this,1,1,2)">B. Head-of-line blocking caused by adaptive routing being disabled on the switch</button><button class="opt" onclick="answer(this,1,2,2)">C. A PFC storm caused by lossless-queue congestion; confirm using switch pause-frame counters (e.g., NVUE 'show interface counters pause')</button><button class="opt" onclick="answer(this,1,3,2)">D. A faulty optical transceiver introducing intermittent bit errors on one link</button>
+    <div class="expl">Synchronized multi-node freezes with rising buffer occupancy and no bit/CRC errors are the signature of a PFC (Priority Flow Control) storm on a lossless RoCE fabric: congestion on one queue triggers pause frames that propagate backward through the fabric, freezing unrelated flows sharing the same priority. Checking pause-frame counters on switch interfaces directly confirms whether PFC XOFF events are being triggered and cascading.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Security, Troubleshooting, and Performance">
+    <div class="meta">Question 3 of 6 · Security, Troubleshooting, and Performance</div>
+    <div class="q">In a Kubernetes cluster deployed with the NVIDIA Network Operator to support GPUDirect RDMA workloads, which component is responsible for discovering RDMA/SR-IOV virtual functions on the NICs and advertising them as schedulable extended resources so pods can request dedicated RDMA interfaces?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. Multus CNI plugin alone</button><button class="opt" onclick="answer(this,2,1,3)">B. Whereabouts IPAM plugin</button><button class="opt" onclick="answer(this,2,2,3)">C. NVIDIA GPU Operator</button><button class="opt" onclick="answer(this,2,3,3)">D. SR-IOV Network Device Plugin</button>
+    <div class="expl">The SR-IOV Network Device Plugin, deployed by the NVIDIA Network Operator, scans nodes for configured RDMA-capable SR-IOV virtual functions and registers them as Kubernetes extended resources (e.g., nvidia.com/roce_gdr). Pods request these resources in their spec, and the plugin allocates and binds the VF to the pod for GPUDirect RDMA use.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Security, Troubleshooting, and Performance">
+    <div class="meta">Question 4 of 6 · Security, Troubleshooting, and Performance</div>
+    <div class="q">An enterprise wants to enforce zero-trust micro-segmentation policies between AI compute nodes on the east-west traffic path, inspecting and filtering traffic at line rate without consuming host CPU cycles. Which BlueField DPU capability is designed to deliver this?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. NVIDIA UFM Enterprise</button><button class="opt" onclick="answer(this,3,1,2)">B. The MLNX_OFED driver stack on the host</button><button class="opt" onclick="answer(this,3,2,2)">C. A DOCA Flow-based distributed firewall/micro-segmentation service running on the BlueField DPU</button><button class="opt" onclick="answer(this,3,3,2)">D. NVUE (NVIDIA User Experience) CLI</button>
+    <div class="expl">BlueField DPUs run DOCA-based services, including flow-table-driven firewall/micro-segmentation applications built with the DOCA Flow library, that offload packet classification and policy enforcement onto the DPU's hardware accelerators. This enables per-flow zero-trust policies at line rate for east-west traffic without burdening the host x86/GPU CPU.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Security, Troubleshooting, and Performance">
+    <div class="meta">Question 5 of 6 · Security, Troubleshooting, and Performance</div>
+    <div class="q">You need to configure lossless RoCEv2 transport on a Spectrum switch fabric for an AI training cluster while avoiding PFC deadlock and maintaining near line-rate throughput. Which combination of configuration steps correctly achieves this?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. Enable PFC only for the RoCE traffic class and increase switch buffer sizes, without configuring ECN</button><button class="opt" onclick="answer(this,4,1,1)">B. Enable PFC for the RoCE traffic class, configure ECN thresholds on switch buffers, and enable DCQCN congestion control on the NIC adapters</button><button class="opt" onclick="answer(this,4,2,1)">C. Disable PFC entirely and rely solely on ECN marking for congestion signaling</button><button class="opt" onclick="answer(this,4,3,1)">D. Enable adaptive routing on the switch only, without changing PFC or ECN settings</button>
+    <div class="expl">Robust lossless RoCEv2 requires PFC to prevent buffer overflow drops, ECN marking on switch queues to signal incipient congestion before PFC XOFF is triggered, and DCQCN running on the adapters to react to ECN marks by throttling sender rate. Together these three elements prevent PFC deadlock/storms while preserving throughput; using PFC alone risks deadlock and pause-frame cascades under sustained congestion.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Security, Troubleshooting, and Performance">
+    <div class="meta">Question 6 of 6 · Security, Troubleshooting, and Performance</div>
+    <div class="q">On a DGX H100 cluster with NDR InfiniBand, an NCCL all-reduce benchmark achieves only 60% of expected peak GPU-to-GPU bandwidth. Raw HCA-to-HCA testing with ib_write_bw between the same nodes reaches full line rate with zero errors. What is the most likely cause, and how should it be confirmed?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. PCIe topology is forcing GPU traffic through a non-local HCA; confirm with 'nvidia-smi topo -m' and check NCCL_IB_HCA/topology binding settings</button><button class="opt" onclick="answer(this,5,1,0)">B. The fabric link is degraded due to a bad cable</button><button class="opt" onclick="answer(this,5,2,0)">C. The NCCL library version is incompatible with the CUDA driver, causing a silent fallback to TCP</button><button class="opt" onclick="answer(this,5,3,0)">D. The subnet manager has misconfigured routing tables between the nodes</button>
+    <div class="expl">Since raw RDMA bandwidth (ib_write_bw) already reaches line rate with no errors, the fabric and cabling are healthy — the bottleneck must be above the RDMA transport layer. A common cause is GPUDirect RDMA traffic traversing a PCIe path that crosses NUMA nodes or PCIe switches to reach a non-local HCA instead of the nearest one, adding latency and reducing effective bandwidth. 'nvidia-smi topo -m' reveals GPU-NIC affinity, and NCCL_IB_HCA/NCCL topology environment variables can be checked and corrected to bind each GPU to its nearest HCA.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/ncp-ain-nvidia-ai-networking-certification-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

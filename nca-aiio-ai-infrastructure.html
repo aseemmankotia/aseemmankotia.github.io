@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free AI Infrastructure Practice Questions — NVIDIA-Certified Associate: AI Infrastructure and Operations</title>
+<meta name="description" content="6 free AI Infrastructure practice questions with explanations for the NVIDIA-Certified Associate: AI Infrastructure and Operations exam.">
+<link rel="canonical" href="https://technuggets.academy/nca-aiio-ai-infrastructure.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free AI Infrastructure Practice Questions — NVIDIA-Certified Associate: AI Infrastructure and Operations">
+<meta property="og:description" content="6 free AI Infrastructure practice questions with explanations for the NVIDIA-Certified Associate: AI Infrastructure and Operations exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/nca-aiio-ai-infrastructure.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#76B900}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>AI Infrastructure</h1>
+<p class="sub">Free NVIDIA-Certified Associate: AI Infrastructure and Operations practice — 6 questions on <strong>AI Infrastructure</strong>, with explanations. No sign-up.
+<a href="nca-aiio.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="AI Infrastructure">
+    <div class="meta">Question 1 of 6 · AI Infrastructure</div>
+    <div class="q">A financial services company is deploying a 64-GPU cluster for LLM training with strict power budget constraints. The data center can provide 120kW per rack. Each DGX H100 system consumes approximately 10.2kW at peak load. The infrastructure team needs to determine rack density while maintaining N+1 redundancy for power distribution. What is the MAXIMUM number of DGX H100 systems that can safely be deployed per rack?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. 5 systems per rack to allow for power redundancy overhead</button><button class="opt" onclick="answer(this,0,1,0)">B. 8 systems per rack with dual power supplies</button><button class="opt" onclick="answer(this,0,2,0)">C. 10 systems per rack using dynamic power capping</button><button class="opt" onclick="answer(this,0,3,0)">D. 12 systems per rack with liquid cooling optimization</button>
+    <div class="expl">With 120kW available and 10.2kW per system, raw math allows ~11 systems. However, N+1 redundancy requires planning for one power supply failure per system, meaning each system needs dual feeds from separate PDUs. With redundancy overhead (typically 40-50% for N+1), safe deployment is 5 systems per rack (51kW base + redundancy = ~102kW total).</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="AI Infrastructure">
+    <div class="meta">Question 2 of 6 · AI Infrastructure</div>
+    <div class="q">An AI research lab running multi-node training jobs across 16 DGX A100 systems is experiencing inconsistent training performance. Network monitoring shows periodic 40% throughput drops during gradient synchronization phases. The cluster uses 200GbE Ethernet with RoCEv2. Which configuration change would BEST address this performance degradation?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. Increase TCP buffer sizes and enable jumbo frames to 9000 MTU</button><button class="opt" onclick="answer(this,1,1,2)">B. Configure PFC (Priority Flow Control) and ECN on the Ethernet fabric</button><button class="opt" onclick="answer(this,1,2,2)">C. Replace Ethernet infrastructure with HDR InfiniBand and enable GPU Direct RDMA</button><button class="opt" onclick="answer(this,1,3,2)">D. Add additional NICs per node and implement network bonding with LACP</button>
+    <div class="expl">InfiniBand with GPU Direct RDMA eliminates CPU involvement in GPU-to-GPU communication, providing deterministic low-latency communication essential for multi-node training. HDR InfiniBand (200Gbps) with GPU Direct RDMA reduces gradient synchronization overhead by 60-80% compared to RoCEv2 on Ethernet. This directly addresses the collective communication bottleneck during all-reduce operations.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="AI Infrastructure">
+    <div class="meta">Question 3 of 6 · AI Infrastructure</div>
+    <div class="q">A cloud service provider needs to offer AI inference services with strict SLA guarantees for latency-sensitive applications while maximizing GPU utilization across diverse workloads. Some customers run BERT inference (small batch, low latency required), others run Stable Diffusion (larger batch, moderate latency acceptable). The infrastructure uses A100 80GB GPUs. Which multi-tenancy strategy provides the BEST balance of isolation and utilization?</div>
+    <button class="opt" onclick="answer(this,2,0,2)">A. Use vGPU with time-sliced scheduling and quality-of-service policies per customer</button><button class="opt" onclick="answer(this,2,1,2)">B. Assign full dedicated GPUs per customer to guarantee SLA compliance</button><button class="opt" onclick="answer(this,2,2,2)">C. Deploy MIG with 3g.40gb instances for Stable Diffusion and 1g.10gb instances for BERT workloads</button><button class="opt" onclick="answer(this,2,3,2)">D. Implement CUDA MPS with per-client memory limits and compute priority settings</button>
+    <div class="expl">MIG (Multi-Instance GPU) provides hardware-level isolation with guaranteed QoS—each instance has dedicated memory and SM resources. 1g.10gb instances (1/7 GPU, 10GB) are optimal for BERT inference (small models, low latency needs), while 3g.40gb instances (3/7 GPU, 40GB) suit Stable Diffusion workloads. MIG ensures no noisy neighbor issues and deterministic latency, critical for SLA compliance.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="AI Infrastructure">
+    <div class="meta">Question 4 of 6 · AI Infrastructure</div>
+    <div class="q">A pharmaceutical company is sizing storage infrastructure for a drug discovery pipeline that will train foundation models on 500TB of molecular structure data. Training jobs perform random access to 15% of the dataset per epoch with 8 DGX H100 nodes reading concurrently. The storage system must sustain 800GB/s aggregate read throughput during training. Which storage architecture BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. Parallel distributed filesystem (WEKA, BeeGFS) with NVMe backend and 200GbE RDMA fabric</button><button class="opt" onclick="answer(this,3,1,0)">B. Single all-flash NVMe array with 25GbE connectivity to compute nodes</button><button class="opt" onclick="answer(this,3,2,0)">C. Object storage (S3-compatible) with local NVMe caching on compute nodes</button><button class="opt" onclick="answer(this,3,3,0)">D. NFS over RDMA with HDD-based tiered storage and SSD read cache</button>
+    <div class="expl">Parallel filesystems like WEKA or BeeGFS stripe data across multiple NVMe-backed storage servers, enabling aggregate throughput to scale linearly with nodes. Combined with 200GbE RDMA (GPU Direct Storage capable), this architecture can deliver 800GB/s+ aggregate throughput. Random access patterns require NVMe (not HDD), and distributed architecture prevents single-point bottlenecks.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="AI Infrastructure">
+    <div class="meta">Question 5 of 6 · AI Infrastructure</div>
+    <div class="q">An enterprise ML platform team is evaluating GPU deployment options for a hybrid infrastructure supporting both on-premise DGX systems and cloud-based training. They need to run identical containerized training workloads across both environments with minimal portability friction. Training jobs use NCCL for multi-GPU communication and require consistent performance profiling. Which combination of technologies provides the MOST seamless hybrid deployment experience?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. Docker containers with NVIDIA Container Toolkit, Kubernetes for orchestration, and NGC container registry for image management</button><button class="opt" onclick="answer(this,4,1,0)">B. VMware vSphere with vGPU, proprietary hypervisor networking, and cloud VM snapshots for migration</button><button class="opt" onclick="answer(this,4,2,0)">C. Singularity containers with native GPU passthrough and manual job scheduling scripts</button><button class="opt" onclick="answer(this,4,3,0)">D. Cloud-native container services (EKS, GKE) with Terraform for infrastructure provisioning only</button>
+    <div class="expl">NVIDIA Container Toolkit enables GPU access in Docker containers on-prem and in cloud VMs identically. Kubernetes provides consistent orchestration (pod specs, resource requests, scheduling policies work identically). NGC registry stores GPU-optimized containers that run unchanged across environments. This stack is NVIDIA's recommended approach for hybrid AI infrastructure.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="AI Infrastructure">
+    <div class="meta">Question 6 of 6 · AI Infrastructure</div>
+    <div class="q">A university research cluster with 8 DGX A100 nodes connected via NVSwitch is experiencing suboptimal scaling efficiency. Single-node training achieves 95% GPU utilization, but 8-node distributed training drops to 68% efficiency during all-reduce operations. Network topology uses a single 200GbE switch with NCCL configured for ring algorithm. Profiling shows 45% of iteration time spent in NCCL calls. What is the PRIMARY bottleneck?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. NVSwitch bandwidth saturation due to intra-node communication conflicts</button><button class="opt" onclick="answer(this,5,1,1)">B. Insufficient inter-node network bandwidth—NCCL all-reduce requires full bisection bandwidth</button><button class="opt" onclick="answer(this,5,2,1)">C. NCCL ring algorithm inefficiency—tree algorithm would reduce communication rounds</button><button class="opt" onclick="answer(this,5,3,1)">D. CPU bottleneck in gradient computation preprocessing before NCCL synchronization</button>
+    <div class="expl">8 DGX A100 nodes with 8 GPUs each = 64 GPUs total. During all-reduce, each GPU must exchange gradients with all others. Ring all-reduce requires bandwidth proportional to (N-1)/N × data × GPUs. With 200GbE (25GB/s) shared across 8 nodes, per-node bandwidth is ~3.1GB/s, but each DGX can generate 600GB/s+ intra-node via NVSwitch. The network is a 95x bottleneck, explaining 45% iteration time in NCCL.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/mastering-nvidia-ai-infrastructure-operations-nca-aiio/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

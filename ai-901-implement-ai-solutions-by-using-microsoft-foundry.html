@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Implement AI solutions by using Microsoft Foundry Practice Questions — Microsoft Certified: Azure AI Fundamentals</title>
+<meta name="description" content="6 free Implement AI solutions by using Microsoft Foundry practice questions with explanations for the Microsoft Certified: Azure AI Fundamentals exam.">
+<link rel="canonical" href="https://technuggets.academy/ai-901-implement-ai-solutions-by-using-microsoft-foundry.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Implement AI solutions by using Microsoft Foundry Practice Questions — Microsoft Certified: Azure AI Fundamentals">
+<meta property="og:description" content="6 free Implement AI solutions by using Microsoft Foundry practice questions with explanations for the Microsoft Certified: Azure AI Fundamentals exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/ai-901-implement-ai-solutions-by-using-microsoft-foundry.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0078D4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Implement AI solutions by using Microsoft Foundry</h1>
+<p class="sub">Free Microsoft Certified: Azure AI Fundamentals practice — 6 questions on <strong>Implement AI solutions by using Microsoft Foundry</strong>, with explanations. No sign-up.
+<a href="ai-901.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Implement AI solutions by using Microsoft Foundry">
+    <div class="meta">Question 1 of 6 · Implement AI solutions by using Microsoft Foundry</div>
+    <div class="q">A developer is building a customer support agent using Azure AI Foundry and needs to ensure the agent stays focused on troubleshooting product issues and never discusses competitor products. The agent should politely redirect users who ask about competitors. Which approach BEST implements this requirement?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. Configure content filters in the deployment settings to block competitor brand names from appearing in responses</button><button class="opt" onclick="answer(this,0,1,1)">B. Include explicit instructions in the system prompt defining the agent's role boundaries and providing a sample redirect response for competitor questions</button><button class="opt" onclick="answer(this,0,2,1)">C. Deploy the model with a lower temperature setting (0.1) to reduce creative responses about competitors</button><button class="opt" onclick="answer(this,0,3,1)">D. Use prompt shields in Azure AI Content Safety to detect and block jailbreak attempts related to competitor discussion</button>
+    <div class="expl">System prompts are the primary mechanism for defining agent behavior, role boundaries, and response patterns. Including explicit instructions about what topics to avoid and how to redirect users is the most effective and reliable method. System prompts can provide specific examples like 'If asked about competitors, respond: I'm here to help with [Product] questions. For other products, please contact their support teams.'</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Implement AI solutions by using Microsoft Foundry">
+    <div class="meta">Question 2 of 6 · Implement AI solutions by using Microsoft Foundry</div>
+    <div class="q">An application uses Azure AI Language service to analyze customer feedback in English, Spanish, and French. The application extracts key phrases from each review. A developer notices that key phrase extraction returns different numbers of phrases for semantically similar reviews in different languages. What explains this behavior?</div>
+    <button class="opt" onclick="answer(this,1,0,1)">A. The service converts all text to English before extraction, and translation quality affects the number of phrases detected</button><button class="opt" onclick="answer(this,1,1,1)">B. Key phrase extraction uses language-specific models that identify culturally relevant phrases, so phrase counts naturally vary across languages even for similar content</button><button class="opt" onclick="answer(this,1,2,1)">C. Different languages have different default confidence thresholds, causing some phrases to be filtered out in certain languages</button><button class="opt" onclick="answer(this,1,3,1)">D. The service is incorrectly configured - key phrase extraction should return identical phrase counts for semantically equivalent text across languages</button>
+    <div class="expl">Azure AI Language uses native language-specific models for key phrase extraction. Different languages have different grammatical structures, idiomatic expressions, and cultural contexts. A concept expressed in 2 words in English might require 4 words in French or be captured in a compound word in German. The models are trained to identify what constitutes a 'key phrase' in each language's natural structure, so output length variation is expected and correct behavior.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Implement AI solutions by using Microsoft Foundry">
+    <div class="meta">Question 3 of 6 · Implement AI solutions by using Microsoft Foundry</div>
+    <div class="q">A company is building a document processing pipeline using Azure AI Document Intelligence (formerly Form Recognizer). They need to extract tables, handwritten text, and specific labeled fields from mixed-format invoices. The invoices come from 15 different vendors with varying layouts. Which solution approach is MOST cost-effective while maintaining accuracy?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. Use the prebuilt invoice model for all vendors, then apply custom post-processing rules to handle layout variations</button><button class="opt" onclick="answer(this,2,1,0)">B. Train a custom neural model using 500+ labeled invoice samples from all 15 vendors combined into a single model</button><button class="opt" onclick="answer(this,2,2,0)">C. Deploy 15 separate custom template models, one trained specifically for each vendor's invoice format</button><button class="opt" onclick="answer(this,2,3,0)">D. Use the Read API for OCR, then extract fields using regex patterns and table coordinates for each vendor format</button>
+    <div class="expl">The prebuilt invoice model is trained on thousands of invoice variations and can handle most vendor layouts out-of-the-box. It automatically extracts common fields (invoice ID, dates, amounts, line items, tables) and handles handwriting. This is the most cost-effective option - no training data required, no training costs, immediate deployment. For the small percentage of fields it might miss due to unusual layouts, targeted post-processing is cheaper than training custom models.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Implement AI solutions by using Microsoft Foundry">
+    <div class="meta">Question 4 of 6 · Implement AI solutions by using Microsoft Foundry</div>
+    <div class="q">A mobile app allows users to take photos of food items and receive nutritional estimates. The app must identify specific food items in the image (e.g., 'apple', 'chicken breast', 'rice'). Which Azure AI Vision capability should the developer implement?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. Deploy a custom image classification model in Azure AI Vision, trained on a dataset of individual food images with single-item labels</button><button class="opt" onclick="answer(this,3,1,1)">B. Train a custom object detection model in Azure AI Vision with bounding boxes labeled for each food category</button><button class="opt" onclick="answer(this,3,2,1)">C. Use the dense captioning feature to generate detailed descriptions of all food items visible in the image</button><button class="opt" onclick="answer(this,3,3,1)">D. Use the prebuilt product recognition feature to identify food items from the general product catalog</button>
+    <div class="expl">Object detection is the correct capability because users will photograph plates with MULTIPLE food items simultaneously. Object detection identifies each item, draws bounding boxes around them, and classifies each one separately (e.g., one image might contain apple, rice, AND chicken). This is exactly what nutritional estimation needs - identify each distinct food item present. Custom training is needed because food recognition is domain-specific.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Implement AI solutions by using Microsoft Foundry">
+    <div class="meta">Question 5 of 6 · Implement AI solutions by using Microsoft Foundry</div>
+    <div class="q">A developer is building a real-time customer service application where users speak in various languages. The application must detect the language automatically, transcribe the speech to text, then translate to English for agent review. Using Azure AI Speech and Translator services, which implementation provides the LOWEST latency?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. Enable auto-detect language with Speech-to-Text, then use the speech translation feature to output translated text directly in English</button><button class="opt" onclick="answer(this,4,1,0)">B. Use Speech-to-Text with automatic language detection, then send the detected language and transcribed text to Azure Translator for translation to English</button><button class="opt" onclick="answer(this,4,2,0)">C. Use Speech-to-Text with a multi-language model configured for all supported languages, then apply Language Detection service before translation</button><button class="opt" onclick="answer(this,4,3,0)">D. Record the audio, use Language Detection on a text sample to identify language, then configure Speech-to-Text with the detected language before translating</button>
+    <div class="expl">Speech translation (part of Azure AI Speech) performs speech recognition and translation in a SINGLE operation with auto-detect. It outputs translated text directly without needing a separate transcription→translation pipeline. This is the lowest latency option because it eliminates the round-trip to a separate Translator service call and processes both operations in the speech pipeline.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Implement AI solutions by using Microsoft Foundry">
+    <div class="meta">Question 6 of 6 · Implement AI solutions by using Microsoft Foundry</div>
+    <div class="q">A healthcare application uses Azure AI Vision for facial detection in patient photos to assist with identity verification during telehealth appointments. The development team must ensure HIPAA compliance. Which statement about implementing facial detection for this scenario is correct?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. Facial detection can be used with Azure AI Vision, but the application must not store or persist the face rectangle coordinates returned by the service</button><button class="opt" onclick="answer(this,5,1,1)">B. Facial detection returns only bounding box coordinates and detected attributes (glasses, blur, etc.) without creating facial signatures, so it can be used if the images are encrypted in transit and at rest</button><button class="opt" onclick="answer(this,5,2,1)">C. HIPAA requires Limited Access approval for any facial recognition scenario - facial detection cannot be used without Microsoft reviewing and approving the use case</button><button class="opt" onclick="answer(this,5,3,1)">D. Facial detection must be disabled for healthcare applications - only general object detection can be used to verify patient presence in the video frame</button>
+    <div class="expl">Facial DETECTION (detecting that a face exists and its location) is different from facial RECOGNITION/identification. Detection only returns rectangle coordinates and attributes - it doesn't create biometric templates or identify individuals. This can be used in HIPAA environments if the overall application meets compliance requirements (encryption, access controls, BAA with Microsoft, etc.). The detection itself doesn't create restricted biometric data.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/ai-901-azure-ai-fundamentals-your-gateway-to-microsoft-ai/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

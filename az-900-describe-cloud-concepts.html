@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Describe cloud concepts Practice Questions — Microsoft Certified: Azure Fundamentals</title>
+<meta name="description" content="6 free Describe cloud concepts practice questions with explanations for the Microsoft Certified: Azure Fundamentals exam.">
+<link rel="canonical" href="https://technuggets.academy/az-900-describe-cloud-concepts.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Describe cloud concepts Practice Questions — Microsoft Certified: Azure Fundamentals">
+<meta property="og:description" content="6 free Describe cloud concepts practice questions with explanations for the Microsoft Certified: Azure Fundamentals exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/az-900-describe-cloud-concepts.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0078D4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Describe cloud concepts</h1>
+<p class="sub">Free Microsoft Certified: Azure Fundamentals practice — 6 questions on <strong>Describe cloud concepts</strong>, with explanations. No sign-up.
+<a href="az-900.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Describe cloud concepts">
+    <div class="meta">Question 1 of 6 · Describe cloud concepts</div>
+    <div class="q">A healthcare company is migrating its patient record system to Azure. The company must ensure that they maintain full control over encryption key management and can prove to auditors that Microsoft cannot access patient data. Under the shared responsibility model, which statement is correct?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. The customer is responsible for physical security of the datacenter and Microsoft is responsible for data encryption</button><button class="opt" onclick="answer(this,0,1,1)">B. The customer is responsible for managing their own encryption keys and data classification, while Microsoft is responsible for physical infrastructure security</button><button class="opt" onclick="answer(this,0,2,1)">C. Microsoft is responsible for both physical security and all data encryption, while the customer only manages user access</button><button class="opt" onclick="answer(this,0,3,1)">D. The customer must provide their own physical servers in Azure datacenters to maintain full control over patient data</button>
+    <div class="expl">In the shared responsibility model, Microsoft always handles physical infrastructure (datacenters, cooling, power, physical security), while customers retain control over their data, including encryption key management, data classification, and identity/access management. This allows the customer to prove Microsoft cannot access their data by using customer-managed keys (CMK) or bring-your-own-key (BYOK) solutions.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Describe cloud concepts">
+    <div class="meta">Question 2 of 6 · Describe cloud concepts</div>
+    <div class="q">A startup with unpredictable traffic patterns is choosing between a consumption-based pricing model and a reserved capacity model for their Azure App Service. Their traffic can range from 100 users during off-hours to 50,000 users during flash sales (occurring 3-4 times per year). Which pricing approach BEST optimizes cost?</div>
+    <button class="opt" onclick="answer(this,1,0,1)">A. Purchase 3-year reserved capacity for peak load (50,000 users) to get maximum discount</button><button class="opt" onclick="answer(this,1,1,1)">B. Purchase reserved capacity for baseline load (100 users) and use consumption-based scaling for peak traffic spikes</button><button class="opt" onclick="answer(this,1,2,1)">C. Use consumption-based pricing (pay-per-execution) with automatic scaling for the entire workload</button><button class="opt" onclick="answer(this,1,3,1)">D. Use consumption-based pricing during off-hours and switch to reserved capacity before scheduled flash sales</button>
+    <div class="expl">Hybrid approach optimizes cost by using reserved instances (1-year or 3-year commitments with up to 72% discount) for predictable baseline load, while leveraging consumption-based pricing's elasticity for unpredictable spikes. You only pay for peak capacity when actually needed (3-4 times/year), avoiding wasted reserved capacity costs for 99% of the year.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Describe cloud concepts">
+    <div class="meta">Question 3 of 6 · Describe cloud concepts</div>
+    <div class="q">An enterprise runs a legacy application that requires specific Windows Server 2012 patches and custom registry modifications. They want to migrate to Azure but must maintain these exact configurations for compliance reasons. After migration, they need Microsoft to handle physical hardware maintenance but want to retain full OS-level control. Which cloud service model meets these requirements?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. IaaS - use Azure Virtual Machines with custom OS image</button><button class="opt" onclick="answer(this,2,1,0)">B. SaaS - use Azure Virtual Desktop with custom image deployment</button><button class="opt" onclick="answer(this,2,2,0)">C. PaaS - use Azure App Service with custom container deployment</button><button class="opt" onclick="answer(this,2,3,0)">D. Hybrid cloud - keep legacy system on-premises and use Azure for new workloads only</button>
+    <div class="expl">IaaS (Azure Virtual Machines) provides full control over the OS, registry, and installed software while Microsoft handles physical infrastructure (compute, storage, networking hardware). You can upload custom VHD images with Windows Server 2012, specific patches, and registry modifications. Customer manages OS, applications, and runtime; Microsoft manages virtualization layer and below.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Describe cloud concepts">
+    <div class="meta">Question 4 of 6 · Describe cloud concepts</div>
+    <div class="q">A financial trading platform requires 99.99% availability SLA and must process transactions within 50ms latency. During a regional Azure outage, the system must automatically failover to another region within 30 seconds with zero data loss. Which combination of cloud benefits directly addresses these requirements?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. High availability and geo-distribution - multi-region deployment with automatic failover and data replication</button><button class="opt" onclick="answer(this,3,1,0)">B. Elasticity and agility - scale resources dynamically and deploy updates quickly</button><button class="opt" onclick="answer(this,3,2,0)">C. Reliability and predictability - consistent performance with cost forecasting</button><button class="opt" onclick="answer(this,3,3,0)">D. Security and governance - compliance controls with policy enforcement</button>
+    <div class="expl">High availability (99.99% SLA achieved through Azure Availability Zones and multi-region deployments) combined with geo-distribution (deploying across multiple Azure regions) directly addresses uptime requirements and regional failover. Azure Traffic Manager, Azure Front Door, or geo-replicated databases enable automatic failover within seconds with geo-redundant storage (GRS) or zone-redundant storage (ZRS) ensuring zero data loss through synchronous replication.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Describe cloud concepts">
+    <div class="meta">Question 5 of 6 · Describe cloud concepts</div>
+    <div class="q">A global manufacturing company operates factories in 15 countries with strict data residency laws requiring customer data to remain within national borders. They want to use a unified identity system and centralized management while ensuring data sovereignty. Which cloud deployment model satisfies these requirements?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. Public cloud using Azure Government regions with dedicated instances per country</button><button class="opt" onclick="answer(this,4,1,2)">B. Private cloud with separate on-premises datacenters in each of the 15 countries</button><button class="opt" onclick="answer(this,4,2,2)">C. Public cloud using multiple Azure regions with Azure Policy enforcing geo-fencing per customer dataset</button><button class="opt" onclick="answer(this,4,3,2)">D. Hybrid cloud combining on-premises systems for data storage with Azure for compute and identity management</button>
+    <div class="expl">Public cloud with Azure's 60+ regions worldwide allows deploying resources in specific geographic regions (e.g., Germany West for German data, Japan East for Japanese data). Azure Policy can enforce that specific customer datasets never leave designated regions, ensuring data residency compliance. Azure Active Directory provides unified identity across all regions while data stays geo-locked. This is more cost-effective and manageable than 15 separate private clouds.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Describe cloud concepts">
+    <div class="meta">Question 6 of 6 · Describe cloud concepts</div>
+    <div class="q">A university research department has a data processing job that runs once per month, consumes 500 compute cores for exactly 8 hours, then requires zero resources for the remaining 29-30 days. The job uses custom Python libraries and requires root access to install system dependencies. Total monthly compute cost with always-on dedicated VMs is $12,000. Which approach reduces cost while meeting technical requirements?</div>
+    <button class="opt" onclick="answer(this,5,0,2)">A. PaaS using Azure Functions Premium with pre-warmed instances to avoid cold starts</button><button class="opt" onclick="answer(this,5,1,2)">B. IaaS using Azure Virtual Machines with automatic shutdown/startup schedules and deallocate when stopped</button><button class="opt" onclick="answer(this,5,2,2)">C. IaaS using Azure Batch with low-priority VMs that auto-scale to zero after job completion</button><button class="opt" onclick="answer(this,5,3,2)">D. SaaS using Azure Databricks serverless compute pools with auto-termination after job completion</button>
+    <div class="expl">Azure Batch (IaaS) provides job scheduling, automatic VM provisioning/deprovisioning, and supports low-priority VMs (up to 80% discount vs regular VMs). Scales to 500 cores for 8 hours, then auto-scales to zero - you pay only for 8 hours of compute monthly. Provides full OS control for custom libraries and system dependencies (root access). Estimated cost: ~$240-600/month (8 hours @ low-priority) vs $12,000 always-on.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/azure-fundamentals-mastery-az-900-certification-journey/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

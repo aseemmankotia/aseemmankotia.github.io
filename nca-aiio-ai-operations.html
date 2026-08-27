@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free AI Operations Practice Questions — NVIDIA-Certified Associate: AI Infrastructure and Operations</title>
+<meta name="description" content="6 free AI Operations practice questions with explanations for the NVIDIA-Certified Associate: AI Infrastructure and Operations exam.">
+<link rel="canonical" href="https://technuggets.academy/nca-aiio-ai-operations.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free AI Operations Practice Questions — NVIDIA-Certified Associate: AI Infrastructure and Operations">
+<meta property="og:description" content="6 free AI Operations practice questions with explanations for the NVIDIA-Certified Associate: AI Infrastructure and Operations exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/nca-aiio-ai-operations.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#76B900}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>AI Operations</h1>
+<p class="sub">Free NVIDIA-Certified Associate: AI Infrastructure and Operations practice — 6 questions on <strong>AI Operations</strong>, with explanations. No sign-up.
+<a href="nca-aiio.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="AI Operations">
+    <div class="meta">Question 1 of 6 · AI Operations</div>
+    <div class="q">An AI training cluster running multi-node PyTorch distributed training jobs on DGX systems experiences intermittent NCCL timeout errors. DCGM shows GPU utilization drops to 0% on some nodes during these failures, while nvidia-smi reports no GPU errors. Network bandwidth monitoring shows normal IB traffic. Which troubleshooting step should be performed FIRST?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. Increase NCCL_TIMEOUT environment variable from default 600s to 1800s and restart jobs</button><button class="opt" onclick="answer(this,0,1,2)">B. Review container orchestrator logs for OOMKilled events and increase memory limits in pod specifications</button><button class="opt" onclick="answer(this,0,2,2)">C. Check NVLink topology with nvidia-smi topo -m and verify PCIe switch connectivity matches expected configuration</button><button class="opt" onclick="answer(this,0,3,2)">D. Verify GPU clocks are not being throttled due to power limits using nvidia-smi -q -d PERFORMANCE</button>
+    <div class="expl">NCCL timeouts with zero GPU utilization during multi-node training typically indicate communication path issues rather than compute problems. Verifying NVLink/NVSwitch topology ensures GPU-to-GPU communication paths are correctly established. Misconfigured or degraded NVLink connections cause NCCL collective operations to fail or fall back to slower paths, triggering timeouts. This is the most direct diagnostic for inter-GPU communication issues in DGX systems.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="AI Operations">
+    <div class="meta">Question 2 of 6 · AI Operations</div>
+    <div class="q">A production inference cluster managed by NVIDIA Base Command Platform needs to support both high-priority real-time inference requests (P0) and lower-priority batch scoring jobs (P1). The cluster has 8 A100 GPUs. Which resource allocation strategy BEST ensures P0 workloads always have immediate GPU access while maximizing overall cluster utilization?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. Use NVIDIA MIG to partition each A100 into 7 instances, dedicating 28 instances to P0 and 28 to P1 with strict limits</button><button class="opt" onclick="answer(this,1,1,2)">B. Reserve 6 GPUs exclusively for P0 workloads using node taints and tolerations, allowing P1 to use only 2 GPUs</button><button class="opt" onclick="answer(this,1,2,2)">C. Configure Kubernetes resource quotas to guarantee 4 GPUs for P0 namespace and allow P1 to use remaining capacity with preemption enabled</button><button class="opt" onclick="answer(this,1,3,2)">D. Implement time-slicing on all 8 GPUs with 100ms context switch intervals, prioritizing P0 requests through CUDA stream priorities</button>
+    <div class="expl">Kubernetes resource quotas with preemption provide the optimal balance: guaranteeing capacity for high-priority workloads while allowing low-priority jobs to use idle resources. Preemption enables immediate eviction of P1 pods when P0 workloads arrive, ensuring zero wait time for critical requests. This approach maximizes utilization by allowing P1 to consume unused capacity rather than leaving GPUs idle. Base Command Platform supports this Kubernetes-native priority and preemption model.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="AI Operations">
+    <div class="meta">Question 3 of 6 · AI Operations</div>
+    <div class="q">DCGM metrics show that GPUs in a training cluster have consistent 95%+ SM (streaming multiprocessor) utilization but only 60% memory bandwidth utilization. Training throughput is 40% below expected performance. Which optimization should be implemented?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. Enable tensor cores by using mixed precision training (FP16 or BF16) to increase compute throughput</button><button class="opt" onclick="answer(this,2,1,1)">B. Increase batch size to improve memory bandwidth utilization and better amortize data transfer costs</button><button class="opt" onclick="answer(this,2,2,1)">C. Reduce batch size and increase gradient accumulation steps to fit more data in L2 cache</button><button class="opt" onclick="answer(this,2,3,1)">D. Enable GPU peer-to-peer memory access using cudaDeviceEnablePeerAccess for faster multi-GPU communication</button>
+    <div class="expl">High SM utilization with low memory bandwidth utilization indicates the GPUs are compute-bound but not effectively using memory subsystem capacity. This pattern suggests small batch sizes or inefficient memory access patterns. Increasing batch size improves memory bandwidth utilization by creating larger, more efficient memory transfers and better amortizing fixed costs of memory operations. With memory bandwidth underutilized at 60%, there is headroom to increase batch size without hitting memory limits.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="AI Operations">
+    <div class="meta">Question 4 of 6 · AI Operations</div>
+    <div class="q">A Slurm cluster running AI training workloads needs to enforce fair-share scheduling across three research teams with different priorities: Team A (weight 50), Team B (weight 30), Team C (weight 20). Team A has submitted jobs consuming all available GPUs for the past week. Team B now submits urgent jobs but they remain queued. Which Slurm configuration change will allow Team B jobs to start while maintaining fair-share principles?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. Configure OverSubscribe=FORCE on GPU resources to allow Team B jobs to time-share GPUs with Team A jobs</button><button class="opt" onclick="answer(this,3,1,2)">B. Enable PreemptMode=REQUEUE with PreemptType=preempt/partition_prio to suspend Team A jobs and allocate GPUs to Team B</button><button class="opt" onclick="answer(this,3,2,2)">C. Set PriorityDecayHalfLife=7-0 and PriorityType=priority/multifactor to decay Team A's accumulated usage and boost Team B priority</button><button class="opt" onclick="answer(this,3,3,2)">D. Modify Team B's QoS to include Flags=OverPartQOS to bypass partition limits and preempt lower-priority jobs</button>
+    <div class="expl">Fair-share scheduling in Slurm uses PriorityDecayHalfLife to decay historical usage over time, ensuring teams that have consumed significant resources see their priority decrease while underutilized teams gain priority. Setting a 7-day half-life with priority/multifactor enables the scheduler to consider Team A's week-long GPU consumption, lower their priority, and boost Team B's priority based on their underutilization relative to their 30% fair-share target. This implements true fair-share principles dynamically.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="AI Operations">
+    <div class="meta">Question 5 of 6 · AI Operations</div>
+    <div class="q">An MLOps pipeline deploys inference models to production using NVIDIA Triton Inference Server on Kubernetes. After deploying a new model version, p99 latency increases from 15ms to 45ms despite GPU utilization remaining at 30%. DCGM shows no thermal throttling and nvidia-smi reports normal clock speeds. Which diagnostic step will MOST likely identify the root cause?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. Compare model file sizes between versions and check if dynamic batching configuration max_batch_size needs tuning for the new model</button><button class="opt" onclick="answer(this,4,1,3)">B. Check if the new model version uses a different precision (FP32 vs FP16) and optimize instance_group settings for the precision</button><button class="opt" onclick="answer(this,4,2,3)">C. Verify GPU memory allocation using nvidia-smi and check if the new model causes memory fragmentation requiring more frequent allocations</button><button class="opt" onclick="answer(this,4,3,3)">D. Review Triton server logs for model loading errors and verify the model format (ONNX, TensorRT, PyTorch) matches the backend configuration</button>
+    <div class="expl">A 3x increase in p99 latency with low GPU utilization suggests the model is not executing efficiently on the GPU, possibly due to misconfiguration. Triton server logs would reveal if the model backend is mismatched (e.g., ONNX model being run on PyTorch backend), causing fallback to CPU execution or inefficient GPU code paths. Model format mismatches are common deployment errors that cause severe performance degradation while showing low GPU utilization because the GPU is waiting or the work is being done on CPU. This is the most direct diagnostic for sudden post-deployment latency spikes.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="AI Operations">
+    <div class="meta">Question 6 of 6 · AI Operations</div>
+    <div class="q">A GPU cluster experiences recurring ECC (Error Correction Code) memory errors on specific A100 GPUs. DCGM reports 5-10 correctable ECC errors per hour on 2 out of 16 GPUs, with no uncorrectable errors. Training jobs complete successfully but occasionally show NaN losses on these GPUs. What is the BEST operational response?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. Schedule the affected GPUs for maintenance window replacement while using node taints to prevent new training jobs from being scheduled on them</button><button class="opt" onclick="answer(this,5,1,0)">B. Continue monitoring since correctable ECC errors are normal and self-healing; only take action if uncorrectable errors occur</button><button class="opt" onclick="answer(this,5,2,0)">C. Immediately drain the affected nodes, remove the GPUs from the cluster, and RMA them as correctable errors indicate failing hardware</button><button class="opt" onclick="answer(this,5,3,0)">D. Reduce GPU clock speeds on affected GPUs using nvidia-smi -lgc to decrease error rate while maintaining the GPUs in production</button>
+    <div class="expl">Correctable ECC errors at 5-10/hour indicate degrading memory that will likely progress to uncorrectable errors. While correctable errors are automatically fixed by hardware, their increasing frequency suggests the memory cells are failing. The correlation with NaN losses indicates some errors are affecting computation before correction. Best practice is to schedule maintenance replacement (to avoid sudden failures) while immediately preventing new critical workloads from being scheduled (using taints). This balances operational continuity with proactive hardware management, preventing data corruption and job failures.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/mastering-nvidia-ai-infrastructure-operations-nca-aiio/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

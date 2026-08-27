@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Cloud Concepts Practice Questions — AWS Certified Cloud Practitioner</title>
+<meta name="description" content="6 free Cloud Concepts practice questions with explanations for the AWS Certified Cloud Practitioner exam.">
+<link rel="canonical" href="https://technuggets.academy/clf-c02-cloud-concepts.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Cloud Concepts Practice Questions — AWS Certified Cloud Practitioner">
+<meta property="og:description" content="6 free Cloud Concepts practice questions with explanations for the AWS Certified Cloud Practitioner exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/clf-c02-cloud-concepts.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#FF9900}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Cloud Concepts</h1>
+<p class="sub">Free AWS Certified Cloud Practitioner practice — 6 questions on <strong>Cloud Concepts</strong>, with explanations. No sign-up.
+<a href="clf-c02.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Cloud Concepts">
+    <div class="meta">Question 1 of 6 · Cloud Concepts</div>
+    <div class="q">A media company owns physical servers sized for its historical peak holiday traffic. For the other eleven months of the year, those servers run at roughly 15% utilization, yet the company still pays for 100% of the hardware, power, and floor space. Which AWS Cloud advantage MOST directly addresses this specific inefficiency?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. Trade capital expense for variable expense</button><button class="opt" onclick="answer(this,0,1,3)">B. Go global in minutes</button><button class="opt" onclick="answer(this,0,2,3)">C. Increase speed and agility</button><button class="opt" onclick="answer(this,0,3,3)">D. Stop guessing capacity</button>
+    <div class="expl">Stop guessing capacity lets the company use elasticity and auto scaling to match compute supply to actual demand in real time instead of over-provisioning hardware for a rare peak, eliminating the idle capacity described.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Cloud Concepts">
+    <div class="meta">Question 2 of 6 · Cloud Concepts</div>
+    <div class="q">During a cloud adoption assessment, a company identifies a gap: employees lack the cloud skills needed to operate new workloads, and there is no formal training or organizational change management plan in place. According to the AWS Cloud Adoption Framework (CAF), which perspective is this gap MOST associated with?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. Governance Perspective</button><button class="opt" onclick="answer(this,1,1,2)">B. Platform Perspective</button><button class="opt" onclick="answer(this,1,2,2)">C. People Perspective</button><button class="opt" onclick="answer(this,1,3,2)">D. Security Perspective</button>
+    <div class="expl">The People Perspective of the AWS CAF focuses on people development, training, staffing, and organizational change management needed to adopt cloud successfully.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Cloud Concepts">
+    <div class="meta">Question 3 of 6 · Cloud Concepts</div>
+    <div class="q">A finance team compares an on-premises deployment to AWS by looking only at the purchase price of servers versus AWS On-Demand hourly rates, and concludes on-premises is cheaper. Which factor is this analysis MOST likely failing to include that a proper Total Cost of Ownership (TCO) comparison requires?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. The AWS Free Tier eligibility period</button><button class="opt" onclick="answer(this,2,1,3)">B. The AWS Well-Architected Framework review cost</button><button class="opt" onclick="answer(this,2,2,3)">C. The Amazon EC2 Reserved Instance discount percentage</button><button class="opt" onclick="answer(this,2,3,3)">D. Indirect costs such as power, cooling, facility space, and IT labor for on-premises infrastructure</button>
+    <div class="expl">TCO analysis must include indirect on-premises costs like power, cooling, real estate, and staff needed to maintain hardware, not just the sticker price of hardware compared to cloud rates.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Cloud Concepts">
+    <div class="meta">Question 4 of 6 · Cloud Concepts</div>
+    <div class="q">An online ticket retailer's application automatically adds compute capacity in the minutes before a popular concert's tickets go on sale, then automatically removes that capacity a few hours later once demand drops. Which cloud characteristic does this BEST demonstrate?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. Scalability</button><button class="opt" onclick="answer(this,3,1,2)">B. High availability</button><button class="opt" onclick="answer(this,3,2,2)">C. Elasticity</button><button class="opt" onclick="answer(this,3,3,2)">D. Fault tolerance</button>
+    <div class="expl">Elasticity is the ability to automatically grow AND shrink resources in response to demand, matching capacity to load in near real time, as shown by both scaling up and back down.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Cloud Concepts">
+    <div class="meta">Question 5 of 6 · Cloud Concepts</div>
+    <div class="q">A development team redesigns a monolithic order-processing application into separate services connected by Amazon SQS queues, so that if the inventory service fails temporarily, the order-intake service can continue accepting orders without being blocked. Which cloud architecture design principle does this redesign demonstrate?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. Vertical scaling</button><button class="opt" onclick="answer(this,4,1,3)">B. Server consolidation</button><button class="opt" onclick="answer(this,4,2,3)">C. Single point of failure elimination through hardware redundancy</button><button class="opt" onclick="answer(this,4,3,3)">D. Decoupling components</button>
+    <div class="expl">Decoupling separates application components so they interact through queues or APIs rather than direct dependencies, allowing one component's failure or slowdown to not directly impact others — a core Well-Architected design principle.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Cloud Concepts">
+    <div class="meta">Question 6 of 6 · Cloud Concepts</div>
+    <div class="q">A company designs its workload so that if an Availability Zone becomes unavailable, automated processes detect the failure and route traffic to healthy resources in another Availability Zone without manual intervention. This design decision primarily supports which AWS Well-Architected Framework pillar?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. Cost Optimization</button><button class="opt" onclick="answer(this,5,1,3)">B. Performance Efficiency</button><button class="opt" onclick="answer(this,5,2,3)">C. Operational Excellence</button><button class="opt" onclick="answer(this,5,3,3)">D. Reliability</button>
+    <div class="expl">The Reliability pillar focuses on a workload's ability to recover from infrastructure or service disruptions automatically, including failover across Availability Zones.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/aws-cloud-practitioner-clf-c02-exam-focused-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>
