@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free ML Workflows Practice Questions — Databricks Certified Machine Learning Associate</title>
+<meta name="description" content="6 free ML Workflows practice questions with explanations for the Databricks Certified Machine Learning Associate exam.">
+<link rel="canonical" href="https://technuggets.academy/databricks-ml-associate-ml-workflows.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free ML Workflows Practice Questions — Databricks Certified Machine Learning Associate">
+<meta property="og:description" content="6 free ML Workflows practice questions with explanations for the Databricks Certified Machine Learning Associate exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/databricks-ml-associate-ml-workflows.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#FF3621}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>ML Workflows</h1>
+<p class="sub">Free Databricks Certified Machine Learning Associate practice — 6 questions on <strong>ML Workflows</strong>, with explanations. No sign-up.
+<a href="databricks-ml-associate.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="ML Workflows">
+    <div class="meta">Question 1 of 6 · ML Workflows</div>
+    <div class="q">A data scientist is building a churn model. Before splitting the data into train and test sets, they compute the mean target value for each category of a high-cardinality 'customer_segment' column across the FULL dataset, and use these means as a new numeric feature. The model achieves 98% AUC on the test set but performs poorly in production. What is the MOST likely cause and correct fix?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. The model is overfitting due to too many trees; reduce max_depth and n_estimators to regularize it</button><button class="opt" onclick="answer(this,0,1,3)">B. The 'customer_segment' column should be dropped entirely since target encoding is never appropriate for categorical features</button><button class="opt" onclick="answer(this,0,2,3)">C. The test set is too small to be statistically significant; increase the test set size to reduce the inflated AUC</button><button class="opt" onclick="answer(this,0,3,3)">D. Target leakage occurred because the encoding was computed on the full dataset including test labels; recompute the encoding using only the training fold and apply it to validation/test data</button>
+    <div class="expl">Computing target-mean encodings on the entire dataset (including test rows) leaks information about the test labels into the training features, inflating validation metrics. The correct approach is to fit the encoding strictly on the training split (or within each CV fold) and apply the already-fitted mapping to validation/test data, exactly as with any other transform requiring fit/transform separation.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="ML Workflows">
+    <div class="meta">Question 2 of 6 · ML Workflows</div>
+    <div class="q">A team needs to impute missing values in a 500-million-row Spark DataFrame for two numeric columns, replacing missing values with the column median computed at scale, and wants the fitted imputation logic reusable inside an MLflow pipeline stage. Which approach should they use?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. Convert the DataFrame to pandas with .toPandas() and use pandas.DataFrame.fillna(df.median())</button><button class="opt" onclick="answer(this,1,1,3)">B. Use pyspark.sql.DataFrame.na.drop() to remove all rows containing nulls before training</button><button class="opt" onclick="answer(this,1,2,3)">C. Use pyspark.sql.functions.mean() to compute the column average and hardcode it with .na.fill()</button><button class="opt" onclick="answer(this,1,3,3)">D. Use pyspark.ml.feature.Imputer with strategy='median', fit it on the training data, and include it as a stage in a Pipeline</button>
+    <div class="expl">pyspark.ml.feature.Imputer is the distributed, scalable estimator designed for this exact use case: it computes statistics (mean or median) in a distributed manner, supports strategy='median', and produces a fitted ImputerModel that can be composed as a Pipeline stage, ensuring the same imputation is consistently applied to train/validation/test/production data without recomputation or leakage.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="ML Workflows">
+    <div class="meta">Question 3 of 6 · ML Workflows</div>
+    <div class="q">A data scientist converts a 50GB pandas DataFrame to pandas API on Spark using ps.from_pandas(df) so multiple analysts can run distributed transformations on it. They notice that a downstream groupBy-and-sort operation runs extremely slowly, funneling almost all computation through a single task. What Spark configuration is the most likely cause and correct adjustment?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. spark.sql.shuffle.partitions is set too high; decrease it to 1 to avoid shuffle overhead</button><button class="opt" onclick="answer(this,2,1,1)">B. compute.default_index_type is set to 'sequence', which creates a single-partition monotonically increasing index; set it to 'distributed' before the conversion to enable parallel index creation</button><button class="opt" onclick="answer(this,2,2,1)">C. spark.sql.execution.arrow.pyspark.enabled is disabled; enabling it will parallelize the groupBy operation</button><button class="opt" onclick="answer(this,2,3,1)">D. The DataFrame should be repartitioned using .coalesce(1) to consolidate shuffle operations onto a single executor</button>
+    <div class="expl">The pandas API on Spark 'compute.default_index_type' option controls how the default index is generated. The default 'sequence' type computes a monotonically increasing index that requires a single-partition pass, creating a bottleneck on large conversions. Setting it to 'distributed' (or 'distributed-sequence') allows index creation to happen in parallel across partitions, which is the documented performance recommendation for large from_pandas conversions.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="ML Workflows">
+    <div class="meta">Question 4 of 6 · ML Workflows</div>
+    <div class="q">A retailer wants to forecast next month's sales using two years of daily historical data with strong seasonal and trend patterns. An analyst uses sklearn.model_selection.train_test_split(df, test_size=0.2, random_state=42) with shuffle=True (the default) to create train and test sets. What is the primary problem with this approach for this modeling goal?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. random_state=42 is not a valid seed value for time series problems and will throw an error</button><button class="opt" onclick="answer(this,3,1,1)">B. Random shuffling scatters future dates into the training set and past dates into the test set, allowing the model to learn from future information and producing an unrealistically optimistic evaluation</button><button class="opt" onclick="answer(this,3,2,1)">C. test_size=0.2 is too large for time series data; it should always be set below 0.05</button><button class="opt" onclick="answer(this,3,3,1)">D. train_test_split cannot be used on pandas DataFrames and requires converting to a NumPy array first</button>
+    <div class="expl">For time-dependent data, a random shuffle-based split violates the temporal ordering: rows from later dates can end up in the training set while earlier dates end up in test, so the model effectively 'sees the future' during training. The correct approach is a chronological split (e.g., train on the first N months, test on the most recent period) or a time-series-aware cross-validation strategy.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="ML Workflows">
+    <div class="meta">Question 5 of 6 · ML Workflows</div>
+    <div class="q">A team registers features in Databricks Feature Store for a fraud detection model. When constructing a training set with FeatureLookup, they must ensure that each labeled transaction only receives feature values that were known at the time the transaction occurred, not values computed afterward. Which mechanism enables this?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. Setting the feature table's data type to STREAMING so features update continuously</button><button class="opt" onclick="answer(this,4,1,1)">B. Specifying a timestamp_lookup_key in the FeatureLookup so point-in-time correct joins are performed against the feature table's timestamp column</button><button class="opt" onclick="answer(this,4,2,1)">C. Enabling Unity Catalog lineage tracking on the feature table so past values are automatically versioned</button><button class="opt" onclick="answer(this,4,3,1)">D. Using merge_asof() manually inside a Spark UDF after the training set is created</button>
+    <div class="expl">Feature Store's FeatureLookup supports a timestamp_lookup_key parameter that performs a point-in-time join, matching each label row to the most recent feature values available as of that row's timestamp, preventing future feature leakage automatically as part of create_training_set().</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="ML Workflows">
+    <div class="meta">Question 6 of 6 · ML Workflows</div>
+    <div class="q">Which statement BEST describes why fitting a StandardScaler (or any Spark ML feature transformer) only on the training set, then using .transform() with that already-fitted model on the validation and test sets, is the correct practice to avoid data leakage?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. Fitting only on training data ensures scaling statistics (mean/standard deviation) come solely from data the model is allowed to learn from, so validation/test performance reflects generalization to unseen data rather than statistics derived from data the model shouldn't have access to</button><button class="opt" onclick="answer(this,5,1,0)">B. It is required only because Spark ML transformers cannot be refit on new data once created</button><button class="opt" onclick="answer(this,5,2,0)">C. Fitting only on the training set reduces the total compute cost since Spark caches the scaler parameters permanently</button><button class="opt" onclick="answer(this,5,3,0)">D. It ensures the validation and test sets have identical row counts to the training set</button>
+    <div class="expl">Data leakage occurs whenever information from validation/test data influences how a model or preprocessing step is fit. Deriving scaling statistics from the full dataset (including validation/test) would let the model indirectly 'see' those data points' distributional properties, inflating evaluation metrics. Fitting exclusively on training data guarantees an honest estimate of generalization performance.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/databricks-ml-associate-certification-exam-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

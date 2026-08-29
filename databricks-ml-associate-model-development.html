@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Model Development Practice Questions — Databricks Certified Machine Learning Associate</title>
+<meta name="description" content="6 free Model Development practice questions with explanations for the Databricks Certified Machine Learning Associate exam.">
+<link rel="canonical" href="https://technuggets.academy/databricks-ml-associate-model-development.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Model Development Practice Questions — Databricks Certified Machine Learning Associate">
+<meta property="og:description" content="6 free Model Development practice questions with explanations for the Databricks Certified Machine Learning Associate exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/databricks-ml-associate-model-development.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#FF3621}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Model Development</h1>
+<p class="sub">Free Databricks Certified Machine Learning Associate practice — 6 questions on <strong>Model Development</strong>, with explanations. No sign-up.
+<a href="databricks-ml-associate.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Model Development">
+    <div class="meta">Question 1 of 6 · Model Development</div>
+    <div class="q">A data scientist tunes a gradient boosting model using Hyperopt's fmin with SparkTrials on a 32-worker Databricks cluster. They set max_evals=100 and parallelism=32 to fully utilize the cluster. After tuning, the resulting model performs worse than a previous run that used parallelism=8. What is the MOST likely explanation?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. With parallelism close to max_evals, the Tree-structured Parzen Estimator (TPE) algorithm has fewer completed trials to learn from before launching new trials, causing the search to behave more like random search</button><button class="opt" onclick="answer(this,0,1,0)">B. parallelism=32 exceeds the executor count in the cluster</button><button class="opt" onclick="answer(this,0,2,0)">C. SparkTrials requires parallelism to be a power of 2, so setting it to 32 caused evaluation errors</button><button class="opt" onclick="answer(this,0,3,0)">D. Higher parallelism disables early stopping in the objective function</button>
+    <div class="expl">TPE (the default Hyperopt algorithm) is adaptive — it uses results from completed trials to choose better points to try next. When parallelism is close to max_evals, most trials launch before any results come back, so the algorithm can't learn from prior trials and effectively degrades to random search. Databricks documentation recommends setting parallelism no higher than roughly sqrt(max_evals) to preserve adaptive optimization quality.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Model Development">
+    <div class="meta">Question 2 of 6 · Model Development</div>
+    <div class="q">A team is building a binary classifier to detect fraudulent transactions where only 2% of transactions are fraudulent. When comparing MLflow runs to select the best-performing model, which metric should be prioritized?</div>
+    <button class="opt" onclick="answer(this,1,0,1)">A. Accuracy</button><button class="opt" onclick="answer(this,1,1,1)">B. Area under Precision-Recall curve (AUC-PR)</button><button class="opt" onclick="answer(this,1,2,1)">C. Area under ROC curve (AUC-ROC)</button><button class="opt" onclick="answer(this,1,3,1)">D. R-squared</button>
+    <div class="expl">AUC-PR focuses on the model's ability to correctly identify the minority (positive) class and is far more informative than ROC-based metrics when classes are severely imbalanced, since it isn't inflated by the large number of true negatives.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Model Development">
+    <div class="meta">Question 3 of 6 · Model Development</div>
+    <div class="q">A dataset of 5 GB fits comfortably into the memory of the driver node on a Databricks cluster with 64 GB of RAM. The team needs to train a random forest classifier and wants the fastest development iteration with full access to scikit-learn's hyperparameter options. Which training approach is BEST suited for this scenario?</div>
+    <button class="opt" onclick="answer(this,2,0,2)">A. Train using Spark ML's RandomForestClassifier distributed across the cluster's worker nodes</button><button class="opt" onclick="answer(this,2,1,2)">B. Convert the dataset to a Spark DataFrame and use Pandas UDFs to parallelize scikit-learn training across partitions</button><button class="opt" onclick="answer(this,2,2,2)">C. Train using scikit-learn's RandomForestClassifier on the driver node, since the data fits in memory and single-node processing avoids distributed overhead</button><button class="opt" onclick="answer(this,2,3,2)">D. Use Hyperopt with SparkTrials to distribute the scikit-learn model training across executors for a single model fit</button>
+    <div class="expl">When a dataset fits comfortably in the memory of a single node, using scikit-learn directly is simpler, faster to iterate on, and gives full access to scikit-learn's API and hyperparameters — the overhead of a distributed framework is unnecessary and would slow down development for data this size.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Model Development">
+    <div class="meta">Question 4 of 6 · Model Development</div>
+    <div class="q">After running Hyperopt's fmin with SparkTrials with MLflow autologging enabled, a data scientist wants to programmatically retrieve the single best child run by validation F1 score using the MLflow Python API. Which approach correctly retrieves it?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. mlflow.search_runs() returns only the parent run created by fmin; individual trial metrics must be manually parsed from the Hyperopt Trials object</button><button class="opt" onclick="answer(this,3,1,3)">B. SparkTrials does not integrate with MLflow autologging, so trials must be logged manually with mlflow.log_metric inside the objective function</button><button class="opt" onclick="answer(this,3,2,3)">C. The best run must be retrieved using mlflow.list_experiments(), since search_runs cannot filter by metric values</button><button class="opt" onclick="answer(this,3,3,3)">D. mlflow.search_runs(order_by=[&quot;metrics.val_f1 DESC&quot;]).iloc[0], filtered to the parent experiment, since each Hyperopt trial is logged as a nested child run under the parent fmin run</button>
+    <div class="expl">With MLflow autologging enabled, each Hyperopt trial launched by SparkTrials is automatically logged as a nested child run under the parent fmin run. Calling search_runs against the experiment and ordering by the desired metric column correctly retrieves the best individual trial run.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Model Development">
+    <div class="meta">Question 5 of 6 · Model Development</div>
+    <div class="q">Two regression models are compared for predicting house prices. Model A has a lower RMSE than Model B, but Model B has a lower MAE than Model A. Which statement correctly explains this discrepancy?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. RMSE and MAE always agree on ranking; this scenario is not possible</button><button class="opt" onclick="answer(this,4,1,3)">B. RMSE is always smaller than MAE for the same dataset, so Model A's lower value is expected regardless of performance</button><button class="opt" onclick="answer(this,4,2,3)">C. MAE only applies to classification problems, so this comparison is invalid</button><button class="opt" onclick="answer(this,4,3,3)">D. RMSE squares errors before averaging, so it penalizes large errors (outliers) more heavily; Model A likely makes fewer large errors while Model B is more consistent on typical predictions</button>
+    <div class="expl">Because RMSE squares each error before averaging, it disproportionately penalizes large errors/outliers. A model that avoids a few large mistakes (Model A) can therefore have a lower RMSE, while a model that is more consistently accurate on typical cases but occasionally has a larger miss can have a lower MAE (Model B). The two metrics weight error magnitudes differently and can disagree on ranking.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Model Development">
+    <div class="meta">Question 6 of 6 · Model Development</div>
+    <div class="q">A data scientist defines a Hyperopt search space for the max_depth hyperparameter of a gradient boosted tree model, which must be an integer between 3 and 15. Which search space definition is CORRECT?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. hp.uniform('max_depth', 3, 15)</button><button class="opt" onclick="answer(this,5,1,1)">B. hp.quniform('max_depth', 3, 15, 1)</button><button class="opt" onclick="answer(this,5,2,1)">C. hp.choice('max_depth', [3, 15])</button><button class="opt" onclick="answer(this,5,3,1)">D. hp.loguniform('max_depth', 3, 15)</button>
+    <div class="expl">hp.quniform samples a continuous value over the given range and rounds it to the nearest multiple of the quantization step (q=1 here), producing integer-valued samples appropriate for an integer hyperparameter like max_depth (the value should be cast to int in the objective function).</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/databricks-ml-associate-certification-exam-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

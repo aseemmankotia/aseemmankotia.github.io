@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Databricks Machine Learning Practice Questions — Databricks Certified Machine Learning Associate</title>
+<meta name="description" content="6 free Databricks Machine Learning practice questions with explanations for the Databricks Certified Machine Learning Associate exam.">
+<link rel="canonical" href="https://technuggets.academy/databricks-ml-associate-databricks-machine-learning.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Databricks Machine Learning Practice Questions — Databricks Certified Machine Learning Associate">
+<meta property="og:description" content="6 free Databricks Machine Learning practice questions with explanations for the Databricks Certified Machine Learning Associate exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/databricks-ml-associate-databricks-machine-learning.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#FF3621}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Databricks Machine Learning</h1>
+<p class="sub">Free Databricks Certified Machine Learning Associate practice — 6 questions on <strong>Databricks Machine Learning</strong>, with explanations. No sign-up.
+<a href="databricks-ml-associate.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Databricks Machine Learning">
+    <div class="meta">Question 1 of 6 · Databricks Machine Learning</div>
+    <div class="q">A data scientist is using Feature Engineering in Unity Catalog to build a training set. Each observation in the label table has an event timestamp, and the data scientist must ensure that only feature values available AS OF that timestamp are joined in, to prevent label leakage. Which FeatureLookup parameter must be specified to achieve this point-in-time correct join?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. timestamp_lookup_key</button><button class="opt" onclick="answer(this,0,1,0)">B. lookup_key</button><button class="opt" onclick="answer(this,0,2,0)">C. primary_keys</button><button class="opt" onclick="answer(this,0,3,0)">D. feature_lookup</button>
+    <div class="expl">timestamp_lookup_key tells create_training_set to perform a point-in-time join, matching each observation only with feature values that existed at or before its timestamp, which prevents future data (label leakage) from entering the training set.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Databricks Machine Learning">
+    <div class="meta">Question 2 of 6 · Databricks Machine Learning</div>
+    <div class="q">A team has registered a model to Unity Catalog and wants to designate the newest version as ready for production traffic using the current, non-deprecated Unity Catalog model versioning approach. What should they do?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. Transition the model stage to &quot;Production&quot; using the MLflow Client</button><button class="opt" onclick="answer(this,1,1,2)">B. Set a model version tag &quot;stage=Production&quot;</button><button class="opt" onclick="answer(this,1,2,2)">C. Assign the alias &quot;Champion&quot; to the model version</button><button class="opt" onclick="answer(this,1,3,2)">D. Archive all previous model versions</button>
+    <div class="expl">Models registered in Unity Catalog use aliases (e.g., 'Champion', 'Challenger') instead of the legacy stage system (Staging/Production/Archived). Assigning an alias is the supported way to mark a version as the one currently used for a purpose like production serving.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Databricks Machine Learning">
+    <div class="meta">Question 3 of 6 · Databricks Machine Learning</div>
+    <div class="q">A data scientist runs an AutoML classification experiment on a customer churn dataset and wants to modify the preprocessing steps (e.g., imputation strategy) used by the single best-performing trial, then retrain it. What is the correct approach?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. Open the auto-generated source code notebook for the best trial, edit the preprocessing code, and rerun the notebook</button><button class="opt" onclick="answer(this,2,1,0)">B. Edit the preprocessing options in the AutoML experiment configuration UI before rerunning</button><button class="opt" onclick="answer(this,2,2,0)">C. Edit the model's preprocessing parameters directly from the MLflow Model Registry</button><button class="opt" onclick="answer(this,2,3,0)">D. AutoML-generated models cannot have their preprocessing modified</button>
+    <div class="expl">AutoML produces a fully editable, glass-box source code notebook for each trial (including the best trial). Data scientists are expected to open this notebook, modify preprocessing/feature engineering or hyperparameters directly in the code, and rerun it to produce a customized model — this is the documented intended workflow.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Databricks Machine Learning">
+    <div class="meta">Question 4 of 6 · Databricks Machine Learning</div>
+    <div class="q">A data scientist uses Hyperopt with SparkTrials to run distributed hyperparameter tuning across a cluster and wants each individual hyperparameter combination logged as its own MLflow run, grouped underneath a single parent run for the overall tuning job. Which MLflow capability enables this run hierarchy?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. mlflow.autolog() enabled with no additional configuration</button><button class="opt" onclick="answer(this,3,1,2)">B. Creating a separate MLflow experiment for each hyperparameter combination</button><button class="opt" onclick="answer(this,3,2,2)">C. Nested runs, created with mlflow.start_run(nested=True)</button><button class="opt" onclick="answer(this,3,3,2)">D. Creating a new registered model version for each hyperparameter combination</button>
+    <div class="expl">MLflow nested runs, started with mlflow.start_run(nested=True) inside an active parent run, let each Hyperopt/SparkTrials trial log its own params, metrics, and artifacts as a child run visible in the tracking UI under the parent run — exactly the hierarchy Hyperopt integration with MLflow uses.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Databricks Machine Learning">
+    <div class="meta">Question 5 of 6 · Databricks Machine Learning</div>
+    <div class="q">A team wants to train a deep learning model with distributed GPU acceleration on a Databricks cluster, using preinstalled CUDA/cuDNN libraries and GPU-optimized versions of frameworks like TensorFlow and PyTorch. Which cluster configuration should they select?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. Standard (non-ML) Databricks Runtime with a GPU-enabled instance type</button><button class="opt" onclick="answer(this,4,1,3)">B. Databricks Runtime for Machine Learning (CPU) with autoscaling enabled</button><button class="opt" onclick="answer(this,4,2,3)">C. Photon-enabled Databricks Runtime with a GPU-enabled instance type</button><button class="opt" onclick="answer(this,4,3,3)">D. Databricks Runtime for Machine Learning (GPU) with a GPU-enabled instance type</button>
+    <div class="expl">Databricks Runtime ML GPU editions ship with CUDA, cuDNN, and GPU-compatible builds of deep learning frameworks preinstalled and configured; combined with a GPU instance type, this is the only listed option that provides working GPU-accelerated training out of the box.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Databricks Machine Learning">
+    <div class="meta">Question 6 of 6 · Databricks Machine Learning</div>
+    <div class="q">A company registers ML models in Unity Catalog under a three-level namespace (catalog.schema.model) and wants to restrict read/inference access to a specific registered model so that only the fraud-detection team can use it, without granting broader workspace-wide access. Which mechanism enforces this?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. Unity Catalog GRANT statements applied at the catalog, schema, or model object level</button><button class="opt" onclick="answer(this,5,1,0)">B. Cloud provider IAM roles configured at the AWS/Azure account level</button><button class="opt" onclick="answer(this,5,2,0)">C. MLflow Model Registry stage transitions (Staging/Production)</button><button class="opt" onclick="answer(this,5,3,0)">D. Workspace-level access control lists (ACLs) only</button>
+    <div class="expl">Unity Catalog governs models the same way it governs tables and other securable objects: fine-grained permissions are granted via SQL GRANT statements at the catalog, schema, or individual model level, allowing precise control such as granting EXECUTE/USE privileges only to the fraud-detection team's group.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/databricks-ml-associate-certification-exam-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

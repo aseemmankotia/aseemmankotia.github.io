@@ -1,0 +1,123 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Databricks Certified Machine Learning Associate Practice Test — 12 Real Exam-Style Questions</title>
+<meta name="description" content="Free Databricks Certified Machine Learning Associate practice questions with detailed explanations. Test yourself before the real exam.">
+<link rel="canonical" href="https://technuggets.academy/databricks-ml-associate.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Databricks Certified Machine Learning Associate Practice Test — 12 Real Exam-Style Questions">
+<meta property="og:description" content="Free Databricks Certified Machine Learning Associate practice questions with detailed explanations. Test yourself before the real exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/databricks-ml-associate.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#FF3621}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div><div class="hero">
+  <span class="chip">Databricks ML Associate</span>
+  <h1>Free Databricks Certified Machine Learning Associate Practice Test</h1>
+  <p class="sub">12 exam-style questions with full explanations — no sign-up. Score yourself, then close your gaps with the full course.</p>
+  <div class="facts"><span class="fact">Exam fee <b>~$200</b></span><span class="fact"><b>4</b> exam domains</span><span class="fact">Level <b>Intermediate</b></span><span class="fact"><b>2</b> timed practice tests in the course</span></div>
+  <div class="cta-row"><a class="btn enroll" href="https://www.udemy.com/course/databricks-ml-associate-certification-exam-prep/" rel="sponsored" target="_blank">Start my full course on Udemy →</a><a class="btn ghost" href="#practice">Try the free test →</a></div>
+</div><div class="trust"><span>✅ <b>Free</b> practice — no sign-up</span><span>📝 Real exam-style questions</span><span>💡 Detailed explanations</span><span>💸 30-day money-back via Udemy</span></div>
+<div id="practice"></div>
+
+  <div class="card qcard" id="q0" data-domain="Databricks Machine Learning">
+    <div class="meta">Question 1 of 12 · Databricks Machine Learning</div>
+    <div class="q">A data scientist has a labeled classification dataset in a Delta table and wants to quickly generate a baseline model along with the full source code used to train it, so they can inspect and customize the winning approach. Which Databricks capability BEST meets this need?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. Launch a Databricks AutoML classification experiment, which generates trial notebooks you can customize</button><button class="opt" onclick="answer(this,0,1,0)">B. Manually write scikit-learn training code from scratch in a notebook</button><button class="opt" onclick="answer(this,0,2,0)">C. Use Databricks Feature Store to automatically train a baseline model</button><button class="opt" onclick="answer(this,0,3,0)">D. Use MLflow Model Registry to auto-generate a baseline model</button>
+    <div class="expl">AutoML automatically preprocesses data, trains multiple candidate models, and produces editable source-code notebooks for each trial, giving both a fast baseline and full transparency into the generated code.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="ML Workflows">
+    <div class="meta">Question 2 of 12 · ML Workflows</div>
+    <div class="q">A data scientist is preparing a dataset for a linear regression model on Databricks. They plan to scale all numeric features using StandardScaler before training. Which approach BEST avoids data leakage during this process?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. Fit StandardScaler on the entire dataset, then split the scaled data into train and test sets</button><button class="opt" onclick="answer(this,1,1,3)">B. Fit and apply StandardScaler separately on the train set and again separately on the test set</button><button class="opt" onclick="answer(this,1,2,3)">C. Skip scaling since Databricks automatically normalizes all numeric columns during model training</button><button class="opt" onclick="answer(this,1,3,3)">D. Split the data into train and test sets first, fit StandardScaler only on the training set, then apply that same fitted transformation to both the training and test sets</button>
+    <div class="expl">Fitting the scaler only on training data and reusing those fitted parameters (mean/std) on the test set ensures the test set statistics never influence training, which is the core requirement for avoiding leakage.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Model Development">
+    <div class="meta">Question 3 of 12 · Model Development</div>
+    <div class="q">A data scientist is training a binary classifier to detect fraudulent transactions where only 0.5% of transactions are fraudulent. The model achieves 99.4% accuracy but fails to catch almost any fraud cases. Which evaluation metric should the data scientist prioritize instead to properly assess this model?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. R-squared, since it accounts for variance explained by the model</button><button class="opt" onclick="answer(this,2,1,1)">B. F1 score or area under the precision-recall curve, since they account for class imbalance</button><button class="opt" onclick="answer(this,2,2,1)">C. Accuracy, but measured on a larger held-out test set</button><button class="opt" onclick="answer(this,2,3,1)">D. Mean absolute error, since it penalizes large prediction errors</button>
+    <div class="expl">With severe class imbalance, accuracy is misleading because a naive model that always predicts the majority class still scores high. F1 (harmonic mean of precision and recall) or PR-AUC directly measure how well the minority (fraud) class is detected.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Model Deployment">
+    <div class="meta">Question 4 of 12 · Model Deployment</div>
+    <div class="q">A retail company needs to score credit-card transactions for fraud in under 100 milliseconds as each transaction occurs, so a decision can be returned to the point-of-sale system synchronously. Which Databricks deployment approach BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. Register the model in Unity Catalog and run a nightly batch job with mlflow.pyfunc.spark_udf to score all transactions</button><button class="opt" onclick="answer(this,3,1,3)">B. Load the model into a Structured Streaming job that microbatches every 5 minutes</button><button class="opt" onclick="answer(this,3,2,3)">C. Attach the model to an all-purpose cluster and query it interactively through a notebook</button><button class="opt" onclick="answer(this,3,3,3)">D. Deploy the model to a Databricks Model Serving endpoint and call it via the REST API for each transaction</button>
+    <div class="expl">Model Serving endpoints expose a low-latency REST API backed by autoscaling compute, purpose-built for real-time, per-request scoring with sub-second response times.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Databricks Machine Learning">
+    <div class="meta">Question 5 of 12 · Databricks Machine Learning</div>
+    <div class="q">Several teams across an organization need to reuse the same curated customer features for multiple models, require point-in-time correct joins when building training sets, and want automatic lineage tracking from features back to source tables and forward to trained models. Which Databricks capability BEST satisfies these requirements?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. Store features in a plain Delta Lake table with no additional tooling</button><button class="opt" onclick="answer(this,4,1,3)">B. Save features as MLflow artifacts inside each experiment run</button><button class="opt" onclick="answer(this,4,2,3)">C. Store features as files in a Unity Catalog volume</button><button class="opt" onclick="answer(this,4,3,3)">D. Create feature tables in Feature Engineering in Unity Catalog (Databricks Feature Store) for point-in-time lookups and lineage</button>
+    <div class="expl">Feature Engineering in Unity Catalog (Feature Store) provides managed feature tables with primary keys, point-in-time correct training set creation, automatic lineage to source data and downstream models, and reuse across teams.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="ML Workflows">
+    <div class="meta">Question 6 of 12 · ML Workflows</div>
+    <div class="q">A team has an existing pandas-based feature engineering pipeline that runs fine on a 5GB dataset but now needs to process a 500GB Delta Lake table on Databricks, with minimal rewriting of existing pandas-style code. Which approach BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,5,0,2)">A. Convert the entire 500GB dataset to a pandas DataFrame using toPandas() and process it in batches on the driver node</button><button class="opt" onclick="answer(this,5,1,2)">B. Increase the driver node size until it can hold 500GB in memory and continue running the pandas pipeline unmodified</button><button class="opt" onclick="answer(this,5,2,2)">C. Use the pandas API on Spark (pyspark.pandas) to run the existing pandas-style code across a distributed cluster</button><button class="opt" onclick="answer(this,5,3,2)">D. Rewrite the entire pipeline from scratch using the native PySpark DataFrame API and Spark SQL functions</button>
+    <div class="expl">The pandas API on Spark (pyspark.pandas) provides a pandas-compatible API that executes in a distributed manner across the cluster, letting teams reuse most of their existing pandas syntax while scaling to large datasets.</div>
+  </div>
+
+  <div class="card qcard" id="q6" data-domain="Model Development">
+    <div class="meta">Question 7 of 12 · Model Development</div>
+    <div class="q">A data scientist is running Hyperopt to tune hyperparameters for a scikit-learn model and wants each hyperparameter trial to run in parallel across the worker nodes of a Databricks cluster. Which Hyperopt component should be passed as the `trials` argument to `fmin()`?</div>
+    <button class="opt" onclick="answer(this,6,0,2)">A. Trials()</button><button class="opt" onclick="answer(this,6,1,2)">B. GridSearchCV()</button><button class="opt" onclick="answer(this,6,2,2)">C. SparkTrials()</button><button class="opt" onclick="answer(this,6,3,2)">D. ParamGridBuilder()</button>
+    <div class="expl">SparkTrials distributes Hyperopt trial evaluations across the Spark cluster's workers, enabling parallel execution of single-node model training trials, which is ideal for tuning scikit-learn or other non-distributed models on Databricks.</div>
+  </div>
+
+  <div class="card qcard" id="q7" data-domain="Model Deployment">
+    <div class="meta">Question 8 of 12 · Model Deployment</div>
+    <div class="q">A data scientist has a registered MLflow model and needs to apply it to score 500 million rows stored in a Delta table as part of a scheduled daily job, distributing the work across a cluster. Which approach should be used?</div>
+    <button class="opt" onclick="answer(this,7,0,0)">A. Wrap the model with mlflow.pyfunc.spark_udf and apply it as a column expression on the Spark DataFrame</button><button class="opt" onclick="answer(this,7,1,0)">B. Deploy a Model Serving endpoint and send each row as an individual REST API call from the driver</button><button class="opt" onclick="answer(this,7,2,0)">C. Load the model with pandas and call model.predict() on the driver after collecting the DataFrame</button><button class="opt" onclick="answer(this,7,3,0)">D. Convert the model to ONNX and run it exclusively on the driver node in a single Python process</button>
+    <div class="expl">mlflow.pyfunc.spark_udf wraps a registered model as a Spark UDF, allowing it to be applied in parallel across all executors, which is the standard scalable batch-inference pattern on Databricks.</div>
+  </div>
+
+  <div class="card qcard" id="q8" data-domain="Databricks Machine Learning">
+    <div class="meta">Question 9 of 12 · Databricks Machine Learning</div>
+    <div class="q">A data scientist is training a scikit-learn model and wants MLflow to automatically capture parameters, metrics, and the trained model as an artifact without manually calling logging functions for each item. Which single line should be added before training starts?</div>
+    <button class="opt" onclick="answer(this,8,0,0)">A. mlflow.autolog()</button><button class="opt" onclick="answer(this,8,1,0)">B. mlflow.set_experiment()</button><button class="opt" onclick="answer(this,8,2,0)">C. mlflow.log_artifact()</button><button class="opt" onclick="answer(this,8,3,0)">D. mlflow.start_run()</button>
+    <div class="expl">mlflow.autolog() enables automatic logging of parameters, metrics, and the trained model artifact for supported libraries (including scikit-learn) without requiring explicit log_param/log_metric calls.</div>
+  </div>
+
+  <div class="card qcard" id="q9" data-domain="ML Workflows">
+    <div class="meta">Question 10 of 12 · ML Workflows</div>
+    <div class="q">A dataset column 'income' has 12% missing values due to a data collection glitch (missing completely at random) and the column is right-skewed. The team wants to impute the missing values while minimizing distortion of the overall distribution. Which imputation strategy is BEST?</div>
+    <button class="opt" onclick="answer(this,9,0,1)">A. Impute missing values using the column mean</button><button class="opt" onclick="answer(this,9,1,1)">B. Impute missing values using the column median</button><button class="opt" onclick="answer(this,9,2,1)">C. Drop all rows containing missing values in the income column</button><button class="opt" onclick="answer(this,9,3,1)">D. Impute missing values using a randomly sampled value from the existing distribution</button>
+    <div class="expl">For skewed numeric distributions, the median is robust to outliers and skew, making it a better single-value imputation choice than the mean and preserving more of the dataset than dropping rows.</div>
+  </div>
+
+  <div class="card qcard" id="q10" data-domain="Model Development">
+    <div class="meta">Question 11 of 12 · Model Development</div>
+    <div class="q">A data scientist wants each hyperparameter combination evaluated during a Hyperopt sweep to be logged as its own separate MLflow run, grouped under a single parent run that represents the entire tuning job. Which MLflow configuration accomplishes this?</div>
+    <button class="opt" onclick="answer(this,10,0,2)">A. Call mlflow.autolog() once before fmin() and take no further action</button><button class="opt" onclick="answer(this,10,1,2)">B. Create a new MLflow experiment for every trial evaluated by Hyperopt</button><button class="opt" onclick="answer(this,10,2,2)">C. Set mlflow.start_run(nested=True) inside the objective function while an outer run is active</button><button class="opt" onclick="answer(this,10,3,2)">D. Log all trial metrics into one run using mlflow.log_metrics() with a step parameter</button>
+    <div class="expl">Wrapping the objective function's per-trial run in mlflow.start_run(nested=True), while an outer parent run is already active, creates child runs nested under the parent — the standard pattern for organizing Hyperopt sweeps in the MLflow UI.</div>
+  </div>
+
+  <div class="card qcard" id="q11" data-domain="Model Deployment">
+    <div class="meta">Question 12 of 12 · Model Deployment</div>
+    <div class="q">In Unity Catalog, which URI pattern correctly loads a model version tagged with the alias 'champion' for use with mlflow.pyfunc.load_model?</div>
+    <button class="opt" onclick="answer(this,11,0,3)">A. models:/catalog.schema.model_name/champion</button><button class="opt" onclick="answer(this,11,1,3)">B. models:/catalog.schema.model_name/Production</button><button class="opt" onclick="answer(this,11,2,3)">C. runs:/champion/model</button><button class="opt" onclick="answer(this,11,3,3)">D. models:/catalog.schema.model_name@champion</button>
+    <div class="expl">Unity Catalog model registry uses the @alias syntax (e.g., models:/catalog.schema.model_name@champion) to reference a specific model version by alias rather than a numeric version or legacy stage.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/databricks-ml-associate-certification-exam-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<section class="faq"><h3>Databricks ML Associate exam — quick answers</h3><details><summary>How much does the Databricks ML Associate exam cost?</summary><p>The exam fee is approximately $200 and varies by region — confirm current pricing with the certification vendor before you book.</p></details><details><summary>What topics are on the exam?</summary><p>It covers 4 domains: Databricks Machine Learning (38%), ML Workflows (19%), Model Development (31%), Model Deployment (12%). The full course has a dedicated chapter, lab and practice-test coverage for each.</p></details><details><summary>Is this practice test really free?</summary><p>Yes — all questions on this page are free with explanations and no sign-up. The paid Udemy course adds two full-length timed exams, video lessons and hands-on labs.</p></details><details><summary>Will this prepare me for the real exam?</summary><p>The questions mirror the real exam's style and are mapped to the official domains. This is exam-focused preparation — combine the free test with the full course's timed simulations to gauge your readiness.</p></details></section>
+<div class="domains"><span class="meta">More free practice by exam domain:</span><br><a href="databricks-ml-associate-databricks-machine-learning.html">Databricks Machine Learning →</a><a href="databricks-ml-associate-ml-workflows.html">ML Workflows →</a><a href="databricks-ml-associate-model-development.html">Model Development →</a></div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>
