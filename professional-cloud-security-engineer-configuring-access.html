@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Configuring Access Practice Questions — Google Cloud Certified - Professional Cloud Security Engineer</title>
+<meta name="description" content="6 free Configuring Access practice questions with explanations for the Google Cloud Certified - Professional Cloud Security Engineer exam.">
+<link rel="canonical" href="https://technuggets.academy/professional-cloud-security-engineer-configuring-access.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Configuring Access Practice Questions — Google Cloud Certified - Professional Cloud Security Engineer">
+<meta property="og:description" content="6 free Configuring Access practice questions with explanations for the Google Cloud Certified - Professional Cloud Security Engineer exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/professional-cloud-security-engineer-configuring-access.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#4285F4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Configuring Access</h1>
+<p class="sub">Free Google Cloud Certified - Professional Cloud Security Engineer practice — 6 questions on <strong>Configuring Access</strong>, with explanations. No sign-up.
+<a href="professional-cloud-security-engineer.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Configuring Access">
+    <div class="meta">Question 1 of 6 · Configuring Access</div>
+    <div class="q">A security engineer at a media company must ensure that a group of external contractors (group: contractors@example.com) can never delete Compute Engine instances, even though this group inherits the Editor role from a legacy binding at the organization level that other teams still depend on. The engineer cannot modify the existing Editor binding because it is required for other principals. Which approach enforces this restriction with the least disruption?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. Create an organization policy constraint restricting compute.instances.delete for the organization</button><button class="opt" onclick="answer(this,0,1,2)">B. Remove the Editor role from the organization-level binding and replace it with a custom role for all affected principals</button><button class="opt" onclick="answer(this,0,2,2)">C. Create an IAM deny policy at the folder containing the contractors' projects, denying compute.instances.delete permission to the principal set contractors@example.com</button><button class="opt" onclick="answer(this,0,3,2)">D. Add a VPC Service Controls perimeter around the contractors' projects to block delete operations</button>
+    <div class="expl">IAM deny policies are evaluated before allow policies and take precedence regardless of any allow grant, including inherited Editor roles. Scoping the deny policy to the folder and targeting only the contractors principal set blocks the delete permission for that group without touching the shared org-level Editor binding.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Configuring Access">
+    <div class="meta">Question 2 of 6 · Configuring Access</div>
+    <div class="q">A workforce is federated into Google Cloud using Workforce Identity Federation with Okta as the external IdP via SAML. The security team must ensure that only users whose Okta SAML assertion contains the attribute department with value finance can assume access through the workforce pool provider — all other authenticated Okta users should be denied federation entirely. What should they configure?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. An IAM deny policy on the workforce pool denying access to principals without the finance attribute</button><button class="opt" onclick="answer(this,1,1,3)">B. An organization policy constraint restricting Workforce Identity Federation to specific SAML issuers</button><button class="opt" onclick="answer(this,1,2,3)">C. A VPC Service Controls access level scoped to the finance department</button><button class="opt" onclick="answer(this,1,3,3)">D. An attribute mapping for google.subject combined with an attribute condition on the workforce pool provider that evaluates assertion.attributes.department == 'finance'</button>
+    <div class="expl">Workforce Identity Federation pool providers support attribute mappings (to map SAML/OIDC assertion attributes to Google attributes like google.subject and google.groups) and attribute conditions, which are CEL expressions evaluated at federation time. Setting a condition on the assertion attribute rejects federation entirely for any subject that doesn't match, before any Google Cloud IAM evaluation occurs.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Configuring Access">
+    <div class="meta">Question 3 of 6 · Configuring Access</div>
+    <div class="q">An organization wants engineers to normally hold no standing IAM roles above Viewer on production projects, but occasionally need temporary elevated access (e.g., Editor) for incident response, with a mandatory approval step from a designated approver and automatic revocation after a fixed duration. Which Google Cloud capability should be used to satisfy this requirement?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. IAM Conditions with a date/time expression on the Editor role binding</button><button class="opt" onclick="answer(this,2,1,3)">B. Policy Intelligence IAM Recommender to periodically right-size roles</button><button class="opt" onclick="answer(this,2,2,3)">C. Access Context Manager access levels tied to a break-glass service account</button><button class="opt" onclick="answer(this,2,3,3)">D. Privileged Access Manager (PAM) entitlements configured with an approval workflow and a maximum grant duration</button>
+    <div class="expl">Privileged Access Manager lets administrators define entitlements (which role, which resource scope, eligible requesters) that require approval and automatically expire after a configured duration, implementing just-in-time privileged access with an audit trail — exactly matching the requirement for temporary, approved elevation.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Configuring Access">
+    <div class="meta">Question 4 of 6 · Configuring Access</div>
+    <div class="q">A DevOps team runs CI/CD pipelines in GitHub Actions that must deploy to Google Cloud. Security policy prohibits the use of any downloaded service account key files, and access must be restricted so that only workflows running from the repository org/repo-name on the main branch can obtain Google Cloud credentials. What should be configured?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. A service account key stored as an encrypted GitHub Actions secret, rotated every 90 days</button><button class="opt" onclick="answer(this,3,1,3)">B. A Workforce Identity Federation pool configured for GitHub as an external workforce IdP</button><button class="opt" onclick="answer(this,3,2,3)">C. An organization policy constraint disabling service account key creation, with a manually issued long-lived OAuth token for GitHub Actions</button><button class="opt" onclick="answer(this,3,3,3)">D. A workload identity pool and provider configured for GitHub's OIDC issuer, with an attribute condition restricting assertion.repository and assertion.ref to the specific repo and branch, mapped to a service account via impersonation</button>
+    <div class="expl">Workload Identity Federation lets external workloads (like GitHub Actions, which issues OIDC tokens) exchange their token for short-lived Google Cloud credentials without any service account key. Attribute conditions on the provider can inspect claims like repository and ref (branch) to restrict which specific repo/branch is allowed to impersonate the target service account — satisfying both the no-keys requirement and the scoping requirement.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Configuring Access">
+    <div class="meta">Question 5 of 6 · Configuring Access</div>
+    <div class="q">A company enforces VPC Service Controls around a perimeter containing BigQuery datasets with sensitive financial data. Analysts must be allowed to query these datasets only when connecting from company-managed, encrypted laptops on the corporate IP range; connections from personal devices or external IPs must be blocked even if the analyst has valid IAM permissions. What should be configured?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. An IAM Conditions expression on each analyst's BigQuery role binding checking request.time</button><button class="opt" onclick="answer(this,4,1,1)">B. An Access Context Manager access level requiring the corporate IP range and a device policy (encryption + corporate ownership), attached as an ingress rule on the service perimeter</button><button class="opt" onclick="answer(this,4,2,1)">C. An organization policy constraint restricting BigQuery access to a single VPC network</button><button class="opt" onclick="answer(this,4,3,1)">D. A Cloud NGFW firewall rule blocking BigQuery API traffic from non-corporate IP ranges</button>
+    <div class="expl">Access Context Manager access levels can combine multiple conditions — IP subnetworks and device policy attributes (such as requiring encryption and corporate ownership via endpoint verification/BeyondCorp) — into a single access level. This access level is then referenced in the VPC Service Controls perimeter's ingress policy, so access to the protected BigQuery API is denied unless both device and network context match, independent of IAM permissions.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Configuring Access">
+    <div class="meta">Question 6 of 6 · Configuring Access</div>
+    <div class="q">An organization's audit found that several teams had created user-managed service account keys and stored them insecurely, leading to a credential leak. The CISO wants to prevent any new service account key creation across the entire organization going forward, but one legacy on-premises system in project legacy-sys-prod still requires a key temporarily until it can be migrated to Workload Identity Federation next quarter. What is the best way to enforce this?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. Manually delete all existing service account keys and instruct teams not to create new ones via an internal policy document</button><button class="opt" onclick="answer(this,5,1,3)">B. Enable the organization policy constraint only on the folder containing legacy-sys-prod</button><button class="opt" onclick="answer(this,5,2,3)">C. Create an IAM deny policy denying iam.serviceAccounts.keys.create at the organization level with no exceptions</button><button class="opt" onclick="answer(this,5,3,3)">D. Set the organization policy constraint constraints/iam.disableServiceAccountKeyCreation at the organization node, then set an override for project legacy-sys-prod allowing key creation</button>
+    <div class="expl">Setting constraints/iam.disableServiceAccountKeyCreation at the organization enforces the restriction everywhere by default (inheritance), and organization policies support setting a more permissive override at a lower-level resource (the specific project) to carve out the temporary exception — exactly matching the requirement for org-wide enforcement with one scoped, time-limited exception.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/google-cloud-security-engineer-exam-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

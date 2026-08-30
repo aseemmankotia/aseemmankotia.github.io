@@ -1,0 +1,123 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free NVIDIA-Certified Professional: AI Rack and Interconnect Practice Test — 12 Real Exam-Style Questions</title>
+<meta name="description" content="Free NVIDIA-Certified Professional: AI Rack and Interconnect practice questions with detailed explanations. Test yourself before the real exam.">
+<link rel="canonical" href="https://technuggets.academy/ncp-ari.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free NVIDIA-Certified Professional: AI Rack and Interconnect Practice Test — 12 Real Exam-Style Questions">
+<meta property="og:description" content="Free NVIDIA-Certified Professional: AI Rack and Interconnect practice questions with detailed explanations. Test yourself before the real exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/ncp-ari.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#76B900}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div><div class="hero">
+  <span class="chip">NCP-ARI</span>
+  <h1>Free NVIDIA-Certified Professional: AI Rack and Interconnect Practice Test</h1>
+  <p class="sub">12 exam-style questions with full explanations — no sign-up. Score yourself, then close your gaps with the full course.</p>
+  <div class="facts"><span class="fact">Exam fee <b>~$400</b></span><span class="fact"><b>7</b> exam domains</span><span class="fact">Level <b>Advanced</b></span><span class="fact"><b>2</b> timed practice tests in the course</span></div>
+  <div class="cta-row"><a class="btn enroll" href="https://www.udemy.com/course/ncp-ari-ai-rack-interconnect-exam-prep/" rel="sponsored" target="_blank">Start my full course on Udemy →</a><a class="btn ghost" href="#practice">Try the free test →</a></div>
+</div><div class="trust"><span>✅ <b>Free</b> practice — no sign-up</span><span>📝 Real exam-style questions</span><span>💡 Detailed explanations</span><span>💸 30-day money-back via Udemy</span></div>
+<div id="practice"></div>
+
+  <div class="card qcard" id="q0" data-domain="AI Infrastructure Basics">
+    <div class="meta">Question 1 of 12 · AI Infrastructure Basics</div>
+    <div class="q">A technician is preparing a new GB200 NVL72 rack for installation. The rack's compute trays connect to a busbar that distributes 48V to each tray, and this busbar is fed by rectifier/power shelves that convert incoming facility power. How should this rack be classified for power planning purposes?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. A traditional AC rack, because facility power always arrives as AC regardless of in-rack distribution</button><button class="opt" onclick="answer(this,0,1,2)">B. A hybrid rack that requires no power shelves since GPUs consume AC directly</button><button class="opt" onclick="answer(this,0,2,2)">C. A DC rack, because power is converted to DC and distributed to compute trays via a busbar rather than individual AC PDU outlets</button><button class="opt" onclick="answer(this,0,3,2)">D. An AC rack, because rPDUs are still required for every server in the rack</button>
+    <div class="expl">GB200 NVL72 racks use a DC power architecture: facility AC is converted by power shelves into 48V DC, which is then distributed to compute and switch trays via a busbar — this is the defining characteristic of a DC rack versus a traditional AC rack that uses per-outlet rPDUs.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Pre-Deployment Planning and Site Assessment">
+    <div class="meta">Question 2 of 12 · Pre-Deployment Planning and Site Assessment</div>
+    <div class="q">A data center is preparing to receive a GB200 NVL72 rack, which weighs approximately 1,360 kg (3,000 lbs) fully populated. The facilities team confirms the raised floor tiles are rated for 600 kg/m² static load. Before scheduling delivery, what is the FIRST site-readiness step the deployment team should perform?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. Verify the structural floor load capacity and reinforcement requirements against the rack's certified weight specification</button><button class="opt" onclick="answer(this,1,1,0)">B. Order additional InfiniBand cables to have spares on-site before the rack arrives</button><button class="opt" onclick="answer(this,1,2,0)">C. Pre-configure the management switch VLANs so the rack is network-ready on arrival</button><button class="opt" onclick="answer(this,1,3,0)">D. Schedule the ESD training session for the installation crew</button>
+    <div class="expl">Structural floor load verification is a foundational physical-readiness check that must be confirmed before a multi-ton rack can be safely rolled in and positioned; failing this check can halt or damage the deployment before any electrical or network work begins.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Rack Infrastructure Preparation">
+    <div class="meta">Question 3 of 12 · Rack Infrastructure Preparation</div>
+    <div class="q">A technician is preparing an extra-wide GB200 NVL72 rack for installation and needs to confirm the front-post-to-front-door clearance before mounting compute trays. Which clearance value should the technician verify meets NVIDIA's rack preparation requirement for full door swing and hot-swap tray access?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. Minimum 300 mm (12 in)</button><button class="opt" onclick="answer(this,2,1,3)">B. No clearance is required if the front door is removed permanently</button><button class="opt" onclick="answer(this,2,2,3)">C. Minimum 600 mm (24 in)</button><button class="opt" onclick="answer(this,2,3,3)">D. Minimum 1200 mm (47 in)</button>
+    <div class="expl">NVIDIA's rack preparation guidance for GB200 NVL72 extra-wide racks specifies approximately 1200 mm (47 in) of front clearance so the cabinet door can fully open and compute/switch trays can be serviced or hot-swapped without obstruction.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="High-Density Cabling Installation">
+    <div class="meta">Question 4 of 12 · High-Density Cabling Installation</div>
+    <div class="q">A high-density AI cluster requires NVIDIA NDR InfiniBand connectivity between two rows of racks located 1.5 km apart on the same data-center campus. Which transceiver and fiber combination BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. 400G-SR4 transceivers with OM4 multimode fiber</button><button class="opt" onclick="answer(this,3,1,2)">B. 400G-DR4 transceivers with single-mode fiber</button><button class="opt" onclick="answer(this,3,2,2)">C. 400G-FR4 transceivers with single-mode fiber</button><button class="opt" onclick="answer(this,3,3,2)">D. Passive DAC copper cable</button>
+    <div class="expl">400G-FR4 optics are rated for up to 2 km over single-mode fiber, comfortably covering the 1.5 km run.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Cable Support Systems and Weight Management">
+    <div class="meta">Question 5 of 12 · Cable Support Systems and Weight Management</div>
+    <div class="q">A technician is planning the overhead cable path for a new row of GB200 NVL72 racks, each requiring hundreds of copper InfiniBand DAC cables plus power whips running horizontally above the row. The bundled weight per linear foot is significantly higher than a typical data hall row. Which approach BEST addresses this load before installation begins?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. Route all cables through the raised floor plenum to keep weight off the overhead structure</button><button class="opt" onclick="answer(this,4,1,2)">B. Install a continuous run of adhesive-backed wire hooks spaced every 3 feet along the ceiling grid</button><button class="opt" onclick="answer(this,4,2,2)">C. Calculate the total bundled cable weight per section and install a trapeze/ladder rack system rated and spaced to support that calculated load</button><button class="opt" onclick="answer(this,4,3,2)">D. Bundle all cables with hook-and-loop straps and suspend them directly from the rack tops without a dedicated support structure</button>
+    <div class="expl">Ultra-high-density AI clusters require an engineered support system sized to the actual calculated cable load, not an ad hoc solution. Trapeze/ladder racks are structurally rated for heavy bundled loads and their support spacing must be validated against the calculated weight per section.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Testing, Verification, and Documentation">
+    <div class="meta">Question 6 of 12 · Testing, Verification, and Documentation</div>
+    <div class="q">A newly installed InfiniBand fiber link shows a link-up status but is experiencing intermittent packet retransmissions with a bit error rate (BER) above the acceptable threshold, even though the connector appears properly seated. Which troubleshooting step should be performed FIRST?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. Replace the switch ASIC on the affected port</button><button class="opt" onclick="answer(this,5,1,1)">B. Inspect and clean the fiber connector end-faces using an optical fiber inspection scope and approved cleaning kit</button><button class="opt" onclick="answer(this,5,2,1)">C. Increase the cable's forward error correction (FEC) setting in the switch software</button><button class="opt" onclick="answer(this,5,3,1)">D. Swap the cable for a longer-length variant of the same type</button>
+    <div class="expl">Contaminated or dirty connector end-faces are the most common and least invasive cause of link-up-but-high-BER symptoms. Inspection and cleaning is the standard first troubleshooting step before more drastic hardware changes.</div>
+  </div>
+
+  <div class="card qcard" id="q6" data-domain="Safety, Standards, and Compliance">
+    <div class="meta">Question 7 of 12 · Safety, Standards, and Compliance</div>
+    <div class="q">A technician is assigned to service an rPDU feeding a live GB200 NVL72 rack drawing over 120 kW. What is the correct first step before beginning any work on the unit?</div>
+    <button class="opt" onclick="answer(this,6,0,0)">A. De-energize the circuit, apply lockout/tagout devices, and verify a zero-energy state with an appropriate tester before starting work</button><button class="opt" onclick="answer(this,6,1,0)">B. Wear insulated gloves and work on the live circuit while a partner monitors</button><button class="opt" onclick="answer(this,6,2,0)">C. Ask a colleague to hold the breaker in the off position while you work</button><button class="opt" onclick="answer(this,6,3,0)">D. Disable the rack's UID indicator light to signal work in progress</button>
+    <div class="expl">Standard electrical safety practice requires a formal lockout/tagout (LOTO) procedure: isolate the energy source, apply lock and tag, and confirm zero energy state with a rated tester before any hands-on work begins. This is mandatory in high-power (120 kW+) AI rack environments where residual energy or misidentified circuits pose lethal risk.</div>
+  </div>
+
+  <div class="card qcard" id="q7" data-domain="AI Infrastructure Basics">
+    <div class="meta">Question 8 of 12 · AI Infrastructure Basics</div>
+    <div class="q">An AC-powered AI rack uses three-phase intelligent rPDUs. Monitoring shows Phase L1 is drawing significantly more current than L2 and L3, though total rack power is within capacity. What is the correct corrective action?</div>
+    <button class="opt" onclick="answer(this,7,0,1)">A. Increase the breaker rating on Phase L1 to accommodate the higher draw</button><button class="opt" onclick="answer(this,7,1,1)">B. Redistribute power cord connections across the three phases on the rPDUs to balance current draw</button><button class="opt" onclick="answer(this,7,2,1)">C. Remove servers from the rack until total power drops below the rated capacity</button><button class="opt" onclick="answer(this,7,3,1)">D. Replace the three-phase rPDU with a single-phase PDU to simplify monitoring</button>
+    <div class="expl">Intelligent rPDUs report per-phase current draw so technicians can redistribute equipment power cords across L1, L2, and L3, preventing any single phase from being overloaded while total capacity remains sufficient.</div>
+  </div>
+
+  <div class="card qcard" id="q8" data-domain="Pre-Deployment Planning and Site Assessment">
+    <div class="meta">Question 9 of 12 · Pre-Deployment Planning and Site Assessment</div>
+    <div class="q">During a pre-deployment site survey for a row of liquid-cooled AI racks, the assessment team measures 900mm of clearance in the cold aisle and 1200mm in the hot aisle. Per standard high-density rack deployment practices for service access and airflow/CDU maintenance, what should the survey document as a finding?</div>
+    <button class="opt" onclick="answer(this,8,0,1)">A. The clearances are acceptable as-is since hot aisle spacing exceeds cold aisle spacing</button><button class="opt" onclick="answer(this,8,1,1)">B. The cold aisle clearance is insufficient and should be flagged for correction to meet the minimum service-access requirement</button><button class="opt" onclick="answer(this,8,2,1)">C. Only power cabling clearance matters; airflow clearance is irrelevant for liquid-cooled racks</button><button class="opt" onclick="answer(this,8,3,1)">D. The measurements are irrelevant until after the racks are physically installed</button>
+    <div class="expl">Site surveys must verify rack spacing meets minimum clearance requirements for technician access, cable management, and CDU/manifold servicing; inadequate cold aisle clearance is a common deficiency that must be identified and remediated before installation to avoid rework.</div>
+  </div>
+
+  <div class="card qcard" id="q9" data-domain="Rack Infrastructure Preparation">
+    <div class="meta">Question 10 of 12 · Rack Infrastructure Preparation</div>
+    <div class="q">A site team is routing AC power whips and InfiniBand fiber trunks into a GB200 NVL72 rack row. To mitigate EMI-induced signal degradation on the high-speed fiber links, what cable routing practice should be followed during rack preparation?</div>
+    <button class="opt" onclick="answer(this,9,0,1)">A. Twist the power and fiber cables together in a single bundle for compactness</button><button class="opt" onclick="answer(this,9,1,1)">B. Maintain separate, dedicated pathways for power and data cabling with a minimum lateral separation distance between them</button><button class="opt" onclick="answer(this,9,2,1)">C. Route power cables directly over the fiber trunks using the same overhead tray without separation</button><button class="opt" onclick="answer(this,9,3,1)">D. Route power and fiber cables together but only in the rear of the rack, since front routing requires separation</button>
+    <div class="expl">Rack preparation guidance requires dedicated, separated pathways (e.g., vertical duct for power on one side, horizontal duct for data on the other) with a specified minimum lateral separation to reduce electromagnetic interference that can degrade high-speed InfiniBand/fiber signal integrity.</div>
+  </div>
+
+  <div class="card qcard" id="q10" data-domain="High-Density Cabling Installation">
+    <div class="meta">Question 11 of 12 · High-Density Cabling Installation</div>
+    <div class="q">Which transceiver form factor is used on NVIDIA Quantum-2 NDR InfiniBand switch ports to support the higher thermal and power requirements of 400/800Gb optical modules?</div>
+    <button class="opt" onclick="answer(this,10,0,1)">A. SFP+</button><button class="opt" onclick="answer(this,10,1,1)">B. OSFP</button><button class="opt" onclick="answer(this,10,2,1)">C. QSFP28</button><button class="opt" onclick="answer(this,10,3,1)">D. QSFP-DD</button>
+    <div class="expl">OSFP has a larger form factor with better thermal dissipation, allowing it to support the higher-power optics required for NDR/XDR speeds.</div>
+  </div>
+
+  <div class="card qcard" id="q11" data-domain="Cable Support Systems and Weight Management">
+    <div class="meta">Question 12 of 12 · Cable Support Systems and Weight Management</div>
+    <div class="q">Which overhead cable support structure is specifically designed to distribute the weight of large bundled cable runs across multiple support points in a high-density AI cluster row?</div>
+    <button class="opt" onclick="answer(this,11,0,2)">A. Single-point J-hooks</button><button class="opt" onclick="answer(this,11,1,2)">B. Wire basket tray sized for light network cabling</button><button class="opt" onclick="answer(this,11,2,2)">C. Trapeze/ladder cable rack</button><button class="opt" onclick="answer(this,11,3,2)">D. Loose Velcro cable ties spanning between racks</button>
+    <div class="expl">Trapeze/ladder racks use rung-style construction supported at regular structural intervals, giving them the load rating needed to carry heavy bundled AI cluster cabling (power whips plus dense InfiniBand/AOC bundles) safely across a row.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/ncp-ari-ai-rack-interconnect-exam-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<section class="faq"><h3>NCP-ARI exam — quick answers</h3><details><summary>How much does the NCP-ARI exam cost?</summary><p>The exam fee is approximately $400 and varies by region — confirm current pricing with the certification vendor before you book.</p></details><details><summary>What topics are on the exam?</summary><p>It covers 7 domains: AI Infrastructure Basics (20%), Pre-Deployment Planning and Site Assessment (11%), Rack Infrastructure Preparation (10%), High-Density Cabling Installation (30%), Cable Support Systems and Weight Management (7%), Testing, Verification, and Documentation (12%), Safety, Standards, and Compliance (10%). The full course has a dedicated chapter, lab and practice-test coverage for each.</p></details><details><summary>Is this practice test really free?</summary><p>Yes — all questions on this page are free with explanations and no sign-up. The paid Udemy course adds two full-length timed exams, video lessons and hands-on labs.</p></details><details><summary>Will this prepare me for the real exam?</summary><p>The questions mirror the real exam's style and are mapped to the official domains. This is exam-focused preparation — combine the free test with the full course's timed simulations to gauge your readiness.</p></details></section>
+<div class="domains"><span class="meta">More free practice by exam domain:</span><br><a href="ncp-ari-ai-infrastructure-basics.html">AI Infrastructure Basics →</a><a href="ncp-ari-high-density-cabling-installation.html">High-Density Cabling Installation →</a></div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

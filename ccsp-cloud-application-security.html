@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Cloud Application Security Practice Questions — ISC2 Certified Cloud Security Professional (CCSP)</title>
+<meta name="description" content="6 free Cloud Application Security practice questions with explanations for the ISC2 Certified Cloud Security Professional (CCSP) exam.">
+<link rel="canonical" href="https://technuggets.academy/ccsp-cloud-application-security.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Cloud Application Security Practice Questions — ISC2 Certified Cloud Security Professional (CCSP)">
+<meta property="og:description" content="6 free Cloud Application Security practice questions with explanations for the ISC2 Certified Cloud Security Professional (CCSP) exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/ccsp-cloud-application-security.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Cloud Application Security</h1>
+<p class="sub">Free ISC2 Certified Cloud Security Professional (CCSP) practice — 6 questions on <strong>Cloud Application Security</strong>, with explanations. No sign-up.
+<a href="ccsp.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Cloud Application Security">
+    <div class="meta">Question 1 of 6 · Cloud Application Security</div>
+    <div class="q">A cloud-native application running on IaaS instances allows users to submit URLs for automated image processing. An attacker submits a URL pointing to http://169.254.169.254/latest/meta-data/iam/security-credentials/ and successfully retrieves the instance's temporary IAM credentials through the application's server-side fetch function. Which control BEST prevents this class of attack?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. Enforce IMDSv2 with mandatory PUT-based session tokens and disable IMDSv1 on the instance</button><button class="opt" onclick="answer(this,0,1,0)">B. Enable a WAF rule set targeting SQL injection payloads</button><button class="opt" onclick="answer(this,0,2,0)">C. Implement input validation that strips SQL special characters from submitted URLs</button><button class="opt" onclick="answer(this,0,3,0)">D. Require TLS 1.3 for all application API endpoints</button>
+    <div class="expl">This is a Server-Side Request Forgery (SSRF) attack against the cloud instance metadata service. IMDSv2 requires a session token obtained via a PUT request with a hop-limited header, which simple GET-based SSRF payloads (like the one triggered through the URL-fetching feature) cannot satisfy, effectively blocking credential theft via the metadata endpoint.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Cloud Application Security">
+    <div class="meta">Question 2 of 6 · Cloud Application Security</div>
+    <div class="q">A security team receives a compiled, third-party microservice binary with no source code, no build access, and no cooperation from the vendor for instrumentation. The service is slated for production deployment in the organization's cloud environment. Which testing approach is MOST appropriate given these constraints?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. Static Application Security Testing (SAST)</button><button class="opt" onclick="answer(this,1,1,2)">B. Interactive Application Security Testing (IAST)</button><button class="opt" onclick="answer(this,1,2,2)">C. Dynamic Application Security Testing (DAST)</button><button class="opt" onclick="answer(this,1,3,2)">D. Software Composition Analysis (SCA)</button>
+    <div class="expl">DAST performs black-box testing by interacting with the running application over its exposed interfaces, requiring no source code, build artifacts, or internal instrumentation, which fits this vendor-supplied binary scenario exactly.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Cloud Application Security">
+    <div class="meta">Question 3 of 6 · Cloud Application Security</div>
+    <div class="q">A cloud application must allow a mobile app to authenticate end users and obtain a lightweight, JSON-based identity token to call a RESTful backend API, while minimizing parsing overhead on constrained mobile devices. Which identity federation standard is BEST suited to this requirement?</div>
+    <button class="opt" onclick="answer(this,2,0,2)">A. SAML 2.0</button><button class="opt" onclick="answer(this,2,1,2)">B. Kerberos</button><button class="opt" onclick="answer(this,2,2,2)">C. OpenID Connect</button><button class="opt" onclick="answer(this,2,3,2)">D. LDAP</button>
+    <div class="expl">OpenID Connect is built on top of OAuth 2.0 and issues JSON Web Tokens (JWTs), which are compact and lightweight compared to XML-based assertions, making it the standard choice for mobile and REST API authentication scenarios.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Cloud Application Security">
+    <div class="meta">Question 4 of 6 · Cloud Application Security</div>
+    <div class="q">During an architecture review, a CCSP notes that a cloud application's OAuth 2.0 authorization server issues refresh tokens that never expire and are never invalidated after use. Which configuration change BEST reduces the risk of long-term token compromise?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. Increase the access token lifetime so refresh requests occur less frequently</button><button class="opt" onclick="answer(this,3,1,1)">B. Implement refresh token rotation, automatically revoking the previous token each time a new one is issued</button><button class="opt" onclick="answer(this,3,2,1)">C. Store refresh tokens in browser local storage so sessions persist across visits</button><button class="opt" onclick="answer(this,3,3,1)">D. Disable refresh tokens entirely and require full re-authentication once per year</button>
+    <div class="expl">Refresh token rotation invalidates each token immediately after it is used to obtain a new one, meaning a stolen refresh token becomes useless after a single use and triggers reuse-detection alerts if replayed, directly mitigating long-term compromise risk.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Cloud Application Security">
+    <div class="meta">Question 5 of 6 · Cloud Application Security</div>
+    <div class="q">Which statement BEST distinguishes an application sandbox from application virtualization in cloud application security architecture?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. A sandbox restricts an application's runtime access to system resources and APIs, while application virtualization packages an app with its dependencies so it can run independent of the underlying OS</button><button class="opt" onclick="answer(this,4,1,0)">B. A sandbox and application virtualization are functionally identical security mechanisms with interchangeable use cases</button><button class="opt" onclick="answer(this,4,2,0)">C. Application virtualization always provides strong security isolation, while sandboxing only improves performance</button><button class="opt" onclick="answer(this,4,3,0)">D. Sandboxing requires full OS-level virtualization, while application virtualization operates without any isolation layer</button>
+    <div class="expl">A sandbox (e.g., seccomp profiles, browser sandboxes) constrains what system calls, files, or network resources a running process can touch, whereas application virtualization (e.g., App-V style packaging, containerization) abstracts the app from the host OS for portability and dependency isolation, and the two serve different but complementary purposes.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Cloud Application Security">
+    <div class="meta">Question 6 of 6 · Cloud Application Security</div>
+    <div class="q">A development team's CI/CD pipeline was configured to fall back to a public package repository when the internal private package registry was temporarily unreachable. During that outage, malicious packages using the same names as internal libraries were pulled from the public repository and executed during the build. Which control would have BEST prevented this dependency confusion attack?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. Scoping the package manager configuration to explicitly reference internal namespaces and registries, with public repository fallback disabled</button><button class="opt" onclick="answer(this,5,1,0)">B. Requiring code signing on all internally published packages</button><button class="opt" onclick="answer(this,5,2,0)">C. Running SAST scans against all pipeline configuration scripts</button><button class="opt" onclick="answer(this,5,3,0)">D. Enforcing MFA for developer commits to the source repository</button>
+    <div class="expl">Dependency confusion attacks exploit ambiguous package resolution logic that allows a build tool to fetch a same-named package from a public registry instead of the intended private one; explicitly scoping package resolution to internal namespaces and disabling public fallback eliminates this ambiguity entirely.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/ccsp-certified-cloud-security-professional-exam-prep-x/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

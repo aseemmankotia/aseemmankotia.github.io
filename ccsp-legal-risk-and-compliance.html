@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Legal, Risk and Compliance Practice Questions — ISC2 Certified Cloud Security Professional (CCSP)</title>
+<meta name="description" content="6 free Legal, Risk and Compliance practice questions with explanations for the ISC2 Certified Cloud Security Professional (CCSP) exam.">
+<link rel="canonical" href="https://technuggets.academy/ccsp-legal-risk-and-compliance.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Legal, Risk and Compliance Practice Questions — ISC2 Certified Cloud Security Professional (CCSP)">
+<meta property="og:description" content="6 free Legal, Risk and Compliance practice questions with explanations for the ISC2 Certified Cloud Security Professional (CCSP) exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/ccsp-legal-risk-and-compliance.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Legal, Risk and Compliance</h1>
+<p class="sub">Free ISC2 Certified Cloud Security Professional (CCSP) practice — 6 questions on <strong>Legal, Risk and Compliance</strong>, with explanations. No sign-up.
+<a href="ccsp.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Legal, Risk and Compliance">
+    <div class="meta">Question 1 of 6 · Legal, Risk and Compliance</div>
+    <div class="q">A US-based SaaS company transfers customer PII from its EU subsidiary to servers hosted by a US cloud provider that is NOT certified under the EU-US Data Privacy Framework (DPF). Under GDPR Chapter V, which transfer mechanism should the company implement to legally justify this transfer?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. Rely on the EU-US Data Privacy Framework adequacy decision since the receiving country is the United States</button><button class="opt" onclick="answer(this,0,1,3)">B. Binding Corporate Rules approved by a lead supervisory authority</button><button class="opt" onclick="answer(this,0,2,3)">C. Obtain explicit consent from each data subject for the transfer</button><button class="opt" onclick="answer(this,0,3,3)">D. Standard Contractual Clauses supplemented by a Transfer Impact Assessment and additional technical safeguards</button>
+    <div class="expl">Since the receiving entity is not DPF-certified, the adequacy decision does not apply. Post-Schrems II, GDPR requires SCCs paired with a Transfer Impact Assessment and supplementary technical/organizational measures (e.g., encryption with EU-held keys) to address risks of foreign government surveillance.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Legal, Risk and Compliance">
+    <div class="meta">Question 2 of 6 · Legal, Risk and Compliance</div>
+    <div class="q">A company involved in civil litigation must preserve and produce virtual machine logs from its IaaS provider under a litigation hold. The legal team initially wants to perform traditional forensic imaging of the underlying physical disks. Given the cloud shared responsibility model, what is the correct approach?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. Request that the CSP grant physical access to the data center so the legal team can image the disks directly</button><button class="opt" onclick="answer(this,1,1,2)">B. Rely solely on customer-controlled OS-level logs and forgo any provider-side data</button><button class="opt" onclick="answer(this,1,2,2)">C. Work with the CSP to obtain API-level snapshots, volume-level images, and platform audit logs, since the CSP retains control over the physical infrastructure</button><button class="opt" onclick="answer(this,1,3,2)">D. Ask the court to subpoena the hardware for physical seizure by law enforcement</button>
+    <div class="expl">In IaaS, the CSP controls the physical infrastructure layer per the shared responsibility model. Proper cloud forensics relies on virtualized artifacts obtainable through the provider (volume snapshots, control-plane API logs) requested via established legal/contractual channels.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Legal, Risk and Compliance">
+    <div class="meta">Question 3 of 6 · Legal, Risk and Compliance</div>
+    <div class="q">A prospective cloud customer wants third-party assurance evidence that maps directly to the Cloud Security Alliance Cloud Controls Matrix (CCM) domains, rather than a generic security attestation. Which report or certification should the CSP provide?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. SOC 2 Type II report using the AICPA Trust Services Criteria</button><button class="opt" onclick="answer(this,2,1,1)">B. CSA STAR Level 2 attestation</button><button class="opt" onclick="answer(this,2,2,1)">C. ISO/IEC 27001 certification</button><button class="opt" onclick="answer(this,2,3,1)">D. PCI DSS Attestation of Compliance</button>
+    <div class="expl">CSA STAR Level 2 combines an independent third-party audit explicitly mapped to the CCM control domains, giving the customer direct visibility into cloud-specific controls that other frameworks do not natively provide.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Legal, Risk and Compliance">
+    <div class="meta">Question 4 of 6 · Legal, Risk and Compliance</div>
+    <div class="q">A company runs a mission-critical workload on a public cloud IaaS provider whose SLA guarantees 99.95% availability. The company's business continuity requirements mandate 99.99% availability, and renegotiating the SLA immediately is not feasible. Which action represents the BEST risk treatment strategy?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. Architect a multi-region, multi-AZ deployment with automated failover to compensate for the CSP's availability guarantee</button><button class="opt" onclick="answer(this,3,1,0)">B. Accept the residual risk without further action since the CSP is contractually obligated to the SLA</button><button class="opt" onclick="answer(this,3,2,0)">C. Purchase a business interruption insurance policy as the sole mitigation</button><button class="opt" onclick="answer(this,3,3,0)">D. Avoid the risk entirely by migrating the workload back to an on-premises data center</button>
+    <div class="expl">Architecting redundancy across regions and availability zones with automated failover is a direct mitigation control that reduces the likelihood and impact of downtime beyond what the CSP's SLA alone guarantees, closing the gap to the required 99.99%.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Legal, Risk and Compliance">
+    <div class="meta">Question 5 of 6 · Legal, Risk and Compliance</div>
+    <div class="q">A healthcare cloud tenant processes both protected health information (PHI) and cardholder payment data within the same SaaS application. Which statement correctly distinguishes the source and enforceability of the two compliance obligations?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. Both PHI and cardholder data obligations originate from federal law and carry equivalent government enforcement powers</button><button class="opt" onclick="answer(this,4,1,3)">B. PCI DSS obligations arise from federal statute, while HIPAA obligations arise from a private contractual agreement between healthcare providers</button><button class="opt" onclick="answer(this,4,2,3)">C. Neither obligation is legally enforceable; both are voluntary industry best-practice frameworks</button><button class="opt" onclick="answer(this,4,3,3)">D. HIPAA obligations arise from federal statute and regulation, while PCI DSS obligations arise from a private contractual agreement with payment card brands</button>
+    <div class="expl">HIPAA is a US federal law enforced by HHS/OCR with regulatory penalties, whereas PCI DSS is a contractual requirement imposed by the payment card brands through merchant/processor agreements, enforced via contractual fines and potential loss of card-processing privileges rather than government statute.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Legal, Risk and Compliance">
+    <div class="meta">Question 6 of 6 · Legal, Risk and Compliance</div>
+    <div class="q">A cloud-hosted machine learning system is used by an enterprise to automatically screen and rank job applicants' resumes, with hiring managers reviewing only the top-ranked candidates the system selects. Under the EU AI Act, how should this system likely be classified, and what is the primary compliance obligation?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. Classified as high-risk AI under the employment-related use case, requiring conformity assessment, risk management, and human oversight measures</button><button class="opt" onclick="answer(this,5,1,0)">B. Classified as minimal-risk AI, requiring only voluntary codes of conduct</button><button class="opt" onclick="answer(this,5,2,0)">C. Classified as a prohibited AI practice due to its impact on individuals' economic opportunities</button><button class="opt" onclick="answer(this,5,3,0)">D. Classified as limited-risk AI, requiring only a disclosure that AI was used in the decision</button>
+    <div class="expl">The EU AI Act's Annex III explicitly lists AI systems used in recruitment and candidate screening as high-risk, requiring providers and deployers to conduct conformity assessments, maintain a risk management system, ensure technical documentation, and implement meaningful human oversight.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/ccsp-certified-cloud-security-professional-exam-prep-x/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

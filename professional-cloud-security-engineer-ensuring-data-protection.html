@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Ensuring Data Protection Practice Questions — Google Cloud Certified - Professional Cloud Security Engineer</title>
+<meta name="description" content="6 free Ensuring Data Protection practice questions with explanations for the Google Cloud Certified - Professional Cloud Security Engineer exam.">
+<link rel="canonical" href="https://technuggets.academy/professional-cloud-security-engineer-ensuring-data-protection.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Ensuring Data Protection Practice Questions — Google Cloud Certified - Professional Cloud Security Engineer">
+<meta property="og:description" content="6 free Ensuring Data Protection practice questions with explanations for the Google Cloud Certified - Professional Cloud Security Engineer exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/professional-cloud-security-engineer-ensuring-data-protection.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#4285F4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Ensuring Data Protection</h1>
+<p class="sub">Free Google Cloud Certified - Professional Cloud Security Engineer practice — 6 questions on <strong>Ensuring Data Protection</strong>, with explanations. No sign-up.
+<a href="professional-cloud-security-engineer.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Ensuring Data Protection">
+    <div class="meta">Question 1 of 6 · Ensuring Data Protection</div>
+    <div class="q">A financial services company must retain the ability to instantly and verifiably destroy all encryption key material for regulatory reasons, and the key material must be generated and stored entirely outside of Google's infrastructure at all times, with Google Cloud only calling out to request cryptographic operations. Which approach BEST satisfies this requirement?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. Enable Google default encryption with Google-managed automatic key rotation</button><button class="opt" onclick="answer(this,0,1,1)">B. Configure Cloud External Key Manager (Cloud EKM) with keys hosted in a supported external key management partner system</button><button class="opt" onclick="answer(this,0,2,1)">C. Configure Customer-Managed Encryption Keys (CMEK) with keys generated directly inside Cloud KMS</button><button class="opt" onclick="answer(this,0,3,1)">D. Use the Cloud KMS Import Job feature to import externally generated key material into Cloud KMS</button>
+    <div class="expl">Cloud EKM is the only option where the key material never resides in Google Cloud at any point — Google Cloud makes an external call to the partner-hosted key manager for every cryptographic operation, and revoking access at the external system immediately blocks all future operations, satisfying the 'entirely outside Google' and 'instant revocation' requirements.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Ensuring Data Protection">
+    <div class="meta">Question 2 of 6 · Ensuring Data Protection</div>
+    <div class="q">A company needs to create a test dataset from production credit card numbers for a legacy application whose validation logic depends on the token being the exact same length and character set (digits only) as the original card number. Which Sensitive Data Protection (DLP) transformation should be used?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. Cryptographic hashing of each value</button><button class="opt" onclick="answer(this,1,1,2)">B. Date shifting</button><button class="opt" onclick="answer(this,1,2,2)">C. Format-preserving encryption (FPE) via the DLP API</button><button class="opt" onclick="answer(this,1,3,2)">D. Bucketing into value ranges</button>
+    <div class="expl">Format-preserving encryption (FPE), implemented in the DLP API using the FFX mode, encrypts a value while preserving its original format (length and character set), which is exactly what's needed to keep legacy validation logic intact while still protecting the underlying value.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Ensuring Data Protection">
+    <div class="meta">Question 3 of 6 · Ensuring Data Protection</div>
+    <div class="q">Your organization stores API keys as secrets in Secret Manager. A compliance auditor requires that every call to retrieve a secret's payload (accessSecretVersion) be recorded in Cloud Audit Logs. You confirm that Admin Activity logs are already capturing configuration changes to the secrets, but payload access calls are not appearing anywhere in Cloud Logging. What must you configure to close this gap?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. Enable Data Access audit logs for the Secret Manager API and select the Data Read log type</button><button class="opt" onclick="answer(this,2,1,0)">B. Nothing — Admin Activity audit logs already capture secret payload access by default</button><button class="opt" onclick="answer(this,2,2,0)">C. Enable Data Access audit logs for the Secret Manager API and select the Admin Write log type</button><button class="opt" onclick="answer(this,2,3,0)">D. Deploy a Cloud Function triggered on every Secret Manager API call to manually write custom log entries</button>
+    <div class="expl">Reading a secret's payload (accessSecretVersion) generates a Data Access audit log of type DATA_READ, and Data Access logs (other than BigQuery) are disabled by default for cost reasons. You must explicitly enable Data Access audit logging with the Data Read log type for the Secret Manager API in IAM &amp; Admin &gt; Audit Logs to capture these calls.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Ensuring Data Protection">
+    <div class="meta">Question 4 of 6 · Ensuring Data Protection</div>
+    <div class="q">A bank and a credit bureau want to jointly compute a fraud risk score using each other's sensitive raw datasets. Neither organization is willing to expose its raw data to the other, and neither wants even the code author or Google to be able to view the data during processing. Which Google Cloud capability is designed for this use case?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. A shared VPC Service Controls perimeter spanning both organizations' projects</button><button class="opt" onclick="answer(this,3,1,1)">B. Confidential Space using workload identity federation and remote attestation</button><button class="opt" onclick="answer(this,3,2,1)">C. Separate Cloud KMS CMEK keys issued to each organization for their respective datasets</button><button class="opt" onclick="answer(this,3,3,1)">D. Sensitive Data Protection (DLP) de-identification of both datasets before the joint computation</button>
+    <div class="expl">Confidential Space runs a workload inside a hardened, attested Confidential VM environment where neither the infrastructure operator, the data owners, nor the code author can access the data in the clear during processing. It uses workload identity federation and attestation to grant each party's data access only to a verified, trusted binary, making it purpose-built for multi-party confidential collaboration.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Ensuring Data Protection">
+    <div class="meta">Question 5 of 6 · Ensuring Data Protection</div>
+    <div class="q">You rotate a Cloud KMS CMEK key used to protect a Cloud Storage bucket by creating a new primary key version. What happens to the objects that were already encrypted using the previous key version?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. Cloud Storage automatically re-encrypts all existing objects with the new key version immediately after rotation</button><button class="opt" onclick="answer(this,4,1,2)">B. The old key version is automatically disabled at the moment of rotation, making the previously encrypted objects permanently unreadable</button><button class="opt" onclick="answer(this,4,2,2)">C. The previously encrypted objects remain decryptable using the old key version, which stays enabled until manually disabled or destroyed; existing ciphertext is not automatically re-encrypted</button><button class="opt" onclick="answer(this,4,3,2)">D. Rotation only affects newly created keys, not existing objects, meaning no change occurs to encryption at all until the bucket is deleted and recreated</button>
+    <div class="expl">Key rotation in Cloud KMS only changes which key version is used for new encrypt operations going forward; it does not automatically re-encrypt existing ciphertext. Previously written objects remain protected by whichever key version was primary at write time, and that version must stay enabled for those objects to remain decryptable.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Ensuring Data Protection">
+    <div class="meta">Question 6 of 6 · Ensuring Data Protection</div>
+    <div class="q">A healthcare company must retain patient records in Cloud Storage for 7 years to satisfy regulatory requirements, and the retention guarantee must hold even against project owners or organization administrators attempting to delete or shorten it. Which configuration meets this requirement?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. Enable Object Versioning and add a lifecycle rule to delete objects after 7 years</button><button class="opt" onclick="answer(this,5,1,3)">B. Restrict all IAM principals on the bucket to the Storage Object Viewer role only</button><button class="opt" onclick="answer(this,5,2,3)">C. Enable CMEK on the bucket and rely on key destruction timing to control data retention</button><button class="opt" onclick="answer(this,5,3,3)">D. Set a bucket-level retention policy of 7 years and lock it using Bucket Lock</button>
+    <div class="expl">A locked Bucket Lock retention policy makes the retention period immutable and permanently enforced by Cloud Storage itself — it cannot be shortened or removed, even by the project owner or org admin, and objects cannot be deleted or overwritten before the retention period expires, which is exactly the compliance guarantee required.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/google-cloud-security-engineer-exam-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

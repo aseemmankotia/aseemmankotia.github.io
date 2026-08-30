@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Cloud Data Security Practice Questions — ISC2 Certified Cloud Security Professional (CCSP)</title>
+<meta name="description" content="6 free Cloud Data Security practice questions with explanations for the ISC2 Certified Cloud Security Professional (CCSP) exam.">
+<link rel="canonical" href="https://technuggets.academy/ccsp-cloud-data-security.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Cloud Data Security Practice Questions — ISC2 Certified Cloud Security Professional (CCSP)">
+<meta property="og:description" content="6 free Cloud Data Security practice questions with explanations for the ISC2 Certified Cloud Security Professional (CCSP) exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/ccsp-cloud-data-security.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Cloud Data Security</h1>
+<p class="sub">Free ISC2 Certified Cloud Security Professional (CCSP) practice — 6 questions on <strong>Cloud Data Security</strong>, with explanations. No sign-up.
+<a href="ccsp.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Cloud Data Security">
+    <div class="meta">Question 1 of 6 · Cloud Data Security</div>
+    <div class="q">A cloud customer stores highly sensitive tenant data on a multi-tenant object storage platform. At the end of the data's retention period, the customer must guarantee the data is permanently unrecoverable, but has no ability to physically access or destroy the underlying storage media (SSD arrays are shared across tenants and the CSP will not allow physical destruction requests). Which method BEST satisfies this secure-deletion requirement?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. Overwrite the underlying disk sectors three times using a DoD 5220.22-M wipe pattern before deallocating the volume</button><button class="opt" onclick="answer(this,0,1,3)">B. Submit a request to the CSP to physically destroy the underlying storage media hosting the tenant's data</button><button class="opt" onclick="answer(this,0,2,3)">C. Invoke the storage service's default 'delete object' API call and confirm the object no longer appears in listings</button><button class="opt" onclick="answer(this,0,3,3)">D. Destroy all copies of the data encryption keys used to protect the data, rendering the ciphertext permanently unrecoverable (crypto-shredding)</button>
+    <div class="expl">Crypto-shredding (cryptographic erasure) is the standard cloud-native secure deletion method: if data was encrypted with a unique key, destroying all copies of that key makes the remaining ciphertext computationally infeasible to recover, without needing physical access to shared media.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Cloud Data Security">
+    <div class="meta">Question 2 of 6 · Cloud Data Security</div>
+    <div class="q">A payment processing company must remove primary account numbers (PANs) from PCI DSS scope across its legacy batch-processing systems. The legacy systems require the field to retain the exact same length and numeric format as a real card number, and the actual PAN must never be reconstructable by systems outside a dedicated vault. Which data protection technique BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. Encrypt the PAN field with AES-256 at rest and provide the application team with the decryption key for batch processing</button><button class="opt" onclick="answer(this,1,1,3)">B. Apply format-preserving encryption (FPE) to the PAN so it can be decrypted later by any system holding the key</button><button class="opt" onclick="answer(this,1,2,3)">C. Irreversibly mask all but the last four digits of the PAN before storing it in the batch system</button><button class="opt" onclick="answer(this,1,3,3)">D. Replace the PAN with a format-preserving token issued by a tokenization service/vault, storing the token in place of the real card number throughout downstream systems</button>
+    <div class="expl">Tokenization replaces the PAN with a surrogate value of identical format/length, with the mapping held only in a separate, tightly controlled token vault. Downstream systems that only ever handle the token are removed from PCI DSS scope, while legacy systems keep working unmodified.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Cloud Data Security">
+    <div class="meta">Question 3 of 6 · Cloud Data Security</div>
+    <div class="q">A financial regulator mandates that a specific class of encryption keys must NEVER be transmitted to, stored by, or become accessible in plaintext form to the cloud service provider, even temporarily. The organization still wants to leverage the CSP's compute services to process the encrypted data. Which key management model satisfies this requirement?</div>
+    <button class="opt" onclick="answer(this,2,0,2)">A. Bring Your Own Key (BYOK): generate the key on-premises and upload it into the CSP's native key management service for use</button><button class="opt" onclick="answer(this,2,1,2)">B. CSP-managed keys: allow the provider's default KMS to generate, store, and rotate the keys automatically</button><button class="opt" onclick="answer(this,2,2,2)">C. Hold Your Own Key (HYOK): keep the key material exclusively within the organization's on-premises HSM, with the CSP only invoking cryptographic operations remotely and never receiving the plaintext key</button><button class="opt" onclick="answer(this,2,3,2)">D. Client-side encryption using a CSP-supplied envelope encryption key stored in the CSP's KMS</button>
+    <div class="expl">HYOK ensures key material physically never leaves the customer's own HSM. The CSP sends cryptographic operation requests to the external HSM (e.g., via KMIP or a proxy) and only ever receives the result, never the plaintext key itself — satisfying strict 'never accessible to the CSP' mandates.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Cloud Data Security">
+    <div class="meta">Question 4 of 6 · Cloud Data Security</div>
+    <div class="q">An enterprise distributes sensitive financial reports to external partners via email attachments and cloud file shares. Leadership requires that even after a file is downloaded and copied to a partner's personal USB drive or personal laptop, the document's access restrictions and expiration policy must still be enforced. Which capability must be configured to meet this requirement?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. Configure a storage-bucket access control list (ACL) that restricts download permissions to authenticated corporate users</button><button class="opt" onclick="answer(this,3,1,1)">B. Enable persistent, file-embedded protection so the encryption and usage-rights policy travel with the document and are enforced by the IRM client whenever the file is opened, regardless of its storage location</button><button class="opt" onclick="answer(this,3,2,1)">C. Apply a network-based DLP rule that blocks the file type from being copied to removable media</button><button class="opt" onclick="answer(this,3,3,1)">D. Add a visible watermark containing the user's name and timestamp to the document before distribution</button>
+    <div class="expl">Information Rights Management (IRM) with persistent protection embeds encryption and the usage-rights policy directly into the file. Enforcement happens at open-time via the IRM client, independent of where the file is later copied or stored, satisfying the 'protection follows the data' requirement.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Cloud Data Security">
+    <div class="meta">Question 5 of 6 · Cloud Data Security</div>
+    <div class="q">Under GDPR-aligned data protection requirements, which de-identification technique results in output that is STILL classified as personal data because a separately maintained mapping allows the original identity to be recovered?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. Anonymization — the data is irreversibly altered so no individual can be re-identified by any party</button><button class="opt" onclick="answer(this,4,1,3)">B. Data masking — static replacement of sensitive values with fictitious characters for use in non-production environments</button><button class="opt" onclick="answer(this,4,2,3)">C. Encryption — the data is transformed via a reversible cryptographic algorithm requiring a decryption key</button><button class="opt" onclick="answer(this,4,3,3)">D. Pseudonymization — the direct identifiers are replaced with tokens, but a separately maintained mapping table allows re-identification, so the output remains personal data</button>
+    <div class="expl">Pseudonymization specifically replaces identifiers with substitute values while retaining a separate mapping/key that allows re-identification. Because re-identification is possible, regulators (including GDPR) continue to treat pseudonymized data as personal data subject to full data protection obligations.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Cloud Data Security">
+    <div class="meta">Question 6 of 6 · Cloud Data Security</div>
+    <div class="q">An organization must present cloud infrastructure logs as evidence in a legal proceeding following a suspected breach in a shared IaaS environment. Opposing counsel is expected to challenge the integrity of the evidence. Which action BEST preserves a defensible chain of custody for these logs?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. Accept the CSP's written attestation that the shared logging infrastructure has not been altered</button><button class="opt" onclick="answer(this,5,1,3)">B. Rely solely on the CSP's default log retention policy and note the retention period in the investigation report</button><button class="opt" onclick="answer(this,5,2,3)">C. Request that the CSP provide a raw disk image of the entire multi-tenant host so investigators can extract the data independently</button><button class="opt" onclick="answer(this,5,3,3)">D. Export the relevant logs to immutable, write-once-read-many (WORM) storage, generate cryptographic hashes at collection time, and document every access/transfer in a signed custody log</button>
+    <div class="expl">A defensible chain of custody requires demonstrable, verifiable integrity: hashing logs at the moment of collection proves they haven't been altered afterward, WORM storage prevents subsequent tampering, and a signed custody log documents every handler and transfer — meeting evidentiary standards for admissibility.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/ccsp-certified-cloud-security-professional-exam-prep-x/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

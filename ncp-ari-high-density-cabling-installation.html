@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free High-Density Cabling Installation Practice Questions — NVIDIA-Certified Professional: AI Rack and Interconnect</title>
+<meta name="description" content="6 free High-Density Cabling Installation practice questions with explanations for the NVIDIA-Certified Professional: AI Rack and Interconnect exam.">
+<link rel="canonical" href="https://technuggets.academy/ncp-ari-high-density-cabling-installation.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free High-Density Cabling Installation Practice Questions — NVIDIA-Certified Professional: AI Rack and Interconnect">
+<meta property="og:description" content="6 free High-Density Cabling Installation practice questions with explanations for the NVIDIA-Certified Professional: AI Rack and Interconnect exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/ncp-ari-high-density-cabling-installation.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#76B900}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>High-Density Cabling Installation</h1>
+<p class="sub">Free NVIDIA-Certified Professional: AI Rack and Interconnect practice — 6 questions on <strong>High-Density Cabling Installation</strong>, with explanations. No sign-up.
+<a href="ncp-ari.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="High-Density Cabling Installation">
+    <div class="meta">Question 1 of 6 · High-Density Cabling Installation</div>
+    <div class="q">A technician must connect two NVLink Switch trays located 150 meters apart in a large-scale GB200 NVL72 SuperPOD deployment, spanning across two rows of the data center. Which cabling solution BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. OM4 multimode DAC copper cable rated to 3m</button><button class="opt" onclick="answer(this,0,1,1)">B. Single-mode fiber cable with LR/FR-rated OSFP transceivers</button><button class="opt" onclick="answer(this,0,2,1)">C. OM4 multimode fiber patch cable with SR4 transceivers</button><button class="opt" onclick="answer(this,0,3,1)">D. Active Copper Cable (ACC) rated to 7m</button>
+    <div class="expl">Single-mode fiber with LR/FR transceivers supports reaches well beyond 100m (typically up to several kilometers), making it the only option in the list capable of reliably spanning a 150m run at NDR speeds.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="High-Density Cabling Installation">
+    <div class="meta">Question 2 of 6 · High-Density Cabling Installation</div>
+    <div class="q">A rack pair sits directly adjacent within the same NVL72 pod, requiring a 2-meter NDR (400Gb/s) InfiniBand link between leaf switches. To minimize power draw and cost while following NVIDIA's supported cabling guidance, which cable type should be selected?</div>
+    <button class="opt" onclick="answer(this,1,0,1)">A. Active Optical Cable (AOC)</button><button class="opt" onclick="answer(this,1,1,1)">B. Passive Copper DAC</button><button class="opt" onclick="answer(this,1,2,1)">C. Active Copper Cable (ACC)</button><button class="opt" onclick="answer(this,1,3,1)">D. Single-mode fiber with LR transceivers</button>
+    <div class="expl">At a 2m reach, passive copper DAC fully supports NDR speeds without the added power consumption or cost of active electronics or optics, making it the correct choice for short adjacent-rack links.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="High-Density Cabling Installation">
+    <div class="meta">Question 3 of 6 · High-Density Cabling Installation</div>
+    <div class="q">During cable dressing in a high-density GB200 NVL72 rack, what is the minimum bend radius that must be maintained for InfiniBand copper and fiber cabling to avoid signal degradation or physical damage, per NVIDIA cabling guidance?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. 30 mm</button><button class="opt" onclick="answer(this,2,1,0)">B. 15 mm</button><button class="opt" onclick="answer(this,2,2,0)">C. 50 mm</button><button class="opt" onclick="answer(this,2,3,0)">D. 10 mm</button>
+    <div class="expl">NVIDIA cabling guidance specifies a minimum bend radius of approximately 30 mm for high-density copper and fiber cabling to prevent attenuation increases, connector stress, and physical damage.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="High-Density Cabling Installation">
+    <div class="meta">Question 4 of 6 · High-Density Cabling Installation</div>
+    <div class="q">While installing 72 NDR cables into a GB200 NVL72 rack, a technician routes all cables down the left side of the rack to save time, resulting in a cable bundle that partially blocks front-door airflow and exceeds the tray's rated fill capacity on that side. What should the technician do to correct this installation per NVIDIA best practice?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. Add additional hook-and-loop ties to compress the bundle further</button><button class="opt" onclick="answer(this,3,1,1)">B. Redistribute cables using the 50/50 left-right routing strategy across both cable trays</button><button class="opt" onclick="answer(this,3,2,1)">C. Reroute all cables to the right side instead</button><button class="opt" onclick="answer(this,3,3,1)">D. Leave the routing as-is since airflow impact is negligible at this density</button>
+    <div class="expl">The 50/50 left-right routing strategy evenly distributes cable volume and weight across both trays, preventing airflow obstruction and avoiding overfilling any single tray, which is the documented best practice for high-density racks.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="High-Density Cabling Installation">
+    <div class="meta">Question 5 of 6 · High-Density Cabling Installation</div>
+    <div class="q">Which statement correctly differentiates APC and UPC fiber-optic connector polish types as used in high-density MPO cabling deployments?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. UPC connectors are angled at 8 degrees and colored green, while APC connectors are flat-polished and colored blue</button><button class="opt" onclick="answer(this,4,1,2)">B. APC and UPC connectors are interchangeable and mate correctly regardless of type</button><button class="opt" onclick="answer(this,4,2,2)">C. APC connectors are angled at 8 degrees and colored green, reducing back reflection, while UPC connectors are flat-polished and colored blue</button><button class="opt" onclick="answer(this,4,3,2)">D. APC connectors are used only for multimode fiber, while UPC connectors are used only for single-mode fiber</button>
+    <div class="expl">APC (Angled Physical Contact) connectors use an 8-degree angled ferrule polish, are color-coded green, and reduce back reflection, while UPC (Ultra Physical Contact) connectors use a flat polish and are color-coded blue.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="High-Density Cabling Installation">
+    <div class="meta">Question 6 of 6 · High-Density Cabling Installation</div>
+    <div class="q">Before mating an MPO/APC fiber connector during a GB200 NVL72 InfiniBand cabling installation, a technician wipes the ferrule end-face with an isopropyl-alcohol-soaked cloth and immediately connects it. Link testing later shows elevated BER on that link. What was most likely done incorrectly?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. The technician should have used a dry lint-free wipe instead of isopropyl alcohol</button><button class="opt" onclick="answer(this,5,1,3)">B. The technician should have cleaned the connector after mating rather than before</button><button class="opt" onclick="answer(this,5,2,3)">C. The technician used the wrong alcohol concentration, which should always be 70% rather than 99%</button><button class="opt" onclick="answer(this,5,3,3)">D. The technician failed to inspect the ferrule end-face with a fiber-optic microscope after cleaning and before mating</button>
+    <div class="expl">Proper procedure requires an inspect-clean-inspect cycle using a fiber-optic microscope or scope to confirm the end-face is free of residue or contamination before mating; skipping this verification step allows undetected debris to cause elevated BER.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/ncp-ari-ai-rack-interconnect-exam-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

@@ -1,0 +1,123 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Google Cloud Certified - Professional Cloud Security Engineer Practice Test — 12 Real Exam-Style Questions</title>
+<meta name="description" content="Free Google Cloud Certified - Professional Cloud Security Engineer practice questions with detailed explanations. Test yourself before the real exam.">
+<link rel="canonical" href="https://technuggets.academy/professional-cloud-security-engineer.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Google Cloud Certified - Professional Cloud Security Engineer Practice Test — 12 Real Exam-Style Questions">
+<meta property="og:description" content="Free Google Cloud Certified - Professional Cloud Security Engineer practice questions with detailed explanations. Test yourself before the real exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/professional-cloud-security-engineer.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#4285F4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div><div class="hero">
+  <span class="chip">Professional Cloud Security Engineer</span>
+  <h1>Free Google Cloud Certified - Professional Cloud Security Engineer Practice Test</h1>
+  <p class="sub">12 exam-style questions with full explanations — no sign-up. Score yourself, then close your gaps with the full course.</p>
+  <div class="facts"><span class="fact">Exam fee <b>~$200</b></span><span class="fact"><b>5</b> exam domains</span><span class="fact">Level <b>Advanced</b></span><span class="fact"><b>2</b> timed practice tests in the course</span></div>
+  <div class="cta-row"><a class="btn enroll" href="https://www.udemy.com/course/google-cloud-security-engineer-exam-prep/" rel="sponsored" target="_blank">Start my full course on Udemy →</a><a class="btn ghost" href="#practice">Try the free test →</a></div>
+</div><div class="trust"><span>✅ <b>Free</b> practice — no sign-up</span><span>📝 Real exam-style questions</span><span>💡 Detailed explanations</span><span>💸 30-day money-back via Udemy</span></div>
+<div id="practice"></div>
+
+  <div class="card qcard" id="q0" data-domain="Configuring Access">
+    <div class="meta">Question 1 of 12 · Configuring Access</div>
+    <div class="q">A company's CI/CD pipeline runs on GitHub Actions and needs to deploy resources to a Google Cloud project. Security policy prohibits storing any long-lived credentials in the pipeline configuration. Which solution BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. Create a service account key, base64-encode it, and store it as a GitHub Actions encrypted secret</button><button class="opt" onclick="answer(this,0,1,3)">B. Configure Workforce Identity Federation so the pipeline authenticates as a workforce identity via SAML</button><button class="opt" onclick="answer(this,0,2,3)">C. Grant the GitHub organization the Editor role at the project level using a shared Google account</button><button class="opt" onclick="answer(this,0,3,3)">D. Configure Workload Identity Federation with GitHub's OIDC provider mapped to a workload identity pool that impersonates a Google Cloud service account</button>
+    <div class="expl">Workload Identity Federation lets external workloads (like GitHub Actions) exchange a short-lived OIDC token for temporary Google credentials via service account impersonation, eliminating the need for any downloaded key.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Securing Communications and Boundary Protection">
+    <div class="meta">Question 2 of 12 · Securing Communications and Boundary Protection</div>
+    <div class="q">A company has multiple GCP projects for different application teams (finance, HR, and marketing). The security team wants centralized control over network resources and firewall rules, while allowing each application team to independently manage resources such as Compute Engine instances and Cloud SQL databases in their own projects. Which networking approach BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. Use Shared VPC with the security team's project as the host project and the application team projects as service projects</button><button class="opt" onclick="answer(this,1,1,0)">B. Configure VPC Peering between each project's VPC network</button><button class="opt" onclick="answer(this,1,2,0)">C. Deploy VPC Service Controls to create a service perimeter around all projects</button><button class="opt" onclick="answer(this,1,3,0)">D. Create separate standalone VPC networks in each project and connect them using Cloud VPN</button>
+    <div class="expl">Shared VPC lets a host project centrally own the network topology and firewall rules while service projects attach Compute Engine, GKE, or Cloud SQL resources to shared subnets, giving the security team centralized network governance without limiting per-team resource management.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Ensuring Data Protection">
+    <div class="meta">Question 3 of 12 · Ensuring Data Protection</div>
+    <div class="q">A healthcare analytics team stores credit card numbers in BigQuery. Analysts must be able to JOIN records across multiple tables using the card number as a key, but the actual card numbers must never be visible to analysts, and the tokenized value must retain the same 16-digit numeric format so downstream validation logic still works. Which Sensitive Data Protection technique should they apply?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. Apply format-preserving encryption (FPE) using Sensitive Data Protection's crypto-based tokenization</button><button class="opt" onclick="answer(this,2,1,0)">B. Encrypt the column using Cloud KMS envelope encryption with a randomly generated IV per record</button><button class="opt" onclick="answer(this,2,2,0)">C. Apply DLP redaction to replace each digit with an asterisk</button><button class="opt" onclick="answer(this,2,3,0)">D. Enable customer-managed encryption keys (CMEK) on the BigQuery dataset</button>
+    <div class="expl">FPE is deterministic (same input always produces the same token) and preserves the original format/length, so analysts can still join on the tokenized value while the real card number is never exposed.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Managing Operations">
+    <div class="meta">Question 4 of 12 · Managing Operations</div>
+    <div class="q">A company's CI/CD pipeline deploys container images to a GKE cluster running production payment workloads. The security team wants to guarantee that only images which have passed a CVE vulnerability scan and been explicitly approved can ever be deployed to that cluster, even if a developer tries to deploy directly with kubectl. Which solution BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. Use the Container Analysis API scan results directly to block the deployment in the CI/CD tool</button><button class="opt" onclick="answer(this,3,1,1)">B. Configure a Binary Authorization policy on the cluster requiring a valid attestation signed by a vulnerability-scanning attestor</button><button class="opt" onclick="answer(this,3,2,1)">C. Restrict which container registries can be used via an Organization Policy constraint</button><button class="opt" onclick="answer(this,3,3,1)">D. Enable a VPC Service Controls perimeter around the GKE cluster's project</button>
+    <div class="expl">Binary Authorization enforces admission control at the cluster level (via a webhook), so it blocks any deployment path -- CI/CD or manual kubectl -- unless the image carries a valid attestation from the required attestor, giving true deploy-time enforcement.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Supporting Compliance Requirements">
+    <div class="meta">Question 5 of 12 · Supporting Compliance Requirements</div>
+    <div class="q">A financial services company operating on Google Cloud must comply with a regulation stating that Google support personnel must not access the customer's data without the customer explicitly authorizing each specific access request in advance. Which Google Cloud capability satisfies this requirement?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. Access Approval</button><button class="opt" onclick="answer(this,4,1,0)">B. Cloud Audit Logs Data Access logs</button><button class="opt" onclick="answer(this,4,2,0)">C. VPC Service Controls perimeter</button><button class="opt" onclick="answer(this,4,3,0)">D. Access Transparency</button>
+    <div class="expl">Access Approval requires Google support staff to obtain explicit customer approval before accessing customer content, satisfying a 'pre-authorization required' regulatory control.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Configuring Access">
+    <div class="meta">Question 6 of 12 · Configuring Access</div>
+    <div class="q">Which statement correctly describes how IAM deny policies interact with allow policies in Google Cloud?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. Allow policies granted to organization administrators always override any deny policy</button><button class="opt" onclick="answer(this,5,1,3)">B. Deny policies apply only to service accounts and cannot restrict human user principals</button><button class="opt" onclick="answer(this,5,2,3)">C. Deny policies require the caller to hold the Security Admin role before they take effect</button><button class="opt" onclick="answer(this,5,3,3)">D. Deny policies are evaluated alongside allow policies, and an explicit deny always overrides any allow grant, regardless of role</button>
+    <div class="expl">IAM deny policies are evaluated together with allow policies at every resource level; an explicit deny always wins over any allow grant, including permissions held by highly privileged roles like Owner.</div>
+  </div>
+
+  <div class="card qcard" id="q6" data-domain="Securing Communications and Boundary Protection">
+    <div class="meta">Question 7 of 12 · Securing Communications and Boundary Protection</div>
+    <div class="q">An organization runs Compute Engine VMs that must call Cloud Storage and BigQuery APIs. For security reasons these VMs must not have external IP addresses, but connectivity to Google APIs must continue to work. Which feature should be enabled on the VM's subnet to satisfy this requirement?</div>
+    <button class="opt" onclick="answer(this,6,0,3)">A. Cloud NAT</button><button class="opt" onclick="answer(this,6,1,3)">B. Private Service Connect for Google APIs</button><button class="opt" onclick="answer(this,6,2,3)">C. A VPC Service Controls perimeter</button><button class="opt" onclick="answer(this,6,3,3)">D. Private Google Access</button>
+    <div class="expl">Private Google Access is a subnet-level setting that allows VMs without external IP addresses to reach Google APIs and services using internal IP addresses, exactly matching the described requirement.</div>
+  </div>
+
+  <div class="card qcard" id="q7" data-domain="Ensuring Data Protection">
+    <div class="meta">Question 8 of 12 · Ensuring Data Protection</div>
+    <div class="q">A financial services customer's compliance team requires that the actual key material used to encrypt their Cloud Storage data never resides within Google's infrastructure at any point, and that key access requests can be logged and audited by an external, non-Google system. Which Google Cloud capability satisfies this requirement?</div>
+    <button class="opt" onclick="answer(this,7,0,0)">A. Cloud External Key Manager (Cloud EKM)</button><button class="opt" onclick="answer(this,7,1,0)">B. Cloud HSM</button><button class="opt" onclick="answer(this,7,2,0)">C. Cloud KMS software-backed keys</button><button class="opt" onclick="answer(this,7,3,0)">D. Confidential Computing</button>
+    <div class="expl">Cloud EKM lets you keep key material in a supported external key management partner system outside Google's infrastructure. Google calls out to the external system for every cryptographic operation, allowing the external system to log and audit access independently of Google.</div>
+  </div>
+
+  <div class="card qcard" id="q8" data-domain="Managing Operations">
+    <div class="meta">Question 9 of 12 · Managing Operations</div>
+    <div class="q">A security team needs to detect network-based threats such as malware command-and-control traffic and port scans by inspecting packet payloads traversing a VPC, without deploying, licensing, or managing third-party IDS software themselves. Which Google Cloud service should they use?</div>
+    <button class="opt" onclick="answer(this,8,0,1)">A. VPC Flow Logs</button><button class="opt" onclick="answer(this,8,1,1)">B. Cloud IDS</button><button class="opt" onclick="answer(this,8,2,1)">C. Cloud Armor</button><button class="opt" onclick="answer(this,8,3,1)">D. Packet Mirroring</button>
+    <div class="expl">Cloud IDS is a fully managed service (built on Palo Alto Networks technology) that mirrors and inspects packet payloads for known threat signatures, correlating findings and reporting them, without requiring the customer to operate any third-party appliance.</div>
+  </div>
+
+  <div class="card qcard" id="q9" data-domain="Supporting Compliance Requirements">
+    <div class="meta">Question 10 of 12 · Supporting Compliance Requirements</div>
+    <div class="q">A healthcare company must ensure that customer data is processed and stored only within a specific region, that support access is restricted to personnel meeting defined criteria, and that compliance controls map to a named regulatory framework such as FedRAMP or IL4. Which Google Cloud product should they provision?</div>
+    <button class="opt" onclick="answer(this,9,0,1)">A. Organization Policy Service with a resource location constraint only</button><button class="opt" onclick="answer(this,9,1,1)">B. Assured Workloads</button><button class="opt" onclick="answer(this,9,2,1)">C. VPC Service Controls</button><button class="opt" onclick="answer(this,9,3,1)">D. Cloud KMS with customer-managed encryption keys</button>
+    <div class="expl">Assured Workloads is purpose-built to enforce a bundle of controls — data residency, personnel access restrictions, and control mapping to specific compliance regimes (FedRAMP, IL4, EU regions, etc.) — in a single managed folder.</div>
+  </div>
+
+  <div class="card qcard" id="q10" data-domain="Configuring Access">
+    <div class="meta">Question 11 of 12 · Configuring Access</div>
+    <div class="q">An on-call engineer needs elevated access to a production project for exactly 4 hours to troubleshoot an incident. The security team requires an approval workflow, automatic expiration of the grant, and a full audit trail of the request and usage. Which Google Cloud capability BEST satisfies these requirements?</div>
+    <button class="opt" onclick="answer(this,10,0,3)">A. Access Context Manager with a device-based access level applied to the project</button><button class="opt" onclick="answer(this,10,1,3)">B. Grant the engineer the Owner role manually and remove it after the incident is resolved</button><button class="opt" onclick="answer(this,10,2,3)">C. Service account impersonation configured with an IAM condition restricting the resource type</button><button class="opt" onclick="answer(this,10,3,3)">D. Privileged Access Manager (PAM) with a time-bound entitlement requiring approval</button>
+    <div class="expl">Privileged Access Manager is purpose-built for just-in-time privileged access: it supports requestor/approver workflows, automatically expiring grants, and detailed audit logging of the entire request lifecycle.</div>
+  </div>
+
+  <div class="card qcard" id="q11" data-domain="Securing Communications and Boundary Protection">
+    <div class="meta">Question 12 of 12 · Securing Communications and Boundary Protection</div>
+    <div class="q">A SaaS company hosts a proprietary service in its own VPC network and needs to let multiple customer VPC networks in different organizations privately consume this service. The company wants to avoid overlapping IP address conflicts and must not expose its entire VPC network topology to customers. Which solution BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,11,0,2)">A. Configure VPC Peering between the SaaS company's VPC and each customer VPC</button><button class="opt" onclick="answer(this,11,1,2)">B. Configure Shared VPC and add each customer's project as a service project</button><button class="opt" onclick="answer(this,11,2,2)">C. Publish the service using Private Service Connect with a service attachment, allowing customers to create PSC endpoints</button><button class="opt" onclick="answer(this,11,3,2)">D. Establish HA VPN tunnels between the SaaS company's network and each customer network</button>
+    <div class="expl">Private Service Connect lets the provider publish a service via a service attachment; consumers create endpoints with private IPs in their own VPCs, avoiding IP overlap conflicts and without exposing the provider's full network topology, which is the standard pattern for multi-tenant SaaS consumption.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/google-cloud-security-engineer-exam-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<section class="faq"><h3>Professional Cloud Security Engineer exam — quick answers</h3><details><summary>How much does the Professional Cloud Security Engineer exam cost?</summary><p>The exam fee is approximately $200 and varies by region — confirm current pricing with the certification vendor before you book.</p></details><details><summary>What topics are on the exam?</summary><p>It covers 5 domains: Configuring Access (25%), Securing Communications and Boundary Protection (22%), Ensuring Data Protection (23%), Managing Operations (19%), Supporting Compliance Requirements (11%). The full course has a dedicated chapter, lab and practice-test coverage for each.</p></details><details><summary>Is this practice test really free?</summary><p>Yes — all questions on this page are free with explanations and no sign-up. The paid Udemy course adds two full-length timed exams, video lessons and hands-on labs.</p></details><details><summary>Will this prepare me for the real exam?</summary><p>The questions mirror the real exam's style and are mapped to the official domains. This is exam-focused preparation — combine the free test with the full course's timed simulations to gauge your readiness.</p></details></section>
+<div class="domains"><span class="meta">More free practice by exam domain:</span><br><a href="professional-cloud-security-engineer-configuring-access.html">Configuring Access →</a><a href="professional-cloud-security-engineer-securing-communications-and-boundary-protection.html">Securing Communications and Boundary Protection →</a><a href="professional-cloud-security-engineer-ensuring-data-protection.html">Ensuring Data Protection →</a><a href="professional-cloud-security-engineer-managing-operations.html">Managing Operations →</a></div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

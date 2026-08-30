@@ -1,0 +1,123 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free ISC2 Certified Cloud Security Professional (CCSP) Practice Test — 12 Real Exam-Style Questions</title>
+<meta name="description" content="Free ISC2 Certified Cloud Security Professional (CCSP) practice questions with detailed explanations. Test yourself before the real exam.">
+<link rel="canonical" href="https://technuggets.academy/ccsp.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free ISC2 Certified Cloud Security Professional (CCSP) Practice Test — 12 Real Exam-Style Questions">
+<meta property="og:description" content="Free ISC2 Certified Cloud Security Professional (CCSP) practice questions with detailed explanations. Test yourself before the real exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/ccsp.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div><div class="hero">
+  <span class="chip">CCSP</span>
+  <h1>Free ISC2 Certified Cloud Security Professional (CCSP) Practice Test</h1>
+  <p class="sub">12 exam-style questions with full explanations — no sign-up. Score yourself, then close your gaps with the full course.</p>
+  <div class="facts"><span class="fact">Exam fee <b>~$599</b></span><span class="fact"><b>6</b> exam domains</span><span class="fact">Level <b>Advanced</b></span><span class="fact"><b>2</b> timed practice tests in the course</span></div>
+  <div class="cta-row"><a class="btn enroll" href="https://www.udemy.com/course/ccsp-certified-cloud-security-professional-exam-prep-x/" rel="sponsored" target="_blank">Start my full course on Udemy →</a><a class="btn ghost" href="#practice">Try the free test →</a></div>
+</div><div class="trust"><span>✅ <b>Free</b> practice — no sign-up</span><span>📝 Real exam-style questions</span><span>💡 Detailed explanations</span><span>💸 30-day money-back via Udemy</span></div>
+<div id="practice"></div>
+
+  <div class="card qcard" id="q0" data-domain="Cloud Concepts, Architecture and Design">
+    <div class="meta">Question 1 of 12 · Cloud Concepts, Architecture and Design</div>
+    <div class="q">A company migrates a legacy application to an IaaS provider. Under the shared responsibility model, which security responsibility remains with the customer?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. Maintaining network hardware</button><button class="opt" onclick="answer(this,0,1,3)">B. Ensuring hypervisor security</button><button class="opt" onclick="answer(this,0,2,3)">C. Physical security of the data center</button><button class="opt" onclick="answer(this,0,3,3)">D. Patching the guest operating system</button>
+    <div class="expl">In IaaS, the CSP manages the physical infrastructure, network hardware, and hypervisor, while the customer is responsible for the guest OS, middleware, applications, and data.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Cloud Data Security">
+    <div class="meta">Question 2 of 12 · Cloud Data Security</div>
+    <div class="q">A company's retention policy requires that customer records be kept for 7 years after account closure. At the 5-year mark, records are moved from primary object storage to a lower-cost storage tier where they are rarely accessed but must remain retrievable until the retention period expires and secure deletion occurs. Which phase of the cloud secure data lifecycle does this describe?</div>
+    <button class="opt" onclick="answer(this,1,0,1)">A. Destroy phase, since data is being prepared for permanent deletion</button><button class="opt" onclick="answer(this,1,1,1)">B. Archive phase, since data is moved to long-term retention storage per policy before eventual deletion</button><button class="opt" onclick="answer(this,1,2,1)">C. Store phase, since data is being placed into a storage medium immediately after creation</button><button class="opt" onclick="answer(this,1,3,1)">D. Share phase, since data is being distributed to other parties for use</button>
+    <div class="expl">The CSA/CCSP data lifecycle defines Archive as the phase where data is moved to long-term, lower-cost storage in accordance with retention policy, remaining available but rarely used, prior to eventual destruction.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Cloud Platform and Infrastructure Security">
+    <div class="meta">Question 3 of 12 · Cloud Platform and Infrastructure Security</div>
+    <div class="q">A retail company migrating its e-commerce platform to the cloud requires an RTO of 4 hours and an RPO of 15 minutes for its order-processing system, while keeping ongoing DR costs as low as possible. Which disaster recovery strategy BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. A cold site with weekly full backups restored on demand</button><button class="opt" onclick="answer(this,2,1,1)">B. A warm site with standby infrastructure and data replication occurring every 15 minutes</button><button class="opt" onclick="answer(this,2,2,1)">C. A fully mirrored hot site with real-time active-active replication across two regions</button><button class="opt" onclick="answer(this,2,3,1)">D. Nightly tape backups shipped to a third-party offsite storage facility</button>
+    <div class="expl">A warm site keeps partially provisioned standby infrastructure ready and replicates data frequently enough (every 15 minutes) to satisfy the RPO, while allowing a few hours for failover activation to meet the RTO — all at a moderate cost, matching the stated cost sensitivity.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Cloud Application Security">
+    <div class="meta">Question 4 of 12 · Cloud Application Security</div>
+    <div class="q">A financial services company has deployed a web application to a staging environment that mirrors production, but the security team has no access to the source code because the application was built by a third-party vendor. The team needs to identify runtime vulnerabilities such as SQL injection and reflected cross-site scripting by interacting with the running application over HTTP. Which testing method BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. Static Application Security Testing (SAST) on the compiled binary</button><button class="opt" onclick="answer(this,3,1,2)">B. Software Composition Analysis (SCA) of dependency manifests</button><button class="opt" onclick="answer(this,3,2,2)">C. Dynamic Application Security Testing (DAST) against the running application</button><button class="opt" onclick="answer(this,3,3,2)">D. Manual peer code review of the vendor's design documents</button>
+    <div class="expl">DAST is a black-box technique that tests a running application from the outside by sending crafted requests and observing responses, requiring no source code access — exactly the scenario described.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Cloud Security Operations">
+    <div class="meta">Question 5 of 12 · Cloud Security Operations</div>
+    <div class="q">During an incident investigation of a compromised cloud virtual machine, a security analyst must collect evidence following proper order of volatility. Which item should be collected FIRST?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. Disk snapshot of the persistent volume</button><button class="opt" onclick="answer(this,4,1,1)">B. Contents of RAM and running processes</button><button class="opt" onclick="answer(this,4,2,1)">C. Log files stored in object storage</button><button class="opt" onclick="answer(this,4,3,1)">D. Configuration files on the VM</button>
+    <div class="expl">RAM and running process state are the most volatile artifacts and are lost immediately on reboot or shutdown, so they must be captured before any less volatile evidence.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Legal, Risk and Compliance">
+    <div class="meta">Question 6 of 12 · Legal, Risk and Compliance</div>
+    <div class="q">A company based in the EU uses a US-headquartered CSP to process customer personal data. Following the Schrems II ruling, which mechanism should the company implement to legally continue this cross-border transfer?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. Use Standard Contractual Clauses supplemented with a documented transfer impact assessment and additional technical safeguards</button><button class="opt" onclick="answer(this,5,1,0)">B. Rely on the invalidated EU-US Privacy Shield certification</button><button class="opt" onclick="answer(this,5,2,0)">C. Rely solely on Binding Corporate Rules without any additional safeguards for US government access risk</button><button class="opt" onclick="answer(this,5,3,0)">D. Transfer the data using only a generic mutual non-disclosure agreement between the parties</button>
+    <div class="expl">Post-Schrems II, SCCs remain valid but must be supplemented with a transfer impact assessment evaluating the destination country's surveillance laws, plus technical measures (e.g., encryption with keys held outside the importer's reach) to address risks like US government access under FISA 702.</div>
+  </div>
+
+  <div class="card qcard" id="q6" data-domain="Cloud Concepts, Architecture and Design">
+    <div class="meta">Question 7 of 12 · Cloud Concepts, Architecture and Design</div>
+    <div class="q">A group of hospitals in the same region want to share a cloud infrastructure to jointly meet common regulatory requirements, with costs and resources shared only among the participating hospitals. Which deployment model BEST fits this need?</div>
+    <button class="opt" onclick="answer(this,6,0,3)">A. Public cloud</button><button class="opt" onclick="answer(this,6,1,3)">B. Private cloud</button><button class="opt" onclick="answer(this,6,2,3)">C. Multi-cloud</button><button class="opt" onclick="answer(this,6,3,3)">D. Community cloud</button>
+    <div class="expl">Community cloud infrastructure is provisioned for exclusive use by a specific group of organizations that share common concerns such as mission, security requirements, or regulatory compliance, with costs shared among members.</div>
+  </div>
+
+  <div class="card qcard" id="q7" data-domain="Cloud Data Security">
+    <div class="meta">Question 8 of 12 · Cloud Data Security</div>
+    <div class="q">A payment processor must replace primary account numbers (PANs) in its cloud database with surrogate values that preserve the original format for downstream billing systems. The original values can only be recovered by an authorized process performing a lookup against a securely isolated vault. Which technique is being used?</div>
+    <button class="opt" onclick="answer(this,7,0,1)">A. Data masking – obscuring part of the value for display purposes</button><button class="opt" onclick="answer(this,7,1,1)">B. Tokenization – replacing the value with a surrogate token mapped via a secure vault</button><button class="opt" onclick="answer(this,7,2,1)">C. Anonymization – irreversibly removing identifying characteristics</button><button class="opt" onclick="answer(this,7,3,1)">D. Pseudonymization – substituting identifiers using a reversible algorithm without a vault</button>
+    <div class="expl">Tokenization replaces sensitive data with a non-sensitive surrogate (token) that has no mathematical relationship to the original value; the mapping is stored in a separately secured token vault, which is exactly the PCI DSS-style pattern described.</div>
+  </div>
+
+  <div class="card qcard" id="q8" data-domain="Cloud Platform and Infrastructure Security">
+    <div class="meta">Question 9 of 12 · Cloud Platform and Infrastructure Security</div>
+    <div class="q">A cloud security architect is designing controls to protect against an attacker who compromises a single tenant's VM and attempts to escape to the underlying virtualization layer to affect other tenants. Which control should be prioritized FIRST?</div>
+    <button class="opt" onclick="answer(this,8,0,1)">A. Enforcing full-disk encryption on each tenant's virtual machine</button><button class="opt" onclick="answer(this,8,1,1)">B. Patching and hardening the hypervisor against known VM escape vulnerabilities</button><button class="opt" onclick="answer(this,8,2,1)">C. Applying network segmentation between tenant VLANs</button><button class="opt" onclick="answer(this,8,3,1)">D. Requiring MFA for all tenant administrator logins</button>
+    <div class="expl">VM escape attacks target vulnerabilities in the hypervisor itself; keeping the hypervisor patched and hardened directly closes the attack path that would let a compromised guest VM affect the host or sibling VMs, making it the first-priority control for this specific threat.</div>
+  </div>
+
+  <div class="card qcard" id="q9" data-domain="Cloud Application Security">
+    <div class="meta">Question 10 of 12 · Cloud Application Security</div>
+    <div class="q">A cloud-hosted application accepts a user-supplied URL to fetch a remote image for processing. An attacker submits the URL 'http://169.254.169.254/latest/meta-data/iam/security-credentials/role-name' and the application returns the instance's temporary IAM credentials in its response. Which solution BEST mitigates this vulnerability going forward?</div>
+    <button class="opt" onclick="answer(this,9,0,2)">A. Restrict the input field to only accept URLs using the HTTPS scheme</button><button class="opt" onclick="answer(this,9,1,2)">B. Rotate the affected IAM role's credentials every 24 hours</button><button class="opt" onclick="answer(this,9,2,2)">C. Enforce IMDSv2 with a hop limit of 1 and block application egress to link-local addresses</button><button class="opt" onclick="answer(this,9,3,2)">D. Deploy a Web Application Firewall configured to block requests from known malicious IP ranges</button>
+    <div class="expl">This is a Server-Side Request Forgery (SSRF) attack targeting the instance metadata service. Requiring IMDSv2 (session-oriented, token-based requests) with a hop limit of 1 prevents the request from being proxied through the vulnerable application, and blocking egress to 169.254.169.254 stops the SSRF path entirely.</div>
+  </div>
+
+  <div class="card qcard" id="q10" data-domain="Cloud Security Operations">
+    <div class="meta">Question 11 of 12 · Cloud Security Operations</div>
+    <div class="q">A cloud service provider (CSP) discovers a security incident affecting multiple tenants' data through a misconfigured shared storage bucket. Per CCSP guidance on stakeholder communication during incidents, what is the BEST immediate action for the CSP?</div>
+    <button class="opt" onclick="answer(this,10,0,0)">A. Notify affected tenants per contractual and regulatory notification timelines while investigation continues</button><button class="opt" onclick="answer(this,10,1,0)">B. Wait until root cause analysis completes before notifying any customer</button><button class="opt" onclick="answer(this,10,2,0)">C. Only notify the customer whose data was most exposed</button><button class="opt" onclick="answer(this,10,3,0)">D. Post a public blog after fixing the issue, without direct customer notice</button>
+    <div class="expl">Contractual SLAs and regulations (e.g., breach notification laws) require timely disclosure to affected parties; notification obligations run in parallel with, not after, investigation.</div>
+  </div>
+
+  <div class="card qcard" id="q11" data-domain="Legal, Risk and Compliance">
+    <div class="meta">Question 12 of 12 · Legal, Risk and Compliance</div>
+    <div class="q">A customer receives a litigation hold notice and must preserve specific data stored in a multi-tenant SaaS application without impacting the data or availability of other tenants sharing the platform. Which approach BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,11,0,0)">A. Use the CSP's built-in legal hold or eDiscovery feature designed to isolate and preserve data at the tenant level</button><button class="opt" onclick="answer(this,11,1,0)">B. Request a full database export from the CSP without regard to tenant isolation boundaries</button><button class="opt" onclick="answer(this,11,2,0)">C. Perform physical forensic imaging of the shared server hardware hosting the SaaS environment</button><button class="opt" onclick="answer(this,11,3,0)">D. Rely solely on internal endpoint backups without involving the CSP</button>
+    <div class="expl">Reputable SaaS providers offer tenant-scoped legal hold/eDiscovery APIs precisely because customers cannot access shared physical infrastructure; using these preserves the required data in place, defensibly, without exposing or disrupting other tenants.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/ccsp-certified-cloud-security-professional-exam-prep-x/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<section class="faq"><h3>CCSP exam — quick answers</h3><details><summary>How much does the CCSP exam cost?</summary><p>The exam fee is approximately $599 and varies by region — confirm current pricing with the certification vendor before you book.</p></details><details><summary>What topics are on the exam?</summary><p>It covers 6 domains: Cloud Concepts, Architecture and Design (17%), Cloud Data Security (20%), Cloud Platform and Infrastructure Security (17%), Cloud Application Security (16%), Cloud Security Operations (17%), Legal, Risk and Compliance (13%). The full course has a dedicated chapter, lab and practice-test coverage for each.</p></details><details><summary>Is this practice test really free?</summary><p>Yes — all questions on this page are free with explanations and no sign-up. The paid Udemy course adds two full-length timed exams, video lessons and hands-on labs.</p></details><details><summary>Will this prepare me for the real exam?</summary><p>The questions mirror the real exam's style and are mapped to the official domains. This is exam-focused preparation — combine the free test with the full course's timed simulations to gauge your readiness.</p></details></section>
+<div class="domains"><span class="meta">More free practice by exam domain:</span><br><a href="ccsp-cloud-concepts-architecture-and-design.html">Cloud Concepts, Architecture and Design →</a><a href="ccsp-cloud-data-security.html">Cloud Data Security →</a><a href="ccsp-cloud-platform-and-infrastructure-security.html">Cloud Platform and Infrastructure Security →</a><a href="ccsp-cloud-application-security.html">Cloud Application Security →</a><a href="ccsp-cloud-security-operations.html">Cloud Security Operations →</a><a href="ccsp-legal-risk-and-compliance.html">Legal, Risk and Compliance →</a></div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

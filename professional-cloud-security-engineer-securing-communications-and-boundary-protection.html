@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Securing Communications and Boundary Protection Practice Questions — Google Cloud Certified - Professional Cloud Security Engineer</title>
+<meta name="description" content="6 free Securing Communications and Boundary Protection practice questions with explanations for the Google Cloud Certified - Professional Cloud Security Engineer exam.">
+<link rel="canonical" href="https://technuggets.academy/professional-cloud-security-engineer-securing-communications-and-boundary-protection.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Securing Communications and Boundary Protection Practice Questions — Google Cloud Certified - Professional Cloud Security Engineer">
+<meta property="og:description" content="6 free Securing Communications and Boundary Protection practice questions with explanations for the Google Cloud Certified - Professional Cloud Security Engineer exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/professional-cloud-security-engineer-securing-communications-and-boundary-protection.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#4285F4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Securing Communications and Boundary Protection</h1>
+<p class="sub">Free Google Cloud Certified - Professional Cloud Security Engineer practice — 6 questions on <strong>Securing Communications and Boundary Protection</strong>, with explanations. No sign-up.
+<a href="professional-cloud-security-engineer.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Securing Communications and Boundary Protection">
+    <div class="meta">Question 1 of 6 · Securing Communications and Boundary Protection</div>
+    <div class="q">A VPC Service Controls perimeter protects a BigQuery dataset in Project A. A Dataflow job running in Project B, which is outside the perimeter, needs to read from this dataset using one specific service account. The security team wants to allow only this exact service account to read only this specific dataset, without exposing any other resources or identities. Which configuration meets this requirement?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. Create an ingress rule specifying the service account as the identity and the BigQuery dataset as the target resource</button><button class="opt" onclick="answer(this,0,1,0)">B. Add Project B to the perimeter as a dry-run project</button><button class="opt" onclick="answer(this,0,2,0)">C. Create an egress rule specifying the service account as the identity and BigQuery as the external service</button><button class="opt" onclick="answer(this,0,3,0)">D. Define an access level using the service account's identity and attach it to the perimeter's access policy</button>
+    <div class="expl">Ingress rules govern requests originating from outside a perimeter that target protected resources inside it. Since the service account and Dataflow job live outside the perimeter and the BigQuery dataset is inside, an ingress rule scoped to that identity and that exact dataset grants the narrowest possible access.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Securing Communications and Boundary Protection">
+    <div class="meta">Question 2 of 6 · Securing Communications and Boundary Protection</div>
+    <div class="q">A company runs a SaaS analytics platform in its own VPC and needs to expose one specific internal service to hundreds of customer VPCs that belong to different organizations. The company cannot require customers to coordinate non-overlapping IP ranges, and does not want to expose its full VPC CIDR range to any consumer. Which connectivity option should it use?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. VPC Network Peering</button><button class="opt" onclick="answer(this,1,1,2)">B. Shared VPC</button><button class="opt" onclick="answer(this,1,2,2)">C. Private Service Connect</button><button class="opt" onclick="answer(this,1,3,2)">D. Cloud VPN with static routes</button>
+    <div class="expl">Private Service Connect publishes a specific service via a service attachment; consumers connect through a PSC endpoint in their own VPC. There is no CIDR overlap constraint, the producer's full network is never exposed, and it scales to many independent consumer VPCs across organizations.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Securing Communications and Boundary Protection">
+    <div class="meta">Question 3 of 6 · Securing Communications and Boundary Protection</div>
+    <div class="q">An organization's Cloud NAT gateway uses manual port allocation with a static minimum of 64 ports per VM instance. During a load test, some VM instances exhaust their allocated ports and fail to open new outbound connections, while other instances on the same gateway have unused port capacity. What should the team do to resolve this while keeping per-instance allocation predictable?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. Switch to Auto allocate ports for the entire NAT gateway</button><button class="opt" onclick="answer(this,2,1,1)">B. Enable Dynamic Port Allocation with a minimum and maximum ports per VM setting</button><button class="opt" onclick="answer(this,2,2,1)">C. Increase the number of external IP addresses assigned to the NAT gateway</button><button class="opt" onclick="answer(this,2,3,1)">D. Enable endpoint-independent mapping on the NAT gateway</button>
+    <div class="expl">Dynamic Port Allocation lets each VM's port count scale between a configured minimum and maximum based on actual demand, so busy instances can burst above the static 64-port floor while idle instances release unused ports back to the pool — directly solving uneven exhaustion.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Securing Communications and Boundary Protection">
+    <div class="meta">Question 4 of 6 · Securing Communications and Boundary Protection</div>
+    <div class="q">A company requires a 99.99% availability SLA for an HA VPN connection between its on-premises data center and a VPC network. Which topology is required to achieve this SLA level?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. Configure two on-premises VPN gateways/devices, each connected to both of the HA VPN gateway's two interfaces, forming four tunnels total</button><button class="opt" onclick="answer(this,3,1,0)">B. Configure two VPN tunnels from a single HA VPN gateway interface to two different peer VPN gateway interfaces</button><button class="opt" onclick="answer(this,3,2,0)">C. Use Classic VPN with two tunnels in an active-passive configuration</button><button class="opt" onclick="answer(this,3,3,0)">D. Configure a single tunnel with BGP route priority failover</button>
+    <div class="expl">The 99.99% SLA topology requires redundancy on both sides: both interfaces of the HA VPN gateway must each connect to a peer device/interface, resulting in four tunnels total. This ensures no single point of failure on either the Google Cloud side or the on-premises side.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Securing Communications and Boundary Protection">
+    <div class="meta">Question 5 of 6 · Securing Communications and Boundary Protection</div>
+    <div class="q">A security team must allow outbound internet access from VM instances in a private subnet to only specific SaaS domains (for example, *.salesforce.com) over HTTPS, block all other outbound web destinations, and retain visibility into which service account made each web request. Which Google Cloud service should they deploy?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. Cloud NAT with a custom route table for allowed destinations</button><button class="opt" onclick="answer(this,4,1,1)">B. Secure Web Proxy</button><button class="opt" onclick="answer(this,4,2,1)">C. Google Cloud Armor with URL Maps</button><button class="opt" onclick="answer(this,4,3,1)">D. Firewall rules using FQDN-based network objects</button>
+    <div class="expl">Secure Web Proxy performs Layer 7 URL/domain-based filtering for egress web traffic, supports TLS interception, and integrates with IAM to apply and log policy per calling identity such as a service account — matching both the domain-restriction and per-identity visibility requirements.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Securing Communications and Boundary Protection">
+    <div class="meta">Question 6 of 6 · Securing Communications and Boundary Protection</div>
+    <div class="q">Which statement correctly describes Cloud DNS Response Policy Zones (RPZs) in the context of network boundary security design?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. RPZs encrypt DNS queries between VMs and Cloud DNS resolvers using DNSSEC</button><button class="opt" onclick="answer(this,5,1,3)">B. RPZs enforce mutual TLS authentication for all DNS queries within a VPC</button><button class="opt" onclick="answer(this,5,2,3)">C. RPZs are used to define VPC Service Controls access levels based on DNS query patterns</button><button class="opt" onclick="answer(this,5,3,3)">D. RPZs allow overriding DNS responses for specific domains to block resolution of known malicious domains or redirect internal domains</button>
+    <div class="expl">Response Policy Zones let administrators override the standard DNS response for specified domains — for example, returning NXDOMAIN for known-malicious domains or redirecting queries for internal names — providing a policy enforcement point at the DNS layer for boundary defense.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/google-cloud-security-engineer-exam-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

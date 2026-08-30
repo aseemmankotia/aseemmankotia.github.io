@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Cloud Platform and Infrastructure Security Practice Questions — ISC2 Certified Cloud Security Professional (CCSP)</title>
+<meta name="description" content="6 free Cloud Platform and Infrastructure Security practice questions with explanations for the ISC2 Certified Cloud Security Professional (CCSP) exam.">
+<link rel="canonical" href="https://technuggets.academy/ccsp-cloud-platform-and-infrastructure-security.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Cloud Platform and Infrastructure Security Practice Questions — ISC2 Certified Cloud Security Professional (CCSP)">
+<meta property="og:description" content="6 free Cloud Platform and Infrastructure Security practice questions with explanations for the ISC2 Certified Cloud Security Professional (CCSP) exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/ccsp-cloud-platform-and-infrastructure-security.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Cloud Platform and Infrastructure Security</h1>
+<p class="sub">Free ISC2 Certified Cloud Security Professional (CCSP) practice — 6 questions on <strong>Cloud Platform and Infrastructure Security</strong>, with explanations. No sign-up.
+<a href="ccsp.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Cloud Platform and Infrastructure Security">
+    <div class="meta">Question 1 of 6 · Cloud Platform and Infrastructure Security</div>
+    <div class="q">A cloud provider hosts multiple tenant VMs on a single physical host running a bare-metal (Type 1) hypervisor. A researcher discovers a flaw that lets a malicious VM break out of its isolation boundary and gain direct code execution on the hypervisor itself, from which other tenants' VMs on the same host could then be reached. What is this class of attack most precisely called?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. Guest hopping</button><button class="opt" onclick="answer(this,0,1,2)">B. Side-channel attack</button><button class="opt" onclick="answer(this,0,2,2)">C. VM escape</button><button class="opt" onclick="answer(this,0,3,2)">D. VM sprawl</button>
+    <div class="expl">VM escape refers specifically to breaking out of a guest VM's isolation to gain access to the underlying hypervisor/host. Guest hopping is the follow-on step of pivoting from the compromised hypervisor to another guest, but the vulnerability described (escaping to the hypervisor) is the VM escape itself.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Cloud Platform and Infrastructure Security">
+    <div class="meta">Question 2 of 6 · Cloud Platform and Infrastructure Security</div>
+    <div class="q">A company requires an RTO of 4 hours and an RPO of 15 minutes for its cloud-hosted ERP system while minimizing standby infrastructure cost. The database must replicate continuously to the recovery region, but application servers only need to be provisioned after a disaster is formally declared. Which BCDR strategy BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,1,0,1)">A. Hot site / multi-site active-active deployment</button><button class="opt" onclick="answer(this,1,1,1)">B. Pilot light with continuous database replication and on-demand application server provisioning</button><button class="opt" onclick="answer(this,1,2,1)">C. Warm standby with application servers running at reduced capacity</button><button class="opt" onclick="answer(this,1,3,1)">D. Backup and restore from periodic snapshots</button>
+    <div class="expl">Pilot light keeps only the critical core (here, the database) continuously replicated to satisfy the tight RPO, while non-core components (app servers) are scaled up from a minimal or dormant state only after failover is declared — matching the stated RTO of hours at minimal standing cost.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Cloud Platform and Infrastructure Security">
+    <div class="meta">Question 3 of 6 · Cloud Platform and Infrastructure Security</div>
+    <div class="q">A cloud provider states that its primary data center facility has N+1 redundant capacity components and multiple independent distribution paths for power and cooling, allowing planned maintenance to be performed without taking systems offline. However, the provider acknowledges that a single unplanned equipment failure could still cause a service outage. Per the Uptime Institute tiering system, which tier does this facility match?</div>
+    <button class="opt" onclick="answer(this,2,0,2)">A. Tier I</button><button class="opt" onclick="answer(this,2,1,2)">B. Tier II</button><button class="opt" onclick="answer(this,2,2,2)">C. Tier III</button><button class="opt" onclick="answer(this,2,3,2)">D. Tier IV</button>
+    <div class="expl">Tier III facilities are 'concurrently maintainable' — they have redundant distribution paths and components so planned maintenance causes no downtime — but they are not required to be fault tolerant against a single unplanned failure, which is exactly what's described.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Cloud Platform and Infrastructure Security">
+    <div class="meta">Question 4 of 6 · Cloud Platform and Infrastructure Security</div>
+    <div class="q">A cloud security architect is hardening the virtual network fabric of a multi-tenant IaaS environment to prevent VLAN hopping attacks that rely on switch spoofing (an attacking host mimicking a trunking switch to negotiate a trunk link). Which configuration change directly closes this attack vector?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. Enable native VLAN tagging on all access ports</button><button class="opt" onclick="answer(this,3,1,1)">B. Disable Dynamic Trunking Protocol (DTP) on all ports and manually configure trunk ports only where required</button><button class="opt" onclick="answer(this,3,2,1)">C. Increase the VLAN ID range to the maximum of 4094</button><button class="opt" onclick="answer(this,3,3,1)">D. Configure link aggregation (LACP) across all untagged access ports</button>
+    <div class="expl">Switch-spoofing VLAN hopping exploits automatic trunk negotiation protocols like DTP. Disabling DTP and explicitly configuring which ports are trunks (with all other ports fixed as access ports) removes the attacker's ability to negotiate an unauthorized trunk link.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Cloud Platform and Infrastructure Security">
+    <div class="meta">Question 5 of 6 · Cloud Platform and Infrastructure Security</div>
+    <div class="q">A cloud customer needs to permanently retire a block storage volume in a multi-tenant public cloud environment where physical access to the underlying storage media is not possible. Which technique renders the volume's data unrecoverable without requiring physical destruction or block-level overwrite of the underlying media?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. Degaussing the storage volume</button><button class="opt" onclick="answer(this,4,1,2)">B. Physically overwriting each block seven times per DoD 5220.22-M</button><button class="opt" onclick="answer(this,4,2,2)">C. Crypto-shredding by destroying the encryption keys used to protect the volume</button><button class="opt" onclick="answer(this,4,3,2)">D. Reformatting the volume at the file-system level</button>
+    <div class="expl">Crypto-shredding destroys the keys protecting encrypted data, making the ciphertext permanently unrecoverable without needing access to the physical media — the recommended sanitization method in cloud/multi-tenant environments where the customer cannot physically overwrite or destroy the underlying disks.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Cloud Platform and Infrastructure Security">
+    <div class="meta">Question 6 of 6 · Cloud Platform and Infrastructure Security</div>
+    <div class="q">A cloud security team discovers that management-console API keys with full administrative scope are hardcoded into CI/CD pipeline scripts stored in a shared repository accessible to every developer, allowing any developer — regardless of role — to make unrestricted changes to production cloud infrastructure. Which control BEST addresses this cloud management plane risk?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. Enable the cloud provider's DDoS protection service on the management console</button><button class="opt" onclick="answer(this,5,1,1)">B. Implement least-privilege, role-based IAM policies with pipeline-specific service credentials scoped to only the actions each pipeline requires</button><button class="opt" onclick="answer(this,5,2,1)">C. Encrypt the API keys at rest within the CI/CD repository</button><button class="opt" onclick="answer(this,5,3,1)">D. Increase API rate-limiting thresholds on the management console</button>
+    <div class="expl">The core problem is excessive, shared, administrative-level privilege on the management plane. Replacing broadly-scoped shared keys with least-privilege, pipeline-specific IAM roles/credentials directly eliminates the overprivileged access rather than just obscuring or protecting the existing overprivileged keys.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/ccsp-certified-cloud-security-professional-exam-prep-x/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Managing Operations Practice Questions — Google Cloud Certified - Professional Cloud Security Engineer</title>
+<meta name="description" content="6 free Managing Operations practice questions with explanations for the Google Cloud Certified - Professional Cloud Security Engineer exam.">
+<link rel="canonical" href="https://technuggets.academy/professional-cloud-security-engineer-managing-operations.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Managing Operations Practice Questions — Google Cloud Certified - Professional Cloud Security Engineer">
+<meta property="og:description" content="6 free Managing Operations practice questions with explanations for the Google Cloud Certified - Professional Cloud Security Engineer exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/professional-cloud-security-engineer-managing-operations.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#4285F4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Managing Operations</h1>
+<p class="sub">Free Google Cloud Certified - Professional Cloud Security Engineer practice — 6 questions on <strong>Managing Operations</strong>, with explanations. No sign-up.
+<a href="professional-cloud-security-engineer.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Managing Operations">
+    <div class="meta">Question 1 of 6 · Managing Operations</div>
+    <div class="q">A platform team enabled Binary Authorization on a GKE cluster with a policy that requires an attestation from an attestor named 'vuln-scan-attestor' before any image can be deployed. The vulnerability scan step in Cloud Build passes, but the deployment step still fails because no valid attestation exists. Which action is required to allow the pipeline to produce a valid attestation that Binary Authorization will accept?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. Grant the Cloud Build service account the roles/binaryauthorization.attestorsViewer role only</button><button class="opt" onclick="answer(this,0,1,2)">B. Add an organization policy constraint that blocks unattested images at the VPC Service Controls perimeter</button><button class="opt" onclick="answer(this,0,2,2)">C. Create a Container Analysis Note, associate it with the 'vuln-scan-attestor' Attestor resource, and sign the image digest using the KMS key linked to that attestor</button><button class="opt" onclick="answer(this,0,3,2)">D. Enable VPC Flow Logs on the GKE cluster's subnet so Binary Authorization can validate network attestation</button>
+    <div class="expl">Producing a valid attestation requires a Container Analysis Note tied to the Attestor, plus signing the image digest with the KMS key referenced by that attestor's public key. Without this, Binary Authorization has nothing to verify.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Managing Operations">
+    <div class="meta">Question 2 of 6 · Managing Operations</div>
+    <div class="q">A security team wants a single organization-level log sink that exports Cloud Audit Logs (Admin Activity and Data Access) from every project in the organization into a BigQuery dataset in a centralized security project, except logs originating from the 'sandbox-testing' folder, which should never be exported. Which configuration meets this requirement with the least administrative overhead?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. Create an aggregated sink at the organization resource with includeChildren=true and an exclusion filter that matches logs originating from the sandbox-testing folder</button><button class="opt" onclick="answer(this,1,1,0)">B. Create a sink in each individual project except those under the sandbox-testing folder, all pointing to the centralized BigQuery dataset</button><button class="opt" onclick="answer(this,1,2,0)">C. Create a folder-level sink on every folder except sandbox-testing, with includeChildren set to false</button><button class="opt" onclick="answer(this,1,3,0)">D. Create an aggregated sink at the organization resource with includeChildren=true, and rely on default IAM permissions to prevent BigQuery access from the sandbox folder</button>
+    <div class="expl">An organization-level aggregated sink with includeChildren=true automatically captures logs from all current and future projects/folders, and an exclusion filter is the supported mechanism to omit a specific folder's logs from that export, minimizing ongoing management.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Managing Operations">
+    <div class="meta">Question 3 of 6 · Managing Operations</div>
+    <div class="q">Security engineers must detect known malware command-and-control signatures and other network-based threats within east-west traffic between Compute Engine VMs in a single VPC, without inserting an inline device that could add latency or become a single point of failure. Which Google Cloud service should they deploy?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. VPC Flow Logs configured with a 100% sampling rate</button><button class="opt" onclick="answer(this,2,1,3)">B. Cloud NGFW Standard tier with hierarchical firewall policies</button><button class="opt" onclick="answer(this,2,2,3)">C. Secure Web Proxy deployed as a forward proxy for all egress traffic</button><button class="opt" onclick="answer(this,2,3,3)">D. Cloud IDS, which uses Packet Mirroring to send a copy of traffic to a managed, signature-based threat detection engine</button>
+    <div class="expl">Cloud IDS is purpose-built for signature-based intrusion and malware detection. It relies on Packet Mirroring to analyze a copy of traffic out-of-band, so it adds no inline latency and is not a single point of failure.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Managing Operations">
+    <div class="meta">Question 4 of 6 · Managing Operations</div>
+    <div class="q">An organization needs automated detection for two distinct requirements: (1) flag any Compute Engine instance whose resource configuration does not include a mandatory 'data-classification' label, and (2) flag log-based evidence of anomalous IAM permission grants performed via unusual API call sequences. Which pairing correctly matches each requirement to the Security Command Center capability designed for it?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. Requirement 1 uses a Security Health Analytics custom module (CEL against resource configuration data); requirement 2 uses an Event Threat Detection custom module (YARA-L against log data)</button><button class="opt" onclick="answer(this,3,1,0)">B. Both requirements should use Event Threat Detection custom modules written in YARA-L</button><button class="opt" onclick="answer(this,3,2,0)">C. Both requirements should use Security Health Analytics custom modules written in CEL</button><button class="opt" onclick="answer(this,3,3,0)">D. Requirement 1 uses Container Threat Detection; requirement 2 uses VPC Service Controls custom access levels</button>
+    <div class="expl">Security Health Analytics custom modules evaluate resource configuration (via Cloud Asset Inventory) using CEL expressions, which fits checking a missing label. Event Threat Detection custom modules analyze log streams using YARA-L rules, which fits detecting anomalous behavioral patterns in Cloud Audit Logs.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Managing Operations">
+    <div class="meta">Question 5 of 6 · Managing Operations</div>
+    <div class="q">A compliance mandate requires an immutable audit trail capturing every successful 'AccessSecretVersion' call made against secrets in Secret Manager, including calls made by project owners. The team left audit logging at its default configuration. A review shows no log entries exist for successful secret access calls. What must be changed?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. Nothing — Cloud Audit Logs does not support Secret Manager; Cloud Trace must be used instead</button><button class="opt" onclick="answer(this,4,1,2)">B. Increase the Cloud Logging retention period for the _Required log bucket to 400 days</button><button class="opt" onclick="answer(this,4,2,2)">C. Enable Data Access audit logs (DATA_READ) for the Secret Manager API via an IAM Audit Config, since Data Access logs are disabled by default except for BigQuery</button><button class="opt" onclick="answer(this,4,3,2)">D. Enable VPC Flow Logs on the subnet hosting the Secret Manager service endpoint</button>
+    <div class="expl">Secret Manager fully supports Cloud Audit Logs, but Data Access logs (ADMIN_READ, DATA_READ, DATA_WRITE) are disabled by default for nearly all services, with BigQuery as the notable exception. They must be explicitly enabled via an Audit Config at the project or organization level to capture successful secret read access, including access by admins/owners.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Managing Operations">
+    <div class="meta">Question 6 of 6 · Managing Operations</div>
+    <div class="q">A security team must ensure that all Compute Engine VM instances across an organization automatically receive critical OS security patches within 48 hours of release, and must be able to generate compliance reports showing patch status per instance. Which Google Cloud capability should they configure?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. Configure VM Manager patch policies (OS Patch Management) with a defined schedule and recurrence, and use Patch Compliance reporting for auditing</button><button class="opt" onclick="answer(this,5,1,0)">B. Configure Security Health Analytics to flag unpatched instances after scanning instance metadata weekly</button><button class="opt" onclick="answer(this,5,2,0)">C. Enable Container Analysis vulnerability scanning on the instances' base images in Artifact Registry</button><button class="opt" onclick="answer(this,5,3,0)">D. Create a VPC Service Controls perimeter restricting access to the Compute Engine API</button>
+    <div class="expl">VM Manager's OS Patch Management lets administrators define patch deployment schedules (including urgency-based windows suitable for a 48-hour SLA) and provides Patch Compliance dashboards/reports showing per-instance patch state, directly satisfying both automated patching and reporting requirements.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/google-cloud-security-engineer-exam-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>
