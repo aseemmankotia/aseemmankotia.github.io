@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Using the OCI Generative AI Agents Service Practice Questions — Oracle Cloud Infrastructure 2025 Generative AI Professional</title>
+<meta name="description" content="6 free Using the OCI Generative AI Agents Service practice questions with explanations for the Oracle Cloud Infrastructure 2025 Generative AI Professional exam.">
+<link rel="canonical" href="https://technuggets.academy/1z0-1127-25-using-the-oci-generative-ai-agents-service.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Using the OCI Generative AI Agents Service Practice Questions — Oracle Cloud Infrastructure 2025 Generative AI Professional">
+<meta property="og:description" content="6 free Using the OCI Generative AI Agents Service practice questions with explanations for the Oracle Cloud Infrastructure 2025 Generative AI Professional exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/1z0-1127-25-using-the-oci-generative-ai-agents-service.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Using the OCI Generative AI Agents Service</h1>
+<p class="sub">Free Oracle Cloud Infrastructure 2025 Generative AI Professional practice — 6 questions on <strong>Using the OCI Generative AI Agents Service</strong>, with explanations. No sign-up.
+<a href="1z0-1127-25.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Using the OCI Generative AI Agents Service">
+    <div class="meta">Question 1 of 6 · Using the OCI Generative AI Agents Service</div>
+    <div class="q">A retail company has a live Oracle Autonomous Database 23ai table that stores current inventory counts, updated every few minutes. The company wants its Generative AI Agent to answer 'How many units of SKU-4521 are in stock right now?' with the exact current count. Which agent configuration BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. Attach the table as a knowledge base using the Oracle Database 23ai vector search data source and let the RAG pipeline retrieve semantically similar rows</button><button class="opt" onclick="answer(this,0,1,1)">B. Configure the SQL tool on the agent to translate the natural-language question into SQL and execute it directly against the Autonomous Database</button><button class="opt" onclick="answer(this,0,2,1)">C. Export the table nightly to Object Storage as CSV files and attach it as an Object Storage knowledge base</button><button class="opt" onclick="answer(this,0,3,1)">D. Add the current inventory count as a static instruction in the agent's system prompt</button>
+    <div class="expl">The SQL tool translates natural language into SQL and executes it live against the database, returning the exact current value, which is essential for real-time structured data queries.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Using the OCI Generative AI Agents Service">
+    <div class="meta">Question 2 of 6 · Using the OCI Generative AI Agents Service</div>
+    <div class="q">A company built one Generative AI Agent connected to a knowledge base of HR policy documents. They want an internal testing endpoint with content moderation disabled for QA debugging, and a separate public-facing production endpoint with the strictest moderation and citations enabled. Which approach is correct?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. Create one agent and two agent endpoints, each with independent moderation and citation settings, pointing to the same knowledge base</button><button class="opt" onclick="answer(this,1,1,0)">B. Create two separate agents, each with its own copy of the knowledge base</button><button class="opt" onclick="answer(this,1,2,0)">C. Duplicate the knowledge base with different moderation tags applied to each data source</button><button class="opt" onclick="answer(this,1,3,0)">D. Use a single endpoint and toggle moderation settings via API immediately before every deployment</button>
+    <div class="expl">Agent endpoints are independently configurable for session, moderation, and citation settings while sharing the same underlying agent and knowledge base — this is the designed pattern for dev/prod separation.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Using the OCI Generative AI Agents Service">
+    <div class="meta">Question 3 of 6 · Using the OCI Generative AI Agents Service</div>
+    <div class="q">An enterprise has an existing OCI Search with OpenSearch cluster that already indexes thousands of internal wiki articles using custom analyzers and synonym lists tuned by the search team. They want the Generative AI Agent to ground responses on this existing index without re-ingesting the documents. Which knowledge base data source type should they select?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. Object Storage</button><button class="opt" onclick="answer(this,2,1,1)">B. OCI Search with OpenSearch</button><button class="opt" onclick="answer(this,2,2,1)">C. Oracle Database 23ai</button><button class="opt" onclick="answer(this,2,3,1)">D. A custom REST data source configured through a function-calling tool</button>
+    <div class="expl">The OCI Search with OpenSearch data source type lets the agent query an existing OpenSearch index directly, reusing existing analyzer and synonym tuning without re-ingesting or re-chunking the documents.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Using the OCI Generative AI Agents Service">
+    <div class="meta">Question 4 of 6 · Using the OCI Generative AI Agents Service</div>
+    <div class="q">The compliance team requires that an agent endpoint block ANY user input or agent output containing hate speech, violence, or self-harm content, including borderline phrasing, before a response is returned. Which endpoint configuration correctly satisfies this?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. Enable content moderation on output only, set to the 'Medium' level</button><button class="opt" onclick="answer(this,3,1,3)">B. Disable content moderation and rely on the base model's built-in safety alignment</button><button class="opt" onclick="answer(this,3,2,3)">C. Enable citations and require every response to reference a source document</button><button class="opt" onclick="answer(this,3,3,3)">D. Enable content moderation on both input and output, set to the 'High' (most restrictive) level</button>
+    <div class="expl">Enabling moderation on both input and output at the strictest level filters harmful content in both directions and catches borderline phrasing, matching the compliance requirement.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Using the OCI Generative AI Agents Service">
+    <div class="meta">Question 5 of 6 · Using the OCI Generative AI Agents Service</div>
+    <div class="q">A Generative AI Agent's knowledge base references a bucket in OCI Object Storage. When the agent attempts to ingest the documents, it fails with an authorization error. What is the MOST likely missing configuration?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. The agent's model needs a higher context window quota</button><button class="opt" onclick="answer(this,4,1,2)">B. The bucket needs public visibility enabled</button><button class="opt" onclick="answer(this,4,2,2)">C. An IAM policy granting the agent's dynamic group (matching its resource principal) READ access to the Object Storage bucket</button><button class="opt" onclick="answer(this,4,3,2)">D. The knowledge base needs a customer-managed encryption key attached</button>
+    <div class="expl">The Agents service authenticates via a resource principal; a dynamic group matching that principal must be granted an IAM policy allowing read access to the bucket for ingestion to succeed.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Using the OCI Generative AI Agents Service">
+    <div class="meta">Question 6 of 6 · Using the OCI Generative AI Agents Service</div>
+    <div class="q">A team needs a solution that maintains multi-turn conversation context across a session, calls a custom backend function mid-conversation to check order status, cites the enterprise documents it used, and enforces content moderation — all without writing custom session-management or orchestration code. Which approach is correct per exam scope?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. Build a custom RAG pipeline using an embedding model plus a vector database directly, and add hand-written session tracking logic</button><button class="opt" onclick="answer(this,5,1,3)">B. Use only the OCI Generative AI pretrained chat model directly via the inference API with a large system prompt containing all documents</button><button class="opt" onclick="answer(this,5,2,3)">C. Fine-tune a custom model on a dedicated AI cluster so it memorizes the enterprise documents</button><button class="opt" onclick="answer(this,5,3,3)">D. Use the OCI Generative AI Agents service and configure a knowledge base, a function-calling tool, and endpoint session/moderation settings</button>
+    <div class="expl">The Agents service natively provides managed multi-turn session tracking, tool calling for custom functions, citations, and configurable content moderation at the endpoint level — meeting every requirement without custom orchestration code.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/oci-generative-ai-professional-1z0-1127-25-exam-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

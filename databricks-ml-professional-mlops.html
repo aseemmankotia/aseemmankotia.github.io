@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free MLOps Practice Questions — Databricks Certified Machine Learning Professional</title>
+<meta name="description" content="6 free MLOps practice questions with explanations for the Databricks Certified Machine Learning Professional exam.">
+<link rel="canonical" href="https://technuggets.academy/databricks-ml-professional-mlops.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free MLOps Practice Questions — Databricks Certified Machine Learning Professional">
+<meta property="og:description" content="6 free MLOps practice questions with explanations for the Databricks Certified Machine Learning Professional exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/databricks-ml-professional-mlops.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#FF3621}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>MLOps</h1>
+<p class="sub">Free Databricks Certified Machine Learning Professional practice — 6 questions on <strong>MLOps</strong>, with explanations. No sign-up.
+<a href="databricks-ml-professional.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="MLOps">
+    <div class="meta">Question 1 of 6 · MLOps</div>
+    <div class="q">A retail company manages fraud-detection models in Unity Catalog. They want zero-downtime promotion between a currently serving model and a newly trained candidate, avoiding the deprecated Staging/Production stage model entirely, while allowing serving code to always reference the 'current best' model without redeploying. Which approach BEST manages this Champion/Challenger workflow?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. Assign the model to different registered model names for each role (e.g., model_champion, model_challenger) and manage them as separate registered models.</button><button class="opt" onclick="answer(this,0,1,2)">B. Use legacy stages (Staging/Production) since Unity Catalog fully supports them for aliasing model versions.</button><button class="opt" onclick="answer(this,0,2,2)">C. Use set_registered_model_alias to assign 'Champion' and 'Challenger' aliases to specific model versions, and reference them via the models:/&lt;name&gt;@champion URI syntax in serving/inference code.</button><button class="opt" onclick="answer(this,0,3,2)">D. Apply custom tags like environment=champion to each model version and filter by tag in application code before loading.</button>
+    <div class="expl">Unity Catalog model registry uses aliases (mutable pointers to a specific version) instead of the legacy stage model. set_registered_model_alias lets you repoint 'champion' to a new version instantly, and code referencing models:/&lt;name&gt;@champion automatically picks up the new version with zero code changes and zero downtime.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="MLOps">
+    <div class="meta">Question 2 of 6 · MLOps</div>
+    <div class="q">You configure a Lakehouse Monitoring inference profile on a table with a continuous numeric feature (transaction_amount) and a categorical feature (payment_method). Which statistical tests does Lakehouse Monitoring apply by default to detect distributional drift on these two columns respectively?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. Chi-square test for both the continuous and categorical columns.</button><button class="opt" onclick="answer(this,1,1,3)">B. Kolmogorov-Smirnov (KS) test for both columns regardless of data type.</button><button class="opt" onclick="answer(this,1,2,3)">C. Chi-square test for the numeric column and Kolmogorov-Smirnov (KS) test for the categorical column.</button><button class="opt" onclick="answer(this,1,3,3)">D. Kolmogorov-Smirnov (KS) test for the continuous numeric column and chi-square test for the categorical column.</button>
+    <div class="expl">Lakehouse Monitoring's drift detection uses the Kolmogorov-Smirnov (KS) test to compare distributions of continuous numeric columns and the chi-square test to compare distributions of categorical columns between the baseline and current windows.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="MLOps">
+    <div class="meta">Question 3 of 6 · MLOps</div>
+    <div class="q">A fraud-detection model's performance degrades unpredictably due to data drift rather than on a fixed schedule. The ML team wants retraining triggered automatically only when drift is detected, to minimize unnecessary compute costs. Which architecture BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. Schedule a Databricks Job to retrain the model nightly regardless of whether drift has occurred.</button><button class="opt" onclick="answer(this,2,1,1)">B. Configure a Lakehouse Monitor on the inference table with a metric-based alert that fires a webhook/API call, which invokes a Databricks Job via the Jobs API to retrain the model.</button><button class="opt" onclick="answer(this,2,2,1)">C. Use a Databricks Job with a file arrival trigger that fires whenever new raw training data lands in a table.</button><button class="opt" onclick="answer(this,2,3,1)">D. Manually retrain the model whenever an on-call engineer notices a problem in a monitoring dashboard.</button>
+    <div class="expl">Lakehouse Monitoring can compute drift metrics on inference tables and raise alerts when thresholds are breached. Wiring that alert to trigger a Databricks Job run (via the Jobs API or a webhook-based automation) creates an event-driven, drift-triggered retraining pipeline that avoids unnecessary scheduled runs and eliminates manual intervention.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="MLOps">
+    <div class="meta">Question 4 of 6 · MLOps</div>
+    <div class="q">Your ML team needs to deploy the same MLflow pipeline (training job, model registration, and serving endpoint) across dev, staging, and prod workspaces with environment-specific cluster sizes and model alias targets, fully version-controlled and deployable via CI/CD. Which Databricks tool is purpose-built for this?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. Databricks Repos with manually maintained duplicate notebooks per environment.</button><button class="opt" onclick="answer(this,3,1,1)">B. Databricks Asset Bundles, using target-specific overrides in databricks.yml for cluster sizing and alias targets per environment.</button><button class="opt" onclick="answer(this,3,2,1)">C. MLflow Projects defined with a conda.yaml environment specification.</button><button class="opt" onclick="answer(this,3,3,1)">D. Delta Live Tables pipeline definitions with environment parameters.</button>
+    <div class="expl">Databricks Asset Bundles (DABs) are the source-controlled, YAML-based IaC framework for defining jobs, pipelines, and deployments, with 'targets' that let you override cluster configs, parameters, and alias references per environment (dev/staging/prod) and deploy consistently through CI/CD (e.g., `databricks bundle deploy -t prod`).</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="MLOps">
+    <div class="meta">Question 5 of 6 · MLOps</div>
+    <div class="q">In a CI pipeline for a Databricks ML project, which test type is MOST appropriate for verifying that a custom PyFunc model's predict() method returns correctly shaped output for a fixed input schema, without invoking Spark or any external data source?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. An integration test, since it verifies model behavior end-to-end.</button><button class="opt" onclick="answer(this,4,1,1)">B. A unit test, since it isolates the predict() logic against controlled inputs without external dependencies.</button><button class="opt" onclick="answer(this,4,2,1)">C. A load test, since it measures the throughput of repeated predict() calls.</button><button class="opt" onclick="answer(this,4,3,1)">D. A production smoke test executed immediately after deployment.</button>
+    <div class="expl">A unit test isolates a single function or method — here, predict() — from external systems (Spark clusters, databases, serving infrastructure) and checks its output shape/type against known input fixtures, making it fast, deterministic, and appropriate for CI without needing live infrastructure.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="MLOps">
+    <div class="meta">Question 6 of 6 · MLOps</div>
+    <div class="q">Before promoting a new model version to the @Champion alias in Unity Catalog, the team requires an automated validation job (checking accuracy, fairness metrics, and inference latency) to pass successfully. Which implementation enforces this gate as part of CI/CD?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. Manually review metrics in the MLflow UI, then manually run set_registered_model_alias if they look acceptable.</button><button class="opt" onclick="answer(this,5,1,3)">B. Rely on Unity Catalog's built-in automatic model validation feature to block alias assignment on failing metrics.</button><button class="opt" onclick="answer(this,5,2,3)">C. Use a model registry webhook that fires after the @Champion alias is assigned to validate the model post-promotion.</button><button class="opt" onclick="answer(this,5,3,3)">D. Configure a Databricks Job that runs the validation checks and calls set_registered_model_alias only if the checks pass, orchestrated as a step in a Databricks Asset Bundle CI/CD pipeline.</button>
+    <div class="expl">Unity Catalog does not have a built-in automated validation gate — validation logic must be implemented explicitly. Encoding the validation checks and conditional alias assignment (set_registered_model_alias only on success) inside a Databricks Job, deployed and orchestrated via a Databricks Asset Bundle CI/CD pipeline, creates a repeatable, auditable, code-driven promotion gate that blocks bad models before they reach @Champion.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/databricks-ml-professional-certification-exam-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

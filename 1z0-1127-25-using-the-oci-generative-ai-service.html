@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Using the OCI Generative AI Service Practice Questions — Oracle Cloud Infrastructure 2025 Generative AI Professional</title>
+<meta name="description" content="6 free Using the OCI Generative AI Service practice questions with explanations for the Oracle Cloud Infrastructure 2025 Generative AI Professional exam.">
+<link rel="canonical" href="https://technuggets.academy/1z0-1127-25-using-the-oci-generative-ai-service.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Using the OCI Generative AI Service Practice Questions — Oracle Cloud Infrastructure 2025 Generative AI Professional">
+<meta property="og:description" content="6 free Using the OCI Generative AI Service practice questions with explanations for the Oracle Cloud Infrastructure 2025 Generative AI Professional exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/1z0-1127-25-using-the-oci-generative-ai-service.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Using the OCI Generative AI Service</h1>
+<p class="sub">Free Oracle Cloud Infrastructure 2025 Generative AI Professional practice — 6 questions on <strong>Using the OCI Generative AI Service</strong>, with explanations. No sign-up.
+<a href="1z0-1127-25.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Using the OCI Generative AI Service">
+    <div class="meta">Question 1 of 6 · Using the OCI Generative AI Service</div>
+    <div class="q">A media company fine-tunes a custom text-generation model using a Large Cohere dedicated fine-tuning cluster in OCI Generative AI Service. The fine-tuning job finishes in 6 hours, but the company must serve inference traffic from the resulting custom model for the next 90 days. Which approach minimizes cost while meeting the requirement?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. Keep the fine-tuning cluster running for the full 90 days since it can also serve inference requests once training completes</button><button class="opt" onclick="answer(this,0,1,2)">B. Delete the fine-tuned model and revert to calling the on-demand pretrained model endpoint for the 90 days</button><button class="opt" onclick="answer(this,0,2,2)">C. Terminate the fine-tuning cluster once training completes, then create a separate dedicated hosting AI cluster with the fine-tuned model to serve inference for the 90-day period</button><button class="opt" onclick="answer(this,0,3,2)">D. Provision a new fine-tuning cluster on demand every time an inference request needs to be served</button>
+    <div class="expl">Fine-tuning clusters and hosting clusters are separate resource and billing types in OCI Generative AI Service. A fine-tuning cluster is meant only for training and should be terminated once the job completes; a hosting cluster is created to actually serve inference for the tuned model, and only the hosting cluster needs to run for the 90-day serving window.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Using the OCI Generative AI Service">
+    <div class="meta">Question 2 of 6 · Using the OCI Generative AI Service</div>
+    <div class="q">According to OCI documentation, what is the minimum billing commitment period when you create a dedicated AI cluster (hosting) in OCI Generative AI Service?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. 1 hour</button><button class="opt" onclick="answer(this,1,1,3)">B. 168 unit-hours (7 days)</button><button class="opt" onclick="answer(this,1,2,3)">C. There is no minimum; billing is strictly per-second</button><button class="opt" onclick="answer(this,1,3,3)">D. 744 unit-hours (31 days)</button>
+    <div class="expl">OCI dedicated AI clusters (hosting) require a minimum commitment of 744 unit-hours, equivalent to running continuously for 31 days, even if the cluster is used for less time or deleted early.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Using the OCI Generative AI Service">
+    <div class="meta">Question 3 of 6 · Using the OCI Generative AI Service</div>
+    <div class="q">You need to fine-tune a cohere.command model on a small custom dataset (fewer than 100 examples) in OCI Generative AI Service, while minimizing training time and compute cost. Which fine-tuning method should you select?</div>
+    <button class="opt" onclick="answer(this,2,0,2)">A. Vanilla (full parameter) fine-tuning</button><button class="opt" onclick="answer(this,2,1,2)">B. Retrain the base model from scratch on the custom dataset</button><button class="opt" onclick="answer(this,2,2,2)">C. T-Few (parameter-efficient) fine-tuning</button><button class="opt" onclick="answer(this,2,3,2)">D. Use a third-party LoRA connector outside the OCI training pipeline</button>
+    <div class="expl">T-Few is OCI's parameter-efficient fine-tuning method, designed specifically for smaller custom datasets. It updates a small subset of model parameters, resulting in significantly faster and cheaper training compared to full fine-tuning, which is exactly suited to a sub-100-example dataset.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Using the OCI Generative AI Service">
+    <div class="meta">Question 4 of 6 · Using the OCI Generative AI Service</div>
+    <div class="q">In the OCI Generative AI console playground, what happens when you enable the 'Content Moderation' toggle for a chat model?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. It filters only the model's generated output for harmful content while leaving the user's input prompt unfiltered</button><button class="opt" onclick="answer(this,3,1,1)">B. It scans and can flag or block both the user's input prompt and the model's generated response for toxic or harmful content</button><button class="opt" onclick="answer(this,3,2,1)">C. It automatically detects and redacts personally identifiable information (PII) from generated responses</button><button class="opt" onclick="answer(this,3,3,1)">D. It restricts the model's responses to a fixed whitelist of topics that you configure in advance</button>
+    <div class="expl">The Content Moderation feature in OCI Generative AI Service inspects both the incoming prompt and the outgoing model response, allowing harmful or toxic content to be flagged/blocked on either side of the interaction, not just one.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Using the OCI Generative AI Service">
+    <div class="meta">Question 5 of 6 · Using the OCI Generative AI Service</div>
+    <div class="q">A serverless OCI Function needs to call the OCI Generative AI chat endpoint without embedding user credentials or API keys anywhere in its code. Which IAM configuration correctly grants the required access?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. Generate a permanent API signing key for an IAM user and store it as an environment variable in the function's configuration</button><button class="opt" onclick="answer(this,4,1,1)">B. Create a dynamic group that matches the function's resource, then write a policy allowing that dynamic group to use generative-ai-family in the target compartment</button><button class="opt" onclick="answer(this,4,2,1)">C. Hardcode the console session token used by the developer into the function's source code</button><button class="opt" onclick="answer(this,4,3,1)">D. Write a policy that allows the 'Functions' service group to manage instance-family resources in the tenancy</button>
+    <div class="expl">OCI Functions can use resource principals: matching the function to a dynamic group and granting that dynamic group a policy to use the generative-ai-family resource type provides secure, credential-free access to the Generative AI service at runtime.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Using the OCI Generative AI Service">
+    <div class="meta">Question 6 of 6 · Using the OCI Generative AI Service</div>
+    <div class="q">Your team is building a RAG search index over millions of documents. Vector storage cost is a primary concern, and the corpus includes documents in multiple languages. Which embedding model configuration BEST balances these requirements?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. cohere.embed-multilingual-v3.0, producing 1024-dimension vectors, regardless of storage cost</button><button class="opt" onclick="answer(this,5,1,3)">B. cohere.embed-english-v3.0, a monolingual English-only embedding model</button><button class="opt" onclick="answer(this,5,2,3)">C. cohere.command, a generation model, repurposed to output pseudo-embedding vectors</button><button class="opt" onclick="answer(this,5,3,3)">D. cohere.embed-multilingual-light-v3.0, producing 384-dimension vectors, trading some retrieval precision for roughly 60% less vector storage than the full v3.0 multilingual model</button>
+    <div class="expl">The multilingual light embedding model produces smaller 384-dimension vectors instead of 1024, substantially reducing vector storage footprint while still supporting multiple languages, which directly addresses both the storage-cost concern and the multilingual requirement.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/oci-generative-ai-professional-1z0-1127-25-exam-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

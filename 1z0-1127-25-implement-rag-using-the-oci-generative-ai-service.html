@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Implement RAG using the OCI Generative AI Service Practice Questions — Oracle Cloud Infrastructure 2025 Generative AI Professional</title>
+<meta name="description" content="6 free Implement RAG using the OCI Generative AI Service practice questions with explanations for the Oracle Cloud Infrastructure 2025 Generative AI Professional exam.">
+<link rel="canonical" href="https://technuggets.academy/1z0-1127-25-implement-rag-using-the-oci-generative-ai-service.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Implement RAG using the OCI Generative AI Service Practice Questions — Oracle Cloud Infrastructure 2025 Generative AI Professional">
+<meta property="og:description" content="6 free Implement RAG using the OCI Generative AI Service practice questions with explanations for the Oracle Cloud Infrastructure 2025 Generative AI Professional exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/1z0-1127-25-implement-rag-using-the-oci-generative-ai-service.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Implement RAG using the OCI Generative AI Service</h1>
+<p class="sub">Free Oracle Cloud Infrastructure 2025 Generative AI Professional practice — 6 questions on <strong>Implement RAG using the OCI Generative AI Service</strong>, with explanations. No sign-up.
+<a href="1z0-1127-25.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Implement RAG using the OCI Generative AI Service">
+    <div class="meta">Question 1 of 6 · Implement RAG using the OCI Generative AI Service</div>
+    <div class="q">A company builds a RAG chatbot from a 500-page technical manual. Chunks that are too large exceed the embedding model's token limit, and chunks that are too small lose surrounding context needed for accurate retrieval. Which chunking strategy BEST balances these constraints?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. Split entire document into one chunk per page, regardless of resulting chunk token length</button><button class="opt" onclick="answer(this,0,1,1)">B. Split into fixed-size token chunks with a small overlap (e.g., 10-15%) between consecutive chunks to preserve context across boundaries</button><button class="opt" onclick="answer(this,0,2,1)">C. Store the entire document as a single embedding vector for retrieval simplicity</button><button class="opt" onclick="answer(this,0,3,1)">D. Chunk purely by character count with no overlap, since the retriever will return multiple chunks anyway</button>
+    <div class="expl">Fixed-size token chunking with overlap keeps chunks within embedding model limits while preserving semantic continuity at chunk boundaries, which is the standard production RAG chunking pattern.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Implement RAG using the OCI Generative AI Service">
+    <div class="meta">Question 2 of 6 · Implement RAG using the OCI Generative AI Service</div>
+    <div class="q">Your RAG corpus embeddings total 200GB, exceeding the memory available on the database server. You need an approximate similarity search index that persists to disk while still providing good query performance. Which Oracle Database 23ai AI Vector Search index type is appropriate?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. IVF (Inverted File Flat / neighbor partition) index, which persists to disk and scales beyond available memory</button><button class="opt" onclick="answer(this,1,1,0)">B. HNSW (in-memory graph) index, which requires the entire index to reside in memory</button><button class="opt" onclick="answer(this,1,2,0)">C. A B-tree index built on the VECTOR column</button><button class="opt" onclick="answer(this,1,3,0)">D. A full table scan performing exact nearest-neighbor search</button>
+    <div class="expl">IVF (Inverted File Flat) indexes in Oracle 23ai AI Vector Search partition vectors into neighbor lists stored on disk, making them suited for datasets too large to fit entirely in memory while still supporting fast approximate search.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Implement RAG using the OCI Generative AI Service">
+    <div class="meta">Question 3 of 6 · Implement RAG using the OCI Generative AI Service</div>
+    <div class="q">You generated document embeddings using cohere.embed-english-light-v3.0 (384 dimensions), but the target VECTOR column in Oracle Database 23ai was declared as VECTOR(1024, FLOAT32). What happens when you attempt to insert these embeddings?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. Oracle automatically pads the embedding vector with zeros to match the column's declared dimension</button><button class="opt" onclick="answer(this,2,1,1)">B. The insert fails immediately with a dimension mismatch error because the embedding vector size does not match the declared VECTOR column dimension</button><button class="opt" onclick="answer(this,2,2,1)">C. Oracle truncates the column definition at runtime to match the incoming vector</button><button class="opt" onclick="answer(this,2,3,1)">D. The insert succeeds silently, but similarity search later returns no results</button>
+    <div class="expl">Oracle 23ai enforces the declared VECTOR column dimension strictly; inserting a vector of a different dimension than declared raises an error at insert time rather than silently succeeding.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Implement RAG using the OCI Generative AI Service">
+    <div class="meta">Question 4 of 6 · Implement RAG using the OCI Generative AI Service</div>
+    <div class="q">In a RAG pipeline, why is semantic search using vector embeddings generally preferred over traditional keyword-based search for retrieving relevant context from private enterprise documents?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. Semantic search always requires less storage than keyword indexing</button><button class="opt" onclick="answer(this,3,1,3)">B. Semantic search does not require an embedding model, only an inverted keyword index</button><button class="opt" onclick="answer(this,3,2,3)">C. Semantic search guarantees zero hallucination while keyword search does not</button><button class="opt" onclick="answer(this,3,3,3)">D. Semantic search retrieves passages based on meaning/context similarity even without exact keyword overlap, while keyword search requires literal term matches</button>
+    <div class="expl">Semantic search encodes meaning into dense vectors so it can match paraphrased or conceptually related queries to relevant documents even when no exact keyword overlap exists, improving retrieval recall for RAG.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Implement RAG using the OCI Generative AI Service">
+    <div class="meta">Question 5 of 6 · Implement RAG using the OCI Generative AI Service</div>
+    <div class="q">You are building a LangChain-style RAG pipeline on the OCI Generative AI service. The pipeline retrieves the top-k relevant chunks from a vector store, then must combine them with the user's original question before calling the generation model. Which orchestration component performs this combination step?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. The retriever component, which only fetches relevant chunks from the vector store</button><button class="opt" onclick="answer(this,4,1,2)">B. The embedding model used to vectorize the user's query</button><button class="opt" onclick="answer(this,4,2,2)">C. The prompt template (prompt-combination step, e.g., a &quot;stuff&quot; chain) that merges retrieved chunks with the user's question into the final prompt</button><button class="opt" onclick="answer(this,4,3,2)">D. The vector database index that stores chunk embeddings</button>
+    <div class="expl">The prompt template or combination step (often called a 'stuff' or context-injection chain) is responsible for merging retrieved context chunks with the user's query into a single formatted prompt sent to the LLM for generation.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Implement RAG using the OCI Generative AI Service">
+    <div class="meta">Question 6 of 6 · Implement RAG using the OCI Generative AI Service</div>
+    <div class="q">A RAG chatbot built on the OCI Generative AI Service occasionally answers questions using facts not present in the retrieved documents, even when relevant context was successfully retrieved. Which technique BEST reduces this specific failure mode?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. Increase the generation model's temperature to allow more creative synthesis of retrieved facts</button><button class="opt" onclick="answer(this,5,1,1)">B. Add explicit prompt instructions constraining the model to answer only from the provided context and to state when the answer is not present in the context</button><button class="opt" onclick="answer(this,5,2,1)">C. Reduce the number of retrieved chunks passed to the model to shorten the prompt</button><button class="opt" onclick="answer(this,5,3,1)">D. Switch to a larger embedding model to improve retrieval recall</button>
+    <div class="expl">Explicit grounding instructions that restrict the model to the supplied context, and direct it to admit when information is missing, directly address hallucination that occurs during the generation step even after correct retrieval.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/oci-generative-ai-professional-1z0-1127-25-exam-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

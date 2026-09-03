@@ -1,0 +1,123 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Databricks Certified Machine Learning Professional Practice Test — 12 Real Exam-Style Questions</title>
+<meta name="description" content="Free Databricks Certified Machine Learning Professional practice questions with detailed explanations. Test yourself before the real exam.">
+<link rel="canonical" href="https://technuggets.academy/databricks-ml-professional.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Databricks Certified Machine Learning Professional Practice Test — 12 Real Exam-Style Questions">
+<meta property="og:description" content="Free Databricks Certified Machine Learning Professional practice questions with detailed explanations. Test yourself before the real exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/databricks-ml-professional.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#FF3621}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div><div class="hero">
+  <span class="chip">Databricks ML Professional</span>
+  <h1>Free Databricks Certified Machine Learning Professional Practice Test</h1>
+  <p class="sub">12 exam-style questions with full explanations — no sign-up. Score yourself, then close your gaps with the full course.</p>
+  <div class="facts"><span class="fact">Exam fee <b>~$200</b></span><span class="fact"><b>3</b> exam domains</span><span class="fact">Level <b>Advanced</b></span><span class="fact"><b>2</b> timed practice tests in the course</span></div>
+  <div class="cta-row"><a class="btn enroll" href="https://www.udemy.com/course/databricks-ml-professional-certification-exam-prep/" rel="sponsored" target="_blank">Start my full course on Udemy →</a><a class="btn ghost" href="#practice">Try the free test →</a></div>
+</div><div class="trust"><span>✅ <b>Free</b> practice — no sign-up</span><span>📝 Real exam-style questions</span><span>💡 Detailed explanations</span><span>💸 30-day money-back via Udemy</span></div>
+<div id="practice"></div>
+
+  <div class="card qcard" id="q0" data-domain="Model Development">
+    <div class="meta">Question 1 of 12 · Model Development</div>
+    <div class="q">A retail analytics team needs to train 50,000 independent forecasting models, one per store, where each store's historical sales data comfortably fits into the memory of a single worker node. The team wants to parallelize this training across the cluster efficiently rather than looping sequentially on the driver. Which approach BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. Use a Spark MLlib distributed training algorithm to train one large model across all stores</button><button class="opt" onclick="answer(this,0,1,3)">B. Use Ray Train to distribute a single deep learning model across the cluster</button><button class="opt" onclick="answer(this,0,2,3)">C. Loop through stores sequentially on the driver node using pandas and scikit-learn</button><button class="opt" onclick="answer(this,0,3,3)">D. Use the pandas Function API (applyInPandas) with a GroupedData object to train an independent model per store in parallel</button>
+    <div class="expl">The pandas Function API lets you group a Spark DataFrame by a key (e.g., store_id) and apply an arbitrary pandas/scikit-learn function to each group in parallel across executors, which is the standard pattern for many-small-models workloads that don't need distributed algorithms.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="MLOps">
+    <div class="meta">Question 2 of 12 · MLOps</div>
+    <div class="q">A company registers ML models in Unity Catalog. They want the model serving endpoint to always route production traffic to the current best model version without redeploying the endpoint configuration each time a new version is promoted. Which approach BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. Set the 'champion' alias on the current best model version and configure the serving endpoint to reference the alias instead of a fixed version number</button><button class="opt" onclick="answer(this,1,1,0)">B. Manually update the endpoint's model version field in the serving configuration every time a new best model is identified</button><button class="opt" onclick="answer(this,1,2,0)">C. Use MLflow Model Registry stages (Production/Staging) since aliases are not supported for models registered in Unity Catalog</button><button class="opt" onclick="answer(this,1,3,0)">D. Deploy a new serving endpoint every time a new model version becomes champion, then update DNS to point to the new endpoint</button>
+    <div class="expl">Unity Catalog model aliases are mutable named pointers (e.g., 'champion') that can be reassigned to any version instantly via API/UI. If the serving endpoint config references the alias, moving the alias to a new version automatically changes what the endpoint serves with no endpoint redeploy or downtime.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Model Deployment">
+    <div class="meta">Question 3 of 12 · Model Deployment</div>
+    <div class="q">A company wants to deploy a new fraud-detection model version but must limit risk by exposing it to only a small percentage of live traffic first, gradually increasing exposure while monitoring error rates. Which strategy fits, and how is it implemented on Databricks Model Serving?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. Canary deployment: configure the serving endpoint's traffic_config to route a small percentage (e.g. 5%) to the new served entity, increasing it over time as metrics stay healthy</button><button class="opt" onclick="answer(this,2,1,0)">B. Shadow deployment: route duplicate traffic to the new model but discard its responses so users never see them</button><button class="opt" onclick="answer(this,2,2,0)">C. Blue-green deployment: immediately cut 100% of traffic over to the new served entity</button><button class="opt" onclick="answer(this,2,3,0)">D. Batch inference: score requests offline nightly and update a predictions Delta table instead of serving live traffic</button>
+    <div class="expl">Canary deployment on Databricks Model Serving is implemented by setting traffic_config percentages across served entities and incrementally shifting the split toward the new version while monitoring latency/error rate, which directly matches the gradual, risk-limited exposure requirement.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Model Development">
+    <div class="meta">Question 4 of 12 · Model Development</div>
+    <div class="q">A data science team has a 500GB dataset that does not fit in the memory of any single node in the cluster. They need to train ONE model on the entire dataset. Which approach BEST fits this requirement?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. pandas Function API grouping the data by a partition key</button><button class="opt" onclick="answer(this,3,1,3)">B. Optuna with a joblib-based parallel backend</button><button class="opt" onclick="answer(this,3,2,3)">C. Ray Train with a single-node actor</button><button class="opt" onclick="answer(this,3,3,3)">D. A Spark MLlib distributed algorithm (e.g., Spark ML's RandomForestRegressor) that partitions data across the cluster</button>
+    <div class="expl">Spark MLlib algorithms are designed to train a single model whose computation is distributed across the cluster by partitioning the data itself, which is required when the dataset exceeds single-node memory.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="MLOps">
+    <div class="meta">Question 5 of 12 · MLOps</div>
+    <div class="q">A data science team monitors a production feature table for distribution drift. One feature is customer age (a continuous numeric value) and another is customer segment (categorical). Which statistical test should be used to detect drift specifically in the customer age feature?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. Kolmogorov-Smirnov (KS) test</button><button class="opt" onclick="answer(this,4,1,0)">B. Chi-square test</button><button class="opt" onclick="answer(this,4,2,0)">C. Jaccard similarity</button><button class="opt" onclick="answer(this,4,3,0)">D. Cohen's kappa</button>
+    <div class="expl">The Kolmogorov-Smirnov (KS) test compares the cumulative distributions of a continuous numeric variable between a baseline window and a current window, making it the standard test Lakehouse Monitoring uses for numeric feature drift.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Model Deployment">
+    <div class="meta">Question 6 of 12 · Model Deployment</div>
+    <div class="q">A retailer needs product recommendations returned within 200ms of a webpage load request. Which serving approach should be used?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. A batch inference job scheduled hourly that writes recommendations to a Delta table for the site to read</button><button class="opt" onclick="answer(this,5,1,1)">B. A real-time Databricks Model Serving REST endpoint that returns predictions synchronously per request</button><button class="opt" onclick="answer(this,5,2,1)">C. A Structured Streaming job that continuously scores incoming events and appends results to a table</button><button class="opt" onclick="answer(this,5,3,1)">D. A manually triggered notebook using mlflow.pyfunc.spark_udf to score a batch of pending requests</button>
+    <div class="expl">Sub-second, per-request latency requirements are the defining use case for real-time Model Serving, which hosts the model behind a low-latency REST endpoint and returns predictions synchronously for each request.</div>
+  </div>
+
+  <div class="card qcard" id="q6" data-domain="Model Development">
+    <div class="meta">Question 7 of 12 · Model Development</div>
+    <div class="q">A team is running Optuna hyperparameter optimization with multiple worker processes across a Databricks cluster, and each worker needs to read and write trial results to a shared study so trials aren't duplicated or lost. Which configuration should they use?</div>
+    <button class="opt" onclick="answer(this,6,0,3)">A. Leave storage as the default in-memory SQLite study, since Optuna handles distribution automatically</button><button class="opt" onclick="answer(this,6,1,3)">B. Save each trial's results to separate local pickle files on each worker</button><button class="opt" onclick="answer(this,6,2,3)">C. Use SparkTrials from Hyperopt instead, since Optuna does not support distributed storage</button><button class="opt" onclick="answer(this,6,3,3)">D. Configure Optuna with an RDB storage backend (e.g., a MySQL or PostgreSQL connection URL) shared across all worker processes</button>
+    <div class="expl">To run distributed Optuna trials across multiple processes or machines, the study must use a persistent shared storage backend (an RDB URL such as MySQL or PostgreSQL) so all workers can read/write the same study state and avoid duplicate or lost trials.</div>
+  </div>
+
+  <div class="card qcard" id="q7" data-domain="MLOps">
+    <div class="meta">Question 8 of 12 · MLOps</div>
+    <div class="q">You are configuring Lakehouse Monitoring on an inference table that logs batch predictions daily. To compute profile and drift metrics over rolling time windows (e.g., one day at a time), which parameter must you configure in the monitor definition?</div>
+    <button class="opt" onclick="answer(this,7,0,3)">A. custom_metrics</button><button class="opt" onclick="answer(this,7,1,3)">B. baseline_table_name</button><button class="opt" onclick="answer(this,7,2,3)">C. slicing_exprs</button><button class="opt" onclick="answer(this,7,3,3)">D. granularities</button>
+    <div class="expl">The 'granularities' parameter defines the time-bucket size (e.g., '1 day', '1 hour') used to aggregate the inference table into windows for computing profile metrics and drift statistics over time.</div>
+  </div>
+
+  <div class="card qcard" id="q8" data-domain="Model Deployment">
+    <div class="meta">Question 9 of 12 · Model Deployment</div>
+    <div class="q">A data science team needs to score 500 million rows nightly using a registered model and write results to a Delta table for downstream BI dashboards. There is no low-latency requirement. Which approach is most appropriate?</div>
+    <button class="opt" onclick="answer(this,8,0,2)">A. Deploy a real-time Model Serving endpoint with autoscaling enabled to handle the scoring</button><button class="opt" onclick="answer(this,8,1,2)">B. Deploy the new model as a shadow deployment behind the existing production endpoint</button><button class="opt" onclick="answer(this,8,2,2)">C. Run batch inference using mlflow.pyfunc.spark_udf inside a scheduled Databricks job</button><button class="opt" onclick="answer(this,8,3,2)">D. Use a Structured Streaming job with a continuous trigger to score the rows</button>
+    <div class="expl">Large-scale, latency-insensitive scoring is the canonical use case for batch inference: wrapping the registered model with mlflow.pyfunc.spark_udf lets Spark distribute scoring across the cluster within a scheduled job, which is efficient and cost-effective for 500M rows.</div>
+  </div>
+
+  <div class="card qcard" id="q9" data-domain="Model Development">
+    <div class="meta">Question 10 of 12 · Model Development</div>
+    <div class="q">During a hyperparameter tuning sweep tracked in MLflow, what is the primary purpose of using nested runs (a parent run with multiple child runs)?</div>
+    <button class="opt" onclick="answer(this,9,0,0)">A. To log each trial as a child run beneath a parent run so results can be organized, filtered, and compared in the MLflow UI</button><button class="opt" onclick="answer(this,9,1,0)">B. To encrypt hyperparameter values before logging them to the tracking server</button><button class="opt" onclick="answer(this,9,2,0)">C. To automatically register the best-performing model to Unity Catalog</button><button class="opt" onclick="answer(this,9,3,0)">D. To distribute each trial across a different Spark worker node</button>
+    <div class="expl">Nested runs create a parent-child hierarchy in the MLflow tracking UI so that each hyperparameter trial appears as a child run under a single parent, making it easy to visually group, sort, and compare metrics/params across the whole sweep.</div>
+  </div>
+
+  <div class="card qcard" id="q10" data-domain="MLOps">
+    <div class="meta">Question 11 of 12 · MLOps</div>
+    <div class="q">A team wants a production model to automatically retrain when Lakehouse Monitoring detects significant feature drift, without any manual intervention. Which design BEST implements this requirement?</div>
+    <button class="opt" onclick="answer(this,10,0,1)">A. Manually review the monitoring dashboard each morning and start the retraining notebook if drift appears high</button><button class="opt" onclick="answer(this,10,1,1)">B. Configure an alert on the drift metric table produced by Lakehouse Monitoring that triggers a Databricks Job, and have that job run the retraining pipeline and register the new model version</button><button class="opt" onclick="answer(this,10,2,1)">C. Schedule the retraining job to run every hour regardless of drift, since Lakehouse Monitoring cannot trigger jobs</button><button class="opt" onclick="answer(this,10,3,1)">D. Set the model serving endpoint to automatically retrain itself whenever request latency increases</button>
+    <div class="expl">Lakehouse Monitoring writes drift metrics to metric tables that can back a SQL alert; that alert can notify or trigger automation (e.g., a webhook that kicks off a Databricks Job) that runs the retraining pipeline and registers the new model version — a fully closed-loop, automated design.</div>
+  </div>
+
+  <div class="card qcard" id="q11" data-domain="Model Deployment">
+    <div class="meta">Question 12 of 12 · Model Deployment</div>
+    <div class="q">A Model Serving endpoint already has two served entities named 'model-v1' and 'model-v2'. You want to canary test model-v2 by sending it 10% of traffic while model-v1 receives the remaining 90%. Which traffic_config block correctly implements this split?</div>
+    <button class="opt" onclick="answer(this,11,0,2)">A. {&quot;routes&quot;: [{&quot;served_model_name&quot;: &quot;model-v1&quot;, &quot;traffic_percentage&quot;: 10}, {&quot;served_model_name&quot;: &quot;model-v2&quot;, &quot;traffic_percentage&quot;: 90}]}</button><button class="opt" onclick="answer(this,11,1,2)">B. {&quot;served_entities&quot;: [{&quot;entity_name&quot;: &quot;model-v1&quot;, &quot;traffic_percentage&quot;: 90}]}</button><button class="opt" onclick="answer(this,11,2,2)">C. {&quot;routes&quot;: [{&quot;served_model_name&quot;: &quot;model-v1&quot;, &quot;traffic_percentage&quot;: 90}, {&quot;served_model_name&quot;: &quot;model-v2&quot;, &quot;traffic_percentage&quot;: 10}]}</button><button class="opt" onclick="answer(this,11,3,2)">D. {&quot;routes&quot;: [{&quot;served_model_name&quot;: &quot;model-v1&quot;, &quot;traffic_percentage&quot;: 50}, {&quot;served_model_name&quot;: &quot;model-v2&quot;, &quot;traffic_percentage&quot;: 50}]}</button>
+    <div class="expl">Traffic splitting on a Databricks Model Serving endpoint is configured under traffic_config.routes, listing each served_model_name with its traffic_percentage; giving model-v1 90 and model-v2 10 matches the required 90/10 canary split, and the percentages sum to 100.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/databricks-ml-professional-certification-exam-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<section class="faq"><h3>Databricks ML Professional exam — quick answers</h3><details><summary>How much does the Databricks ML Professional exam cost?</summary><p>The exam fee is approximately $200 and varies by region — confirm current pricing with the certification vendor before you book.</p></details><details><summary>What topics are on the exam?</summary><p>It covers 3 domains: Model Development (44%), MLOps (44%), Model Deployment (12%). The full course has a dedicated chapter, lab and practice-test coverage for each.</p></details><details><summary>Is this practice test really free?</summary><p>Yes — all questions on this page are free with explanations and no sign-up. The paid Udemy course adds two full-length timed exams, video lessons and hands-on labs.</p></details><details><summary>Will this prepare me for the real exam?</summary><p>The questions mirror the real exam's style and are mapped to the official domains. This is exam-focused preparation — combine the free test with the full course's timed simulations to gauge your readiness.</p></details></section>
+<div class="domains"><span class="meta">More free practice by exam domain:</span><br><a href="databricks-ml-professional-model-development.html">Model Development →</a><a href="databricks-ml-professional-mlops.html">MLOps →</a></div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>
