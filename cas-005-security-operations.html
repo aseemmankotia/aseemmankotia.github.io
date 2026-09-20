@@ -1,0 +1,76 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Security Operations Practice Questions — CompTIA SecurityX</title>
+<meta name="description" content="6 free Security Operations practice questions with explanations for the CompTIA SecurityX exam.">
+<link rel="canonical" href="https://technuggets.academy/cas-005-security-operations.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Security Operations Practice Questions — CompTIA SecurityX">
+<meta property="og:description" content="6 free Security Operations practice questions with explanations for the CompTIA SecurityX exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/cas-005-security-operations.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#C8202F}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Security Operations</h1>
+<p class="sub">Free CompTIA SecurityX practice — 6 questions on <strong>Security Operations</strong>, with explanations. No sign-up.
+<a href="cas-005.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Security Operations">
+    <div class="meta">Question 1 of 6 · Security Operations</div>
+    <div class="q">An incident responder arrives at a compromised production database server. Business SLA requires the server be returned to service within 15 minutes. Given this extreme time constraint, which action should be prioritized to preserve the MOST volatile evidence before the system is taken down or rebooted?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. Create a full forensic disk image before taking any other action</button><button class="opt" onclick="answer(this,0,1,1)">B. Capture a memory (RAM) dump and current network connection state before any shutdown or reboot occurs</button><button class="opt" onclick="answer(this,0,2,1)">C. Copy log files from disk to external storage first</button><button class="opt" onclick="answer(this,0,3,1)">D. Take a screenshot of the current process list only</button>
+    <div class="expl">Per the order of volatility, RAM contents, running processes, and active network connections are the most perishable evidence and are lost immediately on shutdown or reboot. With only 15 minutes available, capturing memory and network state first maximizes evidentiary value before the server is restored to service.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Security Operations">
+    <div class="meta">Question 2 of 6 · Security Operations</div>
+    <div class="q">A SOC is experiencing analyst fatigue from a high volume of phishing alerts. Leadership wants to speed up response using SOAR automation but is concerned that fully automated remediation could disrupt production systems if the verdict is wrong. Which playbook design BEST balances automation speed with appropriate human oversight?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. Route alerts scored above a defined high-confidence threshold to automated containment, and require analyst approval for any action affecting production systems below that threshold</button><button class="opt" onclick="answer(this,1,1,0)">B. Fully automate all remediation actions purely based on the SOAR confidence score, with no human review</button><button class="opt" onclick="answer(this,1,2,0)">C. Disable automation entirely and require manual analyst review for every phishing alert</button><button class="opt" onclick="answer(this,1,3,0)">D. Apply a single global auto-remediation rule to all alerts tagged 'phishing' regardless of confidence score</button>
+    <div class="expl">Threshold-based routing lets the SOAR platform automatically contain high-confidence, low-risk findings while preserving human-in-the-loop approval for actions that carry business disruption risk — this is the standard enterprise pattern for balancing speed with safety in orchestration.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Security Operations">
+    <div class="meta">Question 3 of 6 · Security Operations</div>
+    <div class="q">A threat intel feed delivers a STIX indicator tagged 'APT29' with a confidence score of 15 out of 100. The analyst wants to make productive use of this low-confidence indicator without generating excessive false positives across the enterprise. Which action is MOST appropriate?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. Automatically block all matching traffic enterprise-wide at the perimeter firewall</button><button class="opt" onclick="answer(this,2,1,1)">B. Add the indicator to a low-priority hunting watchlist for correlation with other higher-fidelity signals rather than triggering automated blocking</button><button class="opt" onclick="answer(this,2,2,1)">C. Discard the indicator entirely because the confidence score is too low to be useful</button><button class="opt" onclick="answer(this,2,3,1)">D. Immediately escalate as a confirmed APT29 breach and activate full incident response</button>
+    <div class="expl">Low-confidence indicators still have hunting value when correlated with other telemetry. Using them in a passive watchlist for threat hunting extracts intelligence value without the false-positive risk of automated enforcement actions based on unreliable data.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Security Operations">
+    <div class="meta">Question 4 of 6 · Security Operations</div>
+    <div class="q">During an enterprise forensic investigation, an analyst suspects an attacker used anti-forensic techniques to falsify file timestamps (timestomping) on a Windows host to hide the true timeline of compromise. Which technique is MOST effective for detecting this manipulation?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. Rely on the file's 'Date Modified' attribute as shown in the operating system's file properties GUI</button><button class="opt" onclick="answer(this,3,1,3)">B. Check only the antivirus scan log's recorded timestamp for the file</button><button class="opt" onclick="answer(this,3,2,3)">C. Compare only the SHA-256 hash value of the file before and after the incident</button><button class="opt" onclick="answer(this,3,3,3)">D. Cross-reference the NTFS $LogFile and $UsnJrnl transaction records against the $MFT entry timestamps to identify inconsistencies</button>
+    <div class="expl">Timestomping tools typically modify the $STANDARD_INFORMATION timestamps visible in the MFT but cannot easily alter journal records like $LogFile and $UsnJrnl, which independently log filesystem transactions. Discrepancies between these artifacts are the classic forensic indicator of timestamp manipulation.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Security Operations">
+    <div class="meta">Question 5 of 6 · Security Operations</div>
+    <div class="q">A security team discovers that an attacker crafted network traffic with subtle perturbations specifically designed to evade a machine-learning-based NIDS by pushing the classifier's confidence score just below the alerting threshold (an adversarial evasion attack). Which operational control BEST mitigates this class of risk going forward?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. Raise the ML model's anomaly detection threshold to reduce false positives</button><button class="opt" onclick="answer(this,4,1,2)">B. Replace the detection approach with a single, highly accurate deep neural network classifier</button><button class="opt" onclick="answer(this,4,2,2)">C. Deploy ensemble detection that combines multiple heterogeneous ML models with behavioral and signature-based detection, so a single evasion technique is unlikely to bypass all layers</button><button class="opt" onclick="answer(this,4,3,2)">D. Disable the ML-based detector entirely and rely only on legacy signature-based IDS rules</button>
+    <div class="expl">Adversarial examples are typically crafted against a specific model's decision boundary. A diverse ensemble of heterogeneous detection methods (different ML architectures plus behavioral/signature detection) greatly reduces the chance that one crafted evasion technique defeats every layer simultaneously — this is the recommended defense-in-depth approach for ML-based detection.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Security Operations">
+    <div class="meta">Question 6 of 6 · Security Operations</div>
+    <div class="q">A UEBA platform flagged a privileged admin account performing an unusual bulk data export at 3 AM, which deviates sharply from the account's behavioral baseline. However, the SIEM automatically suppressed the alert because the source IP matched a 'known VPN' allowlist. What is the BEST enterprise-scale fix to prevent this blind spot while keeping false positives low elsewhere?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. Implement risk-based scoring so that an allowlisted IP reduces, but never fully zeroes out, the overall risk score — ensuring strong behavioral anomalies still trigger alerts when combined with other risk factors</button><button class="opt" onclick="answer(this,5,1,0)">B. Remove all IP-based allowlisting logic from every SIEM/SOAR correlation rule</button><button class="opt" onclick="answer(this,5,2,0)">C. Expand the VPN allowlist to cover additional trusted network ranges</button><button class="opt" onclick="answer(this,5,3,0)">D. Disable UEBA behavioral analytics for privileged accounts to reduce alert noise</button>
+    <div class="expl">Risk-based scoring that treats allowlist membership as one weighted factor — rather than an absolute suppression rule — allows strong behavioral anomalies (like an atypical 3 AM bulk export by a privileged account) to still surface even from a trusted IP, closing the blind spot without discarding the useful noise-reduction the allowlist provides for benign traffic.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">undefined</span> <span class="price">$34.99</span> with code <span class="code">FREETEST33</span> — valid through Oct 6.</p>
+  <a href="https://www.udemy.com/course/comptia-securityx-cas-005-exam-focused-prep/?couponCode=FREETEST33" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

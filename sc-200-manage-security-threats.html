@@ -1,0 +1,87 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Manage security threats Practice Questions — Microsoft Certified: Security Operations Analyst Associate</title>
+<meta name="description" content="6 free Manage security threats practice questions with explanations for the Microsoft Certified: Security Operations Analyst Associate exam.">
+<link rel="canonical" href="https://technuggets.academy/sc-200-manage-security-threats.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Manage security threats Practice Questions — Microsoft Certified: Security Operations Analyst Associate">
+<meta property="og:description" content="6 free Manage security threats practice questions with explanations for the Microsoft Certified: Security Operations Analyst Associate exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/sc-200-manage-security-threats.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0078D4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Manage security threats</h1>
+<p class="sub">Free Microsoft Certified: Security Operations Analyst Associate practice — 6 questions on <strong>Manage security threats</strong>, with explanations. No sign-up.
+<a href="sc-200.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Manage security threats">
+    <div class="meta">Question 1 of 6 · Manage security threats</div>
+    <div class="q">A threat hunter wants to identify likely command-and-control (C2) beaconing by analyzing outbound connection counts per hour for each device over the last 14 days, looking for a statistically regular, periodic pattern. Which KQL function should be used inside the hunting query to detect this periodicity after building a time series with make-series?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. series_decompose_anomalies()</button><button class="opt" onclick="answer(this,0,1,0)">B. extractjson()</button><button class="opt" onclick="answer(this,0,2,0)">C. bin_at()</button><button class="opt" onclick="answer(this,0,3,0)">D. toscalar()</button>
+    <div class="expl">series_decompose_anomalies() analyzes a time series (built with make-series) to detect anomalies and periodic/seasonal patterns, which is the standard KQL approach for surfacing regular beaconing behavior in hunting queries.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Manage security threats">
+    <div class="meta">Question 2 of 6 · Manage security threats</div>
+    <div class="q">During an active, still-unfolding incident, an analyst wants to watch for new matching results from a specific hunting query in near real-time as new telemetry arrives in Microsoft Sentinel, without creating a scheduled analytics rule or generating incidents. Which Sentinel feature should the analyst use?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. Livestream</button><button class="opt" onclick="answer(this,1,1,0)">B. Entity behavior analytics</button><button class="opt" onclick="answer(this,1,2,0)">C. Bookmarks</button><button class="opt" onclick="answer(this,1,3,0)">D. Notebooks</button>
+    <div class="expl">Livestream runs a query continuously against incoming data and surfaces matching results in near real-time on screen, without creating an analytics rule or persisting incidents — ideal for actively monitoring during a live investigation.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Manage security threats">
+    <div class="meta">Question 3 of 6 · Manage security threats</div>
+    <div class="q">A company subscribes to a third-party STIX/TAXII threat intelligence feed that pushes updated indicators of compromise (IPs, domains, hashes) every hour. The company wants Microsoft Sentinel to automatically ingest these indicators into the ThreatIntelligenceIndicator table so they can be matched against network and DNS logs. Which data connector should be configured?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. Threat Intelligence - TAXII</button><button class="opt" onclick="answer(this,2,1,0)">B. Microsoft Defender Threat Intelligence connector</button><button class="opt" onclick="answer(this,2,2,0)">C. Threat Intelligence Upload Indicators API</button><button class="opt" onclick="answer(this,2,3,0)">D. Common Event Format (CEF) via AMA</button>
+    <div class="expl">The Threat Intelligence - TAXII connector allows Sentinel to connect to any standards-based TAXII 2.x server and automatically pull STIX-formatted indicators on a recurring schedule into the ThreatIntelligenceIndicator table.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Manage security threats">
+    <div class="meta">Question 4 of 6 · Manage security threats</div>
+    <div class="q">An organization enables User and Entity Behavior Analytics (UEBA) in Microsoft Sentinel and expects it to baseline normal sign-in patterns and flag anomalous logons from unusual locations for each user. Which prerequisite must be satisfied for UEBA to generate these behavior insights?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. UEBA must be turned on in Sentinel settings, and SigninLogs/AuditLogs must be ingested via the Microsoft Entra ID (Azure AD) data connector</button><button class="opt" onclick="answer(this,3,1,0)">B. A custom analytics rule tagged with MITRE ATT&amp;CK Initial Access must be created first</button><button class="opt" onclick="answer(this,3,2,0)">C. Fusion analytics rules must be enabled in the Analytics blade</button><button class="opt" onclick="answer(this,3,3,0)">D. Microsoft Sentinel notebooks must be deployed to compute behavioral baselines</button>
+    <div class="expl">UEBA relies on identity and activity source data — primarily SigninLogs and AuditLogs from the Microsoft Entra ID connector — to build entity baselines. UEBA must also be explicitly enabled under Sentinel Settings &gt; Entity behavior before it processes this data into behavior insights and anomaly scores.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Manage security threats">
+    <div class="meta">Question 5 of 6 · Manage security threats</div>
+    <div class="q">In Microsoft Sentinel, hunting queries and analytics rules can be tagged with MITRE ATT&amp;CK tactics and techniques. What is the primary benefit of this tagging for a SOC analyst performing proactive threat hunting?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. It automatically triggers an automated remediation playbook when a technique is matched</button><button class="opt" onclick="answer(this,4,1,3)">B. It is required before indicators of compromise can sync from Sentinel into Defender XDR</button><button class="opt" onclick="answer(this,4,2,3)">C. It measurably increases KQL query execution performance</button><button class="opt" onclick="answer(this,4,3,3)">D. It populates the MITRE ATT&amp;CK matrix workbook, visually showing which tactics/techniques have query coverage and which are gaps</button>
+    <div class="expl">MITRE ATT&amp;CK tagging feeds Sentinel's built-in ATT&amp;CK coverage view/workbook, letting hunters and SOC leads visualize which tactics and techniques already have detection/hunting coverage and prioritize hunting efforts toward uncovered techniques.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Manage security threats">
+    <div class="meta">Question 6 of 6 · Manage security threats</div>
+    <div class="q">A hunter runs the following query in Microsoft Defender XDR advanced hunting:
+
+DeviceProcessEvents
+| where FileName =~ &quot;powershell.exe&quot;
+| project DeviceId, ProcessId, InitiatingProcessCommandLine, TimeGenerated
+| join kind=inner (
+    DeviceNetworkEvents
+    | project DeviceId, ProcessId = InitiatingProcessId, RemoteIP, RemotePort, TimeGenerated1 = TimeGenerated
+) on DeviceId, ProcessId
+| where (TimeGenerated1 - TimeGenerated) between (0min .. 5min)
+
+What is this query designed to detect?</div>
+    <button class="opt" onclick="answer(this,5,0,2)">A. Devices that have PowerShell installed but have never executed it</button><button class="opt" onclick="answer(this,5,1,2)">B. All outbound network connections made by any process running on devices that also have PowerShell installed</button><button class="opt" onclick="answer(this,5,2,2)">C. PowerShell processes that established a network connection within 5 minutes of launching</button><button class="opt" onclick="answer(this,5,3,2)">D. PowerShell scripts that accessed files on a network share</button>
+    <div class="expl">The query joins PowerShell process launches to network events by matching DeviceId and ProcessId (as InitiatingProcessId), then filters to connections occurring between 0 and 5 minutes after the process started — surfacing PowerShell instances that quickly reach out over the network, a common indicator of malicious script activity or download-and-execute behavior.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">undefined</span> <span class="price">$34.99</span> with code <span class="code">FREETEST33</span> — valid through Oct 6.</p>
+  <a href="https://www.udemy.com/course/sc-200-microsoft-security-operations-analyst-prep/?couponCode=FREETEST33" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

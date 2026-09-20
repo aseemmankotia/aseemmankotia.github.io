@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Protection of Information Assets Practice Questions — Certified Information Systems Auditor</title>
+<meta name="description" content="6 free Protection of Information Assets practice questions with explanations for the Certified Information Systems Auditor exam.">
+<link rel="canonical" href="https://technuggets.academy/cisa-protection-of-information-assets.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Protection of Information Assets Practice Questions — Certified Information Systems Auditor">
+<meta property="og:description" content="6 free Protection of Information Assets practice questions with explanations for the Certified Information Systems Auditor exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/cisa-protection-of-information-assets.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#5B21B6}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Protection of Information Assets</h1>
+<p class="sub">Free Certified Information Systems Auditor practice — 6 questions on <strong>Protection of Information Assets</strong>, with explanations. No sign-up.
+<a href="cisa.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Domain 5: Protection of Information Assets">
+    <div class="meta">Question 1 of 6 · Domain 5: Protection of Information Assets</div>
+    <div class="q">An IS auditor is reviewing an organization's PKI implementation used to secure business-to-business transactions. The auditor discovers that relying applications validate certificates only against a Certificate Revocation List (CRL) that is published every 24 hours, with no OCSP stapling or real-time checking in place. Which risk should the auditor MOST prominently cite in the finding?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. A compromised certificate could remain trusted by relying parties for up to 24 hours after revocation</button><button class="opt" onclick="answer(this,0,1,0)">B. The CRL mechanism increases network bandwidth consumption unacceptably</button><button class="opt" onclick="answer(this,0,2,0)">C. The certificate authority's private key is exposed to a higher risk of compromise</button><button class="opt" onclick="answer(this,0,3,0)">D. Users will be unable to complete transactions during the 24-hour period</button>
+    <div class="expl">CRLs are only as current as their publication interval; a 24-hour refresh window means a revoked (e.g., compromised or stolen) certificate can still be accepted as valid by relying systems for up to a full day, creating a real window of exposure that OCSP or OCSP stapling would substantially reduce.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Domain 5: Protection of Information Assets">
+    <div class="meta">Question 2 of 6 · Domain 5: Protection of Information Assets</div>
+    <div class="q">During a review of an organization's privileged access management (PAM) solution, an IS auditor finds that database administrators check out shared root-level credentials from a password vault, and all vaulted sessions are recorded. However, the auditor notes that the vault automatically rotates the checked-out password only after the credential is manually returned, with no enforced maximum checkout duration. What is the MOST significant control weakness this represents?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. An administrator could retain a checked-out privileged credential indefinitely without triggering rotation</button><button class="opt" onclick="answer(this,1,1,0)">B. Session recording generates excessive storage costs for the organization</button><button class="opt" onclick="answer(this,1,2,0)">C. Shared accounts prevent the vault from recording session activity accurately</button><button class="opt" onclick="answer(this,1,3,0)">D. The vault's encryption algorithm cannot be validated by the auditor</button>
+    <div class="expl">Without an enforced maximum checkout time-to-live, a credential can be held open indefinitely, defeating the purpose of just-in-time privileged access and creating an extended window during which the credential's password is static and known to whoever checked it out — increasing the risk of misuse or lateral compromise going undetected.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Domain 5: Protection of Information Assets">
+    <div class="meta">Question 3 of 6 · Domain 5: Protection of Information Assets</div>
+    <div class="q">An organization's security policy requires that a symmetric Data Encryption Key (DEK) be used to encrypt large volumes of data at rest, while a separate Key Encryption Key (KEK) protects the DEK itself. An IS auditor reviewing this envelope encryption architecture should confirm which control is in place to ensure the design is effective?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. The DEK and KEK are both rotated on the exact same schedule to simplify key management</button><button class="opt" onclick="answer(this,2,1,1)">B. The KEK is stored in a hardware security module (HSM) or equivalent protected key store separate from the encrypted data</button><button class="opt" onclick="answer(this,2,2,1)">C. The DEK is transmitted in cleartext between systems to reduce processing overhead</button><button class="opt" onclick="answer(this,2,3,1)">D. The KEK is embedded within the application source code for rapid access during encryption operations</button>
+    <div class="expl">Envelope encryption's security depends on protecting the KEK at a higher assurance level than the DEK; storing it in an HSM or dedicated key management service, separate from the data and the DEK, ensures that compromise of the encrypted data store or the DEK alone does not expose the KEK.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Domain 5: Protection of Information Assets">
+    <div class="meta">Question 4 of 6 · Domain 5: Protection of Information Assets</div>
+    <div class="q">An IS auditor is evaluating the use of digital signatures on financial transaction messages exchanged between a bank and a corporate client. Management states the signatures were implemented specifically to prevent the sender from later denying they submitted a transaction. Which security objective does this control PRIMARILY address?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. Non-repudiation</button><button class="opt" onclick="answer(this,3,1,0)">B. Confidentiality</button><button class="opt" onclick="answer(this,3,2,0)">C. Availability</button><button class="opt" onclick="answer(this,3,3,0)">D. Authentication</button>
+    <div class="expl">Non-repudiation ensures that the originator of a message cannot later deny having sent it, which is achieved by digital signatures because only the sender's private key could have produced a valid signature verifiable with their public key.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Domain 5: Protection of Information Assets">
+    <div class="meta">Question 5 of 6 · Domain 5: Protection of Information Assets</div>
+    <div class="q">A financial services company's security operations center (SOC) uses a SIEM to correlate logs from firewalls, endpoint detection tools, and authentication systems. An IS auditor wants to test the operating effectiveness of the SIEM's alerting capability for detecting a multi-stage attack (initial phishing compromise followed by lateral movement). Which testing approach would provide the BEST evidence of control effectiveness?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. Interview the SOC manager and review the SIEM's vendor-published detection capability documentation</button><button class="opt" onclick="answer(this,4,1,2)">B. Review the SIEM's list of configured correlation rules and confirm they exist on paper</button><button class="opt" onclick="answer(this,4,2,2)">C. Simulate a controlled multi-stage attack scenario (e.g., via a red team or tabletop exercise) and verify the SIEM generates and escalates the expected alert within the defined SLA</button><button class="opt" onclick="answer(this,4,3,2)">D. Confirm that log sources are configured to forward events to the SIEM without reviewing actual alert generation</button>
+    <div class="expl">Testing operating effectiveness requires evidence that the control actually functions as intended in practice; a controlled simulation of the specific attack pattern, followed by verification that the SIEM detects, correlates, and escalates the alert within SLA, provides direct substantive evidence rather than relying on design documentation or inquiry alone.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Domain 5: Protection of Information Assets">
+    <div class="meta">Question 6 of 6 · Domain 5: Protection of Information Assets</div>
+    <div class="q">An organization classifies data into Public, Internal, Confidential, and Restricted tiers. During a review of cross-border data transfers, an IS auditor discovers that a customer analytics dataset classified as Confidential (containing pseudonymized personal data) is being transferred to a third-party processor in a country without an adequacy decision or equivalent legal safeguard recognized by the data's originating jurisdiction. Which recommendation should the auditor make FIRST?</div>
+    <button class="opt" onclick="answer(this,5,0,2)">A. Reclassify the dataset as Public since it is pseudonymized and no longer considered personal data</button><button class="opt" onclick="answer(this,5,1,2)">B. Recommend the transfer proceed unchanged since pseudonymization satisfies all cross-border transfer legal requirements</button><button class="opt" onclick="answer(this,5,2,2)">C. Recommend implementation of an appropriate transfer mechanism, such as standard contractual clauses or binding corporate rules, before the transfer continues</button><button class="opt" onclick="answer(this,5,3,2)">D. Recommend encrypting the dataset in transit only, since encryption alone satisfies international data transfer regulations</button>
+    <div class="expl">Most data privacy regulations (e.g., GDPR-style frameworks) require a recognized legal transfer mechanism — such as standard contractual clauses (SCCs) or binding corporate rules (BCRs) — for transfers to jurisdictions lacking an adequacy determination, regardless of pseudonymization; the auditor's first recommendation should be to establish this legal safeguard.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/cisa-exam-prep-master-is-audit-governance-security/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

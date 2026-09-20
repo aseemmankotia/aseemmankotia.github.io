@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Resource Management and Availability Practice Questions — VMware Certified Professional - Data Center Virtualization (vSphere 8)</title>
+<meta name="description" content="6 free Resource Management and Availability practice questions with explanations for the VMware Certified Professional - Data Center Virtualization (vSphere 8) exam.">
+<link rel="canonical" href="https://technuggets.academy/2v0-21-23-resource-management-and-availability.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Resource Management and Availability Practice Questions — VMware Certified Professional - Data Center Virtualization (vSphere 8)">
+<meta property="og:description" content="6 free Resource Management and Availability practice questions with explanations for the VMware Certified Professional - Data Center Virtualization (vSphere 8) exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/2v0-21-23-resource-management-and-availability.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Resource Management and Availability</h1>
+<p class="sub">Free VMware Certified Professional - Data Center Virtualization (vSphere 8) practice — 6 questions on <strong>Resource Management and Availability</strong>, with explanations. No sign-up.
+<a href="2v0-21-23.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Resource Management and Availability">
+    <div class="meta">Question 1 of 6 · Resource Management and Availability</div>
+    <div class="q">You have a resource pool named 'Finance-RP' configured with a Memory reservation of 16 GB and Expandable Reservation enabled. VMs already running inside the pool consume the full 16 GB in reservations. An administrator attempts to power on an additional VM configured with a 4 GB memory reservation. The parent resource pool currently has 32 GB of unreserved memory available. What happens when the VM is powered on?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. The power-on operation fails with insufficient resources because Finance-RP's reservation is fixed at 16 GB and cannot exceed its configured value.</button><button class="opt" onclick="answer(this,0,1,1)">B. The power-on operation succeeds because Finance-RP borrows the additional 4 GB reservation from its parent resource pool.</button><button class="opt" onclick="answer(this,0,2,1)">C. vCenter Server automatically and permanently increases Finance-RP's configured reservation to 20 GB to accommodate the VM.</button><button class="opt" onclick="answer(this,0,3,1)">D. The VM powers on but is placed in an unreserved state, causing memory contention for all VMs already running in the pool.</button>
+    <div class="expl">When Expandable Reservation is enabled on a resource pool, and the pool's own configured reservation is fully committed, the pool can dynamically borrow unused reservation capacity from its parent (up the hierarchy) as long as the parent has enough unreserved capacity — allowing the VM to power on.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Resource Management and Availability">
+    <div class="meta">Question 2 of 6 · Resource Management and Availability</div>
+    <div class="q">A vSphere HA cluster contains 8 identical ESXi hosts, each with 128 GB of physical memory. The cluster's admission control policy is set to 'Cluster resource percentage' with both CPU and memory failover capacity set to 25%. Ignoring virtualization overhead, what is the maximum amount of memory available for powered-on VM reservations in this cluster?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. 1024 GB — the full physical memory capacity of the cluster</button><button class="opt" onclick="answer(this,1,1,3)">B. 256 GB — the amount of memory set aside for the failover capacity itself</button><button class="opt" onclick="answer(this,1,2,3)">C. 896 GB — capacity remaining after subtracting one host's worth of memory (128 GB)</button><button class="opt" onclick="answer(this,1,3,3)">D. 768 GB — capacity remaining after subtracting the 25% reserved failover capacity from the cluster total</button>
+    <div class="expl">Total cluster memory is 8 x 128 GB = 1024 GB. With a percentage-based policy reserving 25% for failover, 256 GB is set aside, leaving 1024 - 256 = 768 GB available for VM reservations.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Resource Management and Availability">
+    <div class="meta">Question 3 of 6 · Resource Management and Availability</div>
+    <div class="q">An administrator creates a VM/Host affinity rule of type 'Must run on hosts in group' that binds a group of database VMs to a host group containing only Host-A and Host-B. DRS is disabled in this cluster. Host-A fails unexpectedly, and Host-B currently has no free resources available for the affected VMs. vSphere HA attempts to restart the failed VMs. What is the outcome?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. HA restarts the VMs on Host-B using DRS to evict lower-priority VMs and free the required capacity.</button><button class="opt" onclick="answer(this,2,1,3)">B. HA restarts the VMs on any available host in the cluster, temporarily overriding the affinity rule until DRS can relocate them.</button><button class="opt" onclick="answer(this,2,2,3)">C. HA restarts the VMs on Host-B anyway, oversubscribing its memory, since HA always overrides resource limits during a failover event.</button><button class="opt" onclick="answer(this,2,3,3)">D. HA cannot restart the VMs, because the 'must run on' rule is mandatory and hard-enforced, restricting placement strictly to the specified host group regardless of available capacity elsewhere.</button>
+    <div class="expl">'Must run on' VM/Host affinity rules are mandatory constraints enforced by both DRS and HA and can never be violated, even during an HA failover. If no host within the allowed group has sufficient capacity, the VM restart fails and the VM remains unpowered until capacity becomes available within the group.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Resource Management and Availability">
+    <div class="meta">Question 4 of 6 · Resource Management and Availability</div>
+    <div class="q">In vSphere 8, what is the maximum number of vCPUs supported for a single virtual machine protected by vSphere Fault Tolerance?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. 4 vCPUs — this has been the fixed maximum since vSphere Fault Tolerance was introduced</button><button class="opt" onclick="answer(this,3,1,3)">B. 2 vCPUs — FT only supports single-threaded workloads to guarantee lockstep</button><button class="opt" onclick="answer(this,3,2,3)">C. 16 vCPUs — matching the maximum supported by vSphere HA admission control slot sizing</button><button class="opt" onclick="answer(this,3,3,3)">D. 8 vCPUs — the current supported maximum for an FT-protected VM</button>
+    <div class="expl">vSphere Fault Tolerance supports FT-protected VMs with up to 8 vCPUs, a limit increased from the earlier 4-vCPU maximum in older vSphere releases, and this remains the supported maximum in vSphere 8.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Resource Management and Availability">
+    <div class="meta">Question 5 of 6 · Resource Management and Availability</div>
+    <div class="q">What is the default 'APD timeout' value in vSphere HA before an ESXi host formally declares a datastore to be in an All Paths Down (APD) state, potentially triggering the configured HA APD response?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. 60 seconds</button><button class="opt" onclick="answer(this,4,1,1)">B. 140 seconds — the fixed default value after which the host declares the device to be in an APD state</button><button class="opt" onclick="answer(this,4,2,1)">C. 180 seconds — the same value commonly associated with the 'conservative' VM restart delay used in PDL responses</button><button class="opt" onclick="answer(this,4,3,1)">D. 300 seconds</button>
+    <div class="expl">vSphere uses a fixed default APD timeout of 140 seconds. Once this timeout elapses without I/O recovery, the host formally declares the device as APD, which can then trigger the cluster's configured 'Response for Datastore with APD' HA setting.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Resource Management and Availability">
+    <div class="meta">Question 6 of 6 · Resource Management and Availability</div>
+    <div class="q">A cluster contains two top-level resource pools: 'RP-Gold' configured with High CPU shares, and 'RP-Silver' configured with Normal CPU shares. Inside RP-Silver, a VM named 'Web-01' is individually configured with Custom CPU shares set to a very high numeric value (10,000). During CPU contention, how does DRS treat Web-01 relative to VMs residing directly inside RP-Gold?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. Web-01 receives higher CPU priority than VMs in RP-Gold, because its custom share value (10,000) numerically exceeds RP-Gold's High setting.</button><button class="opt" onclick="answer(this,5,1,1)">B. Web-01's shares are compared only against sibling objects inside RP-Silver; its priority relative to RP-Gold is determined by RP-Silver's own pool-level share value, not Web-01's individual VM share value.</button><button class="opt" onclick="answer(this,5,2,1)">C. DRS ignores individual VM share values entirely once a VM resides inside any resource pool, defaulting every VM to Normal shares.</button><button class="opt" onclick="answer(this,5,3,1)">D. Web-01 automatically inherits RP-Gold's High share setting because its numeric share value is higher than the pool's default value.</button>
+    <div class="expl">This is the resource pool 'sibling rivalry' behavior: shares are only meaningful relative to sibling objects sharing the same parent in the resource hierarchy. Web-01's high custom share value only influences its priority among other VMs directly inside RP-Silver. When RP-Silver as a whole competes against RP-Gold for the parent's resources, only RP-Silver's own pool-level share setting (Normal) is used in that comparison.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/vcp-dcv-2v0-21-23-vsphere-8-exam-focused-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Manage identity, access, and governance Practice Questions — Microsoft Certified: Azure Security Engineer Associate</title>
+<meta name="description" content="6 free Manage identity, access, and governance practice questions with explanations for the Microsoft Certified: Azure Security Engineer Associate exam.">
+<link rel="canonical" href="https://technuggets.academy/sc-500-manage-identity-access-and-governance.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Manage identity, access, and governance Practice Questions — Microsoft Certified: Azure Security Engineer Associate">
+<meta property="og:description" content="6 free Manage identity, access, and governance practice questions with explanations for the Microsoft Certified: Azure Security Engineer Associate exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/sc-500-manage-identity-access-and-governance.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0078D4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Manage identity, access, and governance</h1>
+<p class="sub">Free Microsoft Certified: Azure Security Engineer Associate practice — 6 questions on <strong>Manage identity, access, and governance</strong>, with explanations. No sign-up.
+<a href="sc-500.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Manage identity, access, and governance">
+    <div class="meta">Question 1 of 6 · Manage identity, access, and governance</div>
+    <div class="q">A security team configures Privileged Identity Management (PIM) so that the 'Cloud App Administrator' role is eligible for assignment to 5 admins. Activation must require Azure MFA, a business justification, and approval from a designated security lead before the role becomes active, and no admin should ever hold the role permanently. Which PIM configuration satisfies ALL of these requirements?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. Assign the role as a permanent active assignment to all 5 admins and enable Conditional Access requiring MFA for the role</button><button class="opt" onclick="answer(this,0,1,3)">B. Assign the role as eligible with no activation requirements, then rely on Access Reviews every 90 days to remove unused assignments</button><button class="opt" onclick="answer(this,0,2,3)">C. Assign the role as active but time-bound to 8 hours per day using Conditional Access sign-in frequency</button><button class="opt" onclick="answer(this,0,3,3)">D. Assign the role as eligible with maximum activation duration set, require MFA on activation, require justification, and enable 'Require approval to activate' with the security lead set as approver</button>
+    <div class="expl">PIM eligible assignments combined with activation settings (require MFA, require justification, require approval with a named approver) are the only configuration that enforces just-in-time, approved, justified activation while never granting permanent standing access.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Manage identity, access, and governance">
+    <div class="meta">Question 2 of 6 · Manage identity, access, and governance</div>
+    <div class="q">An organization's CI/CD pipeline running in GitHub Actions must deploy resources to Azure. Security policy prohibits storing any client secrets, certificates, or long-lived credentials in the pipeline. Which solution meets this requirement?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. Configure a federated identity credential on a user-assigned managed identity or app registration, trusting the GitHub Actions OIDC issuer for the specific repo and branch</button><button class="opt" onclick="answer(this,1,1,0)">B. Create a service principal with a client secret and store the secret as a GitHub encrypted repository secret</button><button class="opt" onclick="answer(this,1,2,0)">C. Create an app registration, generate a self-signed certificate, and upload the certificate to the app registration for use by the pipeline</button><button class="opt" onclick="answer(this,1,3,0)">D. Assign the Contributor role directly to the GitHub organization using Azure RBAC without creating an identity object</button>
+    <div class="expl">Workload identity federation lets GitHub Actions exchange a short-lived OIDC token for an Azure AD access token via a federated identity credential, eliminating the need to store any secret or certificate in the pipeline.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Manage identity, access, and governance">
+    <div class="meta">Question 3 of 6 · Manage identity, access, and governance</div>
+    <div class="q">You must ensure that all users assigned the Global Administrator and Exchange Administrator roles authenticate using only phishing-resistant methods (FIDO2 security key, certificate-based authentication, or Windows Hello for Business) — SMS and standard push MFA must NOT satisfy this requirement. Which Conditional Access grant control should you configure?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. Require multifactor authentication</button><button class="opt" onclick="answer(this,2,1,1)">B. Require authentication strength, and select the built-in 'Phishing-resistant MFA' authentication strength</button><button class="opt" onclick="answer(this,2,2,1)">C. Require device to be marked as compliant</button><button class="opt" onclick="answer(this,2,3,1)">D. Require approved client app</button>
+    <div class="expl">Authentication strength lets you restrict which specific combinations of authentication methods satisfy a Conditional Access policy; the built-in 'Phishing-resistant MFA' strength includes only FIDO2, certificate-based auth, and Windows Hello for Business, excluding SMS and standard push.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Manage identity, access, and governance">
+    <div class="meta">Question 4 of 6 · Manage identity, access, and governance</div>
+    <div class="q">A tenant has multiple Global Administrators. One Global Administrator needs to modify Azure RBAC role assignments at the root management group scope to grant Owner access on a subscription, but currently receives an 'Insufficient privileges' error when attempting this in the Azure portal. What is the cause and correct fix?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. The user needs the Privileged Role Administrator role added in addition to Global Administrator</button><button class="opt" onclick="answer(this,3,1,2)">B. The user's PIM eligible assignment for Global Administrator has expired and must be reactivated with MFA</button><button class="opt" onclick="answer(this,3,2,2)">C. By default, Global Administrator has no access to Azure resources; the admin must use the 'Global Administrator: Access management for Azure resources' elevation setting, which grants User Access Administrator at root scope</button><button class="opt" onclick="answer(this,3,3,2)">D. Azure RBAC role assignments can only be performed by the subscription's original creator account, regardless of Entra role</button>
+    <div class="expl">Entra ID roles like Global Administrator do not automatically grant Azure resource (subscription/management group) permissions; a Global Admin must explicitly elevate access, which temporarily assigns User Access Administrator at the tenant root management group scope to manage Azure RBAC.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Manage identity, access, and governance">
+    <div class="meta">Question 5 of 6 · Manage identity, access, and governance</div>
+    <div class="q">Your organization enforces an Azure Policy at the tenant root management group that denies resource deployment outside the 'East US' and 'West Europe' regions. A compliance testing team in a specific subscription has an approved, time-boxed exception to deploy a single resource type in 'North Europe' for 30 days. What should you configure to allow this without weakening the policy for any other subscription?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. Modify the policy assignment's parameter to add 'North Europe' to the allowed locations list at the management group scope</button><button class="opt" onclick="answer(this,4,1,2)">B. Move the compliance testing subscription out of the management group so the policy no longer applies to it</button><button class="opt" onclick="answer(this,4,2,2)">C. Create a policy exemption scoped to the specific subscription and resource, with a 'waiver' category and an expiration date set to 30 days</button><button class="opt" onclick="answer(this,4,3,2)">D. Apply a resource lock on the subscription to prevent the policy from evaluating it during the testing window</button>
+    <div class="expl">Policy exemptions allow a specific scope (subscription, resource group, or resource) to be excluded from a policy or initiative assignment for a defined reason and time period without altering the underlying policy definition or assignment for everyone else.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Manage identity, access, and governance">
+    <div class="meta">Question 6 of 6 · Manage identity, access, and governance</div>
+    <div class="q">External auditors from a partner organization need temporary access to a finance application for a 90-day engagement. Access must require approval from the finance resource owner, automatically expire after 90 days, and be subject to a recurring access review to confirm continued need. Guest accounts should be created only when access is approved, not in advance. Which capability should you configure?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. Configure an Entra ID entitlement management access package with a policy requiring resource-owner approval, an assignment expiration of 90 days, and an attached access review</button><button class="opt" onclick="answer(this,5,1,0)">B. Create guest B2B invitations manually for each auditor and assign them directly to the Azure RBAC role on the finance application</button><button class="opt" onclick="answer(this,5,2,0)">C. Add the auditors to a Conditional Access named location and require MFA for that location</button><button class="opt" onclick="answer(this,5,3,0)">D. Use Microsoft Purview Information Barriers to segment finance data from other departments</button>
+    <div class="expl">Entitlement management access packages combine automated B2B guest provisioning on approval, time-bound expiration policies, and integrated access reviews — exactly matching the approval, auto-expiry, and review requirements in a single governed workflow.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/sc-500-azure-security-engineer-certification-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

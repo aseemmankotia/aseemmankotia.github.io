@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Manage and Operate Practice Questions — Palo Alto Networks Certified Network Security Engineer</title>
+<meta name="description" content="6 free Manage and Operate practice questions with explanations for the Palo Alto Networks Certified Network Security Engineer exam.">
+<link rel="canonical" href="https://technuggets.academy/pcnse-manage-and-operate.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Manage and Operate Practice Questions — Palo Alto Networks Certified Network Security Engineer">
+<meta property="og:description" content="6 free Manage and Operate practice questions with explanations for the Palo Alto Networks Certified Network Security Engineer exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/pcnse-manage-and-operate.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Manage and Operate</h1>
+<p class="sub">Free Palo Alto Networks Certified Network Security Engineer practice — 6 questions on <strong>Manage and Operate</strong>, with explanations. No sign-up.
+<a href="pcnse.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Domain 5: Manage and Operate">
+    <div class="meta">Question 1 of 6 · Domain 5: Manage and Operate</div>
+    <div class="q">A firewall pair is deployed in active/active HA. Due to asymmetric routing upstream, return traffic for a session sometimes arrives at the non-owning firewall. The security policy has 'Forward packets to session owner' behavior expected, but sessions are being dropped instead. Which HA component should the administrator verify is correctly configured to resolve this?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. The HA3 packet-forwarding link, since it forwards packets to the session owner for asymmetric traffic</button><button class="opt" onclick="answer(this,0,1,0)">B. The HA1 control link, since it carries heartbeat and state synchronization messages</button><button class="opt" onclick="answer(this,0,2,0)">C. The HA2 link, since it synchronizes session table entries between the active peers</button><button class="opt" onclick="answer(this,0,3,0)">D. The HA1-backup link, since it provides redundancy for HA state election</button>
+    <div class="expl">In active/active HA, HA3 is a dedicated Layer 2 link used exclusively to forward packets between peers when a session's traffic arrives at the non-owning firewall due to asymmetric routing, allowing the session owner to process it correctly.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Domain 5: Manage and Operate">
+    <div class="meta">Question 2 of 6 · Domain 5: Manage and Operate</div>
+    <div class="q">An administrator upgrades a firewall from PAN-OS 11.1 to 10.2 after encountering stability issues, but wants to preserve as much of the pre-upgrade configuration as possible and avoid content pack incompatibility errors. What is the correct approach?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. Install a content release version supported by PAN-OS 10.2 before downgrading, then downgrade and load the autosaved pre-upgrade configuration snapshot</button><button class="opt" onclick="answer(this,1,1,0)">B. Downgrade directly; PAN-OS automatically reverts both the configuration and content versions to match the target release</button><button class="opt" onclick="answer(this,1,2,0)">C. Perform a factory reset, downgrade, then manually re-enter the entire configuration from documentation</button><button class="opt" onclick="answer(this,1,3,0)">D. Export the running configuration as XML immediately before downgrading and re-import it after the downgrade completes</button>
+    <div class="expl">PAN-OS automatically saves a configuration snapshot before an upgrade. To downgrade safely, the administrator must first ensure the installed content release is compatible with the older PAN-OS version (newer content packs can be incompatible with older releases), then downgrade and load the saved pre-upgrade config file to restore settings that may not survive the version change.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Domain 5: Manage and Operate">
+    <div class="meta">Question 3 of 6 · Domain 5: Manage and Operate</div>
+    <div class="q">GlobalProtect gateway authentication uses client certificates issued by an enterprise intermediate CA. Users with valid, unexpired certificates fail authentication with certificate validation errors. The root CA certificate is correctly installed in the certificate profile. What is the most likely cause?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. The intermediate CA certificate is missing from the certificate profile's CA chain, breaking the trust path validation</button><button class="opt" onclick="answer(this,2,1,0)">B. The OCSP responder for the CA is temporarily unreachable, causing hard-fail certificate rejection</button><button class="opt" onclick="answer(this,2,2,0)">C. The client certificates were issued using SHA-1 instead of SHA-256</button><button class="opt" onclick="answer(this,2,3,0)">D. The GlobalProtect portal's server certificate has expired</button>
+    <div class="expl">PAN-OS validates the full certificate chain from the client certificate up to a trusted root. If only the root CA is present in the certificate profile and the intermediate CA is missing, the chain cannot be built, causing valid certificates to fail validation even though they are not expired or revoked.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Domain 5: Manage and Operate">
+    <div class="meta">Question 4 of 6 · Domain 5: Manage and Operate</div>
+    <div class="q">Mobile users frequently lose GlobalProtect connectivity due to unstable Wi-Fi and cellular handoffs. The security team wants users to automatically reconnect without re-entering credentials for a limited, defined period after the initial successful authentication. Which configuration achieves this?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. Set the Connect Method to 'Pre-logon (Always On)' on the GlobalProtect app configuration</button><button class="opt" onclick="answer(this,3,1,1)">B. Enable 'Generate cookie for authentication override' on the portal and accept the cookie on the gateway, with a defined cookie lifetime</button><button class="opt" onclick="answer(this,3,2,1)">C. Enable 'Save User Credentials' on the GlobalProtect portal agent configuration</button><button class="opt" onclick="answer(this,3,3,1)">D. Increase the SSL/TLS session resumption timeout on the portal's SSL/TLS service profile</button>
+    <div class="expl">GlobalProtect supports generating an authentication cookie on the portal after successful authentication; when the gateway is configured to accept this cookie, the client can reconnect automatically within the cookie's validity period without re-prompting for credentials.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Domain 5: Manage and Operate">
+    <div class="meta">Question 5 of 6 · Domain 5: Manage and Operate</div>
+    <div class="q">A Panorama Log Collector Group contains three Log Collectors. The administrator enables log redundancy for the group. What is the direct operational impact of this change?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. Each log entry is written to two separate collectors, reducing the group's effective usable storage capacity by roughly half</button><button class="opt" onclick="answer(this,4,1,0)">B. Log throughput triples because each collector processes logs independently in parallel</button><button class="opt" onclick="answer(this,4,2,0)">C. Log redundancy has no impact on storage, only on query performance during collector failover</button><button class="opt" onclick="answer(this,4,3,0)">D. The Log Collector Group automatically converts to a Panorama HA pair for log storage</button>
+    <div class="expl">Enabling log redundancy in a Log Collector Group causes each log to be stored on two different Log Collectors instead of one, which protects against data loss if a collector fails, but it consumes roughly double the storage per log, cutting effective usable capacity by about half. Redundancy requires at least two Log Collectors in the group.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Domain 5: Manage and Operate">
+    <div class="meta">Question 6 of 6 · Domain 5: Manage and Operate</div>
+    <div class="q">Two administrators are working on the same firewall's candidate configuration simultaneously: Admin A is midway through modifying several security policy rules, while Admin B is preparing to commit unrelated NAT changes. To prevent Admin B from committing while Admin A's edits are incomplete, thereby avoiding an inconsistent partial configuration push, which action should Admin A take before starting the edits?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. Take the Commit Lock from the Configuration menu to block any commit by other administrators until released</button><button class="opt" onclick="answer(this,5,1,0)">B. Apply an Object Lock on the specific security policy rules being edited</button><button class="opt" onclick="answer(this,5,2,0)">C. Disable Admin B's account temporarily via Device &gt; Administrators</button><button class="opt" onclick="answer(this,5,3,0)">D. Save a named configuration snapshot before editing begins</button>
+    <div class="expl">The Commit Lock (Configuration &gt; Take Commit Lock) prevents any administrator from committing the candidate configuration until the lock is released, ensuring no one commits while another admin's edits are in progress — exactly the protection needed in this scenario.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/pcnse-exam-prep-palo-alto-networks-ngfw-panorama/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

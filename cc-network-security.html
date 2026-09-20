@@ -1,0 +1,76 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Network Security Practice Questions — ISC2 Certified in Cybersecurity</title>
+<meta name="description" content="6 free Network Security practice questions with explanations for the ISC2 Certified in Cybersecurity exam.">
+<link rel="canonical" href="https://technuggets.academy/cc-network-security.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Network Security Practice Questions — ISC2 Certified in Cybersecurity">
+<meta property="og:description" content="6 free Network Security practice questions with explanations for the ISC2 Certified in Cybersecurity exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/cc-network-security.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Network Security</h1>
+<p class="sub">Free ISC2 Certified in Cybersecurity practice — 6 questions on <strong>Network Security</strong>, with explanations. No sign-up.
+<a href="cc.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Domain 4: Network Security">
+    <div class="meta">Question 1 of 6 · Domain 4: Network Security</div>
+    <div class="q">A network administrator discovers that an attacker connected to an unused switch port was able to send traffic between two VLANs that should have been isolated, by embedding one VLAN tag inside another. Which attack technique does this describe, and what is the PRIMARY mitigation?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. VLAN hopping via double tagging; mitigation is assigning an unused VLAN as the native VLAN on trunk ports and disabling auto-trunking negotiation</button><button class="opt" onclick="answer(this,0,1,0)">B. MAC flooding; mitigation is enabling port security with MAC address limiting</button><button class="opt" onclick="answer(this,0,2,0)">C. ARP spoofing; mitigation is enabling dynamic ARP inspection</button><button class="opt" onclick="answer(this,0,3,0)">D. DNS cache poisoning; mitigation is enabling DNSSEC</button>
+    <div class="expl">Double tagging exploits a mismatched or default native VLAN on a trunk port to smuggle traffic across VLAN boundaries. The standard defense is to never use the default native VLAN, assign it to an unused/black-hole VLAN, and disable dynamic trunk negotiation (DTP) on ports that don't need it.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Domain 4: Network Security">
+    <div class="meta">Question 2 of 6 · Domain 4: Network Security</div>
+    <div class="q">A security architect wants to segment a network into multiple broadcast domains that can only communicate with one another if explicitly permitted by an access control policy enforced based on IP addressing. Which device should be placed between the segments to meet this requirement?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. An unmanaged Layer 2 switch</button><button class="opt" onclick="answer(this,1,1,3)">B. A network bridge</button><button class="opt" onclick="answer(this,1,2,3)">C. A Layer 2 hub</button><button class="opt" onclick="answer(this,1,3,3)">D. A router (or Layer 3 switch) configured with access control lists</button>
+    <div class="expl">Routing decisions and IP-based ACL enforcement occur at Layer 3. A router or Layer 3 switch can inspect source/destination IP addresses and apply policy to permit or deny inter-segment traffic.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Domain 4: Network Security">
+    <div class="meta">Question 3 of 6 · Domain 4: Network Security</div>
+    <div class="q">An organization is configuring a site-to-site VPN between two corporate offices using IPsec. They need the ENTIRE original IP packet, including its header, to be encrypted and encapsulated inside a new outer IP header for transit across the public Internet. Which IPsec mode should be configured?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. Transport mode</button><button class="opt" onclick="answer(this,2,1,3)">B. Aggressive mode</button><button class="opt" onclick="answer(this,2,2,3)">C. Main mode</button><button class="opt" onclick="answer(this,2,3,3)">D. Tunnel mode</button>
+    <div class="expl">Tunnel mode encrypts and encapsulates the entire original IP packet (header and payload) inside a new outer IP header, which is exactly the behavior required for gateway-to-gateway site-to-site VPNs.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Domain 4: Network Security">
+    <div class="meta">Question 4 of 6 · Domain 4: Network Security</div>
+    <div class="q">Which statement BEST distinguishes an Intrusion Prevention System (IPS) from an Intrusion Detection System (IDS) in terms of network placement and capability?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. An IPS is deployed out-of-band on a SPAN port and can only alert, while an IDS is deployed inline and blocks traffic</button><button class="opt" onclick="answer(this,3,1,3)">B. Both IPS and IDS are deployed inline, but only IDS can block traffic</button><button class="opt" onclick="answer(this,3,2,3)">C. There is no functional difference; the terms are interchangeable and depend only on vendor naming</button><button class="opt" onclick="answer(this,3,3,3)">D. An IPS is deployed inline with network traffic and can actively block malicious packets, while an IDS is deployed out-of-band and can only alert on detected threats</button>
+    <div class="expl">An IPS sits directly in the traffic path (inline), allowing it to actively drop or block malicious packets in real time. An IDS typically monitors a copy of traffic (via SPAN/mirror port) out-of-band and can only generate alerts, not stop traffic.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Domain 4: Network Security">
+    <div class="meta">Question 5 of 6 · Domain 4: Network Security</div>
+    <div class="q">A web server begins receiving a massive volume of TCP connection requests. For each request, the server sends a SYN-ACK and reserves resources while waiting for the final ACK, but the ACK never arrives. Within minutes, the server can no longer accept legitimate connections. Which attack is being described, and which mitigation is MOST effective?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. SYN flood; mitigation is enabling SYN cookies on the server/firewall</button><button class="opt" onclick="answer(this,4,1,0)">B. Smurf attack; mitigation is disabling IP-directed broadcasts on routers</button><button class="opt" onclick="answer(this,4,2,0)">C. Ping of death; mitigation is patching the TCP/IP stack</button><button class="opt" onclick="answer(this,4,3,0)">D. DNS amplification; mitigation is rate-limiting recursive DNS queries</button>
+    <div class="expl">This describes a SYN flood: the attacker never completes the three-way handshake, leaving half-open connections that exhaust the server's connection backlog. SYN cookies let the server avoid reserving state until the final ACK is verified, effectively neutralizing the attack.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Domain 4: Network Security">
+    <div class="meta">Question 6 of 6 · Domain 4: Network Security</div>
+    <div class="q">A company wants to host a public-facing web server that must be reachable from the Internet while ensuring that if the server is compromised, the attacker cannot directly pivot into the internal corporate network. Which architecture BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. Place the web server on the same VLAN as internal file servers with port security enabled</button><button class="opt" onclick="answer(this,5,1,3)">B. Place the web server directly on the internal LAN behind a single firewall</button><button class="opt" onclick="answer(this,5,2,3)">C. Place the web server behind a reverse proxy on the internal network with no additional firewall</button><button class="opt" onclick="answer(this,5,3,3)">D. Place the web server in a screened subnet (DMZ) bounded by two firewalls, one facing the Internet and one facing the internal network</button>
+    <div class="expl">A screened subnet (DMZ) architecture with dual firewalls isolates the public-facing server from the internal network, applying defense in depth so that a compromise of the DMZ host requires bypassing a second firewall boundary before reaching internal assets.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="SECPREP34"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">undefined</span> <span class="price">$34.99</span> with code <span class="code">SECPREP34</span> — valid through Oct 11.</p>
+  <a href="https://www.udemy.com/course/isc2-certified-in-cybersecurity-cc-exam-prep/?couponCode=SECPREP34" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Virtual Networking Practice Questions — VMware Certified Professional - Data Center Virtualization (vSphere 8)</title>
+<meta name="description" content="6 free Virtual Networking practice questions with explanations for the VMware Certified Professional - Data Center Virtualization (vSphere 8) exam.">
+<link rel="canonical" href="https://technuggets.academy/2v0-21-23-virtual-networking.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Virtual Networking Practice Questions — VMware Certified Professional - Data Center Virtualization (vSphere 8)">
+<meta property="og:description" content="6 free Virtual Networking practice questions with explanations for the VMware Certified Professional - Data Center Virtualization (vSphere 8) exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/2v0-21-23-virtual-networking.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Virtual Networking</h1>
+<p class="sub">Free VMware Certified Professional - Data Center Virtualization (vSphere 8) practice — 6 questions on <strong>Virtual Networking</strong>, with explanations. No sign-up.
+<a href="2v0-21-23.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Virtual Networking">
+    <div class="meta">Question 1 of 6 · Virtual Networking</div>
+    <div class="q">A vSphere 8 cluster uses Network I/O Control version 3 on a distributed switch shared by vMotion, management, and virtual machine traffic. During peak load, vMotion migrations are timing out because VM traffic consumes all available bandwidth on the 10GbE uplinks. The administrator must guarantee that vMotion always receives at least 2 Gbps, even during congestion, without capping the maximum bandwidth any traffic type can burst to. Which NIOC configuration should be applied to the vMotion system traffic type?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. Set a Reservation of 2000 Mbps on the vMotion traffic type</button><button class="opt" onclick="answer(this,0,1,0)">B. Set a Limit of 2000 Mbps on the vMotion traffic type</button><button class="opt" onclick="answer(this,0,2,0)">C. Increase the Shares value for vMotion to 100 (High)</button><button class="opt" onclick="answer(this,0,3,0)">D. Move vMotion traffic to a separate standard switch with no NIOC</button>
+    <div class="expl">NIOC v3 reservations guarantee a minimum amount of bandwidth to a traffic type that is enforced even under contention, and reserved bandwidth is subtracted from the pool available to other traffic types — this is the only mechanism that guarantees a floor rather than just a relative priority.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Virtual Networking">
+    <div class="meta">Question 2 of 6 · Virtual Networking</div>
+    <div class="q">vCenter Server for a customer environment is unreachable due to a database corruption issue, but the operations team must urgently connect a temporary troubleshooting VM to an existing distributed port group directly from the ESXi host's local UI while vCenter is being rebuilt. Which port binding type must have been configured on that distributed port group in advance to allow this?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. Static binding</button><button class="opt" onclick="answer(this,1,1,2)">B. Dynamic binding</button><button class="opt" onclick="answer(this,1,2,2)">C. Ephemeral binding</button><button class="opt" onclick="answer(this,1,3,2)">D. Fixed binding</button>
+    <div class="expl">Ephemeral binding assigns ports on-demand and is the only binding type that allows a VM to be connected to a distributed port group directly through the ESXi host (via the host client or API) when vCenter Server is unavailable, since the port is created/removed dynamically without requiring vCenter to hold the assignment.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Virtual Networking">
+    <div class="meta">Question 3 of 6 · Virtual Networking</div>
+    <div class="q">An administrator is migrating uplinks from a manually configured EtherChannel (static) NIC team using the 'Route based on IP hash' teaming policy to a proper LACP Link Aggregation Group (LAG) on a distributed switch, backed by physical switches configured for dynamic LACP. After creating the LAG and moving the physical NICs into it, which additional step is required on the port group's teaming and failover policy for LACP to function correctly?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. Manually set 'Route based on IP hash' as the active teaming algorithm for the port group</button><button class="opt" onclick="answer(this,2,1,1)">B. Set the LAG as the only entry in the Active Uplinks list and remove other uplinks from Active/Standby lists</button><button class="opt" onclick="answer(this,2,2,1)">C. Configure NIOC shares of 100 on all traffic types using that LAG</button><button class="opt" onclick="answer(this,2,3,1)">D. Enable promiscuous mode on the port group to allow LACP control frames</button>
+    <div class="expl">When using a LAG, the port group's failover order must specify the LAG itself as the active uplink (with standalone uplinks moved to unused); vSphere automatically applies 'Route based on IP hash' load balancing internally for LAG traffic, so the teaming policy option is greyed out and does not need to be manually selected.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Virtual Networking">
+    <div class="meta">Question 4 of 6 · Virtual Networking</div>
+    <div class="q">A security team requires that VMs on a tenant's secondary VLAN segment be able to communicate with each other directly (peer-to-peer) and also reach the default gateway on the primary VLAN, but must NOT be able to communicate with VMs on a different secondary VLAN segment within the same private VLAN structure. Which private VLAN (PVLAN) secondary type should be assigned to this port group?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. Promiscuous</button><button class="opt" onclick="answer(this,3,1,1)">B. Community</button><button class="opt" onclick="answer(this,3,2,1)">C. Isolated</button><button class="opt" onclick="answer(this,3,3,1)">D. Primary</button>
+    <div class="expl">A Community secondary PVLAN allows member ports to communicate with each other and with promiscuous ports (such as the gateway) on the primary VLAN, but not with ports in other secondary PVLANs (isolated or other community segments) — matching the stated requirement exactly.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Virtual Networking">
+    <div class="meta">Question 5 of 6 · Virtual Networking</div>
+    <div class="q">After enabling jumbo frames (MTU 9000) end-to-end for a new IP storage VMkernel adapter, administrators intermittently see storage performance degrade and vMotion operations occasionally fail with fragmentation-related errors, but only for traffic traversing one specific physical uplink. Which built-in vSphere Distributed Switch feature should be enabled first to automatically identify the root cause without manually checking every switch port?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. NetFlow traffic analysis</button><button class="opt" onclick="answer(this,4,1,1)">B. Distributed switch Health Check (VLAN, MTU, and teaming/failover checks)</button><button class="opt" onclick="answer(this,4,2,1)">C. Port mirroring (SPAN) session</button><button class="opt" onclick="answer(this,4,3,1)">D. Network I/O Control version 3 traffic filtering</button>
+    <div class="expl">vDS Health Check specifically validates VLAN trunking configuration, MTU consistency between the vDS and the connected physical switch ports, and teaming/failover configuration mismatches across each uplink — directly surfacing per-uplink MTU mismatches, which matches the symptom of a single uplink causing fragmentation.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Virtual Networking">
+    <div class="meta">Question 6 of 6 · Virtual Networking</div>
+    <div class="q">An administrator is configuring multi-NIC vMotion across two 10GbE physical uplinks (vmnic2 and vmnic3) to load-balance and accelerate a large vMotion migration. Two VMkernel adapters (vmk1 and vmk2) are created on the same distributed port group family for vMotion. Which configuration correctly enables true multi-NIC vMotion load balancing across both uplinks?</div>
+    <button class="opt" onclick="answer(this,5,0,2)">A. Place both vmk1 and vmk2 on a single port group with both uplinks marked Active, using default load balancing</button><button class="opt" onclick="answer(this,5,1,2)">B. Create one VMkernel adapter and bind it to both uplinks simultaneously using NIC teaming failback disabled</button><button class="opt" onclick="answer(this,5,2,2)">C. Create two separate port groups, each with an override failover order making one uplink Active and the other Unused, then assign vmk1 to one port group and vmk2 to the other</button><button class="opt" onclick="answer(this,5,3,2)">D. Assign vmk1 and vmk2 to the same port group with both uplinks set to Standby to force alternation</button>
+    <div class="expl">VMware's documented multi-NIC vMotion design requires two separate port groups, each overriding the teaming/failover order so that one physical uplink is Active and the other is explicitly Unused (not Standby); each VMkernel adapter is then bound to a different port group, so each vMotion VMkernel interface deterministically uses a distinct uplink, enabling true parallel throughput across both NICs.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/vcp-dcv-2v0-21-23-vsphere-8-exam-focused-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

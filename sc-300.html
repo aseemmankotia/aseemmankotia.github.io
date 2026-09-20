@@ -1,0 +1,123 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Microsoft Certified: Identity and Access Administrator Associate Practice Test — 12 Real Exam-Style Questions</title>
+<meta name="description" content="Free Microsoft Certified: Identity and Access Administrator Associate practice questions with detailed explanations. Test yourself before the real exam.">
+<link rel="canonical" href="https://technuggets.academy/sc-300.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Microsoft Certified: Identity and Access Administrator Associate Practice Test — 12 Real Exam-Style Questions">
+<meta property="og:description" content="Free Microsoft Certified: Identity and Access Administrator Associate practice questions with detailed explanations. Test yourself before the real exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/sc-300.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0078D4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div><div class="hero">
+  <span class="chip">SC-300</span>
+  <h1>Free Microsoft Certified: Identity and Access Administrator Associate Practice Test</h1>
+  <p class="sub">12 exam-style questions with full explanations — no sign-up. Score yourself, then close your gaps with the full course.</p>
+  <div class="facts"><span class="fact">Exam fee <b>~$165</b></span><span class="fact"><b>4</b> exam domains</span><span class="fact">Level <b>Intermediate</b></span><span class="fact"><b>2</b> timed practice tests in the course</span></div>
+  <div class="cta-row"><a class="btn enroll" href="https://www.udemy.com/course/sc-300-microsoft-identity-and-access-administrator-prep/" rel="sponsored" target="_blank">Start my full course on Udemy →</a><a class="btn ghost" href="#practice">Try the free test →</a></div>
+</div><div class="trust"><span>✅ <b>Free</b> practice — no sign-up</span><span>📝 Real exam-style questions</span><span>💡 Detailed explanations</span><span>💸 30-day money-back via Udemy</span></div>
+<div id="practice"></div>
+
+  <div class="card qcard" id="q0" data-domain="Implement and manage user identities">
+    <div class="meta">Question 1 of 12 · Implement and manage user identities</div>
+    <div class="q">A company has helpdesk staff in three regional offices. The Global Administrator wants each regional helpdesk team to be able to reset passwords and manage licenses only for the users in their own region, without granting rights over users in other regions. Which feature should be configured to scope these administrative rights?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. Custom domains</button><button class="opt" onclick="answer(this,0,1,2)">B. Dynamic groups</button><button class="opt" onclick="answer(this,0,2,2)">C. Administrative units</button><button class="opt" onclick="answer(this,0,3,2)">D. Conditional Access</button>
+    <div class="expl">Administrative units let you scope Microsoft Entra role assignments (such as Helpdesk Administrator or User Administrator) to a defined subset of users, groups, or devices, restricting an admin's permissions to only members of that AU.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Implement authentication and access management">
+    <div class="meta">Question 2 of 12 · Implement authentication and access management</div>
+    <div class="q">A manufacturing company has shared kiosk workstations on the factory floor. Multiple workers use the same physical device throughout the day, and each worker needs to sign in with a passwordless credential that they can carry with them between kiosks. Which authentication method should the identity administrator deploy?</div>
+    <button class="opt" onclick="answer(this,1,0,1)">A. Windows Hello for Business (device-bound biometric/PIN credential)</button><button class="opt" onclick="answer(this,1,1,1)">B. FIDO2 security keys</button><button class="opt" onclick="answer(this,1,2,1)">C. Temporary Access Pass</button><button class="opt" onclick="answer(this,1,3,1)">D. Certificate-based authentication</button>
+    <div class="expl">FIDO2 security keys are portable external hardware credentials that are not bound to a single device, making them ideal for shared-kiosk scenarios where multiple workers need passwordless sign-in on the same shared workstation.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Plan and implement workload identities">
+    <div class="meta">Question 3 of 12 · Plan and implement workload identities</div>
+    <div class="q">A company runs a GitHub Actions pipeline that must authenticate to Microsoft Entra ID to deploy resources to Azure. The security team requires that no client secrets or certificates be stored anywhere in the pipeline configuration. Which solution BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. Store a client secret in GitHub encrypted secrets and rotate it every 30 days</button><button class="opt" onclick="answer(this,2,1,1)">B. Configure a federated credential on the app registration that trusts OIDC tokens issued by GitHub Actions</button><button class="opt" onclick="answer(this,2,2,1)">C. Assign a system-assigned managed identity to the GitHub Actions runner</button><button class="opt" onclick="answer(this,2,3,1)">D. Upload an X.509 certificate to the app registration and store the private key in GitHub secrets</button>
+    <div class="expl">Federated credentials (workload identity federation) let GitHub Actions exchange its OIDC token for a Microsoft Entra access token, eliminating the need to store any secret or certificate.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Plan and automate identity governance">
+    <div class="meta">Question 4 of 12 · Plan and automate identity governance</div>
+    <div class="q">A company wants employees to request access to a bundle of resources (a group, a Teams team, and a SharePoint site) through a single self-service request, requiring approval from the resource owner in stage one and the requestor's manager in stage two. Which Microsoft Entra ID Governance capability BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. Create an access review with two reviewers assigned</button><button class="opt" onclick="answer(this,3,1,3)">B. Create a lifecycle workflow with an approval task</button><button class="opt" onclick="answer(this,3,2,3)">C. Create a terms of use policy requiring manager sign-off</button><button class="opt" onclick="answer(this,3,3,3)">D. Create an access package in an entitlement management catalog with a two-stage approval policy</button>
+    <div class="expl">Access packages in a catalog bundle multiple resource types (groups, Teams, SharePoint sites, apps) for self-service request, and entitlement management supports two-stage approval policies (e.g., owner then manager).</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Implement and manage user identities">
+    <div class="meta">Question 5 of 12 · Implement and manage user identities</div>
+    <div class="q">A manufacturing company wants to give employees at a partner supplier organization access to a shared SharePoint site using the partner employees' existing corporate credentials, without the company having to create or manage separate accounts for them. Which feature should be used?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. Microsoft Entra External ID for customers</button><button class="opt" onclick="answer(this,4,1,1)">B. Microsoft Entra B2B collaboration</button><button class="opt" onclick="answer(this,4,2,1)">C. Self-service password reset</button><button class="opt" onclick="answer(this,4,3,1)">D. Microsoft Entra B2C</button>
+    <div class="expl">Microsoft Entra B2B collaboration is designed for inviting external business partners as guest users who authenticate with their own organization's existing identity, giving them access to internal resources without the resource tenant creating or managing full accounts for them.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Implement authentication and access management">
+    <div class="meta">Question 6 of 12 · Implement authentication and access management</div>
+    <div class="q">A company requires users signing in from unmanaged devices to reauthenticate every hour, while users on Microsoft Entra hybrid joined compliant devices should not be interrupted. Which Conditional Access session control configuration meets this requirement?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. Configure Sign-in frequency to 'Periodic reauthentication' every 1 hour, scoped with a device filter to exclude compliant devices</button><button class="opt" onclick="answer(this,5,1,0)">B. Configure a Conditional Access session control for Persistent browser session set to 'Never persistent'</button><button class="opt" onclick="answer(this,5,2,0)">C. Enable Conditional Access App Control with app-enforced restrictions</button><button class="opt" onclick="answer(this,5,3,0)">D. Set the Conditional Access grant control to 'Require multifactor authentication' for all users</button>
+    <div class="expl">Sign-in frequency lets administrators force reauthentication after a specified time interval, and scoping the policy with a device filter condition allows it to apply only to unmanaged/non-compliant devices while compliant devices remain unaffected.</div>
+  </div>
+
+  <div class="card qcard" id="q6" data-domain="Plan and implement workload identities">
+    <div class="meta">Question 7 of 12 · Plan and implement workload identities</div>
+    <div class="q">An organization has 20 Azure Virtual Machines across multiple resource groups that all need identical access to a Key Vault. The identity must be manageable independently of any single VM's lifecycle and reused across all 20 VMs. Which identity type should be configured?</div>
+    <button class="opt" onclick="answer(this,6,0,1)">A. A system-assigned managed identity on each of the 20 VMs</button><button class="opt" onclick="answer(this,6,1,1)">B. A user-assigned managed identity shared across all 20 VMs</button><button class="opt" onclick="answer(this,6,2,1)">C. A single app registration with a shared client secret distributed to all VMs</button><button class="opt" onclick="answer(this,6,3,1)">D. A group-assigned managed identity applied to the resource groups</button>
+    <div class="expl">User-assigned managed identities exist as standalone Azure resources independent of any VM's lifecycle and can be assigned to multiple resources simultaneously, which fits the sharing requirement.</div>
+  </div>
+
+  <div class="card qcard" id="q7" data-domain="Plan and automate identity governance">
+    <div class="meta">Question 8 of 12 · Plan and automate identity governance</div>
+    <div class="q">An organization wants new hires to automatically be added to the correct groups and receive a welcome email on their employee hire date, without any manual administrator intervention. Which capability should they configure?</div>
+    <button class="opt" onclick="answer(this,7,0,0)">A. A lifecycle workflow using the 'Onboard employee' template with a scheduled trigger based on employeeHireDate</button><button class="opt" onclick="answer(this,7,1,0)">B. An access review with auto-apply enabled</button><button class="opt" onclick="answer(this,7,2,0)">C. An entitlement management access package requiring manual approval</button><button class="opt" onclick="answer(this,7,3,0)">D. A Conditional Access policy requiring terms of use acceptance</button>
+    <div class="expl">Lifecycle workflows can trigger on the employeeHireDate attribute and the built-in 'Onboard employee' template includes tasks like adding users to groups and sending a welcome email, fully automated.</div>
+  </div>
+
+  <div class="card qcard" id="q8" data-domain="Implement and manage user identities">
+    <div class="meta">Question 9 of 12 · Implement and manage user identities</div>
+    <div class="q">An organization implements Microsoft Entra Connect with password hash synchronization. Assuming default settings are unchanged, how frequently does the sync engine synchronize changes from on-premises Active Directory to Microsoft Entra ID?</div>
+    <button class="opt" onclick="answer(this,8,0,1)">A. 5 minutes</button><button class="opt" onclick="answer(this,8,1,1)">B. 30 minutes</button><button class="opt" onclick="answer(this,8,2,1)">C. 2 hours</button><button class="opt" onclick="answer(this,8,3,1)">D. 24 hours</button>
+    <div class="expl">The default Microsoft Entra Connect sync cycle runs every 30 minutes; this scheduler value is directly tested on the exam and can be changed with Set-ADSyncScheduler if a different interval is required.</div>
+  </div>
+
+  <div class="card qcard" id="q9" data-domain="Implement authentication and access management">
+    <div class="meta">Question 10 of 12 · Implement authentication and access management</div>
+    <div class="q">A security team wants every activation of the eligible Global Administrator role in Microsoft Entra PIM to require multifactor authentication, approval from a designated approver, and a justification comment from the requesting user. Which single set of role settings satisfies this requirement?</div>
+    <button class="opt" onclick="answer(this,9,0,1)">A. On the Assignment tab, set Assignment type to Active and Assignment duration to Permanent</button><button class="opt" onclick="answer(this,9,1,1)">B. On the Activation tab, enable 'Require Azure AD Multifactor Authentication,' enable 'Require approval to activate,' add an approver, and enable 'Require justification on activation'</button><button class="opt" onclick="answer(this,9,2,1)">C. In Access reviews, create a recurring review for the Global Administrator role</button><button class="opt" onclick="answer(this,9,3,1)">D. In the Notifications tab, add the approver's email as a recipient for role activation alerts</button>
+    <div class="expl">These four settings all live under the role's Activation tab in PIM role settings and together enforce MFA, an approval workflow, and mandatory justification text every time a user activates the eligible Global Administrator assignment.</div>
+  </div>
+
+  <div class="card qcard" id="q10" data-domain="Plan and implement workload identities">
+    <div class="meta">Question 11 of 12 · Plan and implement workload identities</div>
+    <div class="q">A backend daemon service runs unattended with no signed-in user and needs to read directory data through Microsoft Graph. Which permission type must be configured on the app registration, and what additional step is required?</div>
+    <button class="opt" onclick="answer(this,10,0,3)">A. Delegated permissions; the app can request them without any further action</button><button class="opt" onclick="answer(this,10,1,3)">B. Delegated permissions; each user must consent individually the first time they sign in</button><button class="opt" onclick="answer(this,10,2,3)">C. Application permissions; consent is granted automatically as soon as the permissions are added</button><button class="opt" onclick="answer(this,10,3,3)">D. Application permissions; an administrator must grant admin consent</button>
+    <div class="expl">A daemon with no signed-in user must use application permissions, which grant the app its own identity-based access; because there is no user to consent, an administrator must explicitly grant admin consent.</div>
+  </div>
+
+  <div class="card qcard" id="q11" data-domain="Plan and automate identity governance">
+    <div class="meta">Question 12 of 12 · Plan and automate identity governance</div>
+    <div class="q">An access review for a group is configured with 'If reviewers don't respond' set to 'No change' and auto-apply results is enabled. A reviewer does not respond before the review ends. What happens to the user's group membership?</div>
+    <button class="opt" onclick="answer(this,11,0,0)">A. The user's access remains unchanged because the 'No change' fallback decision is applied automatically</button><button class="opt" onclick="answer(this,11,1,0)">B. The user's access is automatically removed</button><button class="opt" onclick="answer(this,11,2,0)">C. The review automatically self-extends by 7 days</button><button class="opt" onclick="answer(this,11,3,0)">D. An alert is sent to the Global Administrator but the membership stays pending until a manual action is taken</button>
+    <div class="expl">'No change' is a valid fallback decision for non-responses, and with auto-apply enabled that decision is applied automatically when the review ends, requiring no manual action.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/sc-300-microsoft-identity-and-access-administrator-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<section class="faq"><h3>SC-300 exam — quick answers</h3><details><summary>How much does the SC-300 exam cost?</summary><p>The exam fee is approximately $165 and varies by region — confirm current pricing with the certification vendor before you book.</p></details><details><summary>What topics are on the exam?</summary><p>It covers 4 domains: Implement and manage user identities (20-25%), Implement authentication and access management (25-30%), Plan and implement workload identities (20-25%), Plan and automate identity governance (20-25%). The full course has a dedicated chapter, lab and practice-test coverage for each.</p></details><details><summary>Is this practice test really free?</summary><p>Yes — all questions on this page are free with explanations and no sign-up. The paid Udemy course adds two full-length timed exams, video lessons and hands-on labs.</p></details><details><summary>Will this prepare me for the real exam?</summary><p>The questions mirror the real exam's style and are mapped to the official domains. This is exam-focused preparation — combine the free test with the full course's timed simulations to gauge your readiness.</p></details></section>
+<div class="domains"><span class="meta">More free practice by exam domain:</span><br><a href="sc-300-implement-and-manage-user-identities.html">Implement and manage user identities →</a><a href="sc-300-implement-authentication-and-access-management.html">Implement authentication and access management →</a><a href="sc-300-plan-and-implement-workload-identities.html">Plan and implement workload identities →</a><a href="sc-300-plan-and-automate-identity-governance.html">Plan and automate identity governance →</a></div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

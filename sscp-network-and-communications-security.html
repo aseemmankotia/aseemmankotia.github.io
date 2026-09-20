@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Network and Communications Security Practice Questions — Systems Security Certified Practitioner</title>
+<meta name="description" content="6 free Network and Communications Security practice questions with explanations for the Systems Security Certified Practitioner exam.">
+<link rel="canonical" href="https://technuggets.academy/sscp-network-and-communications-security.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Network and Communications Security Practice Questions — Systems Security Certified Practitioner">
+<meta property="og:description" content="6 free Network and Communications Security practice questions with explanations for the Systems Security Certified Practitioner exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/sscp-network-and-communications-security.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Network and Communications Security</h1>
+<p class="sub">Free Systems Security Certified Practitioner practice — 6 questions on <strong>Network and Communications Security</strong>, with explanations. No sign-up.
+<a href="sscp.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Domain 6: Network and Communications Security">
+    <div class="meta">Question 1 of 6 · Domain 6: Network and Communications Security</div>
+    <div class="q">A security analyst reviews packet captures from a company's switched network and finds a frame carrying two 802.1Q VLAN tags: an outer tag matching the trunk's native VLAN and an inner tag matching a restricted finance VLAN. The frame originated from a workstation connected to a standard access port. This is evidence of which attack, and what is the BEST countermeasure?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. Enable Spanning Tree Portfast on all access ports</button><button class="opt" onclick="answer(this,0,1,3)">B. Enable BPDU guard on trunk ports</button><button class="opt" onclick="answer(this,0,2,3)">C. Increase VLAN tag length to 4 bytes across all switches</button><button class="opt" onclick="answer(this,0,3,3)">D. Change the native VLAN on trunk ports to an unused VLAN ID and disable DTP negotiation on access ports</button>
+    <div class="expl">This describes VLAN hopping via double tagging, which relies on the switch stripping only the outer tag (matching the native VLAN) and forwarding the inner-tagged frame onto the trunk. Moving the native VLAN to an unused, non-routed VLAN and disabling automatic trunk negotiation (DTP) on access ports removes the exploitable condition — attacker frames can no longer ride the native VLAN across a trunk.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Domain 6: Network and Communications Security">
+    <div class="meta">Question 2 of 6 · Domain 6: Network and Communications Security</div>
+    <div class="q">Two hosts on the same switched segment report intermittent connectivity failures and unusually high latency. Packet captures show one host is receiving frames destined for the default gateway's MAC address, but the frames actually originate from an unauthorized machine spoofing the gateway's IP-to-MAC binding. Which switch-level control specifically prevents this attack?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. Configure Dynamic ARP Inspection linked to the DHCP snooping binding table</button><button class="opt" onclick="answer(this,1,1,0)">B. Enable port security with a single MAC address per port</button><button class="opt" onclick="answer(this,1,2,0)">C. Implement 802.1X port-based authentication</button><button class="opt" onclick="answer(this,1,3,0)">D. Enable Root Guard on all switch ports</button>
+    <div class="expl">This is ARP cache poisoning/spoofing. Dynamic ARP Inspection (DAI) validates ARP packets against the trusted IP-to-MAC bindings built by DHCP snooping, dropping ARP replies that don't match a legitimate binding — directly stopping forged gateway ARP replies.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Domain 6: Network and Communications Security">
+    <div class="meta">Question 3 of 6 · Domain 6: Network and Communications Security</div>
+    <div class="q">An organization must establish a site-to-site VPN to a partner network, but the partner's ISP performs NAT on the tunnel endpoint's public address before traffic reaches the internet. The VPN must still provide confidentiality, integrity, and origin authentication of the encapsulated payload. Which IPsec configuration should be selected?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. AH in transport mode</button><button class="opt" onclick="answer(this,2,1,1)">B. ESP in tunnel mode with NAT Traversal (UDP 4500)</button><button class="opt" onclick="answer(this,2,2,1)">C. AH in tunnel mode</button><button class="opt" onclick="answer(this,2,3,1)">D. ESP in transport mode without NAT-T</button>
+    <div class="expl">ESP provides confidentiality (encryption) plus integrity and authentication of the payload, and tunnel mode encapsulates the entire original IP packet inside a new IP header — required for site-to-site VPNs. Because NAT rewrites IP header fields, NAT-T (encapsulating ESP inside UDP port 4500) is required so the NAT device doesn't corrupt the IPsec header, which is checksummed/authenticated.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Domain 6: Network and Communications Security">
+    <div class="meta">Question 4 of 6 · Domain 6: Network and Communications Security</div>
+    <div class="q">A penetration tester captures a WPA2-Personal 4-way handshake over the air and successfully recovers the passphrase using an offline dictionary attack on commodity hardware. The organization wants a wireless authentication upgrade that makes this specific offline attack infeasible even with a weak passphrase. Which capability of the replacement protocol achieves this?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. AES-256 encryption of the handshake packets</button><button class="opt" onclick="answer(this,3,1,2)">B. A longer 4-way handshake with additional nonce exchanges</button><button class="opt" onclick="answer(this,3,2,2)">C. Simultaneous Authentication of Equals (SAE) providing forward secrecy per session</button><button class="opt" onclick="answer(this,3,3,2)">D. Pre-shared key rotation every 24 hours enforced by RADIUS</button>
+    <div class="expl">WPA3-Personal replaces the WPA2 4-way handshake with SAE (the Dragonfly handshake), a zero-knowledge password-authenticated key exchange. Each authentication attempt derives a unique session key and an attacker who captures the exchange cannot perform an offline dictionary/brute-force attack, because SAE requires active, rate-limited interaction with the AP for every guess and provides forward secrecy.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Domain 6: Network and Communications Security">
+    <div class="meta">Question 5 of 6 · Domain 6: Network and Communications Security</div>
+    <div class="q">Which statement correctly differentiates a circuit-level gateway firewall from an application-layer (proxy) firewall?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. A circuit-level gateway inspects payload content at Layer 7, while an application-layer proxy only validates session establishment at Layer 5</button><button class="opt" onclick="answer(this,4,1,3)">B. Both operate identically at Layer 3, differing only in throughput</button><button class="opt" onclick="answer(this,4,2,3)">C. A circuit-level gateway performs deep packet inspection of encrypted TLS payloads, while an application proxy cannot</button><button class="opt" onclick="answer(this,4,3,3)">D. A circuit-level gateway validates the TCP handshake and session legitimacy at Layer 5 without inspecting application payload, while an application-layer proxy fully parses and filters Layer 7 content</button>
+    <div class="expl">A circuit-level gateway (e.g., SOCKS proxy) operates at the Session layer, confirming that the TCP handshake is legitimate and relaying traffic without examining the application payload — it's faster but less granular. An application-layer proxy fully terminates and re-establishes the connection, parsing Layer 7 protocol data (like HTTP headers/content) to enforce detailed filtering rules.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Domain 6: Network and Communications Security">
+    <div class="meta">Question 6 of 6 · Domain 6: Network and Communications Security</div>
+    <div class="q">A network intrusion detection sensor is connected directly to a standard access port on a Layer 2 switch. Analysts notice the sensor only alerts on broadcast traffic and packets specifically addressed to its own interface, missing nearly all attacker traffic flowing between other hosts on the segment. Which configuration change resolves this visibility gap?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. Move the NIDS to an access port with port security enabled</button><button class="opt" onclick="answer(this,5,1,3)">B. Enable Spanning Tree on the NIDS port</button><button class="opt" onclick="answer(this,5,2,3)">C. Assign the NIDS its own dedicated VLAN</button><button class="opt" onclick="answer(this,5,3,3)">D. Configure the switch port connected to the NIDS as a SPAN (mirror) port</button>
+    <div class="expl">Unlike a hub, a switch forwards unicast frames only to the destination port, so a NIDS on a normal access port never sees traffic between other hosts. Configuring the port as a SPAN/mirror port copies traffic from specified source ports or VLANs to the sensor's port, restoring the full visibility a NIDS needs to detect attacks between other hosts.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/sscp-exam-focused-prep-master-all-7-domains/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

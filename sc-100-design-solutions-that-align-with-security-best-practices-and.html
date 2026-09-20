@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Design solutions that align with security best practices and priorities Practice Questions — Microsoft Certified: Cybersecurity Architect Expert</title>
+<meta name="description" content="6 free Design solutions that align with security best practices and priorities practice questions with explanations for the Microsoft Certified: Cybersecurity Architect Expert exam.">
+<link rel="canonical" href="https://technuggets.academy/sc-100-design-solutions-that-align-with-security-best-practices-and.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Design solutions that align with security best practices and priorities Practice Questions — Microsoft Certified: Cybersecurity Architect Expert">
+<meta property="og:description" content="6 free Design solutions that align with security best practices and priorities practice questions with explanations for the Microsoft Certified: Cybersecurity Architect Expert exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/sc-100-design-solutions-that-align-with-security-best-practices-and.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0078D4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Design solutions that align with security best practices and priorities</h1>
+<p class="sub">Free Microsoft Certified: Cybersecurity Architect Expert practice — 6 questions on <strong>Design solutions that align with security best practices and priorities</strong>, with explanations. No sign-up.
+<a href="sc-100.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Domain 1: Design solutions that align with security best practices and priorities">
+    <div class="meta">Question 1 of 6 · Domain 1: Design solutions that align with security best practices and priorities</div>
+    <div class="q">A financial services company was previously hit by human-operated ransomware in which attackers obtained Domain Admin credentials and deleted all backups before encrypting production data. The CISO wants a design that ensures recovery is possible even if attackers gain full Active Directory control again. Which design BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. Increase backup frequency to every hour and store backups on a file share protected by NTFS permissions</button><button class="opt" onclick="answer(this,0,1,2)">B. Enable Microsoft Defender for Cloud Apps to detect anomalous backup deletion activity after it occurs</button><button class="opt" onclick="answer(this,0,2,2)">C. Store backups in immutable, time-locked storage isolated from production AD credentials, and perform recovery operations from a separate clean, non-domain-joined recovery environment</button><button class="opt" onclick="answer(this,0,3,2)">D. Require Global Administrator approval in Microsoft Entra ID before any backup job can run</button>
+    <div class="expl">Microsoft's ransomware resilience guidance recommends backup isolation using immutability (WORM/time-based retention) so backups cannot be deleted or encrypted even by an attacker with Domain Admin rights, combined with a recovery environment that is not dependent on the compromised identity infrastructure (a 'clean source' principle) to prevent re-compromise during restore.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Domain 1: Design solutions that align with security best practices and priorities">
+    <div class="meta">Question 2 of 6 · Domain 1: Design solutions that align with security best practices and priorities</div>
+    <div class="q">An enterprise is executing the Zero Trust Rapid Modernization Plan (RaMP) for identity and adopting the 'assume breach' principle. The security architect must decide the sequencing of initiatives. According to Microsoft's RaMP guidance, which initiative should be prioritized IMMEDIATELY after establishing baseline strong authentication (MFA) for all users, and BEFORE deploying granular network micro-segmentation?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. Deploy Conditional Access policies that enforce risk-based, device-compliance-based access decisions</button><button class="opt" onclick="answer(this,1,1,0)">B. Deploy Privileged Access Workstations for every employee, including standard users</button><button class="opt" onclick="answer(this,1,2,0)">C. Fully decommission the on-premises Active Directory environment</button><button class="opt" onclick="answer(this,1,3,0)">D. Implement network micro-segmentation across all workloads before any identity controls are refined</button>
+    <div class="expl">In Microsoft's RaMP identity track, after establishing strong authentication (MFA/passwordless), the next initiative is to enforce Conditional Access policies that evaluate signals such as user risk, sign-in risk, and device compliance to make explicit, per-request access decisions -- a core Zero Trust tenet -- before moving on to segmentation of the network layer.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Domain 1: Design solutions that align with security best practices and priorities">
+    <div class="meta">Question 3 of 6 · Domain 1: Design solutions that align with security best practices and priorities</div>
+    <div class="q">A multinational retailer must demonstrate compliance with GDPR, PCI DSS, and ISO 27001 simultaneously across its Azure and Microsoft 365 environments, and wants continuous visibility into control gaps mapped to each framework without building custom mapping spreadsheets. Which solution BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. Use Microsoft Purview Compliance Manager with the relevant regulatory assessment templates to track compliance score and control mappings across frameworks</button><button class="opt" onclick="answer(this,2,1,0)">B. Manually map Azure Policy initiative results to each regulation using exported CSV reports reviewed quarterly</button><button class="opt" onclick="answer(this,2,2,0)">C. Rely solely on Microsoft Defender for Cloud's Secure Score, since it already reports directly against GDPR, PCI DSS, and ISO 27001</button><button class="opt" onclick="answer(this,2,3,0)">D. Configure Microsoft Entra ID Identity Protection risk policies to automatically generate compliance attestations for auditors</button>
+    <div class="expl">Microsoft Purview Compliance Manager provides built-in assessment templates mapped to multiple regulatory frameworks (GDPR, PCI DSS, ISO 27001, etc.), continuously tracks control implementation status, and produces a compliance score, eliminating the need for manual mapping.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Domain 1: Design solutions that align with security best practices and priorities">
+    <div class="meta">Question 4 of 6 · Domain 1: Design solutions that align with security best practices and priorities</div>
+    <div class="q">During a strategy workshop, business stakeholders ask the security architect to 'secure everything to the same maximum level' following a recent breach at a competitor. The architect must translate this into a workable security strategy aligned with Microsoft best practices. What is the MOST appropriate architectural response?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. Conduct a risk assessment to identify critical assets and business risk appetite, then prioritize controls proportionally based on data sensitivity and business impact, aligned with the organization's risk tolerance</button><button class="opt" onclick="answer(this,3,1,0)">B. Agree to the request and apply the highest available security controls uniformly to every workload and dataset regardless of value</button><button class="opt" onclick="answer(this,3,2,0)">C. Reject the request outright and recommend no changes until a full external audit is completed</button><button class="opt" onclick="answer(this,3,3,0)">D. Recommend purchasing every available Microsoft security product to maximize the security posture score</button>
+    <div class="expl">A cybersecurity architect must translate business goals into a strategy grounded in actual risk, using a risk-based approach that prioritizes protection of the highest-value/most sensitive assets aligned with the organization's defined risk appetite -- uniform maximum security everywhere is neither cost-effective nor operationally sustainable.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Domain 1: Design solutions that align with security best practices and priorities">
+    <div class="meta">Question 5 of 6 · Domain 1: Design solutions that align with security best practices and priorities</div>
+    <div class="q">A security architect is designing a modernized Security Operations Center aligned with the Microsoft Cybersecurity Reference Architecture (MCRA). The organization currently uses disconnected point tools: a legacy on-premises SIEM, a separate endpoint antivirus console, and a manual email-based alert triage process. Which design change aligns BEST with MCRA guidance for SecOps modernization?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. Keep the legacy SIEM as-is but add more analysts to manually correlate alerts across the disconnected tools</button><button class="opt" onclick="answer(this,4,1,1)">B. Integrate Microsoft Sentinel as the cloud-native SIEM with Microsoft Defender XDR for extended detection and response, enabling automated correlation, unified investigation, and orchestrated response across identities, endpoints, and cloud workloads</button><button class="opt" onclick="answer(this,4,2,1)">C. Replace all detection tools with a single antivirus console configured with the strictest possible blocking rules</button><button class="opt" onclick="answer(this,4,3,1)">D. Disable the legacy SIEM entirely and rely only on email alerts reviewed once per day</button>
+    <div class="expl">MCRA's SecOps guidance recommends consolidating detection and response through an integrated SIEM+XDR approach (e.g., Microsoft Sentinel paired with Microsoft Defender XDR) to enable automated signal correlation across identity, endpoint, and cloud layers, reducing manual triage overhead and improving detection/response speed.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Domain 1: Design solutions that align with security best practices and priorities">
+    <div class="meta">Question 6 of 6 · Domain 1: Design solutions that align with security best practices and priorities</div>
+    <div class="q">Within the Microsoft Cloud Security Benchmark (MCSB), which statement BEST describes its primary purpose and relationship to industry frameworks?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. MCSB is a certification issued by Microsoft that replaces the need for ISO 27001 or SOC 2 audits</button><button class="opt" onclick="answer(this,5,1,3)">B. MCSB is a proprietary Azure-only encryption standard used exclusively for data-at-rest protection</button><button class="opt" onclick="answer(this,5,2,3)">C. MCSB only applies to on-premises Active Directory environments and has no relevance to public cloud workloads</button><button class="opt" onclick="answer(this,5,3,3)">D. MCSB is a set of Microsoft cloud security best-practice control domains (e.g., network security, identity management, logging and threat detection, data protection) that is mapped to industry standards such as CIS Controls, NIST SP 800-53, and PCI DSS to provide a consistent baseline across Azure, AWS, and GCP</button>
+    <div class="expl">MCSB defines cloud-agnostic security control domains and provides mappings to widely recognized frameworks like CIS Controls, NIST SP 800-53, and PCI DSS, giving architects a consistent way to assess and design security postures across multiple cloud providers, not just Azure.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/sc-100-microsoft-cybersecurity-architect-expert-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

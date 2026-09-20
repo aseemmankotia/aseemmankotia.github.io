@@ -1,0 +1,76 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Manage a security operations environment Practice Questions — Microsoft Certified: Security Operations Analyst Associate</title>
+<meta name="description" content="6 free Manage a security operations environment practice questions with explanations for the Microsoft Certified: Security Operations Analyst Associate exam.">
+<link rel="canonical" href="https://technuggets.academy/sc-200-manage-a-security-operations-environment.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Manage a security operations environment Practice Questions — Microsoft Certified: Security Operations Analyst Associate">
+<meta property="og:description" content="6 free Manage a security operations environment practice questions with explanations for the Microsoft Certified: Security Operations Analyst Associate exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/sc-200-manage-a-security-operations-environment.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0078D4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Manage a security operations environment</h1>
+<p class="sub">Free Microsoft Certified: Security Operations Analyst Associate practice — 6 questions on <strong>Manage a security operations environment</strong>, with explanations. No sign-up.
+<a href="sc-200.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Manage a security operations environment">
+    <div class="meta">Question 1 of 6 · Manage a security operations environment</div>
+    <div class="q">A SOC must retain 18 months of Azure Firewall network flow logs strictly for future threat hunting queries. The logs must NOT trigger analytics rules or count toward real-time detection costs, and the team wants the lowest-cost Microsoft Sentinel storage option that still supports full KQL hunting queries. Which configuration BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. Ingest the table into the Analytics tier and set a custom 18-month retention policy on it</button><button class="opt" onclick="answer(this,0,1,1)">B. Configure the table for the Microsoft Sentinel Data Lake tier so it remains fully KQL-queryable for hunting at a lower cost without invoking analytics rules</button><button class="opt" onclick="answer(this,0,2,1)">C. Configure the Basic Logs plan on the table with an 18-month retention setting</button><button class="opt" onclick="answer(this,0,3,1)">D. Move the table to Auxiliary Logs and rely on ad hoc KQL queries for hunting</button>
+    <div class="expl">The Data Lake tier is designed for cost-effective long-term storage that remains queryable with full KQL for hunting, without the higher cost or real-time analytics-rule triggering associated with the Analytics tier.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Manage a security operations environment">
+    <div class="meta">Question 2 of 6 · Manage a security operations environment</div>
+    <div class="q">Your organization uses Microsoft Sentinel inside the unified Microsoft Defender portal. You need to grant a group of external MSSP analysts the ability to view and triage incidents for only specific device groups, without giving them access to advanced hunting or automation rule configuration. Which approach satisfies this with the LEAST privilege?</div>
+    <button class="opt" onclick="answer(this,1,0,1)">A. Assign the analysts the Log Analytics Reader role at the workspace scope</button><button class="opt" onclick="answer(this,1,1,1)">B. Create a custom role in Microsoft Defender XDR Unified RBAC that grants incident view/manage permissions scoped to the specific device groups</button><button class="opt" onclick="answer(this,1,2,1)">C. Assign the analysts the Microsoft Sentinel Responder Azure RBAC role at the subscription scope</button><button class="opt" onclick="answer(this,1,3,1)">D. Add the analysts as Global Readers in Microsoft Entra ID</button>
+    <div class="expl">Unified RBAC in the Defender portal allows creating custom roles with granular workload permissions (such as incident triage) that can be scoped to specific device groups, giving precise least-privilege access.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Manage a security operations environment">
+    <div class="meta">Question 3 of 6 · Manage a security operations environment</div>
+    <div class="q">Your SOC needs to ingest AWS CloudTrail management events into Microsoft Sentinel using the modern AWS connector, and organizational policy prohibits storing long-lived AWS access keys anywhere in Azure. Which authentication mechanism should you configure for the connector?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. An IAM user with a long-term access key pair stored in the connector configuration</button><button class="opt" onclick="answer(this,2,1,3)">B. The AWS account root user credentials</button><button class="opt" onclick="answer(this,2,2,3)">C. SAML federation through AWS IAM Identity Center (AWS SSO)</button><button class="opt" onclick="answer(this,2,3,3)">D. OIDC federation using an AWS IAM identity provider trust configured with Sentinel's Azure AD application, assuming a cross-account role</button>
+    <div class="expl">The modern Sentinel AWS connector uses OIDC-based federated authentication, where AWS trusts Sentinel's Azure AD application and the connector assumes a cross-account IAM role — eliminating the need for stored long-lived access keys.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Manage a security operations environment">
+    <div class="meta">Question 4 of 6 · Manage a security operations environment</div>
+    <div class="q">Which combination of GCP resources must be configured together to stream Google Cloud Audit Logs into Microsoft Sentinel using the built-in GCP data connector?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. A Cloud Storage bucket with a lifecycle export rule only</button><button class="opt" onclick="answer(this,3,1,1)">B. A Pub/Sub topic and subscription, along with a workload identity federated GCP service account granted the Pub/Sub Subscriber role</button><button class="opt" onclick="answer(this,3,2,1)">C. A single exported GCP service account key stored as a static Sentinel API key</button><button class="opt" onclick="answer(this,3,3,1)">D. A VPC Service Controls perimeter paired with an Azure ExpressRoute circuit</button>
+    <div class="expl">The GCP connector reads audit log entries routed to a Pub/Sub topic through a subscription, and authenticates via workload identity federation to a GCP service account that has been granted Pub/Sub Subscriber permissions — avoiding static key export.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Manage a security operations environment">
+    <div class="meta">Question 5 of 6 · Manage a security operations environment</div>
+    <div class="q">A Log Analytics table used by Microsoft Sentinel is configured with 90 days of interactive retention and 2 years of total retention (with the remainder archived). One hundred twenty days after ingestion, an analyst runs a hunting KQL query against the table and finds no results for data older than 90 days, even though the workspace shows the table's total retention as 2 years. What is the cause?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. Data older than the interactive retention period moved to the Archive tier and must be recovered via a search job or table restore before it is directly queryable</button><button class="opt" onclick="answer(this,4,1,0)">B. The workspace-level default retention setting silently overrides the table-level retention configuration</button><button class="opt" onclick="answer(this,4,2,0)">C. Microsoft Sentinel automatically purges data older than 90 days regardless of the configured retention</button><button class="opt" onclick="answer(this,4,3,0)">D. The analytics rule's query frequency setting is limiting the KQL lookback window to 90 days</button>
+    <div class="expl">Once data ages past the interactive retention period, it moves into the Archive tier, where it is stored cheaply but is not directly queryable with ad hoc KQL — it must be recovered via a search job or a table restore operation before analysts can query it normally.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Manage a security operations environment">
+    <div class="meta">Question 6 of 6 · Manage a security operations environment</div>
+    <div class="q">You want to proactively detect when a critical Microsoft Sentinel data connector silently stops ingesting data, so the SOC is alerted before dependent analytics rules fail to fire on missing data. Which approach BEST achieves this?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. Rely solely on the analytics rule's built-in health status indicator in the Sentinel portal</button><button class="opt" onclick="answer(this,5,1,3)">B. Configure Azure Service Health alerts on the Log Analytics workspace resource</button><button class="opt" onclick="answer(this,5,2,3)">C. Have an analyst manually check the Data Connectors blade each morning for ingestion gaps</button><button class="opt" onclick="answer(this,5,3,3)">D. Enable Microsoft Sentinel health monitoring and create an analytics rule that queries the SentinelHealth data table for ingestion failures</button>
+    <div class="expl">Sentinel health monitoring writes operational health events, including data connector ingestion failures, to the SentinelHealth table, which can be queried by a scheduled analytics rule to proactively alert the SOC on failures.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">undefined</span> <span class="price">$34.99</span> with code <span class="code">FREETEST33</span> — valid through Oct 6.</p>
+  <a href="https://www.udemy.com/course/sc-200-microsoft-security-operations-analyst-prep/?couponCode=FREETEST33" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

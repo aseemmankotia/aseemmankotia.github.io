@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Manage and monitor security posture Practice Questions — Microsoft Certified: Azure Security Engineer Associate</title>
+<meta name="description" content="6 free Manage and monitor security posture practice questions with explanations for the Microsoft Certified: Azure Security Engineer Associate exam.">
+<link rel="canonical" href="https://technuggets.academy/sc-500-manage-and-monitor-security-posture.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Manage and monitor security posture Practice Questions — Microsoft Certified: Azure Security Engineer Associate">
+<meta property="og:description" content="6 free Manage and monitor security posture practice questions with explanations for the Microsoft Certified: Azure Security Engineer Associate exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/sc-500-manage-and-monitor-security-posture.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0078D4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Manage and monitor security posture</h1>
+<p class="sub">Free Microsoft Certified: Azure Security Engineer Associate practice — 6 questions on <strong>Manage and monitor security posture</strong>, with explanations. No sign-up.
+<a href="sc-500.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Manage and monitor security posture">
+    <div class="meta">Question 1 of 6 · Manage and monitor security posture</div>
+    <div class="q">A security engineer connects an AWS account to Microsoft Defender for Cloud using the native cloud connector with the Defender CSPM plan enabled. Six hours later, no AWS resources appear under Inventory. The engineer confirms the connector shows a 'Connected' status. What is the MOST likely cause?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. The AWS account has not deployed the CloudFormation template that grants Defender for Cloud the required IAM role and permissions</button><button class="opt" onclick="answer(this,0,1,0)">B. Defender for Cloud only supports Azure Arc-enabled AWS EC2 instances, not native connectors</button><button class="opt" onclick="answer(this,0,2,0)">C. The AWS account region must match the Azure subscription's primary region before resources sync</button><button class="opt" onclick="answer(this,0,3,0)">D. Defender CSPM requires Microsoft Sentinel to be provisioned in the same tenant before AWS resources are indexed</button>
+    <div class="expl">Even when the connector status shows 'Connected', the CloudFormation (or Terraform) template must be deployed in AWS to create the cross-account IAM role that grants Defender for Cloud read/scan permissions. Without it, discovery and recommendations never populate even though the connector object itself exists.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Manage and monitor security posture">
+    <div class="meta">Question 2 of 6 · Manage and monitor security posture</div>
+    <div class="q">A CISO wants specific Defender for Cloud recommendations automatically assigned to named resource owners with a 14-day remediation deadline, and wants email reminders sent as the deadline approaches. Which feature should be configured?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. Governance rules</button><button class="opt" onclick="answer(this,1,1,0)">B. Workflow automation triggered on recommendation creation</button><button class="opt" onclick="answer(this,1,2,0)">C. Secure score exemptions with a review date</button><button class="opt" onclick="answer(this,1,3,0)">D. Azure Policy remediation tasks scoped to the recommendation</button>
+    <div class="expl">Governance rules in Defender for Cloud let you define owner assignment logic, remediation SLAs (deadlines), and automated reminder notifications directly tied to specific recommendations or recommendation severities — this is exactly the scenario described.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Manage and monitor security posture">
+    <div class="meta">Question 3 of 6 · Manage and monitor security posture</div>
+    <div class="q">Your organization deployed Azure OpenAI-based generative AI applications through Azure AI Foundry. Security needs real-time detection of prompt injection attempts and sensitive data leakage happening at the model prompt/response layer. Which capability should be enabled?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. Microsoft Defender for Cloud AI threat protection (Defender for AI Services)</button><button class="opt" onclick="answer(this,2,1,0)">B. Microsoft Purview sensitivity labels applied to the AI Foundry workspace</button><button class="opt" onclick="answer(this,2,2,0)">C. Microsoft Defender for Cloud CSPM attack path analysis</button><button class="opt" onclick="answer(this,2,3,0)">D. Microsoft Sentinel Fusion analytics rule for anomalous sign-ins</button>
+    <div class="expl">Defender for Cloud's AI threat protection (part of the Defender for AI Services / Defender CSPM for AI capability) monitors Azure OpenAI and AI Foundry workloads for prompt injection, jailbreak attempts, and sensitive data exposure in real time, generating security alerts specific to generative AI usage.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Manage and monitor security posture">
+    <div class="meta">Question 4 of 6 · Manage and monitor security posture</div>
+    <div class="q">A SOC lead wants an automation rule in Microsoft Sentinel that automatically closes incidents as 'False Positive' ONLY when they originate from a specific analytic rule named 'Test Detection - Dev Sandbox' AND have a severity of Informational. Where must this logic be configured?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. In the analytic rule's alert suppression settings using KQL filters</button><button class="opt" onclick="answer(this,3,1,1)">B. In the automation rule's conditions section, filtering on Analytic rule name and Severity before the 'Change status' action runs</button><button class="opt" onclick="answer(this,3,2,1)">C. In a Logic App playbook triggered on incident creation with a conditional branch</button><button class="opt" onclick="answer(this,3,3,1)">D. In Sentinel's incident settings under grouping and alert clustering rules</button>
+    <div class="expl">Automation rules support condition blocks that can filter on specific properties like the triggering analytic rule name and incident severity. Only when both conditions match does the rule execute its action (Change status to Closed, classification False Positive) — no playbook or code is needed for this simple conditional logic.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Manage and monitor security posture">
+    <div class="meta">Question 5 of 6 · Manage and monitor security posture</div>
+    <div class="q">During a Defender for Cloud review, an analyst wants to see which internet-exposed VM could be used by an attacker to laterally move to a VM hosting a database containing sensitive data, based on network configuration, identity permissions, and vulnerability data combined. Which Defender for Cloud capability provides this?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. Regulatory compliance dashboard</button><button class="opt" onclick="answer(this,4,1,3)">B. Secure score recommendations list</button><button class="opt" onclick="answer(this,4,2,3)">C. Microsoft Sentinel entity behavior analytics</button><button class="opt" onclick="answer(this,4,3,3)">D. Attack path analysis</button>
+    <div class="expl">Attack path analysis (available with Defender CSPM enabled) uses the cloud security graph to correlate exposure, permissions, vulnerabilities, and network reachability, visually mapping exploitable paths from an internet-facing resource to a sensitive data store.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Manage and monitor security posture">
+    <div class="meta">Question 6 of 6 · Manage and monitor security posture</div>
+    <div class="q">A resource owner insists a flagged Defender for Cloud recommendation for a legacy VM is a known, accepted risk that should stop lowering the subscription's secure score, while still remaining visible for audit purposes with a documented justification and expiry date. What should the security engineer configure?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. Create an exemption for the specific resource with a reason category and expiration date</button><button class="opt" onclick="answer(this,5,1,0)">B. Disable the recommendation at the policy definition level</button><button class="opt" onclick="answer(this,5,2,0)">C. Delete the recommendation from the regulatory compliance dashboard</button><button class="opt" onclick="answer(this,5,3,0)">D. Set the recommendation's severity to Low in the assessment policy</button>
+    <div class="expl">Exemptions let you exclude a specific resource (or subscription/management group) from a recommendation's score impact while keeping it visible with a documented reason (e.g., 'Risk accepted') and optional expiration date — exactly matching the audit-with-justification requirement.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/sc-500-azure-security-engineer-certification-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

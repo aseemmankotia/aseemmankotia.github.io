@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Deployment and System Configuration Practice Questions — FCP - FortiGate 7.6 Administrator</title>
+<meta name="description" content="6 free Deployment and System Configuration practice questions with explanations for the FCP - FortiGate 7.6 Administrator exam.">
+<link rel="canonical" href="https://technuggets.academy/fcp-fgt-ad-7-6-deployment-and-system-configuration.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Deployment and System Configuration Practice Questions — FCP - FortiGate 7.6 Administrator">
+<meta property="og:description" content="6 free Deployment and System Configuration practice questions with explanations for the FCP - FortiGate 7.6 Administrator exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/fcp-fgt-ad-7-6-deployment-and-system-configuration.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Deployment and System Configuration</h1>
+<p class="sub">Free FCP - FortiGate 7.6 Administrator practice — 6 questions on <strong>Deployment and System Configuration</strong>, with explanations. No sign-up.
+<a href="fcp-fgt-ad-7-6.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Deployment and System Configuration">
+    <div class="meta">Question 1 of 6 · Deployment and System Configuration</div>
+    <div class="q">A network engineer deploys a FortiGate in Transparent mode between two access switches that carry multiple VLANs. After deployment, broadcast storms occur because Layer 2 traffic from one VLAN segment is being forwarded to interfaces that should be logically isolated. Which configuration change on the affected interfaces BEST resolves this without changing the physical topology or operation mode?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. Assign the interfaces to different zones and enable 'Block intra-zone traffic'</button><button class="opt" onclick="answer(this,0,1,1)">B. Configure a unique forward-domain ID on the interfaces that must remain isolated</button><button class="opt" onclick="answer(this,0,2,1)">C. Change the FortiGate operation mode to NAT/Route mode</button><button class="opt" onclick="answer(this,0,3,1)">D. Enable spanning-tree forwarding on the transparent mode interfaces</button>
+    <div class="expl">In Transparent mode, the forward-domain setting on an interface creates a distinct Layer 2 broadcast/forwarding domain within the same bridge instance, preventing L2 traffic (including broadcasts) from being forwarded between interfaces assigned different forward-domain IDs, which stops the storm without changing topology.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Deployment and System Configuration">
+    <div class="meta">Question 2 of 6 · Deployment and System Configuration</div>
+    <div class="q">An administrator must create an account that can manage firewall policies and objects only within the 'Branch-VDOM' virtual domain, and must not be able to view or modify System &gt; Global settings that affect other VDOMs. Which configuration approach satisfies this requirement?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. Assign the account the default prof_admin profile and restrict access using a trusted host</button><button class="opt" onclick="answer(this,1,1,3)">B. Assign the account the super_admin profile and rely on FortiGuard licensing to restrict scope</button><button class="opt" onclick="answer(this,1,2,3)">C. Enable 'match-vip' under the administrator settings for that VDOM</button><button class="opt" onclick="answer(this,1,3,3)">D. Create a custom administrator profile scoped to VDOM-level permissions and assign the admin account only to the Branch-VDOM</button>
+    <div class="expl">A custom administrator profile with permissions scoped to VDOM-level objects, combined with limiting the administrator account's assigned VDOM(s) to only Branch-VDOM, restricts the account to managing policies/objects in that VDOM and blocks access to global system settings.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Deployment and System Configuration">
+    <div class="meta">Question 3 of 6 · Deployment and System Configuration</div>
+    <div class="q">By default, which TCP port does a FortiGate running FortiOS 7.6 use to retrieve antivirus and IPS signature package updates from the FortiGuard Distribution Network (FDN)?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. UDP 53</button><button class="opt" onclick="answer(this,2,1,1)">B. TCP 443</button><button class="opt" onclick="answer(this,2,2,1)">C. TCP 8888</button><button class="opt" onclick="answer(this,2,3,1)">D. TCP 8890</button>
+    <div class="expl">FortiOS uses HTTPS over TCP 443 as the default port for contacting the FortiGuard Distribution Network to download AV and IPS signature updates in current FortiOS releases.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Deployment and System Configuration">
+    <div class="meta">Question 4 of 6 · Deployment and System Configuration</div>
+    <div class="q">A FortiGate has three interfaces (port1, port2, port3) all assigned to the same zone named 'Internal'. No firewall policies exist between port1 and port2, yet traffic currently flows freely between hosts on those two interfaces. What must the administrator configure so that traffic between port1 and port2 requires an explicit firewall policy, while keeping all three interfaces in the same zone?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. Delete the implicit deny policy at the bottom of the policy list</button><button class="opt" onclick="answer(this,3,1,2)">B. Move port2 into a new zone named 'DMZ'</button><button class="opt" onclick="answer(this,3,2,2)">C. Enable 'Block intra-zone traffic' on the Internal zone</button><button class="opt" onclick="answer(this,3,3,2)">D. Disable asymmetric routing settings on the zone</button>
+    <div class="expl">By default, interfaces within the same zone can pass traffic to each other without an explicit policy. Enabling 'Block intra-zone traffic' forces the FortiGate to require an explicit firewall policy for traffic between member interfaces of that same zone.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Deployment and System Configuration">
+    <div class="meta">Question 5 of 6 · Deployment and System Configuration</div>
+    <div class="q">What is the default administrative GUI/CLI idle timeout on a FortiGate, and what is the maximum value it can be set to under 'config system global'?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. Default 15 minutes, maximum 1440 minutes</button><button class="opt" onclick="answer(this,4,1,2)">B. Default 30 minutes, maximum 60 minutes</button><button class="opt" onclick="answer(this,4,2,2)">C. Default 5 minutes, maximum 480 minutes</button><button class="opt" onclick="answer(this,4,3,2)">D. Default 5 minutes, maximum 60 minutes</button>
+    <div class="expl">The FortiOS admintimeout setting defaults to 5 minutes and can be configured up to a maximum of 480 minutes (8 hours) under config system global.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Deployment and System Configuration">
+    <div class="meta">Question 6 of 6 · Deployment and System Configuration</div>
+    <div class="q">A company wants to insert a FortiGate transparently into an existing network segment to apply security profiles without changing IP addressing, and also wants the FortiGate to participate in a dynamic routing protocol to influence traffic paths for transit traffic on that segment. Which statement is correct for FortiOS 7.6?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. Transparent mode fully supports OSPF and BGP for traffic transiting through the device</button><button class="opt" onclick="answer(this,5,1,3)">B. Transparent mode requires enabling SD-WAN to support dynamic routing for transit traffic</button><button class="opt" onclick="answer(this,5,2,3)">C. Transparent mode supports dynamic routing for transit traffic only when VDOMs are enabled</button><button class="opt" onclick="answer(this,5,3,3)">D. Transparent mode only supports static routes for the FortiGate's own management traffic; dynamic routing protocols for transit traffic require NAT/Route mode</button>
+    <div class="expl">A FortiGate in Transparent mode operates as a Layer 2 bridge; it only supports static routing for its own management traffic and does not make Layer 3 forwarding decisions for transit traffic, so dynamic routing protocols cannot influence transit traffic paths in this mode. NAT/Route mode is required for that.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/fcp-fortigate-7-6-administrator-exam-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

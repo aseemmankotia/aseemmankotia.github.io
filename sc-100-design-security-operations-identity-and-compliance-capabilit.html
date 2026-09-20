@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Design security operations, identity, and compliance capabilities Practice Questions — Microsoft Certified: Cybersecurity Architect Expert</title>
+<meta name="description" content="6 free Design security operations, identity, and compliance capabilities practice questions with explanations for the Microsoft Certified: Cybersecurity Architect Expert exam.">
+<link rel="canonical" href="https://technuggets.academy/sc-100-design-security-operations-identity-and-compliance-capabilit.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Design security operations, identity, and compliance capabilities Practice Questions — Microsoft Certified: Cybersecurity Architect Expert">
+<meta property="og:description" content="6 free Design security operations, identity, and compliance capabilities practice questions with explanations for the Microsoft Certified: Cybersecurity Architect Expert exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/sc-100-design-security-operations-identity-and-compliance-capabilit.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0078D4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Design security operations, identity, and compliance capabilities</h1>
+<p class="sub">Free Microsoft Certified: Cybersecurity Architect Expert practice — 6 questions on <strong>Design security operations, identity, and compliance capabilities</strong>, with explanations. No sign-up.
+<a href="sc-100.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Domain 2: Design security operations, identity, and compliance capabilities">
+    <div class="meta">Question 1 of 6 · Domain 2: Design security operations, identity, and compliance capabilities</div>
+    <div class="q">A global MSSP manages Microsoft Sentinel for 40 customer tenants. The MSSP requires a single pane of glass to hunt across all customer workspaces without duplicating data into a central workspace, while each customer retains full data sovereignty over their own workspace. Which design should the architect recommend?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. Ingest all customer data via Data Collection Rules into one central Sentinel workspace and use resource-context RBAC to segment access</button><button class="opt" onclick="answer(this,0,1,3)">B. Deploy a separate Sentinel instance per tenant and federate them using Azure Arc-enabled servers</button><button class="opt" onclick="answer(this,0,2,3)">C. Use the Microsoft Graph Security API to poll each tenant nightly and store aggregated alert data in a central Log Analytics workspace</button><button class="opt" onclick="answer(this,0,3,3)">D. Deploy Azure Lighthouse delegated resource management across all customer tenants and use Sentinel cross-workspace workbooks and hunting queries with the union() operator</button>
+    <div class="expl">Azure Lighthouse delegated access combined with Sentinel's cross-workspace query capability (union() across workspaces in hunting queries and workbooks) is the documented MSSP multi-tenant pattern — it provides centralized visibility without moving or duplicating customer data, preserving sovereignty.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Domain 2: Design security operations, identity, and compliance capabilities">
+    <div class="meta">Question 2 of 6 · Domain 2: Design security operations, identity, and compliance capabilities</div>
+    <div class="q">A company grants external B2B guest users access to project resources via entitlement management access packages. Compliance requires that guest access be reviewed on a recurring 90-day cadence AND that guest accounts with no sign-in activity for 90 days be automatically disabled and removed, without manual admin intervention. Which configuration best satisfies both requirements?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. Configure a recurring Access Review every 90 days on the access package, and enable an Entra ID Lifecycle Workflow using the 'Real-time employee termination' template</button><button class="opt" onclick="answer(this,1,1,2)">B. Configure a Conditional Access sign-in frequency policy of 90 days scoped to guest users, combined with PIM for Groups on the access package</button><button class="opt" onclick="answer(this,1,2,2)">C. Configure a recurring Access Review every 90 days on the access package, and enable an Entra ID Lifecycle Workflow that offboards inactive guest users based on 90 days of sign-in inactivity</button><button class="opt" onclick="answer(this,1,3,2)">D. Configure an Identity Protection risk-based Conditional Access policy that blocks guest sign-in after 90 days without a detected risk event</button>
+    <div class="expl">Recurring Access Reviews on the access package satisfy the review requirement, and Lifecycle Workflows' inactive-guest offboarding template (triggered on sign-in inactivity) automates disabling/removal without admin effort — matching both stated requirements.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Domain 2: Design security operations, identity, and compliance capabilities">
+    <div class="meta">Question 3 of 6 · Domain 2: Design security operations, identity, and compliance capabilities</div>
+    <div class="q">A financial services firm must detect when employees with sensitive M&amp;A document access attempt exfiltration via screenshots, printing, or copying files to personal cloud storage, and must correlate these activities with HR signals such as resignation notices to prioritize investigation. Which Microsoft Purview capability should the architect recommend?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. Microsoft Purview Data Loss Prevention (DLP) endpoint policies</button><button class="opt" onclick="answer(this,2,1,1)">B. Microsoft Purview Insider Risk Management</button><button class="opt" onclick="answer(this,2,2,1)">C. Microsoft Purview Information Protection sensitivity labels</button><button class="opt" onclick="answer(this,2,3,1)">D. Microsoft Purview Compliance Manager</button>
+    <div class="expl">Insider Risk Management correlates behavioral signals (screenshots, printing, cloud upload activity) with HR connector data (resignation, termination) to score and prioritize insider risk cases — precisely the described requirement.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Domain 2: Design security operations, identity, and compliance capabilities">
+    <div class="meta">Question 4 of 6 · Domain 2: Design security operations, identity, and compliance capabilities</div>
+    <div class="q">An architect must ensure that activation of the Global Administrator role in Microsoft Entra PIM requires justification, approval by a second administrator, a maximum activation duration of 4 hours, and blocks activation entirely unless the user authenticates with a phishing-resistant method from a compliant device. Which PIM role setting configuration achieves this?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. Set maximum activation duration to 4 hours, require approval, require Azure MFA, and enable 'require justification on active assignment' only</button><button class="opt" onclick="answer(this,3,1,3)">B. Configure a permanent eligible assignment with approval and Azure MFA, relying on the default sign-in risk policy to enforce device compliance</button><button class="opt" onclick="answer(this,3,2,3)">C. Set maximum activation duration to 8 hours with approval and justification, since PIM role settings cannot enforce device compliance</button><button class="opt" onclick="answer(this,3,3,3)">D. Set maximum activation duration to 4 hours, require approval, require Azure MFA, and configure an Authentication Context mapped to a Conditional Access policy that requires phishing-resistant authentication strength and compliant device</button>
+    <div class="expl">PIM role settings support an Authentication Context requirement at activation, which is enforced via a linked Conditional Access policy — this is the supported mechanism to require phishing-resistant authentication strength and device compliance beyond basic MFA, while also meeting the 4-hour duration and approval requirements.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Domain 2: Design security operations, identity, and compliance capabilities">
+    <div class="meta">Question 5 of 6 · Domain 2: Design security operations, identity, and compliance capabilities</div>
+    <div class="q">A SOC currently manages incidents separately in Microsoft Sentinel and Microsoft Defender XDR, resulting in duplicated alerts and fragmented cross-domain investigations. The architect must design a unified incident queue with cross-domain correlation across identity, endpoint, email, and cloud apps, plus automated response from a single console. Which architecture should be recommended?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. Onboard the Sentinel workspace into the Microsoft Defender portal's unified security operations platform so incidents, entities, and automation are consolidated into one console</button><button class="opt" onclick="answer(this,4,1,0)">B. Keep Sentinel and Defender XDR separate and build a Logic App that copies Defender XDR incidents into Sentinel as custom incidents every 5 minutes</button><button class="opt" onclick="answer(this,4,2,0)">C. Disable Defender XDR and rely solely on Sentinel analytics rules fed by individual Defender workload data connectors</button><button class="opt" onclick="answer(this,4,3,0)">D. Disable Sentinel and use only Defender XDR, since Defender XDR fully replaces SIEM functionality</button>
+    <div class="expl">The Microsoft Defender portal's unified security operations platform connects a Sentinel workspace so incidents, entities, hunting, and automation are consolidated into a single console with native cross-domain correlation — the current recommended architecture.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Domain 2: Design security operations, identity, and compliance capabilities">
+    <div class="meta">Question 6 of 6 · Domain 2: Design security operations, identity, and compliance capabilities</div>
+    <div class="q">An admin disables a compromised user's account in Microsoft Entra ID at 10:00 AM. Continuous Access Evaluation (CAE) is enabled for supported services. Approximately how quickly is the user's existing access token revoked, and what distinguishes this from standard token lifetime enforcement?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. Within a few minutes, because CAE uses near real-time critical event signals (such as account disable, password reset, or location change) to revoke access rather than waiting for token expiry</button><button class="opt" onclick="answer(this,5,1,0)">B. Only at standard token expiration (typically 60-90 minutes), because CAE relies solely on the existing access token lifetime policy</button><button class="opt" onclick="answer(this,5,2,0)">C. Within 24 hours, because CAE evaluation only runs as a scheduled daily batch process</button><button class="opt" onclick="answer(this,5,3,0)">D. Instantly with zero propagation delay, because CAE bypasses all network communication requirements between services</button>
+    <div class="expl">CAE's core value is near real-time revocation (typically within minutes) triggered by critical security signals, rather than waiting for the access token's normal lifetime to expire — this is the exam-relevant distinction from standard token lifetime enforcement.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/sc-100-microsoft-cybersecurity-architect-expert-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

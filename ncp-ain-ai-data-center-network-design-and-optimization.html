@@ -32,7 +32,7 @@
   <div class="card qcard" id="q1" data-domain="AI Data Center Network Design and Optimization">
     <div class="meta">Question 2 of 6 · AI Data Center Network Design and Optimization</div>
     <div class="q">An AI factory customer requires the lowest possible tail latency for all-reduce collective operations across a 2,000+ GPU training cluster and specifically wants in-network aggregation (SHARP) offload to reduce data movement during gradient reduction. Which fabric type should be recommended?</div>
-    <button class="opt" onclick="answer(this,1,0,0)">A. NVIDIA Quantum-2 InfiniBand with NDR</button><button class="opt" onclick="answer(this,1,1,0)">B. Standard Ethernet with ECMP load balancing</button><button class="opt" onclick="answer(this,1,2,0)">C. Spectrum-X Ethernet with RoCEv2 only</button><button class="opt" onclick="answer(this,1,3,0)">D. Spectrum-X Ethernet with static routing</button>
+    <button class="opt" onclick="answer(this,1,0,1)">A. Standard Ethernet with ECMP load balancing</button><button class="opt" onclick="answer(this,1,1,1)">B. NVIDIA Quantum-2 InfiniBand with NDR</button><button class="opt" onclick="answer(this,1,2,1)">C. Spectrum-X Ethernet with RoCEv2 only</button><button class="opt" onclick="answer(this,1,3,1)">D. Spectrum-X Ethernet with static routing</button>
     <div class="expl">SHARP (Scalable Hierarchical Aggregation and Reduction Protocol) in-network computing is an InfiniBand-specific capability available on Quantum-2 switches, offloading collective reduction operations into the fabric and directly reducing tail latency for large-scale all-reduce.</div>
   </div>
 
@@ -46,29 +46,30 @@
   <div class="card qcard" id="q3" data-domain="AI Data Center Network Design and Optimization">
     <div class="meta">Question 4 of 6 · AI Data Center Network Design and Optimization</div>
     <div class="q">A network engineer implementing a rail-optimized topology connects both GPU0 and GPU1 NICs from every node to the same leaf switch (Leaf-0) to conserve switch ports, while GPU2 through GPU7 remain on their own dedicated per-rail leaf switches. What problem does this introduce?</div>
-    <button class="opt" onclick="answer(this,3,0,3)">A. GPU0 and GPU1 gain automatic active-active NIC failover, improving fault tolerance</button><button class="opt" onclick="answer(this,3,1,3)">B. This configuration is a supported optimization that enables adaptive routing to load-balance more efficiently across rails</button><button class="opt" onclick="answer(this,3,2,3)">C. Nothing changes functionally since all leaf switches ultimately connect to the same spine layer</button><button class="opt" onclick="answer(this,3,3,3)">D. Leaf-0 becomes oversubscribed relative to the other leaf switches, breaking the 1:1 non-blocking design and creating a bandwidth bottleneck for GPU0/GPU1 traffic</button>
+    <button class="opt" onclick="answer(this,3,0,0)">A. Leaf-0 becomes oversubscribed relative to the other leaf switches, breaking the 1:1 non-blocking design and creating a bandwidth bottleneck for GPU0/GPU1 traffic</button><button class="opt" onclick="answer(this,3,1,0)">B. GPU0 and GPU1 gain automatic active-active NIC failover, improving fault tolerance</button><button class="opt" onclick="answer(this,3,2,0)">C. This configuration is a supported optimization that enables adaptive routing to load-balance more efficiently across rails</button><button class="opt" onclick="answer(this,3,3,0)">D. Nothing changes functionally since all leaf switches ultimately connect to the same spine layer</button>
     <div class="expl">Rail-optimized design assumes exactly one dedicated leaf switch group per GPU rail. Doubling up two rails onto one leaf switch doubles the downlink traffic that switch must carry without adding uplink capacity, breaking the non-blocking 1:1 ratio and creating a hotspot for GPU0/GPU1 traffic specifically.</div>
   </div>
 
   <div class="card qcard" id="q4" data-domain="AI Data Center Network Design and Optimization">
     <div class="meta">Question 5 of 6 · AI Data Center Network Design and Optimization</div>
     <div class="q">In the context of a Clos-based fat-tree fabric for AI training, what does it mean for the design to be 'non-blocking'?</div>
-    <button class="opt" onclick="answer(this,4,0,1)">A. Adaptive routing is disabled so that traffic always follows a single deterministic path</button><button class="opt" onclick="answer(this,4,1,1)">B. Any arbitrary set of compute nodes can communicate with any other set simultaneously at full line rate without contention, achieved via a 1:1 downlink-to-uplink port ratio at each switching stage</button><button class="opt" onclick="answer(this,4,2,1)">C. Every switch in the fabric must be the exact same hardware model and firmware version</button><button class="opt" onclick="answer(this,4,3,1)">D. Spine switches are dedicated exclusively to forwarding storage traffic while leaf switches handle only GPU compute traffic</button>
+    <button class="opt" onclick="answer(this,4,0,2)">A. Adaptive routing is disabled so that traffic always follows a single deterministic path</button><button class="opt" onclick="answer(this,4,1,2)">B. Every switch in the fabric must be the exact same hardware model and firmware version</button><button class="opt" onclick="answer(this,4,2,2)">C. Any arbitrary set of compute nodes can communicate with any other set simultaneously at full line rate without contention, achieved via a 1:1 downlink-to-uplink port ratio at each switching stage</button><button class="opt" onclick="answer(this,4,3,2)">D. Spine switches are dedicated exclusively to forwarding storage traffic while leaf switches handle only GPU compute traffic</button>
     <div class="expl">Non-blocking in a Clos/fat-tree design means full bisection bandwidth is available: any communication pattern between node sets can occur at full NIC line rate simultaneously, which is achieved by maintaining a 1:1 ratio of downlink to uplink capacity at each tier.</div>
   </div>
 
   <div class="card qcard" id="q5" data-domain="AI Data Center Network Design and Optimization">
     <div class="meta">Question 6 of 6 · AI Data Center Network Design and Optimization</div>
     <div class="q">A cluster has 128 nodes, each with 8x400 Gb/s Spectrum-X NICs in a rail-optimized layout (1024 NICs total at 400 Gb/s each). For a fully non-blocking any-to-any design, what is the minimum required bisection bandwidth if the cluster is logically split into two equal halves of 64 nodes each?</div>
-    <button class="opt" onclick="answer(this,5,0,3)">A. 102.4 Tb/s</button><button class="opt" onclick="answer(this,5,1,3)">B. 409.6 Tb/s</button><button class="opt" onclick="answer(this,5,2,3)">C. 51.2 Tb/s</button><button class="opt" onclick="answer(this,5,3,3)">D. 204.8 Tb/s</button>
+    <button class="opt" onclick="answer(this,5,0,2)">A. 102.4 Tb/s</button><button class="opt" onclick="answer(this,5,1,2)">B. 409.6 Tb/s</button><button class="opt" onclick="answer(this,5,2,2)">C. 204.8 Tb/s</button><button class="opt" onclick="answer(this,5,3,2)">D. 51.2 Tb/s</button>
     <div class="expl">Bisection bandwidth must equal the total aggregate NIC bandwidth of the smaller half in the worst case where all traffic crosses the cut: 64 nodes x 8 NICs x 400 Gb/s = 204.8 Tb/s, ensuring no oversubscription across the cut for any-to-any traffic.</div>
   </div>
 <div class="score" id="score"></div>
-<div class="gaps" id="gaps"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST34"></div>
 <div class="cta">
   <strong>Ready for the real thing?</strong>
-  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
-  <a href="https://www.udemy.com/course/ncp-ain-nvidia-ai-networking-certification-prep/" rel="sponsored">Start my full course on Udemy →</a>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">undefined</span> <span class="price">$34.99</span> with code <span class="code">FREETEST34</span> — valid through Oct 11.</p>
+  <a href="https://www.udemy.com/course/ncp-ain-nvidia-ai-networking-certification-prep/?couponCode=FREETEST34" rel="sponsored">Get my $34.99 deal →</a>
 </div>
 <footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
 Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>

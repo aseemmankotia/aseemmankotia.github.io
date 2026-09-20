@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Systems and Application Security Practice Questions — Systems Security Certified Practitioner</title>
+<meta name="description" content="6 free Systems and Application Security practice questions with explanations for the Systems Security Certified Practitioner exam.">
+<link rel="canonical" href="https://technuggets.academy/sscp-systems-and-application-security.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Systems and Application Security Practice Questions — Systems Security Certified Practitioner">
+<meta property="og:description" content="6 free Systems and Application Security practice questions with explanations for the Systems Security Certified Practitioner exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/sscp-systems-and-application-security.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Systems and Application Security</h1>
+<p class="sub">Free Systems Security Certified Practitioner practice — 6 questions on <strong>Systems and Application Security</strong>, with explanations. No sign-up.
+<a href="sscp.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Domain 7: Systems and Application Security">
+    <div class="meta">Question 1 of 6 · Domain 7: Systems and Application Security</div>
+    <div class="q">A security engineer reviews a production Kubernetes cluster and finds several pods running with the --privileged flag, root as the container user, and the Docker socket mounted inside the container. If one of these containers is compromised via an application vulnerability, an attacker could escape to the underlying host. Which hardening action BEST reduces this container escape risk?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. Increase the CPU and memory resource limits assigned to the container</button><button class="opt" onclick="answer(this,0,1,3)">B. Enable image signing on the container registry only</button><button class="opt" onclick="answer(this,0,2,3)">C. Place the container on the same network segment as the host for easier monitoring</button><button class="opt" onclick="answer(this,0,3,3)">D. Remove the --privileged flag, run the container as a non-root user, and apply user namespace remapping</button>
+    <div class="expl">Removing --privileged and unmounting the Docker socket eliminates direct kernel/host access; running as non-root with user namespace remapping means even a container root user maps to an unprivileged host UID, containing damage if the container is breached.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Domain 7: Systems and Application Security">
+    <div class="meta">Question 2 of 6 · Domain 7: Systems and Application Security</div>
+    <div class="q">An attacker gains initial access to a workstation and uses only built-in PowerShell cmdlets and WMI calls to move laterally, never writing an executable file to disk. Signature-based antivirus reports no detections. Which endpoint security capability is MOST likely to detect this activity?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. A host-based firewall blocking inbound connections</button><button class="opt" onclick="answer(this,1,1,3)">B. Full-disk encryption on the workstation's drive</button><button class="opt" onclick="answer(this,1,2,3)">C. Daily signature database updates for the antivirus engine</button><button class="opt" onclick="answer(this,1,3,3)">D. Behavior-based EDR monitoring of process lineage, command-line arguments, and in-memory activity</button>
+    <div class="expl">Fileless, living-off-the-land attacks abuse legitimate system binaries, so they leave no malicious file for signature scanning to catch. EDR behavioral/heuristic analytics that examine process ancestry, unusual command-line patterns, and memory-resident activity can flag the anomalous use of PowerShell/WMI even without a malicious file.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Domain 7: Systems and Application Security">
+    <div class="meta">Question 3 of 6 · Domain 7: Systems and Application Security</div>
+    <div class="q">A cloud provider is designing a new multi-tenant IaaS platform and must maximize isolation between tenant virtual machines while minimizing the attack surface exposed to the hypervisor layer. Which hypervisor architecture should be selected?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. A Type 2 (hosted) hypervisor running as an application on a general-purpose host OS</button><button class="opt" onclick="answer(this,2,1,1)">B. A Type 1 (bare-metal) hypervisor running directly on the physical hardware</button><button class="opt" onclick="answer(this,2,2,1)">C. A shared-kernel container runtime for all tenant workloads</button><button class="opt" onclick="answer(this,2,3,1)">D. An application virtualization layer that streams apps to thin clients</button>
+    <div class="expl">A Type 1 bare-metal hypervisor runs directly on hardware without a full general-purpose host OS underneath it, reducing the code base and attack surface exposed between tenants and providing stronger isolation, which is why virtually all production multi-tenant cloud platforms use Type 1 hypervisors.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Domain 7: Systems and Application Security">
+    <div class="meta">Question 4 of 6 · Domain 7: Systems and Application Security</div>
+    <div class="q">A newly purchased IoT sensor ships with Telnet enabled by default, the same hardcoded administrator password across every unit, and a firmware update mechanism that accepts any unsigned image over HTTP. Which single set of changes BEST hardens this device before deployment?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. Disable Telnet, assign a unique strong credential per device, and require cryptographically signed firmware delivered over an encrypted channel</button><button class="opt" onclick="answer(this,3,1,0)">B. Leave Telnet enabled but require a strong password on all units</button><button class="opt" onclick="answer(this,3,2,0)">C. Add the device to a dedicated VLAN but keep the factory default credentials</button><button class="opt" onclick="answer(this,3,3,0)">D. Increase the device's onboard flash storage capacity</button>
+    <div class="expl">Effective IoT/embedded hardening requires closing unnecessary remote-access services (disable Telnet), eliminating shared default credentials with unique strong per-device credentials, and enforcing signed, encrypted firmware updates to prevent malicious firmware injection — addressing all three exposed weaknesses simultaneously.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Domain 7: Systems and Application Security">
+    <div class="meta">Question 5 of 6 · Domain 7: Systems and Application Security</div>
+    <div class="q">Which combination of an OS-level memory protection technique and a compiler-level technique is specifically designed to mitigate exploitation of buffer overflow vulnerabilities by randomizing memory locations and preventing code execution from data segments?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. Mandatory Access Control (MAC) via SELinux</button><button class="opt" onclick="answer(this,4,1,3)">B. Full-disk encryption at rest</button><button class="opt" onclick="answer(this,4,2,3)">C. Network micro-segmentation between application tiers</button><button class="opt" onclick="answer(this,4,3,3)">D. Address Space Layout Randomization (ASLR) combined with Data Execution Prevention (DEP/NX)</button>
+    <div class="expl">ASLR randomizes the memory addresses of key data areas (stack, heap, libraries) making it harder for an attacker to predict target addresses, while DEP/NX marks stack and heap memory as non-executable, together forming the classic OS-level defense against buffer overflow exploitation used in memory-corruption attacks.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Domain 7: Systems and Application Security">
+    <div class="meta">Question 6 of 6 · Domain 7: Systems and Application Security</div>
+    <div class="q">A company runs a multi-node Hadoop cluster storing sensitive customer data. Security testing reveals that any host on the network can register itself as a DataNode and that inter-node communication is unauthenticated, allowing potential data node impersonation and unauthorized data access. Which control should be implemented FIRST to address this risk?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. Increase the HDFS replication factor for all stored blocks</button><button class="opt" onclick="answer(this,5,1,1)">B. Implement Kerberos-based mutual authentication among all cluster nodes and clients</button><button class="opt" onclick="answer(this,5,2,1)">C. Enable automated hourly snapshot backups of the cluster</button><button class="opt" onclick="answer(this,5,3,1)">D. Disable ACL enforcement on HDFS directories to improve read performance</button>
+    <div class="expl">Kerberos provides strong mutual authentication between NameNodes, DataNodes, and clients in a Hadoop environment, preventing rogue or impersonating nodes from joining the cluster or accessing data, which directly resolves the identified impersonation and unauthorized access weakness.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/sscp-exam-focused-prep-master-all-7-domains/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

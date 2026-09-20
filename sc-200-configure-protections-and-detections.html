@@ -1,0 +1,76 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Configure protections and detections Practice Questions — Microsoft Certified: Security Operations Analyst Associate</title>
+<meta name="description" content="6 free Configure protections and detections practice questions with explanations for the Microsoft Certified: Security Operations Analyst Associate exam.">
+<link rel="canonical" href="https://technuggets.academy/sc-200-configure-protections-and-detections.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Configure protections and detections Practice Questions — Microsoft Certified: Security Operations Analyst Associate">
+<meta property="og:description" content="6 free Configure protections and detections practice questions with explanations for the Microsoft Certified: Security Operations Analyst Associate exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/sc-200-configure-protections-and-detections.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0078D4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Configure protections and detections</h1>
+<p class="sub">Free Microsoft Certified: Security Operations Analyst Associate practice — 6 questions on <strong>Configure protections and detections</strong>, with explanations. No sign-up.
+<a href="sc-200.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Configure protections and detections">
+    <div class="meta">Question 1 of 6 · Configure protections and detections</div>
+    <div class="q">A SOC analyst needs a Sentinel analytics rule that correlates DeviceLogonEvents with SecurityEvent using a multi-stage join, aggregates results over a 6-hour window, and references a watchlist for known-bad IPs. The analyst initially builds this as an NRT (Near-Real-Time) rule, but the rule fails validation. What is the MOST likely reason and the correct fix?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. NRT rules cannot run more often than every 24 hours, so the analyst should switch to a Fusion rule instead</button><button class="opt" onclick="answer(this,0,1,1)">B. NRT rules support only simple, single-table queries executing within 60 seconds and are not designed for multi-table joins or long aggregation windows — a Scheduled rule should be used instead</button><button class="opt" onclick="answer(this,0,2,1)">C. NRT rules require a Microsoft Sentinel Automation contributor role that the analyst is missing, so a Global Admin must create it</button><button class="opt" onclick="answer(this,0,3,1)">D. NRT rules cannot reference watchlists at all under any circumstances, so the watchlist must be converted into a custom Log Analytics table</button>
+    <div class="expl">NRT analytics rules are purpose-built for lightweight, fast-executing queries against a single data source that must complete within 60 seconds; they are not intended for complex multi-table joins with long lookback/aggregation windows. A Scheduled rule with an appropriate query frequency and lookup period is the correct tool for this requirement.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Configure protections and detections">
+    <div class="meta">Question 2 of 6 · Configure protections and detections</div>
+    <div class="q">A SOC needs to automatically raise the incident severity of any high-fidelity Fusion alert involving a compromised privileged account to High, and also correlate it with related low-severity anomaly alerts on the same account that occurred in the prior 48 hours. Which Sentinel feature combination BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. Configure a scheduled analytics rule with a KQL join against the AuditLogs table and a fixed 48-hour lookup period</button><button class="opt" onclick="answer(this,1,1,2)">B. Create a Defender for Cloud custom alert suppression rule scoped to the privileged account's resource group</button><button class="opt" onclick="answer(this,1,2,2)">C. Enable the Fusion rule with UEBA-based advanced multistage attack detection and ensure entity mapping (Account) is correctly configured across contributing analytics rules</button><button class="opt" onclick="answer(this,1,3,2)">D. Disable all anomaly rules so only Fusion alerts appear in the incident queue, avoiding duplicate correlation</button>
+    <div class="expl">Fusion rules use machine learning to correlate low-fidelity signals — including UEBA anomaly detections — into a single high-fidelity multistage incident, but this correlation only works when entity mapping (Account, Host, IP) is consistently and correctly configured on the contributing analytics rules so Fusion can match entities across alerts.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Configure protections and detections">
+    <div class="meta">Question 3 of 6 · Configure protections and detections</div>
+    <div class="q">A Sentinel workspace has two automation rules scoped to the same analytics rule: Rule A (order = 1) sets status to 'Closed' with classification 'False Positive' for incidents whose title contains 'test'; Rule B (order = 2) runs a playbook that enriches every new incident with threat intelligence. Analysts report the enrichment playbook never runs on incidents titled 'test-alert'. What change correctly fixes this while preserving both rules' intended behavior?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. Delete Rule A entirely since false-positive suppression is not a supported automation rule action</button><button class="opt" onclick="answer(this,2,1,1)">B. Change Rule B's order to a lower number than Rule A so the playbook executes before the incident is closed</button><button class="opt" onclick="answer(this,2,2,1)">C. Recreate the playbook as a Logic App with an HTTP trigger instead of the Sentinel incident trigger</button><button class="opt" onclick="answer(this,2,3,1)">D. Move the title condition from Rule A into the analytics rule's query so it never generates the incident at all</button>
+    <div class="expl">Automation rules execute strictly in ascending order value. Since Rule A (order 1) closes the incident before Rule B (order 2) runs, giving Rule B a lower order number ensures the enrichment playbook executes first, and Rule A can still close the incident afterward — preserving both behaviors.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Configure protections and detections">
+    <div class="meta">Question 4 of 6 · Configure protections and detections</div>
+    <div class="q">An analytics rule frequently fires dozens of near-duplicate alerts for the same compromised host within a short period, flooding the incident queue with separate incidents. Which analytics rule setting should be configured to consolidate these into a single incident?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. In the rule's Automated response tab, attach a playbook that manually merges incidents with matching titles</button><button class="opt" onclick="answer(this,3,1,3)">B. In the Automation blade, create a rule that runs on a schedule to bulk-close duplicate incidents every hour</button><button class="opt" onclick="answer(this,3,2,3)">C. In Microsoft Defender for Cloud, enable alert suppression rules scoped to that host's resource ID</button><button class="opt" onclick="answer(this,3,3,3)">D. In the rule's Incident settings tab, enable 'Group alerts into a single incident' and select matching entities (e.g., Host) with an appropriate time window</button>
+    <div class="expl">The Incident settings tab of an analytics rule includes an 'Alert grouping' configuration that lets you group alerts generated by that rule into a single incident when specified entities (such as Host) match within a defined time window — the correct, native way to reduce duplicate incidents from one rule.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Configure protections and detections">
+    <div class="meta">Question 5 of 6 · Configure protections and detections</div>
+    <div class="q">A Sentinel analyst wants to tune a built-in Anomaly detection rule by raising its sensitivity threshold to reduce false positives, but the Edit option for the built-in rule is greyed out for direct threshold changes. What is the correct approach?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. Export the rule as an ARM template, manually edit the JSON threshold value, and redeploy it over the original rule</button><button class="opt" onclick="answer(this,4,1,1)">B. Duplicate the anomaly rule, modify the threshold/parameters on the duplicate, enable the duplicate, and disable the original built-in rule</button><button class="opt" onclick="answer(this,4,2,1)">C. Delete the built-in anomaly rule and recreate it as a scheduled rule using the same KQL logic</button><button class="opt" onclick="answer(this,4,3,1)">D. Open a support ticket with Microsoft, since anomaly rule thresholds cannot be changed by customers under any license tier</button>
+    <div class="expl">Built-in anomaly detection rules are Microsoft-managed templates whose core logic can't be edited in place. The supported tuning workflow is to duplicate the rule, adjust threshold/multiplier settings on the copy, enable the duplicate, and disable the original so only the tuned version is active.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Configure protections and detections">
+    <div class="meta">Question 6 of 6 · Configure protections and detections</div>
+    <div class="q">An analyst creates a Microsoft Defender XDR custom detection rule against the CloudAppEvents table and wants to set the query frequency to 'Continuous (NRT)' for the fastest possible alerting, but that option is disabled in the rule wizard. What is the correct explanation and next step?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. Continuous (NRT) frequency is only available for a subset of supported tables; since CloudAppEvents isn't supported, the analyst should select the lowest available frequency (e.g., every 1 hour) instead</button><button class="opt" onclick="answer(this,5,1,0)">B. The analyst's account lacks the Security Administrator role required to enable NRT custom detections</button><button class="opt" onclick="answer(this,5,2,0)">C. Custom detection rules can only use Continuous frequency if they are converted into Sentinel scheduled analytics rules first</button><button class="opt" onclick="answer(this,5,3,0)">D. CloudAppEvents data has a mandatory 24-hour ingestion delay, so no frequency faster than 24 hours is technically possible for any rule type</button>
+    <div class="expl">Continuous (NRT) frequency in Microsoft Defender XDR custom detection rules is only available for tables that support near-real-time evaluation; not all Advanced Hunting tables (including some cloud app event sources) support it. When unavailable, the analyst should select the fastest frequency the wizard actually allows for that table (commonly every 1 hour).</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">undefined</span> <span class="price">$34.99</span> with code <span class="code">FREETEST33</span> — valid through Oct 6.</p>
+  <a href="https://www.udemy.com/course/sc-200-microsoft-security-operations-analyst-prep/?couponCode=FREETEST33" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

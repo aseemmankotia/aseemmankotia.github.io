@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Plan and automate identity governance Practice Questions — Microsoft Certified: Identity and Access Administrator Associate</title>
+<meta name="description" content="6 free Plan and automate identity governance practice questions with explanations for the Microsoft Certified: Identity and Access Administrator Associate exam.">
+<link rel="canonical" href="https://technuggets.academy/sc-300-plan-and-automate-identity-governance.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Plan and automate identity governance Practice Questions — Microsoft Certified: Identity and Access Administrator Associate">
+<meta property="og:description" content="6 free Plan and automate identity governance practice questions with explanations for the Microsoft Certified: Identity and Access Administrator Associate exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/sc-300-plan-and-automate-identity-governance.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0078D4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Plan and automate identity governance</h1>
+<p class="sub">Free Microsoft Certified: Identity and Access Administrator Associate practice — 6 questions on <strong>Plan and automate identity governance</strong>, with explanations. No sign-up.
+<a href="sc-300.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Plan and automate identity governance">
+    <div class="meta">Question 1 of 6 · Plan and automate identity governance</div>
+    <div class="q">An organization uses Microsoft Entra entitlement management. They want to prevent any user who already has the 'Finance-Sensitive' access package from also being granted the 'Marketing-External' access package, due to a conflict-of-interest policy, without requiring manual review of every request. Which feature should be configured?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. Configure an access review with auto-apply on the 'Marketing-External' access package</button><button class="opt" onclick="answer(this,0,1,1)">B. Configure separation of duties for the access package, specifying 'Finance-Sensitive' as the incompatible package</button><button class="opt" onclick="answer(this,0,2,1)">C. Require terms of use acceptance before requesting 'Marketing-External'</button><button class="opt" onclick="answer(this,0,3,1)">D. Set an expiration policy on the 'Finance-Sensitive' access package assignment</button>
+    <div class="expl">Separation of duties (SoD) checks in entitlement management let you designate an incompatible access package or group; the system automatically blocks a request if the requester already holds the conflicting access, enforced at request time with no manual review needed.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Plan and automate identity governance">
+    <div class="meta">Question 2 of 6 · Plan and automate identity governance</div>
+    <div class="q">A company wants a lifecycle workflow to run automatically and immediately whenever a user's employeeType attribute value changes from 'Employee' to 'Contractor', rather than waiting for the next scheduled execution. Which trigger type should the workflow use?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. Attribute changed trigger</button><button class="opt" onclick="answer(this,1,1,0)">B. Time-based (scheduled) trigger</button><button class="opt" onclick="answer(this,1,2,0)">C. On-demand trigger</button><button class="opt" onclick="answer(this,1,3,0)">D. Employee mover template trigger</button>
+    <div class="expl">The 'Attribute changed' trigger type in Microsoft Entra ID Governance lifecycle workflows fires a workflow automatically as soon as a specified attribute (such as employeeType) changes on a user object, without needing a scheduled run.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Plan and automate identity governance">
+    <div class="meta">Question 3 of 6 · Plan and automate identity governance</div>
+    <div class="q">An administrator creates a recurring access review for members of a role that is eligible in PIM. The administrator wants the review's outcome (removing denied users) to be implemented automatically once the review period ends, without requiring anyone to manually apply the results. Which setting accomplishes this?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. Require reviewers to provide a reason for every decision</button><button class="opt" onclick="answer(this,2,1,3)">B. Configure a multi-stage review with two sequential reviewers</button><button class="opt" onclick="answer(this,2,2,3)">C. Disable the option allowing reviewers to review their own access</button><button class="opt" onclick="answer(this,2,3,3)">D. Enable 'Auto apply results to resource' when configuring the access review</button>
+    <div class="expl">The 'Auto apply results to resource' setting on an access review automatically implements the review outcome (e.g., removing a user whose access was denied or not reviewed) at the end of the review period, eliminating the need for manual application.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Plan and automate identity governance">
+    <div class="meta">Question 4 of 6 · Plan and automate identity governance</div>
+    <div class="q">A compliance requirement states that all users must re-accept a specific Terms of Use policy every 90 days, even if they accepted the current version previously. Which Terms of Use configuration satisfies this requirement without publishing a new document version each time?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. Configure the 'Expire consents' setting on the terms of use policy to 90 days</button><button class="opt" onclick="answer(this,3,1,0)">B. Enable per-device enforcement of the terms of use</button><button class="opt" onclick="answer(this,3,2,0)">C. Increment the terms of use document version number and display name</button><button class="opt" onclick="answer(this,3,3,0)">D. Add a Conditional Access grant control requiring terms of use</button>
+    <div class="expl">Terms of use policies include an 'Expire consents' option that forces users to re-accept the same terms after a defined number of days, meeting recurring re-acceptance requirements without needing to publish a new document version.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Plan and automate identity governance">
+    <div class="meta">Question 5 of 6 · Plan and automate identity governance</div>
+    <div class="q">An organization wants employees to be able to consent to apps that request only low-impact permissions such as sign-in and basic profile read, while blocking consent for apps requesting high-impact permissions like full mailbox access — without turning off user consent entirely. Which configuration meets this requirement?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. Set the user consent setting to 'Do not allow user consent'</button><button class="opt" onclick="answer(this,4,1,3)">B. Set the user consent setting to 'Allow user consent for all apps'</button><button class="opt" onclick="answer(this,4,2,3)">C. Enable the admin consent workflow for all app permission requests</button><button class="opt" onclick="answer(this,4,3,3)">D. Set user consent to 'Allow user consent for apps from verified publishers, for selected permissions' and classify the low-impact permissions accordingly</button>
+    <div class="expl">The recommended user consent setting, 'Allow user consent for apps from verified publishers, for selected permissions,' combined with permission classifications (marking specific permissions as low impact), lets users consent only to apps requesting those classified low-impact permissions while blocking consent for apps requesting anything else.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Plan and automate identity governance">
+    <div class="meta">Question 6 of 6 · Plan and automate identity governance</div>
+    <div class="q">A company requires that requests for a specific access package go through two sequential levels of approval — first a manager, then a resource owner — before access is granted. Which capability supports this requirement?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. Configure PIM role assignment approval with multiple approvers on the eligible assignment</button><button class="opt" onclick="answer(this,5,1,1)">B. Configure the access package policy with a two-stage approval process, specifying different approvers for each stage</button><button class="opt" onclick="answer(this,5,2,1)">C. Configure an access review with a two-stage decision process</button><button class="opt" onclick="answer(this,5,3,1)">D. Add a Conditional Access approval workflow to the access package</button>
+    <div class="expl">Entitlement management access package request policies support configuring up to two sequential approval stages, each with its own set of approvers (e.g., manager for stage one, resource owner for stage two), satisfying multi-level sequential approval.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/sc-300-microsoft-identity-and-access-administrator-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

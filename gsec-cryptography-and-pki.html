@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Cryptography and PKI Practice Questions — GIAC Security Essentials</title>
+<meta name="description" content="6 free Cryptography and PKI practice questions with explanations for the GIAC Security Essentials exam.">
+<link rel="canonical" href="https://technuggets.academy/gsec-cryptography-and-pki.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Cryptography and PKI Practice Questions — GIAC Security Essentials">
+<meta property="og:description" content="6 free Cryptography and PKI practice questions with explanations for the GIAC Security Essentials exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/gsec-cryptography-and-pki.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Cryptography and PKI</h1>
+<p class="sub">Free GIAC Security Essentials practice — 6 questions on <strong>Cryptography and PKI</strong>, with explanations. No sign-up.
+<a href="gsec.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Cryptography and PKI">
+    <div class="meta">Question 1 of 6 · Cryptography and PKI</div>
+    <div class="q">A financial services firm is redesigning its TLS configuration after a regulator warns that captured traffic could be decrypted years later if the server's private key is ever compromised. The current configuration negotiates TLS_RSA_WITH_AES_256_CBC_SHA. Which change BEST addresses the regulator's concern?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. Increase the RSA key size from 2048-bit to 4096-bit to make key compromise harder</button><button class="opt" onclick="answer(this,0,1,1)">B. Switch to a cipher suite using ECDHE for key exchange to enable forward secrecy</button><button class="opt" onclick="answer(this,0,2,1)">C. Replace AES-256-CBC with AES-256-ECB for faster bulk encryption</button><button class="opt" onclick="answer(this,0,3,1)">D. Enable TLS session resumption tickets to reduce the number of full handshakes</button>
+    <div class="expl">ECDHE (or DHE) generates a fresh ephemeral key pair per session, so past session keys cannot be derived even if the server's long-term private key is later stolen. Static RSA key exchange lets an attacker who later obtains the private key decrypt all previously captured traffic — the exact 'harvest now, decrypt later' risk described.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Cryptography and PKI">
+    <div class="meta">Question 2 of 6 · Cryptography and PKI</div>
+    <div class="q">A large e-commerce site wants to reduce the load on its CA's revocation infrastructure while still letting clients verify in real time that its certificate has not been revoked, without the CA learning which end users are visiting the site. Which mechanism BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. Configure the web server to perform OCSP stapling</button><button class="opt" onclick="answer(this,1,1,0)">B. Publish and distribute an updated CRL to clients every 5 minutes</button><button class="opt" onclick="answer(this,1,2,0)">C. Have every client query the CA's OCSP responder directly on each connection</button><button class="opt" onclick="answer(this,1,3,0)">D. Disable revocation checking entirely to eliminate the extra network round trip</button>
+    <div class="expl">With OCSP stapling, the web server itself periodically queries the CA's OCSP responder and 'staples' the signed, time-stamped response to the TLS handshake. Clients get a real-time revocation status without contacting the CA directly, which removes the privacy leak of the CA seeing every client's browsing and offloads load from the OCSP responder to the web server.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Cryptography and PKI">
+    <div class="meta">Question 3 of 6 · Cryptography and PKI</div>
+    <div class="q">A developer is choosing a block cipher mode for encrypting API payloads that must be protected against both eavesdropping and undetected tampering, with the integrity check built into the encryption operation itself rather than added as a separate step. Which mode should be selected?</div>
+    <button class="opt" onclick="answer(this,2,0,2)">A. AES in CBC mode with PKCS#7 padding</button><button class="opt" onclick="answer(this,2,1,2)">B. AES in ECB mode</button><button class="opt" onclick="answer(this,2,2,2)">C. AES in GCM mode</button><button class="opt" onclick="answer(this,2,3,2)">D. AES in CBC mode with a manually appended SHA-256 hash</button>
+    <div class="expl">GCM (Galois/Counter Mode) is an authenticated encryption mode: it produces ciphertext plus an authentication tag in a single operation, providing confidentiality and integrity/authenticity together without a separate MAC step. This is the standard exam answer for AEAD requirements.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Cryptography and PKI">
+    <div class="meta">Question 4 of 6 · Cryptography and PKI</div>
+    <div class="q">During a code review of a custom document-signing utility, you find that it computes SHA-256 over the document, then encrypts the resulting hash with the signer's PUBLIC key and attaches it as the 'signature.' Which statement correctly identifies the flaw?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. The signature step is correct because encrypting the hash provides confidentiality of the document contents</button><button class="opt" onclick="answer(this,3,1,2)">B. SHA-256 should be replaced with MD5 to speed up hashing before signing</button><button class="opt" onclick="answer(this,3,2,2)">C. The hash should be encrypted with the signer's PRIVATE key so that anyone with the signer's public key can verify authenticity</button><button class="opt" onclick="answer(this,3,3,2)">D. The document itself must be encrypted before hashing to prevent tampering</button>
+    <div class="expl">A digital signature must be created by encrypting (or more precisely, applying the private-key operation to) the hash with the SIGNER'S PRIVATE key. Verifiers then decrypt/verify using the signer's widely-known PUBLIC key. Using the public key to 'sign' means anyone could produce that same value, since the public key is not secret — it provides no authentication of the signer.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Cryptography and PKI">
+    <div class="meta">Question 5 of 6 · Cryptography and PKI</div>
+    <div class="q">A web server presents a certificate whose Extended Key Usage (EKU) field is set to 'Code Signing' only, with no 'Server Authentication' EKU present. A browser refuses to establish a TLS connection and displays a certificate error. What is the MOST likely reason for this failure?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. The certificate's public key is too short for TLS use</button><button class="opt" onclick="answer(this,4,1,2)">B. The certificate was issued by an untrusted root CA</button><button class="opt" onclick="answer(this,4,2,2)">C. The certificate's key usage does not authorize it for the purpose the browser is attempting to use it for</button><button class="opt" onclick="answer(this,4,3,2)">D. The certificate has expired based on its Not After date</button>
+    <div class="expl">Browsers strictly validate the Extended Key Usage extension and require 'Server Authentication' (OID 1.3.6.1.5.5.7.3.1) for TLS server certificates. A certificate issued and constrained for Code Signing only is not authorized for TLS server authentication, regardless of trust chain or key strength, and the browser correctly rejects it.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Cryptography and PKI">
+    <div class="meta">Question 6 of 6 · Cryptography and PKI</div>
+    <div class="q">A security architect is comparing hash algorithms for a new digital signature scheme and wants to understand the practical security margin against birthday-style collision attacks. For a hash function with an n-bit output, approximately how many hash operations are required to find a collision using a generic birthday attack?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. 2^n operations</button><button class="opt" onclick="answer(this,5,1,3)">B. n^2 operations</button><button class="opt" onclick="answer(this,5,2,3)">C. 2^(2n) operations</button><button class="opt" onclick="answer(this,5,3,3)">D. 2^(n/2) operations</button>
+    <div class="expl">The birthday paradox means collisions in an n-bit hash can generically be found in roughly 2^(n/2) operations rather than 2^n, because you only need to find any two matching outputs among a growing pool of hashes, not match a specific target. This is why SHA-256 (256-bit output) provides about 128 bits of collision resistance, and why SHA-1 (160-bit, ~80-bit collision resistance) is considered broken for collision-sensitive uses.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/gsec-giac-security-essentials-exam-focused-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

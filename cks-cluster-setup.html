@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Cluster Setup Practice Questions — Certified Kubernetes Security Specialist</title>
+<meta name="description" content="6 free Cluster Setup practice questions with explanations for the Certified Kubernetes Security Specialist exam.">
+<link rel="canonical" href="https://technuggets.academy/cks-cluster-setup.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Cluster Setup Practice Questions — Certified Kubernetes Security Specialist">
+<meta property="og:description" content="6 free Cluster Setup practice questions with explanations for the Certified Kubernetes Security Specialist exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/cks-cluster-setup.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Cluster Setup</h1>
+<p class="sub">Free Certified Kubernetes Security Specialist practice — 6 questions on <strong>Cluster Setup</strong>, with explanations. No sign-up.
+<a href="cks.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Cluster Setup">
+    <div class="meta">Question 1 of 6 · Cluster Setup</div>
+    <div class="q">You must create a NetworkPolicy in namespace 'payments' that allows ingress traffic ONLY from pods labeled role: frontend that are running inside namespaces labeled team: frontend. Traffic from frontend-labeled pods in any other namespace, or from any pod (without the role label) inside team: frontend namespaces, must be denied. Which policy 'ingress.from' structure correctly enforces this?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. Two separate items in the 'from' list — one with only a namespaceSelector matching team: frontend, and one with only a podSelector matching role: frontend</button><button class="opt" onclick="answer(this,0,1,3)">B. A single 'from' item combining podSelector: {matchLabels: {role: frontend}} and ipBlock: {cidr: 0.0.0.0/0}</button><button class="opt" onclick="answer(this,0,2,3)">C. A single 'from' item with only namespaceSelector: {matchLabels: {team: frontend}}, relying on the frontend deployment to enforce pod labeling</button><button class="opt" onclick="answer(this,0,3,3)">D. A single 'from' item combining namespaceSelector: {matchLabels: {team: frontend}} and podSelector: {matchLabels: {role: frontend}} in the same object</button>
+    <div class="expl">When namespaceSelector and podSelector appear inside the SAME 'from' entry, Kubernetes ANDs them — only pods matching both the pod label AND running in a matching namespace are allowed. This is the only structure that matches the exact requirement.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Cluster Setup">
+    <div class="meta">Question 2 of 6 · Cluster Setup</div>
+    <div class="q">Per the CIS Kubernetes Benchmark, which kubelet configuration correctly closes the anonymous authentication attack surface while still delegating authorization decisions to the API server's RBAC policies?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. authentication.anonymous.enabled: true and authorization.mode: AlwaysAllow</button><button class="opt" onclick="answer(this,1,1,3)">B. authentication.anonymous.enabled: false and authorization.mode: AlwaysAllow</button><button class="opt" onclick="answer(this,1,2,3)">C. authentication.anonymous.enabled: true and authorization.mode: Webhook</button><button class="opt" onclick="answer(this,1,3,3)">D. authentication.anonymous.enabled: false and authorization.mode: Webhook</button>
+    <div class="expl">CIS 4.2.1 requires anonymous-auth=false to prevent unauthenticated requests to the kubelet API, and 4.2.2 requires authorization-mode=Webhook so the kubelet defers every authorization decision to the API server's configured RBAC/webhook authorizer instead of trusting all callers.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Cluster Setup">
+    <div class="meta">Question 3 of 6 · Cluster Setup</div>
+    <div class="q">During a CIS benchmark review of etcd's static pod manifest, you see --cert-file and --key-file are set, but --client-cert-auth and --peer-client-cert-auth are absent. What is the resulting risk, and what is the correct fix?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. etcd data at rest is stored unencrypted; fix by adding --encryption-provider-config to the API server</button><button class="opt" onclick="answer(this,2,1,3)">B. etcd snapshot backups are world-readable; fix by tightening file permissions on the snapshot directory</button><button class="opt" onclick="answer(this,2,2,3)">C. The API server cannot resolve etcd's advertised endpoints; fix by correcting --etcd-servers on the API server</button><button class="opt" onclick="answer(this,2,3,3)">D. etcd will accept client and peer connections without verifying they present a certificate signed by the trusted CA; fix by setting --client-cert-auth=true and --peer-client-cert-auth=true</button>
+    <div class="expl">Without --client-cert-auth and --peer-client-cert-auth, TLS may encrypt the channel but etcd does not require or verify client/peer certificates, meaning any process that can reach the etcd port can authenticate as a trusted member or client — a critical CIS control (etcd section) failure.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Cluster Setup">
+    <div class="meta">Question 4 of 6 · Cluster Setup</div>
+    <div class="q">Which kube-apiserver flag combination should you verify per the CIS Benchmark to ensure the insecure port is disabled and the profiling debug endpoint is turned off?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. --insecure-port=8080 and --profiling=true</button><button class="opt" onclick="answer(this,3,1,2)">B. --anonymous-auth=true and --insecure-bind-address=0.0.0.0</button><button class="opt" onclick="answer(this,3,2,2)">C. --insecure-port=0 and --profiling=false</button><button class="opt" onclick="answer(this,3,3,2)">D. --enable-admission-plugins=AlwaysAdmit</button>
+    <div class="expl">CIS requires --insecure-port=0 (the insecure port is already removed by default in current Kubernetes but must be verified as 0/absent) and --profiling=false to prevent exposing pprof debug/profiling data that can leak sensitive runtime information.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Cluster Setup">
+    <div class="meta">Question 5 of 6 · Cluster Setup</div>
+    <div class="q">Pods on cloud-hosted worker nodes can successfully query http://169.254.169.254/latest/meta-data/iam/security-credentials/ and retrieve the node's IAM role credentials. Which control BEST mitigates this specific risk at the cluster networking layer?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. Apply the Pod Security Admission 'restricted' profile to the workload namespaces</button><button class="opt" onclick="answer(this,4,1,3)">B. Rotate the node's IAM role access keys on a daily schedule</button><button class="opt" onclick="answer(this,4,2,3)">C. Set automountServiceAccountToken: false on all workload pod specs</button><button class="opt" onclick="answer(this,4,3,3)">D. Add a NetworkPolicy egress rule denying traffic to 169.254.169.254/32 from workload pod namespaces, combined with enforcing IMDSv2/reduced hop-limit at the cloud provider level</button>
+    <div class="expl">Blocking egress to the instance metadata IP via NetworkPolicy (and hardening the metadata service itself, e.g., requiring IMDSv2 tokens with a low hop-limit so containerized processes can't reach it) directly stops pods from reaching node-level cloud credentials — this is the standard CKS mitigation for the metadata-endpoint attack path.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Cluster Setup">
+    <div class="meta">Question 6 of 6 · Cluster Setup</div>
+    <div class="q">You downloaded the kubeadm binary from the official Kubernetes release channel before installing it on a hardened control-plane node. Which method authoritatively verifies BOTH the integrity and the publisher authenticity of the binary before use?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. Confirm the downloaded file size matches the size listed on the download page</button><button class="opt" onclick="answer(this,5,1,3)">B. Run 'kubeadm version' immediately after install and confirm the version string is correct</button><button class="opt" onclick="answer(this,5,2,3)">C. Confirm the binary executes without throwing an error</button><button class="opt" onclick="answer(this,5,3,3)">D. Verify the published SHA-512 checksum against the downloaded file AND validate the release's signature (e.g., cosign/GPG) against the Kubernetes release signing key</button>
+    <div class="expl">SHA-512 checksum verification confirms the file wasn't corrupted or tampered with in transit, while validating the cryptographic signature against the known Kubernetes release signing key confirms the binary genuinely originated from the official Kubernetes release process — together they cover both integrity and authenticity, which the CKS exam explicitly tests.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/cks-certified-kubernetes-security-specialist-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

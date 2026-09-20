@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Network Security Practice Questions — Implementing and Operating Cisco Security Core Technologies</title>
+<meta name="description" content="6 free Network Security practice questions with explanations for the Implementing and Operating Cisco Security Core Technologies exam.">
+<link rel="canonical" href="https://technuggets.academy/350-701-scor-network-security.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Network Security Practice Questions — Implementing and Operating Cisco Security Core Technologies">
+<meta property="og:description" content="6 free Network Security practice questions with explanations for the Implementing and Operating Cisco Security Core Technologies exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/350-701-scor-network-security.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Network Security</h1>
+<p class="sub">Free Implementing and Operating Cisco Security Core Technologies practice — 6 questions on <strong>Network Security</strong>, with explanations. No sign-up.
+<a href="350-701-scor.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Domain 2: Network Security">
+    <div class="meta">Question 1 of 6 · Domain 2: Network Security</div>
+    <div class="q">An engineer is inserting a Cisco Secure Firewall Threat Defense (FTD) appliance physically inline between two switches to evaluate a newly created intrusion policy before it goes into full production enforcement. The requirement is that the appliance must not be able to drop or delay any production traffic, even if the policy is misconfigured or generates false positives, while still receiving live traffic in real time for analysis. Which FTD interface mode meets this requirement?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. Inline pair with tap mode</button><button class="opt" onclick="answer(this,0,1,0)">B. Passive interface mode connected to a SPAN port on the switch</button><button class="opt" onclick="answer(this,0,2,0)">C. Routed interface mode with the intrusion policy applied on both interfaces</button><button class="opt" onclick="answer(this,0,3,0)">D. Transparent (bridge) interface mode</button>
+    <div class="expl">Inline pair with tap mode physically inserts the FTD in the traffic path but only sends a copy of each packet to the Snort engine for inspection; the original packet is forwarded immediately regardless of the verdict, so the appliance can never drop or delay production traffic — ideal for tuning a policy before cutover to full inline enforcement.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Domain 2: Network Security">
+    <div class="meta">Question 2 of 6 · Domain 2: Network Security</div>
+    <div class="q">A network team is building a large hub-and-spoke IPsec VPN and wants spokes to be able to dynamically learn each other's public (NBMA) IP addresses at connection time and establish direct spoke-to-spoke tunnels on demand, instead of always routing spoke-to-spoke traffic through the hub. Which protocol provides this dynamic address-mapping and tunnel-discovery capability in a DMVPN deployment?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. OSPF</button><button class="opt" onclick="answer(this,1,1,2)">B. ISAKMP</button><button class="opt" onclick="answer(this,1,2,2)">C. NHRP</button><button class="opt" onclick="answer(this,1,3,2)">D. BGP</button>
+    <div class="expl">NHRP (Next Hop Resolution Protocol) maintains a dynamic mapping database of tunnel IP addresses to real NBMA IP addresses. Spokes query the hub's NHRP server to resolve another spoke's public IP address and then build a direct spoke-to-spoke GRE/IPsec tunnel.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Domain 2: Network Security">
+    <div class="meta">Question 3 of 6 · Domain 2: Network Security</div>
+    <div class="q">Which Cisco IOS/IOS XE NetFlow capability allows an administrator to build a custom flow record by choosing which key fields and non-key fields are exported, rather than being restricted to the fixed field set of traditional NetFlow?</div>
+    <button class="opt" onclick="answer(this,2,0,2)">A. NetFlow version 5</button><button class="opt" onclick="answer(this,2,1,2)">B. sFlow</button><button class="opt" onclick="answer(this,2,2,2)">C. Flexible NetFlow</button><button class="opt" onclick="answer(this,2,3,2)">D. NetFlow-Lite</button>
+    <div class="expl">Flexible NetFlow (FNF) lets administrators build custom flow records by selecting from a large library of key and non-key fields (for example MPLS labels, NBAR application, or IPv6 fields), unlike the fixed 5-tuple format of traditional NetFlow.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Domain 2: Network Security">
+    <div class="meta">Question 4 of 6 · Domain 2: Network Security</div>
+    <div class="q">During a volumetric attack, an ISR router's CPU utilization spikes to 100% because of a flood of crafted packets destined to the router's own IP addresses (spoofed OSPF hellos and repeated SSH connection attempts), while transit traffic passing through the router is unaffected. Which feature should be configured to classify and rate-limit this traffic destined to the route processor using a single aggregate control-plane policy?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. Unicast Reverse Path Forwarding (uRPF)</button><button class="opt" onclick="answer(this,3,1,1)">B. Control Plane Policing (CoPP)</button><button class="opt" onclick="answer(this,3,2,1)">C. Access control lists applied to transit interfaces</button><button class="opt" onclick="answer(this,3,3,1)">D. NetFlow-based traffic export</button>
+    <div class="expl">CoPP applies a policy-map directly to the control-plane interface, classifying and rate-limiting or dropping traffic destined to the route processor (management and routing-protocol traffic) as a single aggregate policy, protecting the CPU without affecting transit forwarding.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Domain 2: Network Security">
+    <div class="meta">Question 5 of 6 · Domain 2: Network Security</div>
+    <div class="q">An administrator configures Cisco Secure Client (AnyConnect) so that DNS lookups for specific corporate domains (for example internal.company.com) are resolved using the internal DNS servers pushed down through the VPN tunnel, while all other DNS lookups are resolved locally using the user's own ISP DNS servers. Which feature accomplishes this domain-based DNS resolution split?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. Split Tunneling</button><button class="opt" onclick="answer(this,4,1,1)">B. Split DNS</button><button class="opt" onclick="answer(this,4,2,1)">C. Dynamic Split Tunneling</button><button class="opt" onclick="answer(this,4,3,1)">D. Split ACL</button>
+    <div class="expl">Split DNS lets the administrator specify a list of domains that must be resolved using the DNS servers pushed through the VPN tunnel, while all other DNS queries continue to use the client's local (non-tunnel) DNS servers.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Domain 2: Network Security">
+    <div class="meta">Question 6 of 6 · Domain 2: Network Security</div>
+    <div class="q">A security engineer needs to enable TLS decryption on a Cisco Secure Firewall (FTD) for inbound traffic to an internally hosted HTTPS application. The organization holds the private key and the original certificate for that internal server. Which SSL/TLS decryption policy action should be applied to this traffic so the FTD can decrypt and inspect it without generating any certificate warnings for connecting clients?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. Decrypt - Known Key</button><button class="opt" onclick="answer(this,5,1,0)">B. Decrypt - Resign</button><button class="opt" onclick="answer(this,5,2,0)">C. Do Not Decrypt</button><button class="opt" onclick="answer(this,5,3,0)">D. Block</button>
+    <div class="expl">Decrypt - Known Key is used when the FTD has the actual private key and certificate of the internal server being protected (inbound traffic). It presents the real server certificate to clients, so no certificate warnings appear, while the firewall decrypts and inspects the session.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/cisco-350-701-scor-complete-security-core-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

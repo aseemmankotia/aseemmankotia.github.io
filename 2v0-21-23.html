@@ -1,0 +1,123 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free VMware Certified Professional - Data Center Virtualization (vSphere 8) Practice Test — 12 Real Exam-Style Questions</title>
+<meta name="description" content="Free VMware Certified Professional - Data Center Virtualization (vSphere 8) practice questions with detailed explanations. Test yourself before the real exam.">
+<link rel="canonical" href="https://technuggets.academy/2v0-21-23.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free VMware Certified Professional - Data Center Virtualization (vSphere 8) Practice Test — 12 Real Exam-Style Questions">
+<meta property="og:description" content="Free VMware Certified Professional - Data Center Virtualization (vSphere 8) practice questions with detailed explanations. Test yourself before the real exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/2v0-21-23.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div><div class="hero">
+  <span class="chip">2V0-21.23</span>
+  <h1>Free VMware Certified Professional - Data Center Virtualization (vSphere 8) Practice Test</h1>
+  <p class="sub">12 exam-style questions with full explanations — no sign-up. Score yourself, then close your gaps with the full course.</p>
+  <div class="facts"><span class="fact">Exam fee <b>~$250</b></span><span class="fact"><b>6</b> exam domains</span><span class="fact">Level <b>Intermediate</b></span><span class="fact"><b>2</b> timed practice tests in the course</span></div>
+  <div class="cta-row"><a class="btn enroll" href="https://www.udemy.com/course/vcp-dcv-2v0-21-23-vsphere-8-exam-focused-prep/" rel="sponsored" target="_blank">Start my full course on Udemy →</a><a class="btn ghost" href="#practice">Try the free test →</a></div>
+</div><div class="trust"><span>✅ <b>Free</b> practice — no sign-up</span><span>📝 Real exam-style questions</span><span>💡 Detailed explanations</span><span>💸 30-day money-back via Udemy</span></div>
+<div id="practice"></div>
+
+  <div class="card qcard" id="q0" data-domain="vSphere Architecture and vCenter/ESXi Foundations">
+    <div class="meta">Question 1 of 12 · vSphere Architecture and vCenter/ESXi Foundations</div>
+    <div class="q">An architect is sizing a new vCenter Server Appliance deployment for an environment that currently has 350 ESXi hosts and is expected to grow to 4,500 powered-on VMs within the year. Which deployment size BEST meets these requirements while avoiding unnecessary resource overhead?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. Small (up to 100 hosts / 1,000 VMs)</button><button class="opt" onclick="answer(this,0,1,3)">B. Medium (up to 400 hosts / 4,000 VMs)</button><button class="opt" onclick="answer(this,0,2,3)">C. X-Large (up to 2,000 hosts / 35,000 VMs)</button><button class="opt" onclick="answer(this,0,3,3)">D. Large (up to 1,000 hosts / 10,000 VMs)</button>
+    <div class="expl">Large supports up to 1,000 hosts and 10,000 VMs, which comfortably covers 350 hosts and, critically, the 4,500 VM count that exceeds Medium's 4,000 VM ceiling.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Virtual Networking">
+    <div class="meta">Question 2 of 12 · Virtual Networking</div>
+    <div class="q">A vSphere administrator manages a vSphere Distributed Switch (vDS) with four physical uplinks. Several port groups experience uneven traffic patterns throughout the day, and the administrator wants traffic to be dynamically redistributed across uplinks based on actual physical NIC utilization rather than a static hash. Which NIC teaming and failover policy should be configured?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. Route based on IP hash</button><button class="opt" onclick="answer(this,1,1,2)">B. Use explicit failover order</button><button class="opt" onclick="answer(this,1,2,2)">C. Route based on physical NIC load</button><button class="opt" onclick="answer(this,1,3,2)">D. Route based on originating virtual port</button>
+    <div class="expl">Route based on physical NIC load (Load Based Teaming, LBT) is available only on a vDS and dynamically moves flows between uplinks when one uplink's utilization exceeds 75% for 30 seconds, achieving true load-aware distribution.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Storage">
+    <div class="meta">Question 3 of 12 · Storage</div>
+    <div class="q">A company's vSphere 8 environment uses an active-active Fibre Channel array that supports ALUA. The storage team wants ESXi hosts to distribute I/O evenly across all available optimized paths to maximize throughput. Which Path Selection Policy should be configured on the affected datastores?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. Fixed (VMW_PSP_FIXED)</button><button class="opt" onclick="answer(this,2,1,1)">B. Round Robin (VMW_PSP_RR)</button><button class="opt" onclick="answer(this,2,2,1)">C. Most Recently Used (VMW_PSP_MRU)</button><button class="opt" onclick="answer(this,2,3,1)">D. Adaptive Load Balancing (a generic native vSphere PSP)</button>
+    <div class="expl">Round Robin cycles I/O across all active optimized paths in a configurable batch, providing load distribution across paths on ALUA-capable active-active arrays.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Virtual Machine Management">
+    <div class="meta">Question 4 of 12 · Virtual Machine Management</div>
+    <div class="q">A VM in vCenter Server shows no snapshots listed in the Snapshot Manager, but its datastore folder contains multiple delta VMDK files and the VM's disk usage keeps growing. Which action should the administrator take to resolve this without disrupting the VM's running state?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. Delete the VM from inventory and re-register it</button><button class="opt" onclick="answer(this,3,1,2)">B. Power off the VM and manually delete the delta VMDK files from the datastore</button><button class="opt" onclick="answer(this,3,2,2)">C. Right-click the VM and select Consolidate to merge the redundant delta disks into the base disk</button><button class="opt" onclick="answer(this,3,3,2)">D. Migrate the VM to a new datastore using Storage vMotion to force disk cleanup</button>
+    <div class="expl">When snapshot delta files remain on disk but the Snapshot Manager shows none (often after a failed snapshot removal), vSphere flags the VM as needing consolidation. The Consolidate operation merges orphaned delta disks into the base disk while the VM continues running, without needing to recreate a snapshot first.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Resource Management and Availability">
+    <div class="meta">Question 5 of 12 · Resource Management and Availability</div>
+    <div class="q">A resource pool named RP-Finance has a memory reservation of 16 GB with 'Reservation Not Expandable' selected. VMs inside RP-Finance are powered on and consume the full 16 GB. An administrator attempts to power on an additional VM inside RP-Finance that requires an additional 4 GB reservation, but there is 32 GB of unreserved memory available at the cluster level. What happens?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. The power-on operation fails because RP-Finance cannot borrow reservation capacity from its parent</button><button class="opt" onclick="answer(this,4,1,0)">B. The VM powers on successfully because the cluster has sufficient unreserved capacity</button><button class="opt" onclick="answer(this,4,2,0)">C. The VM powers on but DRS automatically increases the resource pool reservation to 20 GB</button><button class="opt" onclick="answer(this,4,3,0)">D. The VM powers on in a degraded state with reduced memory allocation</button>
+    <div class="expl">When 'Expandable Reservation' is disabled, a resource pool cannot borrow unreserved resources from its parent (or the cluster) even if capacity exists above it. Admission control for the VM's power-on evaluates only against the resource pool's own defined reservation, so the operation fails with an insufficient resources error.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Security, Lifecycle, and Monitoring">
+    <div class="meta">Question 6 of 12 · Security, Lifecycle, and Monitoring</div>
+    <div class="q">An administrator manages a cluster with vSphere Lifecycle Manager (vLCM) using a single image. After adding a new host with a network adapter from a different vendor, the cluster image compliance check reports the new host as non-compliant due to a missing driver. Which action should the administrator take to bring the host into compliance?</div>
+    <button class="opt" onclick="answer(this,5,0,2)">A. Manually install the driver VIB on the host using esxcli and reboot the host</button><button class="opt" onclick="answer(this,5,1,2)">B. Remove the host from the cluster and manage it as a standalone host</button><button class="opt" onclick="answer(this,5,2,2)">C. Add the appropriate vendor add-on to the cluster image and remediate the cluster</button><button class="opt" onclick="answer(this,5,3,2)">D. Convert the cluster back to baseline-based Update Manager patching</button>
+    <div class="expl">vLCM cluster images support vendor add-ons that bundle firmware and drivers for specific hardware. Adding the correct add-on to the image and remediating ensures the host receives the required driver while keeping the entire cluster on a single, consistent image.</div>
+  </div>
+
+  <div class="card qcard" id="q6" data-domain="vSphere Architecture and vCenter/ESXi Foundations">
+    <div class="meta">Question 7 of 12 · vSphere Architecture and vCenter/ESXi Foundations</div>
+    <div class="q">Which vCenter Server Appliance interface is used to configure appliance-level settings such as NTP time sync, network configuration, and applying appliance patches?</div>
+    <button class="opt" onclick="answer(this,6,0,1)">A. ESXi Host Client</button><button class="opt" onclick="answer(this,6,1,1)">B. VMware Appliance Management Interface (VAMI)</button><button class="opt" onclick="answer(this,6,2,1)">C. vSphere Client</button><button class="opt" onclick="answer(this,6,3,1)">D. PowerCLI Get-VMHost cmdlet</button>
+    <div class="expl">VAMI, accessed at https://&lt;vcsa-fqdn-or-ip&gt;:5480, is the dedicated appliance management portal for NTP, network settings, disk space monitoring, backup, and patching of the vCenter Server Appliance itself.</div>
+  </div>
+
+  <div class="card qcard" id="q7" data-domain="Virtual Networking">
+    <div class="meta">Question 8 of 12 · Virtual Networking</div>
+    <div class="q">An administrator must guarantee that vMotion traffic receives a minimum amount of bandwidth on shared 10GbE uplinks during periods of network contention, without permanently limiting other traffic types when the network is idle. Which vSphere Distributed Switch feature should be used?</div>
+    <button class="opt" onclick="answer(this,7,0,3)">A. Configure a traffic shaping policy on the vMotion port group</button><button class="opt" onclick="answer(this,7,1,3)">B. Assign a dedicated VLAN ID to the vMotion VMkernel port group</button><button class="opt" onclick="answer(this,7,2,3)">C. Enable promiscuous mode on the vMotion port group</button><button class="opt" onclick="answer(this,7,3,3)">D. Enable Network I/O Control and set a bandwidth reservation for the vMotion system traffic type</button>
+    <div class="expl">Network I/O Control (NIOC) version 3 on a vDS allows administrators to set bandwidth reservations, shares, and limits per system traffic type (such as vMotion). A reservation guarantees minimum bandwidth only during contention, while allowing full link usage when the network is not congested.</div>
+  </div>
+
+  <div class="card qcard" id="q8" data-domain="Storage">
+    <div class="meta">Question 9 of 12 · Storage</div>
+    <div class="q">An organization is designing a new all-flash vSAN 8 cluster and wants the simplest per-host storage architecture with a single pool of NVMe devices, no separate cache and capacity tiers, and improved space efficiency. Which vSAN architecture should they select?</div>
+    <button class="opt" onclick="answer(this,8,0,0)">A. vSAN Express Storage Architecture (ESA)</button><button class="opt" onclick="answer(this,8,1,0)">B. vSAN Original Storage Architecture (OSA) with all-flash disk groups</button><button class="opt" onclick="answer(this,8,2,0)">C. vSAN Original Storage Architecture (OSA) with hybrid disk groups</button><button class="opt" onclick="answer(this,8,3,0)">D. vSAN stretched cluster with fault domains</button>
+    <div class="expl">vSAN ESA uses a single storage pool per host built from high-performance NVMe/flash devices, eliminating the separate cache/capacity tier split required by OSA and providing better space efficiency through compression and native snapshots.</div>
+  </div>
+
+  <div class="card qcard" id="q9" data-domain="Virtual Machine Management">
+    <div class="meta">Question 10 of 12 · Virtual Machine Management</div>
+    <div class="q">An organization has a central vCenter Server that maintains master copies of VM templates and ISO images. Multiple remote sites, each with their own vCenter Server and limited WAN bandwidth, need periodic access to updated templates. Which vSphere feature BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,9,0,3)">A. vSphere Replication to each remote vCenter Server</button><button class="opt" onclick="answer(this,9,1,3)">B. Storage vMotion of templates to each remote datastore</button><button class="opt" onclick="answer(this,9,2,3)">C. Shared NFS datastore mounted by all remote vCenter Servers</button><button class="opt" onclick="answer(this,9,3,3)">D. A local content library at each site configured as a subscribed library with scheduled synchronization from the central published library</button>
+    <div class="expl">A published content library at the central site combined with subscribed libraries at remote sites allows scheduled or on-demand synchronization, controlling WAN bandwidth usage and ensuring remote sites have updated templates and ISOs without manual copying.</div>
+  </div>
+
+  <div class="card qcard" id="q10" data-domain="Resource Management and Availability">
+    <div class="meta">Question 11 of 12 · Resource Management and Availability</div>
+    <div class="q">A cluster hosts a mixed workload where administrators want vCenter to automatically calculate placement and migration recommendations for virtual machines, but a compliance policy requires that a human explicitly approve every vMotion before it executes. Which DRS automation level meets this requirement?</div>
+    <button class="opt" onclick="answer(this,10,0,0)">A. Partially Automated</button><button class="opt" onclick="answer(this,10,1,0)">B. Fully Automated</button><button class="opt" onclick="answer(this,10,2,0)">C. Manual</button><button class="opt" onclick="answer(this,10,3,0)">D. Disabled</button>
+    <div class="expl">Partially Automated mode has DRS automatically place VMs at power-on, but all load-balancing migration recommendations after that must be manually approved by an administrator before they execute — matching the requirement that placement is automatic but every vMotion still needs explicit human approval.</div>
+  </div>
+
+  <div class="card qcard" id="q11" data-domain="Security, Lifecycle, and Monitoring">
+    <div class="meta">Question 12 of 12 · Security, Lifecycle, and Monitoring</div>
+    <div class="q">A virtual machine exhibits sluggish performance despite low CPU utilization reported at the host level. Using esxtop, the administrator observes a %RDY value of 15 for one of the VM's vCPUs. What does this metric indicate?</div>
+    <button class="opt" onclick="answer(this,11,0,3)">A. The VM's guest OS is actively using 15% of its allocated CPU capacity</button><button class="opt" onclick="answer(this,11,1,3)">B. 15% of the VM's allocated memory has been reclaimed by the balloon driver</button><button class="opt" onclick="answer(this,11,2,3)">C. The host's physical CPU is running at only 15% of its rated clock speed</button><button class="opt" onclick="answer(this,11,3,3)">D. The vCPU spent 15% of the sample time waiting for a physical CPU to become available for scheduling</button>
+    <div class="expl">%RDY represents the percentage of time a vCPU was ready to run but had to wait in the queue for a physical CPU to be scheduled. A value above roughly 10% is generally considered a sign of CPU contention on the host.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/vcp-dcv-2v0-21-23-vsphere-8-exam-focused-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<section class="faq"><h3>2V0-21.23 exam — quick answers</h3><details><summary>How much does the 2V0-21.23 exam cost?</summary><p>The exam fee is approximately $250 and varies by region — confirm current pricing with the certification vendor before you book.</p></details><details><summary>What topics are on the exam?</summary><p>It covers 6 domains: vSphere Architecture and vCenter/ESXi Foundations (Instructional grouping (VMware does not publish section weights)), Virtual Networking (Instructional grouping (VMware does not publish section weights)), Storage (Instructional grouping (VMware does not publish section weights)), Virtual Machine Management (Instructional grouping (VMware does not publish section weights)), Resource Management and Availability (Instructional grouping (VMware does not publish section weights)), Security, Lifecycle, and Monitoring (Instructional grouping (VMware does not publish section weights)). The full course has a dedicated chapter, lab and practice-test coverage for each.</p></details><details><summary>Is this practice test really free?</summary><p>Yes — all questions on this page are free with explanations and no sign-up. The paid Udemy course adds two full-length timed exams, video lessons and hands-on labs.</p></details><details><summary>Will this prepare me for the real exam?</summary><p>The questions mirror the real exam's style and are mapped to the official domains. This is exam-focused preparation — combine the free test with the full course's timed simulations to gauge your readiness.</p></details></section>
+<div class="domains"><span class="meta">More free practice by exam domain:</span><br><a href="2v0-21-23-vsphere-architecture-and-vcenter-esxi-foundations.html">vSphere Architecture and vCenter/ESXi Foundations →</a><a href="2v0-21-23-virtual-networking.html">Virtual Networking →</a><a href="2v0-21-23-storage.html">Storage →</a><a href="2v0-21-23-virtual-machine-management.html">Virtual Machine Management →</a><a href="2v0-21-23-resource-management-and-availability.html">Resource Management and Availability →</a><a href="2v0-21-23-security-lifecycle-and-monitoring.html">Security, Lifecycle, and Monitoring →</a></div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Incident Handling and Response Practice Questions — GIAC Security Essentials</title>
+<meta name="description" content="6 free Incident Handling and Response practice questions with explanations for the GIAC Security Essentials exam.">
+<link rel="canonical" href="https://technuggets.academy/gsec-incident-handling-and-response.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Incident Handling and Response Practice Questions — GIAC Security Essentials">
+<meta property="og:description" content="6 free Incident Handling and Response practice questions with explanations for the GIAC Security Essentials exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/gsec-incident-handling-and-response.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Incident Handling and Response</h1>
+<p class="sub">Free GIAC Security Essentials practice — 6 questions on <strong>Incident Handling and Response</strong>, with explanations. No sign-up.
+<a href="gsec.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Incident Handling and Response">
+    <div class="meta">Question 1 of 6 · Incident Handling and Response</div>
+    <div class="q">A security analyst discovers a workstation actively encrypting files consistent with ransomware behavior. The IT manager wants to immediately power off the machine to stop the encryption. Which containment action is MOST appropriate to both stop the damage and preserve forensic value?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. Power off the workstation immediately using the physical power button</button><button class="opt" onclick="answer(this,0,1,3)">B. Pull the workstation's power cable from the wall to force an immediate hard shutdown</button><button class="opt" onclick="answer(this,0,2,3)">C. Leave the workstation running and connected while security shadows the process activity from another host</button><button class="opt" onclick="answer(this,0,3,3)">D. Disconnect the workstation from the network (unplug the network cable or disable the switch port) while leaving it powered on</button>
+    <div class="expl">Isolating network connectivity halts lateral spread and encryption of network shares while leaving the system powered on preserves volatile memory (RAM) that may contain encryption keys, malicious process data, and active connections — critical for forensic analysis.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Incident Handling and Response">
+    <div class="meta">Question 2 of 6 · Incident Handling and Response</div>
+    <div class="q">An organization's file server is backed up nightly at 02:00. A ransomware attack encrypts the server at 17:00 the same day, and the team restores from the most recent backup. What is the resulting Recovery Point Objective (RPO) actually realized for this incident?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. 15 hours</button><button class="opt" onclick="answer(this,1,1,0)">B. 6 hours</button><button class="opt" onclick="answer(this,1,2,0)">C. 24 hours</button><button class="opt" onclick="answer(this,1,3,0)">D. 2 hours</button>
+    <div class="expl">The backup captured data as of 02:00; the disruption occurred at 17:00, meaning 15 hours had elapsed since the last backup, so up to 15 hours of changes were lost — that is the realized RPO for this incident.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Incident Handling and Response">
+    <div class="meta">Question 3 of 6 · Incident Handling and Response</div>
+    <div class="q">A hospital's continuity planning team is drafting a document describing how patient admissions, billing, and clinical operations will continue — including relocating staff to a temporary facility, using paper-based charting, and reassigning duties — if the primary building becomes unusable after a flood. Which type of plan does this document represent?</div>
+    <button class="opt" onclick="answer(this,2,0,2)">A. Disaster Recovery Plan (DRP)</button><button class="opt" onclick="answer(this,2,1,2)">B. Incident Response Plan (IRP)</button><button class="opt" onclick="answer(this,2,2,2)">C. Business Continuity Plan (BCP)</button><button class="opt" onclick="answer(this,2,3,2)">D. Continuity of Operations Plan (COOP), defined strictly for federal agencies only</button>
+    <div class="expl">A BCP addresses how an organization's critical business functions — not just IT systems — continue operating during and after a disruption, covering people, processes, alternate facilities, and manual workarounds, exactly as described.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Incident Handling and Response">
+    <div class="meta">Question 4 of 6 · Incident Handling and Response</div>
+    <div class="q">During eradication following confirmation that a compromised Linux server had a kernel-mode rootkit installed, which action provides the highest assurance that the threat has been fully removed?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. Rebuild the system from a trusted, known-good image or clean media and restore data from verified-clean backups</button><button class="opt" onclick="answer(this,3,1,0)">B. Run an updated antivirus/anti-malware scan and delete all flagged files</button><button class="opt" onclick="answer(this,3,2,0)">C. Apply the latest OS and kernel security patches to close the exploited vulnerability</button><button class="opt" onclick="answer(this,3,3,0)">D. Reset all local user account passwords and disable unused accounts</button>
+    <div class="expl">Kernel-mode rootkits can hide files, processes, and even subvert the antivirus scanner itself, making in-place cleaning unreliable. Rebuilding from known-good media is the only reliable eradication method for rootkit-level compromise.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Incident Handling and Response">
+    <div class="meta">Question 5 of 6 · Incident Handling and Response</div>
+    <div class="q">Per RFC 3227 guidance on order of volatility (used as the basis for evidence collection priority during incident response), which of the following correctly orders forensic data sources from MOST volatile to LEAST volatile?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. Disk data → RAM contents → CPU registers/cache → archival backup media</button><button class="opt" onclick="answer(this,4,1,2)">B. Archival backup media → disk data → RAM contents → CPU registers/cache</button><button class="opt" onclick="answer(this,4,2,2)">C. CPU registers/cache → RAM contents → temporary file systems/swap → archival backup media</button><button class="opt" onclick="answer(this,4,3,2)">D. RAM contents → CPU registers/cache → archival backup media → disk data</button>
+    <div class="expl">RFC 3227 orders volatility from registers/cache (most volatile, lost in nanoseconds) through RAM, then temp storage/swap, network state, disk, and finally archival/backup media (least volatile) — matching this sequence exactly.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Incident Handling and Response">
+    <div class="meta">Question 6 of 6 · Incident Handling and Response</div>
+    <div class="q">An incident response team closes out a major data breach investigation after eradication and recovery are complete. According to standard incident handling practice, when should the 'lessons learned' meeting ideally be conducted, and why?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. Immediately during the containment phase, so fixes can be applied before eradication begins</button><button class="opt" onclick="answer(this,5,1,3)">B. Exactly one year after the incident, to allow for a full annual security review cycle</button><button class="opt" onclick="answer(this,5,2,3)">C. Only if the incident resulted in a regulatory reporting obligation</button><button class="opt" onclick="answer(this,5,3,3)">D. Within a few days to two weeks after the incident is closed, while details are still fresh but the team has had time to gather complete data</button>
+    <div class="expl">Standard incident handling guidance recommends holding the lessons-learned/post-incident review within roughly two weeks of closure — soon enough that details remain fresh, but with enough time for the team to compile logs, timelines, and complete impact assessments.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/gsec-giac-security-essentials-exam-focused-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

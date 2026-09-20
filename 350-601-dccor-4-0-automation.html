@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free 4.0 Automation Practice Questions — Implementing Cisco Data Center Core Technologies</title>
+<meta name="description" content="6 free 4.0 Automation practice questions with explanations for the Implementing Cisco Data Center Core Technologies exam.">
+<link rel="canonical" href="https://technuggets.academy/350-601-dccor-4-0-automation.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free 4.0 Automation Practice Questions — Implementing Cisco Data Center Core Technologies">
+<meta property="og:description" content="6 free 4.0 Automation practice questions with explanations for the Implementing Cisco Data Center Core Technologies exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/350-601-dccor-4-0-automation.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>4.0 Automation</h1>
+<p class="sub">Free Implementing Cisco Data Center Core Technologies practice — 6 questions on <strong>4.0 Automation</strong>, with explanations. No sign-up.
+<a href="350-601-dccor.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="4.0 Automation">
+    <div class="meta">Question 1 of 6 · 4.0 Automation</div>
+    <div class="q">A DevOps engineer is writing a Python script that must send multiple CLI commands (a mix of 'show' and configuration commands) to a Nexus 9000 switch in a single HTTP POST for both efficiency and atomic execution. The script uses NX-API. Which approach correctly achieves this?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. Send a single JSON-RPC 2.0 request containing an array of method calls (cli_show/cli_conf) as the request body to the NX-API sandbox endpoint</button><button class="opt" onclick="answer(this,0,1,0)">B. Open a separate HTTPS session and POST each command individually to /ins, then correlate responses using a shared session cookie</button><button class="opt" onclick="answer(this,0,2,0)">C. Use SNMP SET operations against the CISCO-CONFIG-COPY-MIB to push the command set in one transaction</button><button class="opt" onclick="answer(this,0,3,0)">D. Use RESTCONF edit-config against the running datastore with each CLI command encoded as a YANG leaf</button>
+    <div class="expl">NX-API's JSON-RPC 2.0 transport natively supports batching multiple cli_show/cli_conf method calls as an array in one HTTP POST to the /ins endpoint, giving both efficiency and single-transaction execution — this is the documented NX-API batching pattern tested on the exam.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="4.0 Automation">
+    <div class="meta">Question 2 of 6 · 4.0 Automation</div>
+    <div class="q">An automation team needs to add a subnet (e.g., 10.1.1.1/24) under an existing bridge domain in a Cisco ACI fabric using Ansible. Which module from the cisco.aci collection should be used?</div>
+    <button class="opt" onclick="answer(this,1,0,1)">A. cisco.aci.aci_bd</button><button class="opt" onclick="answer(this,1,1,1)">B. cisco.aci.aci_bd_subnet</button><button class="opt" onclick="answer(this,1,2,1)">C. cisco.aci.aci_l3out_extsubnet</button><button class="opt" onclick="answer(this,1,3,1)">D. cisco.aci.aci_subnet</button>
+    <div class="expl">cisco.aci.aci_bd_subnet is the specific module that manages the fvSubnet object under a bridge domain (BD), matching the required task exactly.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="4.0 Automation">
+    <div class="meta">Question 3 of 6 · 4.0 Automation</div>
+    <div class="q">After entering 'feature nxapi' on a Nexus 9000 switch with no further HTTP-related configuration, which TCP port is used by default for NX-API management access?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. 8443</button><button class="opt" onclick="answer(this,2,1,1)">B. 443</button><button class="opt" onclick="answer(this,2,2,1)">C. 22</button><button class="opt" onclick="answer(this,2,3,1)">D. 80</button>
+    <div class="expl">NX-API defaults to HTTPS on TCP 443 once the feature is enabled; HTTP on port 80 must be explicitly enabled separately if desired.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="4.0 Automation">
+    <div class="meta">Question 4 of 6 · 4.0 Automation</div>
+    <div class="q">A UCS administrator needs to programmatically instantiate 50 new service profiles from a single existing service profile template in one XML API call. Which UCS Manager XML API method is designed for this exact operation?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. configResolveClass</button><button class="opt" onclick="answer(this,3,1,1)">B. lsInstantiateNTemplate</button><button class="opt" onclick="answer(this,3,2,1)">C. configConfMo</button><button class="opt" onclick="answer(this,3,3,1)">D. lsInstantiateTemplate</button>
+    <div class="expl">lsInstantiateNTemplate is the UCS Manager XML API method specifically designed to create N service profiles from a template in a single call, which is required for bulk provisioning like the 50-profile scenario described.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="4.0 Automation">
+    <div class="meta">Question 5 of 6 · 4.0 Automation</div>
+    <div class="q">An engineer needs a configuration management framework where a persistent agent runs on managed nodes, periodically pulls declarative manifests from a central master server, and enforces idempotent resource state using a domain-specific language. Which automation tool matches this description as used in DCCOR-scoped data center automation?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. Cisco Embedded Event Manager (EEM) applets</button><button class="opt" onclick="answer(this,4,1,3)">B. Ansible with the ios_config/nxos_config modules</button><button class="opt" onclick="answer(this,4,2,3)">C. Python scripts invoking NX-API directly</button><button class="opt" onclick="answer(this,4,3,3)">D. Puppet</button>
+    <div class="expl">Puppet uses an agent/master architecture where a Ruby-based agent on each node periodically pulls manifests written in Puppet's declarative DSL from a Puppet master and enforces the desired state — this agent-based, pull-model behavior is the key exam differentiator versus agentless tools.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="4.0 Automation">
+    <div class="meta">Question 6 of 6 · 4.0 Automation</div>
+    <div class="q">Which statement correctly contrasts the data encoding supported by NX-API versus the Cisco UCS Manager XML API?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. NX-API supports both XML and JSON-RPC 2.0 encoded requests, while the UCS Manager API is XML-native and does not use JSON for its request/response body</button><button class="opt" onclick="answer(this,5,1,0)">B. NX-API only supports XML-encoded CLI requests, while UCS Manager natively uses JSON for all managed object operations</button><button class="opt" onclick="answer(this,5,2,0)">C. Both NX-API and the UCS Manager API exclusively use JSON, with XML support deprecated in current NX-OS and UCSM releases</button><button class="opt" onclick="answer(this,5,3,0)">D. UCS Manager XML API and NX-API both require Protocol Buffers (protobuf) encoding for all managed object requests</button>
+    <div class="expl">NX-API supports JSON-RPC 2.0 as its primary structured transport (with XML also available for CLI-style requests), while the UCS Manager API is fundamentally XML-based, using method calls like configConfMo and configResolveDn with XML request/response bodies — it does not offer a native JSON encoding.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/cisco-350-601-dccor-ccnp-data-center-core-exam-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

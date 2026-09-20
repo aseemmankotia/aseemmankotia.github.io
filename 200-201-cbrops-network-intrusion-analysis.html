@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Network Intrusion Analysis Practice Questions — Cisco Certified CyberOps Associate</title>
+<meta name="description" content="6 free Network Intrusion Analysis practice questions with explanations for the Cisco Certified CyberOps Associate exam.">
+<link rel="canonical" href="https://technuggets.academy/200-201-cbrops-network-intrusion-analysis.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Network Intrusion Analysis Practice Questions — Cisco Certified CyberOps Associate">
+<meta property="og:description" content="6 free Network Intrusion Analysis practice questions with explanations for the Cisco Certified CyberOps Associate exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/200-201-cbrops-network-intrusion-analysis.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Network Intrusion Analysis</h1>
+<p class="sub">Free Cisco Certified CyberOps Associate practice — 6 questions on <strong>Network Intrusion Analysis</strong>, with explanations. No sign-up.
+<a href="200-201-cbrops.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Network Intrusion Analysis">
+    <div class="meta">Question 1 of 6 · Network Intrusion Analysis</div>
+    <div class="q">A SOC analyst discovers that a data exfiltration event went undetected for three weeks because no IDS signature matched the encrypted C2 channel, and malicious traffic was actively leaving the network the entire time. How should this event be classified?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. True positive - impact</button><button class="opt" onclick="answer(this,0,1,3)">B. True negative - no impact</button><button class="opt" onclick="answer(this,0,2,3)">C. False positive - no impact</button><button class="opt" onclick="answer(this,0,3,3)">D. False negative - impact</button>
+    <div class="expl">Malicious activity actually occurred (impact) but no alert was generated to detect it, which is the definition of a false negative - the most dangerous classification because the security tooling failed silently.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Network Intrusion Analysis">
+    <div class="meta">Question 2 of 6 · Network Intrusion Analysis</div>
+    <div class="q">During packet capture analysis of a suspected lateral movement incident, an analyst needs to isolate all traffic associated with a single infected host communicating with an internal file server on a non-standard port. Which combination of fields constitutes the 5-tuple needed to uniquely identify this conversation?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. Source IP, Destination IP, Source Port, Destination Port, Protocol</button><button class="opt" onclick="answer(this,1,1,0)">B. Source IP, Destination IP, Source MAC, Destination MAC, VLAN ID</button><button class="opt" onclick="answer(this,1,2,0)">C. Source IP, Destination IP, TTL, Protocol, Packet Length</button><button class="opt" onclick="answer(this,1,3,0)">D. Source MAC, Destination MAC, EtherType, VLAN ID, Protocol</button>
+    <div class="expl">The 5-tuple used to uniquely identify a network conversation consists of source IP, destination IP, source port, destination port, and protocol - this is exactly what's needed to isolate one host's session to the file server regardless of the port used.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Network Intrusion Analysis">
+    <div class="meta">Question 3 of 6 · Network Intrusion Analysis</div>
+    <div class="q">A firewall administrator configures a device that tracks the state of TCP connections in a session table, automatically permitting return traffic for established sessions, but does not inspect the application-layer payload for protocol conformance or malicious content. Which firewall operation type does this describe?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. Deep packet inspection</button><button class="opt" onclick="answer(this,2,1,3)">B. Stateless packet filtering</button><button class="opt" onclick="answer(this,2,2,3)">C. Application-layer proxy</button><button class="opt" onclick="answer(this,2,3,3)">D. Stateful firewall</button>
+    <div class="expl">A stateful firewall maintains a connection/session table and uses that state to automatically permit return traffic for established sessions, but it operates at Layer 3/4 and does not inspect the actual application payload content.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Network Intrusion Analysis">
+    <div class="meta">Question 4 of 6 · Network Intrusion Analysis</div>
+    <div class="q">An analyst needs to determine the exact URI path and User-Agent string requested by an internal workstation before it downloaded a malicious payload from an external website over HTTP. NetFlow records only show source/destination IP, ports, and byte counts. Which log source should the analyst pivot to in order to obtain this level of detail?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. Firewall connection logs</button><button class="opt" onclick="answer(this,3,1,2)">B. NetFlow v9 flow records</button><button class="opt" onclick="answer(this,3,2,2)">C. Web proxy logs</button><button class="opt" onclick="answer(this,3,3,2)">D. DNS query logs</button>
+    <div class="expl">Web proxy logs capture full HTTP transaction details including the requested URI, host header, User-Agent string, and response codes, giving the analyst the granularity needed that flow-based sources cannot provide.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Network Intrusion Analysis">
+    <div class="meta">Question 5 of 6 · Network Intrusion Analysis</div>
+    <div class="q">While investigating a phishing email, an analyst examines the message headers and finds multiple 'Received:' lines showing the mail hopped through several relays, along with a failed SPF result (softfail) and a DKIM signature that did not validate. Which of the following BEST describes what this artifact evidence indicates?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. The email likely originated from a source not authorized by the sending domain's policy, and its content integrity is unverified</button><button class="opt" onclick="answer(this,4,1,0)">B. The sender's domain has properly authenticated the message and it can be trusted</button><button class="opt" onclick="answer(this,4,2,0)">C. The Received header chain proves the email is benign because it traversed legitimate relays</button><button class="opt" onclick="answer(this,4,3,0)">D. The email was definitely blocked by the mail gateway and never reached the user</button>
+    <div class="expl">SPF softfail indicates the sending IP is not fully authorized by the domain's SPF policy, and a failed DKIM signature means the message content/headers cannot be cryptographically verified as unaltered - together these strongly suggest spoofing or a compromised relay.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Network Intrusion Analysis">
+    <div class="meta">Question 6 of 6 · Network Intrusion Analysis</div>
+    <div class="q">An analyst reviewing a packet capture notices a host sending an unusually high volume of DNS queries for TXT records to a single external authoritative domain, with query name labels containing long strings of seemingly random alphanumeric characters. Which technique is most likely being used, and what should the analyst check to confirm?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. DNS tunneling for covert data exfiltration; check response payload sizes and encoding patterns in the TXT record answers</button><button class="opt" onclick="answer(this,5,1,0)">B. Standard recursive name resolution; check for a matching PTR record in the reverse lookup zone</button><button class="opt" onclick="answer(this,5,2,0)">C. DNS zone transfer; check for AXFR requests in the capture</button><button class="opt" onclick="answer(this,5,3,0)">D. DNSSEC validation failure; check for RRSIG record mismatches</button>
+    <div class="expl">High-volume TXT queries to one domain with long randomized/encoded subdomain labels is a classic DNS tunneling indicator; confirming involves inspecting the TXT answer payloads for base32/base64-style encoded data being smuggled through legitimate-looking DNS traffic.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/200-201-cbrops-cyberops-associate-exam-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

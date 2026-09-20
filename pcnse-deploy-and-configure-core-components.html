@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Deploy and Configure Core Components Practice Questions — Palo Alto Networks Certified Network Security Engineer</title>
+<meta name="description" content="6 free Deploy and Configure Core Components practice questions with explanations for the Palo Alto Networks Certified Network Security Engineer exam.">
+<link rel="canonical" href="https://technuggets.academy/pcnse-deploy-and-configure-core-components.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Deploy and Configure Core Components Practice Questions — Palo Alto Networks Certified Network Security Engineer">
+<meta property="og:description" content="6 free Deploy and Configure Core Components practice questions with explanations for the Palo Alto Networks Certified Network Security Engineer exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/pcnse-deploy-and-configure-core-components.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Deploy and Configure Core Components</h1>
+<p class="sub">Free Palo Alto Networks Certified Network Security Engineer practice — 6 questions on <strong>Deploy and Configure Core Components</strong>, with explanations. No sign-up.
+<a href="pcnse.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Domain 2: Deploy and Configure Core Components">
+    <div class="meta">Question 1 of 6 · Domain 2: Deploy and Configure Core Components</div>
+    <div class="q">A firewall administrator enables SSL Forward Proxy decryption for all outbound web traffic. Users report that when accessing a specific banking site that presents a valid, publicly trusted certificate, they still receive a browser certificate-warning page. Firewall decryption logs show the site's certificate chain terminating at an untrusted issuer, while all other HTTPS sites decrypt without warnings. What is the MOST likely cause and correct fix?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. The Decryption Profile is configured to block sessions with expired certificates, and the banking site's certificate has expired</button><button class="opt" onclick="answer(this,0,1,1)">B. The firewall's trusted CA store is missing the intermediate CA certificate used by the banking site; import the missing intermediate certificate under Device &gt; Certificate Management &gt; Certificate Authority</button><button class="opt" onclick="answer(this,0,2,1)">C. The banking site requires client certificate authentication, which SSL Forward Proxy does not support, causing the firewall to substitute the Forward Untrust certificate</button><button class="opt" onclick="answer(this,0,3,1)">D. The Forward Trust certificate has expired; regenerate and re-push the Forward Trust CA to all managed endpoints</button>
+    <div class="expl">When only one specific site fails chain validation while all others decrypt cleanly, the root cause is almost always a missing intermediate CA certificate in the firewall's trusted CA store, which prevents the firewall from building a complete trust chain and forces it to sign the substitute certificate with the Forward Untrust CA instead of the Forward Trust CA.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Domain 2: Deploy and Configure Core Components">
+    <div class="meta">Question 2 of 6 · Domain 2: Deploy and Configure Core Components</div>
+    <div class="q">A web server sits in the DMZ zone at 10.1.1.10 and is published externally as 203.0.113.10 via a static Destination NAT rule with source zone 'Untrust' and destination zone 'Untrust' (the zone associated with the public IP's routing). Internal users in the 'Trust' zone try to reach the server using the public IP 203.0.113.10, and connections fail, even though a Security policy rule permits Trust-to-DMZ traffic. Which NAT configuration change correctly enables this u-turn NAT scenario?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. Change the original NAT rule's destination zone from 'Untrust' to 'Trust', since the server physically resides behind an interface reachable from Trust</button><button class="opt" onclick="answer(this,1,1,2)">B. Create a security policy rule allowing Trust to Untrust for the public IP; NAT rules do not require additional zone entries for u-turn traffic since zone lookup always uses the post-NAT address</button><button class="opt" onclick="answer(this,1,2,2)">C. Add a second NAT rule with source zone 'Trust' and destination zone 'Untrust' (matching the zone the pre-NAT destination IP 203.0.113.10 routes to), keeping the same destination translation to 10.1.1.10, and add source NAT to hairpin the return traffic back through Trust</button><button class="opt" onclick="answer(this,1,3,2)">D. Add a source NAT rule that translates the Trust users' source IP to the DMZ interface IP while leaving the NAT rule's destination zone set to 'DMZ'</button>
+    <div class="expl">NAT rule zone matching is based on the zone the original (pre-NAT) destination IP would route to according to the routing table, not the zone the traffic will ultimately land in after translation. Because 203.0.113.10 routes toward Untrust, a u-turn NAT rule must use source zone Trust and destination zone Untrust (matching that pre-NAT routing lookup), with source NAT added so the DMZ server's return traffic hairpins correctly back to the Trust host instead of routing to the internet.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Domain 2: Deploy and Configure Core Components">
+    <div class="meta">Question 3 of 6 · Domain 2: Deploy and Configure Core Components</div>
+    <div class="q">According to Palo Alto Networks' documented App-ID application dependency chain, which additional applications must an administrator explicitly permit in the Security policy to allow 'facebook-chat' to function correctly?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. facebook-base only, because web-browsing is validated automatically at Layer 7 without requiring an explicit policy match</button><button class="opt" onclick="answer(this,2,1,3)">B. No additional applications are required; App-ID automatically permits all application dependencies once the child application is allowed in policy</button><button class="opt" onclick="answer(this,2,2,3)">C. ssl and web-browsing only, since facebook-chat depends solely on the encrypted transport protocols it rides on</button><button class="opt" onclick="answer(this,2,3,3)">D. facebook-base and web-browsing, because facebook-chat depends on facebook-base, which itself depends on web-browsing</button>
+    <div class="expl">The App-ID database documents facebook-chat as dependent on facebook-base, and facebook-base as dependent on web-browsing; PAN-OS does not automatically permit dependent applications through policy, so all three must be explicitly allowed (or covered by an application-group/filter) for facebook-chat to be permitted.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Domain 2: Deploy and Configure Core Components">
+    <div class="meta">Question 4 of 6 · Domain 2: Deploy and Configure Core Components</div>
+    <div class="q">A security engineer notices that the User-ID feature is actively mapping IP addresses to usernames inside the Data Center zone, where servers communicate using shared service accounts. This produces misleading user attribution in traffic logs and increases the risk of user-mapping spoofing from that zone. What is the recommended configuration to correct this?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. Disable User-ID entirely on the firewall, since server-to-server traffic never benefits from identity-based enforcement anywhere on the platform</button><button class="opt" onclick="answer(this,3,1,2)">B. Configure the Zone Protection Profile applied to the Data Center zone to disable User-ID enforcement, since Zone Protection Profiles control User-ID scope</button><button class="opt" onclick="answer(this,3,2,2)">C. Enable User-ID only on the zones that require user-to-IP mapping (such as end-user access zones), leaving 'Enable User Identification' unchecked on the Data Center zone</button><button class="opt" onclick="answer(this,3,3,2)">D. Enable 'Include/Exclude Networks' on the User-ID agent to exclude the Data Center subnet from being probed</button>
+    <div class="expl">The documented best practice is to enable User Identification only on zones where user-to-IP mapping is actually needed for policy enforcement; the per-zone 'Enable User Identification' checkbox (Network &gt; Zones) directly controls whether the firewall applies User-ID mapping within that zone, and disabling it on server/Data Center zones eliminates the spoofing risk described.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Domain 2: Deploy and Configure Core Components">
+    <div class="meta">Question 5 of 6 · Domain 2: Deploy and Configure Core Components</div>
+    <div class="q">An administrator configures SSL Inbound Inspection to decrypt and inspect traffic destined to an internal application server, using a Decryption Profile that has settings enabled on both the 'SSL Protocol Settings' tab and the 'SSL Forward Proxy' tab. Which single setting will have NO effect on the SSL Inbound Inspection sessions?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. Block sessions with unsupported cipher suites, under SSL Protocol Settings</button><button class="opt" onclick="answer(this,4,1,3)">B. Block sessions if the resumed handshake reuses a session ticket, under SSL Protocol Settings</button><button class="opt" onclick="answer(this,4,2,3)">C. Block sessions with expired certificates, under SSL Protocol Settings</button><button class="opt" onclick="answer(this,4,3,3)">D. Block sessions with untrusted issuer, located on the SSL Forward Proxy tab</button>
+    <div class="expl">'Block sessions with untrusted issuer' lives on the SSL Forward Proxy tab and only applies when the firewall is validating an external server's certificate chain against its trusted CA store during Forward Proxy decryption. In SSL Inbound Inspection, the firewall already holds the actual server's private key and certificate, so there is no external issuer trust decision to evaluate, making this setting inapplicable.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Domain 2: Deploy and Configure Core Components">
+    <div class="meta">Question 6 of 6 · Domain 2: Deploy and Configure Core Components</div>
+    <div class="q">Two interfaces, ethernet1/3 and ethernet1/4, are both assigned to the same zone, 'DMZ', on a Palo Alto Networks firewall. No explicit Security policy rules have been created for DMZ-to-DMZ traffic. An administrator observes that traffic between hosts on these two interfaces is being permitted anyway. What explains this behavior?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. The built-in 'intrazone-default' Security policy rule allows all traffic within the same zone by default, unless explicitly modified or overridden by an administrator</button><button class="opt" onclick="answer(this,5,1,0)">B. Because App-ID has not yet fully identified the application, the session default action is allow until identification completes, causing the traffic to pass in the interim</button><button class="opt" onclick="answer(this,5,2,0)">C. Layer 3 zones automatically create an implicit allow rule for any pair of interfaces sharing the same zone, independent of the default rule set</button><button class="opt" onclick="answer(this,5,3,0)">D. The firewall's built-in 'interzone-default' rule allows all traffic within the same zone by default</button>
+    <div class="expl">PAN-OS ships with two hidden default Security policy rules: 'intrazone-default,' which allows all traffic within the same zone, and 'interzone-default,' which denies all traffic between different zones. Since both interfaces belong to the same DMZ zone, the intrazone-default allow rule is the one being matched, and it remains in effect until an administrator explicitly clones, modifies, or overrides it.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/pcnse-exam-prep-palo-alto-networks-ngfw-panorama/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

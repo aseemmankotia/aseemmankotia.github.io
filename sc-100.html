@@ -1,0 +1,123 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Microsoft Certified: Cybersecurity Architect Expert Practice Test — 12 Real Exam-Style Questions</title>
+<meta name="description" content="Free Microsoft Certified: Cybersecurity Architect Expert practice questions with detailed explanations. Test yourself before the real exam.">
+<link rel="canonical" href="https://technuggets.academy/sc-100.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Microsoft Certified: Cybersecurity Architect Expert Practice Test — 12 Real Exam-Style Questions">
+<meta property="og:description" content="Free Microsoft Certified: Cybersecurity Architect Expert practice questions with detailed explanations. Test yourself before the real exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/sc-100.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0078D4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div><div class="hero">
+  <span class="chip">SC-100</span>
+  <h1>Free Microsoft Certified: Cybersecurity Architect Expert Practice Test</h1>
+  <p class="sub">12 exam-style questions with full explanations — no sign-up. Score yourself, then close your gaps with the full course.</p>
+  <div class="facts"><span class="fact">Exam fee <b>~$165</b></span><span class="fact"><b>4</b> exam domains</span><span class="fact">Level <b>Advanced</b></span><span class="fact"><b>2</b> timed practice tests in the course</span></div>
+  <div class="cta-row"><a class="btn enroll" href="https://www.udemy.com/course/sc-100-microsoft-cybersecurity-architect-expert-prep/" rel="sponsored" target="_blank">Start my full course on Udemy →</a><a class="btn ghost" href="#practice">Try the free test →</a></div>
+</div><div class="trust"><span>✅ <b>Free</b> practice — no sign-up</span><span>📝 Real exam-style questions</span><span>💡 Detailed explanations</span><span>💸 30-day money-back via Udemy</span></div>
+<div id="practice"></div>
+
+  <div class="card qcard" id="q0" data-domain="Domain 1: Design solutions that align with security best practices and priorities">
+    <div class="meta">Question 1 of 12 · Domain 1: Design solutions that align with security best practices and priorities</div>
+    <div class="q">A company wants to design a ransomware resilience strategy following Microsoft recommendations. The design must ensure that critical backup data cannot be deleted or encrypted by an attacker who compromises an administrator account. Which solution BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. Enable immutable Azure Backup vaults with resource guard and multi-user authorization</button><button class="opt" onclick="answer(this,0,1,0)">B. Configure Azure Backup with soft delete enabled for 14 days</button><button class="opt" onclick="answer(this,0,2,0)">C. Store backups in an Azure Storage account and use lifecycle management policies to move data to archive tier</button><button class="opt" onclick="answer(this,0,3,0)">D. Configure Azure Site Recovery replication to a secondary region</button>
+    <div class="expl">Immutable vault settings combined with resource guard and multi-user authorization (MUA) require approval from a separate management scope before critical backup operations like deletion or reduced retention can be performed, preventing a single compromised administrator from destroying backup data — aligning with Microsoft ransomware resilience guidance.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Domain 2: Design security operations, identity, and compliance capabilities">
+    <div class="meta">Question 2 of 12 · Domain 2: Design security operations, identity, and compliance capabilities</div>
+    <div class="q">A global enterprise runs Microsoft Sentinel as its SIEM alongside on-premises Active Directory, Azure workloads, and AWS EC2 instances. The security team wants unified incident correlation, fusion-based detection, and automated response for identity-based threats spanning all these environments, without duplicating alert triage across multiple consoles. Which design BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. Integrate Microsoft Defender XDR with Microsoft Sentinel via the native bi-directional connector to synchronize incidents and enable fusion correlation, and connect AWS through the Microsoft Sentinel AWS data connector using CloudTrail and GuardDuty</button><button class="opt" onclick="answer(this,1,1,0)">B. Deploy Microsoft Defender for Cloud Apps as a standalone console to monitor AWS activity independently of Sentinel</button><button class="opt" onclick="answer(this,1,2,0)">C. Configure each team to review raw logs manually in separate Azure Monitor Log Analytics workspaces per cloud</button><button class="opt" onclick="answer(this,1,3,0)">D. Deploy Azure Firewall Premium in every VNet and rely solely on its threat intelligence feed for correlation</button>
+    <div class="expl">The Defender XDR-Sentinel native connector synchronizes incidents bidirectionally and feeds Defender's correlated signals into Sentinel's fusion engine, while the AWS connector ingests CloudTrail/GuardDuty data so Sentinel becomes the single pane of glass for cross-cloud, cross-identity correlation and automated SOAR playbooks.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Domain 3: Design security solutions for infrastructure">
+    <div class="meta">Question 3 of 12 · Domain 3: Design security solutions for infrastructure</div>
+    <div class="q">Fabrikam operates an OT network running SCADA systems for its manufacturing plants. The OT network is segmented from IT using the Purdue model, and the security team must design a monitoring solution that provides visibility into OT device communications and detects anomalous ICS protocol traffic without installing any software on the OT devices themselves. Which solution should be included in the design?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. Deploy Microsoft Defender for Endpoint agents directly on each PLC and RTU device</button><button class="opt" onclick="answer(this,2,1,1)">B. Deploy Microsoft Defender for IoT OT network sensors connected via SPAN port or TAP at the OT network switches</button><button class="opt" onclick="answer(this,2,2,1)">C. Deploy Microsoft Defender for Cloud Apps discovery to inventory OT devices from firewall logs</button><button class="opt" onclick="answer(this,2,3,1)">D. Onboard OT devices as Azure Arc-enabled servers and enable Defender for Servers Plan 2</button>
+    <div class="expl">Defender for IoT OT sensors passively monitor traffic mirrored via SPAN/TAP, using deep packet inspection of ICS/SCADA protocols (Modbus, DNP3, etc.) to build an asset inventory and detect anomalies without touching the OT devices, which is the required agentless, non-intrusive approach.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Domain 4: Design security solutions for applications and data">
+    <div class="meta">Question 4 of 12 · Domain 4: Design security solutions for applications and data</div>
+    <div class="q">A company uses GitHub Actions to deploy infrastructure to Azure. The security architect must eliminate long-lived credentials stored as GitHub secrets while still allowing the pipeline to authenticate to Azure and deploy resources. Which solution BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. Create an Azure AD service principal and store its client secret as an encrypted GitHub secret, rotating it every 30 days</button><button class="opt" onclick="answer(this,3,1,3)">B. Assign a system-assigned managed identity to the GitHub Actions runner and grant it Contributor on the subscription</button><button class="opt" onclick="answer(this,3,2,3)">C. Deploy an Azure AD Application Proxy in front of the deployment pipeline to broker authentication</button><button class="opt" onclick="answer(this,3,3,3)">D. Configure workload identity federation between the GitHub Actions OIDC issuer and an Azure AD app registration, so the pipeline obtains short-lived tokens without a stored secret</button>
+    <div class="expl">Workload identity federation lets GitHub Actions present an OIDC token that Azure AD exchanges for a short-lived access token, removing the need to store any client secret or certificate — the recommended Zero Trust pattern for CI/CD workload identities.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Domain 1: Design solutions that align with security best practices and priorities">
+    <div class="meta">Question 5 of 12 · Domain 1: Design solutions that align with security best practices and priorities</div>
+    <div class="q">A company has a legacy line-of-business web application hosted on-premises that does not support modern authentication protocols. Employees need secure remote access to the application without exposing it directly to the internet via VPN. As part of a Zero Trust access strategy, which solution BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. Configure a site-to-site VPN and require multifactor authentication at the VPN gateway</button><button class="opt" onclick="answer(this,4,1,3)">B. Expose the application publicly on an Azure VM and restrict access using an NSG rule based on source IP address</button><button class="opt" onclick="answer(this,4,2,3)">C. Deploy Azure Bastion to allow RDP access to the on-premises server</button><button class="opt" onclick="answer(this,4,3,3)">D. Publish the application through Microsoft Entra Application Proxy with Conditional Access policies</button>
+    <div class="expl">Microsoft Entra Application Proxy publishes individual applications with per-app, identity-based Conditional Access enforcement, satisfying the Zero Trust principles of verify explicitly and least-privilege access without granting broad network-level connectivity.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Domain 2: Design security operations, identity, and compliance capabilities">
+    <div class="meta">Question 6 of 12 · Domain 2: Design security operations, identity, and compliance capabilities</div>
+    <div class="q">An architect must design a control that allows a small group of engineers to elevate to the Global Administrator role only when needed, requiring a business justification, manager approval, and automatic time-bound expiration of the elevated role. Which capability should be specified in the design?</div>
+    <button class="opt" onclick="answer(this,5,0,2)">A. Azure RBAC custom role definitions assigned permanently to the engineers</button><button class="opt" onclick="answer(this,5,1,2)">B. Conditional Access policies that block sign-in from unfamiliar locations</button><button class="opt" onclick="answer(this,5,2,2)">C. Microsoft Entra Privileged Identity Management (PIM) with eligible role assignments and approval workflows</button><button class="opt" onclick="answer(this,5,3,2)">D. Azure Policy deny assignments scoped to the subscription</button>
+    <div class="expl">PIM provides eligible (just-in-time) role assignments with configurable approval, justification, MFA enforcement, and automatic expiration — exactly matching the time-bound, approval-gated elevation requirement for privileged roles like Global Administrator.</div>
+  </div>
+
+  <div class="card qcard" id="q6" data-domain="Domain 3: Design security solutions for infrastructure">
+    <div class="meta">Question 7 of 12 · Domain 3: Design security solutions for infrastructure</div>
+    <div class="q">Contoso has a secure score of 42% across dozens of subscriptions in Microsoft Defender for Cloud. The security team has a limited remediation budget and wants to design a governance process that maximizes secure score improvement while ensuring accountability for remediation. Which approach should the design include?</div>
+    <button class="opt" onclick="answer(this,6,0,2)">A. Manually assign every unassessed recommendation to the security team with the same priority and due date</button><button class="opt" onclick="answer(this,6,1,2)">B. Disable low-scoring security controls in Defender for Cloud so they no longer count against the score</button><button class="opt" onclick="answer(this,6,2,2)">C. Configure Defender for Cloud governance rules that assign owners and due dates, prioritizing recommendations by score impact and 'quick fix' availability</button><button class="opt" onclick="answer(this,6,3,2)">D. Apply Azure Policy with Deny effect for every built-in recommendation across all subscriptions</button>
+    <div class="expl">Governance rules in Defender for Cloud let architects assign owners, set SLAs (due dates), and prioritize remediation based on each recommendation's score impact and whether a quick fix is available, maximizing score improvement efficiently under budget constraints.</div>
+  </div>
+
+  <div class="card qcard" id="q7" data-domain="Domain 4: Design security solutions for applications and data">
+    <div class="meta">Question 8 of 12 · Domain 4: Design security solutions for applications and data</div>
+    <div class="q">A global organization stores sensitive data across Azure, AWS, on-premises file shares, and SaaS apps like Salesforce. The security architect needs a single strategy to automatically discover, classify, and apply sensitivity labels to this data across all these locations. Which service should be the foundation of this strategy?</div>
+    <button class="opt" onclick="answer(this,7,0,3)">A. Azure Information Protection client installed on every endpoint</button><button class="opt" onclick="answer(this,7,1,3)">B. Microsoft Defender for Cloud Apps configured only to log SaaS sign-in activity</button><button class="opt" onclick="answer(this,7,2,3)">C. Azure Policy definitions that tag resources based on naming convention</button><button class="opt" onclick="answer(this,7,3,3)">D. Microsoft Purview, using the unified Data Map and information protection capabilities to scan and classify data across multi-cloud and SaaS sources</button>
+    <div class="expl">Microsoft Purview provides a unified data map with scanning connectors for Azure, AWS, on-premises, and SaaS sources, enabling automated discovery, classification, and consistent sensitivity labeling — the recommended cross-estate data classification strategy in SC-100 guidance.</div>
+  </div>
+
+  <div class="card qcard" id="q8" data-domain="Domain 1: Design solutions that align with security best practices and priorities">
+    <div class="meta">Question 9 of 12 · Domain 1: Design solutions that align with security best practices and priorities</div>
+    <div class="q">A company must continuously assess its compliance posture against frameworks such as ISO 27001 and NIST 800-53 across its Microsoft 365 and Azure environment, and generate a prioritized list of improvement actions with a compliance score. Which tool should be included in the design?</div>
+    <button class="opt" onclick="answer(this,8,0,1)">A. Microsoft Defender for Cloud regulatory compliance dashboard</button><button class="opt" onclick="answer(this,8,1,1)">B. Microsoft Purview Compliance Manager</button><button class="opt" onclick="answer(this,8,2,1)">C. Microsoft Entra ID Governance</button><button class="opt" onclick="answer(this,8,3,1)">D. Azure Policy compliance dashboard</button>
+    <div class="expl">Microsoft Purview Compliance Manager provides cross-Microsoft 365 and Azure compliance assessments mapped to regulatory templates such as ISO 27001 and NIST 800-53, producing a compliance score and prioritized improvement actions.</div>
+  </div>
+
+  <div class="card qcard" id="q9" data-domain="Domain 2: Design security operations, identity, and compliance capabilities">
+    <div class="meta">Question 10 of 12 · Domain 2: Design security operations, identity, and compliance capabilities</div>
+    <div class="q">A design requires all users to complete MFA when accessing a sensitive SharePoint site, and additionally must prevent document downloads when the user connects from an unmanaged (non-compliant, non-domain-joined) device. Which Conditional Access configuration achieves BOTH requirements?</div>
+    <button class="opt" onclick="answer(this,9,0,0)">A. Combine a grant control requiring MFA with a session control that applies Conditional Access App Control to enforce app-based restrictions (e.g., block download) for sessions from non-compliant devices</button><button class="opt" onclick="answer(this,9,1,0)">B. Configure a sign-in risk policy set to 'high' that blocks access entirely from unmanaged devices</button><button class="opt" onclick="answer(this,9,2,0)">C. Apply only a grant control requiring MFA and rely on SharePoint's native sharing settings to block downloads</button><button class="opt" onclick="answer(this,9,3,0)">D. Restrict access using named locations to allow only corporate office IP ranges</button>
+    <div class="expl">Grant controls (Require MFA) and session controls (Conditional Access App Control) can be combined in a single Conditional Access policy. App-enforced or Defender for Cloud Apps session control can block downloads specifically for sessions originating from unmanaged devices while still permitting authenticated, MFA-verified access.</div>
+  </div>
+
+  <div class="card qcard" id="q10" data-domain="Domain 3: Design security solutions for infrastructure">
+    <div class="meta">Question 11 of 12 · Domain 3: Design security solutions for infrastructure</div>
+    <div class="q">A company runs workloads on Azure, AWS EC2, and GCP Compute Engine. The security architect must design a unified cloud security posture and workload protection solution that provides recommendations and threat detection for all three cloud providers from a single console. Which solution should be included in the design?</div>
+    <button class="opt" onclick="answer(this,10,0,1)">A. Enable AWS Security Hub and GCP Security Command Center, then forward alerts to Microsoft Sentinel via separate connectors</button><button class="opt" onclick="answer(this,10,1,1)">B. Connect AWS and GCP accounts to Microsoft Defender for Cloud using the native multicloud connectors and enable the Defender for Servers plan</button><button class="opt" onclick="answer(this,10,2,1)">C. Deploy Azure Arc agents on all AWS and GCP VMs manually, without connecting the cloud accounts to Defender for Cloud</button><button class="opt" onclick="answer(this,10,3,1)">D. Migrate all AWS and GCP workloads to Azure Virtual Machines before enabling Defender for Cloud</button>
+    <div class="expl">Defender for Cloud's native multicloud connectors auto-provision Azure Arc and Defender plans (such as Defender for Servers) on AWS and GCP resources, delivering unified CSPM recommendations and CWPP threat protection in a single console.</div>
+  </div>
+
+  <div class="card qcard" id="q11" data-domain="Domain 4: Design security solutions for applications and data">
+    <div class="meta">Question 12 of 12 · Domain 4: Design security solutions for applications and data</div>
+    <div class="q">An architecture team is redesigning Key Vault access for a Zero Trust posture. They need granular, auditable permissions on secret and key operations that integrate with Azure AD Conditional Access and Privileged Identity Management, and they want to retire the legacy vault-level access model. What should they configure?</div>
+    <button class="opt" onclick="answer(this,11,0,1)">A. Restrict access using only the Key Vault network firewall with private endpoints</button><button class="opt" onclick="answer(this,11,1,1)">B. Enable the Azure RBAC permission model on the Key Vault and assign built-in roles (e.g., Key Vault Secrets User) scoped via Azure AD, enabling Conditional Access and PIM integration</button><button class="opt" onclick="answer(this,11,2,1)">C. Move all secrets into Azure App Configuration with feature flags</button><button class="opt" onclick="answer(this,11,3,1)">D. Continue using Key Vault access policies but add more granular policy entries per identity</button>
+    <div class="expl">Switching the vault to the Azure RBAC permission model allows fine-grained, Azure AD–integrated role assignments that support Conditional Access, PIM just-in-time elevation, and full activity logging — the recommended modern access model over vault access policies.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/sc-100-microsoft-cybersecurity-architect-expert-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<section class="faq"><h3>SC-100 exam — quick answers</h3><details><summary>How much does the SC-100 exam cost?</summary><p>The exam fee is approximately $165 and varies by region — confirm current pricing with the certification vendor before you book.</p></details><details><summary>What topics are on the exam?</summary><p>It covers 4 domains: Design solutions that align with security best practices and priorities (20-25%), Design security operations, identity, and compliance capabilities (25-30%), Design security solutions for infrastructure (20-25%), Design security solutions for applications and data (20-25%). The full course has a dedicated chapter, lab and practice-test coverage for each.</p></details><details><summary>Is this practice test really free?</summary><p>Yes — all questions on this page are free with explanations and no sign-up. The paid Udemy course adds two full-length timed exams, video lessons and hands-on labs.</p></details><details><summary>Will this prepare me for the real exam?</summary><p>The questions mirror the real exam's style and are mapped to the official domains. This is exam-focused preparation — combine the free test with the full course's timed simulations to gauge your readiness.</p></details></section>
+<div class="domains"><span class="meta">More free practice by exam domain:</span><br><a href="sc-100-design-solutions-that-align-with-security-best-practices-and.html">Design solutions that align with security best practices and priorities →</a><a href="sc-100-design-security-operations-identity-and-compliance-capabilit.html">Design security operations, identity, and compliance capabilities →</a><a href="sc-100-design-security-solutions-for-infrastructure.html">Design security solutions for infrastructure →</a><a href="sc-100-design-security-solutions-for-applications-and-data.html">Design security solutions for applications and data →</a></div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

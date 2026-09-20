@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Security Concepts Practice Questions — Cisco Certified CyberOps Associate</title>
+<meta name="description" content="6 free Security Concepts practice questions with explanations for the Cisco Certified CyberOps Associate exam.">
+<link rel="canonical" href="https://technuggets.academy/200-201-cbrops-security-concepts.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Security Concepts Practice Questions — Cisco Certified CyberOps Associate">
+<meta property="og:description" content="6 free Security Concepts practice questions with explanations for the Cisco Certified CyberOps Associate exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/200-201-cbrops-security-concepts.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Security Concepts</h1>
+<p class="sub">Free Cisco Certified CyberOps Associate practice — 6 questions on <strong>Security Concepts</strong>, with explanations. No sign-up.
+<a href="200-201-cbrops.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Security Concepts">
+    <div class="meta">Question 1 of 6 · Security Concepts</div>
+    <div class="q">A vulnerability has been scored with the following CVSS v3.1 base vector: AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H. Which statement correctly interprets this vector?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. The attacker must have valid low-privileged credentials on the target system to exploit this vulnerability.</button><button class="opt" onclick="answer(this,0,1,1)">B. The vulnerability can be exploited remotely over a network without authentication or user interaction, and results in a complete loss of confidentiality, integrity, and availability.</button><button class="opt" onclick="answer(this,0,2,1)">C. Exploitation requires the victim to click a malicious link or open an attachment before the attack can succeed.</button><button class="opt" onclick="answer(this,0,3,1)">D. The vulnerability score reflects a scope change, meaning a successfully exploited component can impact resources beyond its own security scope.</button>
+    <div class="expl">AV:N (network), AC:L (low complexity), PR:N (no privileges required), UI:N (no user interaction), and C:H/I:H/A:H (high impact to all three CIA properties) together describe a remotely exploitable, unauthenticated attack with total impact on confidentiality, integrity, and availability.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Security Concepts">
+    <div class="meta">Question 2 of 6 · Security Concepts</div>
+    <div class="q">A SOC analyst reviews endpoint forensics and confirms that malware successfully executed and exfiltrated data from a host, but the IPS produced no alert for this activity at the time it occurred. How should this event be classified?</div>
+    <button class="opt" onclick="answer(this,1,0,1)">A. True positive</button><button class="opt" onclick="answer(this,1,1,1)">B. False negative</button><button class="opt" onclick="answer(this,1,2,1)">C. False positive</button><button class="opt" onclick="answer(this,1,3,1)">D. True negative</button>
+    <div class="expl">Malicious activity actually occurred, but the detection system failed to alert on it. This mismatch between reality (malicious) and detection (no alert) is the definition of a false negative.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Security Concepts">
+    <div class="meta">Question 3 of 6 · Security Concepts</div>
+    <div class="q">Which statement best distinguishes an Indicator of Attack (IOA) from an Indicator of Compromise (IOC) in threat analysis?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. An IOC is always detected in real time before damage occurs, while an IOA is only useful for forensic analysis after a breach has completed.</button><button class="opt" onclick="answer(this,2,1,1)">B. An IOA focuses on the attacker's intent and behavior pattern, such as a sequence of process injections followed by lateral movement, while an IOC is a static artifact of a completed compromise, such as a known-bad file hash or malicious IP address.</button><button class="opt" onclick="answer(this,2,2,1)">C. IOAs and IOCs are interchangeable terms that both refer strictly to signature-based detection of known malware hashes.</button><button class="opt" onclick="answer(this,2,3,1)">D. An IOC describes behavioral telemetry such as command-and-control beaconing intervals, while an IOA describes static file-based artifacts left behind after compromise.</button>
+    <div class="expl">IOAs are behavior-based and intent-focused, enabling detection of an attack in progress before full compromise, whereas IOCs are static, after-the-fact artifacts (hashes, IPs, domains) confirming a compromise already occurred.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Security Concepts">
+    <div class="meta">Question 4 of 6 · Security Concepts</div>
+    <div class="q">A government facility processes classified information at multiple sensitivity levels (Confidential, Secret, Top Secret). Users must not be able to grant access to files they own, and access decisions must be enforced centrally based on security labels assigned to both subjects and objects. Which access control model BEST satisfies this requirement?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. Discretionary Access Control (DAC)</button><button class="opt" onclick="answer(this,3,1,2)">B. Role-Based Access Control (RBAC)</button><button class="opt" onclick="answer(this,3,2,2)">C. Mandatory Access Control (MAC)</button><button class="opt" onclick="answer(this,3,3,2)">D. Attribute-Based Access Control (ABAC)</button>
+    <div class="expl">MAC enforces access centrally using classification labels (e.g., clearance levels) assigned to subjects and objects, and explicitly removes the ability of resource owners to grant access at their own discretion, matching all stated requirements.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Security Concepts">
+    <div class="meta">Question 5 of 6 · Security Concepts</div>
+    <div class="q">An organization identifies two vulnerabilities on an internet-facing web server. Vulnerability 1 has a high likelihood of exploitation but very low impact if exploited. Vulnerability 2 has a low likelihood of exploitation but catastrophic impact (complete data loss) if exploited. Using the standard risk determination approach where Risk = Likelihood x Impact, which statement is MOST accurate?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. Vulnerability 1 always represents greater overall risk because likelihood is weighted more heavily than impact in risk scoring.</button><button class="opt" onclick="answer(this,4,1,1)">B. Neither vulnerability can be ranked as strictly greater than the other until both likelihood and impact are quantified and multiplied together, since risk depends on the product of both factors rather than either factor alone.</button><button class="opt" onclick="answer(this,4,2,1)">C. Both vulnerabilities represent identical risk because CVSS base scores do not account for likelihood.</button><button class="opt" onclick="answer(this,4,3,1)">D. The overall risk of each vulnerability cannot be determined without also multiplying by asset value, and likelihood alone should be used to set remediation priority.</button>
+    <div class="expl">The risk formula treats likelihood and impact as multiplicative factors; a high value in one factor does not automatically outweigh a low value in the other without actually calculating the product, so ranking requires quantifying both.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Security Concepts">
+    <div class="meta">Question 6 of 6 · Security Concepts</div>
+    <div class="q">A SOC identifies that a Linux server exposes SSH, FTP, and an unused legacy SNMP v1 service to the internet. Only SSH, restricted to a jump host's IP address, is required for the server's function. Which action provides the GREATEST reduction in attack surface for this server?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. Enable an IDS signature set tuned to detect SNMP and FTP exploitation attempts.</button><button class="opt" onclick="answer(this,5,1,1)">B. Disable the unused FTP and SNMP services and restrict SSH access to the jump host's IP address only.</button><button class="opt" onclick="answer(this,5,2,1)">C. Deploy a web application firewall (WAF) in front of the server to inspect all inbound SNMP and FTP traffic.</button><button class="opt" onclick="answer(this,5,3,1)">D. Increase logging verbosity for FTP and SNMP so any exploitation attempt is fully captured for later playbook execution.</button>
+    <div class="expl">Attack surface reduction means eliminating unnecessary exposed services and access paths entirely; disabling unused FTP/SNMP and restricting SSH to a single trusted source removes attack vectors rather than merely monitoring or inspecting them.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/200-201-cbrops-cyberops-associate-exam-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

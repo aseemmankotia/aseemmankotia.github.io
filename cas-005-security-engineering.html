@@ -1,0 +1,76 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Security Engineering Practice Questions — CompTIA SecurityX</title>
+<meta name="description" content="6 free Security Engineering practice questions with explanations for the CompTIA SecurityX exam.">
+<link rel="canonical" href="https://technuggets.academy/cas-005-security-engineering.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Security Engineering Practice Questions — CompTIA SecurityX">
+<meta property="og:description" content="6 free Security Engineering practice questions with explanations for the CompTIA SecurityX exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/cas-005-security-engineering.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#C8202F}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Security Engineering</h1>
+<p class="sub">Free CompTIA SecurityX practice — 6 questions on <strong>Security Engineering</strong>, with explanations. No sign-up.
+<a href="cas-005.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Security Engineering">
+    <div class="meta">Question 1 of 6 · Security Engineering</div>
+    <div class="q">A financial services firm's API gateway terminates mutual-TLS connections for thousands of clients per second. The security team must verify certificate revocation status while meeting three constraints: no significant per-connection latency, no single point of failure on the CA/OCSP infrastructure, and no leakage of client identity to a third-party OCSP responder. Which approach BEST satisfies all three requirements?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. Perform a full CRL distribution point lookup on every incoming connection</button><button class="opt" onclick="answer(this,0,1,1)">B. Configure the gateway to use OCSP stapling with a short-validity cached OCSP response refreshed periodically</button><button class="opt" onclick="answer(this,0,2,1)">C. Enable OCSP must-staple and require each client to query the external OCSP responder directly before connecting</button><button class="opt" onclick="answer(this,0,3,1)">D. Disable revocation checking entirely and rely solely on short certificate lifetimes</button>
+    <div class="expl">OCSP stapling shifts the revocation query to the server, which periodically fetches and caches a signed OCSP response and attaches ('staples') it to the TLS handshake. This eliminates per-connection latency to an external responder, removes the client-identity leak (the client never contacts the OCSP responder), and a short validity window keeps revocation data fresh without creating a per-request dependency on CA availability.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Security Engineering">
+    <div class="meta">Question 2 of 6 · Security Engineering</div>
+    <div class="q">An architect is designing a hybrid TLS 1.3 key exchange configuration to protect current session traffic against 'harvest-now-decrypt-later' attacks by future quantum computers, while retaining compatibility with existing infrastructure. Which key exchange configuration should be implemented?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. A hybrid combination of X25519 and CRYSTALS-Kyber (ML-KEM)</button><button class="opt" onclick="answer(this,1,1,0)">B. RSA-2048 key exchange only</button><button class="opt" onclick="answer(this,1,2,0)">C. ECDHE using the P-256 curve only</button><button class="opt" onclick="answer(this,1,3,0)">D. AES-256-GCM combined with SHA-3 hashing</button>
+    <div class="expl">A hybrid key exchange combines a classical algorithm (X25519) with a NIST-standardized post-quantum KEM (ML-KEM/CRYSTALS-Kyber, FIPS 203). This protects captured traffic against future quantum decryption while the classical component maintains assurance against any near-term weaknesses in the newer PQ algorithm, satisfying the harvest-now-decrypt-later concern.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Security Engineering">
+    <div class="meta">Question 3 of 6 · Security Engineering</div>
+    <div class="q">A security team is generating a new root CA private key on an HSM and must ensure that no single custodian can ever reconstruct or use the full key material alone, enforcing dual control during the key ceremony. Which HSM configuration achieves this?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. Configure the HSM with M-of-N quorum authentication (e.g., 3-of-5) using individually held smartcards for separate custodians</button><button class="opt" onclick="answer(this,2,1,0)">B. Configure the HSM to require a single administrator credential, with the key encrypted at rest</button><button class="opt" onclick="answer(this,2,2,0)">C. Export the private key as a PEM file and physically split the file into two halves stored in separate safes</button><button class="opt" onclick="answer(this,2,3,0)">D. Store the primary key on the HSM and export a full backup copy to a cloud KMS owned by a single administrator</button>
+    <div class="expl">M-of-N quorum authentication (split knowledge and dual control) requires a minimum threshold of independently held authentication factors (e.g., 3 of 5 smartcards) before any HSM key operation can occur, ensuring no individual custodian can unilaterally use or reconstruct the key. This is the standard control used in CA root key ceremonies under FIPS 140-2/3 Level 3 HSMs.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Security Engineering">
+    <div class="meta">Question 4 of 6 · Security Engineering</div>
+    <div class="q">A fraud-detection ML model is trained on continuously ingested, third-party labeled datasets. The security architect suspects an adversary may be injecting subtly mislabeled records over time to gradually shift the model's decision boundary (a data poisoning attack). Which control BEST addresses this threat?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. Encrypt all training data at rest using AES-256</button><button class="opt" onclick="answer(this,3,1,3)">B. Apply differential privacy noise only at model inference time</button><button class="opt" onclick="answer(this,3,2,3)">C. Restrict access to the model's prediction API using OAuth 2.0 scopes</button><button class="opt" onclick="answer(this,3,3,3)">D. Implement statistical outlier and drift detection on incoming labeled data prior to training, combined with provenance tracking of each data source</button>
+    <div class="expl">Detecting data poisoning requires validating the content and integrity of training data before it influences the model, not just protecting its confidentiality. Statistical anomaly/drift detection combined with data provenance/lineage tracking can flag suspicious or unverified data sources contributing to gradual label skew, allowing remediation before the poisoned data affects model weights.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Security Engineering">
+    <div class="meta">Question 5 of 6 · Security Engineering</div>
+    <div class="q">A utility company must send telemetry from an OT SCADA historian to a cloud analytics platform in the IT network, but under no circumstances can control commands or any data flow back into the OT network, even if the IT/cloud side is fully compromised. Which architecture control provides this guarantee?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. A hardware-enforced unidirectional data diode allowing data flow only from OT to IT</button><button class="opt" onclick="answer(this,4,1,0)">B. A next-generation firewall configured with strict ACLs permitting only outbound telemetry ports</button><button class="opt" onclick="answer(this,4,2,0)">C. A site-to-site VPN tunnel with mutual authentication between the OT historian and the cloud gateway</button><button class="opt" onclick="answer(this,4,3,0)">D. Logical network segmentation using VLANs with router-based ACLs between OT and IT zones</button>
+    <div class="expl">A hardware-based unidirectional gateway (data diode) physically permits data transmission in only one direction at the electrical/optical layer, making reverse data flow impossible regardless of software misconfiguration or compromise on the IT side. This provides a deterministic, tamper-resistant guarantee appropriate for critical OT/ICS environments.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Security Engineering">
+    <div class="meta">Question 6 of 6 · Security Engineering</div>
+    <div class="q">An LLM-powered application retrieves and processes external documents as context (RAG). Which architectural control provides the STRONGEST defense against indirect prompt injection attacks, where malicious instructions are embedded within the retrieved documents?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. Apply input/output sanitization combined with strict structural separation of trusted system instructions from untrusted retrieved content, and restrict the model's tool/action privileges</button><button class="opt" onclick="answer(this,5,1,0)">B. Increase the model's temperature parameter to make its outputs less predictable to attackers</button><button class="opt" onclick="answer(this,5,2,0)">C. Fine-tune the model further on additional labeled training examples</button><button class="opt" onclick="answer(this,5,3,0)">D. Apply rate limiting to the number of API calls made to the LLM endpoint</button>
+    <div class="expl">Effective defense against indirect prompt injection requires layered controls: sanitizing untrusted content, structurally separating it from the trusted system prompt (e.g., using delimiters or distinct role fields so the model treats retrieved text as data, not instructions), and enforcing least privilege on what actions/tools the model is permitted to invoke — limiting the blast radius even if an injection partially succeeds.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">undefined</span> <span class="price">$34.99</span> with code <span class="code">FREETEST33</span> — valid through Oct 6.</p>
+  <a href="https://www.udemy.com/course/comptia-securityx-cas-005-exam-focused-prep/?couponCode=FREETEST33" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

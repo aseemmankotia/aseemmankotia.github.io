@@ -1,0 +1,123 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free FCP - FortiGate 7.6 Administrator Practice Test — 12 Real Exam-Style Questions</title>
+<meta name="description" content="Free FCP - FortiGate 7.6 Administrator practice questions with detailed explanations. Test yourself before the real exam.">
+<link rel="canonical" href="https://technuggets.academy/fcp-fgt-ad-7-6.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free FCP - FortiGate 7.6 Administrator Practice Test — 12 Real Exam-Style Questions">
+<meta property="og:description" content="Free FCP - FortiGate 7.6 Administrator practice questions with detailed explanations. Test yourself before the real exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/fcp-fgt-ad-7-6.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div><div class="hero">
+  <span class="chip">FCP_FGT_AD-7.6</span>
+  <h1>Free FCP - FortiGate 7.6 Administrator Practice Test</h1>
+  <p class="sub">12 exam-style questions with full explanations — no sign-up. Score yourself, then close your gaps with the full course.</p>
+  <div class="facts"><span class="fact">Exam fee <b>~$400</b></span><span class="fact"><b>8</b> exam domains</span><span class="fact">Level <b>Intermediate</b></span><span class="fact"><b>2</b> timed practice tests in the course</span></div>
+  <div class="cta-row"><a class="btn enroll" href="https://www.udemy.com/course/fcp-fortigate-7-6-administrator-exam-prep/" rel="sponsored" target="_blank">Start my full course on Udemy →</a><a class="btn ghost" href="#practice">Try the free test →</a></div>
+</div><div class="trust"><span>✅ <b>Free</b> practice — no sign-up</span><span>📝 Real exam-style questions</span><span>💡 Detailed explanations</span><span>💸 30-day money-back via Udemy</span></div>
+<div id="practice"></div>
+
+  <div class="card qcard" id="q0" data-domain="Deployment and System Configuration">
+    <div class="meta">Question 1 of 12 · Deployment and System Configuration</div>
+    <div class="q">A company must insert a new FortiGate between two existing VLANs that are on the same IP subnet. The requirement is to apply firewall policies and UTM inspection between the VLANs without changing any existing host IP addresses, default gateways, or routing tables. Which FortiGate operation mode BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. NAT/Route mode with static routes added for each VLAN</button><button class="opt" onclick="answer(this,0,1,1)">B. Transparent operation mode</button><button class="opt" onclick="answer(this,0,2,1)">C. NAT/Route mode using policy-based NAT</button><button class="opt" onclick="answer(this,0,3,1)">D. One-arm sniffer mode</button>
+    <div class="expl">Transparent mode makes the FortiGate act as a Layer 2 bridge with no IP re-addressing required on existing hosts, while still allowing firewall policies, UTM profiles, and security inspection to be applied between the bridged interfaces/VLANs.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Firewall Policies and Network Address Translation (NAT)">
+    <div class="meta">Question 2 of 12 · Firewall Policies and Network Address Translation (NAT)</div>
+    <div class="q">A FortiGate has three firewall policies configured in this order: Policy 10 (permits HTTP from LAN to WAN), Policy 20 (denies HTTP from a specific host to WAN), Policy 30 (permits all traffic from LAN to WAN). Traffic from the host referenced in Policy 20 attempts an HTTP session to the internet. What happens?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. The traffic is denied because FortiGate evaluates policies and applies the most specific match regardless of order</button><button class="opt" onclick="answer(this,1,1,2)">B. The traffic is permitted because Policy 30 allows all traffic and is evaluated last, overriding earlier policies</button><button class="opt" onclick="answer(this,1,2,2)">C. The traffic is permitted because Policy 10 is evaluated first top-down and its match criteria are satisfied, so Policy 20 is never reached</button><button class="opt" onclick="answer(this,1,3,2)">D. The traffic is permitted because Policy 10 matches first and firewall policies are stateless</button>
+    <div class="expl">FortiGate evaluates firewall policies sequentially from top to bottom and applies the action of the FIRST policy whose criteria match the session; Policy 10 matches (LAN to WAN, HTTP) before the more restrictive Policy 20 is ever evaluated, so the host is permitted despite the intended deny rule below it.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Firewall Authentication and FSSO">
+    <div class="meta">Question 3 of 12 · Firewall Authentication and FSSO</div>
+    <div class="q">A company wants to deploy Fortinet Single Sign-On (FSSO) to identify users transparently for firewall policies, but the security team refuses to allow any software to be installed on the domain controllers. Which FSSO mode should be configured?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. DC Agent mode</button><button class="opt" onclick="answer(this,2,1,1)">B. Polling mode</button><button class="opt" onclick="answer(this,2,2,1)">C. Terminal Server (TS) Agent mode</button><button class="opt" onclick="answer(this,2,3,1)">D. Local user database mode</button>
+    <div class="expl">Polling mode is agentless from the domain controller's perspective — the Collector Agent (installed on a separate Windows server) periodically polls the DC's security event logs via NetAPI or WMI, so no software is installed on the DCs themselves.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Security Profiles (Content Inspection)">
+    <div class="meta">Question 4 of 12 · Security Profiles (Content Inspection)</div>
+    <div class="q">A FortiGate administrator wants to use antivirus profile features that require full file buffering, such as blocking oversized archive files and showing a custom replacement message to the end user when a file is blocked. Which firewall policy inspection mode must be used for this antivirus profile to support these features?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. Flow-based inspection with quick mode</button><button class="opt" onclick="answer(this,3,1,1)">B. Proxy-based inspection</button><button class="opt" onclick="answer(this,3,2,1)">C. Flow-based inspection using the single-pass IPS engine</button><button class="opt" onclick="answer(this,3,3,1)">D. DNS-based inspection</button>
+    <div class="expl">Proxy-based inspection buffers the entire file on the FortiGate before forwarding it, which is required to support features like oversized-file handling with custom replacement messages.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Routing and SD-WAN">
+    <div class="meta">Question 5 of 12 · Routing and SD-WAN</div>
+    <div class="q">A FortiGate has two static default routes configured to two different ISPs, both with administrative distance 10. Route A has priority 0 and Route B has priority 10. SD-WAN is not configured. Which route(s) will FortiGate actually use in the routing table?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. Both routes are used simultaneously via ECMP because the administrative distance is identical</button><button class="opt" onclick="answer(this,4,1,1)">B. The route with priority 0 is used because it is the numerically lower priority value and therefore preferred</button><button class="opt" onclick="answer(this,4,2,1)">C. The route with priority 10 is used because FortiGate prefers higher priority values</button><button class="opt" onclick="answer(this,4,3,1)">D. FortiGate discards both routes because duplicate default routes are not permitted in the routing table</button>
+    <div class="expl">When distance is equal, FortiGate uses priority (metric) as the next tiebreaker, and a lower priority value is more preferred, so only the priority-0 route is installed as active.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="VPN (IPsec and Remote Access)">
+    <div class="meta">Question 6 of 12 · VPN (IPsec and Remote Access)</div>
+    <div class="q">A network engineer must connect two FortiGate HQ and branch sites over IPsec and run OSPF across the tunnel to dynamically exchange routes. The design must also support future expansion to a hub-and-spoke topology with minimal reconfiguration. Which VPN configuration BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. Policy-based IPsec VPN using IPsec security policies to control traffic</button><button class="opt" onclick="answer(this,5,1,3)">B. SSL-VPN in tunnel mode with static routes pointing to the SSL-VPN interface</button><button class="opt" onclick="answer(this,5,2,3)">C. A GRE tunnel secured only by a pre-shared key in the tunnel header</button><button class="opt" onclick="answer(this,5,3,3)">D. Route-based IPsec VPN using a virtual IPsec tunnel interface</button>
+    <div class="expl">Route-based (interface mode) IPsec VPN creates a virtual tunnel interface that behaves like any other FortiGate interface, so it can be added to OSPF areas, referenced in the routing table, and easily extended to hub-and-spoke designs by adding more tunnel interfaces and phase2 selectors.</div>
+  </div>
+
+  <div class="card qcard" id="q6" data-domain="Security Fabric">
+    <div class="meta">Question 7 of 12 · Security Fabric</div>
+    <div class="q">A company deploys a HQ FortiGate as the Security Fabric root and three branch FortiGates as downstream devices. The administrator wants the branch devices to automatically appear in the Security Fabric topology on the root and be treated as trusted fabric members. Which configuration is required on ALL the FortiGates for this to work?</div>
+    <button class="opt" onclick="answer(this,6,0,3)">A. Set identical HA priority values on each FortiGate so the root can detect them as fabric peers</button><button class="opt" onclick="answer(this,6,1,3)">B. Enable FSSO polling on each downstream FortiGate so the root can authenticate them</button><button class="opt" onclick="answer(this,6,2,3)">C. Configure identical SD-WAN performance SLA health-check rules on every FortiGate in the topology</button><button class="opt" onclick="answer(this,6,3,3)">D. Configure the same CSF group-name and group-password (pre-shared key) under config system csf on each device, then authorize each downstream device from the root's trusted list</button>
+    <div class="expl">Security Fabric membership (CSF) is established under config system csf on every device, using a matching group-name and group-password. Once a downstream device connects, the root administrator must authorize it in the trusted list (System &gt; Security Fabric &gt; Fabric Connectors &gt; Security Fabric Setup) before it fully joins the topology.</div>
+  </div>
+
+  <div class="card qcard" id="q7" data-domain="FortiGuard, Logging, Monitoring, and Diagnostics">
+    <div class="meta">Question 8 of 12 · FortiGuard, Logging, Monitoring, and Diagnostics</div>
+    <div class="q">A network engineer needs to determine exactly which firewall policy and security profile a specific host's traffic is matching, since the traffic seems to be silently dropped despite an apparently correct firewall policy. Which sequence of diagnostic commands BEST identifies the policy decision path for this traffic?</div>
+    <button class="opt" onclick="answer(this,7,0,1)">A. diagnose sniffer packet any 'host 10.0.1.5' 4</button><button class="opt" onclick="answer(this,7,1,1)">B. diagnose debug flow filter addr 10.0.1.5, diagnose debug flow trace start 20, diagnose debug enable</button><button class="opt" onclick="answer(this,7,2,1)">C. get system session list</button><button class="opt" onclick="answer(this,7,3,1)">D. diagnose test application forticron 1</button>
+    <div class="expl">The debug flow toolset (filter, trace start, debug enable) traces a packet through the FortiOS packet flow, showing exactly which policy ID, route, and security profile decisions are applied or which stage causes a drop.</div>
+  </div>
+
+  <div class="card qcard" id="q8" data-domain="Deployment and System Configuration">
+    <div class="meta">Question 9 of 12 · Deployment and System Configuration</div>
+    <div class="q">An administrator wants to allow encrypted GUI management access to a FortiGate's port1 interface from the internal network, while ensuring management traffic is not sent in cleartext. Which administrative access service should be enabled on that interface?</div>
+    <button class="opt" onclick="answer(this,8,0,2)">A. HTTP</button><button class="opt" onclick="answer(this,8,1,2)">B. TELNET</button><button class="opt" onclick="answer(this,8,2,2)">C. HTTPS</button><button class="opt" onclick="answer(this,8,3,2)">D. PING</button>
+    <div class="expl">HTTPS provides TLS-encrypted access to the FortiGate GUI, satisfying the requirement for secure, non-cleartext management traffic.</div>
+  </div>
+
+  <div class="card qcard" id="q9" data-domain="Firewall Policies and Network Address Translation (NAT)">
+    <div class="meta">Question 10 of 12 · Firewall Policies and Network Address Translation (NAT)</div>
+    <div class="q">An administrator needs every internal host behind a FortiGate to consistently use the SAME translated public IP address for all of its outbound sessions (a strict one-to-one mapping between internal and external addresses), rather than sharing a pool of addresses via port translation. Which IP Pool type should be configured for the source NAT?</div>
+    <button class="opt" onclick="answer(this,9,0,0)">A. One-to-One</button><button class="opt" onclick="answer(this,9,1,0)">B. Port Block Allocation</button><button class="opt" onclick="answer(this,9,2,0)">C. Overload</button><button class="opt" onclick="answer(this,9,3,0)">D. Fixed Port Range</button>
+    <div class="expl">The 'One-to-One' IP pool type maps each internal source IP to a dedicated external IP address without port-level translation, guaranteeing the same public IP is always used for a given internal host.</div>
+  </div>
+
+  <div class="card qcard" id="q10" data-domain="Firewall Authentication and FSSO">
+    <div class="meta">Question 11 of 12 · Firewall Authentication and FSSO</div>
+    <div class="q">An organization uses Citrix XenApp/RDS servers where dozens of users share a single source IP address. Firewall policies must still apply per-user identity via FSSO. Which FSSO component is required for this deployment?</div>
+    <button class="opt" onclick="answer(this,10,0,0)">A. Terminal Server (TS) Agent</button><button class="opt" onclick="answer(this,10,1,0)">B. Collector Agent in DC Agent mode only</button><button class="opt" onclick="answer(this,10,2,0)">C. RADIUS SSO Agent</button><button class="opt" onclick="answer(this,10,3,0)">D. FSSO Polling Agent</button>
+    <div class="expl">The Terminal Server Agent is specifically designed to track per-user sessions on multi-user servers (Citrix/RDS) by assigning a unique port range per user, since normal FSSO cannot distinguish users sharing one IP address.</div>
+  </div>
+
+  <div class="card qcard" id="q11" data-domain="Security Profiles (Content Inspection)">
+    <div class="meta">Question 12 of 12 · Security Profiles (Content Inspection)</div>
+    <div class="q">After enabling full SSL/TLS deep inspection on a firewall policy, internal users start seeing certificate warning errors in their browsers for HTTPS sites, even though FortiGate is correctly re-signing the traffic with its inspection CA. What is the most likely cause and correct remediation?</div>
+    <button class="opt" onclick="answer(this,11,0,0)">A. The FortiGate's deep-inspection CA certificate has not been imported into the trusted root store of client browsers/OS</button><button class="opt" onclick="answer(this,11,1,0)">B. The firewall policy is using flow-based inspection instead of proxy-based inspection</button><button class="opt" onclick="answer(this,11,2,0)">C. The profile should be switched to an SSL certificate-inspection-only profile instead of full SSL inspection</button><button class="opt" onclick="answer(this,11,3,0)">D. The IPS engine signature database on the FortiGate is out of date</button>
+    <div class="expl">With deep inspection, FortiGate re-signs the server certificate using its own CA. Clients will show trust warnings unless that CA certificate is deployed as a trusted root certificate on client devices.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/fcp-fortigate-7-6-administrator-exam-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<section class="faq"><h3>FCP_FGT_AD-7.6 exam — quick answers</h3><details><summary>How much does the FCP_FGT_AD-7.6 exam cost?</summary><p>The exam fee is approximately $400 and varies by region — confirm current pricing with the certification vendor before you book.</p></details><details><summary>What topics are on the exam?</summary><p>It covers 8 domains: Deployment and System Configuration (~15% (instructional emphasis)), Firewall Policies and Network Address Translation (NAT) (~18% (instructional emphasis)), Firewall Authentication and FSSO (~12% (instructional emphasis)), Security Profiles (Content Inspection) (~20% (instructional emphasis)), Routing and SD-WAN (~13% (instructional emphasis)), VPN (IPsec and Remote Access) (~12% (instructional emphasis)), Security Fabric (~5% (instructional emphasis)), FortiGuard, Logging, Monitoring, and Diagnostics (~5% (instructional emphasis)). The full course has a dedicated chapter, lab and practice-test coverage for each.</p></details><details><summary>Is this practice test really free?</summary><p>Yes — all questions on this page are free with explanations and no sign-up. The paid Udemy course adds two full-length timed exams, video lessons and hands-on labs.</p></details><details><summary>Will this prepare me for the real exam?</summary><p>The questions mirror the real exam's style and are mapped to the official domains. This is exam-focused preparation — combine the free test with the full course's timed simulations to gauge your readiness.</p></details></section>
+<div class="domains"><span class="meta">More free practice by exam domain:</span><br><a href="fcp-fgt-ad-7-6-deployment-and-system-configuration.html">Deployment and System Configuration →</a><a href="fcp-fgt-ad-7-6-firewall-policies-and-network-address-translation-nat.html">Firewall Policies and Network Address Translation (NAT) →</a><a href="fcp-fgt-ad-7-6-security-profiles-content-inspection.html">Security Profiles (Content Inspection) →</a><a href="fcp-fgt-ad-7-6-routing-and-sd-wan.html">Routing and SD-WAN →</a></div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Routing and SD-WAN Practice Questions — FCP - FortiGate 7.6 Administrator</title>
+<meta name="description" content="6 free Routing and SD-WAN practice questions with explanations for the FCP - FortiGate 7.6 Administrator exam.">
+<link rel="canonical" href="https://technuggets.academy/fcp-fgt-ad-7-6-routing-and-sd-wan.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Routing and SD-WAN Practice Questions — FCP - FortiGate 7.6 Administrator">
+<meta property="og:description" content="6 free Routing and SD-WAN practice questions with explanations for the FCP - FortiGate 7.6 Administrator exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/fcp-fgt-ad-7-6-routing-and-sd-wan.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Routing and SD-WAN</h1>
+<p class="sub">Free FCP - FortiGate 7.6 Administrator practice — 6 questions on <strong>Routing and SD-WAN</strong>, with explanations. No sign-up.
+<a href="fcp-fgt-ad-7-6.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Routing and SD-WAN">
+    <div class="meta">Question 1 of 6 · Routing and SD-WAN</div>
+    <div class="q">A FortiGate has two static routes to 0.0.0.0/0: one via wan1 with distance 10 and priority 1, another via wan2 with distance 10 and priority 5. Both interfaces are up. How does FortiGate handle traffic matching this destination?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. Only the wan1 route is used because it has the lower priority value, and no ECMP occurs since priorities differ</button><button class="opt" onclick="answer(this,0,1,0)">B. Traffic is load-balanced across both routes using ECMP because the distances match</button><button class="opt" onclick="answer(this,0,2,0)">C. Only the wan2 route is used because higher priority numbers are preferred by FortiOS</button><button class="opt" onclick="answer(this,0,3,0)">D. FortiGate rejects both routes and falls back to the default route from the routing table</button>
+    <div class="expl">FortiGate selects routes first by lowest administrative distance, then among routes with equal distance, by lowest priority value. ECMP only occurs when both distance AND priority are equal. Here distances match (10) but priorities differ (1 vs 5), so only the wan1 route (priority 1) is installed as active — no load balancing happens.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Routing and SD-WAN">
+    <div class="meta">Question 2 of 6 · Routing and SD-WAN</div>
+    <div class="q">An administrator configures a policy route on a FortiGate that forwards traffic destined for 172.16.5.0/24 out wan2, but wan2's gateway becomes unreachable and the interface goes down. What happens to matching traffic?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. The traffic is dropped permanently until the policy route is manually disabled</button><button class="opt" onclick="answer(this,1,1,3)">B. FortiGate queues the traffic until wan2 comes back online</button><button class="opt" onclick="answer(this,1,2,3)">C. The policy route redirects the traffic to the FortiGate's default SD-WAN zone regardless of configuration</button><button class="opt" onclick="answer(this,1,3,3)">D. FortiGate automatically falls back to the standard routing table and forwards the traffic using the best matching static or dynamic route</button>
+    <div class="expl">When a policy route's outgoing interface is down or its gateway is unreachable, FortiOS considers the policy route invalid for that traffic and falls back to a normal routing table lookup, selecting the best available static/dynamic/SD-WAN route instead.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Routing and SD-WAN">
+    <div class="meta">Question 3 of 6 · Routing and SD-WAN</div>
+    <div class="q">Which ECMP load-balancing method should be selected on a FortiGate to ensure that all packets from the same client source IP consistently use the same equal-cost route, preserving session integrity for that client?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. usage-based</button><button class="opt" onclick="answer(this,2,1,3)">B. weighted</button><button class="opt" onclick="answer(this,2,2,3)">C. spillover</button><button class="opt" onclick="answer(this,2,3,3)">D. source-ip-based</button>
+    <div class="expl">The source-ip-based ECMP method hashes on the source IP address, ensuring the same client is consistently pinned to the same route across all its ECMP-eligible connections, which is critical for maintaining session state and is FortiOS's default v4-ecmp-mode.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Routing and SD-WAN">
+    <div class="meta">Question 4 of 6 · Routing and SD-WAN</div>
+    <div class="q">A FortiGate is dual-homed to two ISPs. Return traffic for some sessions enters via wan2 even though the session's outbound SYN went out wan1, due to asymmetric routing at the upstream provider. Legitimate sessions are being dropped by the firewall. Which configuration is the most likely cause and correct fix?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. ECMP load balancing is misconfigured; disable ECMP entirely to fix the drops</button><button class="opt" onclick="answer(this,3,1,1)">B. Strict reverse-path forwarding (strict-src-check) is enabled under config system settings; disable it to allow asymmetric paths</button><button class="opt" onclick="answer(this,3,2,1)">C. The SD-WAN health-check probe is failing on wan2; increase the probe timeout value</button><button class="opt" onclick="answer(this,3,3,1)">D. The firewall policy for wan2 is missing a matching NAT rule, causing the return traffic to be blocked</button>
+    <div class="expl">Strict Uni-RPF (strict-src-check enable) forces FortiGate to only accept return traffic on the same interface the corresponding request went out on. In genuine asymmetric-routing environments this legitimately drops valid return traffic. Disabling strict-src-check (or leaving the default feasible-path/loose mode) allows the session to be accepted even when return traffic enters a different interface than expected.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Routing and SD-WAN">
+    <div class="meta">Question 5 of 6 · Routing and SD-WAN</div>
+    <div class="q">A company runs real-time VoIP traffic across three SD-WAN member links with fluctuating latency, jitter, and packet loss. Requirements state that every new call must always be placed on whichever member currently has the best real-time performance metrics, even if that changes minute to minute. Which SD-WAN rule strategy should be configured?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. Manual</button><button class="opt" onclick="answer(this,4,1,3)">B. Lowest Cost (SLA)</button><button class="opt" onclick="answer(this,4,2,3)">C. Maximize Bandwidth (SLA)</button><button class="opt" onclick="answer(this,4,3,3)">D. Best Quality</button>
+    <div class="expl">The Best Quality strategy continuously measures configured SLA metrics (latency, jitter, packet loss, or a combination) across all qualifying members and dynamically selects the single best-performing link for each new session at the moment it's created — exactly matching the requirement for always using the current best link.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Routing and SD-WAN">
+    <div class="meta">Question 6 of 6 · Routing and SD-WAN</div>
+    <div class="q">An SD-WAN Performance SLA (health check) is configured with a ping probe every 500ms. The link occasionally has brief, momentary latency spikes that clear within a second, but the SD-WAN rule keeps triggering failover, causing service flapping for users. Which configuration change most directly reduces unnecessary failover from brief transient spikes?</div>
+    <button class="opt" onclick="answer(this,5,0,2)">A. Switch the probe protocol from ping to DNS to reduce probe sensitivity</button><button class="opt" onclick="answer(this,5,1,2)">B. Decrease the probe interval to detect issues faster and react sooner</button><button class="opt" onclick="answer(this,5,2,2)">C. Increase the sla-fail-count and sla-pass-count thresholds so multiple consecutive probe failures/successes are required before the link status changes</button><button class="opt" onclick="answer(this,5,3,2)">D. Disable the Performance SLA entirely and rely only on link up/down (interface) status for failover decisions</button>
+    <div class="expl">sla-fail-count and sla-pass-count define how many consecutive probe failures or successes are required before FortiOS changes the SLA target's pass/fail state. Raising these thresholds requires sustained degradation (not a single transient spike) before the link is marked as failing the SLA, directly reducing flapping from brief blips.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/fcp-fortigate-7-6-administrator-exam-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

@@ -1,0 +1,123 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Implementing Cisco Data Center Core Technologies Practice Test — 12 Real Exam-Style Questions</title>
+<meta name="description" content="Free Implementing Cisco Data Center Core Technologies practice questions with detailed explanations. Test yourself before the real exam.">
+<link rel="canonical" href="https://technuggets.academy/350-601-dccor.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Implementing Cisco Data Center Core Technologies Practice Test — 12 Real Exam-Style Questions">
+<meta property="og:description" content="Free Implementing Cisco Data Center Core Technologies practice questions with detailed explanations. Test yourself before the real exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/350-601-dccor.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div><div class="hero">
+  <span class="chip">350-601 DCCOR</span>
+  <h1>Free Implementing Cisco Data Center Core Technologies Practice Test</h1>
+  <p class="sub">12 exam-style questions with full explanations — no sign-up. Score yourself, then close your gaps with the full course.</p>
+  <div class="facts"><span class="fact">Exam fee <b>~$400</b></span><span class="fact"><b>5</b> exam domains</span><span class="fact">Level <b>Advanced</b></span><span class="fact"><b>2</b> timed practice tests in the course</span></div>
+  <div class="cta-row"><a class="btn enroll" href="https://www.udemy.com/course/cisco-350-601-dccor-ccnp-data-center-core-exam-prep/" rel="sponsored" target="_blank">Start my full course on Udemy →</a><a class="btn ghost" href="#practice">Try the free test →</a></div>
+</div><div class="trust"><span>✅ <b>Free</b> practice — no sign-up</span><span>📝 Real exam-style questions</span><span>💡 Detailed explanations</span><span>💸 30-day money-back via Udemy</span></div>
+<div id="practice"></div>
+
+  <div class="card qcard" id="q0" data-domain="1.0 Network">
+    <div class="meta">Question 1 of 12 · 1.0 Network</div>
+    <div class="q">In a Cisco NX-OS vPC domain, the vPC peer-link fails completely, but the separate peer-keepalive link remains up and reachable. What action does the vPC secondary switch take?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. It assumes the primary role and continues forwarding on all vPC member ports</button><button class="opt" onclick="answer(this,0,1,3)">B. It shuts down the peer-keepalive link to force a full domain reset</button><button class="opt" onclick="answer(this,0,2,3)">C. It converts all vPC member ports into orphan ports and continues forwarding normally</button><button class="opt" onclick="answer(this,0,3,3)">D. It suspends (brings down) all of its local vPC member ports to prevent a duplicate-forwarding/split-brain condition</button>
+    <div class="expl">Because the peer-keepalive is still up, the secondary switch knows the primary is alive. Since CFS synchronization can no longer occur over the failed peer-link, the secondary suspends its local vPC member ports to avoid duplicate frames and a forwarding loop, while the primary keeps forwarding.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="2.0 Compute">
+    <div class="meta">Question 2 of 12 · 2.0 Compute</div>
+    <div class="q">A UCS administrator manages 40 service profiles derived from a single service profile template. Management requires that any future BIOS or vNIC changes made to the template be applied automatically to all derived profiles without manual re-association. Which action satisfies this requirement?</div>
+    <button class="opt" onclick="answer(this,1,0,1)">A. Convert the associated service profiles into an initial template</button><button class="opt" onclick="answer(this,1,1,1)">B. Set the service profile template type to 'Updating Template'</button><button class="opt" onclick="answer(this,1,2,1)">C. Manually edit each of the 40 service profiles individually</button><button class="opt" onclick="answer(this,1,3,1)">D. Delete the existing profiles and recreate them from a new template each time</button>
+    <div class="expl">An 'Updating Template' propagates any configuration change made to the template to all service profiles bound to it, keeping them in sync automatically. An 'Initial Template' only applies its configuration at the moment a profile is created and does not propagate later changes.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="3.0 Storage Network">
+    <div class="meta">Question 3 of 12 · 3.0 Storage Network</div>
+    <div class="q">A large enterprise fabric already has 200 domain IDs allocated across two core directors. The company is deploying 40 new edge switches to connect additional hosts and wants to add them without consuming additional domain IDs or requiring interoperability mode changes on the core. Which Cisco MDS feature should be used on the new edge switches?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. Configure the edge switches as NPIV-enabled hosts</button><button class="opt" onclick="answer(this,2,1,1)">B. Configure the edge switches in NPV (N-Port Virtualization) mode</button><button class="opt" onclick="answer(this,2,2,1)">C. Configure the edge switches as FCIP tunnel endpoints</button><button class="opt" onclick="answer(this,2,3,1)">D. Configure the edge switches with a unique VSAN for each host</button>
+    <div class="expl">NPV mode makes the edge switch log in as an end-node device (proxy) rather than a full fabric switch, so it does not consume a domain ID and requires no interop mode change on the core.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="4.0 Automation">
+    <div class="meta">Question 4 of 12 · 4.0 Automation</div>
+    <div class="q">A network engineer must push identical VLAN configuration changes to 50 Nexus 9000 switches running NX-OS and ensure the task is safe to re-run without causing configuration drift or duplicate entries. Which automation approach BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. Write a Python script using Netmiko to SSH into each switch and paste the CLI configuration</button><button class="opt" onclick="answer(this,3,1,1)">B. Use an Ansible playbook with the nxos_config module and idempotent task design</button><button class="opt" onclick="answer(this,3,2,1)">C. Use NX-API with the 'cli_ascii' message format to send raw show commands</button><button class="opt" onclick="answer(this,3,3,1)">D. Configure Puppet to run cisco_command_config resources without a manifest catalog</button>
+    <div class="expl">The nxos_config Ansible module is purpose-built for idempotent NX-OS configuration management; it compares the running config to the desired state and only applies the delta, so re-running the playbook produces no unintended changes.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="5.0 Security">
+    <div class="meta">Question 5 of 12 · 5.0 Security</div>
+    <div class="q">A network administrator needs remote TACACS+ users to be automatically assigned a custom NX-OS role called 'read-only' upon login, without configuring local user accounts on each switch. Which configuration achieves this?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. Configure local RBAC role and use 'aaa authorization commands default group tacacs+'</button><button class="opt" onclick="answer(this,4,1,2)">B. Configure the mapping in Cisco UCS Manager locales</button><button class="opt" onclick="answer(this,4,2,2)">C. Configure the TACACS+ server to return cisco-av-pair shell:roles=&quot;read-only&quot; and define a matching role locally on the NX-OS switches</button><button class="opt" onclick="answer(this,4,3,2)">D. Use SNMPv3 view-based access control to restrict the user</button>
+    <div class="expl">NX-OS RBAC integrates with TACACS+ by having the AAA server return a cisco-av-pair (shell:roles=&quot;rolename&quot;) that maps the authenticated user to a role that must already exist locally on the switch. This allows centralized role assignment without creating local accounts.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="1.0 Network">
+    <div class="meta">Question 6 of 12 · 1.0 Network</div>
+    <div class="q">A company operates three physical data centers connected over a routed IP core. They must extend select Layer 2 VLANs between sites while preventing STP BPDUs from crossing the interconnect, and they require a control-plane protocol that advertises MAC reachability instead of relying purely on flood-and-learn. Which Cisco technology BEST meets these DCI requirements?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. Extend the VLANs using a classic Ethernet trunk over dedicated dark fiber between sites</button><button class="opt" onclick="answer(this,5,1,3)">B. FabricPath extended directly over the WAN core between the three sites</button><button class="opt" onclick="answer(this,5,2,3)">C. VXLAN in flood-and-learn mode with a multicast underlay</button><button class="opt" onclick="answer(this,5,3,3)">D. Overlay Transport Virtualization (OTV)</button>
+    <div class="expl">OTV is Cisco's purpose-built DCI overlay. It uses IS-IS as a control plane to advertise MAC reachability between sites, natively drops STP BPDUs at the edge device boundary (site independence), and provides failure isolation across the transport-agnostic IP core.</div>
+  </div>
+
+  <div class="card qcard" id="q6" data-domain="2.0 Compute">
+    <div class="meta">Question 7 of 12 · 2.0 Compute</div>
+    <div class="q">A Cisco UCS C-series server integrated with UCS Manager via Cisco Nexus 2232PP Fabric Extenders fails to appear in the Equipment tab for discovery. Physical cabling and CIMC connectivity have been verified as correct. What should the administrator check first?</div>
+    <button class="opt" onclick="answer(this,6,0,3)">A. That the upstream Nexus 9000 switch has the correct VLANs trunked</button><button class="opt" onclick="answer(this,6,1,3)">B. That the CIMC firmware matches the fabric interconnect firmware exactly</button><button class="opt" onclick="answer(this,6,2,3)">C. That a boot policy has been assigned to the service profile</button><button class="opt" onclick="answer(this,6,3,3)">D. That the fabric interconnect ports connected to the FEX are configured as Server Ports</button>
+    <div class="expl">Fabric interconnect ports facing the FEX (or C-series server directly) must be explicitly configured as Server Ports in UCS Manager before discovery can occur. Ports default to unconfigured/monitor state and will not initiate discovery until set correctly.</div>
+  </div>
+
+  <div class="card qcard" id="q7" data-domain="3.0 Storage Network">
+    <div class="meta">Question 8 of 12 · 3.0 Storage Network</div>
+    <div class="q">A virtualization host runs eight VMs, each requiring its own persistent Fibre Channel WWN for independent zoning and LUN masking, but the host has only a single physical HBA port connected to the fabric. Which Fibre Channel feature allows that single physical port to log in with multiple virtual N_Port IDs, one per VM?</div>
+    <button class="opt" onclick="answer(this,7,0,2)">A. NPV (N-Port Virtualization)</button><button class="opt" onclick="answer(this,7,1,2)">B. VSAN trunking</button><button class="opt" onclick="answer(this,7,2,2)">C. NPIV (N-Port ID Virtualization)</button><button class="opt" onclick="answer(this,7,3,2)">D. FSPF multipathing</button>
+    <div class="expl">NPIV allows a single physical HBA port to register multiple FCIDs/WWNs with the fabric, one per virtual machine, enabling independent zoning and LUN masking per VM.</div>
+  </div>
+
+  <div class="card qcard" id="q8" data-domain="4.0 Automation">
+    <div class="meta">Question 9 of 12 · 4.0 Automation</div>
+    <div class="q">An automation engineer wants a Python script to query the operational state of a Nexus 9000 switch and receive the output of 'show interface status' as structured, machine-parsable data instead of raw CLI text. Which method should be used?</div>
+    <button class="opt" onclick="answer(this,8,0,0)">A. Send a JSON-RPC request to the switch's NX-API and parse the JSON response</button><button class="opt" onclick="answer(this,8,1,0)">B. Enable Telnet and screen-scrape the CLI output</button><button class="opt" onclick="answer(this,8,2,0)">C. Use SPAN to mirror console output to a collector</button><button class="opt" onclick="answer(this,8,3,0)">D. Use SNMP walk against the standard interface MIB</button>
+    <div class="expl">NX-API exposes NX-OS CLI commands over HTTP/HTTPS using JSON-RPC (or JSON) message formats, returning show command output as structured JSON that a Python script can parse directly without screen-scraping.</div>
+  </div>
+
+  <div class="card qcard" id="q9" data-domain="5.0 Security">
+    <div class="meta">Question 10 of 12 · 5.0 Security</div>
+    <div class="q">Two EPGs must communicate bidirectionally, but only over TCP port 443. Which combination of ACI security constructs correctly enforces this with the least additional configuration?</div>
+    <button class="opt" onclick="answer(this,9,0,0)">A. Configure a single contract with a subject containing a filter for TCP/443, apply it as provider on EPG1 and consumer on EPG2, with 'Apply Both Directions' and 'Reverse Filter Ports' enabled</button><button class="opt" onclick="answer(this,9,1,0)">B. Configure vzAny between EPG1 and EPG2 to permit all traffic</button><button class="opt" onclick="answer(this,9,2,0)">C. Disable contract enforcement between the two EPGs to simplify troubleshooting</button><button class="opt" onclick="answer(this,9,3,0)">D. Create two separate contracts, one applied in each direction, without reverse filter ports enabled</button>
+    <div class="expl">A single contract with a subject filter for TCP/443, applied provider/consumer between the EPGs with 'Apply Both Directions' and 'Reverse Filter Ports' enabled, automatically generates the return-traffic rule, giving least-privilege bidirectional access with minimal configuration.</div>
+  </div>
+
+  <div class="card qcard" id="q10" data-domain="1.0 Network">
+    <div class="meta">Question 11 of 12 · 1.0 Network</div>
+    <div class="q">On a Cisco Nexus switch acting as a VXLAN BGP EVPN VTEP, which command under the NVE1 VNI member configuration enables the switch to use BGP EVPN to build the head-end replication list for BUM traffic instead of a multicast underlay?</div>
+    <button class="opt" onclick="answer(this,10,0,2)">A. multicast-group 239.1.1.1</button><button class="opt" onclick="answer(this,10,1,2)">B. source-interface loopback1</button><button class="opt" onclick="answer(this,10,2,2)">C. ingress-replication protocol bgp</button><button class="opt" onclick="answer(this,10,3,2)">D. ingress-replication protocol static</button>
+    <div class="expl">Under 'member vni &lt;id&gt;' on interface nve1, the command 'ingress-replication protocol bgp' tells the VTEP to derive the ingress-replication peer list dynamically from BGP EVPN Type-3 routes rather than requiring a static peer list or PIM multicast group.</div>
+  </div>
+
+  <div class="card qcard" id="q11" data-domain="2.0 Compute">
+    <div class="meta">Question 12 of 12 · 2.0 Compute</div>
+    <div class="q">An administrator is designing service profile templates for a UCS domain and needs vHBAs to receive unique, automatically-assigned Fibre Channel port identifiers without manual configuration on each profile. Which UCS Manager pool should be used?</div>
+    <button class="opt" onclick="answer(this,11,0,3)">A. MAC pool</button><button class="opt" onclick="answer(this,11,1,3)">B. UUID pool</button><button class="opt" onclick="answer(this,11,2,3)">C. IP pool</button><button class="opt" onclick="answer(this,11,3,3)">D. WWPN pool</button>
+    <div class="expl">A WWPN (World Wide Port Name) pool assigns unique Fibre Channel port identifiers to vHBAs, which is required for FC/FCoE fabric login and zoning.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/cisco-350-601-dccor-ccnp-data-center-core-exam-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<section class="faq"><h3>350-601 DCCOR exam — quick answers</h3><details><summary>How much does the 350-601 DCCOR exam cost?</summary><p>The exam fee is approximately $400 and varies by region — confirm current pricing with the certification vendor before you book.</p></details><details><summary>What topics are on the exam?</summary><p>It covers 5 domains: 1.0 Network (25%), 2.0 Compute (25%), 3.0 Storage Network (20%), 4.0 Automation (15%), 5.0 Security (15%). The full course has a dedicated chapter, lab and practice-test coverage for each.</p></details><details><summary>Is this practice test really free?</summary><p>Yes — all questions on this page are free with explanations and no sign-up. The paid Udemy course adds two full-length timed exams, video lessons and hands-on labs.</p></details><details><summary>Will this prepare me for the real exam?</summary><p>The questions mirror the real exam's style and are mapped to the official domains. This is exam-focused preparation — combine the free test with the full course's timed simulations to gauge your readiness.</p></details></section>
+<div class="domains"><span class="meta">More free practice by exam domain:</span><br><a href="350-601-dccor-1-0-network.html">1.0 Network →</a><a href="350-601-dccor-2-0-compute.html">2.0 Compute →</a><a href="350-601-dccor-3-0-storage-network.html">3.0 Storage Network →</a><a href="350-601-dccor-4-0-automation.html">4.0 Automation →</a><a href="350-601-dccor-5-0-security.html">5.0 Security →</a></div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

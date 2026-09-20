@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free 5.0 Security Practice Questions — Implementing Cisco Data Center Core Technologies</title>
+<meta name="description" content="6 free 5.0 Security practice questions with explanations for the Implementing Cisco Data Center Core Technologies exam.">
+<link rel="canonical" href="https://technuggets.academy/350-601-dccor-5-0-security.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free 5.0 Security Practice Questions — Implementing Cisco Data Center Core Technologies">
+<meta property="og:description" content="6 free 5.0 Security practice questions with explanations for the Implementing Cisco Data Center Core Technologies exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/350-601-dccor-5-0-security.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>5.0 Security</h1>
+<p class="sub">Free Implementing Cisco Data Center Core Technologies practice — 6 questions on <strong>5.0 Security</strong>, with explanations. No sign-up.
+<a href="350-601-dccor.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="5.0 Security">
+    <div class="meta">Question 1 of 6 · 5.0 Security</div>
+    <div class="q">An ACI contract subject contains a single filter entry matching TCP destination port 80. 'Apply Both Directions' is enabled on the subject, but 'Reverse Filter Ports' is disabled. The provider EPG hosts a web server on port 80, and the consumer EPG initiates HTTP sessions to it. What is the result?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. All HTTP traffic in both directions is permitted normally because 'Apply Both Directions' alone creates a full stateful reverse rule</button><button class="opt" onclick="answer(this,0,1,2)">B. The contract is rejected at commit time because 'Reverse Filter Ports' is mandatory whenever 'Apply Both Directions' is enabled</button><button class="opt" onclick="answer(this,0,2,2)">C. The initial request from consumer to provider is permitted, but return traffic from the server (source port 80) is dropped because no reverse entry swapping source/destination ports was created</button><button class="opt" onclick="answer(this,0,3,2)">D. Traffic in both directions is dropped because a single filter entry cannot be applied bidirectionally without a second filter</button>
+    <div class="expl">'Apply Both Directions' creates a second zoning-rule entry for provider-to-consumer traffic, but that entry still matches destination port 80 unless 'Reverse Filter Ports' is also enabled to swap source and destination ports in the reverse rule. Since the server's return traffic uses source port 80 and a high-numbered destination port, it does not match either rule, so the return traffic is dropped and the session breaks.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="5.0 Security">
+    <div class="meta">Question 2 of 6 · 5.0 Security</div>
+    <div class="q">During a network convergence event on a Nexus 9000, OSPF adjacencies begin flapping. The engineer suspects CoPP is dropping legitimate OSPF hello packets under load. Which command should be used first to confirm whether CoPP is discarding this control-plane traffic?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. show ip ospf neighbor detail</button><button class="opt" onclick="answer(this,1,1,3)">B. show system internal access-list input entry detail</button><button class="opt" onclick="answer(this,1,2,3)">C. show forwarding ipv4 route</button><button class="opt" onclick="answer(this,1,3,3)">D. show policy-map interface control-plane</button>
+    <div class="expl">'show policy-map interface control-plane' displays per-class conformed, exceeded, and violated packet/byte counters for the CoPP policy applied to the control-plane interface, directly showing whether the OSPF class-map is dropping (violating) packets.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="5.0 Security">
+    <div class="meta">Question 3 of 6 · 5.0 Security</div>
+    <div class="q">A UCS Manager administrator creates a local user account and assigns it the 'operations' role along with a locale restricted to the 'Finance' sub-organization. The user reports being able to view and modify global server pools and policies defined in the root organization, which should be out of scope. What is the most likely cause?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. Locale restrictions in UCS Manager only apply to service profile templates, never to pools or policies</button><button class="opt" onclick="answer(this,2,1,1)">B. The user account has been assigned a second role-locale combination that includes an unrestricted (no-locale) assignment, and UCS Manager unions privileges across all assigned locales</button><button class="opt" onclick="answer(this,2,2,1)">C. The 'operations' role inherently bypasses all locale restrictions regardless of assignment</button><button class="opt" onclick="answer(this,2,3,1)">D. The locale was applied to the wrong organization path and must be reassigned to '/Finance/' instead of 'Finance'</button>
+    <div class="expl">In UCS Manager, a user account can be assigned multiple role-and-locale pairs. Effective access is the union of all assigned locales — if any one of those assignments has no locale restriction (full access), the user effectively has unrestricted organizational access regardless of the more restrictive Finance-only assignment. This is a well-known RBAC gotcha in UCS Manager.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="5.0 Security">
+    <div class="meta">Question 4 of 6 · 5.0 Security</div>
+    <div class="q">On a Nexus switch, DHCP snooping and Dynamic ARP Inspection (DAI) must be enabled on VLAN 10, with the uplink port Ethernet1/1 (connected to the distribution switch) excluded from ARP inspection because it does not have a DHCP snooping binding for downstream traffic. Which configuration sequence achieves this?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. ip arp inspection vlan 10 ; ip dhcp snooping ; interface Ethernet1/1 ; switchport trust arp</button><button class="opt" onclick="answer(this,3,1,1)">B. ip dhcp snooping vlan 10 ; interface Ethernet1/1 ; ip dhcp snooping trust ; ip arp inspection vlan 10 ; interface Ethernet1/1 ; ip arp inspection trust</button><button class="opt" onclick="answer(this,3,2,1)">C. feature dhcp ; ip dhcp snooping vlan 10 ; interface Ethernet1/1 ; no ip arp inspection vlan 10</button><button class="opt" onclick="answer(this,3,3,1)">D. ip arp inspection trust vlan 10 ; interface Ethernet1/1 ; ip dhcp snooping trust</button>
+    <div class="expl">DHCP snooping must be enabled globally and per-VLAN with 'ip dhcp snooping vlan 10', and the uplink must be trusted for snooping with 'ip dhcp snooping trust' so it isn't rate-limited or blocked. DAI is then enabled per-VLAN with 'ip arp inspection vlan 10', and the same uplink must separately be marked 'ip arp inspection trust' so ARP packets arriving on it skip binding-table validation (since no DHCP snooping bindings exist for upstream traffic).</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="5.0 Security">
+    <div class="meta">Question 5 of 6 · 5.0 Security</div>
+    <div class="q">An ACI architect needs a subset of EPGs within a single VRF to communicate freely with each other without configuring pairwise contracts, while EPGs outside this subset must still require explicit contracts to communicate with them. Which construct meets this requirement?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. vzAny applied to the VRF</button><button class="opt" onclick="answer(this,4,1,2)">B. A taboo contract scoped to the VRF</button><button class="opt" onclick="answer(this,4,2,2)">C. Preferred Group membership on the selected EPGs</button><button class="opt" onclick="answer(this,4,3,2)">D. A contract with a single 'permit-any-any' subject applied between all EPGs</button>
+    <div class="expl">Preferred Group membership allows administrators to designate specific EPGs within a VRF as members of the 'preferred group,' which communicate with each other without contracts, while EPGs outside the group still require explicit contracts — satisfying the selective free-communication requirement.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="5.0 Security">
+    <div class="meta">Question 6 of 6 · 5.0 Security</div>
+    <div class="q">A Nexus switch is configured with 'aaa authentication login default group tacacs+' and the TACACS+ server is configured to authorize commands per user role. After deployment, users authenticate successfully but are still able to execute configuration commands outside their assigned privilege, indicating command authorization is not being enforced by the switch. Which missing command explains this behavior?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. aaa accounting commands default start-stop group tacacs+</button><button class="opt" onclick="answer(this,5,1,1)">B. aaa authorization commands default group tacacs+</button><button class="opt" onclick="answer(this,5,2,1)">C. tacacs-server host &lt;ip&gt; key &lt;key&gt;</button><button class="opt" onclick="answer(this,5,3,1)">D. aaa authentication enable default group tacacs+</button>
+    <div class="expl">Authentication only verifies identity; it does not enforce per-command authorization. NX-OS requires the explicit command 'aaa authorization commands default group tacacs+' to instruct the switch to send each entered command to the TACACS+ server for an authorization decision before execution.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/cisco-350-601-dccor-ccnp-data-center-core-exam-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

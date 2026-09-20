@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Deploy and Configure Firewalls Using Panorama Practice Questions — Palo Alto Networks Certified Network Security Engineer</title>
+<meta name="description" content="6 free Deploy and Configure Firewalls Using Panorama practice questions with explanations for the Palo Alto Networks Certified Network Security Engineer exam.">
+<link rel="canonical" href="https://technuggets.academy/pcnse-deploy-and-configure-firewalls-using-panorama.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Deploy and Configure Firewalls Using Panorama Practice Questions — Palo Alto Networks Certified Network Security Engineer">
+<meta property="og:description" content="6 free Deploy and Configure Firewalls Using Panorama practice questions with explanations for the Palo Alto Networks Certified Network Security Engineer exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/pcnse-deploy-and-configure-firewalls-using-panorama.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Deploy and Configure Firewalls Using Panorama</h1>
+<p class="sub">Free Palo Alto Networks Certified Network Security Engineer practice — 6 questions on <strong>Deploy and Configure Firewalls Using Panorama</strong>, with explanations. No sign-up.
+<a href="pcnse.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Domain 4: Deploy and Configure Firewalls Using Panorama">
+    <div class="meta">Question 1 of 6 · Domain 4: Deploy and Configure Firewalls Using Panorama</div>
+    <div class="q">A Panorama template stack named Stack-Branch contains three templates in this order (top to bottom): Template_A, Template_B, Template_C. All three templates configure a different MTU value on the same subinterface. When the stack is pushed to a managed firewall, which template's MTU value is applied to the firewall?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. Template_B, because middle templates always override boundary templates</button><button class="opt" onclick="answer(this,0,1,1)">B. Template_A, because the topmost template in the stack has the highest priority</button><button class="opt" onclick="answer(this,0,2,1)">C. Template_C, because the bottommost template is applied last and therefore wins</button><button class="opt" onclick="answer(this,0,3,1)">D. Whichever template was added to the stack most recently, regardless of its position</button>
+    <div class="expl">Within a template stack, templates are evaluated top to bottom, and the template highest in the list order takes precedence for any overlapping configuration setting. Template_A sits at the top of Stack-Branch, so its MTU value wins.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Domain 4: Deploy and Configure Firewalls Using Panorama">
+    <div class="meta">Question 2 of 6 · Domain 4: Deploy and Configure Firewalls Using Panorama</div>
+    <div class="q">An administrator creates an address object named WebServer under Shared with value 10.1.1.10. The same name, WebServer, is also defined inside device group DG-DataCenter with value 10.2.2.20. A firewall assigned to DG-DataCenter already has a locally configured address object named WebServer with value 192.168.1.5 that was never managed by Panorama. After the administrator commits to Panorama and pushes to the device group, what happens to the WebServer object on that firewall?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. The Shared value (10.1.1.10) is used because Shared objects always have the highest precedence over device group objects</button><button class="opt" onclick="answer(this,1,1,2)">B. The push operation fails with a duplicate-object validation error, and the administrator must rename one of the objects before pushing again</button><button class="opt" onclick="answer(this,1,2,2)">C. The device group value (10.2.2.20) overrides the Shared value, and the push overwrites the local firewall object of the same name with 10.2.2.20</button><button class="opt" onclick="answer(this,1,3,2)">D. The local firewall value (192.168.1.5) is retained because locally defined objects can never be overwritten by a Panorama push</button>
+    <div class="expl">Objects defined in a device group take precedence over objects with the same name defined in Shared. When Panorama pushes configuration, it overwrites any existing object of the same name on the target firewall, including a previously local, unmanaged object, replacing it with the pushed device group value.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Domain 4: Deploy and Configure Firewalls Using Panorama">
+    <div class="meta">Question 3 of 6 · Domain 4: Deploy and Configure Firewalls Using Panorama</div>
+    <div class="q">An administrator is configuring a Collector Group with three Dedicated Log Collectors and wants to enable log redundancy so that no logs are lost if a single Log Collector goes offline. What is the minimum number of Log Collectors required in the Collector Group to enable the log redundancy option?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. Exactly one Log Collector, provided it is configured with a RAID disk pair</button><button class="opt" onclick="answer(this,2,1,1)">B. Two Log Collectors</button><button class="opt" onclick="answer(this,2,2,1)">C. Log redundancy is enabled by default and requires no minimum Log Collector count</button><button class="opt" onclick="answer(this,2,3,1)">D. At least four Log Collectors to form a quorum</button>
+    <div class="expl">The Enable Log Redundancy Across Collectors option in a Collector Group requires a minimum of two Log Collectors. With redundancy enabled, each log is forwarded to two Log Collectors in the group so that a single collector failure does not cause log loss.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Domain 4: Deploy and Configure Firewalls Using Panorama">
+    <div class="meta">Question 4 of 6 · Domain 4: Deploy and Configure Firewalls Using Panorama</div>
+    <div class="q">An administrator clicks Commit in Panorama and selects Commit to Panorama. The commit job reports Commit succeeded. Several minutes later, the managed firewalls in device group DG-Branch are still enforcing the old policy. What should the administrator do to apply the new configuration to the firewalls?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. Perform a separate Push to Devices operation targeting the DG-Branch device group and associated templates</button><button class="opt" onclick="answer(this,3,1,0)">B. Increase the commit timeout value in Panorama Setup settings and reissue Commit to Panorama</button><button class="opt" onclick="answer(this,3,2,0)">C. Manually export the configuration and import it into each firewall through its local Web UI</button><button class="opt" onclick="answer(this,3,3,0)">D. Restart the Panorama management service to force synchronization with managed devices</button>
+    <div class="expl">Commit to Panorama only saves the candidate configuration to Panorama's own running configuration; it does not send anything to managed firewalls. A distinct Push to Devices operation, targeting the relevant device groups and templates, is required to deliver the configuration to the firewalls.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Domain 4: Deploy and Configure Firewalls Using Panorama">
+    <div class="meta">Question 5 of 6 · Domain 4: Deploy and Configure Firewalls Using Panorama</div>
+    <div class="q">A managed security team is building one template to standardize the configuration of 40 branch firewalls, but each firewall needs a unique IP address assigned to interface ethernet1/1, which differs per site. Which approach lets the team use a single shared template while still assigning a unique interface IP address to each firewall?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. Create a separate template for every firewall model and disable variables entirely</button><button class="opt" onclick="answer(this,4,1,2)">B. Configure the interface IP address directly under Device Group &gt; Objects &gt; Addresses for each firewall</button><button class="opt" onclick="answer(this,4,2,2)">C. Define a variable for the interface IP address in the template, then override its value per firewall under the template stack Variables tab</button><button class="opt" onclick="answer(this,4,3,2)">D. Use a Log Forwarding profile to dynamically assign interface IP addresses at commit time</button>
+    <div class="expl">Template variables (prefixed with $) let an administrator define a placeholder value, such as an interface IP address, once in the shared template. Each firewall's entry in the template stack Variables tab can then override that placeholder with a device-specific value, enabling one template to serve many firewalls with unique settings.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Domain 4: Deploy and Configure Firewalls Using Panorama">
+    <div class="meta">Question 6 of 6 · Domain 4: Deploy and Configure Firewalls Using Panorama</div>
+    <div class="q">Device group DG-DataCenter has a pre-rulebase security rule that permits traffic between two internal subnets. Traffic matching this rule is unexpectedly being denied. Investigation reveals a Shared pre-rule in Panorama with a broader match and a deny action. Which statement correctly explains the rule evaluation order that produces this behavior?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. Local firewall pre-rules are always evaluated before shared or device group pre-rules, so the deny should not be occurring</button><button class="opt" onclick="answer(this,5,1,3)">B. Device group post-rules are evaluated before shared pre-rules, so the shared rule executes too late to cause a deny</button><button class="opt" onclick="answer(this,5,2,3)">C. Rule evaluation order is alphabetical by rule name across all rulebases, regardless of shared or device group scope</button><button class="opt" onclick="answer(this,5,3,3)">D. Shared pre-rules are evaluated before device group pre-rules in the rule hierarchy, so the broader shared deny rule matches the traffic first</button>
+    <div class="expl">The rule evaluation order in a Panorama-managed hierarchy is: Shared pre-rules, then device group pre-rules (ancestor to descendant), then local firewall pre-rules, then local firewall rules, then local post-rules, device group post-rules, and finally Shared post-rules. Because Shared pre-rules are evaluated first, the broader Shared deny rule matches the traffic before the DG-DataCenter pre-rule is ever reached.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/pcnse-exam-prep-palo-alto-networks-ngfw-panorama/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

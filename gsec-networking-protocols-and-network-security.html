@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Networking, Protocols, and Network Security Practice Questions — GIAC Security Essentials</title>
+<meta name="description" content="6 free Networking, Protocols, and Network Security practice questions with explanations for the GIAC Security Essentials exam.">
+<link rel="canonical" href="https://technuggets.academy/gsec-networking-protocols-and-network-security.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Networking, Protocols, and Network Security Practice Questions — GIAC Security Essentials">
+<meta property="og:description" content="6 free Networking, Protocols, and Network Security practice questions with explanations for the GIAC Security Essentials exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/gsec-networking-protocols-and-network-security.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Networking, Protocols, and Network Security</h1>
+<p class="sub">Free GIAC Security Essentials practice — 6 questions on <strong>Networking, Protocols, and Network Security</strong>, with explanations. No sign-up.
+<a href="gsec.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Networking, Protocols, and Network Security">
+    <div class="meta">Question 1 of 6 · Networking, Protocols, and Network Security</div>
+    <div class="q">A packet capture shows TCP segments sent to multiple ports on a target host. Each segment has only the FIN flag set, with no preceding SYN observed for any of the connections. Open ports produce no response at all; closed ports respond with RST/ACK. Which scan technique is being used, and why does it evade some perimeter defenses?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. FIN scan, because stateless packet filters that only block inbound SYN packets let the lone FIN segment through</button><button class="opt" onclick="answer(this,0,1,0)">B. SYN scan, because firewalls always block the first packet of any new connection</button><button class="opt" onclick="answer(this,0,2,0)">C. Xmas scan, because it sets the SYN, FIN, and PSH flags simultaneously to confuse the target</button><button class="opt" onclick="answer(this,0,3,0)">D. ACK scan, because it is used to determine port state rather than firewall rule sets</button>
+    <div class="expl">A scan that sends only the FIN flag with no open-port response and RST/ACK from closed ports is a classic FIN scan. It evades stateless filters/ACLs that are configured to only inspect and block inbound SYN packets as 'new connection attempts,' since a lone FIN never matches that rule.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Networking, Protocols, and Network Security">
+    <div class="meta">Question 2 of 6 · Networking, Protocols, and Network Security</div>
+    <div class="q">A penetration tester demonstrates that crafting Ethernet frames with two stacked 802.1Q tags allows traffic to jump from the guest VLAN onto an isolated finance VLAN, because the trunk's native VLAN is configured to match the guest VLAN. Which single change BEST mitigates this double-tagging VLAN hopping attack?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. Enable Dynamic Trunking Protocol (DTP) on all switch ports for consistent negotiation</button><button class="opt" onclick="answer(this,1,1,2)">B. Move all hosts into the native VLAN to simplify frame tagging</button><button class="opt" onclick="answer(this,1,2,2)">C. Set the native VLAN on trunk ports to an unused VLAN ID that is not assigned to any access port</button><button class="opt" onclick="answer(this,1,3,2)">D. Disable Spanning Tree Protocol (STP) on all trunk links</button>
+    <div class="expl">Double-tagging attacks work because the outer tag matches the native VLAN and gets stripped by the first switch, exposing the inner tag to a VLAN it shouldn't reach. Assigning the native VLAN to an unused ID that no access port uses breaks this assumption and neutralizes the attack.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Networking, Protocols, and Network Security">
+    <div class="meta">Question 3 of 6 · Networking, Protocols, and Network Security</div>
+    <div class="q">A perimeter firewall has one rule permitting outbound traffic from the internal network to the internet. Users report that response traffic from external web servers (SYN-ACK, data packets) is being dropped. The engineer wants return traffic permitted automatically without manually opening inbound rules for every possible ephemeral port. Which firewall capability should be enabled?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. Stateful inspection that tracks the connection table and automatically permits traffic matching an established session</button><button class="opt" onclick="answer(this,2,1,0)">B. Stateless packet filtering with explicit ACL entries for each ephemeral port range</button><button class="opt" onclick="answer(this,2,2,0)">C. NAT overload (PAT) configured without any connection tracking</button><button class="opt" onclick="answer(this,2,3,0)">D. An application-layer proxy restricted to ports 80 and 443 only</button>
+    <div class="expl">Stateful inspection maintains a connection table for each session; when it sees the outbound SYN, it automatically permits the matching inbound SYN-ACK and subsequent packets without requiring a static inbound allow rule for every ephemeral port.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Networking, Protocols, and Network Security">
+    <div class="meta">Question 4 of 6 · Networking, Protocols, and Network Security</div>
+    <div class="q">During a wireless assessment, an attacker forces retransmission of message 3 of the WPA2 4-way handshake, causing the client to reinstall an already-in-use encryption key with a reset nonce and replay counter. Which attack is being performed, and which wireless technology is architecturally designed to prevent this class of issue?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. Evil twin attack; mitigated by 802.1X certificate-based authentication</button><button class="opt" onclick="answer(this,3,1,2)">B. Deauthentication flood; mitigated solely by enabling Protected Management Frames (802.11w)</button><button class="opt" onclick="answer(this,3,2,2)">C. KRACK (Key Reinstallation Attack); WPA3's Simultaneous Authentication of Equals (SAE) handshake is designed to prevent this nonce-reuse condition</button><button class="opt" onclick="answer(this,3,3,2)">D. WPS PIN brute force; mitigated by disabling WPS on the access point</button>
+    <div class="expl">Forcing retransmission of message 3 to trigger key/nonce reinstallation describes the KRACK attack against WPA2's 4-way handshake. WPA3 replaces this handshake with SAE (Dragonfly), which is designed to prevent this specific nonce-reuse weakness.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Networking, Protocols, and Network Security">
+    <div class="meta">Question 5 of 6 · Networking, Protocols, and Network Security</div>
+    <div class="q">An external attacker successfully performs a full zone transfer (AXFR) against an organization's authoritative DNS server, revealing every internal hostname and IP address in the zone. Which control would have BEST prevented this reconnaissance technique?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. Enabling DNSSEC signing on all zone resource records</button><button class="opt" onclick="answer(this,4,1,3)">B. Configuring split-horizon DNS views without any transfer restrictions</button><button class="opt" onclick="answer(this,4,2,3)">C. Increasing the TTL value on all DNS resource records</button><button class="opt" onclick="answer(this,4,3,3)">D. Restricting zone transfers to explicitly authorized secondary server IP addresses, or requiring TSIG authentication</button>
+    <div class="expl">AXFR should only be permitted to authorized secondary name servers, enforced by IP-based ACLs and/or TSIG cryptographic authentication. This directly prevents unauthorized parties from requesting and receiving the full zone.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Networking, Protocols, and Network Security">
+    <div class="meta">Question 6 of 6 · Networking, Protocols, and Network Security</div>
+    <div class="q">Which statement BEST differentiates anomaly-based network intrusion detection from signature-based detection?</div>
+    <button class="opt" onclick="answer(this,5,0,2)">A. Signature-based detection can identify previously unseen zero-day attacks, while anomaly-based detection cannot</button><button class="opt" onclick="answer(this,5,1,2)">B. Anomaly-based detection requires no tuning and produces fewer alerts than signature-based systems</button><button class="opt" onclick="answer(this,5,2,2)">C. Anomaly-based detection compares traffic against a baseline of normal behavior and can flag zero-day attacks, but it typically generates more false positives</button><button class="opt" onclick="answer(this,5,3,2)">D. Signature-based detection dynamically updates its baseline of normal traffic in real time to reduce false negatives</button>
+    <div class="expl">Anomaly-based detection builds a statistical baseline of 'normal' behavior and alerts on deviations, which allows it to catch novel/zero-day attacks that have no known signature, at the cost of a higher false-positive rate compared to signature matching.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/gsec-giac-security-essentials-exam-focused-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

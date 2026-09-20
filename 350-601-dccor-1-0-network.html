@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free 1.0 Network Practice Questions — Implementing Cisco Data Center Core Technologies</title>
+<meta name="description" content="6 free 1.0 Network practice questions with explanations for the Implementing Cisco Data Center Core Technologies exam.">
+<link rel="canonical" href="https://technuggets.academy/350-601-dccor-1-0-network.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free 1.0 Network Practice Questions — Implementing Cisco Data Center Core Technologies">
+<meta property="og:description" content="6 free 1.0 Network practice questions with explanations for the Implementing Cisco Data Center Core Technologies exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/350-601-dccor-1-0-network.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>1.0 Network</h1>
+<p class="sub">Free Implementing Cisco Data Center Core Technologies practice — 6 questions on <strong>1.0 Network</strong>, with explanations. No sign-up.
+<a href="350-601-dccor.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="1.0 Network">
+    <div class="meta">Question 1 of 6 · 1.0 Network</div>
+    <div class="q">A pair of Nexus 9000 switches form a vPC domain and provide the default gateway via HSRP to a directly attached load balancer. The load balancer occasionally sends return traffic using the router MAC address of the vPC peer switch instead of the local switch's MAC, and this traffic is intermittently dropped. Which feature should be enabled to resolve this without redesigning the topology?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. vPC peer-gateway</button><button class="opt" onclick="answer(this,0,1,0)">B. vPC peer-switch</button><button class="opt" onclick="answer(this,0,2,0)">C. vPC auto-recovery</button><button class="opt" onclick="answer(this,0,3,0)">D. vPC delay-restore</button>
+    <div class="expl">peer-gateway allows each vPC peer to locally forward (rather than drop) packets destined to the peer's router MAC address, avoiding the need to cross the peer-link. This is the documented fix for asymmetric-routing devices such as firewalls and load balancers that cache the peer's MAC.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="1.0 Network">
+    <div class="meta">Question 2 of 6 · 1.0 Network</div>
+    <div class="q">In a VXLAN BGP EVPN fabric, an external subnet that sits behind a non-VXLAN router is redistributed into the fabric so border leaf switches can advertise reachability to it. Which EVPN route type carries this IP prefix reachability information across the fabric?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. Type-5 (IP Prefix route)</button><button class="opt" onclick="answer(this,1,1,0)">B. Type-2 (MAC/IP Advertisement route)</button><button class="opt" onclick="answer(this,1,2,0)">C. Type-3 (Inclusive Multicast Ethernet Tag route)</button><button class="opt" onclick="answer(this,1,3,0)">D. Type-1 (Ethernet Auto-Discovery route)</button>
+    <div class="expl">Type-5 routes advertise IP prefixes (not tied to a specific MAC) that are not directly attached hosts in the fabric, typically originated at border leafs for externally learned subnets and redistributed into BGP EVPN.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="1.0 Network">
+    <div class="meta">Question 3 of 6 · 1.0 Network</div>
+    <div class="q">An OTV site has two edge devices providing multi-homing, extending VLANs 10 and 20 over the overlay. No AED priority has been manually configured. Which statement correctly describes AED assignment for these VLANs?</div>
+    <button class="opt" onclick="answer(this,2,0,2)">A. Both edge devices forward traffic for both VLANs simultaneously to load-balance overlay traffic</button><button class="opt" onclick="answer(this,2,1,2)">B. Only the edge device with the lowest overlay interface IP address becomes AED for all extended VLANs</button><button class="opt" onclick="answer(this,2,2,2)">C. AED role is assigned per VLAN, with the two edge devices alternating ownership (e.g., one handles even-numbered VLANs, the other odd-numbered VLANs)</button><button class="opt" onclick="answer(this,2,3,2)">D. AED election is determined solely by the spanning-tree root bridge priority</button>
+    <div class="expl">By default, without configured priorities, OTV alternates AED ownership per VLAN between the two edge devices in a site (commonly split by odd/even VLAN ID), guaranteeing only one AED forwards traffic for a given VLAN and preventing duplicate forwarding/loops.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="1.0 Network">
+    <div class="meta">Question 4 of 6 · 1.0 Network</div>
+    <div class="q">An ACI administrator configures an L3Out using OSPF to an external router and applies a contract between an application EPG and the L3Out's external EPG. Routes from the external network are learned correctly, but the internal bridge domain subnet is not being advertised out via OSPF despite the contract being in place. What is the most likely cause?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. The BD subnet scope is not set to 'Advertised Externally'</button><button class="opt" onclick="answer(this,3,1,0)">B. The L3Out route-map is missing an import direction entry</button><button class="opt" onclick="answer(this,3,2,0)">C. The contract scope is set to VRF instead of Application Profile</button><button class="opt" onclick="answer(this,3,3,0)">D. The OSPF area is configured as NSSA</button>
+    <div class="expl">For a BD subnet to be redistributed out an L3Out, its subnet scope must include 'Advertised Externally.' Without this flag, the subnet is never eligible for external route advertisement regardless of contract state.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="1.0 Network">
+    <div class="meta">Question 5 of 6 · 1.0 Network</div>
+    <div class="q">Two EPGs requiring HTTPS communication reside in different VRFs within the same tenant. A contract with an HTTPS filter is provided and consumed between them, but traffic is still blocked by the implicit deny. The contract's scope is currently set to VRF. What must be changed to allow this communication?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. Change the contract scope to Application Profile</button><button class="opt" onclick="answer(this,4,1,3)">B. Change the contract scope to Global</button><button class="opt" onclick="answer(this,4,2,3)">C. No scope change is needed; add a subject filter for HTTPS</button><button class="opt" onclick="answer(this,4,3,3)">D. Change the contract scope to Tenant</button>
+    <div class="expl">Contract scope 'Tenant' permits communication between EPGs in different VRFs as long as they are within the same tenant, which is exactly the requirement here.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="1.0 Network">
+    <div class="meta">Question 6 of 6 · 1.0 Network</div>
+    <div class="q">An ACI Multi-Site deployment interconnects two fabrics over a Layer 3 WAN (ISN) that does not support multicast. How does Nexus Dashboard Orchestrator ensure BUM (broadcast, unknown unicast, and multicast) traffic is still delivered between sites for a stretched bridge domain?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. It disables BUM traffic forwarding between sites entirely and relies only on ARP flooding suppression</button><button class="opt" onclick="answer(this,5,1,3)">B. It requires PIM Bidir multicast to be enabled on the intersite network</button><button class="opt" onclick="answer(this,5,2,3)">C. It converts all BUM traffic into unicast ARP requests only, dropping any broadcast or multicast frames</button><button class="opt" onclick="answer(this,5,3,3)">D. It uses head-end (ingress) replication over the intersite network, replicating each BUM packet as multiple unicast VXLAN packets to remote spine anycast TEPs</button>
+    <div class="expl">ACI Multi-Site specifically avoids requiring multicast support in the ISN by using head-end/ingress replication: the source spine replicates BUM traffic as individual unicast VXLAN-encapsulated packets destined to the remote site's spine anycast TEP addresses.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/cisco-350-601-dccor-ccnp-data-center-core-exam-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

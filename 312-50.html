@@ -1,0 +1,124 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Certified Ethical Hacker (CEH v13) Practice Test — 12 Real Exam-Style Questions</title>
+<meta name="description" content="Free Certified Ethical Hacker (CEH v13) practice questions with detailed explanations. Test yourself before the real exam.">
+<link rel="canonical" href="https://technuggets.academy/312-50.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Certified Ethical Hacker (CEH v13) Practice Test — 12 Real Exam-Style Questions">
+<meta property="og:description" content="Free Certified Ethical Hacker (CEH v13) practice questions with detailed explanations. Test yourself before the real exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/312-50.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div><div class="hero">
+  <span class="chip">312-50</span>
+  <h1>Free Certified Ethical Hacker (CEH v13) Practice Test</h1>
+  <p class="sub">12 exam-style questions with full explanations — no sign-up. Score yourself, then close your gaps with the full course.</p>
+  <div class="facts"><span class="fact">Exam fee <b>~$1199</b></span><span class="fact"><b>9</b> exam domains</span><span class="fact">Level <b>Intermediate</b></span><span class="fact"><b>2</b> timed practice tests in the course</span></div>
+  <div class="cta-row"><a class="btn enroll" href="https://www.udemy.com/course/ceh-v13-312-50-certified-ethical-hacker-exam-prep/?couponCode=SECPREP34" rel="sponsored" target="_blank">Get my $34.99 deal →</a><a class="btn ghost" href="#practice">Try the free test →</a><span class="urgency">⏳ Deal ends Oct 11</span></div>
+</div><div class="trust"><span>✅ <b>Free</b> practice — no sign-up</span><span>📝 Real exam-style questions</span><span>💡 Detailed explanations</span><span>💸 30-day money-back via Udemy</span></div>
+<div id="practice"></div>
+
+  <div class="card qcard" id="q0" data-domain="Information Security and Ethical Hacking Overview">
+    <div class="meta">Question 1 of 12 · Information Security and Ethical Hacking Overview</div>
+    <div class="q">During an authorized penetration test, you discover a server that is not listed in the signed scope document but appears to belong to the same client organization. According to CEH's ethical hacking methodology, what should you do?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. Exploit it immediately since it clearly belongs to the client</button><button class="opt" onclick="answer(this,0,1,2)">B. Add findings about it to your final report without actually testing it</button><button class="opt" onclick="answer(this,0,2,2)">C. Stop testing that system and contact the client to update the signed scope and rules of engagement before proceeding</button><button class="opt" onclick="answer(this,0,3,2)">D. Test it only during off-peak hours to reduce business impact</button>
+    <div class="expl">Written authorization defines exactly which assets a tester may touch. Testing anything outside the signed scope, even if it appears to belong to the client, is unauthorized and illegal — the tester must get the scope formally amended before proceeding.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Reconnaissance Techniques">
+    <div class="meta">Question 2 of 12 · Reconnaissance Techniques</div>
+    <div class="q">A penetration tester runs 'snmpwalk -v1 -c public 10.10.10.5' during an authorized engagement and receives a full list of running processes, installed software, and routing tables from the target. Which countermeasure BEST addresses the root cause of this exposure?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. Block ICMP echo requests at the perimeter firewall</button><button class="opt" onclick="answer(this,1,1,2)">B. Disable the target's DNS recursive resolver</button><button class="opt" onclick="answer(this,1,2,2)">C. Configure the SNMP agent to use SNMPv3 with authentication and encryption, and change default community strings</button><button class="opt" onclick="answer(this,1,3,2)">D. Implement a strong password policy for local Windows accounts</button>
+    <div class="expl">SNMPv1/v2c transmit community strings ('public'/'private' by default) in cleartext with no real authentication, allowing anyone who guesses the string to read (and sometimes write) MIB data including processes, routes, and software. SNMPv3 adds authentication (usmHMACMD5/SHA) and encryption (DES/AES), and changing default community strings closes the specific gap exploited here.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="System Hacking Phases and Attack Techniques">
+    <div class="meta">Question 3 of 12 · System Hacking Phases and Attack Techniques</div>
+    <div class="q">A vulnerability is assigned a CVSS v3.1 base score of 9.8. Under the standard CVSS qualitative severity rating scale, which severity rating does this score correspond to?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. Critical</button><button class="opt" onclick="answer(this,2,1,0)">B. High</button><button class="opt" onclick="answer(this,2,2,0)">C. Low</button><button class="opt" onclick="answer(this,2,3,0)">D. Medium</button>
+    <div class="expl">CVSS v3.1 qualitative ratings map 9.0-10.0 to Critical, and 9.8 falls in that range.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Network and Perimeter Hacking">
+    <div class="meta">Question 4 of 12 · Network and Perimeter Hacking</div>
+    <div class="q">A penetration tester is on the same VLAN as two target hosts on a switched network and wants to intercept their traffic by poisoning the ARP cache. Which switch security feature BEST prevents this ARP spoofing-based sniffing attack?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. Port security limiting the number of MAC addresses per switch port</button><button class="opt" onclick="answer(this,3,1,2)">B. Changing the native VLAN ID to prevent VLAN hopping</button><button class="opt" onclick="answer(this,3,2,2)">C. Dynamic ARP Inspection (DAI) validating ARP packets against the DHCP snooping binding table</button><button class="opt" onclick="answer(this,3,3,2)">D. Enabling a SPAN port to monitor traffic on the affected VLAN</button>
+    <div class="expl">Dynamic ARP Inspection checks the source MAC/IP binding of every ARP packet against a trusted DHCP snooping table and drops mismatched (spoofed) ARP replies, directly stopping ARP cache poisoning used to enable sniffing.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Web Application Hacking">
+    <div class="meta">Question 5 of 12 · Web Application Hacking</div>
+    <div class="q">A web application parses XML files uploaded by users and does not disable external entity resolution in its XML parser. A penetration tester uploads a crafted XML file containing a DOCTYPE with a SYSTEM identifier pointing to a local file path, and the application's response includes the contents of /etc/passwd. Which countermeasure BEST prevents this attack?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. Implement strict input length validation on the uploaded XML file</button><button class="opt" onclick="answer(this,4,1,3)">B. Require all XML uploads to be transmitted over HTTPS</button><button class="opt" onclick="answer(this,4,2,3)">C. Apply HTML entity encoding to all XML output rendered to the browser</button><button class="opt" onclick="answer(this,4,3,3)">D. Disable DTD processing and external entity resolution in the XML parser configuration</button>
+    <div class="expl">XML External Entity (XXE) injection occurs when a parser resolves external entities defined in a DOCTYPE. Disabling DTD processing and external entity resolution at the parser level is the standard, effective countermeasure (e.g., setting FEATURE_SECURE_PROCESSING or disabling external general/parameter entities).</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Wireless Network Hacking">
+    <div class="meta">Question 6 of 12 · Wireless Network Hacking</div>
+    <div class="q">A penetration tester sets up a rogue access point broadcasting the same SSID and spoofed BSSID as a corporate network near a coffee shop frequented by employees. The rogue AP has a stronger signal than the legitimate AP, causing nearby laptops to auto-connect to it. The tester then captures credentials submitted through a fake captive portal. Which wireless attack is being performed?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. WPS PIN brute-force attack</button><button class="opt" onclick="answer(this,5,1,1)">B. Evil twin attack</button><button class="opt" onclick="answer(this,5,2,1)">C. Deauthentication flood attack</button><button class="opt" onclick="answer(this,5,3,1)">D. ARP cache poisoning attack</button>
+    <div class="expl">An evil twin attack involves creating a fraudulent AP mimicking a legitimate network's SSID/BSSID to lure clients into connecting, enabling credential harvesting via a fake portal — exactly as described.</div>
+  </div>
+
+  <div class="card qcard" id="q6" data-domain="Mobile Platform, IoT, and OT Hacking">
+    <div class="meta">Question 7 of 12 · Mobile Platform, IoT, and OT Hacking</div>
+    <div class="q">During an authorized black-box engagement, a penetration tester needs to passively discover internet-facing IoT devices (webcams, industrial controllers, routers) that may be running with default credentials, without directly touching the target network. Which tool BEST accomplishes this?</div>
+    <button class="opt" onclick="answer(this,6,0,2)">A. Nmap</button><button class="opt" onclick="answer(this,6,1,2)">B. Nessus</button><button class="opt" onclick="answer(this,6,2,2)">C. Shodan</button><button class="opt" onclick="answer(this,6,3,2)">D. Maltego</button>
+    <div class="expl">Shodan is a search engine that continuously scans and indexes internet-connected devices, including banners, open ports, and default-credential exposures, allowing passive reconnaissance of exposed IoT devices worldwide without directly interacting with the target network.</div>
+  </div>
+
+  <div class="card qcard" id="q7" data-domain="Cloud Computing">
+    <div class="meta">Question 8 of 12 · Cloud Computing</div>
+    <div class="q">During an authorized cloud engagement, a tester finds that a company's object storage bucket is configured with public read access, exposing sensitive customer files. No exploit or credential theft was required to access the data. Which cloud security concept BEST explains why this exposure occurred?</div>
+    <button class="opt" onclick="answer(this,7,0,1)">A. An insecure API allowed unauthenticated data retrieval</button><button class="opt" onclick="answer(this,7,1,1)">B. A misconfiguration resulting from the customer's shared-responsibility obligations for access control</button><button class="opt" onclick="answer(this,7,2,1)">C. A container escape vulnerability in the underlying host</button><button class="opt" onclick="answer(this,7,3,1)">D. A side-channel attack against the hypervisor</button>
+    <div class="expl">In IaaS/PaaS storage services, the cloud provider secures the underlying infrastructure, but the customer is responsible for configuring access controls (bucket policies, ACLs). Public read access left enabled is a classic customer-side misconfiguration under the shared-responsibility model, and it is the single most heavily tested cloud misconfiguration scenario on the exam.</div>
+  </div>
+
+  <div class="card qcard" id="q8" data-domain="Cryptography">
+    <div class="meta">Question 9 of 12 · Cryptography</div>
+    <div class="q">A company requires that when a manager approves a financial transfer, the manager cannot later deny having approved it, and the recipient must be able to verify both the origin and integrity of the approval message. Which cryptographic mechanism BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,8,0,3)">A. Symmetric encryption using a key shared between the manager and the recipient</button><button class="opt" onclick="answer(this,8,1,3)">B. Hashing the approval message with MD5 before transmission</button><button class="opt" onclick="answer(this,8,2,3)">C. Encrypting the transport channel with SSL/TLS</button><button class="opt" onclick="answer(this,8,3,3)">D. A digital signature created with the manager's private key</button>
+    <div class="expl">A digital signature is generated by hashing the message and encrypting the hash with the signer's private key. Because only the manager holds that private key, the signature proves origin and provides non-repudiation, and the recipient can verify integrity by recomputing the hash and checking it against the signature using the manager's public key.</div>
+  </div>
+
+  <div class="card qcard" id="q9" data-domain="Information Security and Ethical Hacking Overview">
+    <div class="meta">Question 10 of 12 · Information Security and Ethical Hacking Overview</div>
+    <div class="q">In the Diamond Model of Intrusion Analysis, which four core features form the vertices of the event diamond used to analyze a security incident?</div>
+    <button class="opt" onclick="answer(this,9,0,2)">A. Reconnaissance, Weaponization, Delivery, Exploitation</button><button class="opt" onclick="answer(this,9,1,2)">B. Confidentiality, Integrity, Availability, Authenticity</button><button class="opt" onclick="answer(this,9,2,2)">C. Adversary, Capability, Infrastructure, Victim</button><button class="opt" onclick="answer(this,9,3,2)">D. Threat, Vulnerability, Risk, Impact</button>
+    <div class="expl">The Diamond Model connects four core features for every intrusion event: the Adversary (who), Capability (the tool/technique used), Infrastructure (the delivery mechanism), and Victim (the target), with these four vertices linked to analyze relationships between events.</div>
+  </div>
+
+  <div class="card qcard" id="q10" data-domain="Reconnaissance Techniques">
+    <div class="meta">Question 11 of 12 · Reconnaissance Techniques</div>
+    <div class="q">During a footprinting engagement, an ethical hacker discovers that a company's DNS server responds to an AXFR request from an arbitrary external IP address, returning the entire zone file including internal host names and IP addresses. Which countermeasure BEST mitigates this specific exposure?</div>
+    <button class="opt" onclick="answer(this,10,0,1)">A. Enable DNSSEC signing on all zone records</button><button class="opt" onclick="answer(this,10,1,1)">B. Restrict zone transfers (AXFR) to explicitly authorized secondary name server IP addresses only</button><button class="opt" onclick="answer(this,10,2,1)">C. Reduce the TTL value on all DNS records to under 60 seconds</button><button class="opt" onclick="answer(this,10,3,1)">D. Move the DNS server behind a load balancer with round-robin distribution</button>
+    <div class="expl">A full zone transfer disclosure occurs because the authoritative name server allows AXFR requests from any client. The correct fix is to explicitly restrict zone transfers to known, authorized secondary DNS server IPs (via ACLs such as BIND's 'allow-transfer'), which directly closes the vector the tester exploited.</div>
+  </div>
+
+  <div class="card qcard" id="q11" data-domain="System Hacking Phases and Attack Techniques">
+    <div class="meta">Question 12 of 12 · System Hacking Phases and Attack Techniques</div>
+    <div class="q">A penetration tester needs to identify missing patches, insecure configurations, and known CVEs across every host on a corporate network without exploiting any of the findings. Which category of tool BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,11,0,1)">A. A password cracking tool</button><button class="opt" onclick="answer(this,11,1,1)">B. A network-based vulnerability scanner (e.g., Nessus)</button><button class="opt" onclick="answer(this,11,2,1)">C. An exploitation framework (e.g., Metasploit)</button><button class="opt" onclick="answer(this,11,3,1)">D. A raw packet sniffer</button>
+    <div class="expl">Network-based vulnerability scanners are purpose-built to enumerate patch levels, misconfigurations, and CVEs across many hosts without exploiting them.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="SECPREP34"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">undefined</span> <span class="price">$34.99</span> with code <span class="code">SECPREP34</span> — valid through Oct 11.</p>
+  <a href="https://www.udemy.com/course/ceh-v13-312-50-certified-ethical-hacker-exam-prep/?couponCode=SECPREP34" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<section class="faq"><h3>312-50 exam — quick answers</h3><details><summary>How much does the 312-50 exam cost?</summary><p>The exam fee is approximately $1199 and varies by region — confirm current pricing with the certification vendor before you book.</p></details><details><summary>What topics are on the exam?</summary><p>It covers 9 domains: Information Security and Ethical Hacking Overview (6%), Reconnaissance Techniques (21%), System Hacking Phases and Attack Techniques (17%), Network and Perimeter Hacking (14%), Web Application Hacking (16%), Wireless Network Hacking (6%), Mobile Platform, IoT, and OT Hacking (8%), Cloud Computing (6%), Cryptography (6%). The full course has a dedicated chapter, lab and practice-test coverage for each.</p></details><details><summary>Is this practice test really free?</summary><p>Yes — all questions on this page are free with explanations and no sign-up. The paid Udemy course adds two full-length timed exams, video lessons and hands-on labs.</p></details><details><summary>How do I get the discount?</summary><p>Use code SECPREP34 at checkout for $34.99 (list undefined) through Oct 11 — the enroll button applies it automatically.</p></details><details><summary>Will this prepare me for the real exam?</summary><p>The questions mirror the real exam's style and are mapped to the official domains. This is exam-focused preparation — combine the free test with the full course's timed simulations to gauge your readiness.</p></details></section>
+<div class="domains"><span class="meta">More free practice by exam domain:</span><br><a href="312-50-reconnaissance-techniques.html">Reconnaissance Techniques →</a><a href="312-50-system-hacking-phases-and-attack-techniques.html">System Hacking Phases and Attack Techniques →</a><a href="312-50-network-and-perimeter-hacking.html">Network and Perimeter Hacking →</a><a href="312-50-web-application-hacking.html">Web Application Hacking →</a></div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

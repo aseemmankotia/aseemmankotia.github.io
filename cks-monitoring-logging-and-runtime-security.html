@@ -1,0 +1,111 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Monitoring, Logging, and Runtime Security Practice Questions — Certified Kubernetes Security Specialist</title>
+<meta name="description" content="6 free Monitoring, Logging, and Runtime Security practice questions with explanations for the Certified Kubernetes Security Specialist exam.">
+<link rel="canonical" href="https://technuggets.academy/cks-monitoring-logging-and-runtime-security.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Monitoring, Logging, and Runtime Security Practice Questions — Certified Kubernetes Security Specialist">
+<meta property="og:description" content="6 free Monitoring, Logging, and Runtime Security practice questions with explanations for the Certified Kubernetes Security Specialist exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/cks-monitoring-logging-and-runtime-security.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Monitoring, Logging, and Runtime Security</h1>
+<p class="sub">Free Certified Kubernetes Security Specialist practice — 6 questions on <strong>Monitoring, Logging, and Runtime Security</strong>, with explanations. No sign-up.
+<a href="cks.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Monitoring, Logging, and Runtime Security">
+    <div class="meta">Question 1 of 6 · Monitoring, Logging, and Runtime Security</div>
+    <div class="q">A security engineer wants to detect reverse shell activity in containers using Falco, distinguishing malicious outbound shell connections from legitimate `kubectl exec` debugging sessions that also spawn bash. Which Falco rule condition BEST achieves this?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. evt.type in (connect) and fd.typechar='4' and proc.name in (shell_binaries)</button><button class="opt" onclick="answer(this,0,1,0)">B. evt.type=execve and proc.name in (bash, sh)</button><button class="opt" onclick="answer(this,0,2,0)">C. spawned_process and proc.name in (bash, sh, nc) and container.id != host</button><button class="opt" onclick="answer(this,0,3,0)">D. evt.type=open and fd.name contains &quot;/dev/tcp&quot;</button>
+    <div class="expl">Combining a network connect syscall (fd.typechar='4' for IPv4 sockets) with process ancestry in shell_binaries matches the actual behavioral pattern of a reverse shell: a shell process initiating an outbound TCP connection. This is the pattern Falco's built-in 'Reverse Shell' style rules use, and it correctly ignores kubectl exec sessions that spawn bash without the process itself opening an outbound socket.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Monitoring, Logging, and Runtime Security">
+    <div class="meta">Question 2 of 6 · Monitoring, Logging, and Runtime Security</div>
+    <div class="q">You must deploy Falco for syscall-level runtime detection on GKE nodes running Container-Optimized OS (COS), where kernel headers are unavailable and compiling a kernel module is not possible. Which Falco driver should you configure to retain full behavioral monitoring?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. The classic kernel module driver (falco.ko)</button><button class="opt" onclick="answer(this,1,1,2)">B. A userspace ptrace-based instrumentation driver</button><button class="opt" onclick="answer(this,1,2,2)">C. The modern eBPF probe (modern_bpf / CO-RE based)</button><button class="opt" onclick="answer(this,1,3,2)">D. The legacy BPF probe that requires kernel headers to compile at load time</button>
+    <div class="expl">The modern eBPF probe uses CO-RE (Compile Once – Run Everywhere) with BTF, so it does not require kernel headers or on-node compilation, making it the correct driver choice for locked-down COS nodes on GKE.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Monitoring, Logging, and Runtime Security">
+    <div class="meta">Question 3 of 6 · Monitoring, Logging, and Runtime Security</div>
+    <div class="q">Your Kubernetes audit policy must log full RequestResponse bodies ONLY for `delete` operations on the `secrets` resource, while logging just `Metadata` for every other request cluster-wide. Which policy correctly achieves this, given that audit rules are evaluated top-down and the first matching rule wins?</div>
+    <button class="opt" onclick="answer(this,2,0,2)">A. rules:
+- level: Metadata
+  resources:
+  - group: &quot;&quot;
+    resources: [&quot;*&quot;]
+- level: RequestResponse
+  resources:
+  - group: &quot;&quot;
+    resources: [&quot;secrets&quot;]
+  verbs: [&quot;delete&quot;]</button><button class="opt" onclick="answer(this,2,1,2)">B. rules:
+- level: RequestResponse
+  resources:
+  - group: &quot;&quot;
+    resources: [&quot;secrets&quot;]
+- level: Metadata
+  resources:
+  - group: &quot;&quot;
+    resources: [&quot;*&quot;]
+    verbs: [&quot;delete&quot;]</button><button class="opt" onclick="answer(this,2,2,2)">C. rules:
+- level: RequestResponse
+  resources:
+  - group: &quot;&quot;
+    resources: [&quot;secrets&quot;]
+  verbs: [&quot;delete&quot;]
+- level: Metadata
+  resources:
+  - group: &quot;&quot;
+    resources: [&quot;*&quot;]</button><button class="opt" onclick="answer(this,2,3,2)">D. rules:
+- level: Metadata
+  resources:
+  - group: &quot;&quot;
+    resources: [&quot;*&quot;]
+  verbs: [&quot;delete&quot;]
+- level: RequestResponse
+  resources:
+  - group: &quot;&quot;
+    resources: [&quot;secrets&quot;]</button>
+    <div class="expl">Placing the specific, narrowly-scoped rule (secrets + delete verb, RequestResponse) first ensures it is matched before the catch-all wildcard rule. The wildcard Metadata rule with no verb restriction then correctly captures everything else, satisfying both requirements.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Monitoring, Logging, and Runtime Security">
+    <div class="meta">Question 4 of 6 · Monitoring, Logging, and Runtime Security</div>
+    <div class="q">A Falco 'Terminal shell in container' alert is firing repeatedly from a legitimate CI pipeline that uses `kubectl exec` with bash to perform automated health checks against application pods. Disabling the rule cluster-wide is not acceptable because it would remove detection of genuinely malicious shell access elsewhere. What is the BEST remediation?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. Create an override/exception rule appending a condition that excludes the specific CI service account or container image performing the health checks, while keeping the base rule active for all other contexts</button><button class="opt" onclick="answer(this,3,1,0)">B. Delete the 'Terminal shell in container' rule from the Falco rules file entirely</button><button class="opt" onclick="answer(this,3,2,0)">C. Raise Falco's global minimum priority so only CRITICAL-severity rules generate alerts</button><button class="opt" onclick="answer(this,3,3,0)">D. Switch Falco to a passive audit-only mode so shell-spawn events are recorded but never alert</button>
+    <div class="expl">Falco supports rule overrides and exceptions (via `append: true` custom rule files or the `exceptions` field) that add a targeted `and not` condition scoped to the known-good CI identity or image, preserving detection coverage for every other shell-spawn scenario in the cluster.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Monitoring, Logging, and Runtime Security">
+    <div class="meta">Question 5 of 6 · Monitoring, Logging, and Runtime Security</div>
+    <div class="q">Which statement about enforcing immutability with `readOnlyRootFilesystem: true` at runtime is CORRECT?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. readOnlyRootFilesystem only makes the container's root filesystem read-only; volumes such as emptyDir or hostPath mounted into the pod remain writable unless also explicitly mounted with readOnly: true, so Falco rules monitoring writes to those mount paths are still necessary</button><button class="opt" onclick="answer(this,4,1,0)">B. readOnlyRootFilesystem prevents all writes within the container, including to mounted emptyDir and hostPath volumes, making Falco write-detection redundant</button><button class="opt" onclick="answer(this,4,2,0)">C. readOnlyRootFilesystem only takes effect if a matching seccomp profile is also applied; otherwise the container runtime ignores the setting</button><button class="opt" onclick="answer(this,4,3,0)">D. Setting readOnlyRootFilesystem: true automatically also sets allowPrivilegeEscalation: false as an implied secure default</button>
+    <div class="expl">readOnlyRootFilesystem is enforced by the container runtime purely against the container's root filesystem layer; any volume explicitly mounted into the pod (emptyDir, hostPath, PVC, etc.) is independently writable unless that specific volumeMount also sets readOnly: true. This is a classic CKS exam trap — engineers assume root-fs immutability is total, leaving writable attack surfaces that Falco must still monitor.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Monitoring, Logging, and Runtime Security">
+    <div class="meta">Question 6 of 6 · Monitoring, Logging, and Runtime Security</div>
+    <div class="q">While reviewing Kubernetes audit logs for a `pods/exec` request, you see multiple entries with different `stage` values: RequestReceived, ResponseStarted, and ResponseComplete. To detect long-running interactive exec sessions potentially used for lateral movement, you need the record containing the final outcome and total session duration. Which audit stage should you filter on?</div>
+    <button class="opt" onclick="answer(this,5,0,2)">A. RequestReceived</button><button class="opt" onclick="answer(this,5,1,2)">B. ResponseStarted</button><button class="opt" onclick="answer(this,5,2,2)">C. ResponseComplete</button><button class="opt" onclick="answer(this,5,3,2)">D. Panic</button>
+    <div class="expl">ResponseComplete is recorded once the response body has finished sending and represents the terminal record of the request lifecycle, containing full metadata and enabling duration calculation from requestReceivedTimestamp to stageTimestamp — this is the correct stage for identifying completed exec session outcomes.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/cks-certified-kubernetes-security-specialist-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

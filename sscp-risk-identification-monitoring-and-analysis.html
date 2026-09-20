@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Risk Identification, Monitoring, and Analysis Practice Questions — Systems Security Certified Practitioner</title>
+<meta name="description" content="6 free Risk Identification, Monitoring, and Analysis practice questions with explanations for the Systems Security Certified Practitioner exam.">
+<link rel="canonical" href="https://technuggets.academy/sscp-risk-identification-monitoring-and-analysis.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Risk Identification, Monitoring, and Analysis Practice Questions — Systems Security Certified Practitioner">
+<meta property="og:description" content="6 free Risk Identification, Monitoring, and Analysis practice questions with explanations for the Systems Security Certified Practitioner exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/sscp-risk-identification-monitoring-and-analysis.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Risk Identification, Monitoring, and Analysis</h1>
+<p class="sub">Free Systems Security Certified Practitioner practice — 6 questions on <strong>Risk Identification, Monitoring, and Analysis</strong>, with explanations. No sign-up.
+<a href="sscp.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Domain 3: Risk Identification, Monitoring, and Analysis">
+    <div class="meta">Question 1 of 6 · Domain 3: Risk Identification, Monitoring, and Analysis</div>
+    <div class="q">A security practitioner is calculating the annualized loss expectancy (ALE) for a data center. The asset value is $500,000. A flood is estimated to destroy 20% of the asset's value (exposure factor), and floods are expected to occur once every two years (ARO = 0.5). What is the ALE?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. $250,000</button><button class="opt" onclick="answer(this,0,1,2)">B. $100,000</button><button class="opt" onclick="answer(this,0,2,2)">C. $50,000</button><button class="opt" onclick="answer(this,0,3,2)">D. $10,000</button>
+    <div class="expl">SLE = Asset Value x Exposure Factor = $500,000 x 0.20 = $100,000. ALE = SLE x ARO = $100,000 x 0.5 = $50,000.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Domain 3: Risk Identification, Monitoring, and Analysis">
+    <div class="meta">Question 2 of 6 · Domain 3: Risk Identification, Monitoring, and Analysis</div>
+    <div class="q">A financial services firm needs vulnerability scan results that accurately reflect missing OS patches, misconfigured local services, and outdated application libraries on all internal Windows and Linux servers. Which scanning approach BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. An uncredentialed external scan of the servers</button><button class="opt" onclick="answer(this,1,1,2)">B. A black-box penetration test focused only on network perimeter devices</button><button class="opt" onclick="answer(this,1,2,2)">C. A credentialed scan using authenticated agent or admin-level accounts on each host</button><button class="opt" onclick="answer(this,1,3,2)">D. A passive network traffic capture analyzed for known exploit signatures</button>
+    <div class="expl">Credentialed scans authenticate to the host with administrative or service credentials, allowing the scanner to enumerate installed patches, local services, and library versions with far greater accuracy than external checks.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Domain 3: Risk Identification, Monitoring, and Analysis">
+    <div class="meta">Question 3 of 6 · Domain 3: Risk Identification, Monitoring, and Analysis</div>
+    <div class="q">A SOC analyst notices that a SIEM failed to raise an alert for a brute-force attack in which an attacker submitted five failed login attempts per hour, spread over three days, against a single account. The correlation rule triggers only when 10 failed logins occur within a 5-minute window. What is the BEST remediation?</div>
+    <button class="opt" onclick="answer(this,2,0,2)">A. Reduce the failed-login alert threshold to exactly 5 attempts within the same 5-minute window</button><button class="opt" onclick="answer(this,2,1,2)">B. Disable the correlation rule and require analysts to manually review all authentication logs daily</button><button class="opt" onclick="answer(this,2,2,2)">C. Increase the correlation rule's time window so that failed login events are aggregated over a longer period, such as 24-72 hours</button><button class="opt" onclick="answer(this,2,3,2)">D. Increase the retention period of raw authentication logs without modifying the correlation logic</button>
+    <div class="expl">Low-and-slow attacks evade short-window thresholds by staying under the rate limit. Extending the correlation window allows the SIEM to aggregate sparse events over a longer period and detect the cumulative pattern, reducing false negatives.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Domain 3: Risk Identification, Monitoring, and Analysis">
+    <div class="meta">Question 4 of 6 · Domain 3: Risk Identification, Monitoring, and Analysis</div>
+    <div class="q">An organization determines it cannot cost-effectively eliminate the risk of a large-scale DDoS attack against its e-commerce platform. Instead, it purchases a cyber-insurance policy that reimburses financial losses resulting from extended outages caused by such attacks. Which risk treatment strategy does this represent?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. Risk avoidance</button><button class="opt" onclick="answer(this,3,1,1)">B. Risk transfer</button><button class="opt" onclick="answer(this,3,2,1)">C. Risk mitigation</button><button class="opt" onclick="answer(this,3,3,1)">D. Risk acceptance</button>
+    <div class="expl">Purchasing insurance shifts the financial impact of the risk to a third party (the insurer) rather than reducing the likelihood or impact directly — this is the definition of risk transfer (transference).</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Domain 3: Risk Identification, Monitoring, and Analysis">
+    <div class="meta">Question 5 of 6 · Domain 3: Risk Identification, Monitoring, and Analysis</div>
+    <div class="q">During incident response, investigators need log evidence from a compromised server that can withstand challenges to its integrity in a potential legal proceeding, especially given that the attacker obtained root access. Which control BEST ensures the evidentiary integrity of the logs?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. Increasing the local log file rotation size so more history is retained on the compromised host</button><button class="opt" onclick="answer(this,4,1,2)">B. Enabling maximum verbosity logging on the local server after the compromise is detected</button><button class="opt" onclick="answer(this,4,2,2)">C. Forwarding logs in real time to a centralized, access-restricted log server using write-once storage and cryptographic hashing</button><button class="opt" onclick="answer(this,4,3,2)">D. Synchronizing the server's clock to an NTP source immediately after detecting the compromise</button>
+    <div class="expl">Centralized logging to a separate, hardened server with write-once (WORM) storage and cryptographic hashing prevents an attacker with root access on the source host from altering or deleting the evidentiary record, preserving chain of custody and integrity.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Domain 3: Risk Identification, Monitoring, and Analysis">
+    <div class="meta">Question 6 of 6 · Domain 3: Risk Identification, Monitoring, and Analysis</div>
+    <div class="q">A security manager wants ongoing assurance that deployed security controls remain effective between scheduled formal assessments, using automated data feeds to track control status in near real time. Which approach BEST satisfies this requirement?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. Implement a continuous monitoring program that automates collection and analysis of control status data</button><button class="opt" onclick="answer(this,5,1,0)">B. Rely solely on an annual third-party security audit</button><button class="opt" onclick="answer(this,5,2,0)">C. Perform a single penetration test at the end of each fiscal year</button><button class="opt" onclick="answer(this,5,3,0)">D. Run a vulnerability scan once per quarter and manually document results in a spreadsheet</button>
+    <div class="expl">Continuous monitoring programs use automated tools and data feeds to provide near-real-time visibility into control effectiveness and security posture, filling the gaps between periodic formal assessments — this is a core risk monitoring concept tested on the SSCP.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/sscp-exam-focused-prep-master-all-7-domains/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Storage Practice Questions — VMware Certified Professional - Data Center Virtualization (vSphere 8)</title>
+<meta name="description" content="6 free Storage practice questions with explanations for the VMware Certified Professional - Data Center Virtualization (vSphere 8) exam.">
+<link rel="canonical" href="https://technuggets.academy/2v0-21-23-storage.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Storage Practice Questions — VMware Certified Professional - Data Center Virtualization (vSphere 8)">
+<meta property="og:description" content="6 free Storage practice questions with explanations for the VMware Certified Professional - Data Center Virtualization (vSphere 8) exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/2v0-21-23-storage.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Storage</h1>
+<p class="sub">Free VMware Certified Professional - Data Center Virtualization (vSphere 8) practice — 6 questions on <strong>Storage</strong>, with explanations. No sign-up.
+<a href="2v0-21-23.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Storage">
+    <div class="meta">Question 1 of 6 · Storage</div>
+    <div class="q">A vSphere 8 administrator wants automatic space reclamation (UNMAP) on a VMFS-6 datastore to reclaim deleted blocks as fast as possible, accepting the additional host I/O overhead this causes. Which reclamation priority setting, available starting in vSphere 8, should be configured?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. Low</button><button class="opt" onclick="answer(this,0,1,2)">B. None</button><button class="opt" onclick="answer(this,0,2,2)">C. High</button><button class="opt" onclick="answer(this,0,3,2)">D. Medium</button>
+    <div class="expl">vSphere 8 expanded VMFS6 automatic space reclamation priorities to None, Low, Medium, and High. High issues UNMAP commands most aggressively/fastest, reclaiming space quickest at the cost of more backend I/O.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Storage">
+    <div class="meta">Question 2 of 6 · Storage</div>
+    <div class="q">A company presents an ALUA-compliant active/passive storage array to an ESXi 8 cluster over Fibre Channel. Which Native Multipathing Plug-in Path Selection Policy is recommended by VMware to balance I/O across the active controller's paths while avoiding path thrashing?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. Round Robin (RR)</button><button class="opt" onclick="answer(this,1,1,0)">B. Fixed</button><button class="opt" onclick="answer(this,1,2,0)">C. Most Recently Used (MRU)</button><button class="opt" onclick="answer(this,1,3,0)">D. Fixed with a manually set preferred path</button>
+    <div class="expl">For ALUA-capable arrays, VMware recommends Round Robin because it load-balances I/O across the active/optimized paths reported by the array while still respecting ALUA state, avoiding the thrashing risk that Fixed can cause on active/passive arrays.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Storage">
+    <div class="meta">Question 3 of 6 · Storage</div>
+    <div class="q">A vSAN storage policy is configured with 'Failures to Tolerate' set to 2 using RAID-6 (Erasure Coding) for space efficiency. What is the minimum number of hosts contributing storage that the vSAN cluster must have to satisfy this policy?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. 6</button><button class="opt" onclick="answer(this,2,1,0)">B. 4</button><button class="opt" onclick="answer(this,2,2,0)">C. 5</button><button class="opt" onclick="answer(this,2,3,0)">D. 8</button>
+    <div class="expl">RAID-6 erasure coding with FTT=2 requires 4 data segments plus 2 parity segments, needing a minimum of 6 hosts in the cluster (each hosting one component) to satisfy the policy.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Storage">
+    <div class="meta">Question 4 of 6 · Storage</div>
+    <div class="q">A VM is deployed using a storage policy with a tag-based placement rule requiring the datastore to have the tag 'Gold'. After deployment, the administrator removes the 'Gold' tag from the datastore hosting the VM's disks. What happens to the VM as a result?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. vSphere automatically Storage vMotions the VM to a compliant datastore</button><button class="opt" onclick="answer(this,3,1,2)">B. The VM is powered off until a compliant datastore is available</button><button class="opt" onclick="answer(this,3,2,2)">C. The VM's storage policy compliance status changes to noncompliant, but the VM remains on the same datastore until manually remediated</button><button class="opt" onclick="answer(this,3,3,2)">D. SPBM deletes the VM's virtual disks to enforce policy compliance</button>
+    <div class="expl">SPBM continuously evaluates compliance but does not automatically move VMs. Removing the tag causes the policy check to fail, changing the compliance status to noncompliant; the administrator must manually trigger remediation (e.g., Storage vMotion) to restore compliance.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Storage">
+    <div class="meta">Question 5 of 6 · Storage</div>
+    <div class="q">In a Virtual Volumes (vVols) architecture, which component acts as the data access point between ESXi hosts and the storage array, eliminating the need to present traditional LUNs for per-VM I/O?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. Protocol Endpoint (PE)</button><button class="opt" onclick="answer(this,4,1,0)">B. VASA Provider</button><button class="opt" onclick="answer(this,4,2,0)">C. Storage Container</button><button class="opt" onclick="answer(this,4,3,0)">D. Config-VVol</button>
+    <div class="expl">The Protocol Endpoint is the logical I/O proxy the array exposes to ESXi hosts; all vVol data traffic flows through the PE, which binds/unbinds vVols on demand instead of requiring a dedicated LUN per VM.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Storage">
+    <div class="meta">Question 6 of 6 · Storage</div>
+    <div class="q">An administrator wants to increase throughput to a single NFS 4.1 datastore by allowing ESXi to establish multiple TCP connections to the NFS server for the same mount. Which NFS 4.1 feature, requiring support on both ESXi and the NFS server, enables this behavior?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. Session trunking (multipathing)</button><button class="opt" onclick="answer(this,5,1,0)">B. LACP link aggregation</button><button class="opt" onclick="answer(this,5,2,0)">C. Kerberos with AES encryption</button><button class="opt" onclick="answer(this,5,3,0)">D. Storage I/O Control</button>
+    <div class="expl">NFS 4.1 in vSphere supports session trunking, which allows multiple IP addresses/connections (paths) to be used for a single NFS 4.1 session, providing multipathing and increased throughput/resiliency — this requires the NFS server to also support session trunking.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/vcp-dcv-2v0-21-23-vsphere-8-exam-focused-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

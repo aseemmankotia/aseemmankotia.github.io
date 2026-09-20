@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Web Communication and Cloud Security Practice Questions — GIAC Security Essentials</title>
+<meta name="description" content="6 free Web Communication and Cloud Security practice questions with explanations for the GIAC Security Essentials exam.">
+<link rel="canonical" href="https://technuggets.academy/gsec-web-communication-and-cloud-security.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Web Communication and Cloud Security Practice Questions — GIAC Security Essentials">
+<meta property="og:description" content="6 free Web Communication and Cloud Security practice questions with explanations for the GIAC Security Essentials exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/gsec-web-communication-and-cloud-security.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Web Communication and Cloud Security</h1>
+<p class="sub">Free GIAC Security Essentials practice — 6 questions on <strong>Web Communication and Cloud Security</strong>, with explanations. No sign-up.
+<a href="gsec.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Web Communication and Cloud Security">
+    <div class="meta">Question 1 of 6 · Web Communication and Cloud Security</div>
+    <div class="q">A penetration tester runs 'curl http://169.254.169.254/latest/meta-data/iam/security-credentials/' from a compromised web application server hosted on AWS EC2 and successfully retrieves temporary IAM credentials without any authentication header. The instance was launched with the default IMDS configuration prior to a recent security hardening pass. Which single change would BEST prevent this SSRF-to-credential-theft attack?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. Rotate the IAM role's access keys on a 90-day schedule</button><button class="opt" onclick="answer(this,0,1,2)">B. Move the metadata service behind a WAF rule blocking port 80 traffic</button><button class="opt" onclick="answer(this,0,2,2)">C. Enforce IMDSv2 by requiring a PUT-based session token and setting the hop limit to 1</button><button class="opt" onclick="answer(this,0,3,2)">D. Encrypt the EBS volume attached to the instance with a customer-managed KMS key</button>
+    <div class="expl">IMDSv2 requires a session token obtained via an HTTP PUT request with a custom header, which a typical SSRF vector (server-side GET request forgery) cannot forge, and setting the hop limit to 1 blocks requests proxied through containers or reverse proxies, closing the classic metadata-credential-theft path.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Web Communication and Cloud Security">
+    <div class="meta">Question 2 of 6 · Web Communication and Cloud Security</div>
+    <div class="q">During a TLS configuration review, an analyst finds a server offering the cipher suite TLS_RSA_WITH_AES_256_GCM_SHA384 as its top preference. A colleague argues this should be deprioritized in favor of TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384. What is the SECURITY reason for this recommendation?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. RSA key exchange does not provide forward secrecy, so recording encrypted traffic now allows decryption later if the server's private key is ever compromised</button><button class="opt" onclick="answer(this,1,1,0)">B. AES-256-GCM is a weaker cipher than AES-128-GCM and should never be offered</button><button class="opt" onclick="answer(this,1,2,0)">C. SHA384 is deprecated for use in any TLS cipher suite as of TLS 1.3</button><button class="opt" onclick="answer(this,1,3,0)">D. RSA-based cipher suites are incompatible with HTTP/2 and will cause browser connection failures</button>
+    <div class="expl">In RSA key-exchange cipher suites, the pre-master secret is encrypted directly with the server's static RSA public key; if that private key is later stolen, all previously captured traffic can be decrypted. ECDHE generates an ephemeral key pair per session, providing perfect forward secrecy so past sessions remain safe even after key compromise.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Web Communication and Cloud Security">
+    <div class="meta">Question 3 of 6 · Web Communication and Cloud Security</div>
+    <div class="q">A company's site is vulnerable to SSL-stripping attacks on public Wi-Fi because users often type 'example.com' without 'https://'. The security team wants browsers to automatically upgrade all future connections to HTTPS for this domain AND all of its subdomains, even on the very first visit, without relying on a redirect. Which configuration achieves this?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. Set the Content-Security-Policy header to upgrade-insecure-requests only</button><button class="opt" onclick="answer(this,2,1,1)">B. Set Strict-Transport-Security: max-age=31536000; includeSubDomains; preload and submit the domain to the HSTS preload list</button><button class="opt" onclick="answer(this,2,2,1)">C. Configure a 301 redirect from port 80 to port 443 at the load balancer</button><button class="opt" onclick="answer(this,2,3,1)">D. Set Strict-Transport-Security: max-age=0 on the root domain only</button>
+    <div class="expl">HSTS with includeSubDomains protects subdomains, a max-age of one year is the recommended durable policy, and preload submission bakes the enforcement directly into browser source code so protection applies even on a user's very first connection attempt, before any HSTS header could ever be received over an initial unencrypted request.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Web Communication and Cloud Security">
+    <div class="meta">Question 4 of 6 · Web Communication and Cloud Security</div>
+    <div class="q">A company migrates its custom-built order-processing application from on-premises servers to a cloud provider's Platform-as-a-Service (PaaS) application hosting offering (e.g., a managed app service tier). Under the shared responsibility model, which security task REMAINS the customer's responsibility?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. Patching the underlying operating system kernel</button><button class="opt" onclick="answer(this,3,1,1)">B. Securing the application's authentication and authorization logic and its input validation code</button><button class="opt" onclick="answer(this,3,2,1)">C. Maintaining physical security of the data center hosting the compute</button><button class="opt" onclick="answer(this,3,3,1)">D. Patching the managed runtime/language framework provided by the platform</button>
+    <div class="expl">In PaaS, the provider manages the underlying OS, hardware, physical facility, and the managed runtime, but the customer still owns everything they build on top of it — application code, business logic, authentication/authorization, session handling, and input validation remain squarely the customer's responsibility.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Web Communication and Cloud Security">
+    <div class="meta">Question 5 of 6 · Web Communication and Cloud Security</div>
+    <div class="q">A web application sets a session cookie with the attributes: Secure; HttpOnly; SameSite=Lax. A researcher demonstrates a cross-site request forgery attack still succeeds when a malicious third-party site auto-submits a hidden GET-based form that triggers a state-changing action (a fund transfer) on the target application. What is the MOST likely reason the SameSite=Lax attribute failed to prevent this?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. The HttpOnly flag disables SameSite enforcement for that cookie</button><button class="opt" onclick="answer(this,4,1,2)">B. SameSite attributes only apply to cookies set over HTTP, not HTTPS</button><button class="opt" onclick="answer(this,4,2,2)">C. SameSite=Lax still allows the cookie to be sent on top-level navigation GET requests, so a state-changing action should never be triggerable via GET in the first place</button><button class="opt" onclick="answer(this,4,3,2)">D. The Secure flag overrides and disables SameSite protections</button>
+    <div class="expl">SameSite=Lax is designed to allow cookies on 'safe' cross-site navigations, which includes top-level GET requests (like clicking a link or an auto-submitting GET form), specifically to preserve usability for things like following links from external sites. The real design flaw here is the application performing a state-changing action on a GET request; state changes should require POST with CSRF tokens and SameSite=Strict or Lax combined with proper method restrictions.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Web Communication and Cloud Security">
+    <div class="meta">Question 6 of 6 · Web Communication and Cloud Security</div>
+    <div class="q">A web application accepts user-supplied XML documents for a bulk-upload feature. An attacker submits a document containing a DOCTYPE declaration with a custom entity that references 'file:///etc/passwd', and the application's response includes the contents of that file. Which single remediation directly closes this vulnerability class at its root?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. Enable verbose error logging to detect future exploitation attempts</button><button class="opt" onclick="answer(this,5,1,1)">B. Disable DTD processing and external entity resolution in the XML parser configuration</button><button class="opt" onclick="answer(this,5,2,1)">C. Add a Web Application Firewall rule blocking the string '&lt;!DOCTYPE'</button><button class="opt" onclick="answer(this,5,3,1)">D. Require TLS client certificate authentication for the upload endpoint</button>
+    <div class="expl">This is a classic XML External Entity (XXE) injection. The root cause is that the XML parser is configured to resolve external entities and process DTDs at all; disabling DTD processing and external entity resolution entirely (the recommended OWASP fix) eliminates the vulnerability class regardless of payload variation, rather than trying to filter specific malicious strings.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/gsec-giac-security-essentials-exam-focused-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

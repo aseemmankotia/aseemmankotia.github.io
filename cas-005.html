@@ -1,0 +1,124 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free CompTIA SecurityX Practice Test — 12 Real Exam-Style Questions</title>
+<meta name="description" content="Free CompTIA SecurityX practice questions with detailed explanations. Test yourself before the real exam.">
+<link rel="canonical" href="https://technuggets.academy/cas-005.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free CompTIA SecurityX Practice Test — 12 Real Exam-Style Questions">
+<meta property="og:description" content="Free CompTIA SecurityX practice questions with detailed explanations. Test yourself before the real exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/cas-005.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#C8202F}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div><div class="hero">
+  <span class="chip">CAS-005</span>
+  <h1>Free CompTIA SecurityX Practice Test</h1>
+  <p class="sub">12 exam-style questions with full explanations — no sign-up. Score yourself, then close your gaps with the full course.</p>
+  <div class="facts"><span class="fact">Exam fee <b>~$509</b></span><span class="fact"><b>4</b> exam domains</span><span class="fact">Level <b>Expert</b></span><span class="fact"><b>2</b> timed practice tests in the course</span></div>
+  <div class="cta-row"><a class="btn enroll" href="https://www.udemy.com/course/comptia-securityx-cas-005-exam-focused-prep/?couponCode=FREETEST33" rel="sponsored" target="_blank">Get my $34.99 deal →</a><a class="btn ghost" href="#practice">Try the free test →</a><span class="urgency">⏳ Deal ends Oct 6</span></div>
+</div><div class="trust"><span>✅ <b>Free</b> practice — no sign-up</span><span>📝 Real exam-style questions</span><span>💡 Detailed explanations</span><span>💸 30-day money-back via Udemy</span></div>
+<div id="practice"></div>
+
+  <div class="card qcard" id="q0" data-domain="Governance, Risk, and Compliance">
+    <div class="meta">Question 1 of 12 · Governance, Risk, and Compliance</div>
+    <div class="q">A company wants continuous compliance evidence for PCI DSS across hundreds of cloud accounts, reducing manual audit prep effort. Which approach BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. Quarterly manual configuration reviews performed by the internal audit team</button><button class="opt" onclick="answer(this,0,1,3)">B. Annual third-party penetration test report submitted to auditors</button><button class="opt" onclick="answer(this,0,2,3)">C. A GRC spreadsheet updated monthly by the compliance manager</button><button class="opt" onclick="answer(this,0,3,3)">D. Open Policy Agent (OPA)/Rego policies integrated into the CI/CD pipeline that automatically evaluate infrastructure-as-code against PCI DSS controls before deployment, with results stored as audit artifacts</button>
+    <div class="expl">Policy-as-code enforced in the CI/CD pipeline provides continuous, automated validation of controls at deployment time and generates machine-readable audit evidence, which is the core intent of compliance-as-code programs at enterprise scale.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Security Architecture">
+    <div class="meta">Question 2 of 12 · Security Architecture</div>
+    <div class="q">A global enterprise is retiring its site-to-site VPN concentrators for remote employees who need direct, low-latency access to internal SaaS and on-premises applications. The security team requires continuous identity and device posture verification before and during every session, regardless of network location, as part of a SASE rollout. Which component should be the core access control mechanism in this architecture?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. Cloud Access Security Broker (CASB) deployed in API mode</button><button class="opt" onclick="answer(this,1,1,2)">B. Software-Defined WAN (SD-WAN) with static routing policies</button><button class="opt" onclick="answer(this,1,2,2)">C. Zero Trust Network Access (ZTNA)</button><button class="opt" onclick="answer(this,1,3,2)">D. A hardened VPN concentrator with mandatory MFA</button>
+    <div class="expl">ZTNA brokers per-session, per-application access based on continuous identity, device posture, and contextual risk evaluation instead of granting broad network-level trust like a VPN. It is the defining access component of a SASE architecture and directly satisfies the requirement for continuous verification regardless of location.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Security Engineering">
+    <div class="meta">Question 3 of 12 · Security Engineering</div>
+    <div class="q">A financial services firm is redesigning its TLS infrastructure to protect data-in-transit against 'harvest-now-decrypt-later' attacks, where adversaries capture encrypted traffic today to decrypt once cryptographically relevant quantum computers exist. The firm still needs to maintain compatibility with legacy clients during a multi-year transition. Which approach BEST addresses this requirement?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. Increase RSA key size to 8192 bits for all TLS certificates</button><button class="opt" onclick="answer(this,2,1,1)">B. Implement a hybrid key exchange in TLS 1.3 that combines a classical algorithm such as X25519 with a post-quantum KEM such as ML-KEM (Kyber)</button><button class="opt" onclick="answer(this,2,2,1)">C. Replace TLS with IPsec using AES-256-GCM for all external connections</button><button class="opt" onclick="answer(this,2,3,1)">D. Switch all certificates to ECDSA P-384 signatures only</button>
+    <div class="expl">Hybrid key exchange combines a classical algorithm with a NIST-standardized post-quantum KEM (ML-KEM), providing quantum resistance for the key establishment step while remaining backward compatible with classical security guarantees during the transition period — the recommended approach for mitigating harvest-now-decrypt-later risk.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Security Operations">
+    <div class="meta">Question 4 of 12 · Security Operations</div>
+    <div class="q">A financial services SOC receives over 10,000 alerts daily from firewalls, EDR, IDS, and cloud security tools. Analysts spend most of their shift pivoting between consoles to manually correlate related alerts, causing critical incidents to be missed during triage. The SOC lead wants a platform that ingests alerts from all tools, automatically correlates related events, and triggers predefined automated response playbooks (e.g., isolate host, disable account) based on configurable criteria — without requiring analysts to manually execute each response step. Which solution BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. Deploy an additional SIEM instance dedicated to each tool to reduce alert volume per console</button><button class="opt" onclick="answer(this,3,1,1)">B. Implement a SOAR platform integrated with the existing SIEM to enable correlation-driven automated playbooks</button><button class="opt" onclick="answer(this,3,2,1)">C. Increase analyst headcount to manually triage the additional alert volume</button><button class="opt" onclick="answer(this,3,3,1)">D. Configure each individual security tool to email alerts directly to the SOC distribution list</button>
+    <div class="expl">SOAR (Security Orchestration, Automation, and Response) integrated with the SIEM is purpose-built to ingest correlated alert data and execute automated, criteria-based playbooks (isolation, account disable, ticket creation) without manual tool-switching, directly reducing analyst fatigue and response time.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Governance, Risk, and Compliance">
+    <div class="meta">Question 5 of 12 · Governance, Risk, and Compliance</div>
+    <div class="q">A critical database server has an asset value (AV) of $500,000. The exposure factor (EF) for a ransomware attack is 40%. The annualized rate of occurrence (ARO) is 0.5 (once every two years). What is the Annualized Loss Expectancy (ALE)?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. $200,000</button><button class="opt" onclick="answer(this,4,1,2)">B. $250,000</button><button class="opt" onclick="answer(this,4,2,2)">C. $100,000</button><button class="opt" onclick="answer(this,4,3,2)">D. $20,000</button>
+    <div class="expl">SLE = AV x EF = $500,000 x 0.4 = $200,000. ALE = SLE x ARO = $200,000 x 0.5 = $100,000.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Security Architecture">
+    <div class="meta">Question 6 of 12 · Security Architecture</div>
+    <div class="q">A payment processor must allow its data science team to run aggregate spending-pattern analytics on card transaction records while ensuring the primary account number (PAN) is never exposed in the analytics environment, and referential integrity across records for the same card must be preserved. Which data protection technique BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. Tokenization</button><button class="opt" onclick="answer(this,5,1,0)">B. Full disk encryption on the analytics database volumes</button><button class="opt" onclick="answer(this,5,2,0)">C. Format-preserving encryption applied per query</button><button class="opt" onclick="answer(this,5,3,0)">D. Salted hashing of the PAN field</button>
+    <div class="expl">Tokenization replaces the PAN with a non-sensitive surrogate token that maps consistently back to the same card, preserving referential integrity for analytics (e.g., grouping transactions by the same card) while the actual PAN never leaves the secure token vault, removing it from the analytics environment's compliance scope.</div>
+  </div>
+
+  <div class="card qcard" id="q6" data-domain="Security Engineering">
+    <div class="meta">Question 7 of 12 · Security Engineering</div>
+    <div class="q">A company deployed an LLM-powered customer support application using retrieval-augmented generation (RAG) against an internal knowledge base. The security team discovers that users can craft inputs causing the model to ignore its system instructions and return confidential internal documents verbatim, bypassing intended restrictions. Which control BEST mitigates this risk?</div>
+    <button class="opt" onclick="answer(this,6,0,0)">A. Insert an independent content moderation and output-filtering layer between the model and the user, with strict input/output validation against a prompt-injection ruleset</button><button class="opt" onclick="answer(this,6,1,0)">B. Increase the model's temperature setting to make outputs less predictable</button><button class="opt" onclick="answer(this,6,2,0)">C. Encrypt the knowledge base documents at rest using AES-256</button><button class="opt" onclick="answer(this,6,3,0)">D. Expand the context window so the model has more source data to reference</button>
+    <div class="expl">Prompt injection attacks manipulate model behavior at the input/output boundary; an independent guardrail layer that validates and filters both inputs (detecting injection patterns) and outputs (blocking confidential data leakage) directly addresses the attack vector regardless of what the underlying model does.</div>
+  </div>
+
+  <div class="card qcard" id="q7" data-domain="Security Operations">
+    <div class="meta">Question 8 of 12 · Security Operations</div>
+    <div class="q">A SOC's UEBA (User and Entity Behavior Analytics) tool is generating a high rate of false positives by flagging routine after-hours administrative activity performed by IT staff as anomalous, causing analysts to ignore its alerts. Which action BEST reduces false positives while preserving the tool's ability to detect true behavioral anomalies?</div>
+    <button class="opt" onclick="answer(this,7,0,0)">A. Establish role-based peer-group behavioral baselines so admin activity is compared against similar admin roles rather than the general user population</button><button class="opt" onclick="answer(this,7,1,0)">B. Disable UEBA alerting for all accounts with local administrator privileges</button><button class="opt" onclick="answer(this,7,2,0)">C. Globally raise the anomaly detection sensitivity threshold across all user accounts</button><button class="opt" onclick="answer(this,7,3,0)">D. Suppress all after-hours alerts regardless of account type or activity</button>
+    <div class="expl">UEBA effectiveness depends on comparing behavior against an appropriate peer group. Building role-based baselines (e.g., comparing admins to other admins) accounts for legitimate variance in privileged workflows while still flagging genuine deviations within that peer group.</div>
+  </div>
+
+  <div class="card qcard" id="q8" data-domain="Governance, Risk, and Compliance">
+    <div class="meta">Question 9 of 12 · Governance, Risk, and Compliance</div>
+    <div class="q">A CISO discovers that a critical SaaS vendor processing customer PII has no SOC 2 Type II report and has subcontracted data processing to a fourth-party cloud provider without notification. Which action should the CISO prioritize FIRST?</div>
+    <button class="opt" onclick="answer(this,8,0,3)">A. Immediately terminate the vendor contract</button><button class="opt" onclick="answer(this,8,1,3)">B. Accept the risk since the vendor's services are business critical</button><button class="opt" onclick="answer(this,8,2,3)">C. Conduct an internal penetration test of the vendor's infrastructure without their consent</button><button class="opt" onclick="answer(this,8,3,3)">D. Require the vendor to provide a SOC 2 Type II report or equivalent attestation, and update the contract to mandate disclosure and approval of subprocessors</button>
+    <div class="expl">Standard third-party risk management practice is to obtain independent attestation of controls and formalize subprocessor governance (right-to-audit, notification, approval clauses) in the contract before deciding on further action.</div>
+  </div>
+
+  <div class="card qcard" id="q9" data-domain="Security Architecture">
+    <div class="meta">Question 10 of 12 · Security Architecture</div>
+    <div class="q">An enterprise data center runs dozens of application workloads on virtual machines within the same flat VLAN. Security architects need to enforce granular, workload-specific policies that block lateral (east-west) movement between VMs even though they share the same subnet, without redesigning the physical network. Which control should be implemented?</div>
+    <button class="opt" onclick="answer(this,9,0,2)">A. VLAN trunking across all top-of-rack switches</button><button class="opt" onclick="answer(this,9,1,2)">B. Access control lists (ACLs) applied only at the core switch</button><button class="opt" onclick="answer(this,9,2,2)">C. Host-based micro-segmentation with software-defined security policies</button><button class="opt" onclick="answer(this,9,3,2)">D. Physical air-gapping of critical workloads</button>
+    <div class="expl">Host-based micro-segmentation enforces granular, workload-level policies directly at the hypervisor or host firewall layer, independent of the underlying VLAN or physical topology, and effectively blocks east-west lateral movement between VMs on the same subnet without any physical network redesign.</div>
+  </div>
+
+  <div class="card qcard" id="q10" data-domain="Security Engineering">
+    <div class="meta">Question 11 of 12 · Security Engineering</div>
+    <div class="q">A web application team wants to reduce TLS handshake latency caused by certificate revocation checks while also eliminating the privacy concern of clients revealing their browsing destinations directly to the Certificate Authority during each check. Which solution BEST meets both requirements?</div>
+    <button class="opt" onclick="answer(this,10,0,0)">A. Configure the server to use OCSP stapling</button><button class="opt" onclick="answer(this,10,1,0)">B. Distribute a full CRL to every client on each connection</button><button class="opt" onclick="answer(this,10,2,0)">C. Have clients perform direct OCSP queries to the CA for every handshake</button><button class="opt" onclick="answer(this,10,3,0)">D. Implement certificate pinning in the client application</button>
+    <div class="expl">OCSP stapling has the web server periodically query the CA and cache (staple) a signed revocation response to present during the TLS handshake, eliminating client-to-CA round trips (reducing latency) and preventing the CA from learning which clients are visiting which sites (preserving privacy).</div>
+  </div>
+
+  <div class="card qcard" id="q11" data-domain="Security Operations">
+    <div class="meta">Question 12 of 12 · Security Operations</div>
+    <div class="q">During an enterprise attack surface assessment, a security analyst identifies that SMBv1 is enabled and exposed on 200 servers supporting a decommissioned application, though some undocumented internal tools may still reference it. What is the BEST remediation approach?</div>
+    <button class="opt" onclick="answer(this,11,0,0)">A. Segment the affected servers, validate dependencies through monitoring, then disable SMBv1 once confirmed unused</button><button class="opt" onclick="answer(this,11,1,0)">B. Apply the latest vendor patch for SMBv1 to close known vulnerabilities</button><button class="opt" onclick="answer(this,11,2,0)">C. Immediately disable SMBv1 across all 200 servers network-wide without further testing</button><button class="opt" onclick="answer(this,11,3,0)">D. Leave SMBv1 enabled but add a firewall rule logging all SMBv1 traffic for visibility only</button>
+    <div class="expl">SMBv1 is a legacy protocol with well-documented critical vulnerabilities (e.g., EternalBlue) and no reliable patch path; the correct enterprise approach is to segment/isolate the affected assets, validate actual dependencies through traffic monitoring, and then disable the protocol once confirmed safe — balancing risk reduction with operational continuity.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">undefined</span> <span class="price">$34.99</span> with code <span class="code">FREETEST33</span> — valid through Oct 6.</p>
+  <a href="https://www.udemy.com/course/comptia-securityx-cas-005-exam-focused-prep/?couponCode=FREETEST33" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<section class="faq"><h3>CAS-005 exam — quick answers</h3><details><summary>How much does the CAS-005 exam cost?</summary><p>The exam fee is approximately $509 and varies by region — confirm current pricing with the certification vendor before you book.</p></details><details><summary>What topics are on the exam?</summary><p>It covers 4 domains: Governance, Risk, and Compliance (20%), Security Architecture (27%), Security Engineering (31%), Security Operations (22%). The full course has a dedicated chapter, lab and practice-test coverage for each.</p></details><details><summary>Is this practice test really free?</summary><p>Yes — all questions on this page are free with explanations and no sign-up. The paid Udemy course adds two full-length timed exams, video lessons and hands-on labs.</p></details><details><summary>How do I get the discount?</summary><p>Use code FREETEST33 at checkout for $34.99 (list undefined) through Oct 6 — the enroll button applies it automatically.</p></details><details><summary>Will this prepare me for the real exam?</summary><p>The questions mirror the real exam's style and are mapped to the official domains. This is exam-focused preparation — combine the free test with the full course's timed simulations to gauge your readiness.</p></details></section>
+<div class="domains"><span class="meta">More free practice by exam domain:</span><br><a href="cas-005-governance-risk-and-compliance.html">Governance, Risk, and Compliance →</a><a href="cas-005-security-architecture.html">Security Architecture →</a><a href="cas-005-security-engineering.html">Security Engineering →</a><a href="cas-005-security-operations.html">Security Operations →</a></div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Minimize Microservice Vulnerabilities Practice Questions — Certified Kubernetes Security Specialist</title>
+<meta name="description" content="6 free Minimize Microservice Vulnerabilities practice questions with explanations for the Certified Kubernetes Security Specialist exam.">
+<link rel="canonical" href="https://technuggets.academy/cks-minimize-microservice-vulnerabilities.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Minimize Microservice Vulnerabilities Practice Questions — Certified Kubernetes Security Specialist">
+<meta property="og:description" content="6 free Minimize Microservice Vulnerabilities practice questions with explanations for the Certified Kubernetes Security Specialist exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/cks-minimize-microservice-vulnerabilities.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Minimize Microservice Vulnerabilities</h1>
+<p class="sub">Free Certified Kubernetes Security Specialist practice — 6 questions on <strong>Minimize Microservice Vulnerabilities</strong>, with explanations. No sign-up.
+<a href="cks.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Minimize Microservice Vulnerabilities">
+    <div class="meta">Question 1 of 6 · Minimize Microservice Vulnerabilities</div>
+    <div class="q">A security team needs new pods created in the 'payments' namespace to be blocked at admission time if they violate the Restricted Pod Security Standard (e.g., run as root or request hostNetwork). Pods currently running in the namespace must NOT be disrupted or evicted. Which action BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. Label the namespace pod-security.kubernetes.io/enforce=restricted so only newly created pods are evaluated against the Restricted profile; running pods remain unaffected</button><button class="opt" onclick="answer(this,0,1,0)">B. Label the namespace with pod-security.kubernetes.io/warn=restricted only, then wait for admins to manually review the warnings</button><button class="opt" onclick="answer(this,0,2,0)">C. Taint all nodes hosting the payments namespace with NoSchedule and update pod tolerations for compliant workloads only</button><button class="opt" onclick="answer(this,0,3,0)">D. Apply a Kyverno mutate policy that automatically deletes any existing non-compliant pod in the namespace</button>
+    <div class="expl">Pod Security Admission (PSA) is evaluated only at admission time (create/update requests). Setting the 'enforce' mode to 'restricted' blocks new non-compliant pods from being created but never inspects or evicts already-running pods, satisfying both requirements exactly.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Minimize Microservice Vulnerabilities">
+    <div class="meta">Question 2 of 6 · Minimize Microservice Vulnerabilities</div>
+    <div class="q">You must run an untrusted, multi-tenant workload with the strongest possible isolation boundary using a Kubernetes RuntimeClass, accepting higher pod startup latency as a tradeoff. Which technology and characteristic correctly describes this choice?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. Kata Containers — each pod runs inside a lightweight, hardware-virtualized VM (via KVM/QEMU), giving true hardware-level isolation at the cost of higher startup latency</button><button class="opt" onclick="answer(this,1,1,0)">B. gVisor — a user-space kernel intercepts syscalls via ptrace/systrap and provides weaker isolation than a hardware VM boundary</button><button class="opt" onclick="answer(this,1,2,0)">C. AppArmor profile — confines container syscalls using mandatory access control at the kernel level</button><button class="opt" onclick="answer(this,1,3,0)">D. seccomp-bpf profile — filters syscalls per container using a JSON allow/deny list attached to the pod spec</button>
+    <div class="expl">Kata Containers boots each pod inside its own lightweight VM backed by hardware virtualization extensions, providing a true hardware-enforced isolation boundary between the container and the host kernel — the strongest isolation of the RuntimeClass sandbox options, at the cost of slower pod startup than runc or gVisor.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Minimize Microservice Vulnerabilities">
+    <div class="meta">Question 3 of 6 · Minimize Microservice Vulnerabilities</div>
+    <div class="q">You want the API server to reject any new pod in namespace 'test' that violates the Restricted Pod Security Standard, while pods that merely violate the less-strict Baseline standard should only generate a warning to the client (not be blocked). Which pair of namespace labels achieves this?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. pod-security.kubernetes.io/enforce=baseline and pod-security.kubernetes.io/warn=restricted</button><button class="opt" onclick="answer(this,2,1,3)">B. pod-security.kubernetes.io/audit=restricted and pod-security.kubernetes.io/enforce=baseline</button><button class="opt" onclick="answer(this,2,2,3)">C. pod-security.kubernetes.io/warn=restricted and pod-security.kubernetes.io/enforce=privileged</button><button class="opt" onclick="answer(this,2,3,3)">D. pod-security.kubernetes.io/enforce=restricted and pod-security.kubernetes.io/warn=baseline</button>
+    <div class="expl">Setting enforce=restricted blocks any pod that fails the Restricted profile. Setting warn=baseline separately causes the API server to emit a client-side warning for anything that fails the looser Baseline profile (which restricted pods will already satisfy), without blocking it — matching the requirement exactly.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Minimize Microservice Vulnerabilities">
+    <div class="meta">Question 4 of 6 · Minimize Microservice Vulnerabilities</div>
+    <div class="q">A Kyverno ClusterPolicy is deployed to prevent pods from running as root. New pods that explicitly set runAsUser: 0 are still successfully created and running as root, but Kyverno reports the violations in its PolicyReport. What is the most likely cause?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. Kyverno ClusterPolicies cannot validate pod security contexts and only support mutation, so a MutatingWebhookConfiguration is required instead</button><button class="opt" onclick="answer(this,3,1,3)">B. The policy is missing a 'background: true' field, which is required for Kyverno to evaluate any admission request at all</button><button class="opt" onclick="answer(this,3,2,3)">C. ClusterPolicy resources only apply to resources labeled 'kyverno.io/managed=true', and the pods were created without this label</button><button class="opt" onclick="answer(this,3,3,3)">D. The ClusterPolicy's validationFailureAction is set to Audit, which only logs and reports violations instead of blocking the request; it must be changed to Enforce</button>
+    <div class="expl">Kyverno validate rules support two failure actions: 'Audit' (report violations via PolicyReport but allow the request) and 'Enforce' (reject the admission request). PolicyReport entries with pods still running as root is the textbook symptom of validationFailureAction being left at the default 'Audit' instead of 'Enforce'.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Minimize Microservice Vulnerabilities">
+    <div class="meta">Question 5 of 6 · Minimize Microservice Vulnerabilities</div>
+    <div class="q">A compliance requirement states that Kubernetes Secret objects must remain confidential even if an attacker obtains a raw copy of the etcd data files (e.g., from a stolen backup). Which control on the kube-apiserver directly satisfies this requirement?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. Restrict RBAC so only the 'cluster-admin' ClusterRole can run 'kubectl get secrets', preventing unauthorized reads</button><button class="opt" onclick="answer(this,4,1,1)">B. Configure the kube-apiserver with an EncryptionConfiguration file (--encryption-provider-config) using a provider such as aescbc or a KMS plugin so Secret data is encrypted before being persisted in etcd</button><button class="opt" onclick="answer(this,4,2,1)">C. Enable mutual TLS client certificate authentication between etcd peers to prevent unauthorized network access to the datastore</button><button class="opt" onclick="answer(this,4,3,1)">D. Create secrets using 'kubectl create secret generic' instead of applying YAML manifests, since the CLI base64-encodes values automatically</button>
+    <div class="expl">By default, Kubernetes stores Secret data in etcd only base64-encoded (not encrypted). Configuring encryption-at-rest via an EncryptionConfiguration passed with --encryption-provider-config causes the API server to encrypt Secret payloads (e.g., with AES-CBC or an external KMS) before writing them to etcd, so stolen etcd data files remain unreadable without the encryption key.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Minimize Microservice Vulnerabilities">
+    <div class="meta">Question 6 of 6 · Minimize Microservice Vulnerabilities</div>
+    <div class="q">Which statement correctly describes how Cilium implements pod-to-pod mTLS/transparent encryption, as distinguished from a traditional sidecar-based service mesh?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. Cilium requires injecting an Envoy sidecar container into every pod via a mutating webhook, identical to a traditional service mesh, in order to encrypt any pod-to-pod traffic</button><button class="opt" onclick="answer(this,5,1,1)">B. Cilium enforces network policy using eBPF and can transparently encrypt node-to-node traffic with IPsec or WireGuard, without requiring per-application certificate management</button><button class="opt" onclick="answer(this,5,2,1)">C. Cilium mTLS is implemented purely at the application layer — each microservice must load and rotate its own TLS certificate independently</button><button class="opt" onclick="answer(this,5,3,1)">D. Cilium encrypts only cluster DNS lookups by default; all pod-to-pod data traffic remains in plaintext unless a service mesh is layered on top</button>
+    <div class="expl">Cilium's CNI uses eBPF programs attached at the kernel level to enforce network policy and can enable transparent encryption of traffic between nodes using IPsec or WireGuard tunnels. This happens below the application layer, so individual microservices do not need to manage their own TLS certificates for this transport-level protection — a key distinction from sidecar-proxy service meshes like Istio.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/cks-certified-kubernetes-security-specialist-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

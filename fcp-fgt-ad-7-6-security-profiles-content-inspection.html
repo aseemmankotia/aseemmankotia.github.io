@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Security Profiles (Content Inspection) Practice Questions — FCP - FortiGate 7.6 Administrator</title>
+<meta name="description" content="6 free Security Profiles (Content Inspection) practice questions with explanations for the FCP - FortiGate 7.6 Administrator exam.">
+<link rel="canonical" href="https://technuggets.academy/fcp-fgt-ad-7-6-security-profiles-content-inspection.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Security Profiles (Content Inspection) Practice Questions — FCP - FortiGate 7.6 Administrator">
+<meta property="og:description" content="6 free Security Profiles (Content Inspection) practice questions with explanations for the FCP - FortiGate 7.6 Administrator exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/fcp-fgt-ad-7-6-security-profiles-content-inspection.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Security Profiles (Content Inspection)</h1>
+<p class="sub">Free FCP - FortiGate 7.6 Administrator practice — 6 questions on <strong>Security Profiles (Content Inspection)</strong>, with explanations. No sign-up.
+<a href="fcp-fgt-ad-7-6.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Security Profiles (Content Inspection)">
+    <div class="meta">Question 1 of 6 · Security Profiles (Content Inspection)</div>
+    <div class="q">After an administrator enables Full SSL Inspection with the default deep-inspection profile, users report browser certificate warnings on every HTTPS site, even legitimate ones. The security requirement to decrypt and inspect all outbound HTTPS traffic must remain in place. What is the correct fix?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. Switch the firewall policy from Full SSL Inspection to the default SSL Certificate Inspection profile</button><button class="opt" onclick="answer(this,0,1,2)">B. Disable the 'Block invalid SSL certificates' option in the SSL/SSH inspection profile</button><button class="opt" onclick="answer(this,0,2,2)">C. Import the FortiGate's CA certificate used for deep inspection into the trusted root certificate store on every client device</button><button class="opt" onclick="answer(this,0,3,2)">D. Create a static route that bypasses the FortiGate for HTTPS traffic</button>
+    <div class="expl">In full (deep) SSL inspection, FortiGate re-signs every HTTPS session with a CA certificate it generates on the fly. Browsers warn because that CA is untrusted by the client OS/browser. Distributing and trusting the FortiGate's CA cert (via GPO or MDM) eliminates the warning while decryption/inspection continues.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Security Profiles (Content Inspection)">
+    <div class="meta">Question 2 of 6 · Security Profiles (Content Inspection)</div>
+    <div class="q">A company wants to prevent users from bypassing FortiGate's DNS-based filtering by pointing their browsers at a DNS-over-HTTPS resolver such as cloudflare-dns.com. Which feature should the administrator configure?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. An application control signature override for 'DNS.TLS' set to Block</button><button class="opt" onclick="answer(this,1,1,3)">B. A web filter static URL block list containing DoH provider domains</button><button class="opt" onclick="answer(this,1,2,3)">C. SSL Certificate Inspection applied to port 53</button><button class="opt" onclick="answer(this,1,3,3)">D. The 'Block DNS requests to known DNS over HTTPS (DoH) servers' option inside the DNS Filter profile</button>
+    <div class="expl">FortiOS DNS Filter profiles include a dedicated toggle that uses FortiGuard's DoH server database to detect and block encrypted DNS attempts, forcing clients back to standard DNS that the DNS filter can inspect.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Security Profiles (Content Inspection)">
+    <div class="meta">Question 3 of 6 · Security Profiles (Content Inspection)</div>
+    <div class="q">An administrator notices that when the IPS engine on a FortiGate crashes due to resource exhaustion, all traffic subject to IPS-enabled policies stops passing until the engine restarts. Which CLI setting controls whether traffic is allowed to bypass inspection during such an IPS engine failure?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. config system global / set ips-... asic-offload enable</button><button class="opt" onclick="answer(this,2,1,1)">B. config ips global / set fail-open enable</button><button class="opt" onclick="answer(this,2,2,1)">C. config firewall policy / set inspection-mode flow</button><button class="opt" onclick="answer(this,2,3,1)">D. config system settings / set utf8-spam-tagging enable</button>
+    <div class="expl">The 'fail-open' setting under 'config ips global' determines behavior if the IPS engine becomes unavailable. Disabled (default) means fail-closed, dropping traffic; enabling fail-open allows traffic to pass uninspected rather than blocking business traffic.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Security Profiles (Content Inspection)">
+    <div class="meta">Question 4 of 6 · Security Profiles (Content Inspection)</div>
+    <div class="q">A FortiGate policy uses an Application Control sensor with SSL Certificate Inspection (not full SSL inspection). The company reports that FortiGate consistently classifies both Google Drive uploads and Gmail webmail traffic as the generic 'Google' application rather than the specific cloud app, preventing granular per-app policy control. What should the administrator do to fix accurate classification?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. Change the firewall policy to use Full SSL Inspection so the deep packet content is available for app detection</button><button class="opt" onclick="answer(this,3,1,0)">B. Increase the application control sensor's signature database update frequency</button><button class="opt" onclick="answer(this,3,2,0)">C. Manually add an application override entry that renames 'Google' to 'Google Drive'</button><button class="opt" onclick="answer(this,3,3,0)">D. Switch the application control sensor from flow-based to proxy-based mode</button>
+    <div class="expl">With only certificate inspection, FortiGate can see just the SNI/certificate CN, which for many Google services is shared, so specific cloud apps sharing a domain can't be distinguished. Full SSL inspection decrypts the payload, giving the application control engine the additional data (URLs, headers) needed for accurate per-app classification of cloud services.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Security Profiles (Content Inspection)">
+    <div class="meta">Question 5 of 6 · Security Profiles (Content Inspection)</div>
+    <div class="q">An administrator wants to block executable files even when a user renames a file's extension from .exe to .txt before uploading it through the firewall. Which File Filter configuration approach correctly achieves this?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. Create a file filter rule that matches the file type category 'Executable' regardless of the file's extension, since FortiOS inspects actual file content</button><button class="opt" onclick="answer(this,4,1,0)">B. Create a filename pattern rule matching '*.exe' in the file filter profile</button><button class="opt" onclick="answer(this,4,2,0)">C. Enable antivirus heuristic scanning instead of file filtering</button><button class="opt" onclick="answer(this,4,3,0)">D. Block port 443 uploads larger than 1MB in the firewall policy</button>
+    <div class="expl">FortiOS File Filter profiles support rules based on true file type, which is determined by inspecting the file's actual binary content/header signature rather than its extension, so a renamed .exe is still correctly identified and blocked as an executable.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Security Profiles (Content Inspection)">
+    <div class="meta">Question 6 of 6 · Security Profiles (Content Inspection)</div>
+    <div class="q">The antivirus profile applied to an SMTP policy has its oversize file threshold left at the configured default, and a 50MB file well above that threshold arrives containing malware. The oversize action has not been changed from its default value. What happens to this file by default?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. The file exceeds the oversize threshold and is passed through without full AV scanning because the default oversize action is to allow (log-only), unless explicitly set to block</button><button class="opt" onclick="answer(this,5,1,0)">B. FortiGate automatically blocks the file because any file containing malware is always blocked regardless of size</button><button class="opt" onclick="answer(this,5,2,0)">C. FortiGate buffers the entire file in memory until the scan completes, regardless of size</button><button class="opt" onclick="answer(this,5,3,0)">D. The SMTP session is terminated immediately because the file exceeds the maximum allowed protocol payload size</button>
+    <div class="expl">Antivirus scanning requires buffering the full file, which is impractical beyond the configured oversize limit. By default, files that exceed this threshold are passed through (with an oversize event logged) rather than blocked, since the AV engine cannot fully scan them — administrators must explicitly change the oversize action to Block to enforce stricter handling.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/fcp-fortigate-7-6-administrator-exam-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

@@ -1,0 +1,76 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Governance, Risk, and Compliance Practice Questions — CompTIA SecurityX</title>
+<meta name="description" content="6 free Governance, Risk, and Compliance practice questions with explanations for the CompTIA SecurityX exam.">
+<link rel="canonical" href="https://technuggets.academy/cas-005-governance-risk-and-compliance.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Governance, Risk, and Compliance Practice Questions — CompTIA SecurityX">
+<meta property="og:description" content="6 free Governance, Risk, and Compliance practice questions with explanations for the CompTIA SecurityX exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/cas-005-governance-risk-and-compliance.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#C8202F}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Governance, Risk, and Compliance</h1>
+<p class="sub">Free CompTIA SecurityX practice — 6 questions on <strong>Governance, Risk, and Compliance</strong>, with explanations. No sign-up.
+<a href="cas-005.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Governance, Risk, and Compliance">
+    <div class="meta">Question 1 of 6 · Governance, Risk, and Compliance</div>
+    <div class="q">A financial services organization must continuously prove compliance with PCI DSS 4.0 Requirement 11.3 (vulnerability scanning) to auditors without manual evidence collection every quarter. Which approach BEST achieves compliance-as-code for this requirement?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. Export vulnerability scan reports quarterly and store the PDFs in a compliance evidence repository</button><button class="opt" onclick="answer(this,0,1,2)">B. Require the security team to manually attest to remediation status in a shared spreadsheet reviewed monthly</button><button class="opt" onclick="answer(this,0,2,2)">C. Implement policy-as-code that automatically ingests scanner results into a GRC platform, maps them to control IDs via OSCAL, and generates real-time attestation dashboards</button><button class="opt" onclick="answer(this,0,3,2)">D. Contract a third-party auditor to perform manual evidence walkthroughs each quarter</button>
+    <div class="expl">Automated ingestion of scanner output mapped to control IDs (e.g., via OSCAL) and rendered as live dashboards is the definition of compliance-as-code: continuous, machine-readable evidence rather than point-in-time manual collection.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Governance, Risk, and Compliance">
+    <div class="meta">Question 2 of 6 · Governance, Risk, and Compliance</div>
+    <div class="q">A risk assessment determines a data center flood scenario has a Single Loss Expectancy (SLE) of $2,000,000 and an Annualized Rate of Occurrence (ARO) of 0.1. A proposed mitigation control costs $150,000 annually and would reduce the ARO to 0.02. Which statement correctly evaluates the control using Annualized Loss Expectancy (ALE)?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. The control should be rejected because the $150,000 annual cost exceeds the $40,000 residual ALE</button><button class="opt" onclick="answer(this,1,1,3)">B. The control should only be implemented if the ARO is recalculated using qualitative risk scoring instead of quantitative values</button><button class="opt" onclick="answer(this,1,2,3)">C. The control should be rejected because SLE and ARO cannot be used to calculate ALE for natural disaster scenarios</button><button class="opt" onclick="answer(this,1,3,3)">D. The control should be implemented because it reduces ALE from $200,000 to $40,000, a $160,000 reduction against a $150,000 cost, yielding a positive ROI</button>
+    <div class="expl">ALE = SLE x ARO. Before control: $2,000,000 x 0.1 = $200,000. After control: $2,000,000 x 0.02 = $40,000. The reduction ($160,000) exceeds the control cost ($150,000), so the control produces a net benefit of $10,000, justifying implementation.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Governance, Risk, and Compliance">
+    <div class="meta">Question 3 of 6 · Governance, Risk, and Compliance</div>
+    <div class="q">An enterprise is evaluating a critical software vendor under a supply chain risk management program aligned with NIST SP 800-161. The vendor refuses to provide a Software Bill of Materials (SBOM) citing intellectual property concerns, but offers a signed attestation of secure development practices. Which action BEST addresses this scenario?</div>
+    <button class="opt" onclick="answer(this,2,0,2)">A. Accept the attestation as sufficient, since SBOMs are considered optional under NIST SP 800-161</button><button class="opt" onclick="answer(this,2,1,2)">B. Terminate the vendor relationship immediately due to the lack of transparency</button><button class="opt" onclick="answer(this,2,2,2)">C. Require the SBOM as a contractual condition of doing business, since component-level visibility is essential for vulnerability management and cannot be replaced by attestation alone</button><button class="opt" onclick="answer(this,2,3,2)">D. Allow the vendor to proceed without an SBOM but increase the frequency of penetration testing on the vendor's product</button>
+    <div class="expl">NIST SP 800-161 and related federal guidance (EO 14028) emphasize SBOM as a contractual requirement for critical suppliers because it provides component-level visibility (including transitive open-source dependencies) that attestations alone cannot deliver, enabling ongoing vulnerability management.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Governance, Risk, and Compliance">
+    <div class="meta">Question 4 of 6 · Governance, Risk, and Compliance</div>
+    <div class="q">A US-based SaaS company processes personal data of EU residents and must transfer that data from EU-based servers to US-based servers following the invalidation of the original EU-US Privacy Shield framework. Which mechanism, when implemented with a Transfer Impact Assessment and supplementary technical measures, satisfies GDPR Chapter V cross-border transfer requirements?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. A data processing agreement (DPA) that references GDPR Article 28 obligations only</button><button class="opt" onclick="answer(this,3,1,1)">B. Standard Contractual Clauses (SCCs) combined with a Transfer Impact Assessment and supplementary measures such as encryption</button><button class="opt" onclick="answer(this,3,2,1)">C. Self-certification under the original EU-US Privacy Shield framework</button><button class="opt" onclick="answer(this,3,3,1)">D. Binding Corporate Rules, since they are now the only mechanism recognized following the Schrems II ruling</button>
+    <div class="expl">Following Schrems II, SCCs remain a valid transfer mechanism only when paired with a documented Transfer Impact Assessment and supplementary technical safeguards (e.g., strong encryption) to address surveillance risk in the destination country.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Governance, Risk, and Compliance">
+    <div class="meta">Question 5 of 6 · Governance, Risk, and Compliance</div>
+    <div class="q">A CISO defines the organization's risk appetite as 'moderate risk acceptance to achieve strategic growth objectives.' The board subsequently approves a specific rule stating that no single cybersecurity incident may cause more than $5 million in financial impact before mandatory board notification and escalation are triggered. Which risk management concept does the $5 million threshold represent?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. Risk appetite, because it defines the acceptable level of risk exposure across the entire organization</button><button class="opt" onclick="answer(this,4,1,1)">B. Risk tolerance, because it establishes a specific, measurable boundary of acceptable variance that triggers action when exceeded</button><button class="opt" onclick="answer(this,4,2,1)">C. Inherent risk, because it reflects the level of risk present before any controls are applied</button><button class="opt" onclick="answer(this,4,3,1)">D. Residual risk, because it measures the risk remaining after controls have been applied</button>
+    <div class="expl">Risk appetite is the broad, qualitative statement of how much risk an organization is willing to accept in pursuit of objectives; risk tolerance is the specific, quantifiable threshold that defines the acceptable variance and triggers escalation once breached — exactly what the $5 million figure represents.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Governance, Risk, and Compliance">
+    <div class="meta">Question 6 of 6 · Governance, Risk, and Compliance</div>
+    <div class="q">A multinational enterprise must simultaneously comply with ISO 27001, NIST CSF 2.0, and SOC 2 Type II due to differing customer contractual requirements. The GRC team wants to reduce duplicate audit evidence collection and control testing effort across all three. Which approach is the BEST enterprise governance solution?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. Select the single framework with the strictest requirements and rely on it exclusively for all customer obligations</button><button class="opt" onclick="answer(this,5,1,3)">B. Conduct three fully independent audits per year, one for each framework, to ensure complete separation of evidence</button><button class="opt" onclick="answer(this,5,2,3)">C. Outsource all compliance activities to separate third-party auditors for each framework and combine the resulting reports without further reconciliation</button><button class="opt" onclick="answer(this,5,3,3)">D. Build a unified control framework that maps overlapping controls across all three standards to a common control set, testing each control once and mapping the results to every applicable framework requirement</button>
+    <div class="expl">A control mapping (crosswalk) approach that consolidates overlapping requirements into a common control set enables a 'test once, comply many' model, reducing duplicate testing and evidence collection while still satisfying each distinct framework's requirements.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">undefined</span> <span class="price">$34.99</span> with code <span class="code">FREETEST33</span> — valid through Oct 6.</p>
+  <a href="https://www.udemy.com/course/comptia-securityx-cas-005-exam-focused-prep/?couponCode=FREETEST33" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

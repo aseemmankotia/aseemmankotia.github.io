@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Virtual Machine Management Practice Questions — VMware Certified Professional - Data Center Virtualization (vSphere 8)</title>
+<meta name="description" content="6 free Virtual Machine Management practice questions with explanations for the VMware Certified Professional - Data Center Virtualization (vSphere 8) exam.">
+<link rel="canonical" href="https://technuggets.academy/2v0-21-23-virtual-machine-management.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Virtual Machine Management Practice Questions — VMware Certified Professional - Data Center Virtualization (vSphere 8)">
+<meta property="og:description" content="6 free Virtual Machine Management practice questions with explanations for the VMware Certified Professional - Data Center Virtualization (vSphere 8) exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/2v0-21-23-virtual-machine-management.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Virtual Machine Management</h1>
+<p class="sub">Free VMware Certified Professional - Data Center Virtualization (vSphere 8) practice — 6 questions on <strong>Virtual Machine Management</strong>, with explanations. No sign-up.
+<a href="2v0-21-23.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Virtual Machine Management">
+    <div class="meta">Question 1 of 6 · Virtual Machine Management</div>
+    <div class="q">An administrator manages a master VM template in a Content Library and wants to make configuration changes while preserving the ability to roll back to the prior version if the update introduces a problem, using the built-in versioning capability of VM Templates in Content Libraries. Which workflow should be used?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. Check out the VM template to create an editable VM, make changes, then check it back in to create a new version</button><button class="opt" onclick="answer(this,0,1,0)">B. Convert the template to a VM, edit it, and convert it back to a template with a new name</button><button class="opt" onclick="answer(this,0,2,0)">C. Clone the template into a second Content Library as a manual backup before editing</button><button class="opt" onclick="answer(this,0,3,0)">D. Enable publish/subscribe replication so the subscribed library automatically retains old copies</button>
+    <div class="expl">Since vSphere 7, VM Templates in Content Libraries support native version control via check-out/check-in. Checking out creates an editable VM copy; checking it back in commits the changes as a new version while retaining prior versions for rollback.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Virtual Machine Management">
+    <div class="meta">Question 2 of 6 · Virtual Machine Management</div>
+    <div class="q">An administrator needs to migrate a powered-on VM using cross vCenter vMotion from vCenter Server A to vCenter Server B. The two vCenter Server instances are registered in different SSO domains and are not linked. Which method allows this migration to complete?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. It cannot be done; cross vCenter vMotion requires both vCenter Servers to share the same SSO domain</button><button class="opt" onclick="answer(this,1,1,2)">B. Drag and drop the VM between the two vCenter Server inventories in the vSphere Client</button><button class="opt" onclick="answer(this,1,2,2)">C. Use PowerCLI's Move-VM cmdlet, supplying separate credentials for the source and destination vCenter Servers</button><button class="opt" onclick="answer(this,1,3,2)">D. Temporarily join both vCenter Servers to Enhanced Linked Mode, perform the migration, then unlink them</button>
+    <div class="expl">Cross vCenter vMotion is supported across different SSO domains, but the drag-and-drop UI workflow requires Enhanced Linked Mode. When the vCenter Servers are not linked, the API-based approach (e.g., PowerCLI Move-VM with credentials for both vCenter Servers) is required to perform the migration.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Virtual Machine Management">
+    <div class="meta">Question 3 of 6 · Virtual Machine Management</div>
+    <div class="q">What is the maximum virtual machine hardware (compatibility) version supported when a VM is running on an ESXi 8.0 host?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. Version 17</button><button class="opt" onclick="answer(this,2,1,3)">B. Version 19</button><button class="opt" onclick="answer(this,2,2,3)">C. Version 21</button><button class="opt" onclick="answer(this,2,3,3)">D. Version 20</button>
+    <div class="expl">ESXi 8.0 introduces and supports up to virtual hardware version 20, which enables new features such as expanded vGPU and device support. VMs must be upgraded to this version to use ESXi 8.0-specific hardware capabilities.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Virtual Machine Management">
+    <div class="meta">Question 4 of 6 · Virtual Machine Management</div>
+    <div class="q">A VM displays a configuration issue in vCenter stating that disk consolidation is needed, after a third-party backup job failed to remove snapshot delta files correctly. Delta disks have been accumulating for several days. Which action resolves this without causing data loss?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. Revert the VM to its most recent snapshot to discard the deltas</button><button class="opt" onclick="answer(this,3,1,3)">B. Delete all snapshots from Snapshot Manager and reboot the VM</button><button class="opt" onclick="answer(this,3,2,3)">C. Power off the VM and manually delete the delta VMDK files from the datastore</button><button class="opt" onclick="answer(this,3,3,3)">D. Right-click the VM, select Snapshots, and run Consolidate</button>
+    <div class="expl">The Consolidate action merges orphaned delta disks back into the base disk while the VM remains in its current running state, safely resolving the 'needs consolidation' condition without losing changes made after the failed snapshot removal.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Virtual Machine Management">
+    <div class="meta">Question 5 of 6 · Virtual Machine Management</div>
+    <div class="q">A VM includes a Raw Device Mapping (RDM) configured in physical compatibility mode, used to support an MSCS cluster across physical hosts. The administrator performs a Storage vMotion on this VM to move it to a new datastore. What happens to the RDM's underlying LUN during this operation?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. The RDM mapping file is migrated to the destination datastore; the data on the underlying physical LUN is not moved</button><button class="opt" onclick="answer(this,4,1,0)">B. The RDM is automatically converted to a standard VMDK on the destination datastore</button><button class="opt" onclick="answer(this,4,2,0)">C. Storage vMotion fails immediately because VMs with any RDM cannot be migrated</button><button class="opt" onclick="answer(this,4,3,0)">D. Both the RDM mapping file and the physical LUN's data are copied to the destination datastore</button>
+    <div class="expl">For RDMs in physical compatibility mode, Storage vMotion migrates only the small mapping file that points to the LUN; the raw LUN itself and its data remain on the original physical storage device, since physical mode RDMs bypass the VMkernel's virtualization layer.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Virtual Machine Management">
+    <div class="meta">Question 6 of 6 · Virtual Machine Management</div>
+    <div class="q">An administrator attempts to export a VM protected by VM Encryption as an OVF template for archival purposes. What must be done before this export can succeed?</div>
+    <button class="opt" onclick="answer(this,5,0,2)">A. Nothing; OVF export natively supports encrypted VMs without any prerequisite steps</button><button class="opt" onclick="answer(this,5,1,2)">B. A vSphere Trust Authority attestation token must be generated and attached to the export job</button><button class="opt" onclick="answer(this,5,2,2)">C. The VM must be decrypted before exporting, since OVF export does not support encrypted virtual machines</button><button class="opt" onclick="answer(this,5,3,2)">D. The VM's encryption must be converted to use a virtual TPM (vTPM) instead of VM Encryption before export</button>
+    <div class="expl">vSphere does not support exporting an OVF template from a VM that has VM Encryption enabled. The VM must first be decrypted (its disks and configuration data returned to unencrypted state) before the OVF export operation will succeed.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/vcp-dcv-2v0-21-23-vsphere-8-exam-focused-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

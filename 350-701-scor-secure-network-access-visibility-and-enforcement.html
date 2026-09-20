@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Secure Network Access, Visibility, and Enforcement Practice Questions — Implementing and Operating Cisco Security Core Technologies</title>
+<meta name="description" content="6 free Secure Network Access, Visibility, and Enforcement practice questions with explanations for the Implementing and Operating Cisco Security Core Technologies exam.">
+<link rel="canonical" href="https://technuggets.academy/350-701-scor-secure-network-access-visibility-and-enforcement.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Secure Network Access, Visibility, and Enforcement Practice Questions — Implementing and Operating Cisco Security Core Technologies">
+<meta property="og:description" content="6 free Secure Network Access, Visibility, and Enforcement practice questions with explanations for the Implementing and Operating Cisco Security Core Technologies exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/350-701-scor-secure-network-access-visibility-and-enforcement.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Secure Network Access, Visibility, and Enforcement</h1>
+<p class="sub">Free Implementing and Operating Cisco Security Core Technologies practice — 6 questions on <strong>Secure Network Access, Visibility, and Enforcement</strong>, with explanations. No sign-up.
+<a href="350-701-scor.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Domain 6: Secure Network Access, Visibility, and Enforcement">
+    <div class="meta">Question 1 of 6 · Domain 6: Secure Network Access, Visibility, and Enforcement</div>
+    <div class="q">A large enterprise is rolling out 802.1X across 500 access switch ports. To avoid disrupting production traffic while the security team observes which endpoints succeed or fail authentication, the first deployment phase must allow all traffic to pass regardless of the authentication outcome, while still generating authentication events for visibility. Which 802.1X deployment mode should be configured on the ports for this initial phase?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. Closed Mode with dot1x port-control auto</button><button class="opt" onclick="answer(this,0,1,2)">B. Low-Impact Mode with a restrictive pre-auth ACL</button><button class="opt" onclick="answer(this,0,2,2)">C. Monitor Mode (Open Authentication) with multi-auth host mode</button><button class="opt" onclick="answer(this,0,3,2)">D. High-Security Mode with dot1x port-control force-authorized</button>
+    <div class="expl">Monitor Mode uses 'authentication open' along with multi-auth host mode so that traffic is permitted regardless of the 802.1X/MAB result, while ISE still logs the authentication attempt and result. This gives visibility into who and what is on the network before any enforcement is turned on, and is the standard first phase of a phased ISE 802.1X deployment.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Domain 6: Secure Network Access, Visibility, and Enforcement">
+    <div class="meta">Question 2 of 6 · Domain 6: Secure Network Access, Visibility, and Enforcement</div>
+    <div class="q">An organization has deployed Cisco TrustSec across its core and distribution switches, which support inline SGT tagging in the data plane. However, several legacy access switches and a firewall at the network edge cannot tag frames with an SGT but still need to receive IP-address-to-SGT binding information so that SGACL enforcement can occur downstream. Which protocol is used to propagate these IP-to-SGT bindings to devices that don't support inline tagging?</div>
+    <button class="opt" onclick="answer(this,1,0,1)">A. pxGrid</button><button class="opt" onclick="answer(this,1,1,1)">B. SXP (SGT Exchange Protocol)</button><button class="opt" onclick="answer(this,1,2,1)">C. RADIUS CoA</button><button class="opt" onclick="answer(this,1,3,1)">D. TACACS+</button>
+    <div class="expl">SXP (SGT Exchange Protocol) is designed specifically to propagate IP-address-to-SGT bindings over TCP to devices, such as legacy switches or firewalls, that cannot perform inline SGT tagging in the data plane. This allows those devices to still enforce SGACLs based on the SGT associated with a source or destination IP.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Domain 6: Secure Network Access, Visibility, and Enforcement">
+    <div class="meta">Question 3 of 6 · Domain 6: Secure Network Access, Visibility, and Enforcement</div>
+    <div class="q">A security architect needs to control network device administration so that junior engineers can only run 'show' commands on switches, while senior engineers can execute full configuration commands, with all commands logged individually. Which AAA protocol should be used for device administration, and why?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. RADIUS, because it combines authentication and authorization into a single response</button><button class="opt" onclick="answer(this,2,1,3)">B. RADIUS, because it uses vendor-specific attributes to enforce per-command restrictions natively</button><button class="opt" onclick="answer(this,2,2,3)">C. TACACS+, because it operates over UDP for lower-latency command authorization</button><button class="opt" onclick="answer(this,2,3,3)">D. TACACS+, because it separates authentication, authorization, and accounting and supports per-command authorization with full packet encryption</button>
+    <div class="expl">TACACS+ separates authentication, authorization, and accounting (AAA) into distinct exchanges, enabling granular per-command authorization using command sets/shell profiles on the AAA server (e.g., ISE). It also encrypts the entire packet body, which is important for protecting sensitive device-admin credentials and command data. This makes it the standard choice for device administration (as opposed to RADIUS, which is preferred for network access).</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Domain 6: Secure Network Access, Visibility, and Enforcement">
+    <div class="meta">Question 4 of 6 · Domain 6: Secure Network Access, Visibility, and Enforcement</div>
+    <div class="q">A network team wants Cisco ISE to identify endpoint types such as IP phones and printers by analyzing traffic flow records (source/destination, ports, byte/packet counts) exported by access switches and routers, without requiring an agent on the endpoint. Which ISE profiling probe is designed to consume this type of data?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. DHCP probe</button><button class="opt" onclick="answer(this,3,1,3)">B. SNMP probe</button><button class="opt" onclick="answer(this,3,2,3)">C. RADIUS probe</button><button class="opt" onclick="answer(this,3,3,3)">D. NetFlow probe</button>
+    <div class="expl">The NetFlow probe on ISE ingests NetFlow records exported by network devices, which contain traffic flow metadata (source/destination IP and port, protocol, byte/packet counts). ISE uses this flow behavior data as part of profiling logic to classify endpoint types based on their communication patterns.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Domain 6: Secure Network Access, Visibility, and Enforcement">
+    <div class="meta">Question 5 of 6 · Domain 6: Secure Network Access, Visibility, and Enforcement</div>
+    <div class="q">A switch port is configured with both 802.1X and MAC Authentication Bypass (MAB) as fallback, using default dot1x timers. A network printer that does not have an 802.1X supplicant is connected to this port. What is the correct sequence of events on this port?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. The switch immediately performs MAB without attempting 802.1X, since MAB is configured as a fallback method</button><button class="opt" onclick="answer(this,4,1,2)">B. The port remains in an unauthorized, blocked state indefinitely because MAB is only triggered by an explicit EAPOL-Logoff message</button><button class="opt" onclick="answer(this,4,2,2)">C. The switch sends EAPOL-Request Identity frames, receives no supplicant response for the configured dot1x timeout period, then falls back to MAB using the printer's MAC address</button><button class="opt" onclick="answer(this,4,3,2)">D. The switch authenticates the printer using TACACS+ since MAB is a TACACS+-based fallback method</button>
+    <div class="expl">With 802.1X enabled as the primary method, the switch first sends EAPOL-Request Identity frames. Since the printer has no supplicant, there is no response, and the switch retries based on dot1x max-reauth-req and tx-period timers. After exhausting these retries/timeout, the switch falls back to MAB, using the endpoint's MAC address as the identity sent in a RADIUS Access-Request to ISE.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Domain 6: Secure Network Access, Visibility, and Enforcement">
+    <div class="meta">Question 6 of 6 · Domain 6: Secure Network Access, Visibility, and Enforcement</div>
+    <div class="q">Cisco Secure Network Analytics (Stealthwatch) detects anomalous, malicious behavior from an endpoint on the network and needs to trigger automatic quarantine of that endpoint through Cisco ISE, without manual SOC intervention, as part of Rapid Threat Containment. Which technology enables Stealthwatch to instruct ISE to quarantine the endpoint's session?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. TrustSec SXP propagating an updated SGT binding directly to the access switch</button><button class="opt" onclick="answer(this,5,1,3)">B. SNMP traps sent from Stealthwatch directly to the access switch to shut down the port</button><button class="opt" onclick="answer(this,5,2,3)">C. TACACS+ command authorization blocking further configuration changes on the switch</button><button class="opt" onclick="answer(this,5,3,3)">D. pxGrid integration invoking ISE Adaptive Network Control (ANC), which then issues a RADIUS CoA to re-authorize the session</button>
+    <div class="expl">pxGrid provides the context-sharing framework that allows Stealthwatch to send a quarantine/ANC request to ISE. ISE's Adaptive Network Control (ANC) feature then applies a quarantine policy to the endpoint's session, and ISE issues a RADIUS Change of Authorization (CoA) to the network access device to re-authorize the session with restricted access (e.g., a quarantine VLAN or dACL) — this is the core mechanism behind Rapid Threat Containment.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/cisco-350-701-scor-complete-security-core-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

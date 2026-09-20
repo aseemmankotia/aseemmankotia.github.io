@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Plan and implement workload identities Practice Questions — Microsoft Certified: Identity and Access Administrator Associate</title>
+<meta name="description" content="6 free Plan and implement workload identities practice questions with explanations for the Microsoft Certified: Identity and Access Administrator Associate exam.">
+<link rel="canonical" href="https://technuggets.academy/sc-300-plan-and-implement-workload-identities.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Plan and implement workload identities Practice Questions — Microsoft Certified: Identity and Access Administrator Associate">
+<meta property="og:description" content="6 free Plan and implement workload identities practice questions with explanations for the Microsoft Certified: Identity and Access Administrator Associate exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/sc-300-plan-and-implement-workload-identities.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0078D4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Plan and implement workload identities</h1>
+<p class="sub">Free Microsoft Certified: Identity and Access Administrator Associate practice — 6 questions on <strong>Plan and implement workload identities</strong>, with explanations. No sign-up.
+<a href="sc-300.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Plan and implement workload identities">
+    <div class="meta">Question 1 of 6 · Plan and implement workload identities</div>
+    <div class="q">A DevOps team configures a federated credential on an app registration to allow a GitHub Actions workflow to authenticate to Azure without a client secret. Deployments to production must ONLY be triggered by a push to the 'main' branch — pull request builds and other branches must not be able to use this credential. Which subject identifier should be configured on the federated credential?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. repo:contoso-org/deploy-repo:environment:production</button><button class="opt" onclick="answer(this,0,1,3)">B. repo:contoso-org/deploy-repo:pull_request</button><button class="opt" onclick="answer(this,0,2,3)">C. repo:contoso-org/deploy-repo:ref:refs/tags/v1.0</button><button class="opt" onclick="answer(this,0,3,3)">D. repo:contoso-org/deploy-repo:ref:refs/heads/main</button>
+    <div class="expl">The subject claim 'repo:org/repo:ref:refs/heads/main' scopes the federated credential's trust to OIDC tokens issued specifically for pushes to the main branch, matching the requirement exactly.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Plan and implement workload identities">
+    <div class="meta">Question 2 of 6 · Plan and implement workload identities</div>
+    <div class="q">A company's security team mandates that no long-lived secrets exist in any CI/CD pipeline configuration. GitHub Actions workflows currently authenticate to Azure using a stored client secret that must be manually rotated every 90 days. Which change eliminates the stored secret while still allowing the workflow to authenticate?</div>
+    <button class="opt" onclick="answer(this,1,0,1)">A. Create a new client secret with a 2-year expiration and store it as an encrypted GitHub Actions secret</button><button class="opt" onclick="answer(this,1,1,1)">B. Configure a federated credential on the app registration trusting GitHub's OIDC issuer, then remove all client secrets from the app registration</button><button class="opt" onclick="answer(this,1,2,1)">C. Upload a certificate credential to the app registration and store the private key file as a GitHub Actions secret</button><button class="opt" onclick="answer(this,1,3,1)">D. Create a service account with a personal access token and grant it Owner role on the subscription</button>
+    <div class="expl">Workload identity federation lets GitHub Actions exchange a short-lived OIDC token issued by GitHub for a Microsoft Entra access token, removing the need to store any secret or certificate in the pipeline at all.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Plan and implement workload identities">
+    <div class="meta">Question 3 of 6 · Plan and implement workload identities</div>
+    <div class="q">A Security Operations team wants Microsoft Entra ID Protection to automatically flag service principals whose credentials appear on the dark web (leaked credentials) and to detect service principals signing in with anomalous properties, then apply Conditional Access to block those risky sign-ins. Which license is specifically required to enable risk detection and Conditional Access for these non-human identities?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. Microsoft Entra Workload ID Premium</button><button class="opt" onclick="answer(this,2,1,0)">B. Microsoft Entra ID P1</button><button class="opt" onclick="answer(this,2,2,0)">C. Microsoft Defender for Cloud Apps</button><button class="opt" onclick="answer(this,2,3,0)">D. Microsoft Entra ID P2</button>
+    <div class="expl">Microsoft Entra Workload ID Premium is the dedicated add-on license that enables Identity Protection risk detections (e.g., leaked credentials, unusual sign-in properties) and Conditional Access policies scoped specifically to workload identities such as service principals and managed identities.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Plan and implement workload identities">
+    <div class="meta">Question 4 of 6 · Plan and implement workload identities</div>
+    <div class="q">An organization needs a single managed identity to be assigned to 15 Azure VMs so they can all access the same Key Vault. VMs are frequently decommissioned and recreated, and the identity's Key Vault access policy must NOT be affected when individual VMs are deleted. Which identity type meets this requirement?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. A user-assigned managed identity created independently and assigned to each of the 15 VMs</button><button class="opt" onclick="answer(this,3,1,0)">B. A system-assigned managed identity enabled on one 'primary' VM and referenced by the other 14</button><button class="opt" onclick="answer(this,3,2,0)">C. A service principal with a client secret stored in each VM's configuration</button><button class="opt" onclick="answer(this,3,3,0)">D. An app registration with a certificate credential installed on each VM</button>
+    <div class="expl">A user-assigned managed identity has a lifecycle independent of any single Azure resource. It is created once, can be assigned to multiple resources simultaneously, and continues to exist with its Key Vault access policy intact even if individual VMs are deleted.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Plan and implement workload identities">
+    <div class="meta">Question 5 of 6 · Plan and implement workload identities</div>
+    <div class="q">Contoso develops a multi-tenant SaaS application and registers it as an app registration in the Contoso Microsoft Entra tenant. An administrator at Fabrikam grants admin consent for the app to access Fabrikam's directory data. What object is created in Fabrikam's tenant as a result of this consent?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. A new app registration owned and editable by Fabrikam administrators</button><button class="opt" onclick="answer(this,4,1,2)">B. A full copy of Contoso's app registration object, including its manifest and API permissions definitions</button><button class="opt" onclick="answer(this,4,2,2)">C. A service principal (enterprise application) representing Contoso's app, scoped to Fabrikam's tenant</button><button class="opt" onclick="answer(this,4,3,2)">D. No object is created; consent grants are tracked only within Contoso's tenant</button>
+    <div class="expl">Consenting to a multi-tenant application creates a service principal (shown as an Enterprise Application) in the consuming tenant. This service principal represents the app locally, holds the tenant-specific consent grants and assigned permissions, and is what Fabrikam administrators manage.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Plan and implement workload identities">
+    <div class="meta">Question 6 of 6 · Plan and implement workload identities</div>
+    <div class="q">A tenant administrator discovers that any user in the organization can register new app registrations, creating governance gaps around ownership of workload identities. The administrator wants only a specific security-vetted group to be able to create new app registrations going forward. What is the default value of the relevant tenant setting, and what should the administrator do?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. The setting defaults to 'No'; enable the Application Developer role for all users to allow controlled registration</button><button class="opt" onclick="answer(this,5,1,1)">B. The setting 'Users can register applications' defaults to 'Yes'; set it to 'No' and assign the Application Developer role to the specific users or group that need to register apps</button><button class="opt" onclick="answer(this,5,2,1)">C. The setting defaults to 'Yes' with no way to restrict it; the administrator must rely on Privileged Identity Management instead</button><button class="opt" onclick="answer(this,5,3,1)">D. The setting defaults to 'No' and cannot be changed; a custom RBAC role must be created at the subscription level</button>
+    <div class="expl">By default, Microsoft Entra ID allows all users to register applications ('Users can register applications' = Yes under User settings). Best practice for least privilege is to set this to 'No' and then explicitly assign the Application Developer role to the vetted users or group who need app registration rights.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/sc-300-microsoft-identity-and-access-administrator-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

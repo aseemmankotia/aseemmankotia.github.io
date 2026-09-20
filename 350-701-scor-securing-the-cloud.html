@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Securing the Cloud Practice Questions — Implementing and Operating Cisco Security Core Technologies</title>
+<meta name="description" content="6 free Securing the Cloud practice questions with explanations for the Implementing and Operating Cisco Security Core Technologies exam.">
+<link rel="canonical" href="https://technuggets.academy/350-701-scor-securing-the-cloud.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Securing the Cloud Practice Questions — Implementing and Operating Cisco Security Core Technologies">
+<meta property="og:description" content="6 free Securing the Cloud practice questions with explanations for the Implementing and Operating Cisco Security Core Technologies exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/350-701-scor-securing-the-cloud.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Securing the Cloud</h1>
+<p class="sub">Free Implementing and Operating Cisco Security Core Technologies practice — 6 questions on <strong>Securing the Cloud</strong>, with explanations. No sign-up.
+<a href="350-701-scor.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Domain 3: Securing the Cloud">
+    <div class="meta">Question 1 of 6 · Domain 3: Securing the Cloud</div>
+    <div class="q">A company runs a fleet of Linux virtual machines on Amazon EC2 (IaaS). According to the cloud shared responsibility model, which security task remains the customer's responsibility rather than the cloud provider's?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. Patching and hardening the guest operating system running on the EC2 instances</button><button class="opt" onclick="answer(this,0,1,0)">B. Patching the physical hypervisor software</button><button class="opt" onclick="answer(this,0,2,0)">C. Physical security of the data center housing the EC2 hosts</button><button class="opt" onclick="answer(this,0,3,0)">D. Maintaining the redundancy of the underlying network fabric hardware</button>
+    <div class="expl">In IaaS, the provider secures the physical infrastructure, hypervisor, and host network, but the customer owns everything from the guest OS upward, including OS patching, security group rules, and application/data security.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Domain 3: Securing the Cloud">
+    <div class="meta">Question 2 of 6 · Domain 3: Securing the Cloud</div>
+    <div class="q">A security team needs to discover unsanctioned SaaS applications being used by employees, apply DLP controls to files stored in Google Workspace and Microsoft 365, and detect anomalous user login behavior across multiple SaaS platforms via API integration. Which Cisco solution should be deployed?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. Cisco Secure Firewall Threat Defense</button><button class="opt" onclick="answer(this,1,1,3)">B. Cisco Umbrella DNS-layer security</button><button class="opt" onclick="answer(this,1,2,3)">C. Cisco Secure Workload</button><button class="opt" onclick="answer(this,1,3,3)">D. Cisco Cloudlock</button>
+    <div class="expl">Cisco Cloudlock is Cisco's CASB, delivering API-based SaaS app discovery, DLP for cloud-stored data, and user and entity behavior analytics (UEBA) across sanctioned SaaS applications.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Domain 3: Securing the Cloud">
+    <div class="meta">Question 3 of 6 · Domain 3: Securing the Cloud</div>
+    <div class="q">An engineer deploys Cisco Secure Workload software agents to a set of production Linux servers. The agents must not only report detailed process- and flow-level telemetry, but also program the host's native firewall (iptables) to enforce microsegmentation policy generated from the application dependency map. Which agent type must be installed?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. Enforcement Agent</button><button class="opt" onclick="answer(this,2,1,0)">B. Universal Visibility Agent (NetFlow/ERSPAN-based sensor)</button><button class="opt" onclick="answer(this,2,2,0)">C. Deep Visibility Agent</button><button class="opt" onclick="answer(this,2,3,0)">D. AnyConnect Network Visibility Module</button>
+    <div class="expl">The Enforcement Agent in Cisco Secure Workload both collects deep visibility telemetry and programs the host-based firewall to enforce segmentation policy pushed down from the platform.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Domain 3: Securing the Cloud">
+    <div class="meta">Question 4 of 6 · Domain 3: Securing the Cloud</div>
+    <div class="q">A security team must build a process-level allow-list policy based on observed communication patterns between microservices running in Kubernetes pods spread across AWS and an on-premises data center, then automatically enforce that policy as workloads scale. Which Cisco capability best satisfies this requirement?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. Cisco Secure Firewall Threat Defense with static ACLs applied at the perimeter</button><button class="opt" onclick="answer(this,3,1,1)">B. Cisco Secure Workload Application Dependency Mapping (ADM) with automated policy enforcement</button><button class="opt" onclick="answer(this,3,2,1)">C. Cisco Secure Cloud Analytics anomaly-based flow detection</button><button class="opt" onclick="answer(this,3,3,1)">D. Cisco Umbrella Cloud-Delivered Firewall (CDFW)</button>
+    <div class="expl">Secure Workload's ADM automatically profiles process- and port-level communication between application tiers/pods and generates a fine-grained allow-list microsegmentation policy that is enforced consistently as workloads scale across hybrid environments.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Domain 3: Securing the Cloud">
+    <div class="meta">Question 5 of 6 · Domain 3: Securing the Cloud</div>
+    <div class="q">Which statement correctly differentiates a CASB solution such as Cisco Cloudlock from cloud security posture/network anomaly capabilities such as those in Cisco Secure Cloud Analytics?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. CASB focuses on user activity, data governance, and DLP within SaaS applications, while Secure Cloud Analytics detects misconfigurations and anomalous behavior from flow telemetry within IaaS cloud infrastructure</button><button class="opt" onclick="answer(this,4,1,0)">B. CASB and Secure Cloud Analytics both exclusively analyze VPC flow logs to detect malware callbacks</button><button class="opt" onclick="answer(this,4,2,0)">C. CASB enforces network segmentation between VPCs, while Secure Cloud Analytics manages OAuth token revocation for SaaS apps</button><button class="opt" onclick="answer(this,4,3,0)">D. CASB and Secure Cloud Analytics are two names for the identical Cisco Cloudlock product with no functional difference</button>
+    <div class="expl">CASB (Cloudlock) governs SaaS data and user behavior via API integrations, whereas Secure Cloud Analytics ingests cloud provider flow logs (e.g., VPC Flow Logs) to baseline network behavior and detect anomalies/misconfigurations in IaaS environments — they address different layers of cloud risk.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Domain 3: Securing the Cloud">
+    <div class="meta">Question 6 of 6 · Domain 3: Securing the Cloud</div>
+    <div class="q">A company has migrated several workloads to AWS EC2 instances and wants to enforce consistent DNS-layer security and Layer 3/4 cloud-delivered firewall policy on all outbound internet traffic from these instances, without deploying or managing dedicated physical or virtual firewall appliances. Which Cisco solution meets this requirement?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. Cisco Secure Workload with enforcement agents</button><button class="opt" onclick="answer(this,5,1,1)">B. Cisco Umbrella with Cloud-Delivered Firewall</button><button class="opt" onclick="answer(this,5,2,1)">C. Cisco Cloudlock</button><button class="opt" onclick="answer(this,5,3,1)">D. Cisco Secure Firewall Threat Defense Virtual deployed per VPC</button>
+    <div class="expl">Cisco Umbrella provides cloud-delivered DNS-layer security plus a Cloud-Delivered Firewall (CDFW) that enforces Layer 3/4 policy on outbound traffic as a fully cloud-hosted service, requiring no appliance deployment or management by the customer.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/cisco-350-701-scor-complete-security-core-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

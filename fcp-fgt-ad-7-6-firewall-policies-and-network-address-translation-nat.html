@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Firewall Policies and Network Address Translation (NAT) Practice Questions — FCP - FortiGate 7.6 Administrator</title>
+<meta name="description" content="6 free Firewall Policies and Network Address Translation (NAT) practice questions with explanations for the FCP - FortiGate 7.6 Administrator exam.">
+<link rel="canonical" href="https://technuggets.academy/fcp-fgt-ad-7-6-firewall-policies-and-network-address-translation-nat.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Firewall Policies and Network Address Translation (NAT) Practice Questions — FCP - FortiGate 7.6 Administrator">
+<meta property="og:description" content="6 free Firewall Policies and Network Address Translation (NAT) practice questions with explanations for the FCP - FortiGate 7.6 Administrator exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/fcp-fgt-ad-7-6-firewall-policies-and-network-address-translation-nat.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Firewall Policies and Network Address Translation (NAT)</h1>
+<p class="sub">Free FCP - FortiGate 7.6 Administrator practice — 6 questions on <strong>Firewall Policies and Network Address Translation (NAT)</strong>, with explanations. No sign-up.
+<a href="fcp-fgt-ad-7-6.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Firewall Policies and Network Address Translation (NAT)">
+    <div class="meta">Question 1 of 6 · Firewall Policies and Network Address Translation (NAT)</div>
+    <div class="q">An administrator enables Central NAT under Feature Visibility on a FortiGate running FortiOS 7.6 that previously used firewall policy-based (per-policy) NAT. What is the immediate effect on the existing firewall policies?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. All existing firewall policies automatically convert their NAT settings into equivalent Central SNAT policies with no admin action required</button><button class="opt" onclick="answer(this,0,1,2)">B. Firewall policies continue to use their existing per-policy NAT settings, and Central SNAT policies are only used for traffic that has no per-policy NAT configured</button><button class="opt" onclick="answer(this,0,2,2)">C. The NAT toggle is removed from firewall policies, and source NAT must now be configured through separate Central SNAT policies referencing IP pools</button><button class="opt" onclick="answer(this,0,3,2)">D. Central NAT only affects destination NAT (VIPs); source NAT continues to be configured inside each firewall policy exactly as before</button>
+    <div class="expl">Enabling Central NAT is a global mode switch: the NAT field is removed from firewall policy configuration entirely, and all source NAT must be defined separately under Policy &amp; Objects &gt; Central SNAT using match criteria and IP pools. This is a common architectural change candidates must know for the exam.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Firewall Policies and Network Address Translation (NAT)">
+    <div class="meta">Question 2 of 6 · Firewall Policies and Network Address Translation (NAT)</div>
+    <div class="q">A service provider has a limited pool of public IP addresses but needs to support thousands of internal clients while guaranteeing that no two clients are ever assigned overlapping external port ranges, in order to reliably attribute NAT sessions during log audits. Which IP pool type should be used?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. Fixed Port Range</button><button class="opt" onclick="answer(this,1,1,2)">B. Overload</button><button class="opt" onclick="answer(this,1,2,2)">C. Port Block Allocation</button><button class="opt" onclick="answer(this,1,3,2)">D. One-to-One</button>
+    <div class="expl">Port Block Allocation assigns each source IP a dedicated, non-overlapping block of external ports from the pool, which allows many clients to share fewer public IPs while keeping port ranges auditable and non-overlapping per client — exactly the scenario described.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Firewall Policies and Network Address Translation (NAT)">
+    <div class="meta">Question 3 of 6 · Firewall Policies and Network Address Translation (NAT)</div>
+    <div class="q">A VIP object maps external IP 203.0.113.10, external port 8080, to internal server 10.0.1.50 on port 80 using port forwarding. The firewall policy from WAN1 to the internal interface uses this VIP as the destination address, but the service object attached to the policy is the predefined 'HTTP' service (TCP/80). Clients connecting to 203.0.113.10:8080 get no response. What is the BEST explanation?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. VIP objects cannot be used as the destination address in a firewall policy; only the real internal IP can be referenced</button><button class="opt" onclick="answer(this,2,1,1)">B. The policy's service must match the VIP's external (mapped) port, TCP/8080, not the internal real port, because FortiGate matches the service against the pre-translation destination port</button><button class="opt" onclick="answer(this,2,2,1)">C. Port forwarding VIPs require source NAT to be explicitly disabled in the policy, otherwise the destination translation is skipped</button><button class="opt" onclick="answer(this,2,3,1)">D. The predefined HTTP service object cannot be used with any VIP and must always be replaced with a custom TCP service regardless of the port numbers involved</button>
+    <div class="expl">FortiGate evaluates the firewall policy's service field against the original (pre-DNAT) destination port seen on the wire. Since the client connects to external port 8080, the policy service must be a custom service for TCP/8080; using the predefined HTTP (TCP/80) service causes a service mismatch and the policy — and therefore the VIP translation — never applies.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Firewall Policies and Network Address Translation (NAT)">
+    <div class="meta">Question 4 of 6 · Firewall Policies and Network Address Translation (NAT)</div>
+    <div class="q">An administrator uses the GUI 'Move To' action to relocate firewall policy ID 15 from the bottom of the policy list to the very top. Which statement correctly describes the result in FortiOS 7.6?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. The policy's evaluation sequence changes so it is checked first, but its Policy ID remains 15</button><button class="opt" onclick="answer(this,3,1,0)">B. Policy ID 15 is deleted and recreated as Policy ID 1 to reflect its new top position</button><button class="opt" onclick="answer(this,3,2,0)">C. The policy is duplicated, keeping the original at the bottom with a new instance created at the top with a new ID</button><button class="opt" onclick="answer(this,3,3,0)">D. Moving a policy in the GUI also resets any NAT and IP pool settings configured on that policy to default</button>
+    <div class="expl">Policy ID is a permanent identifier assigned at creation and used for CLI reference, logging, and API calls; it never changes when a policy is reordered. 'Move To' only changes the policy's position in the evaluation sequence (top-down order), which determines first-match behavior, not its ID.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Firewall Policies and Network Address Translation (NAT)">
+    <div class="meta">Question 5 of 6 · Firewall Policies and Network Address Translation (NAT)</div>
+    <div class="q">A company runs a SIP-based VoIP application behind a FortiGate performing source NAT via an IP pool in overload mode. The VoIP vendor requires that the source port seen by the external SIP server never change from what the internal phone originally used, since dynamic port translation breaks call setup. Which firewall policy CLI setting should be configured to meet this requirement?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. set nat enable</button><button class="opt" onclick="answer(this,4,1,1)">B. set fixed-port enable</button><button class="opt" onclick="answer(this,4,2,1)">C. set ippool enable</button><button class="opt" onclick="answer(this,4,3,1)">D. set natip &lt;pool-range&gt;</button>
+    <div class="expl">The 'fixed-port enable' setting under 'config firewall policy' preserves the original source port during SNAT translation instead of dynamically remapping it, which is required by protocols like SIP that are sensitive to source port changes.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Firewall Policies and Network Address Translation (NAT)">
+    <div class="meta">Question 6 of 6 · Firewall Policies and Network Address Translation (NAT)</div>
+    <div class="q">A VIP publishes an internal web server to the internet. An administrator wants to explicitly deny access to this VIP from a specific untrusted country object using a deny policy placed above the existing allow policy. After committing the change, traffic from the blocked country is still reaching the server. What is the MOST likely missing configuration on the deny policy?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. The deny policy needs 'set nat enable' so it can process VIP-destined sessions before the allow policy</button><button class="opt" onclick="answer(this,5,1,1)">B. The deny policy needs 'set match-vip enable' so it explicitly matches sessions destined for the VIP's external IP</button><button class="opt" onclick="answer(this,5,2,1)">C. The deny policy must reference the VIP's real internal IP as the destination instead of the VIP object</button><button class="opt" onclick="answer(this,5,3,1)">D. Deny policies in FortiOS can never be placed above policies that reference VIP objects, regardless of settings</button>
+    <div class="expl">By default, deny (and some other non-accept) policies do not automatically match traffic destined for a VIP's external address because that address is normally only resolved by an allow policy referencing the VIP. The 'match-vip' CLI setting under 'config firewall policy' must be explicitly enabled on the deny policy so it evaluates and can block sessions destined to that VIP, allowing it to take precedence when placed above the allow rule.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/fcp-fortigate-7-6-administrator-exam-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

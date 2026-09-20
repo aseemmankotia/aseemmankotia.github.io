@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Design security solutions for applications and data Practice Questions — Microsoft Certified: Cybersecurity Architect Expert</title>
+<meta name="description" content="6 free Design security solutions for applications and data practice questions with explanations for the Microsoft Certified: Cybersecurity Architect Expert exam.">
+<link rel="canonical" href="https://technuggets.academy/sc-100-design-security-solutions-for-applications-and-data.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Design security solutions for applications and data Practice Questions — Microsoft Certified: Cybersecurity Architect Expert">
+<meta property="og:description" content="6 free Design security solutions for applications and data practice questions with explanations for the Microsoft Certified: Cybersecurity Architect Expert exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/sc-100-design-security-solutions-for-applications-and-data.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0078D4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Design security solutions for applications and data</h1>
+<p class="sub">Free Microsoft Certified: Cybersecurity Architect Expert practice — 6 questions on <strong>Design security solutions for applications and data</strong>, with explanations. No sign-up.
+<a href="sc-100.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Domain 4: Design security solutions for applications and data">
+    <div class="meta">Question 1 of 6 · Domain 4: Design security solutions for applications and data</div>
+    <div class="q">A financial services company uses GitHub Actions to deploy infrastructure to Azure. The security architect must eliminate all long-lived credentials and secrets from the pipeline while still allowing GitHub Actions to authenticate to Azure AD (Microsoft Entra ID) and provision resources. Which design BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. Create an Azure AD service principal, generate a client secret, and store the secret in GitHub Actions repository secrets</button><button class="opt" onclick="answer(this,0,1,2)">B. Enable a system-assigned managed identity on the GitHub Actions runner and assign it Contributor on the subscription</button><button class="opt" onclick="answer(this,0,2,2)">C. Configure a federated credential on the Azure AD app registration trusting GitHub's OIDC issuer, and have the workflow exchange a GitHub-issued token for an Azure AD access token</button><button class="opt" onclick="answer(this,0,3,2)">D. Upload a self-signed certificate to the Azure AD app registration and store the private key as an encrypted GitHub secret</button>
+    <div class="expl">Workload identity federation lets GitHub Actions present a short-lived OIDC token that Azure AD trusts via a federated credential, issuing a short-lived access token in exchange. No secret or certificate is ever stored in GitHub, eliminating credential leakage risk while still enabling automated deployment.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Domain 4: Design security solutions for applications and data">
+    <div class="meta">Question 2 of 6 · Domain 4: Design security solutions for applications and data</div>
+    <div class="q">A pharmaceutical company stores highly sensitive intellectual property in Microsoft 365 documents. Compliance requires that even Microsoft cannot decrypt these documents under any circumstance, including during eDiscovery, and the organization must retain sole control of one encryption key stored entirely outside Microsoft's cloud. Which capability should the architect design into the sensitivity label solution?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. Apply sensitivity labels using the default Azure Information Protection tenant key managed by Microsoft</button><button class="opt" onclick="answer(this,1,1,3)">B. Enable Bring Your Own Key (BYOK) with Azure Key Vault as the tenant's root key for Microsoft Purview encryption</button><button class="opt" onclick="answer(this,1,2,3)">C. Deploy an on-premises Active Directory Rights Management Services (AD RMS) connector to issue usage licenses</button><button class="opt" onclick="answer(this,1,3,3)">D. Configure Double Key Encryption (DKE) with Microsoft Purview, hosting one of the two keys on an on-premises key store</button>
+    <div class="expl">Double Key Encryption requires two keys to decrypt content: one managed by Microsoft in Azure and one kept entirely under the customer's control on-premises (or in a location Microsoft never accesses). Because Microsoft never has both keys simultaneously, it cannot decrypt the content under any circumstance, satisfying the strict 'sole control' requirement.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Domain 4: Design security solutions for applications and data">
+    <div class="meta">Question 3 of 6 · Domain 4: Design security solutions for applications and data</div>
+    <div class="q">A conglomerate needs to automatically discover, classify, and catalog sensitive data residing in Azure SQL Database, an AWS S3 data lake, on-premises file shares, and Power BI datasets, and present a unified view of data sensitivity and lineage across all of these sources. Which solution should the architect recommend?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. Microsoft Defender for Cloud's data-aware security posture management, scoped to Azure Storage accounts</button><button class="opt" onclick="answer(this,2,1,3)">B. The Azure Information Protection (AIP) unified labeling scanner deployed only against on-premises file shares and SharePoint</button><button class="opt" onclick="answer(this,2,2,3)">C. Microsoft Sentinel with custom data connectors ingesting logs from each data source into a Log Analytics workspace</button><button class="opt" onclick="answer(this,2,3,3)">D. Microsoft Purview Data Map and unified data catalog with scanning connectors across Azure, multicloud, and on-premises sources</button>
+    <div class="expl">Microsoft Purview's Data Map and unified catalog is purpose-built for cross-platform discovery, classification, and lineage tracking, with native scanning connectors for Azure services, AWS S3, on-premises file shares, and Power BI, giving the single unified sensitivity view required.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Domain 4: Design security solutions for applications and data">
+    <div class="meta">Question 4 of 6 · Domain 4: Design security solutions for applications and data</div>
+    <div class="q">Employees are copying confidential source code and customer PII into public consumer generative AI websites accessed through the corporate browser. The CISO wants visibility into these actions and wants to block the paste action for sensitive content specifically, without blocking access to the AI sites entirely for other uses. Which design BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. Create a Microsoft Purview DLP policy scoped to endpoint devices, integrated with Microsoft Defender for Cloud Apps browsing activity for AI apps, to detect and block sensitive content paste actions</button><button class="opt" onclick="answer(this,3,1,0)">B. Create an Azure AD Conditional Access policy that blocks all internet access from managed endpoints</button><button class="opt" onclick="answer(this,3,2,0)">C. Enable Microsoft Defender for Endpoint attack surface reduction (ASR) rules targeting browser child process creation</button><button class="opt" onclick="answer(this,3,3,0)">D. Apply sensitivity label encryption to all documents in the organization so content cannot be copied out of Office apps</button>
+    <div class="expl">Microsoft Purview DLP for endpoints, combined with Defender for Cloud Apps' visibility into browser-based generative AI app usage, can specifically detect and block sensitive information being pasted into these sites while leaving general access to the sites untouched, matching the requirement precisely.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Domain 4: Design security solutions for applications and data">
+    <div class="meta">Question 5 of 6 · Domain 4: Design security solutions for applications and data</div>
+    <div class="q">An organization stores application secrets in Azure Key Vault. The security architect wants to grant a specific managed identity permission to read only one designated secret, have that permission auditable through Azure RBAC role assignments, and avoid the vault's legacy access policy model. Which configuration should be implemented?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. Configure the Key Vault's access policies blade to grant the managed identity Get and List permissions on secrets</button><button class="opt" onclick="answer(this,4,1,1)">B. Enable the Key Vault RBAC authorization model and assign the 'Key Vault Secrets User' role to the managed identity scoped to the individual secret</button><button class="opt" onclick="answer(this,4,2,1)">C. Assign the Owner role on the resource group containing the Key Vault to the managed identity</button><button class="opt" onclick="answer(this,4,3,1)">D. Enable Azure AD Privileged Identity Management (PIM) for just-in-time activation of the Key Vault Contributor role on the managed identity</button>
+    <div class="expl">The RBAC authorization model allows Azure role assignments to be scoped down to an individual secret, key, or certificate, and every assignment is recorded as a standard Azure RBAC role assignment, giving both the granularity and native auditability the architect requires, while moving away from the legacy access policy model.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Domain 4: Design security solutions for applications and data">
+    <div class="meta">Question 6 of 6 · Domain 4: Design security solutions for applications and data</div>
+    <div class="q">During a STRIDE-based threat modeling session for a new customer-facing API, the team identifies a threat where a user could deny having authorized a financial transaction, since the API currently has no way to prove which identity initiated the call. Which STRIDE category does this threat fall under, and what design control best mitigates it?</div>
+    <button class="opt" onclick="answer(this,5,0,2)">A. Tampering — mitigate with input validation and message integrity checks</button><button class="opt" onclick="answer(this,5,1,2)">B. Information Disclosure — mitigate with TLS 1.2+ and encryption at rest</button><button class="opt" onclick="answer(this,5,2,2)">C. Repudiation — mitigate with signed, tamper-evident audit logging and non-repudiation controls such as digital signatures tied to authenticated identities</button><button class="opt" onclick="answer(this,5,3,2)">D. Denial of Service — mitigate with rate limiting and autoscaling</button>
+    <div class="expl">A user denying they performed an authorized action, with no verifiable proof of who initiated it, is the definition of Repudiation in STRIDE. The correct mitigation is establishing non-repudiation through signed audit trails and identity-bound digital signatures so the action can be conclusively attributed.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/sc-100-microsoft-cybersecurity-architect-expert-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

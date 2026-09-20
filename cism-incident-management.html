@@ -1,0 +1,76 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Incident Management Practice Questions — Certified Information Security Manager</title>
+<meta name="description" content="6 free Incident Management practice questions with explanations for the Certified Information Security Manager exam.">
+<link rel="canonical" href="https://technuggets.academy/cism-incident-management.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Incident Management Practice Questions — Certified Information Security Manager">
+<meta property="og:description" content="6 free Incident Management practice questions with explanations for the Certified Information Security Manager exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/cism-incident-management.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#5B21B6}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Incident Management</h1>
+<p class="sub">Free Certified Information Security Manager practice — 6 questions on <strong>Incident Management</strong>, with explanations. No sign-up.
+<a href="cism.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Domain 4: Incident Management">
+    <div class="meta">Question 1 of 6 · Domain 4: Incident Management</div>
+    <div class="q">A financial institution's incident response plan defines an RPO of 1 hour for its core transaction database. Current backups are taken every 4 hours via snapshot replication. During a security incident, the database is corrupted and must be restored from the last valid backup. Which of the following BEST addresses the gap between the defined RPO and the actual backup capability?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. Increase the incident response team's staffing to restore backups faster</button><button class="opt" onclick="answer(this,0,1,2)">B. Implement a higher RTO to compensate for the RPO gap</button><button class="opt" onclick="answer(this,0,2,2)">C. Increase backup frequency to hourly or implement continuous data replication to meet the defined RPO</button><button class="opt" onclick="answer(this,0,3,2)">D. Extend the RPO in the incident response plan to 4 hours to match current backup capability</button>
+    <div class="expl">RPO is derived from the business impact analysis and represents the maximum tolerable data loss determined by business requirements. When actual capability falls short, the correct response is to invest in technical capability (more frequent backups or continuous replication) to close the gap, not to arbitrarily lower the business requirement.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Domain 4: Incident Management">
+    <div class="meta">Question 2 of 6 · Domain 4: Incident Management</div>
+    <div class="q">An organization's incident classification matrix assigns severity levels based on business impact. During triage, a security analyst discovers that a phishing email compromised a single non-privileged user's mailbox, with no evidence of lateral movement, privilege escalation, or data exfiltration. According to typical incident severity criteria used in mature incident management programs, this incident should be classified as:</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. Critical, requiring immediate executive notification</button><button class="opt" onclick="answer(this,1,1,2)">B. High, requiring activation of the full crisis management team</button><button class="opt" onclick="answer(this,1,2,2)">C. Low to moderate, handled per standard operating procedures with routine reporting</button><button class="opt" onclick="answer(this,1,3,2)">D. Not a security incident, since it resulted from user error</button>
+    <div class="expl">A single-account compromise with no evidence of spread, privilege escalation, or data loss represents limited business impact and is typically classified as low to moderate severity, handled through routine incident handling procedures with standard reporting.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Domain 4: Incident Management">
+    <div class="meta">Question 3 of 6 · Domain 4: Incident Management</div>
+    <div class="q">Following eradication and recovery from a ransomware incident, the incident response team drafts a report. Management asks the security manager to ensure the post-incident review produces actionable value. Which of the following should be the PRIMARY focus of the post-incident review?</div>
+    <button class="opt" onclick="answer(this,2,0,2)">A. Documenting the exact timeline of technical remediation steps for compliance audit purposes</button><button class="opt" onclick="answer(this,2,1,2)">B. Determining which individual employees should be held accountable for the incident</button><button class="opt" onclick="answer(this,2,2,2)">C. Identifying root cause and control failures to drive corrective actions that reduce recurrence likelihood</button><button class="opt" onclick="answer(this,2,3,2)">D. Calculating the total financial cost of the incident for insurance claim purposes</button>
+    <div class="expl">The primary purpose of a post-incident review from a management perspective is continuous improvement: identifying root causes and control gaps, and driving corrective actions that reduce the likelihood and impact of future incidents.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Domain 4: Incident Management">
+    <div class="meta">Question 4 of 6 · Domain 4: Incident Management</div>
+    <div class="q">An organization discovers that a data breach affecting the personal data of EU customers occurred 50 hours ago and was confirmed as a reportable breach 10 hours ago. Per the regulatory notification procedures referenced in the incident response plan under GDPR, which action is MOST appropriate for the incident manager to take now?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. Delay notification until legal counsel completes a full review of customer notification liability exposure</button><button class="opt" onclick="answer(this,3,1,1)">B. Notify the supervisory authority immediately, providing available details within the 72-hour window and committing to update as more information becomes available</button><button class="opt" onclick="answer(this,3,2,1)">C. Notify only affected customers directly, since regulatory notification is only required if data exfiltration is proven</button><button class="opt" onclick="answer(this,3,3,1)">D. Wait until the full forensic investigation is complete before notifying the supervisory authority, to ensure accuracy</button>
+    <div class="expl">GDPR requires notification to the relevant supervisory authority within 72 hours of becoming aware of a reportable breach; the clock started at confirmation. Phased or preliminary notification with a commitment to follow-up detail is expected and compliant when full facts are not yet available.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Domain 4: Incident Management">
+    <div class="meta">Question 5 of 6 · Domain 4: Incident Management</div>
+    <div class="q">In a well-designed incident management program, who should have the authority to formally declare an incident and activate the incident response plan?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. Any employee who suspects an incident, to ensure the fastest possible response</button><button class="opt" onclick="answer(this,4,1,3)">B. The chief executive officer (CEO), since it involves organizational risk</button><button class="opt" onclick="answer(this,4,2,3)">C. The IT help desk, since they typically receive the first reports of technical issues</button><button class="opt" onclick="answer(this,4,3,3)">D. A predefined role or authority, such as an incident manager or CISO, based on documented criteria and severity thresholds</button>
+    <div class="expl">Formal incident declaration should be governed by a predefined role and documented criteria (e.g., incident manager or CISO) to ensure consistent, appropriately scaled activation of response resources based on severity thresholds.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Domain 4: Incident Management">
+    <div class="meta">Question 6 of 6 · Domain 4: Incident Management</div>
+    <div class="q">A security manager is reviewing the organization's incident management plan and business continuity plan for alignment. During a recent incident simulation, it was determined that the current disaster recovery site (a cold site) cannot meet the maximum tolerable downtime (MTD) defined by the business impact analysis for the organization's critical payment processing system. Which of the following actions should the security manager recommend?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. Reduce the MTD in the business impact analysis to match the cold site's recovery capability</button><button class="opt" onclick="answer(this,5,1,3)">B. Rely on manual processing procedures indefinitely until the cold site can be fully restored</button><button class="opt" onclick="answer(this,5,2,3)">C. Increase the frequency of incident response tabletop exercises to compensate for the site limitation</button><button class="opt" onclick="answer(this,5,3,3)">D. Upgrade to a warm or hot site strategy capable of achieving recovery within the required MTD</button>
+    <div class="expl">When existing DR infrastructure cannot meet a business-derived MTD, the appropriate response is to invest in a recovery strategy (warm or hot site) capable of achieving the required recovery timeframe, aligning capability with the defined business requirement.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">undefined</span> <span class="price">$34.99</span> with code <span class="code">FREETEST33</span> — valid through Oct 6.</p>
+  <a href="https://www.udemy.com/course/cism-certification-exam-preparation-course/?couponCode=FREETEST33" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

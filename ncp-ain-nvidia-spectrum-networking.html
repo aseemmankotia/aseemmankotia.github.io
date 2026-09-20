@@ -1,0 +1,76 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free NVIDIA Spectrum Networking Practice Questions — NVIDIA-Certified Professional: AI Networking</title>
+<meta name="description" content="6 free NVIDIA Spectrum Networking practice questions with explanations for the NVIDIA-Certified Professional: AI Networking exam.">
+<link rel="canonical" href="https://technuggets.academy/ncp-ain-nvidia-spectrum-networking.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free NVIDIA Spectrum Networking Practice Questions — NVIDIA-Certified Professional: AI Networking">
+<meta property="og:description" content="6 free NVIDIA Spectrum Networking practice questions with explanations for the NVIDIA-Certified Professional: AI Networking exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/ncp-ain-nvidia-spectrum-networking.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#76B900}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>NVIDIA Spectrum Networking</h1>
+<p class="sub">Free NVIDIA-Certified Professional: AI Networking practice — 6 questions on <strong>NVIDIA Spectrum Networking</strong>, with explanations. No sign-up.
+<a href="ncp-ain.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="NVIDIA Spectrum Networking">
+    <div class="meta">Question 1 of 6 · NVIDIA Spectrum Networking</div>
+    <div class="q">A GPU cluster running a 3-tier Spectrum-X fabric begins experiencing a PFC deadlock during a large all-reduce collective, where pause frames propagate across multiple switches and stall traffic in a cyclic pattern. Which approach BEST resolves this without disabling lossless behavior needed for RoCEv2?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. Disable PFC entirely on all switch ports and rely only on TCP-style retransmission for lost frames</button><button class="opt" onclick="answer(this,0,1,1)">B. Enable PFC storm prevention/detection on the Spectrum switches and pair it with ECN-based DCQCN congestion control so queues are drained before PFC pause thresholds are reached</button><button class="opt" onclick="answer(this,0,2,1)">C. Increase the PFC pause timer to its maximum value so pause frames last longer and give buffers more time to drain</button><button class="opt" onclick="answer(this,0,3,1)">D. Convert all RoCEv2 traffic to UDP without ECN and let the application layer handle retransmission</button>
+    <div class="expl">Spectrum-X design relies on ECN/DCQCN to proactively signal congestion at the source before PFC pause is triggered, while PFC storm prevention detects and breaks pathological pause loops (deadlocks) that pure PFC-only designs are prone to in multi-tier fabrics.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="NVIDIA Spectrum Networking">
+    <div class="meta">Question 2 of 6 · NVIDIA Spectrum Networking</div>
+    <div class="q">A network architect is designing a Spectrum-X fabric and needs the GPU-attached NICs to perform RoCEv2 congestion telemetry offload and packet reordering so that adaptive routing can be used without exposing out-of-order packets to the RDMA application. Which NIC/DPU class is required at the host to support this Spectrum-X capability?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. BlueField-3 SuperNIC</button><button class="opt" onclick="answer(this,1,1,0)">B. ConnectX-6 Dx NIC</button><button class="opt" onclick="answer(this,1,2,0)">C. BlueField-2 DPU in Ethernet storage acceleration mode</button><button class="opt" onclick="answer(this,1,3,0)">D. Standard ConnectX-5 NIC with SR-IOV enabled</button>
+    <div class="expl">BlueField-3 SuperNICs provide the hardware RoCE transport offload, out-of-order packet reordering, and congestion telemetry needed to work with Spectrum-4 switches' adaptive routing while presenting in-order delivery to the GPU application.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="NVIDIA Spectrum Networking">
+    <div class="meta">Question 3 of 6 · NVIDIA Spectrum Networking</div>
+    <div class="q">On a Spectrum switch configured for RoCEv2 with DCQCN, which set of parameters directly controls the probability that a packet's ECN bit is marked as the egress queue depth grows, before any PFC pause is triggered?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. WRED Kmin, Kmax, and Pmax thresholds</button><button class="opt" onclick="answer(this,2,1,0)">B. MTU and jumbo frame size settings</button><button class="opt" onclick="answer(this,2,2,0)">C. PFC pause quanta and priority-to-TC mapping</button><button class="opt" onclick="answer(this,2,3,0)">D. LACP hashing policy and port-channel load balancing mode</button>
+    <div class="expl">WRED (Weighted Random Early Detection) thresholds Kmin, Kmax, and Pmax on the switch determine at what queue occupancy ECN marking begins, how it scales, and the maximum marking probability — this is the core mechanism feeding DCQCN's congestion feedback loop.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="NVIDIA Spectrum Networking">
+    <div class="meta">Question 4 of 6 · NVIDIA Spectrum Networking</div>
+    <div class="q">Spectrum-X fabrics use per-packet adaptive routing to maximize path utilization across spine-leaf topologies for RoCEv2 traffic. Why does this NOT cause the out-of-order delivery problems normally associated with per-packet load balancing on RDMA fabrics?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. Adaptive routing is disabled by default whenever RoCEv2 is in use</button><button class="opt" onclick="answer(this,3,1,1)">B. The SuperNIC's hardware transport layer reorders packets before delivery to the RDMA application, hiding fabric-level reordering from the GPU workload</button><button class="opt" onclick="answer(this,3,2,1)">C. Spectrum switches guarantee in-order delivery at the network layer using deep packet buffering</button><button class="opt" onclick="answer(this,3,3,1)">D. RoCEv2 uses TCP, which natively handles reordering at the transport layer</button>
+    <div class="expl">The BlueField-3 SuperNIC includes a hardware reordering engine that reassembles packets received out of order due to adaptive per-packet spraying, presenting an in-order RDMA stream to the application while still gaining the load-balancing benefits of adaptive routing.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="NVIDIA Spectrum Networking">
+    <div class="meta">Question 5 of 6 · NVIDIA Spectrum Networking</div>
+    <div class="q">During a large language model training run, engineers observe sporadic tail-latency spikes on specific GPU-to-GPU flows but see no obvious link errors or interface drops in standard counters. Which Spectrum switch capability should they use to get real-time, per-event visibility into the exact cause (e.g., buffer congestion, ECN marking, or micro-burst drops) without impacting production traffic?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. sFlow sampling at a 1:10000 rate</button><button class="opt" onclick="answer(this,4,1,1)">B. What Just Happened (WJH) telemetry</button><button class="opt" onclick="answer(this,4,2,1)">C. Standard SNMP polling of interface counters every 5 minutes</button><button class="opt" onclick="answer(this,4,3,1)">D. Port mirroring (SPAN) to a packet capture appliance</button>
+    <div class="expl">What Just Happened (WJH) is a Spectrum switch hardware telemetry feature that streams detailed, real-time root-cause events (buffer drops, ECN marks, latency spikes, ACL drops, etc.) without sampling gaps or added traffic load, making it ideal for diagnosing intermittent micro-burst issues.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="NVIDIA Spectrum Networking">
+    <div class="meta">Question 6 of 6 · NVIDIA Spectrum Networking</div>
+    <div class="q">An architect is calculating PFC headroom buffer requirements for links between Spectrum switches and BlueField SuperNICs where the fiber cable run is being extended from 3 meters to 100 meters. How must the headroom buffer allocation change to prevent packet loss during the pause frame propagation delay?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. Headroom buffer allocation must decrease proportionally, since longer cables reduce the effective link bandwidth</button><button class="opt" onclick="answer(this,5,1,3)">B. No change is needed because PFC headroom is fixed regardless of cable length</button><button class="opt" onclick="answer(this,5,2,3)">C. Headroom buffer allocation should be set to zero and MTU should be reduced instead</button><button class="opt" onclick="answer(this,5,3,3)">D. Headroom buffer allocation must increase, since more bytes are already in flight on the wire when the pause frame is received and processed</button>
+    <div class="expl">Headroom buffer must account for all bytes already transmitted before a PFC pause frame is received and takes effect, which is a function of round-trip propagation delay; longer cables mean more in-flight bytes at line rate, requiring larger headroom buffers to avoid drops.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST34"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">undefined</span> <span class="price">$34.99</span> with code <span class="code">FREETEST34</span> — valid through Oct 11.</p>
+  <a href="https://www.udemy.com/course/ncp-ain-nvidia-ai-networking-certification-prep/?couponCode=FREETEST34" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

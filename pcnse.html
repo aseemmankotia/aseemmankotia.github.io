@@ -1,0 +1,123 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Palo Alto Networks Certified Network Security Engineer Practice Test — 12 Real Exam-Style Questions</title>
+<meta name="description" content="Free Palo Alto Networks Certified Network Security Engineer practice questions with detailed explanations. Test yourself before the real exam.">
+<link rel="canonical" href="https://technuggets.academy/pcnse.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Palo Alto Networks Certified Network Security Engineer Practice Test — 12 Real Exam-Style Questions">
+<meta property="og:description" content="Free Palo Alto Networks Certified Network Security Engineer practice questions with detailed explanations. Test yourself before the real exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/pcnse.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div><div class="hero">
+  <span class="chip">PCNSE</span>
+  <h1>Free Palo Alto Networks Certified Network Security Engineer Practice Test</h1>
+  <p class="sub">12 exam-style questions with full explanations — no sign-up. Score yourself, then close your gaps with the full course.</p>
+  <div class="facts"><span class="fact">Exam fee <b>~$175</b></span><span class="fact"><b>6</b> exam domains</span><span class="fact">Level <b>Advanced</b></span><span class="fact"><b>2</b> timed practice tests in the course</span></div>
+  <div class="cta-row"><a class="btn enroll" href="https://www.udemy.com/course/pcnse-exam-prep-palo-alto-networks-ngfw-panorama/" rel="sponsored" target="_blank">Start my full course on Udemy →</a><a class="btn ghost" href="#practice">Try the free test →</a></div>
+</div><div class="trust"><span>✅ <b>Free</b> practice — no sign-up</span><span>📝 Real exam-style questions</span><span>💡 Detailed explanations</span><span>💸 30-day money-back via Udemy</span></div>
+<div id="practice"></div>
+
+  <div class="card qcard" id="q0" data-domain="Domain 1: Core Concepts">
+    <div class="meta">Question 1 of 12 · Domain 1: Core Concepts</div>
+    <div class="q">A network architect must insert a Palo Alto Networks firewall between an existing core switch and edge router to enable App-ID, Content-ID, and threat prevention, but the customer's change window prohibits any IP address or routing changes to the existing topology. Which interface deployment mode BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. Tap mode</button><button class="opt" onclick="answer(this,0,1,3)">B. Layer 3</button><button class="opt" onclick="answer(this,0,2,3)">C. Layer 2 with VLAN trunking</button><button class="opt" onclick="answer(this,0,3,3)">D. Virtual wire</button>
+    <div class="expl">Virtual wire binds two interfaces together so the firewall passes traffic transparently at Layer 1/2 without requiring any IP addressing or routing changes, while still allowing full App-ID, Content-ID, User-ID, and threat prevention inspection inline.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Domain 2: Deploy and Configure Core Components">
+    <div class="meta">Question 2 of 12 · Domain 2: Deploy and Configure Core Components</div>
+    <div class="q">A company must decrypt outbound HTTPS traffic on the firewall to inspect for threats, but cannot tolerate certificate-trust warnings on any of its 5,000 managed Windows endpoints. Which approach BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,1,0,1)">A. Enable SSL Forward Proxy using the firewall's built-in default self-signed certificate</button><button class="opt" onclick="answer(this,1,1,1)">B. Generate a subordinate CA certificate signed by the enterprise root CA, import it into the firewall as the Forward Trust certificate, and rely on the enterprise root CA already trusted by endpoints</button><button class="opt" onclick="answer(this,1,2,1)">C. Configure SSL Inbound Inspection using the server's certificate and private key</button><button class="opt" onclick="answer(this,1,3,1)">D. Leave decryption disabled and depend solely on App-ID and Content-ID signatures</button>
+    <div class="expl">Using a subordinate CA issued by the enterprise root CA means the firewall-generated certificates chain to a CA already trusted by managed endpoints (via GPO/AD), so no browser warnings appear and outbound SSL Forward Proxy decryption works transparently.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Domain 3: Deploy and Configure Features and Subscriptions">
+    <div class="meta">Question 3 of 12 · Domain 3: Deploy and Configure Features and Subscriptions</div>
+    <div class="q">A financial services company wants unknown executable files traversing the firewall to be uploaded to a cloud-based sandbox for dynamic behavioral analysis, receiving a verdict of malicious, grayware, phishing, or benign within minutes. Which Palo Alto Networks subscription provides this capability?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. WildFire</button><button class="opt" onclick="answer(this,2,1,0)">B. DNS Security</button><button class="opt" onclick="answer(this,2,2,0)">C. URL Filtering</button><button class="opt" onclick="answer(this,2,3,0)">D. Vulnerability Protection</button>
+    <div class="expl">WildFire uploads unknown files to a cloud (or WF-500 appliance) sandbox, executes them in a virtual environment, and returns a verdict; new signatures generated from the analysis are then distributed globally.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Domain 4: Deploy and Configure Firewalls Using Panorama">
+    <div class="meta">Question 4 of 12 · Domain 4: Deploy and Configure Firewalls Using Panorama</div>
+    <div class="q">A Panorama template stack contains three templates: 'Base-Network', 'Region-EU', and 'Site-London', listed in that order from top to bottom in the stack. Both 'Base-Network' and 'Site-London' configure the same NTP server address with different values. Which setting is pushed to the firewall assigned to this stack?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. The setting from 'Base-Network' is used because it is highest in the stack</button><button class="opt" onclick="answer(this,3,1,0)">B. The setting from 'Site-London' is used because it is lowest in the stack</button><button class="opt" onclick="answer(this,3,2,0)">C. Panorama merges both values into a single comma-separated NTP configuration</button><button class="opt" onclick="answer(this,3,3,0)">D. The push fails with a validation error until the administrator manually resolves the conflict</button>
+    <div class="expl">In a Panorama template stack, the order of the templates determines precedence for overlapping configuration. The template positioned highest (closest to the top) in the stack list wins conflicts, so 'Base-Network' overrides 'Site-London' for the duplicated NTP setting.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Domain 5: Manage and Operate">
+    <div class="meta">Question 5 of 12 · Domain 5: Manage and Operate</div>
+    <div class="q">A network security engineer needs to upgrade a firewall running PAN-OS 10.1.6 to PAN-OS 11.1.2. Which upgrade path is correct?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. Download PAN-OS 11.1.2 directly and install it, since PAN-OS supports direct upgrades across any number of feature releases.</button><button class="opt" onclick="answer(this,4,1,1)">B. Download and install the base image for 10.2.0, download and install the base image for 11.0.0, then download and install PAN-OS 11.1.2.</button><button class="opt" onclick="answer(this,4,2,1)">C. Download and install PAN-OS 11.1.2 directly, then reboot twice to complete the multi-release skip.</button><button class="opt" onclick="answer(this,4,3,1)">D. Downgrade to PAN-OS 9.1.0 first, then perform a fresh upgrade sequence to 11.1.2.</button>
+    <div class="expl">PAN-OS requires sequential download/install of the base image for each intermediate feature release between the current and target versions before installing the final target release; skipping feature-release base images is not supported and will fail dependency checks.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Domain 6: Troubleshooting">
+    <div class="meta">Question 6 of 12 · Domain 6: Troubleshooting</div>
+    <div class="q">A firewall administrator is troubleshooting a connectivity issue. The Traffic log shows the session end reason as 'policy-deny', yet the administrator confirms a Security policy rule permitting this traffic exists near the top of the rulebase, above the deny-all rule. What is the MOST likely explanation?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. The candidate configuration containing the allow rule was never committed</button><button class="opt" onclick="answer(this,5,1,3)">B. A Zone Protection profile on the ingress zone is silently dropping the session</button><button class="opt" onclick="answer(this,5,2,3)">C. The firewall is operating in virtual wire mode, which ignores Security policy zone matching</button><button class="opt" onclick="answer(this,5,3,3)">D. The session was initially allowed based on port, but after App-ID identified the true application, the firewall re-evaluated the session against the Security policy and matched a different rule with a deny action</button>
+    <div class="expl">PAN-OS performs an initial policy lookup based on port/protocol, then re-evaluates the session once App-ID completes identification. If the identified application matches a more specific rule with a deny action, the session is torn down with 'policy-deny' even though an earlier port-based rule appeared to allow it. This App-ID re-match behavior is a classic PCNSE troubleshooting scenario.</div>
+  </div>
+
+  <div class="card qcard" id="q6" data-domain="Domain 1: Core Concepts">
+    <div class="meta">Question 7 of 12 · Domain 1: Core Concepts</div>
+    <div class="q">A SOC wants to evaluate a new Palo Alto Networks firewall's threat detection accuracy by connecting it to a SPAN port on a core switch. The firewall must not be able to drop or modify any production traffic during this evaluation. Which interface type should be configured?</div>
+    <button class="opt" onclick="answer(this,6,0,2)">A. Virtual wire</button><button class="opt" onclick="answer(this,6,1,2)">B. Layer 3 subinterface</button><button class="opt" onclick="answer(this,6,2,2)">C. Tap</button><button class="opt" onclick="answer(this,6,3,2)">D. Layer 2</button>
+    <div class="expl">Tap interfaces connect to a switch SPAN/mirror port and provide passive, out-of-band visibility into traffic for App-ID and threat detection reporting only — the firewall cannot block, drop, or modify traffic in this mode.</div>
+  </div>
+
+  <div class="card qcard" id="q7" data-domain="Domain 2: Deploy and Configure Core Components">
+    <div class="meta">Question 8 of 12 · Domain 2: Deploy and Configure Core Components</div>
+    <div class="q">Internal users on the corporate LAN resolve an internal server's FQDN to its public NAT IP address (split-horizon DNS is not used), and must reach that server successfully from inside the network. Which NAT configuration BEST satisfies this requirement?</div>
+    <button class="opt" onclick="answer(this,7,0,2)">A. A standard Destination NAT rule only, translating the public IP to the private server IP</button><button class="opt" onclick="answer(this,7,1,2)">B. Dynamic IP and Port (DIPP) Source NAT on the internal zone</button><button class="opt" onclick="answer(this,7,2,2)">C. U-Turn NAT: a Destination NAT rule with source zone and destination zone both set to the internal zone, translating destination to the internal server's private IP</button><button class="opt" onclick="answer(this,7,3,2)">D. A NAT exemption rule that disables NAT for internal-to-internal traffic</button>
+    <div class="expl">U-Turn NAT handles the case where internal clients request the public IP of an internal resource. The rule matches traffic with source zone = internal and original destination = public IP, then translates the destination to the server's private IP while keeping both zones internal, allowing correct routing back through the firewall.</div>
+  </div>
+
+  <div class="card qcard" id="q8" data-domain="Domain 3: Deploy and Configure Features and Subscriptions">
+    <div class="meta">Question 9 of 12 · Domain 3: Deploy and Configure Features and Subscriptions</div>
+    <div class="q">An administrator wants to identify and block DNS queries generated by malware using domain generation algorithms (DGA) to reach command-and-control infrastructure. Which subscription supplies the intelligence needed to dynamically categorize and block these domains?</div>
+    <button class="opt" onclick="answer(this,8,0,1)">A. Vulnerability Protection</button><button class="opt" onclick="answer(this,8,1,1)">B. DNS Security</button><button class="opt" onclick="answer(this,8,2,1)">C. Anti-Spyware</button><button class="opt" onclick="answer(this,8,3,1)">D. WildFire</button>
+    <div class="expl">DNS Security provides cloud-delivered, machine-learning-based analysis that dynamically categorizes malicious domains, including those generated via DGA algorithms and DNS tunneling attempts.</div>
+  </div>
+
+  <div class="card qcard" id="q9" data-domain="Domain 4: Deploy and Configure Firewalls Using Panorama">
+    <div class="meta">Question 10 of 12 · Domain 4: Deploy and Configure Firewalls Using Panorama</div>
+    <div class="q">Panorama manages a device group hierarchy where 'Branch-FW-01' is a child of the parent device group 'Global', and both device groups plus the Shared location contain pre-rulebase security rules. In which order does the firewall evaluate these pre-rules after Panorama pushes the configuration?</div>
+    <button class="opt" onclick="answer(this,9,0,2)">A. Branch-FW-01 pre-rules, then Global pre-rules, then Shared pre-rules</button><button class="opt" onclick="answer(this,9,1,2)">B. Shared pre-rules, then Branch-FW-01 pre-rules, then Global pre-rules</button><button class="opt" onclick="answer(this,9,2,2)">C. Shared pre-rules, then Global pre-rules, then Branch-FW-01 pre-rules</button><button class="opt" onclick="answer(this,9,3,2)">D. Global pre-rules, then Shared pre-rules, then Branch-FW-01 pre-rules</button>
+    <div class="expl">Panorama's rule evaluation order for pre-rulebases is Shared first, then the device group hierarchy from the topmost parent down to the most specific child device group. So Shared runs first, then 'Global' (parent), then 'Branch-FW-01' (child), followed later by local firewall rules and then post-rules in reverse order.</div>
+  </div>
+
+  <div class="card qcard" id="q10" data-domain="Domain 5: Manage and Operate">
+    <div class="meta">Question 11 of 12 · Domain 5: Manage and Operate</div>
+    <div class="q">Two PA-5450 firewalls are deployed in an active/active HA pair to handle asymmetric traffic flows across two ISPs. Which mechanism ensures that return traffic for a session is delivered to the firewall that owns that session when asymmetric routing sends the packets to the wrong peer?</div>
+    <button class="opt" onclick="answer(this,10,0,0)">A. The HA3 packet-forwarding link forwards packets to the session owner firewall when asymmetric routing delivers them to the non-owner peer.</button><button class="opt" onclick="answer(this,10,1,0)">B. The HA2 data link synchronizes session tables between peers to keep both firewalls current.</button><button class="opt" onclick="answer(this,10,2,0)">C. The HA1 backup link carries heartbeat and control traffic as backup to the primary HA1 link.</button><button class="opt" onclick="answer(this,10,3,0)">D. A dedicated Layer 3 HA link using OSPF redistributes routes between the two peers.</button>
+    <div class="expl">In active/active HA, the HA3 link is a dedicated dataplane link used specifically to forward packets between peers so the non-owner firewall can hand off received packets to the actual session owner, which is required to handle asymmetric routing.</div>
+  </div>
+
+  <div class="card qcard" id="q11" data-domain="Domain 6: Troubleshooting">
+    <div class="meta">Question 12 of 12 · Domain 6: Troubleshooting</div>
+    <div class="q">An administrator wants to identify which stage of the single-pass packet processing pipeline is dropping packets, using global drop counters rather than a full packet capture. Which CLI command should be used?</div>
+    <button class="opt" onclick="answer(this,11,0,3)">A. show session all filter application any</button><button class="opt" onclick="answer(this,11,1,3)">B. request session-cleanup</button><button class="opt" onclick="answer(this,11,2,3)">C. show high-availability all</button><button class="opt" onclick="answer(this,11,3,3)">D. show counter global filter delta yes</button>
+    <div class="expl">'show counter global filter delta yes' displays incrementing global packet/session counters (e.g., flow_policy_deny, flow_fwd_l3_noroute) since the last invocation, letting the administrator pinpoint the exact processing stage responsible for drops without running a full packet capture.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/pcnse-exam-prep-palo-alto-networks-ngfw-panorama/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<section class="faq"><h3>PCNSE exam — quick answers</h3><details><summary>How much does the PCNSE exam cost?</summary><p>The exam fee is approximately $175 and varies by region — confirm current pricing with the certification vendor before you book.</p></details><details><summary>What topics are on the exam?</summary><p>It covers 6 domains: Core Concepts (~15%), Deploy and Configure Core Components (~20%), Deploy and Configure Features and Subscriptions (~15%), Deploy and Configure Firewalls Using Panorama (~15%), Manage and Operate (~20%), Troubleshooting (~15%). The full course has a dedicated chapter, lab and practice-test coverage for each.</p></details><details><summary>Is this practice test really free?</summary><p>Yes — all questions on this page are free with explanations and no sign-up. The paid Udemy course adds two full-length timed exams, video lessons and hands-on labs.</p></details><details><summary>Will this prepare me for the real exam?</summary><p>The questions mirror the real exam's style and are mapped to the official domains. This is exam-focused preparation — combine the free test with the full course's timed simulations to gauge your readiness.</p></details></section>
+<div class="domains"><span class="meta">More free practice by exam domain:</span><br><a href="pcnse-core-concepts.html">Core Concepts →</a><a href="pcnse-deploy-and-configure-core-components.html">Deploy and Configure Core Components →</a><a href="pcnse-deploy-and-configure-features-and-subscriptions.html">Deploy and Configure Features and Subscriptions →</a><a href="pcnse-deploy-and-configure-firewalls-using-panorama.html">Deploy and Configure Firewalls Using Panorama →</a><a href="pcnse-manage-and-operate.html">Manage and Operate →</a><a href="pcnse-troubleshooting.html">Troubleshooting →</a></div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

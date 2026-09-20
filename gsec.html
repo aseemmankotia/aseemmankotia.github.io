@@ -1,0 +1,123 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free GIAC Security Essentials Practice Test — 12 Real Exam-Style Questions</title>
+<meta name="description" content="Free GIAC Security Essentials practice questions with detailed explanations. Test yourself before the real exam.">
+<link rel="canonical" href="https://technuggets.academy/gsec.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free GIAC Security Essentials Practice Test — 12 Real Exam-Style Questions">
+<meta property="og:description" content="Free GIAC Security Essentials practice questions with detailed explanations. Test yourself before the real exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/gsec.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div><div class="hero">
+  <span class="chip">GSEC</span>
+  <h1>Free GIAC Security Essentials Practice Test</h1>
+  <p class="sub">12 exam-style questions with full explanations — no sign-up. Score yourself, then close your gaps with the full course.</p>
+  <div class="facts"><span class="fact">Exam fee <b>~$979</b></span><span class="fact"><b>11</b> exam domains</span><span class="fact">Level <b>Intermediate</b></span><span class="fact"><b>2</b> timed practice tests in the course</span></div>
+  <div class="cta-row"><a class="btn enroll" href="https://www.udemy.com/course/gsec-giac-security-essentials-exam-focused-prep/" rel="sponsored" target="_blank">Start my full course on Udemy →</a><a class="btn ghost" href="#practice">Try the free test →</a></div>
+</div><div class="trust"><span>✅ <b>Free</b> practice — no sign-up</span><span>📝 Real exam-style questions</span><span>💡 Detailed explanations</span><span>💸 30-day money-back via Udemy</span></div>
+<div id="practice"></div>
+
+  <div class="card qcard" id="q0" data-domain="Defense-in-Depth and Defensible Network Architecture">
+    <div class="meta">Question 1 of 12 · Defense-in-Depth and Defensible Network Architecture</div>
+    <div class="q">A financial services company discovers that an attacker modified transaction records in a database without authorization, but the data remained accessible and no data was disclosed to unauthorized parties. Which component of the CIA triad was PRIMARILY violated?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. Integrity, because the data was altered without authorization</button><button class="opt" onclick="answer(this,0,1,0)">B. Availability, because the database was accessed</button><button class="opt" onclick="answer(this,0,2,0)">C. Confidentiality, because an attacker gained access</button><button class="opt" onclick="answer(this,0,3,0)">D. Non-repudiation, because the attacker denied involvement</button>
+    <div class="expl">Unauthorized modification of data is a direct violation of integrity, which concerns the accuracy and trustworthiness of data.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Cryptography and PKI">
+    <div class="meta">Question 2 of 12 · Cryptography and PKI</div>
+    <div class="q">A financial services company runs a high-traffic public web application and wants TLS clients to be able to verify the server certificate's revocation status without introducing added latency from contacting the CA's OCSP responder during every handshake. Which mechanism BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. CRL distribution point checking on every connection</button><button class="opt" onclick="answer(this,1,1,3)">B. Certificate pinning in the client application</button><button class="opt" onclick="answer(this,1,2,3)">C. A non-caching OCSP responder queried directly by the client</button><button class="opt" onclick="answer(this,1,3,3)">D. OCSP stapling</button>
+    <div class="expl">OCSP stapling has the server periodically fetch a signed OCSP response from the CA and attach ('staple') it to the TLS handshake, so the client gets revocation status instantly without an extra round trip to the CA, and reduces load on the OCSP responder.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Networking, Protocols, and Network Security">
+    <div class="meta">Question 3 of 12 · Networking, Protocols, and Network Security</div>
+    <div class="q">A network analyst reviews a packet capture and finds a large volume of TCP packets with the SYN and ACK flags set arriving at an internal host from hundreds of different external IP addresses on port 80. No corresponding SYN packets were ever sent from the internal host to those addresses. What does this traffic pattern MOST likely indicate?</div>
+    <button class="opt" onclick="answer(this,2,0,2)">A. Normal web browsing traffic returning from external web servers to the host</button><button class="opt" onclick="answer(this,2,1,2)">B. The host is performing a TCP SYN port scan against external hosts</button><button class="opt" onclick="answer(this,2,2,2)">C. The host's IP address is being spoofed as the source in a SYN flood attack against external targets, causing SYN-ACK backscatter to return to the network</button><button class="opt" onclick="answer(this,2,3,2)">D. The host is infected with malware beaconing to a command-and-control server over port 80</button>
+    <div class="expl">Unsolicited SYN-ACK packets arriving without a preceding SYN violate the normal TCP three-way handshake. This is the signature of 'backscatter' — an attacker elsewhere spoofed this host's IP as the source of SYN packets sent to many external hosts as part of a SYN flood DoS attack, and those hosts' SYN-ACK replies are returning to the spoofed (victim) address.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Access Control, Authentication, and Password Security">
+    <div class="meta">Question 4 of 12 · Access Control, Authentication, and Password Security</div>
+    <div class="q">A Windows domain administrator discovers that an attacker who compromised a workstation was able to authenticate to other servers using only the NTLM password hash extracted from memory, without ever knowing the plaintext password. Which control BEST prevents this attack technique going forward?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. Enable Credential Guard and eliminate reuse of identical local administrator passwords across systems</button><button class="opt" onclick="answer(this,3,1,0)">B. Enforce a minimum password length of 14 characters</button><button class="opt" onclick="answer(this,3,2,0)">C. Require multi-factor authentication for VPN access only</button><button class="opt" onclick="answer(this,3,3,0)">D. Disable NTLMv1 in favor of NTLMv2 hashing only</button>
+    <div class="expl">Credential Guard isolates LSASS secrets in a protected virtualized container, and unique local admin passwords (e.g., via LAPS) prevent an attacker from reusing a stolen hash to move laterally to other machines — directly mitigating pass-the-hash.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Incident Handling and Response">
+    <div class="meta">Question 5 of 12 · Incident Handling and Response</div>
+    <div class="q">A SOC analyst discovers unusual outbound traffic from a workstation and begins reviewing logs to determine which systems have been affected, the extent of attacker access, and what data may have been exposed, without yet taking any action to stop the activity. Which phase of the incident handling process is the analyst performing?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. Identification</button><button class="opt" onclick="answer(this,4,1,0)">B. Containment</button><button class="opt" onclick="answer(this,4,2,0)">C. Eradication</button><button class="opt" onclick="answer(this,4,3,0)">D. Recovery</button>
+    <div class="expl">Identification includes confirming an incident occurred and determining its scope, systems affected, and data exposure before any action is taken to stop or remove the threat.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Linux Security">
+    <div class="meta">Question 6 of 12 · Linux Security</div>
+    <div class="q">A Linux security analyst runs `find / -perm -4000 -type f 2&gt;/dev/null` and discovers a SUID-root binary in /tmp that is not part of the standard OS installation. What is the BEST immediate action?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. Remove the SUID bit with chmod u-s on the file and preserve it for forensic investigation</button><button class="opt" onclick="answer(this,5,1,0)">B. Change the file's owner to a non-root user but leave the SUID bit set</button><button class="opt" onclick="answer(this,5,2,0)">C. Add an entry for the file in /etc/cron.allow to monitor its future execution</button><button class="opt" onclick="answer(this,5,3,0)">D. Leave it as-is since files in /tmp are automatically cleared on reboot</button>
+    <div class="expl">Stripping the SUID bit immediately neutralizes the privilege-escalation risk while keeping the file intact for analysis (hashing, strings, timeline correlation) — the core GSEC hands-on incident response approach.</div>
+  </div>
+
+  <div class="card qcard" id="q6" data-domain="Windows Security">
+    <div class="meta">Question 7 of 12 · Windows Security</div>
+    <div class="q">A domain has a GPO linked at the domain level that disables USB storage devices. An OU containing the Finance workstations has a separate GPO linked directly to that OU which enables USB storage devices. Both GPOs are set to 'Enabled' with no Enforced or Block Inheritance settings applied. Which policy setting will actually apply to the Finance workstations?</div>
+    <button class="opt" onclick="answer(this,6,0,1)">A. The domain-level GPO wins because domain policies always take precedence</button><button class="opt" onclick="answer(this,6,1,1)">B. The OU-linked GPO wins because it is applied last in the LSDOU processing order</button><button class="opt" onclick="answer(this,6,2,1)">C. Neither setting applies because the conflict causes both to be ignored</button><button class="opt" onclick="answer(this,6,3,1)">D. The Site-linked GPO wins because it is processed first and locks the setting</button>
+    <div class="expl">Group Policy is processed in LSDOU order (Local, Site, Domain, OU), and later-processed GPOs override earlier ones when settings conflict. Since OU is processed last, the OU-linked GPO enabling USB storage wins unless Enforced or Block Inheritance is used.</div>
+  </div>
+
+  <div class="card qcard" id="q7" data-domain="Endpoint Security and Malicious Code">
+    <div class="meta">Question 8 of 12 · Endpoint Security and Malicious Code</div>
+    <div class="q">A security engineer wants to allow only digitally signed executables from a specific trusted publisher to run on Windows endpoints, while automatically permitting future updates from that same vendor without creating a new rule for every version. Which AppLocker rule condition should be used?</div>
+    <button class="opt" onclick="answer(this,7,0,0)">A. Publisher condition</button><button class="opt" onclick="answer(this,7,1,0)">B. Path condition</button><button class="opt" onclick="answer(this,7,2,0)">C. File hash condition</button><button class="opt" onclick="answer(this,7,3,0)">D. Network zone condition</button>
+    <div class="expl">Publisher conditions use the digital signature (publisher name, product name, and optionally version range) embedded in signed binaries, allowing the rule to survive vendor updates automatically as long as the file remains signed by the same publisher.</div>
+  </div>
+
+  <div class="card qcard" id="q8" data-domain="Vulnerability Management and Security Assessment">
+    <div class="meta">Question 9 of 12 · Vulnerability Management and Security Assessment</div>
+    <div class="q">A security team wants to identify missing patches and configuration weaknesses on internal Windows servers with the lowest possible rate of false negatives. Which scanning approach BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,8,0,3)">A. Uncredentialed external network scan</button><button class="opt" onclick="answer(this,8,1,3)">B. Passive network traffic sniffing</button><button class="opt" onclick="answer(this,8,2,3)">C. Black-box penetration test with no scanner access</button><button class="opt" onclick="answer(this,8,3,3)">D. Credentialed authenticated scan using local administrator credentials</button>
+    <div class="expl">Credentialed (authenticated) scans log into the target using valid credentials, allowing the scanner to directly query patch levels, installed software, and configuration settings, producing far more accurate results with fewer false negatives than external checks alone.</div>
+  </div>
+
+  <div class="card qcard" id="q9" data-domain="Web Communication and Cloud Security">
+    <div class="meta">Question 10 of 12 · Web Communication and Cloud Security</div>
+    <div class="q">A company runs virtual machines on an IaaS cloud platform. Under the shared responsibility model, who is responsible for patching the guest operating system running on those VMs?</div>
+    <button class="opt" onclick="answer(this,9,0,3)">A. Cloud provider, since it manages all underlying infrastructure</button><button class="opt" onclick="answer(this,9,1,3)">B. No one is responsible; OS patches are applied automatically by the hypervisor</button><button class="opt" onclick="answer(this,9,2,3)">C. Both parties equally split OS patching duties by contract default</button><button class="opt" onclick="answer(this,9,3,3)">D. Customer, because in IaaS the customer manages the guest OS, middleware, and applications</button>
+    <div class="expl">In the IaaS shared responsibility model, the cloud provider secures the physical hardware, virtualization layer, and network infrastructure, while the customer is responsible for the guest OS, applications, middleware, and data — including patching.</div>
+  </div>
+
+  <div class="card qcard" id="q10" data-domain="Security Policy, Risk Management, and Active Defense">
+    <div class="meta">Question 11 of 12 · Security Policy, Risk Management, and Active Defense</div>
+    <div class="q">A company's e-commerce database server is valued at $500,000. A risk assessment determines that a successful ransomware attack would destroy 20% of the asset's value (exposure factor) and that such an attack is expected to occur once every two years (ARO of 0.5). What is the Annualized Loss Expectancy (ALE)?</div>
+    <button class="opt" onclick="answer(this,10,0,0)">A. $50,000</button><button class="opt" onclick="answer(this,10,1,0)">B. $100,000</button><button class="opt" onclick="answer(this,10,2,0)">C. $250,000</button><button class="opt" onclick="answer(this,10,3,0)">D. $10,000</button>
+    <div class="expl">SLE = Asset Value x EF = $500,000 x 0.20 = $100,000. ALE = SLE x ARO = $100,000 x 0.5 = $50,000.</div>
+  </div>
+
+  <div class="card qcard" id="q11" data-domain="Defense-in-Depth and Defensible Network Architecture">
+    <div class="meta">Question 12 of 12 · Defense-in-Depth and Defensible Network Architecture</div>
+    <div class="q">A security architect is designing a defensible network architecture and wants to ensure that if a perimeter firewall is bypassed, the attacker still cannot move freely to critical internal systems. Which design principle BEST achieves this goal?</div>
+    <button class="opt" onclick="answer(this,11,0,3)">A. Deploying a single perimeter firewall with strict inbound rules only</button><button class="opt" onclick="answer(this,11,1,3)">B. Placing all servers on one flat internal VLAN for simplified management</button><button class="opt" onclick="answer(this,11,2,3)">C. Relying solely on antivirus software on each internal host</button><button class="opt" onclick="answer(this,11,3,3)">D. Implementing network segmentation with internal firewalls between zones</button>
+    <div class="expl">Internal segmentation creates additional choke points, limiting lateral movement even after perimeter compromise — a core defense-in-depth principle.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/gsec-giac-security-essentials-exam-focused-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<section class="faq"><h3>GSEC exam — quick answers</h3><details><summary>How much does the GSEC exam cost?</summary><p>The exam fee is approximately $979 and varies by region — confirm current pricing with the certification vendor before you book.</p></details><details><summary>What topics are on the exam?</summary><p>It covers 11 domains: Defense-in-Depth and Defensible Network Architecture (Objective group (GIAC does not publish percentage weights)), Cryptography and PKI (Objective group (GIAC does not publish percentage weights)), Networking, Protocols, and Network Security (Objective group (GIAC does not publish percentage weights)), Access Control, Authentication, and Password Security (Objective group (GIAC does not publish percentage weights)), Incident Handling and Response (Objective group (GIAC does not publish percentage weights)), Linux Security (Objective group (GIAC does not publish percentage weights)), Windows Security (Objective group (GIAC does not publish percentage weights)), Endpoint Security and Malicious Code (Objective group (GIAC does not publish percentage weights)), Vulnerability Management and Security Assessment (Objective group (GIAC does not publish percentage weights)), Web Communication and Cloud Security (Objective group (GIAC does not publish percentage weights)), Security Policy, Risk Management, and Active Defense (Objective group (GIAC does not publish percentage weights)). The full course has a dedicated chapter, lab and practice-test coverage for each.</p></details><details><summary>Is this practice test really free?</summary><p>Yes — all questions on this page are free with explanations and no sign-up. The paid Udemy course adds two full-length timed exams, video lessons and hands-on labs.</p></details><details><summary>Will this prepare me for the real exam?</summary><p>The questions mirror the real exam's style and are mapped to the official domains. This is exam-focused preparation — combine the free test with the full course's timed simulations to gauge your readiness.</p></details></section>
+<div class="domains"><span class="meta">More free practice by exam domain:</span><br><a href="gsec-defense-in-depth-and-defensible-network-architecture.html">Defense-in-Depth and Defensible Network Architecture →</a><a href="gsec-cryptography-and-pki.html">Cryptography and PKI →</a><a href="gsec-networking-protocols-and-network-security.html">Networking, Protocols, and Network Security →</a><a href="gsec-access-control-authentication-and-password-security.html">Access Control, Authentication, and Password Security →</a><a href="gsec-incident-handling-and-response.html">Incident Handling and Response →</a><a href="gsec-linux-security.html">Linux Security →</a><a href="gsec-windows-security.html">Windows Security →</a><a href="gsec-endpoint-security-and-malicious-code.html">Endpoint Security and Malicious Code →</a><a href="gsec-vulnerability-management-and-security-assessment.html">Vulnerability Management and Security Assessment →</a><a href="gsec-web-communication-and-cloud-security.html">Web Communication and Cloud Security →</a><a href="gsec-security-policy-risk-management-and-active-defense.html">Security Policy, Risk Management, and Active Defense →</a></div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

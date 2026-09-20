@@ -1,0 +1,76 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free System Hacking Phases and Attack Techniques Practice Questions — Certified Ethical Hacker (CEH v13)</title>
+<meta name="description" content="6 free System Hacking Phases and Attack Techniques practice questions with explanations for the Certified Ethical Hacker (CEH v13) exam.">
+<link rel="canonical" href="https://technuggets.academy/312-50-system-hacking-phases-and-attack-techniques.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free System Hacking Phases and Attack Techniques Practice Questions — Certified Ethical Hacker (CEH v13)">
+<meta property="og:description" content="6 free System Hacking Phases and Attack Techniques practice questions with explanations for the Certified Ethical Hacker (CEH v13) exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/312-50-system-hacking-phases-and-attack-techniques.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>System Hacking Phases and Attack Techniques</h1>
+<p class="sub">Free Certified Ethical Hacker (CEH v13) practice — 6 questions on <strong>System Hacking Phases and Attack Techniques</strong>, with explanations. No sign-up.
+<a href="312-50.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="System Hacking Phases and Attack Techniques">
+    <div class="meta">Question 1 of 6 · System Hacking Phases and Attack Techniques</div>
+    <div class="q">A vulnerability scanner reports a finding with CVSS v3.1 vector string: AV:N/AC:L/PR:N/UI:N/S:U/C:H/I:H/A:H. Which statement BEST describes the exploitability characteristics represented by this vector?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. The attacker must have local access and valid credentials to exploit the vulnerability</button><button class="opt" onclick="answer(this,0,1,3)">B. The attack requires the victim to click a malicious link, and the impact is limited to confidentiality only</button><button class="opt" onclick="answer(this,0,2,3)">C. The vulnerability can only be triggered by an authenticated user with high privileges on the same host</button><button class="opt" onclick="answer(this,0,3,3)">D. The attack can be executed remotely over a network without authentication or user interaction, and attack complexity is low</button>
+    <div class="expl">AV:N (network), AC:L (low complexity), PR:N (no privileges required), and UI:N (no user interaction) combine to describe a remotely exploitable, easily triggered attack, with C/I/A:H indicating high impact across all three security properties.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="System Hacking Phases and Attack Techniques">
+    <div class="meta">Question 2 of 6 · System Hacking Phases and Attack Techniques</div>
+    <div class="q">An organization suspects fileless malware is running entirely in memory via PowerShell and WMI, leaving no executable artifact on disk. Which detection approach is MOST effective against this threat?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. Behavioral monitoring and memory forensics via an EDR solution</button><button class="opt" onclick="answer(this,1,1,0)">B. Signature-based antivirus scanning of the file system</button><button class="opt" onclick="answer(this,1,2,0)">C. Hash comparison of files against a known-malware blacklist database</button><button class="opt" onclick="answer(this,1,3,0)">D. Periodic full-disk static malware scans scheduled weekly</button>
+    <div class="expl">Fileless malware abuses legitimate living-off-the-land binaries (PowerShell, WMI) and resides only in memory or the registry, so behavioral analytics and memory forensics via EDR are required to detect anomalous process behavior since no malicious file exists to scan.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="System Hacking Phases and Attack Techniques">
+    <div class="meta">Question 3 of 6 · System Hacking Phases and Attack Techniques</div>
+    <div class="q">Which rootkit type operates at the same privilege level as the operating system kernel, intercepting system calls directly and making it exceptionally difficult to detect using standard OS-level tools?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. Kernel-level rootkit</button><button class="opt" onclick="answer(this,2,1,0)">B. Application-level rootkit</button><button class="opt" onclick="answer(this,2,2,0)">C. Library-level rootkit</button><button class="opt" onclick="answer(this,2,3,0)">D. Hypervisor-level rootkit (positioned below the guest OS)</button>
+    <div class="expl">Kernel-level rootkits run within the OS kernel itself, at the same privilege level, allowing direct interception and modification of system calls, which is why standard user-mode and OS-native detection tools cannot reliably identify them.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="System Hacking Phases and Attack Techniques">
+    <div class="meta">Question 4 of 6 · System Hacking Phases and Attack Techniques</div>
+    <div class="q">An attacker used a timestomping tool to alter a malicious file's creation and modification timestamps to match legitimate system files, attempting to evade timeline analysis. Which NTFS artifact should a forensic investigator examine to detect this manipulation?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. The Windows Prefetch cache, which stores only the file's original name</button><button class="opt" onclick="answer(this,3,1,1)">B. The $FILE_NAME attribute timestamps in the Master File Table (MFT), which many timestomping tools fail to modify</button><button class="opt" onclick="answer(this,3,2,1)">C. The Recycle Bin ($Recycle.Bin) metadata for the affected drive</button><button class="opt" onclick="answer(this,3,3,1)">D. The BIOS/UEFI system clock configuration logs</button>
+    <div class="expl">Most timestomping utilities modify only the $STANDARD_INFORMATION timestamps (visible via Explorer or 'dir') but fail to also alter the $FILE_NAME attribute timestamps stored separately in the MFT, creating a detectable discrepancy between the two.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="System Hacking Phases and Attack Techniques">
+    <div class="meta">Question 5 of 6 · System Hacking Phases and Attack Techniques</div>
+    <div class="q">CEH v13 curriculum introduces WormGPT and FraudGPT as examples of which emerging threat category?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. Uncensored, malicious large language models designed to generate phishing emails, malware code, and social engineering content for cybercriminals</button><button class="opt" onclick="answer(this,4,1,0)">B. Legitimate AI chatbots repurposed by penetration testers for authorized report writing</button><button class="opt" onclick="answer(this,4,2,0)">C. AI-based intrusion detection systems used by blue teams to identify insider threats</button><button class="opt" onclick="answer(this,4,3,0)">D. Open-source vulnerability scanners that use machine learning to prioritize CVSS scores</button>
+    <div class="expl">WormGPT and FraudGPT are jailbroken/uncensored LLM variants sold on underground forums specifically to help attackers craft convincing phishing lures, malicious code, and social engineering scripts without the ethical guardrails of mainstream AI models.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="System Hacking Phases and Attack Techniques">
+    <div class="meta">Question 6 of 6 · System Hacking Phases and Attack Techniques</div>
+    <div class="q">During a post-exploitation privilege escalation assessment, a penetration tester discovers a Windows service configured with the unquoted path C:\Program Files\Some App\service.exe, running under the SYSTEM account. The tester also has write access to C:\Program.exe. Which statement BEST describes the risk and the appropriate remediation?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. Windows will attempt to execute C:\Program.exe before the intended path, allowing privilege escalation to SYSTEM; the fix is to enclose the service path in quotation marks and restrict write permissions on parent directories</button><button class="opt" onclick="answer(this,5,1,0)">B. The service is safe because Windows always resolves unquoted paths to the intended executable regardless of write permissions</button><button class="opt" onclick="answer(this,5,2,0)">C. The vulnerability only affects services running under a standard user context, not SYSTEM, so no privilege escalation is possible here</button><button class="opt" onclick="answer(this,5,3,0)">D. This is a DLL hijacking vulnerability, and the fix is to disable DLL search order via registry configuration</button>
+    <div class="expl">When a service path contains unescaped spaces and no quotes, Windows tries each space-delimited segment as a potential executable path in order, so a planted C:\Program.exe would execute first; since the service runs as SYSTEM, this yields SYSTEM-level code execution. Proper remediation is quoting the path and restricting write access to parent directories.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="SECPREP34"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">undefined</span> <span class="price">$34.99</span> with code <span class="code">SECPREP34</span> — valid through Oct 11.</p>
+  <a href="https://www.udemy.com/course/ceh-v13-312-50-certified-ethical-hacker-exam-prep/?couponCode=SECPREP34" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

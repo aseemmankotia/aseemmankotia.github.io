@@ -1,0 +1,123 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Microsoft Certified: Azure Security Engineer Associate Practice Test — 12 Real Exam-Style Questions</title>
+<meta name="description" content="Free Microsoft Certified: Azure Security Engineer Associate practice questions with detailed explanations. Test yourself before the real exam.">
+<link rel="canonical" href="https://technuggets.academy/sc-500.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Microsoft Certified: Azure Security Engineer Associate Practice Test — 12 Real Exam-Style Questions">
+<meta property="og:description" content="Free Microsoft Certified: Azure Security Engineer Associate practice questions with detailed explanations. Test yourself before the real exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/sc-500.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0078D4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div><div class="hero">
+  <span class="chip">SC-500</span>
+  <h1>Free Microsoft Certified: Azure Security Engineer Associate Practice Test</h1>
+  <p class="sub">12 exam-style questions with full explanations — no sign-up. Score yourself, then close your gaps with the full course.</p>
+  <div class="facts"><span class="fact">Exam fee <b>~$165</b></span><span class="fact"><b>4</b> exam domains</span><span class="fact">Level <b>Intermediate</b></span><span class="fact"><b>2</b> timed practice tests in the course</span></div>
+  <div class="cta-row"><a class="btn enroll" href="https://www.udemy.com/course/sc-500-azure-security-engineer-certification-prep/" rel="sponsored" target="_blank">Start my full course on Udemy →</a><a class="btn ghost" href="#practice">Try the free test →</a></div>
+</div><div class="trust"><span>✅ <b>Free</b> practice — no sign-up</span><span>📝 Real exam-style questions</span><span>💡 Detailed explanations</span><span>💸 30-day money-back via Udemy</span></div>
+<div id="practice"></div>
+
+  <div class="card qcard" id="q0" data-domain="Manage identity, access, and governance">
+    <div class="meta">Question 1 of 12 · Manage identity, access, and governance</div>
+    <div class="q">A company wants administrators to obtain Global Administrator privileges only when needed, require manager approval before activation, and automatically expire after 8 hours. Which solution BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. Assign Global Administrator as a permanent active role assignment</button><button class="opt" onclick="answer(this,0,1,2)">B. Create a Conditional Access policy requiring MFA for all Global Administrator sign-ins</button><button class="opt" onclick="answer(this,0,2,2)">C. Configure Microsoft Entra Privileged Identity Management (PIM) with an eligible assignment, approval required, and maximum activation duration of 8 hours</button><button class="opt" onclick="answer(this,0,3,2)">D. Enable Microsoft Entra Access Reviews on the Global Administrator role, recurring every 8 hours</button>
+    <div class="expl">PIM eligible assignments with approval workflows and configurable maximum activation duration provide true just-in-time, time-bound, approved privileged access — exactly what the scenario requires.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Secure storage, databases, and networking">
+    <div class="meta">Question 2 of 12 · Secure storage, databases, and networking</div>
+    <div class="q">A retail company must give an external logistics partner temporary read access to a single container in an Azure Storage account for the next 24 hours. The partner does not have an Azure AD account in the company's tenant, and the storage account key must never be shared. Which solution BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,1,0,1)">A. Regenerate the storage account access key and send the new key to the partner via email</button><button class="opt" onclick="answer(this,1,1,1)">B. Generate a service SAS token scoped to the container with read permission and a 24-hour expiry</button><button class="opt" onclick="answer(this,1,2,1)">C. Enable public (anonymous) read access on the container for 24 hours, then disable it</button><button class="opt" onclick="answer(this,1,3,1)">D. Create a guest Azure AD B2B account for the partner and assign the Storage Blob Data Reader role</button>
+    <div class="expl">A service SAS scoped to the container, restricted to read permission, and time-boxed to 24 hours grants exactly the access needed without exposing the account key and without requiring an identity in the tenant.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Secure compute">
+    <div class="meta">Question 3 of 12 · Secure compute</div>
+    <div class="q">A company runs Windows and Linux Azure VMs storing regulated financial data. A compliance requirement mandates that OS and data disk volumes be encrypted at the guest operating system level (not just at the storage platform level), using encryption keys the company controls in Azure Key Vault, and the encryption status must be verifiable from within the VM. Which solution should the security engineer implement?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. Enable Azure Disk Encryption (ADE) using BitLocker/DM-Crypt with keys stored in Azure Key Vault</button><button class="opt" onclick="answer(this,2,1,0)">B. Enable Server-Side Encryption (SSE) with platform-managed keys on the managed disks</button><button class="opt" onclick="answer(this,2,2,0)">C. Enable Azure Storage Service Encryption for the storage account backing the disks</button><button class="opt" onclick="answer(this,2,3,0)">D. Configure Azure Backup to encrypt VM backups using a customer-managed key</button>
+    <div class="expl">Azure Disk Encryption (ADE) uses BitLocker (Windows) or DM-Crypt (Linux) inside the guest OS to encrypt volumes, integrates with Azure Key Vault for key storage/management, and can be verified from within the VM — satisfying the guest-level encryption requirement with customer-controlled keys.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Manage and monitor security posture">
+    <div class="meta">Question 4 of 12 · Manage and monitor security posture</div>
+    <div class="q">In Microsoft Defender for Cloud, a security team notices that two recommendations with similar remediation effort contribute very different point values toward the secure score. What determines the point value of a security recommendation?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. The relative weight assigned to the security control based on its potential impact on overall security posture</button><button class="opt" onclick="answer(this,3,1,0)">B. The number of resources currently affected by the recommendation</button><button class="opt" onclick="answer(this,3,2,0)">C. The calendar date the recommendation was published in Defender for Cloud</button><button class="opt" onclick="answer(this,3,3,0)">D. The Azure Policy compliance state of the resource group containing the resource</button>
+    <div class="expl">Secure score points are calculated per security control, and each control has a fixed weight representing its relative importance to your overall security posture. A control's total points are distributed across the recommendations within it based on the proportion of healthy resources, so higher-weighted controls yield higher point values even for similarly effortful fixes.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Manage identity, access, and governance">
+    <div class="meta">Question 5 of 12 · Manage identity, access, and governance</div>
+    <div class="q">An Azure Function App needs to read secrets from Azure Key Vault. The solution must avoid storing any credentials or secrets in code or application configuration. Which authentication method should you use?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. A service principal with a client secret stored in application settings</button><button class="opt" onclick="answer(this,4,1,1)">B. System-assigned managed identity granted an appropriate Key Vault access policy or RBAC role</button><button class="opt" onclick="answer(this,4,2,1)">C. A shared access signature (SAS) token embedded in the connection string</button><button class="opt" onclick="answer(this,4,3,1)">D. An Azure AD application registered with a certificate uploaded to the Function App's file system</button>
+    <div class="expl">A system-assigned managed identity is automatically managed by Azure AD with no secrets to store or rotate manually, and can be granted least-privilege access to Key Vault via RBAC or access policy.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Secure storage, databases, and networking">
+    <div class="meta">Question 6 of 12 · Secure storage, databases, and networking</div>
+    <div class="q">Contoso runs an Azure SQL Database and wants all traffic between the database and its VNets (including a VNet reachable only via ExpressRoute) to stay off any public IP address, with the database reachable via a private IP address inside the VNet. Which feature should be configured?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. Virtual network service endpoint for Azure SQL Database</button><button class="opt" onclick="answer(this,5,1,1)">B. Private endpoint using Azure Private Link</button><button class="opt" onclick="answer(this,5,2,1)">C. Azure SQL firewall rule with a virtual network rule</button><button class="opt" onclick="answer(this,5,3,1)">D. Network security group rule allowing inbound traffic on port 1433</button>
+    <div class="expl">Private Link provisions a private endpoint with a private IP address from the VNet's address space, bringing SQL Database traffic entirely onto the Microsoft backbone with no public IP exposure, and it is reachable from on-premises over ExpressRoute or VPN.</div>
+  </div>
+
+  <div class="card qcard" id="q6" data-domain="Secure compute">
+    <div class="meta">Question 7 of 12 · Secure compute</div>
+    <div class="q">A security team manages several Azure Kubernetes Service (AKS) clusters and needs to enforce, cluster-wide, that no pod can be deployed with a privileged security context, with the compliance status visible in Microsoft Defender for Cloud's regulatory dashboard. Which approach should they use?</div>
+    <button class="opt" onclick="answer(this,6,0,1)">A. Enable Microsoft Defender for Containers to detect and alert on privileged container deployments</button><button class="opt" onclick="answer(this,6,1,1)">B. Enable the Azure Policy Add-on for AKS and assign the built-in initiative that denies privileged containers</button><button class="opt" onclick="answer(this,6,2,1)">C. Create a Kubernetes NetworkPolicy that denies traffic from privileged pods</button><button class="opt" onclick="answer(this,6,3,1)">D. Configure Azure RBAC for Kubernetes Authorization to restrict which users can deploy pods</button>
+    <div class="expl">The Azure Policy Add-on for AKS installs the Gatekeeper admission controller, which can preventively enforce (not just detect) constraints such as 'Kubernetes cluster should not allow privileged containers,' and compliance results surface in Defender for Cloud's regulatory compliance dashboard.</div>
+  </div>
+
+  <div class="card qcard" id="q7" data-domain="Manage and monitor security posture">
+    <div class="meta">Question 8 of 12 · Manage and monitor security posture</div>
+    <div class="q">A security team needs to onboard an AWS account to Microsoft Defender for Cloud to enable Defender for Servers and CSPM coverage on EC2 instances, but they want to avoid deploying and maintaining agents on every instance. Which onboarding approach should they use?</div>
+    <button class="opt" onclick="answer(this,7,0,1)">A. Manually install Azure Arc agent on every EC2 instance before connecting the account</button><button class="opt" onclick="answer(this,7,1,1)">B. Use the native cloud connector and enable agentless scanning during onboarding via the deployed CloudFormation template</button><button class="opt" onclick="answer(this,7,2,1)">C. Install the legacy Microsoft Monitoring Agent (MMA) on each instance through AWS Systems Manager</button><button class="opt" onclick="answer(this,7,3,1)">D. Enable Azure Policy guest configuration extensions directly on the EC2 instances</button>
+    <div class="expl">Defender for Cloud's native AWS connector uses a CloudFormation template to deploy the required roles, and agentless scanning (via disk snapshot analysis) provides vulnerability and malware coverage for VMs without installing any agent on the instance itself.</div>
+  </div>
+
+  <div class="card qcard" id="q8" data-domain="Manage identity, access, and governance">
+    <div class="meta">Question 9 of 12 · Manage identity, access, and governance</div>
+    <div class="q">You need an Azure Policy assignment that prevents non-compliant storage accounts (for example, accounts with public blob access enabled) from being created at all, rather than just reporting them. Which policy effect should you configure?</div>
+    <button class="opt" onclick="answer(this,8,0,1)">A. Audit</button><button class="opt" onclick="answer(this,8,1,1)">B. Deny</button><button class="opt" onclick="answer(this,8,2,1)">C. Append</button><button class="opt" onclick="answer(this,8,3,1)">D. AuditIfNotExists</button>
+    <div class="expl">The Deny effect blocks the resource write request outright when it violates the policy rule, preventing creation of non-compliant storage accounts.</div>
+  </div>
+
+  <div class="card qcard" id="q9" data-domain="Secure storage, databases, and networking">
+    <div class="meta">Question 10 of 12 · Secure storage, databases, and networking</div>
+    <div class="q">An administrator needs to configure Transparent Data Encryption (TDE) on an Azure SQL Database using a customer-managed key stored in Azure Key Vault (Bring Your Own Key). Which configuration step is REQUIRED before the key vault key can be set as the TDE protector?</div>
+    <button class="opt" onclick="answer(this,9,0,0)">A. Assign a managed identity to the SQL server and grant it Get, Wrap Key, and Unwrap Key permissions on the key vault</button><button class="opt" onclick="answer(this,9,1,0)">B. Enable Always Encrypted with secure enclaves on the database</button><button class="opt" onclick="answer(this,9,2,0)">C. Enable Advanced Threat Protection on the SQL server</button><button class="opt" onclick="answer(this,9,3,0)">D. Turn on Dynamic Data Masking for all sensitive columns</button>
+    <div class="expl">TDE with a customer-managed key requires the SQL server's managed identity to have Get, Wrap Key, and Unwrap Key permissions on the Key Vault key so the server can retrieve and use the key as the TDE protector.</div>
+  </div>
+
+  <div class="card qcard" id="q10" data-domain="Secure compute">
+    <div class="meta">Question 11 of 12 · Secure compute</div>
+    <div class="q">An application hosted on Azure App Service must read a database connection string containing a secret at runtime, without the secret ever being stored in source code, configuration files checked into source control, or deployment slot settings. Which configuration achieves this?</div>
+    <button class="opt" onclick="answer(this,10,0,1)">A. Store the connection string as an encrypted App Setting using the platform's default encryption at rest</button><button class="opt" onclick="answer(this,10,1,1)">B. Enable a system-assigned managed identity on the App Service, grant it 'Get' access to the secret in Key Vault, and reference it in App Settings using @Microsoft.KeyVault(SecretUri=...)</button><button class="opt" onclick="answer(this,10,2,1)">C. Store the connection string in an Azure Storage account container and read it at application startup</button><button class="opt" onclick="answer(this,10,3,1)">D. Set the connection string as a 'sticky' deployment slot setting so it never changes on swap</button>
+    <div class="expl">Using a Key Vault reference in App Settings, backed by the App Service's managed identity, retrieves the secret directly from Key Vault at runtime — the secret is never persisted in app config, code, or source control, and identity-based RBAC/access policy governs access.</div>
+  </div>
+
+  <div class="card qcard" id="q11" data-domain="Manage and monitor security posture">
+    <div class="meta">Question 12 of 12 · Manage and monitor security posture</div>
+    <div class="q">You want Microsoft Sentinel to automatically correlate multiple low-fidelity, seemingly unrelated alerts from different data sources into a single high-confidence incident using built-in machine learning correlation. Which analytics rule type should you enable?</div>
+    <button class="opt" onclick="answer(this,11,0,2)">A. Scheduled query rule</button><button class="opt" onclick="answer(this,11,1,2)">B. Near-real-time (NRT) rule</button><button class="opt" onclick="answer(this,11,2,2)">C. Fusion rule</button><button class="opt" onclick="answer(this,11,3,2)">D. Microsoft security rule</button>
+    <div class="expl">Fusion rules use machine learning to correlate anomalous or low-fidelity activities from multiple products/data sources over time, generating a single high-fidelity incident that represents a probable multi-stage attack. This is their specific purpose in Sentinel.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/sc-500-azure-security-engineer-certification-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<section class="faq"><h3>SC-500 exam — quick answers</h3><details><summary>How much does the SC-500 exam cost?</summary><p>The exam fee is approximately $165 and varies by region — confirm current pricing with the certification vendor before you book.</p></details><details><summary>What topics are on the exam?</summary><p>It covers 4 domains: Manage identity, access, and governance (20-25%), Secure storage, databases, and networking (25-30%), Secure compute (20-25%), Manage and monitor security posture (20-25%). The full course has a dedicated chapter, lab and practice-test coverage for each.</p></details><details><summary>Is this practice test really free?</summary><p>Yes — all questions on this page are free with explanations and no sign-up. The paid Udemy course adds two full-length timed exams, video lessons and hands-on labs.</p></details><details><summary>Will this prepare me for the real exam?</summary><p>The questions mirror the real exam's style and are mapped to the official domains. This is exam-focused preparation — combine the free test with the full course's timed simulations to gauge your readiness.</p></details></section>
+<div class="domains"><span class="meta">More free practice by exam domain:</span><br><a href="sc-500-manage-identity-access-and-governance.html">Manage identity, access, and governance →</a><a href="sc-500-secure-storage-databases-and-networking.html">Secure storage, databases, and networking →</a><a href="sc-500-secure-compute.html">Secure compute →</a><a href="sc-500-manage-and-monitor-security-posture.html">Manage and monitor security posture →</a></div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

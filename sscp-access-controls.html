@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Access Controls Practice Questions — Systems Security Certified Practitioner</title>
+<meta name="description" content="6 free Access Controls practice questions with explanations for the Systems Security Certified Practitioner exam.">
+<link rel="canonical" href="https://technuggets.academy/sscp-access-controls.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Access Controls Practice Questions — Systems Security Certified Practitioner">
+<meta property="og:description" content="6 free Access Controls practice questions with explanations for the Systems Security Certified Practitioner exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/sscp-access-controls.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Access Controls</h1>
+<p class="sub">Free Systems Security Certified Practitioner practice — 6 questions on <strong>Access Controls</strong>, with explanations. No sign-up.
+<a href="sscp.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Domain 2: Access Controls">
+    <div class="meta">Question 1 of 6 · Domain 2: Access Controls</div>
+    <div class="q">A financial institution requires that no single employee can both create a vendor record and approve payments to that vendor. Which access control principle is being enforced?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. Least privilege</button><button class="opt" onclick="answer(this,0,1,2)">B. Mandatory access control</button><button class="opt" onclick="answer(this,0,2,2)">C. Separation of duties</button><button class="opt" onclick="answer(this,0,3,2)">D. Discretionary access control</button>
+    <div class="expl">Separation of duties splits a critical business process across multiple people so that no single individual can complete an entire fraud-prone transaction alone (create vendor + approve payment).</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Domain 2: Access Controls">
+    <div class="meta">Question 2 of 6 · Domain 2: Access Controls</div>
+    <div class="q">A cloud application receives a SAML assertion from an external identity provider containing attributes such as department=Finance and clearance=Confidential, and the application's policy engine evaluates these attributes at request time to grant or deny access dynamically. Which access control model is being used?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. Attribute-Based Access Control (ABAC)</button><button class="opt" onclick="answer(this,1,1,0)">B. Role-Based Access Control (RBAC)</button><button class="opt" onclick="answer(this,1,2,0)">C. Discretionary Access Control (DAC)</button><button class="opt" onclick="answer(this,1,3,0)">D. Mandatory Access Control (MAC)</button>
+    <div class="expl">ABAC evaluates multiple subject, resource, and environmental attributes against policy rules at access-decision time, exactly as described with department and clearance attributes from the federated assertion.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Domain 2: Access Controls">
+    <div class="meta">Question 3 of 6 · Domain 2: Access Controls</div>
+    <div class="q">An organization implements Kerberos authentication for internal resource access. Users intermittently fail authentication with ticket validation errors, and investigation shows the errors correlate with slight time differences between client workstations and the Key Distribution Center. Which configuration setting is MOST likely the root cause?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. The maximum ticket lifetime is set too high</button><button class="opt" onclick="answer(this,2,1,1)">B. The clock skew tolerance between client and KDC is configured too small</button><button class="opt" onclick="answer(this,2,2,1)">C. The DAC permissions on the ticket-granting server are incorrect</button><button class="opt" onclick="answer(this,2,3,1)">D. The RBAC role assignments are outdated</button>
+    <div class="expl">Kerberos relies on timestamps to prevent replay attacks; tickets are rejected if the client and KDC clocks differ by more than the configured skew tolerance (commonly a default of around 5 minutes), so a tolerance set too small causes valid tickets from slightly-out-of-sync clients to fail.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Domain 2: Access Controls">
+    <div class="meta">Question 4 of 6 · Domain 2: Access Controls</div>
+    <div class="q">An organization needs a mandatory access control model that primarily prevents unauthorized modification of data, where a subject can write only to objects at or below its own integrity level and can read only objects at or above its own integrity level. Which model does this describe?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. Bell-LaPadula model</button><button class="opt" onclick="answer(this,3,1,3)">B. Clark-Wilson model</button><button class="opt" onclick="answer(this,3,2,3)">C. Brewer-Nash model</button><button class="opt" onclick="answer(this,3,3,3)">D. Biba model</button>
+    <div class="expl">The Biba model enforces 'no read down' and 'no write up' to protect data integrity: subjects read only at or above their integrity level and write only at or below it, preventing low-integrity data from corrupting high-integrity data.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Domain 2: Access Controls">
+    <div class="meta">Question 5 of 6 · Domain 2: Access Controls</div>
+    <div class="q">An employee resigns effective immediately during a contentious exit meeting. Following identity lifecycle management best practices, what should the security team do FIRST?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. Disable the employee's user account and revoke access credentials</button><button class="opt" onclick="answer(this,4,1,0)">B. Archive the employee's email for legal hold</button><button class="opt" onclick="answer(this,4,2,0)">C. Conduct an exit interview to review NDA obligations</button><button class="opt" onclick="answer(this,4,3,0)">D. Reassign the employee's files to their manager</button>
+    <div class="expl">Immediate deprovisioning — disabling accounts and revoking credentials — is the highest priority action to prevent unauthorized access from a departing, potentially disgruntled employee; all other administrative tasks follow after access is secured.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Domain 2: Access Controls">
+    <div class="meta">Question 6 of 6 · Domain 2: Access Controls</div>
+    <div class="q">A company is deploying a multi-tenant cloud application where access decisions must consider real-time context such as user location, device compliance status, time of day, and resource sensitivity, scaling to thousands of dynamically changing users and resources without requiring new role definitions for every new combination. Which access control model BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. Role-Based Access Control (RBAC)</button><button class="opt" onclick="answer(this,5,1,1)">B. Attribute-Based Access Control (ABAC)</button><button class="opt" onclick="answer(this,5,2,1)">C. Mandatory Access Control (MAC)</button><button class="opt" onclick="answer(this,5,3,1)">D. Discretionary Access Control (DAC)</button>
+    <div class="expl">ABAC evaluates combinations of subject, resource, and environmental attributes (location, device state, time, sensitivity) at request time via policy rules, scaling naturally without the role explosion that occurs when RBAC tries to model every contextual combination.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/sscp-exam-focused-prep-master-all-7-domains/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

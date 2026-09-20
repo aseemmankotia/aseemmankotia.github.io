@@ -1,0 +1,76 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Network and Perimeter Hacking Practice Questions — Certified Ethical Hacker (CEH v13)</title>
+<meta name="description" content="6 free Network and Perimeter Hacking practice questions with explanations for the Certified Ethical Hacker (CEH v13) exam.">
+<link rel="canonical" href="https://technuggets.academy/312-50-network-and-perimeter-hacking.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Network and Perimeter Hacking Practice Questions — Certified Ethical Hacker (CEH v13)">
+<meta property="og:description" content="6 free Network and Perimeter Hacking practice questions with explanations for the Certified Ethical Hacker (CEH v13) exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/312-50-network-and-perimeter-hacking.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Network and Perimeter Hacking</h1>
+<p class="sub">Free Certified Ethical Hacker (CEH v13) practice — 6 questions on <strong>Network and Perimeter Hacking</strong>, with explanations. No sign-up.
+<a href="312-50.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Network and Perimeter Hacking">
+    <div class="meta">Question 1 of 6 · Network and Perimeter Hacking</div>
+    <div class="q">During an incident review, analysts determine that an attacker hijacked an authenticated TCP session by predicting the sequence numbers used by a legitimate client, then injected spoofed packets to desynchronize and take over the connection before the real client could respond. Which countermeasure would BEST prevent this specific attack in the future?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. Configure port security limiting each switch port to one learned MAC address</button><button class="opt" onclick="answer(this,0,1,3)">B. Deploy a network-based IDS in promiscuous mode on the core switch</button><button class="opt" onclick="answer(this,0,2,3)">C. Enable DHCP snooping on all access-layer switch ports</button><button class="opt" onclick="answer(this,0,3,3)">D. Implement IPsec with ESP to encrypt and authenticate all session traffic</button>
+    <div class="expl">IPsec ESP encrypts and cryptographically authenticates every packet in the session, making sequence-number prediction and injection of spoofed packets computationally infeasible — directly neutralizing TCP session hijacking.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Network and Perimeter Hacking">
+    <div class="meta">Question 2 of 6 · Network and Perimeter Hacking</div>
+    <div class="q">A security team discovers that an unauthorized host on the internal LAN sent forged ARP replies binding its own MAC address to the IP address of the default gateway, allowing it to intercept and read cleartext traffic from nearby hosts. DHCP snooping is already enabled on all access switches. Which additional switch feature should be configured to stop this specific attack from succeeding again?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. BPDU Guard on all access ports</button><button class="opt" onclick="answer(this,1,1,2)">B. Storm control with a broadcast traffic threshold</button><button class="opt" onclick="answer(this,1,2,2)">C. Dynamic ARP Inspection validating ARP packets against the DHCP snooping binding table</button><button class="opt" onclick="answer(this,1,3,2)">D. 802.1X port-based network access control</button>
+    <div class="expl">Dynamic ARP Inspection (DAI) cross-checks the IP-to-MAC bindings in ARP packets against the trusted DHCP snooping binding table and drops any ARP reply that does not match, directly stopping ARP cache poisoning of the gateway address.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Network and Perimeter Hacking">
+    <div class="meta">Question 3 of 6 · Network and Perimeter Hacking</div>
+    <div class="q">During a DDoS attack investigation, the response team observes a massive volume of inbound UDP traffic destined for port 123 on the victim's public IP. Analysis of upstream flow logs shows that each single-packet request sent toward third-party servers was spoofed with the victim's IP as the source, and the resulting replies received by the victim were dramatically larger than the original requests. Which type of attack does this describe?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. NTP amplification attack</button><button class="opt" onclick="answer(this,2,1,0)">B. SYN flood attack</button><button class="opt" onclick="answer(this,2,2,0)">C. Slowloris attack</button><button class="opt" onclick="answer(this,2,3,0)">D. Smurf attack</button>
+    <div class="expl">NTP amplification abuses UDP port 123 NTP servers with spoofed source IPs; a small query (e.g., the legacy monlist request) triggers a disproportionately large reply directed at the spoofed victim, producing high-bandwidth amplification exactly as described.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Network and Perimeter Hacking">
+    <div class="meta">Question 4 of 6 · Network and Perimeter Hacking</div>
+    <div class="q">A penetration tester needs to bypass a signature-based network IDS that inspects payload contents for a known malicious string. The tester crafts the attack so that the malicious payload is split across multiple small TCP segments, ensuring no single packet captured by the IDS ever contains the complete matching signature. What is this IDS evasion technique called?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. Timing-based slow scan</button><button class="opt" onclick="answer(this,3,1,2)">B. Traffic flooding</button><button class="opt" onclick="answer(this,3,2,2)">C. Session splicing</button><button class="opt" onclick="answer(this,3,3,2)">D. Unicode payload encoding</button>
+    <div class="expl">Session splicing delivers the malicious payload across multiple small TCP segments over the session, so the IDS never sees the complete signature string in any single packet unless it fully reassembles the stream — a classic CEH-tested IDS evasion technique.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Network and Perimeter Hacking">
+    <div class="meta">Question 5 of 6 · Network and Perimeter Hacking</div>
+    <div class="q">While performing external reconnaissance, a tester notes that one host responds to scans with unusually consistent latency, exposes several services with unmodified default banners, and shows no legitimate outbound connections or user-driven traffic in the collected NetFlow logs over several days. Which type of system does this MOST likely describe?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. A DMZ-facing production web server</button><button class="opt" onclick="answer(this,4,1,1)">B. A honeypot</button><button class="opt" onclick="answer(this,4,2,1)">C. An administrative jump box</button><button class="opt" onclick="answer(this,4,3,1)">D. A load balancer virtual IP</button>
+    <div class="expl">A honeypot is a decoy system deliberately configured with default, unpatched-looking services and no real user activity, designed purely to attract and log attacker interaction — matching the artificial consistency and absence of legitimate traffic described.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Network and Perimeter Hacking">
+    <div class="meta">Question 6 of 6 · Network and Perimeter Hacking</div>
+    <div class="q">An attacker calls a company's IT help desk, claiming to be the CFO who is traveling and urgently needs a password reset because they are locked out before a board meeting. The attacker uses confident, authoritative language and references real internal details to appear legitimate. Under CEH social engineering categorization, this technique is BEST classified as which of the following?</div>
+    <button class="opt" onclick="answer(this,5,0,2)">A. Reverse social engineering</button><button class="opt" onclick="answer(this,5,1,2)">B. Dumpster diving</button><button class="opt" onclick="answer(this,5,2,2)">C. Impersonation</button><button class="opt" onclick="answer(this,5,3,2)">D. Shoulder surfing</button>
+    <div class="expl">Impersonation involves an attacker pretending to be a legitimate, often authoritative, individual (such as an executive) to manipulate a target into performing an action like resetting a password — exactly the scenario described.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="SECPREP34"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">undefined</span> <span class="price">$34.99</span> with code <span class="code">SECPREP34</span> — valid through Oct 11.</p>
+  <a href="https://www.udemy.com/course/ceh-v13-312-50-certified-ethical-hacker-exam-prep/?couponCode=SECPREP34" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

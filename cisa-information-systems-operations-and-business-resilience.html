@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Information Systems Operations and Business Resilience Practice Questions — Certified Information Systems Auditor</title>
+<meta name="description" content="6 free Information Systems Operations and Business Resilience practice questions with explanations for the Certified Information Systems Auditor exam.">
+<link rel="canonical" href="https://technuggets.academy/cisa-information-systems-operations-and-business-resilience.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Information Systems Operations and Business Resilience Practice Questions — Certified Information Systems Auditor">
+<meta property="og:description" content="6 free Information Systems Operations and Business Resilience practice questions with explanations for the Certified Information Systems Auditor exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/cisa-information-systems-operations-and-business-resilience.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#5B21B6}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Information Systems Operations and Business Resilience</h1>
+<p class="sub">Free Certified Information Systems Auditor practice — 6 questions on <strong>Information Systems Operations and Business Resilience</strong>, with explanations. No sign-up.
+<a href="cisa.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Domain 4: Information Systems Operations and Business Resilience">
+    <div class="meta">Question 1 of 6 · Domain 4: Information Systems Operations and Business Resilience</div>
+    <div class="q">A database uses a full backup at midnight and transaction log backups every four hours (04:00, 08:00, 12:00, 16:00). A hardware failure occurs at 14:30. The 12:00 log backup completed successfully, but the 16:00 backup had not yet run. What is the maximum data loss exposure the auditor should report for this incident?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. Up to 4 hours, since that is the backup interval defined by policy</button><button class="opt" onclick="answer(this,0,1,2)">B. Zero, since transaction log backups protect all committed transactions</button><button class="opt" onclick="answer(this,0,2,2)">C. Up to 2.5 hours, the time elapsed since the last successfully completed log backup</button><button class="opt" onclick="answer(this,0,3,2)">D. Up to 14.5 hours, since the last full backup at midnight</button>
+    <div class="expl">The actual data loss exposure is measured from the last successfully completed backup to the point of failure, which is 12:00 to 14:30 (2.5 hours). RPO is achieved only when a backup actually completes; the scheduled interval is not the same as the realized recovery point.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Domain 4: Information Systems Operations and Business Resilience">
+    <div class="meta">Question 2 of 6 · Domain 4: Information Systems Operations and Business Resilience</div>
+    <div class="q">During a business continuity audit, the auditor learns that a company has a reciprocal processing agreement with another firm located in the same industrial park. Which risk is MOST significant for the auditor to highlight?</div>
+    <button class="opt" onclick="answer(this,1,0,1)">A. The reciprocal agreement will cost more than a commercial hot site subscription</button><button class="opt" onclick="answer(this,1,1,1)">B. Both organizations may be affected by the same regional disaster, eliminating the backup site's availability when needed most</button><button class="opt" onclick="answer(this,1,2,1)">C. The partner organization may require identical hardware, increasing procurement costs</button><button class="opt" onclick="answer(this,1,3,1)">D. Reciprocal agreements typically include penalty clauses for late activation</button>
+    <div class="expl">Because both organizations share the same geographic location, a regional disaster (flood, power grid failure, earthquake) is likely to impact both simultaneously, defeating the purpose of the arrangement precisely when it is needed most. This geographic-correlation risk is the most significant concern given the scenario detail.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Domain 4: Information Systems Operations and Business Resilience">
+    <div class="meta">Question 3 of 6 · Domain 4: Information Systems Operations and Business Resilience</div>
+    <div class="q">A financial trading firm requires near-zero recovery time (seconds) and cannot tolerate any processing interruption, even during a site-wide outage. Which alternate processing strategy BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. A cold site with a service-level agreement guaranteeing equipment shipment within 24 hours</button><button class="opt" onclick="answer(this,2,1,3)">B. A reciprocal processing agreement with another financial firm in the same region</button><button class="opt" onclick="answer(this,2,2,3)">C. A warm site with servers pre-installed but requiring data restoration from the last backup</button><button class="opt" onclick="answer(this,2,3,3)">D. A hot site with real-time (synchronous) data replication and mirrored infrastructure</button>
+    <div class="expl">A hot site with synchronous, real-time replication and fully mirrored infrastructure is the only option capable of supporting an RTO measured in seconds, since it maintains an active, continuously synchronized standby environment ready for immediate failover.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Domain 4: Information Systems Operations and Business Resilience">
+    <div class="meta">Question 4 of 6 · Domain 4: Information Systems Operations and Business Resilience</div>
+    <div class="q">An IS auditor reviewing backup media rotation finds that the organization retains daily (son) tapes for seven days and overwrites weekly (father) tapes every four weeks, but never retains a monthly (grandfather) tape beyond the most recent cycle. Which of the following is the GREATEST concern the auditor should report?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. The organization cannot restore data beyond one month, jeopardizing long-term recovery capability and regulatory retention requirements</button><button class="opt" onclick="answer(this,3,1,0)">B. Daily (son) tapes are retained for only seven days, which is below the industry-recommended minimum</button><button class="opt" onclick="answer(this,3,2,0)">C. Weekly (father) tapes are overwritten every four weeks, which violates standard GFS practice</button><button class="opt" onclick="answer(this,3,3,0)">D. Frequent media reuse in the rotation scheme causes excessive wear, requiring more frequent tape replacement</button>
+    <div class="expl">In a standard Grandfather-Father-Son (GFS) scheme, grandfather (monthly) tapes are meant to be retained for extended periods (often a year or more) to support long-term recovery and regulatory/legal retention needs. Failing to keep any monthly tape beyond the current cycle eliminates the organization's ability to restore data from more than one month prior, which is the most significant control gap.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Domain 4: Information Systems Operations and Business Resilience">
+    <div class="meta">Question 5 of 6 · Domain 4: Information Systems Operations and Business Resilience</div>
+    <div class="q">Which statement BEST distinguishes problem management from incident management within IT service operations?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. Problem management focuses on restoring normal service as quickly as possible, while incident management investigates root causes</button><button class="opt" onclick="answer(this,4,1,2)">B. Problem management addresses only single, non-recurring disruptions, while incident management addresses recurring patterns of failure</button><button class="opt" onclick="answer(this,4,2,2)">C. Incident management focuses on restoring service quickly, while problem management identifies and eliminates the root cause to prevent recurrence</button><button class="opt" onclick="answer(this,4,3,2)">D. The two processes are functionally identical, differing only in terminology used by different service desk tools</button>
+    <div class="expl">Incident management is reactive and focused on rapid restoration of service to minimize business impact. Problem management is proactive/analytical, investigating underlying root causes of one or more incidents to prevent recurrence — a distinction ISACA expects auditors to evaluate when assessing operational maturity.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Domain 4: Information Systems Operations and Business Resilience">
+    <div class="meta">Question 6 of 6 · Domain 4: Information Systems Operations and Business Resilience</div>
+    <div class="q">An IS auditor reviewing operations monitoring reports notes that average server CPU utilization during peak business hours has increased steadily from 60% to 92% over the past 12 months, with no corresponding capacity expansion plan on file. What is the MOST significant risk the auditor should report?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. Rising utilization reflects improved cost efficiency and requires no further action</button><button class="opt" onclick="answer(this,5,1,3)">B. The organization should immediately outsource all peak-hour processing to a third-party provider</button><button class="opt" onclick="answer(this,5,2,3)">C. The upward utilization trend indicates an active security incident requiring immediate escalation</button><button class="opt" onclick="answer(this,5,3,3)">D. The lack of a capacity expansion plan increases the risk of performance degradation or service outage during peak periods</button>
+    <div class="expl">Sustained upward utilization trends approaching saturation without a documented capacity plan indicate that management is not proactively managing infrastructure capacity, which creates a real risk of performance degradation or outages as demand continues to grow — a core operations control the auditor must evaluate.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/cisa-exam-prep-master-is-audit-governance-security/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

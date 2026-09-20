@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free 2.0 Compute Practice Questions — Implementing Cisco Data Center Core Technologies</title>
+<meta name="description" content="6 free 2.0 Compute practice questions with explanations for the Implementing Cisco Data Center Core Technologies exam.">
+<link rel="canonical" href="https://technuggets.academy/350-601-dccor-2-0-compute.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free 2.0 Compute Practice Questions — Implementing Cisco Data Center Core Technologies">
+<meta property="og:description" content="6 free 2.0 Compute practice questions with explanations for the Implementing Cisco Data Center Core Technologies exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/350-601-dccor-2-0-compute.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>2.0 Compute</h1>
+<p class="sub">Free Implementing Cisco Data Center Core Technologies practice — 6 questions on <strong>2.0 Compute</strong>, with explanations. No sign-up.
+<a href="350-601-dccor.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="2.0 Compute">
+    <div class="meta">Question 1 of 6 · 2.0 Compute</div>
+    <div class="q">A UCS admin has 20 B-Series blades with service profiles derived from a single updating template. The admin must change the BIOS policy for only 5 of these servers without affecting the other 15, while preserving the pool-derived identities (MAC, UUID, WWPN) already assigned to those 5 profiles. Which approach BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. Modify the BIOS policy directly within the updating template so all associated profiles inherit it automatically</button><button class="opt" onclick="answer(this,0,1,2)">B. Delete and recreate the five service profiles from a new template using the same pools</button><button class="opt" onclick="answer(this,0,2,2)">C. Unbind the five service profiles from the updating template (making them standalone) and then modify the BIOS policy locally on those five profiles</button><button class="opt" onclick="answer(this,0,3,2)">D. Create a new updating template with the desired BIOS policy and associate the five profiles to it</button>
+    <div class="expl">Unbinding a service profile from its template converts it to a standalone profile while retaining its currently assigned pool-derived identities as static values. This lets the admin change the BIOS policy locally on exactly those 5 profiles without touching the other 15 still bound to the template.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="2.0 Compute">
+    <div class="meta">Question 2 of 6 · 2.0 Compute</div>
+    <div class="q">A Cisco UCS domain has a MAC address pool containing exactly 20 addresses, all consumed by 20 associated service profiles. An administrator attempts to associate a 21st service profile referencing the same MAC pool. What is the outcome?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. UCS Manager automatically generates a random MAC address outside the assigned pool range to allow association to continue</button><button class="opt" onclick="answer(this,1,1,2)">B. UCS Manager automatically extends the pool by allocating an additional contiguous block of 20 addresses</button><button class="opt" onclick="answer(this,1,2,2)">C. The 21st service profile fails to associate and displays a configuration fault indicating insufficient pool resources</button><button class="opt" onclick="answer(this,1,3,2)">D. The service profile associates successfully using the fabric interconnect's burned-in address shared across profiles</button>
+    <div class="expl">UCS identity pools are hard limits enforced for global uniqueness. When exhausted, the new service profile cannot be assigned a MAC address and enters a config-failure/pending state with a fault indicating insufficient pool resources, until the pool is expanded or an address is freed.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="2.0 Compute">
+    <div class="meta">Question 3 of 6 · 2.0 Compute</div>
+    <div class="q">A service profile template built for Windows Server workloads on Cisco VIC 1400-series adapters requires vNICs and vHBAs to be enumerated by the OS in a specific PCIe slot order to match driver binding expectations. Which UCS Manager policy controls this behavior?</div>
+    <button class="opt" onclick="answer(this,2,0,2)">A. Adapter Policy</button><button class="opt" onclick="answer(this,2,1,2)">B. Network Control Policy</button><button class="opt" onclick="answer(this,2,2,2)">C. vNIC/vHBA Placement Policy</button><button class="opt" onclick="answer(this,2,3,2)">D. Local Disk Configuration Policy</button>
+    <div class="expl">The vNIC/vHBA Placement Policy explicitly controls PCIe enumeration order (via virtual connection/vCon assignment) of vNICs and vHBAs as presented to the host OS, which is critical for consistent driver-to-interface mapping.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="2.0 Compute">
+    <div class="meta">Question 4 of 6 · 2.0 Compute</div>
+    <div class="q">An organization is migrating fabric interconnects from UCS Manager to Intersight Managed Mode (IMM) and requires Fibre Channel connectivity to a SAN array with local zoning performed directly on the fabric interconnect. Which capability is NOT available when the fabric interconnects are running in IMM?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. Fibre Channel Switching Mode with local end-host zoning performed directly on the fabric interconnect</button><button class="opt" onclick="answer(this,3,1,0)">B. Ethernet End-Host Mode switching</button><button class="opt" onclick="answer(this,3,2,0)">C. Server pool-based service profile template assignment</button><button class="opt" onclick="answer(this,3,3,0)">D. Unified/universal port role configuration on the fabric interconnect</button>
+    <div class="expl">Fabric interconnects operating under Intersight Managed Mode support Fibre Channel connectivity only in NPV (N Port Virtualization) mode. Native FC Switching Mode with local zoning tables on the FI itself is not supported in IMM, so zoning must be performed upstream on an MDS or Nexus FC switch.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="2.0 Compute">
+    <div class="meta">Question 5 of 6 · 2.0 Compute</div>
+    <div class="q">During initial fabric interconnect bring-up, an administrator mistakenly configures the ports connecting to the upstream Nexus switches as Server Ports instead of Uplink Ports. What is the immediate operational impact?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. The FI passes upstream traffic normally, only without LLDP neighbor visibility</button><button class="opt" onclick="answer(this,4,1,2)">B. The fabric interconnect automatically triggers a fabric failover to the peer FI</button><button class="opt" onclick="answer(this,4,2,2)">C. The FI attempts chassis/FEX discovery on those ports, and no upstream traffic will pass since server ports run chassis discovery protocol rather than standard uplink trunking expected by the Nexus switches</button><button class="opt" onclick="answer(this,4,3,2)">D. Port role is auto-negotiated so no functional impact occurs regardless of role assignment</button>
+    <div class="expl">Server ports run UCS's proprietary chassis/IOM discovery protocol expecting a blade chassis or FEX connection. When miswired to core switches, the ports cannot establish valid uplink forwarding, and interfaces typically remain in a discovery-failed/unknown state, blocking all north-south traffic on those links.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="2.0 Compute">
+    <div class="meta">Question 6 of 6 · 2.0 Compute</div>
+    <div class="q">A boot policy for SAN boot contains two vHBA boot entries, Fabric-A and Fabric-B, both mistakenly configured with the same boot order number (2), with no entry assigned order number 1. What happens when this service profile attempts to associate?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. UCS Manager allows the duplicate order values and resolves the tie using vHBA name in alphabetical order</button><button class="opt" onclick="answer(this,5,1,1)">B. The service profile fails to associate and reports a configuration fault, because boot order values must be unique across all boot devices defined in the policy</button><button class="opt" onclick="answer(this,5,2,1)">C. The server automatically falls back to booting from local disk since the SAN boot order is ambiguous</button><button class="opt" onclick="answer(this,5,3,1)">D. Only the vHBA listed first in the policy definition boots; the duplicate entry is silently ignored</button>
+    <div class="expl">Cisco UCS boot policies require every boot device entry (vHBA, vNIC, CD/DVD, local disk, etc.) to have a unique, sequential order number. Duplicate order values are detected as an invalid boot policy configuration, generating a config-failure fault that blocks proper association/boot until corrected.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/cisco-350-601-dccor-ccnp-data-center-core-exam-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

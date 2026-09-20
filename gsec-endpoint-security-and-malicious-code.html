@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Endpoint Security and Malicious Code Practice Questions — GIAC Security Essentials</title>
+<meta name="description" content="6 free Endpoint Security and Malicious Code practice questions with explanations for the GIAC Security Essentials exam.">
+<link rel="canonical" href="https://technuggets.academy/gsec-endpoint-security-and-malicious-code.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Endpoint Security and Malicious Code Practice Questions — GIAC Security Essentials">
+<meta property="og:description" content="6 free Endpoint Security and Malicious Code practice questions with explanations for the GIAC Security Essentials exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/gsec-endpoint-security-and-malicious-code.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Endpoint Security and Malicious Code</h1>
+<p class="sub">Free GIAC Security Essentials practice — 6 questions on <strong>Endpoint Security and Malicious Code</strong>, with explanations. No sign-up.
+<a href="gsec.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Endpoint Security and Malicious Code">
+    <div class="meta">Question 1 of 6 · Endpoint Security and Malicious Code</div>
+    <div class="q">A threat actor gains initial access to a Windows workstation and executes a PowerShell script directly in memory that never writes an executable file to disk. The script uses WMI event subscriptions for persistence. Which endpoint control would BEST detect and prevent this attack?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. Traditional signature-based antivirus scanning the file system for known malicious hashes</button><button class="opt" onclick="answer(this,0,1,1)">B. PowerShell Constrained Language Mode combined with Script Block Logging and AMSI integration</button><button class="opt" onclick="answer(this,0,2,1)">C. File integrity monitoring on the system32 directory for unauthorized file changes</button><button class="opt" onclick="answer(this,0,3,1)">D. Disabling Windows Defender real-time protection to reduce false positive alerts</button>
+    <div class="expl">AMSI inspects script content at runtime as it executes in memory, regardless of whether a file ever touches disk, and Constrained Language Mode restricts access to dangerous .NET/COM APIs that fileless attacks rely on. Script Block Logging captures the deobfuscated command for analysis.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Endpoint Security and Malicious Code">
+    <div class="meta">Question 2 of 6 · Endpoint Security and Malicious Code</div>
+    <div class="q">Which anti-malware detection technique is specifically designed to identify process hollowing, where malicious code replaces the memory of a legitimate suspended process rather than modifying the on-disk executable?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. Behavioral/heuristic analysis monitoring API call sequences such as CreateProcess in a suspended state, memory unmapping, and remote thread creation</button><button class="opt" onclick="answer(this,1,1,0)">B. Static signature matching against known malware hash databases</button><button class="opt" onclick="answer(this,1,2,0)">C. Cloud-based reputation lookup keyed on the file's hash prevalence across the vendor's telemetry</button><button class="opt" onclick="answer(this,1,3,0)">D. Application whitelisting enforced purely on the executable's file path</button>
+    <div class="expl">Process hollowing manipulates memory at runtime while the on-disk binary and its launching process remain legitimate, so only behavioral/heuristic monitoring of the API sequence (create suspended -&gt; NtUnmapViewOfSection -&gt; WriteProcessMemory -&gt; ResumeThread) can reliably catch it.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Endpoint Security and Malicious Code">
+    <div class="meta">Question 3 of 6 · Endpoint Security and Malicious Code</div>
+    <div class="q">An organization implements AppLocker to prevent unauthorized executables. Which AppLocker rule type provides the STRONGEST protection against an attacker who renames a malicious executable to match a permitted filename in an allowed path?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. Path rule</button><button class="opt" onclick="answer(this,2,1,1)">B. Hash rule</button><button class="opt" onclick="answer(this,2,2,1)">C. Publisher rule based on the file's digital signature</button><button class="opt" onclick="answer(this,2,3,1)">D. Default deny policy with folder-based exceptions</button>
+    <div class="expl">A hash rule ties the allow decision to the exact cryptographic hash of the permitted binary's contents. Renaming a malicious file to match an allowed filename does not change its hash, so it still fails to match and is blocked — regardless of name or location.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Endpoint Security and Malicious Code">
+    <div class="meta">Question 4 of 6 · Endpoint Security and Malicious Code</div>
+    <div class="q">How does metamorphic malware differ from polymorphic malware in the way each evades signature-based detection?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. Metamorphic malware encrypts its payload with a different key each infection while keeping the decryption routine static; polymorphic malware uses no encryption at all</button><button class="opt" onclick="answer(this,3,1,1)">B. Polymorphic malware changes its encryption key and decryptor stub each infection while keeping the underlying malicious logic constant; metamorphic malware rewrites its own instruction sequence and code structure each time it propagates, changing its logical representation without relying on a constant decryptor</button><button class="opt" onclick="answer(this,3,2,1)">C. Metamorphic malware only affects Linux systems while polymorphic malware only affects Windows systems</button><button class="opt" onclick="answer(this,3,3,1)">D. Metamorphic and polymorphic malware are functionally identical terms used interchangeably in the industry</button>
+    <div class="expl">Polymorphic malware re-encrypts identical malicious logic with a new key/decryptor each time, so the decrypted payload is constant even though the encrypted wrapper varies. Metamorphic malware actually rewrites and reorders its own code on each propagation, producing functionally equivalent but structurally different code with no fixed decryptor to signature on.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Endpoint Security and Malicious Code">
+    <div class="meta">Question 5 of 6 · Endpoint Security and Malicious Code</div>
+    <div class="q">During incident response, an analyst suspects a rootkit is hiding malicious processes from Task Manager and the standard Windows API. Which technique should the analyst use to detect the discrepancy?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. Run a full antivirus signature scan from within the live, potentially compromised operating system</button><button class="opt" onclick="answer(this,4,1,3)">B. Review the Windows Event Viewer Security log for successful and failed logon events</button><button class="opt" onclick="answer(this,4,2,3)">C. Check the file hash of explorer.exe against a known-good baseline hash</button><button class="opt" onclick="answer(this,4,3,3)">D. Compare process listings obtained via the standard Windows API against process listings obtained via direct raw memory/kernel analysis (cross-view detection)</button>
+    <div class="expl">Cross-view detection compares what a high-level tool using the standard API reports against what a low-level tool reading raw memory or disk structures reports. A rootkit that hooks the API to hide a process will produce a mismatch between the two views, exposing its presence.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Endpoint Security and Malicious Code">
+    <div class="meta">Question 6 of 6 · Endpoint Security and Malicious Code</div>
+    <div class="q">A security team wants to block Microsoft Office applications from spawning child processes such as PowerShell or cmd.exe, a common technique used by macro-based malware. Which Windows Defender feature should be configured to enforce this specific behavioral restriction?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. Attack Surface Reduction (ASR) rule: 'Block Office applications from creating child processes'</button><button class="opt" onclick="answer(this,5,1,0)">B. Windows Defender Antivirus real-time protection with updated signature definitions</button><button class="opt" onclick="answer(this,5,2,0)">C. Windows Defender Exploit Protection Data Execution Prevention (DEP) settings</button><button class="opt" onclick="answer(this,5,3,0)">D. A Windows Firewall outbound rule blocking network traffic from cmd.exe</button>
+    <div class="expl">This exact behavior is what the named ASR rule is built for: it proactively blocks the specific parent-child process relationship (Office spawning a shell or scripting host) regardless of whether the payload is a known signature.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/gsec-giac-security-essentials-exam-focused-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

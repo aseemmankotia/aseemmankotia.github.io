@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Secure storage, databases, and networking Practice Questions — Microsoft Certified: Azure Security Engineer Associate</title>
+<meta name="description" content="6 free Secure storage, databases, and networking practice questions with explanations for the Microsoft Certified: Azure Security Engineer Associate exam.">
+<link rel="canonical" href="https://technuggets.academy/sc-500-secure-storage-databases-and-networking.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Secure storage, databases, and networking Practice Questions — Microsoft Certified: Azure Security Engineer Associate">
+<meta property="og:description" content="6 free Secure storage, databases, and networking practice questions with explanations for the Microsoft Certified: Azure Security Engineer Associate exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/sc-500-secure-storage-databases-and-networking.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0078D4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Secure storage, databases, and networking</h1>
+<p class="sub">Free Microsoft Certified: Azure Security Engineer Associate practice — 6 questions on <strong>Secure storage, databases, and networking</strong>, with explanations. No sign-up.
+<a href="sc-500.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Secure storage, databases, and networking">
+    <div class="meta">Question 1 of 6 · Secure storage, databases, and networking</div>
+    <div class="q">A financial services company stores highly sensitive SSN values in an Azure SQL Database column. Neither application developers nor DBAs with database access should ever see the plaintext values, but the application must still perform LIKE pattern-matching and range comparisons directly against the encrypted column without decrypting data on the client first. Which solution BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. Transparent Data Encryption (TDE)</button><button class="opt" onclick="answer(this,0,1,2)">B. Dynamic Data Masking</button><button class="opt" onclick="answer(this,0,2,2)">C. Always Encrypted with secure enclaves</button><button class="opt" onclick="answer(this,0,3,2)">D. Always Encrypted (without secure enclaves)</button>
+    <div class="expl">Secure enclaves allow rich operations such as pattern matching and range comparisons to be performed server-side inside a hardware-protected enclave, while the data remains encrypted and unreadable to DBAs or anyone without enclave access — plaintext never leaves the enclave.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Secure storage, databases, and networking">
+    <div class="meta">Question 2 of 6 · Secure storage, databases, and networking</div>
+    <div class="q">Your organization needs to inspect outbound HTTPS traffic leaving a virtual network to detect and block exploit attempts against known CVEs, including decrypting and inspecting the TLS payload for malicious content. The solution must integrate with the existing Azure Firewall deployment. Which feature should you enable?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. Azure Firewall Standard with application rules</button><button class="opt" onclick="answer(this,1,1,3)">B. Network Security Groups with application security groups</button><button class="opt" onclick="answer(this,1,2,3)">C. Azure Web Application Firewall on Application Gateway</button><button class="opt" onclick="answer(this,1,3,3)">D. Azure Firewall Premium with TLS inspection and IDPS in Alert and Deny mode</button>
+    <div class="expl">Azure Firewall Premium supports TLS inspection (decrypt, inspect, re-encrypt) combined with IDPS (Intrusion Detection and Prevention System) which can be set to Alert and Deny mode to actively block traffic matching known exploit and CVE signatures.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Secure storage, databases, and networking">
+    <div class="meta">Question 3 of 6 · Secure storage, databases, and networking</div>
+    <div class="q">A company hosts 200 public IP addresses across several virtual networks, but only 5 of those IPs host mission-critical services requiring volumetric DDoS mitigation, cost protection, and mitigation reporting. Enabling full protection on all 200 IPs is cost-prohibitive. Which DDoS protection approach should you implement?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. Azure DDoS Protection Standard (Network Protection tier) enabled on all affected virtual networks</button><button class="opt" onclick="answer(this,2,1,3)">B. Rely on Basic DDoS protection (default, always-on) for all resources</button><button class="opt" onclick="answer(this,2,2,3)">C. Configure Azure Firewall rules to mitigate DDoS attacks on the affected subnets</button><button class="opt" onclick="answer(this,2,3,3)">D. Azure DDoS IP Protection tier applied only to the 5 critical public IP addresses</button>
+    <div class="expl">DDoS IP Protection is a pay-per-protected-IP tier introduced to let customers apply advanced DDoS mitigation, cost protection, and telemetry to specific individual public IPs, which is far more cost-effective than protecting an entire virtual network when only a handful of IPs are critical.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Secure storage, databases, and networking">
+    <div class="meta">Question 4 of 6 · Secure storage, databases, and networking</div>
+    <div class="q">You create a private endpoint for the blob service of an Azure Storage account inside a hub virtual network. On-premises clients connect over ExpressRoute and use their own on-premises DNS servers rather than Azure DNS. Name resolution for the storage account FQDN from these on-premises clients must return the private endpoint's private IP address. What should you configure?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. Configure conditional forwarding on the on-premises DNS servers to an Azure DNS Private Resolver that forwards queries to the privatelink.blob.core.windows.net zone</button><button class="opt" onclick="answer(this,3,1,0)">B. Enable 'Integrate with private DNS zone' when creating the private endpoint using the default Azure-hosted privatelink.blob.core.windows.net zone</button><button class="opt" onclick="answer(this,3,2,0)">C. Add a manual public DNS A record on the on-premises DNS server pointing to the private endpoint's private IP address</button><button class="opt" onclick="answer(this,3,3,0)">D. Disable the storage account's public endpoint and rely on Azure's default DNS resolution</button>
+    <div class="expl">On-premises DNS servers cannot query an Azure Private DNS zone directly. Deploying an Azure DNS Private Resolver and configuring conditional forwarding from on-prem DNS to it allows on-premises clients to correctly resolve the privatelink zone and receive the private endpoint's IP.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Secure storage, databases, and networking">
+    <div class="meta">Question 5 of 6 · Secure storage, databases, and networking</div>
+    <div class="q">You must configure customer-managed keys (CMK) for encryption at rest on an Azure Storage account, using a key stored in Azure Key Vault. Which combination of configurations is REQUIRED before the storage account can successfully use the CMK?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. Enable infrastructure encryption on the storage account and store the key using Azure AD Connect</button><button class="opt" onclick="answer(this,4,1,3)">B. Create a Shared Access Signature scoped to the Key Vault and reference it in the storage account's encryption settings</button><button class="opt" onclick="answer(this,4,2,3)">C. Grant the storage account the Owner role on the Key Vault's resource group</button><button class="opt" onclick="answer(this,4,3,3)">D. Enable the storage account's managed identity, grant it Key Vault permissions for get, wrapKey, and unwrapKey, and enable Key Vault soft-delete and purge protection</button>
+    <div class="expl">CMK requires the storage account's managed identity to authenticate to Key Vault with wrapKey/unwrapKey/get permissions, and Azure enforces that the Key Vault has soft-delete and purge protection enabled as a mandatory prerequisite to prevent accidental key loss that would make encrypted data unrecoverable.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Secure storage, databases, and networking">
+    <div class="meta">Question 6 of 6 · Secure storage, databases, and networking</div>
+    <div class="q">An Application Gateway WAF_v2 deployment protecting a public web app is generating frequent false-positive blocks from the OWASP Core Rule Set (CRS) against one legitimate query string parameter. Separately, you must block any single client IP address that exceeds 100 requests per minute. Which combination of WAF configuration changes addresses BOTH requirements?</div>
+    <button class="opt" onclick="answer(this,5,0,2)">A. Enable Prevention mode globally and increase the CRS sensitivity level</button><button class="opt" onclick="answer(this,5,1,2)">B. Switch the CRS rule set to Detection mode and add a custom geo-filtering rule</button><button class="opt" onclick="answer(this,5,2,2)">C. Add a managed rule exclusion for the specific query string parameter, and create a custom rate-limiting rule that matches requests per minute per IP</button><button class="opt" onclick="answer(this,5,3,2)">D. Disable the OWASP Core Rule Set entirely and rely only on custom rules</button>
+    <div class="expl">WAF supports managed rule exclusions to exempt specific request fields (like a named query string parameter) from CRS evaluation, eliminating the false positive without weakening overall protection, and custom rate-limiting rules can threshold requests per client IP per time window — directly satisfying both stated requirements.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/sc-500-azure-security-engineer-certification-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

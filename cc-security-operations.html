@@ -1,0 +1,76 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Security Operations Practice Questions — ISC2 Certified in Cybersecurity</title>
+<meta name="description" content="6 free Security Operations practice questions with explanations for the ISC2 Certified in Cybersecurity exam.">
+<link rel="canonical" href="https://technuggets.academy/cc-security-operations.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Security Operations Practice Questions — ISC2 Certified in Cybersecurity">
+<meta property="og:description" content="6 free Security Operations practice questions with explanations for the ISC2 Certified in Cybersecurity exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/cc-security-operations.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Security Operations</h1>
+<p class="sub">Free ISC2 Certified in Cybersecurity practice — 6 questions on <strong>Security Operations</strong>, with explanations. No sign-up.
+<a href="cc.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Domain 5: Security Operations">
+    <div class="meta">Question 1 of 6 · Domain 5: Security Operations</div>
+    <div class="q">A hospital is decommissioning a batch of solid-state drives (SSDs) that stored patient records. The IT security team wants a NIST 800-88 compliant method to ensure the data cannot be recovered, without physically destroying the drives so they can be reused. Which sanitization method is MOST appropriate for SSDs specifically?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. Degaussing the drives with a strong magnetic field</button><button class="opt" onclick="answer(this,0,1,1)">B. Performing a cryptographic erase of the encryption keys protecting the data</button><button class="opt" onclick="answer(this,0,2,1)">C. Overwriting the drives seven times with random data patterns</button><button class="opt" onclick="answer(this,0,3,1)">D. Deleting the file system partitions and reformatting the drives</button>
+    <div class="expl">SSDs use flash memory and wear-leveling, so traditional overwrite passes may not reach every physical cell, and degaussing (a magnetic process) has no effect on solid-state media. Cryptographic erase — destroying the encryption keys that protect data already stored encrypted on the drive — is the NIST 800-88 recommended purge method for self-encrypting SSDs, rendering data unrecoverable without physical destruction.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Domain 5: Security Operations">
+    <div class="meta">Question 2 of 6 · Domain 5: Security Operations</div>
+    <div class="q">Two organizations need to securely exchange a symmetric session key over an untrusted network before starting a bulk encrypted data transfer, but they have never communicated before and have no pre-shared secret. Which approach BEST solves this key exchange problem?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. Have both parties independently generate the same symmetric key using identical random number generators</button><button class="opt" onclick="answer(this,1,1,2)">B. Send the symmetric key over the network in an email marked confidential</button><button class="opt" onclick="answer(this,1,2,2)">C. Encrypt the session key using the recipient's public key so only the recipient's private key can decrypt it</button><button class="opt" onclick="answer(this,1,3,2)">D. Use the same symmetric key for all sessions to avoid the need for exchange</button>
+    <div class="expl">Asymmetric (public key) cryptography solves the fundamental key distribution problem of symmetric encryption: the sender encrypts the symmetric session key with the recipient's public key, and only the recipient's corresponding private key can decrypt it. This hybrid approach combines asymmetric encryption's secure key exchange with symmetric encryption's speed for bulk data.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Domain 5: Security Operations">
+    <div class="meta">Question 3 of 6 · Domain 5: Security Operations</div>
+    <div class="q">A system administrator is applying a hardening baseline to a newly deployed web server. The baseline requires disabling all services and ports not required for the server's function. This hardening practice is BEST described as an application of which principle?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. Separation of duties</button><button class="opt" onclick="answer(this,2,1,1)">B. Least functionality</button><button class="opt" onclick="answer(this,2,2,1)">C. Defense in depth</button><button class="opt" onclick="answer(this,2,3,1)">D. Non-repudiation</button>
+    <div class="expl">Least functionality is the security principle that systems should be configured to provide only the essential capabilities required for their intended purpose, disabling unnecessary services, ports, protocols, and functions to reduce the attack surface. This is a core system hardening practice.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Domain 5: Security Operations">
+    <div class="meta">Question 4 of 6 · Domain 5: Security Operations</div>
+    <div class="q">A developer stores user passwords by running each password through SHA-256 once and saving the resulting hash in the database. During a security review, this approach is flagged as a weakness. What is the BEST reason this implementation is considered insecure?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. SHA-256 is a reversible algorithm, so passwords can be decrypted directly from the stored hash</button><button class="opt" onclick="answer(this,3,1,3)">B. Hashing should never be used for passwords; passwords must always be encrypted instead</button><button class="opt" onclick="answer(this,3,2,3)">C. SHA-256 is too slow for authentication systems and will cause unacceptable login delays</button><button class="opt" onclick="answer(this,3,3,3)">D. Without a unique salt per password, identical passwords produce identical hashes, making the database vulnerable to precomputed rainbow table attacks</button>
+    <div class="expl">Hashing without a unique, random salt means that any two users with the same password will have identical hash values, allowing attackers to use precomputed rainbow tables to quickly reverse common hashes. Adding a unique salt per password before hashing defeats this attack by ensuring identical passwords produce different stored hashes.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Domain 5: Security Operations">
+    <div class="meta">Question 5 of 6 · Domain 5: Security Operations</div>
+    <div class="q">A company's monthly phishing simulation report shows that 8% of employees clicked a simulated malicious link, and this same small group of individuals has clicked in three consecutive simulations despite completing the standard annual security awareness training. What is the MOST effective NEXT step for the security team?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. Immediately terminate the employees who repeatedly clicked the phishing links</button><button class="opt" onclick="answer(this,4,1,2)">B. Disable email access for the entire department where the repeat clickers work</button><button class="opt" onclick="answer(this,4,2,2)">C. Provide targeted, role-specific follow-up training and closer monitoring for the repeat-offender group</button><button class="opt" onclick="answer(this,4,3,2)">D. Stop running phishing simulations since they are clearly not changing behavior</button>
+    <div class="expl">Security awareness programs are most effective when reinforced and tailored to specific risk groups. Repeat clickers indicate that the general annual training did not address their specific gaps, so targeted, focused follow-up training combined with increased monitoring is the appropriate corrective action, consistent with a continuous-improvement approach to security culture.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Domain 5: Security Operations">
+    <div class="meta">Question 6 of 6 · Domain 5: Security Operations</div>
+    <div class="q">An organization classifies a customer database as 'Confidential' under its data classification policy. According to standard data handling practices for this classification level, which control is MOST appropriate for data stored on a server hard drive?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. Apply full disk encryption or file-level encryption so the data remains protected even if the physical drive is stolen</button><button class="opt" onclick="answer(this,5,1,0)">B. Store the data with no additional encryption since it is already behind a locked data center door</button><button class="opt" onclick="answer(this,5,2,0)">C. Label the data as 'Public' internally to simplify access for all employees</button><button class="opt" onclick="answer(this,5,3,0)">D. Rely solely on network firewalls to prevent any access to the data at rest</button>
+    <div class="expl">For data classified as Confidential, encryption at rest (full disk or file-level encryption) is a standard control that protects the data's confidentiality even if physical security is bypassed, such as through drive theft, improper disposal, or insider access to hardware. This directly addresses the data lifecycle's storage and protection phase.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="SECPREP34"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">undefined</span> <span class="price">$34.99</span> with code <span class="code">SECPREP34</span> — valid through Oct 11.</p>
+  <a href="https://www.udemy.com/course/isc2-certified-in-cybersecurity-cc-exam-prep/?couponCode=SECPREP34" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

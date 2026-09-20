@@ -1,0 +1,76 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Web Application Hacking Practice Questions — Certified Ethical Hacker (CEH v13)</title>
+<meta name="description" content="6 free Web Application Hacking practice questions with explanations for the Certified Ethical Hacker (CEH v13) exam.">
+<link rel="canonical" href="https://technuggets.academy/312-50-web-application-hacking.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Web Application Hacking Practice Questions — Certified Ethical Hacker (CEH v13)">
+<meta property="og:description" content="6 free Web Application Hacking practice questions with explanations for the Certified Ethical Hacker (CEH v13) exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/312-50-web-application-hacking.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Web Application Hacking</h1>
+<p class="sub">Free Certified Ethical Hacker (CEH v13) practice — 6 questions on <strong>Web Application Hacking</strong>, with explanations. No sign-up.
+<a href="312-50.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Web Application Hacking">
+    <div class="meta">Question 1 of 6 · Web Application Hacking</div>
+    <div class="q">A penetration tester is testing a search parameter on a web application for SQL injection. Error messages are fully suppressed by the application, and the page content does not visibly change regardless of whether a true or false condition is injected. Which technique should the tester use to confirm the presence of SQL injection?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. Boolean-based blind SQLi with UNION SELECT injection</button><button class="opt" onclick="answer(this,0,1,2)">B. Error-based SQLi triggering verbose error messages</button><button class="opt" onclick="answer(this,0,2,2)">C. Time-based blind SQLi using conditional delay functions (e.g., SLEEP())</button><button class="opt" onclick="answer(this,0,3,2)">D. Stacked queries to execute OS commands</button>
+    <div class="expl">Time-based blind SQLi injects conditional statements that cause a measurable delay in the server response (e.g., IF(condition, SLEEP(5), 0)). Because it relies only on response timing rather than visible content differences or error output, it is the only listed technique that works when both content-based and error-based signals are unavailable.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Web Application Hacking">
+    <div class="meta">Question 2 of 6 · Web Application Hacking</div>
+    <div class="q">A web application lets users submit a URL, which the server then fetches server-side to generate an image thumbnail. An attacker submits a URL pointing to the cloud instance metadata service and retrieves sensitive internal data through the thumbnail response. Which remediation BEST addresses this Server-Side Request Forgery (SSRF) vulnerability?</div>
+    <button class="opt" onclick="answer(this,1,0,1)">A. Use a WAF rule to block SQL injection patterns</button><button class="opt" onclick="answer(this,1,1,1)">B. Implement an allowlist for permitted destination domains/IPs and block requests to internal/link-local address ranges</button><button class="opt" onclick="answer(this,1,2,1)">C. Encode output to prevent stored XSS</button><button class="opt" onclick="answer(this,1,3,1)">D. Store user-supplied URLs in an encrypted database column</button>
+    <div class="expl">SSRF is remediated by strictly controlling which destinations the server is permitted to reach — an allowlist of approved domains/IP ranges combined with explicit blocking of loopback, link-local (169.254.0.0/16), and private RFC1918 ranges prevents the server from being used as a proxy to reach internal resources.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Web Application Hacking">
+    <div class="meta">Question 3 of 6 · Web Application Hacking</div>
+    <div class="q">A SOAP-based web service parses XML input from clients. A tester submits an XML document containing a DOCTYPE declaration that defines an external entity referencing the local file /etc/passwd, and the parsed response reflects the file's contents back to the tester. Which vulnerability is being exploited?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. Cross-Site Request Forgery</button><button class="opt" onclick="answer(this,2,1,3)">B. LDAP Injection</button><button class="opt" onclick="answer(this,2,2,3)">C. Insecure Direct Object Reference</button><button class="opt" onclick="answer(this,2,3,3)">D. XML External Entity (XXE) Injection</button>
+    <div class="expl">XXE occurs when a poorly configured XML parser resolves external entities defined in a DOCTYPE declaration, allowing an attacker to read local files, perform SSRF, or cause denial of service. The DOCTYPE/external-entity file-disclosure pattern described is the textbook signature of XXE.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Web Application Hacking">
+    <div class="meta">Question 4 of 6 · Web Application Hacking</div>
+    <div class="q">A REST API validates JWT bearer tokens for authentication. A tester intercepts a valid token, modifies the header's &quot;alg&quot; field to &quot;none&quot;, strips the signature segment entirely, and resubmits the token — the API accepts it as authenticated. Which server-side misconfiguration allowed this attack?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. The server uses HS256 instead of RS256 for signing</button><button class="opt" onclick="answer(this,3,1,2)">B. The token lacks an expiration (exp) claim</button><button class="opt" onclick="answer(this,3,2,2)">C. The server fails to verify the JWT signature/algorithm and trusts the client-supplied &quot;alg&quot; header</button><button class="opt" onclick="answer(this,3,3,2)">D. The server stores tokens in local storage instead of HttpOnly cookies</button>
+    <div class="expl">The classic &quot;alg:none&quot; JWT attack succeeds because the server's verification logic reads the algorithm from the attacker-controlled header instead of enforcing a fixed, expected algorithm server-side, and accepts tokens with no signature at all. The fix is to explicitly whitelist and enforce the expected algorithm and reject 'none'.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Web Application Hacking">
+    <div class="meta">Question 5 of 6 · Web Application Hacking</div>
+    <div class="q">An e-commerce application lets authenticated users view order details via /orders?id=1234. A tester changes the id value to another customer's order number and successfully views that customer's private order data without any additional authorization check occurring. Which remediation BEST addresses this vulnerability?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. Rate-limit requests to the /orders endpoint to prevent enumeration</button><button class="opt" onclick="answer(this,4,1,3)">B. Encrypt the order id parameter with AES before sending it to the client</button><button class="opt" onclick="answer(this,4,2,3)">C. Implement a WAF rule blocking sequential numeric parameter values</button><button class="opt" onclick="answer(this,4,3,3)">D. Enforce server-side authorization checks confirming the requesting user owns the referenced object</button>
+    <div class="expl">This is Insecure Direct Object Reference (IDOR), a form of broken access control. The root cause is the missing server-side ownership/authorization check on the requested object. The only durable fix is to verify, on every request, that the authenticated user is authorized to access the specific order referenced — independent of how the identifier is represented.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Web Application Hacking">
+    <div class="meta">Question 6 of 6 · Web Application Hacking</div>
+    <div class="q">Which statement correctly differentiates HTTP Parameter Pollution (HPP) from Cross-Site Request Forgery (CSRF)?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. HPP and CSRF both require the attacker to first steal session cookies via XSS</button><button class="opt" onclick="answer(this,5,1,1)">B. HPP exploits duplicate parameter names to manipulate application logic, while CSRF forges authenticated requests without the user's knowledge or consent</button><button class="opt" onclick="answer(this,5,2,1)">C. HPP targets client-side JavaScript execution while CSRF targets server-side SQL queries</button><button class="opt" onclick="answer(this,5,3,1)">D. HPP is purely a server misconfiguration while CSRF is a client-side browser vulnerability with no server-side component</button>
+    <div class="expl">HPP submits the same parameter name multiple times (e.g., in query string, body, or across GET/POST) to exploit inconsistent parsing between the front-end and back-end, altering application logic such as bypassing filters or overriding values. CSRF, by contrast, tricks a victim's browser into submitting a state-changing request using their already-authenticated session, with no need to steal credentials or manipulate parameter parsing.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="SECPREP34"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">undefined</span> <span class="price">$34.99</span> with code <span class="code">SECPREP34</span> — valid through Oct 11.</p>
+  <a href="https://www.udemy.com/course/ceh-v13-312-50-certified-ethical-hacker-exam-prep/?couponCode=SECPREP34" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

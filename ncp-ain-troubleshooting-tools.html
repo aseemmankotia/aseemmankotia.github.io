@@ -1,0 +1,76 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Troubleshooting Tools Practice Questions — NVIDIA-Certified Professional: AI Networking</title>
+<meta name="description" content="6 free Troubleshooting Tools practice questions with explanations for the NVIDIA-Certified Professional: AI Networking exam.">
+<link rel="canonical" href="https://technuggets.academy/ncp-ain-troubleshooting-tools.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Troubleshooting Tools Practice Questions — NVIDIA-Certified Professional: AI Networking">
+<meta property="og:description" content="6 free Troubleshooting Tools practice questions with explanations for the NVIDIA-Certified Professional: AI Networking exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/ncp-ain-troubleshooting-tools.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#76B900}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Troubleshooting Tools</h1>
+<p class="sub">Free NVIDIA-Certified Professional: AI Networking practice — 6 questions on <strong>Troubleshooting Tools</strong>, with explanations. No sign-up.
+<a href="ncp-ain.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Troubleshooting Tools">
+    <div class="meta">Question 1 of 6 · Troubleshooting Tools</div>
+    <div class="q">A 400G InfiniBand port shows no link-down or link-error-recovery events, yet application throughput on that path has quietly degraded over several days. Running mlxlink on the port shows FEC-corrected block counts climbing steadily and effective/raw BER trending upward, while uncorrected block count is still zero. What should the engineer conclude and do?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. The optic or cable is physically degrading; proactively schedule replacement before rising BER produces uncorrectable errors and link flaps</button><button class="opt" onclick="answer(this,0,1,0)">B. This is normal FEC operation and requires no action since blocks are still being corrected successfully</button><button class="opt" onclick="answer(this,0,2,0)">C. This indicates fabric congestion; the fix is to enable adaptive routing on the affected spine switch</button><button class="opt" onclick="answer(this,0,3,0)">D. This is a firmware version mismatch between the HCA and switch; reboot the switch to resync</button>
+    <div class="expl">Rising raw/effective BER with increasing FEC-corrected blocks is the classic mlxlink early-warning signature of a marginal optic, connector, or cable. FEC is masking the problem today, but a trending BER means uncorrectable errors and link flaps are imminent — this is exactly the proactive maintenance signal mlxlink is designed to expose before an outage occurs.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Troubleshooting Tools">
+    <div class="meta">Question 2 of 6 · Troubleshooting Tools</div>
+    <div class="q">A network team needs a real-time, fabric-wide congestion and hotspot heatmap spanning several hundred Quantum-2 switches, correlating port utilization with buffer occupancy across the entire topology, without manually querying each device. Which approach best satisfies this requirement?</div>
+    <button class="opt" onclick="answer(this,1,0,1)">A. Run ibdiagnet against each switch individually and manually compile the results into a spreadsheet</button><button class="opt" onclick="answer(this,1,1,1)">B. Use UFM's fabric-wide telemetry and congestion monitoring dashboard, which aggregates per-port utilization and buffer metrics across the whole fabric in real time</button><button class="opt" onclick="answer(this,1,2,1)">C. Run perfquery against every port in the fabric on a scheduled basis and script the aggregation yourself</button><button class="opt" onclick="answer(this,1,3,1)">D. Use 'nvidia-smi topo -m' on each GPU host to infer switch-level congestion from topology output</button>
+    <div class="expl">UFM (Unified Fabric Manager) is purpose-built for centralized, real-time telemetry collection across the entire IB/Ethernet fabric, including congestion and buffer-occupancy dashboards, and is the exam's expected answer for any fabric-scale, holistic monitoring requirement.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Troubleshooting Tools">
+    <div class="meta">Question 3 of 6 · Troubleshooting Tools</div>
+    <div class="q">A RoCEv2 leaf-spine fabric experiences sudden severe throughput collapse with symptoms of head-of-line blocking spreading across multiple unrelated flows. The team needs to confirm whether this is being driven by a PFC pause storm rather than ECN-based congestion signaling. Which counter is the correct one to examine to confirm a PFC storm?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. Per-priority PFC pause frame counters (rx/tx_pause_prio_n) rapidly incrementing and staying elevated across multiple ports</button><button class="opt" onclick="answer(this,2,1,0)">B. port_xmit_wait, which measures generic transmit queueing delay regardless of cause</button><button class="opt" onclick="answer(this,2,2,0)">C. The CNP (Congestion Notification Packet) counter, which reflects ECN-based DCQCN feedback</button><button class="opt" onclick="answer(this,2,3,0)">D. VL15_dropped, which tracks dropped subnet management traffic</button>
+    <div class="expl">A PFC storm is directly confirmed by per-priority pause frame counters rising rapidly and remaining elevated on multiple ports simultaneously — this is the specific, unambiguous signature of PAUSE-driven head-of-line blocking spreading through the fabric, distinct from ECN/DCQCN-based congestion response.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Troubleshooting Tools">
+    <div class="meta">Question 4 of 6 · Troubleshooting Tools</div>
+    <div class="q">On an InfiniBand switch port, the symbol_error_counter is steadily incrementing while the link_error_recovery_counter remains at zero and the port has never transitioned to Down. What does this combination of counter behavior indicate?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. The link has failed and successfully retrained without operator intervention</button><button class="opt" onclick="answer(this,3,1,3)">B. The port is congested rather than experiencing any physical-layer issue</button><button class="opt" onclick="answer(this,3,2,3)">C. The subnet manager has disabled physical-layer error correction on this port</button><button class="opt" onclick="answer(this,3,3,3)">D. The physical layer is encountering bit errors that are being absorbed/corrected without requiring a link retrain event</button>
+    <div class="expl">symbol_error_counter increments on physical-layer bit/symbol errors detected on the wire. link_error_recovery_counter only increments when those errors accumulate enough to force a retraining event. A rising symbol error count with zero link error recoveries means low-level physical errors are occurring and being tolerated/corrected without yet requiring the link to retrain — an early warning worth investigating (cable, connector, or transceiver quality) before it escalates.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Troubleshooting Tools">
+    <div class="meta">Question 5 of 6 · Troubleshooting Tools</div>
+    <div class="q">During a large all-to-all collective operation on a Spectrum-X RoCEv2 fabric, GPU jobs report intermittent long-tail latency spikes. Telemetry shows CNP (Congestion Notification Packet) counters rising sharply on several spine-facing ports, while PFC pause frame counters on those same ports remain near zero. What is the correct interpretation of this telemetry pattern?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. The spine uplinks are suffering physical-layer degradation causing the latency spikes</button><button class="opt" onclick="answer(this,4,1,3)">B. A PFC deadlock caused by misconfigured priority flow control is blocking traffic</button><button class="opt" onclick="answer(this,4,2,3)">C. The subnet manager has failed to compute adaptive routing paths, causing all traffic to converge on one path</button><button class="opt" onclick="answer(this,4,3,3)">D. DCQCN is operating as designed — ECN marking and CNP feedback are throttling sender rates ahead of buffer exhaustion during incast, avoiding the need for PFC pause; this is expected congestion behavior, not a fault</button>
+    <div class="expl">Rising CNP counts with near-zero PFC pause activity is the textbook signature of DCQCN working correctly: ECN marks packets under incipient congestion, receivers generate CNPs, and senders reduce rate — successfully preventing the need for PFC pause. During legitimate incast from an all-to-all collective, this pattern reflects expected, healthy congestion control response rather than a fault to be remediated.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Troubleshooting Tools">
+    <div class="meta">Question 6 of 6 · Troubleshooting Tools</div>
+    <div class="q">NCCL all-reduce throughput across a multi-rail Quantum-2 InfiniBand fabric is well below expected bandwidth. UFM telemetry shows one spine switch's uplinks running near 100% utilization while all other spine switches average around 40%. What should the engineer verify next to isolate the root cause?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. Increase the MTU on the affected spine switch's uplinks to reduce per-packet overhead</button><button class="opt" onclick="answer(this,5,1,1)">B. Confirm that adaptive routing (dynamic path selection / AR) is enabled and functioning correctly via the subnet manager so traffic is rebalanced across all available spine uplinks</button><button class="opt" onclick="answer(this,5,2,1)">C. Replace the spine switch immediately, assuming a hardware fault based on the utilization imbalance alone</button><button class="opt" onclick="answer(this,5,3,1)">D. Disable PFC on all switch ports to eliminate any possible pause-related interference</button>
+    <div class="expl">A single hotspot spine switch while others run at ~40% utilization is the classic signature of static or ECMP-only routing failing to load-balance traffic, or adaptive routing being disabled/misconfigured. The correct next diagnostic step is to verify AR is enabled and actively rebalancing flows via the subnet manager before considering hardware replacement.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST34"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">undefined</span> <span class="price">$34.99</span> with code <span class="code">FREETEST34</span> — valid through Oct 11.</p>
+  <a href="https://www.udemy.com/course/ncp-ain-nvidia-ai-networking-certification-prep/?couponCode=FREETEST34" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

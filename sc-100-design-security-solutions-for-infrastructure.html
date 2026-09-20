@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Design security solutions for infrastructure Practice Questions — Microsoft Certified: Cybersecurity Architect Expert</title>
+<meta name="description" content="6 free Design security solutions for infrastructure practice questions with explanations for the Microsoft Certified: Cybersecurity Architect Expert exam.">
+<link rel="canonical" href="https://technuggets.academy/sc-100-design-security-solutions-for-infrastructure.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Design security solutions for infrastructure Practice Questions — Microsoft Certified: Cybersecurity Architect Expert">
+<meta property="og:description" content="6 free Design security solutions for infrastructure practice questions with explanations for the Microsoft Certified: Cybersecurity Architect Expert exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/sc-100-design-security-solutions-for-infrastructure.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0078D4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Design security solutions for infrastructure</h1>
+<p class="sub">Free Microsoft Certified: Cybersecurity Architect Expert practice — 6 questions on <strong>Design security solutions for infrastructure</strong>, with explanations. No sign-up.
+<a href="sc-100.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Domain 3: Design security solutions for infrastructure">
+    <div class="meta">Question 1 of 6 · Domain 3: Design security solutions for infrastructure</div>
+    <div class="q">A manufacturing company operates an OT network with SCADA and PLC devices following the Purdue model. Security must gain visibility into ICS protocol traffic (Modbus, DNP3) between Purdue levels 0-3 without installing any software on the legacy devices and without risking disruption to production availability. Which design BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. Install the Log Analytics agent on each PLC and SCADA controller to forward telemetry to Microsoft Sentinel</button><button class="opt" onclick="answer(this,0,1,1)">B. Deploy Microsoft Defender for IoT OT network sensors using passive traffic mirroring (SPAN/TAP) at the boundaries between Purdue levels</button><button class="opt" onclick="answer(this,0,2,1)">C. Deploy Microsoft Defender for Endpoint sensors directly on the OT controllers to monitor process behavior</button><button class="opt" onclick="answer(this,0,3,1)">D. Route all OT traffic through Azure Firewall Premium with IDPS signatures enabled to inspect ICS protocols</button>
+    <div class="expl">Defender for IoT OT sensors perform agentless, passive deep packet inspection of ICS/SCADA protocols via port mirroring (SPAN/TAP), giving full visibility into east-west and north-south OT traffic without touching legacy devices or risking availability impact — the standard recommended architecture for Purdue-model segmentation monitoring.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Domain 3: Design security solutions for infrastructure">
+    <div class="meta">Question 2 of 6 · Domain 3: Design security solutions for infrastructure</div>
+    <div class="q">An enterprise runs workloads across Azure, AWS, and GCP. The security team wants vulnerability assessment coverage for AWS EC2 instances and GCP Compute Engine VMs without deploying and maintaining agents on every instance, while still surfacing findings in Microsoft Defender for Cloud's unified recommendations. What should the architect configure?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. Deploy the Azure Monitor Agent to every EC2 and Compute Engine instance and link it to a shared Log Analytics workspace</button><button class="opt" onclick="answer(this,1,1,3)">B. Enable AWS Inspector and GCP Security Command Center natively and manually cross-reference findings with Azure Secure Score</button><button class="opt" onclick="answer(this,1,2,3)">C. Enable only Defender for Servers Plan 2 on the multicloud connectors, relying on its agent-based Microsoft Defender for Endpoint integration</button><button class="opt" onclick="answer(this,1,3,3)">D. Connect the AWS and GCP accounts to Defender for Cloud and enable the Defender CSPM plan's agentless scanning capability</button>
+    <div class="expl">The Defender CSPM plan provides agentless scanning that takes disk snapshots of AWS and GCP VMs to perform vulnerability and secrets scanning without any agent footprint, and the results appear as native recommendations inside Defender for Cloud across all connected clouds — exactly matching the requirement.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Domain 3: Design security solutions for infrastructure">
+    <div class="meta">Question 3 of 6 · Domain 3: Design security solutions for infrastructure</div>
+    <div class="q">A hybrid environment has VMs in Azure, AWS, and an on-premises datacenter, all requiring occasional RDP/SSH administrative access. The CISO mandates that management ports be closed by default across all environments, with access granted only for a limited time window after an approved request, and full auditability of who requested access and when. Which solution should the architect design?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. Enable Just-in-Time (JIT) VM access in Microsoft Defender for Cloud to dynamically lock down NSG/firewall rules and grant time-bound, approved access on request</button><button class="opt" onclick="answer(this,2,1,0)">B. Deploy Azure Bastion in every virtual network so admins connect through the browser instead of opening RDP/SSH ports</button><button class="opt" onclick="answer(this,2,2,0)">C. Configure Conditional Access policies requiring MFA before any RDP or SSH session is permitted</button><button class="opt" onclick="answer(this,2,3,0)">D. Deploy Azure Network Watcher with NSG flow logs to continuously monitor RDP/SSH connections for anomalies</button>
+    <div class="expl">Just-in-Time VM access in Defender for Cloud is purpose-built for this scenario: it keeps inbound management ports closed by default, requires an explicit access request, applies time-bound NSG/firewall rules only when approved, and logs all requests for auditing — extending to hybrid/Arc-enabled machines.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Domain 3: Design security solutions for infrastructure">
+    <div class="meta">Question 4 of 6 · Domain 3: Design security solutions for infrastructure</div>
+    <div class="q">An organization runs production workloads on AKS. Security wants to prevent container images with unresolved critical vulnerabilities from ever being deployed to the cluster, rather than only detecting the issue after the pod is already running. Which design achieves this 'shift-left' enforcement?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. Enable Microsoft Defender for Containers runtime threat protection to alert when a vulnerable container starts executing</button><button class="opt" onclick="answer(this,3,1,1)">B. Enable Microsoft Defender for Containers with the Azure Policy add-on for AKS configured to enforce admission control that blocks deployment of images exceeding the vulnerability severity threshold</button><button class="opt" onclick="answer(this,3,2,1)">C. Configure Microsoft Sentinel analytics rules to generate an incident whenever a vulnerable image is pulled from the registry</button><button class="opt" onclick="answer(this,3,3,1)">D. Require developers to manually review Microsoft Defender for Cloud's container vulnerability report before each release</button>
+    <div class="expl">Defender for Containers integrates with the Azure Policy add-on for AKS to provide Kubernetes admission control, which can be configured to actively block deployment of pods using images with unresolved vulnerabilities above a defined severity — true preventive, shift-left enforcement at deploy time.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Domain 3: Design security solutions for infrastructure">
+    <div class="meta">Question 5 of 6 · Domain 3: Design security solutions for infrastructure</div>
+    <div class="q">A company has 400 on-premises Windows and Linux servers that are not managed by Azure. Leadership wants these servers to receive Microsoft Defender for Endpoint protection, vulnerability assessment, and inclusion in the Defender for Cloud regulatory compliance dashboard, using the same experience as native Azure VMs. What should the architect design first?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. Deploy the legacy Microsoft Monitoring Agent (MMA) on each server and connect it to the Defender for Cloud workspace</button><button class="opt" onclick="answer(this,4,1,1)">B. Onboard the on-premises servers to Azure Arc-enabled servers, then enable the Defender for Servers plan on the Arc resources</button><button class="opt" onclick="answer(this,4,2,1)">C. Enroll the servers in Microsoft Intune and apply security baselines through compliance policies</button><button class="opt" onclick="answer(this,4,3,1)">D. Create an Azure Policy assignment scoped to the on-premises resource group to enforce Defender for Cloud recommendations</button>
+    <div class="expl">Azure Arc projects on-premises (and multicloud) servers as first-class Azure resources, which is the prerequisite that allows Defender for Servers to be enabled on them, extending Defender for Endpoint integration, vulnerability assessment, and regulatory compliance dashboard coverage identically to native Azure VMs.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Domain 3: Design security solutions for infrastructure">
+    <div class="meta">Question 6 of 6 · Domain 3: Design security solutions for infrastructure</div>
+    <div class="q">A security team wants to reduce the attack surface of a fleet of Azure VMs by allowing only trusted, previously observed executables to run, minimizing false positives without manually building and maintaining allowlists per server. Which Defender for Cloud capability should the architect recommend?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. Enable Adaptive Application Controls in Microsoft Defender for Servers Plan 2, which uses machine learning to build intelligent allowlists based on each VM's observed behavior</button><button class="opt" onclick="answer(this,5,1,0)">B. Manually configure AppLocker policies with static allowlists and deploy them via Group Policy to each VM</button><button class="opt" onclick="answer(this,5,2,0)">C. Enable File Integrity Monitoring (FIM) to alert whenever an unexpected executable file is modified</button><button class="opt" onclick="answer(this,5,3,0)">D. Enable Microsoft Defender Antivirus with cloud-delivered protection set to the highest aggressiveness level</button>
+    <div class="expl">Adaptive Application Controls, part of Defender for Servers Plan 2, use machine learning to analyze applications running on VMs and automatically recommend intelligent, per-group allowlists, reducing manual maintenance while enforcing execution control — directly matching the stated requirement.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/sc-100-microsoft-cybersecurity-architect-expert-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

@@ -1,0 +1,173 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Certified Kubernetes Security Specialist Practice Test — 12 Real Exam-Style Questions</title>
+<meta name="description" content="Free Certified Kubernetes Security Specialist practice questions with detailed explanations. Test yourself before the real exam.">
+<link rel="canonical" href="https://technuggets.academy/cks.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Certified Kubernetes Security Specialist Practice Test — 12 Real Exam-Style Questions">
+<meta property="og:description" content="Free Certified Kubernetes Security Specialist practice questions with detailed explanations. Test yourself before the real exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/cks.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div><div class="hero">
+  <span class="chip">CKS</span>
+  <h1>Free Certified Kubernetes Security Specialist Practice Test</h1>
+  <p class="sub">12 exam-style questions with full explanations — no sign-up. Score yourself, then close your gaps with the full course.</p>
+  <div class="facts"><span class="fact">Exam fee <b>~$445</b></span><span class="fact"><b>6</b> exam domains</span><span class="fact">Level <b>Advanced</b></span><span class="fact"><b>2</b> timed practice tests in the course</span></div>
+  <div class="cta-row"><a class="btn enroll" href="https://www.udemy.com/course/cks-certified-kubernetes-security-specialist-prep/" rel="sponsored" target="_blank">Start my full course on Udemy →</a><a class="btn ghost" href="#practice">Try the free test →</a></div>
+</div><div class="trust"><span>✅ <b>Free</b> practice — no sign-up</span><span>📝 Real exam-style questions</span><span>💡 Detailed explanations</span><span>💸 30-day money-back via Udemy</span></div>
+<div id="practice"></div>
+
+  <div class="card qcard" id="q0" data-domain="Cluster Setup">
+    <div class="meta">Question 1 of 12 · Cluster Setup</div>
+    <div class="q">A company needs pods in namespace 'finance' to accept ingress traffic ONLY from pods labeled role=reporting that live in namespace 'analytics'. All other ingress traffic to 'finance' pods must be blocked. Which NetworkPolicy correctly implements this?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-reporting
+  namespace: finance
+spec:
+  podSelector: {}
+  policyTypes: [Ingress]
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels: {kubernetes.io/metadata.name: analytics}
+    - podSelector:
+        matchLabels: {role: reporting}</button><button class="opt" onclick="answer(this,0,1,2)">B. apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-reporting
+  namespace: finance
+spec:
+  podSelector: {}
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels: {kubernetes.io/metadata.name: analytics}
+      podSelector:
+        matchLabels: {role: reporting}</button><button class="opt" onclick="answer(this,0,2,2)">C. apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-reporting
+  namespace: finance
+spec:
+  podSelector: {}
+  policyTypes: [Ingress]
+  ingress:
+  - from:
+    - namespaceSelector:
+        matchLabels: {kubernetes.io/metadata.name: analytics}
+      podSelector:
+        matchLabels: {role: reporting}</button><button class="opt" onclick="answer(this,0,3,2)">D. apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-reporting
+  namespace: analytics
+spec:
+  podSelector:
+    matchLabels: {role: reporting}
+  policyTypes: [Egress]
+  egress:
+  - to:
+    - namespaceSelector:
+        matchLabels: {kubernetes.io/metadata.name: finance}</button>
+    <div class="expl">Placing namespaceSelector and podSelector inside the SAME 'from' list item ANDs them together — traffic is only allowed if the source pod matches BOTH conditions (in analytics namespace AND labeled role=reporting). policyTypes: [Ingress] with an empty podSelector applies the policy to all pods in 'finance' and defaults to deny-all-ingress except what's explicitly allowed.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Cluster Hardening">
+    <div class="meta">Question 2 of 12 · Cluster Hardening</div>
+    <div class="q">A security team wants pods running in the &quot;default&quot; namespace to stop automatically receiving a mounted service account token unless a workload explicitly requires API access. Which approach correctly enforces this while keeping the cluster functional?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. Create a NetworkPolicy denying access to the Kubernetes API server</button><button class="opt" onclick="answer(this,1,1,3)">B. Delete the default service account from the namespace</button><button class="opt" onclick="answer(this,1,2,3)">C. Set enableServiceLinks: false in the pod spec</button><button class="opt" onclick="answer(this,1,3,3)">D. Set automountServiceAccountToken: false on the ServiceAccount or Pod spec</button>
+    <div class="expl">Setting automountServiceAccountToken: false on the ServiceAccount (or overriding it per-Pod) is the supported mechanism to stop the API server credentials and CA bundle from being auto-mounted into pods that don't need them, satisfying least privilege without breaking scheduling.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="System Hardening">
+    <div class="meta">Question 3 of 12 · System Hardening</div>
+    <div class="q">A security engineer must restrict a Pod named 'payment-api' so that it runs with a custom AppArmor profile named 'k8s-payment-restrict' that has already been loaded on every node. Which configuration correctly enforces this in a cluster running Kubernetes 1.30+?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. Add the annotation container.apparmor.security.beta.kubernetes.io/payment-api: localhost/k8s-payment-restrict to the Pod metadata only</button><button class="opt" onclick="answer(this,2,1,1)">B. Set securityContext.appArmorProfile.type: Localhost and securityContext.appArmorProfile.localhostProfile: k8s-payment-restrict under the container's securityContext</button><button class="opt" onclick="answer(this,2,2,1)">C. Set securityContext.seccompProfile.type: Localhost and localhostProfile: k8s-payment-restrict under the Pod spec</button><button class="opt" onclick="answer(this,2,3,1)">D. Create a PodSecurityPolicy with the annotation apparmor.security.beta.kubernetes.io/allowedProfileNames set to k8s-payment-restrict</button>
+    <div class="expl">Since Kubernetes 1.30 (GA), AppArmor is configured natively via the container's securityContext.appArmorProfile field, with type Localhost and localhostProfile pointing to the profile name already loaded on the node. This replaced the older beta annotation approach.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Minimize Microservice Vulnerabilities">
+    <div class="meta">Question 4 of 12 · Minimize Microservice Vulnerabilities</div>
+    <div class="q">A platform team wants to enforce the 'restricted' Pod Security Standard on the 'payments' namespace without deploying any third-party admission controller, while first auditing violations before full enforcement. Which solution BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. Apply only the label pod-security.kubernetes.io/enforce=restricted to the namespace</button><button class="opt" onclick="answer(this,3,1,3)">B. Install OPA Gatekeeper and create a restricted ConstraintTemplate for the namespace</button><button class="opt" onclick="answer(this,3,2,3)">C. Deploy Kyverno with a cluster policy set to validationFailureAction: Enforce</button><button class="opt" onclick="answer(this,3,3,3)">D. Apply labels pod-security.kubernetes.io/audit=restricted and pod-security.kubernetes.io/warn=restricted first, then add enforce=restricted once violations are resolved</button>
+    <div class="expl">The built-in Pod Security Admission (PSA) controller supports independent audit, warn, and enforce modes via namespace labels. Staging audit/warn before enforce lets teams find violations without breaking running workloads, and this requires no third-party controller.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Supply Chain Security">
+    <div class="meta">Question 5 of 12 · Supply Chain Security</div>
+    <div class="q">A company wants to minimize the attack surface of container images used in its Kubernetes cluster. The current base images use full Ubuntu with a shell, package manager, and many unused utilities. The application is not statically compiled and still requires a minimal runtime. Which approach BEST reduces the attack surface while keeping the application functional?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. Continue using the Ubuntu base image but run apt-get autoremove and apt-get clean at the end of the build</button><button class="opt" onclick="answer(this,4,1,1)">B. Switch to a distroless base image containing only the language runtime and application dependencies</button><button class="opt" onclick="answer(this,4,2,1)">C. Use Alpine Linux and manually delete /bin/sh from the final image layer</button><button class="opt" onclick="answer(this,4,3,1)">D. Use the scratch base image for all applications regardless of language runtime requirements</button>
+    <div class="expl">Distroless images remove the shell, package manager, and unnecessary OS utilities while still including only the minimal runtime dependencies needed to execute the application, directly reducing the attack surface without breaking functionality.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Monitoring, Logging, and Runtime Security">
+    <div class="meta">Question 6 of 12 · Monitoring, Logging, and Runtime Security</div>
+    <div class="q">A security team suspects an attacker has gained a foothold in a production pod and is attempting to open an interactive shell to explore the filesystem. They want real-time detection of this specific behavior across the cluster using syscall-level visibility, without modifying application code. Which solution BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. Enable Kubernetes audit logging at the RequestResponse level for all pods</button><button class="opt" onclick="answer(this,5,1,1)">B. Deploy Falco with the default ruleset, which includes a rule that alerts on 'Terminal shell in container'</button><button class="opt" onclick="answer(this,5,2,1)">C. Apply a NetworkPolicy that denies all egress traffic from the pod</button><button class="opt" onclick="answer(this,5,3,1)">D. Enable readOnlyRootFilesystem on the pod's securityContext</button>
+    <div class="expl">Falco hooks into syscalls (via kernel module or eBPF probe) and ships a default rule, 'Terminal shell in container spawned', that fires when a shell process (bash, sh, etc.) is spawned inside a container, exactly the real-time behavioral detection required here.</div>
+  </div>
+
+  <div class="card qcard" id="q6" data-domain="Cluster Setup">
+    <div class="meta">Question 7 of 12 · Cluster Setup</div>
+    <div class="q">kube-bench reports FAIL for etcd check '2.2 Ensure that the --client-cert-auth argument is set to true'. Which change to the etcd static pod manifest remediates this finding?</div>
+    <button class="opt" onclick="answer(this,6,0,1)">A. Add '--peer-client-cert-auth=true' to the etcd command arguments</button><button class="opt" onclick="answer(this,6,1,1)">B. Add '--client-cert-auth=true' to the etcd command arguments</button><button class="opt" onclick="answer(this,6,2,1)">C. Set '--auto-tls=true' to auto-generate client certificates</button><button class="opt" onclick="answer(this,6,3,1)">D. Add '--cert-file' and '--key-file' arguments only, without any cert-auth flag</button>
+    <div class="expl">'--client-cert-auth=true' forces etcd to require and validate client certificates for client-to-server (API server-to-etcd) connections, which is exactly what CIS benchmark check 2.2 tests. Without it, etcd may accept unauthenticated client connections even if TLS certs are configured.</div>
+  </div>
+
+  <div class="card qcard" id="q7" data-domain="Cluster Hardening">
+    <div class="meta">Question 8 of 12 · Cluster Hardening</div>
+    <div class="q">You must configure the kube-apiserver so that it rejects all unauthenticated (anonymous) requests, forcing every client to present valid credentials. Which flag directly accomplishes this?</div>
+    <button class="opt" onclick="answer(this,7,0,0)">A. --anonymous-auth=false</button><button class="opt" onclick="answer(this,7,1,0)">B. --insecure-port=0</button><button class="opt" onclick="answer(this,7,2,0)">C. --authorization-mode=Node,RBAC</button><button class="opt" onclick="answer(this,7,3,0)">D. --enable-admission-plugins=NodeRestriction</button>
+    <div class="expl">--anonymous-auth=false disables the system:anonymous user and system:unauthenticated group, so every request must pass an authentication method (client cert, token, etc.) before authorization is even evaluated.</div>
+  </div>
+
+  <div class="card qcard" id="q8" data-domain="System Hardening">
+    <div class="meta">Question 9 of 12 · System Hardening</div>
+    <div class="q">A container in a cluster must be prevented from making any syscall not explicitly allowed by a custom JSON profile stored at /var/lib/kubelet/seccomp/profiles/audit.json on each node. Which securityContext configuration achieves this?</div>
+    <button class="opt" onclick="answer(this,8,0,3)">A. seccompProfile: { type: RuntimeDefault }</button><button class="opt" onclick="answer(this,8,1,3)">B. seccompProfile: { type: Unconfined }</button><button class="opt" onclick="answer(this,8,2,3)">C. appArmorProfile: { type: Localhost, localhostProfile: profiles/audit.json }</button><button class="opt" onclick="answer(this,8,3,3)">D. seccompProfile: { type: Localhost, localhostProfile: profiles/audit.json }</button>
+    <div class="expl">type: Localhost tells the kubelet to load a custom profile, and localhostProfile gives the path relative to the kubelet's seccomp root directory (/var/lib/kubelet/seccomp/), so profiles/audit.json resolves to the file described in the scenario.</div>
+  </div>
+
+  <div class="card qcard" id="q9" data-domain="Minimize Microservice Vulnerabilities">
+    <div class="meta">Question 10 of 12 · Minimize Microservice Vulnerabilities</div>
+    <div class="q">A team must run an untrusted, multi-tenant workload requiring isolation via a user-space kernel that intercepts and emulates syscalls, while remaining compatible with the existing containerd CRI shim v2 interface. Which solution BEST fits?</div>
+    <button class="opt" onclick="answer(this,9,0,3)">A. Kata Containers with a lightweight VM per pod</button><button class="opt" onclick="answer(this,9,1,3)">B. A custom AppArmor profile applied to the pod</button><button class="opt" onclick="answer(this,9,2,3)">C. The default seccomp profile enabled on the kubelet</button><button class="opt" onclick="answer(this,9,3,3)">D. gVisor (runsc) as the OCI runtime</button>
+    <div class="expl">gVisor implements a user-space kernel (Sentry) that intercepts application syscalls before they reach the host kernel, integrates via containerd's runtime shim v2, and is designed specifically for this isolation model.</div>
+  </div>
+
+  <div class="card qcard" id="q10" data-domain="Supply Chain Security">
+    <div class="meta">Question 11 of 12 · Supply Chain Security</div>
+    <div class="q">A security engineer wants to run static analysis directly on Dockerfiles before the image is built, flagging issues such as running as root, using ADD instead of COPY, and missing a USER instruction. Which tool is purpose-built for this task?</div>
+    <button class="opt" onclick="answer(this,10,0,0)">A. hadolint</button><button class="opt" onclick="answer(this,10,1,0)">B. kubesec</button><button class="opt" onclick="answer(this,10,2,0)">C. trivy</button><button class="opt" onclick="answer(this,10,3,0)">D. kube-bench</button>
+    <div class="expl">hadolint is a dedicated Dockerfile linter that parses Dockerfile instructions and flags best-practice violations such as missing USER directives, use of ADD, and root execution, before any image is built.</div>
+  </div>
+
+  <div class="card qcard" id="q11" data-domain="Monitoring, Logging, and Runtime Security">
+    <div class="meta">Question 12 of 12 · Monitoring, Logging, and Runtime Security</div>
+    <div class="q">You need to configure a Kubernetes audit policy so that requests to read Secrets are logged in full detail (including request and response bodies) for forensic purposes, while routine 'list pods' requests are logged with metadata only to save storage. Which audit level should be assigned to the Secrets rule?</div>
+    <button class="opt" onclick="answer(this,11,0,2)">A. None</button><button class="opt" onclick="answer(this,11,1,2)">B. Metadata</button><button class="opt" onclick="answer(this,11,2,2)">C. RequestResponse</button><button class="opt" onclick="answer(this,11,3,2)">D. Request</button>
+    <div class="expl">The RequestResponse level logs the full event metadata plus the request and response bodies, which is required to capture exactly what Secret data was accessed or returned — necessary for forensic review of sensitive resource access.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/cks-certified-kubernetes-security-specialist-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<section class="faq"><h3>CKS exam — quick answers</h3><details><summary>How much does the CKS exam cost?</summary><p>The exam fee is approximately $445 and varies by region — confirm current pricing with the certification vendor before you book.</p></details><details><summary>What topics are on the exam?</summary><p>It covers 6 domains: Cluster Setup (15%), Cluster Hardening (15%), System Hardening (10%), Minimize Microservice Vulnerabilities (20%), Supply Chain Security (20%), Monitoring, Logging, and Runtime Security (20%). The full course has a dedicated chapter, lab and practice-test coverage for each.</p></details><details><summary>Is this practice test really free?</summary><p>Yes — all questions on this page are free with explanations and no sign-up. The paid Udemy course adds two full-length timed exams, video lessons and hands-on labs.</p></details><details><summary>Will this prepare me for the real exam?</summary><p>The questions mirror the real exam's style and are mapped to the official domains. This is exam-focused preparation — combine the free test with the full course's timed simulations to gauge your readiness.</p></details></section>
+<div class="domains"><span class="meta">More free practice by exam domain:</span><br><a href="cks-cluster-setup.html">Cluster Setup →</a><a href="cks-cluster-hardening.html">Cluster Hardening →</a><a href="cks-minimize-microservice-vulnerabilities.html">Minimize Microservice Vulnerabilities →</a><a href="cks-supply-chain-security.html">Supply Chain Security →</a><a href="cks-monitoring-logging-and-runtime-security.html">Monitoring, Logging, and Runtime Security →</a></div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

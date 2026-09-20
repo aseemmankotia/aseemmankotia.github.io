@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Implement authentication and access management Practice Questions — Microsoft Certified: Identity and Access Administrator Associate</title>
+<meta name="description" content="6 free Implement authentication and access management practice questions with explanations for the Microsoft Certified: Identity and Access Administrator Associate exam.">
+<link rel="canonical" href="https://technuggets.academy/sc-300-implement-authentication-and-access-management.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Implement authentication and access management Practice Questions — Microsoft Certified: Identity and Access Administrator Associate">
+<meta property="og:description" content="6 free Implement authentication and access management practice questions with explanations for the Microsoft Certified: Identity and Access Administrator Associate exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/sc-300-implement-authentication-and-access-management.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0078D4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Implement authentication and access management</h1>
+<p class="sub">Free Microsoft Certified: Identity and Access Administrator Associate practice — 6 questions on <strong>Implement authentication and access management</strong>, with explanations. No sign-up.
+<a href="sc-300.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Implement authentication and access management">
+    <div class="meta">Question 1 of 6 · Implement authentication and access management</div>
+    <div class="q">A security team wants to eliminate standing access to the Global Administrator role. They require that: (1) no one holds the role permanently, (2) activation requires approval from a designated security officer, (3) Azure AD (Entra) MFA must be performed at the moment of activation, and (4) activations automatically expire after 8 hours. Which PIM configuration satisfies ALL of these requirements?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. Assign the role as Active with a permanent expiration date and require justification only</button><button class="opt" onclick="answer(this,0,1,3)">B. Assign the role as Eligible and configure an Access Review to run every 8 hours</button><button class="opt" onclick="answer(this,0,2,3)">C. Assign the role as Active, disable approval, and rely on Conditional Access sign-in frequency of 8 hours</button><button class="opt" onclick="answer(this,0,3,3)">D. Assign the role as Eligible, enable 'Require approval to activate', enable 'Require Microsoft Entra multifactor authentication', and set maximum activation duration to 8 hours</button>
+    <div class="expl">Eligible assignments require explicit activation (removing standing access). PIM role settings let you require approval by a specific approver, require Entra MFA at activation time, and cap the activation duration (e.g., 8 hours) — all four requirements map directly to PIM role activation settings, not Access Reviews or Conditional Access.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Implement authentication and access management">
+    <div class="meta">Question 2 of 6 · Implement authentication and access management</div>
+    <div class="q">An organization creates a custom Conditional Access authentication strength that must exclude SMS, voice call, and Microsoft Authenticator push notifications, allowing only credentials resistant to phishing. Which built-in authentication strength already meets this requirement without customization?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. Multifactor authentication strength</button><button class="opt" onclick="answer(this,1,1,2)">B. Passwordless MFA strength</button><button class="opt" onclick="answer(this,1,2,2)">C. Phishing-resistant MFA strength</button><button class="opt" onclick="answer(this,1,3,2)">D. MFA strength</button>
+    <div class="expl">The built-in 'Phishing-resistant MFA' authentication strength only includes FIDO2 security keys, Windows Hello for Business, and certificate-based authentication (smart card) — none of which are vulnerable to phishing via SMS/voice/push interception, satisfying the requirement out of the box.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Implement authentication and access management">
+    <div class="meta">Question 3 of 6 · Implement authentication and access management</div>
+    <div class="q">Microsoft Entra ID Protection flags a user with 'High' user risk due to a leaked credentials detection. A Conditional Access user risk policy is configured to require a secure password change for high-risk users, but the affected user has never registered for SSPR and cannot complete the remediation. What should the administrator do FIRST?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. Manually dismiss the risk in Identity Protection without further action to unblock the user immediately</button><button class="opt" onclick="answer(this,2,1,1)">B. Verify the user's identity out-of-band, then have them register authentication methods, and only dismiss the risk after confirming a secure sign-in</button><button class="opt" onclick="answer(this,2,2,1)">C. Delete the user account and recreate it with a new UPN to clear the risk state</button><button class="opt" onclick="answer(this,2,3,1)">D. Disable the user risk Conditional Access policy tenant-wide until SSPR rollout is complete</button>
+    <div class="expl">Best practice is to verify identity through an out-of-band channel (e.g., phone call to a known number, manager confirmation) before taking any remediation action, then have the user register authentication methods so they can complete the required secure password change, and only then dismiss the risk after confirming legitimate access — this avoids both a security bypass and a permanent lockout.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Implement authentication and access management">
+    <div class="meta">Question 4 of 6 · Implement authentication and access management</div>
+    <div class="q">A company has hybrid Azure AD joined Windows devices and wants to deploy Windows Hello for Business without standing up or maintaining an on-premises PKI, and without requiring Windows Server 2016+ domain controllers for key trust. Which deployment model should they choose?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. Hybrid Cloud Trust</button><button class="opt" onclick="answer(this,3,1,0)">B. Hybrid Certificate Trust</button><button class="opt" onclick="answer(this,3,2,0)">C. Hybrid Key Trust</button><button class="opt" onclick="answer(this,3,3,0)">D. On-premises Key Trust</button>
+    <div class="expl">Hybrid Cloud Trust is the newest, simplest deployment model — it requires no on-premises PKI and no specific domain controller version, relying instead on Azure AD Kerberos for authentication against on-premises resources, making it ideal when minimizing infrastructure dependencies.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Implement authentication and access management">
+    <div class="meta">Question 5 of 6 · Implement authentication and access management</div>
+    <div class="q">A company onboards external contractors who use only personal Android and iOS phones (no Windows devices, no hardware security keys) and wants them to authenticate without ever entering a password. Which authentication method should the administrator enable and enforce via the Authentication Methods policy?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. Windows Hello for Business</button><button class="opt" onclick="answer(this,4,1,2)">B. Temporary Access Pass</button><button class="opt" onclick="answer(this,4,2,2)">C. Microsoft Authenticator passwordless phone sign-in</button><button class="opt" onclick="answer(this,4,3,2)">D. FIDO2 security key</button>
+    <div class="expl">Microsoft Authenticator passwordless phone sign-in works on both iOS and Android without requiring any password entry or specialized hardware, making it the correct persistent passwordless method for mobile-only contractors.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Implement authentication and access management">
+    <div class="meta">Question 6 of 6 · Implement authentication and access management</div>
+    <div class="q">An administrator is asked to explain the core benefit of Continuous Access Evaluation (CAE) compared to traditional Conditional Access session enforcement based purely on token lifetime. Which statement correctly describes this benefit?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. CAE issues access tokens that never expire, removing the need for session controls</button><button class="opt" onclick="answer(this,5,1,1)">B. CAE re-evaluates critical events (such as user account disablement, password reset, or location change) in near real time instead of waiting for the access token to expire</button><button class="opt" onclick="answer(this,5,2,1)">C. CAE replaces the need for multifactor authentication entirely</button><button class="opt" onclick="answer(this,5,3,1)">D. CAE only applies to conditional access policies targeting Exchange Online mailboxes</button>
+    <div class="expl">CAE enables supported services to receive near real-time signals (critical events like account disable/password reset/high user risk, and some Conditional Access policy changes) and revoke or re-evaluate access immediately, rather than relying solely on the token's original lifetime — closing the gap between a revocation event and enforcement.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/sc-300-microsoft-identity-and-access-administrator-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

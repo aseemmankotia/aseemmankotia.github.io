@@ -1,0 +1,123 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Implementing and Operating Cisco Security Core Technologies Practice Test — 12 Real Exam-Style Questions</title>
+<meta name="description" content="Free Implementing and Operating Cisco Security Core Technologies practice questions with detailed explanations. Test yourself before the real exam.">
+<link rel="canonical" href="https://technuggets.academy/350-701-scor.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Implementing and Operating Cisco Security Core Technologies Practice Test — 12 Real Exam-Style Questions">
+<meta property="og:description" content="Free Implementing and Operating Cisco Security Core Technologies practice questions with detailed explanations. Test yourself before the real exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/350-701-scor.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div><div class="hero">
+  <span class="chip">350-701 SCOR</span>
+  <h1>Free Implementing and Operating Cisco Security Core Technologies Practice Test</h1>
+  <p class="sub">12 exam-style questions with full explanations — no sign-up. Score yourself, then close your gaps with the full course.</p>
+  <div class="facts"><span class="fact">Exam fee <b>~$400</b></span><span class="fact"><b>6</b> exam domains</span><span class="fact">Level <b>Advanced</b></span><span class="fact"><b>2</b> timed practice tests in the course</span></div>
+  <div class="cta-row"><a class="btn enroll" href="https://www.udemy.com/course/cisco-350-701-scor-complete-security-core-prep/" rel="sponsored" target="_blank">Start my full course on Udemy →</a><a class="btn ghost" href="#practice">Try the free test →</a></div>
+</div><div class="trust"><span>✅ <b>Free</b> practice — no sign-up</span><span>📝 Real exam-style questions</span><span>💡 Detailed explanations</span><span>💸 30-day money-back via Udemy</span></div>
+<div id="practice"></div>
+
+  <div class="card qcard" id="q0" data-domain="Domain 1: Security Concepts">
+    <div class="meta">Question 1 of 12 · Domain 1: Security Concepts</div>
+    <div class="q">A security engineer must select a hashing algorithm to verify file integrity for a compliance audit, ensuring the algorithm has no known practical collision vulnerabilities. Which algorithm should be used?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. SHA-256</button><button class="opt" onclick="answer(this,0,1,0)">B. MD5</button><button class="opt" onclick="answer(this,0,2,0)">C. SHA-1</button><button class="opt" onclick="answer(this,0,3,0)">D. DES</button>
+    <div class="expl">SHA-256 is part of the SHA-2 family and has no known practical collision attacks, making it the current best practice for integrity verification.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Domain 2: Network Security">
+    <div class="meta">Question 2 of 12 · Domain 2: Network Security</div>
+    <div class="q">A company must insert a Cisco Secure Firewall NGFW between two existing core switches that are already on the same IP subnet. The firewall must inspect and filter traffic without requiring any change to existing IP addressing or routing. Which deployment mode should be configured?</div>
+    <button class="opt" onclick="answer(this,1,0,1)">A. Routed mode</button><button class="opt" onclick="answer(this,1,1,1)">B. Transparent mode</button><button class="opt" onclick="answer(this,1,2,1)">C. Inline tap mode</button><button class="opt" onclick="answer(this,1,3,1)">D. Passive monitor-only mode</button>
+    <div class="expl">Transparent mode makes the firewall act as a Layer 2 bridge between the two switches, allowing it to inspect and enforce policy on traffic without any IP renumbering or routing changes, since it does not participate as a routed hop.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Domain 3: Securing the Cloud">
+    <div class="meta">Question 3 of 12 · Domain 3: Securing the Cloud</div>
+    <div class="q">A company migrates its application servers to virtual machines running on a public IaaS platform such as AWS EC2 or Azure VMs. Under the shared responsibility model, which security task is the CUSTOMER responsible for?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. Patching the physical hypervisor that hosts the virtual machines</button><button class="opt" onclick="answer(this,2,1,1)">B. Applying OS-level security patches inside the guest virtual machine</button><button class="opt" onclick="answer(this,2,2,1)">C. Securing the physical access controls of the cloud provider's data center</button><button class="opt" onclick="answer(this,2,3,1)">D. Maintaining the underlying network switching and cabling hardware</button>
+    <div class="expl">In IaaS, the provider secures the physical infrastructure, hypervisor, and host, but the customer owns everything running inside the VM — OS, middleware, patching, and application security.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Domain 4: Content Security">
+    <div class="meta">Question 4 of 12 · Domain 4: Content Security</div>
+    <div class="q">A company wants to transparently redirect all HTTP/HTTPS traffic to a cluster of Cisco Secure Web Appliances without configuring proxy settings on each client device. The network already uses Cisco routers and switches that support Cisco's redirection protocol. Which method BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. Distribute a PAC file to all clients via Group Policy</button><button class="opt" onclick="answer(this,3,1,3)">B. Manually configure each browser's proxy settings to point to the WSA</button><button class="opt" onclick="answer(this,3,2,3)">C. Configure a static default route on every endpoint pointing to the WSA</button><button class="opt" onclick="answer(this,3,3,3)">D. Configure WCCP on the upstream router/switch to redirect traffic to the WSA</button>
+    <div class="expl">Web Cache Communication Protocol (WCCP) is a Cisco protocol that enables routers and switches to transparently redirect designated traffic (e.g., ports 80/443) to one or more WSAs, supporting load balancing and failover, with zero client-side configuration required.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Domain 5: Endpoint Protection and Detection">
+    <div class="meta">Question 5 of 12 · Domain 5: Endpoint Protection and Detection</div>
+    <div class="q">A file was downloaded to an endpoint and initially convicted as clean by Cisco Secure Endpoint (AMP for Endpoints). Three days later, Talos updates the file's disposition to malicious based on new threat intelligence. Which Secure Endpoint capability alerts the SOC and shows the file's full trajectory across all endpoints where it was seen, without requiring a new endpoint scan?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. Application Control allowed application list</button><button class="opt" onclick="answer(this,4,1,2)">B. Exploit Prevention memory protection</button><button class="opt" onclick="answer(this,4,2,2)">C. Retrospective Security using continuous cloud file analysis</button><button class="opt" onclick="answer(this,4,3,2)">D. Network - IP Block List in Outbreak Control</button>
+    <div class="expl">Secure Endpoint continuously re-analyzes file dispositions in the cloud. When Talos changes a verdict from clean to malicious, Retrospective Security automatically raises an alert and uses Device Trajectory/File Trajectory to show every endpoint that executed the file, even though the original scan found it clean.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Domain 6: Secure Network Access, Visibility, and Enforcement">
+    <div class="meta">Question 6 of 12 · Domain 6: Secure Network Access, Visibility, and Enforcement</div>
+    <div class="q">A network administrator is deploying 802.1X on access switches. Several older network printers do not support an 802.1X supplicant. Which feature should be configured on the switch ports to allow these printers to authenticate onto the network without requiring an 802.1X supplicant?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. Web Authentication (WebAuth) redirect</button><button class="opt" onclick="answer(this,5,1,3)">B. EAP-TLS using a pre-shared device certificate</button><button class="opt" onclick="answer(this,5,2,3)">C. Open authentication with no security applied</button><button class="opt" onclick="answer(this,5,3,3)">D. MAC Authentication Bypass (MAB)</button>
+    <div class="expl">MAB allows the switch to authenticate a device based on its MAC address when no 802.1X supplicant is present. ISE checks the MAC address against an endpoint identity group or profiling policy and applies the appropriate authorization result, making it the standard fallback for non-supplicant devices like printers, IP phones, and IoT sensors.</div>
+  </div>
+
+  <div class="card qcard" id="q6" data-domain="Domain 1: Security Concepts">
+    <div class="meta">Question 7 of 12 · Domain 1: Security Concepts</div>
+    <div class="q">A site-to-site IPsec VPN must encrypt high-volume bulk traffic between two data centers while minimizing CPU overhead on the VPN gateways. Which type of cryptographic algorithm should be used to encrypt the actual data payload inside the tunnel?</div>
+    <button class="opt" onclick="answer(this,6,0,0)">A. Symmetric encryption using AES</button><button class="opt" onclick="answer(this,6,1,0)">B. Asymmetric encryption using RSA</button><button class="opt" onclick="answer(this,6,2,0)">C. Hashing using SHA-256</button><button class="opt" onclick="answer(this,6,3,0)">D. Digital signatures using ECDSA</button>
+    <div class="expl">Symmetric algorithms like AES are computationally efficient for encrypting large volumes of bulk data, which is why IPsec uses AES for the data plane after key exchange.</div>
+  </div>
+
+  <div class="card qcard" id="q7" data-domain="Domain 2: Network Security">
+    <div class="meta">Question 8 of 12 · Domain 2: Network Security</div>
+    <div class="q">On a Cisco ASA/FTD IKEv2 site-to-site VPN configuration, what is the default IKEv2 security association (SA) lifetime, in seconds, before the SA must be renegotiated?</div>
+    <button class="opt" onclick="answer(this,7,0,1)">A. 3600</button><button class="opt" onclick="answer(this,7,1,1)">B. 86400</button><button class="opt" onclick="answer(this,7,2,1)">C. 28800</button><button class="opt" onclick="answer(this,7,3,1)">D. 172800</button>
+    <div class="expl">The default IKEv2 SA lifetime on Cisco ASA/FTD is 86400 seconds (24 hours), matching the traditional IKEv1 Phase 1 default, and this exact value is commonly tested on the exam.</div>
+  </div>
+
+  <div class="card qcard" id="q8" data-domain="Domain 3: Securing the Cloud">
+    <div class="meta">Question 9 of 12 · Domain 3: Securing the Cloud</div>
+    <div class="q">Which Cisco solution provides Cloud Access Security Broker (CASB) functionality to discover shadow IT, enforce data loss prevention, and detect anomalous user behavior across SaaS applications like Microsoft 365 and Google Workspace?</div>
+    <button class="opt" onclick="answer(this,8,0,3)">A. Cisco Umbrella</button><button class="opt" onclick="answer(this,8,1,3)">B. Cisco Secure Workload</button><button class="opt" onclick="answer(this,8,2,3)">C. Cisco Secure Endpoint</button><button class="opt" onclick="answer(this,8,3,3)">D. Cisco Cloudlock</button>
+    <div class="expl">Cisco Cloudlock is Cisco's API-based CASB, providing SaaS visibility, DLP, shadow IT discovery, and user/entity behavior analytics for cloud applications.</div>
+  </div>
+
+  <div class="card qcard" id="q9" data-domain="Domain 4: Content Security">
+    <div class="meta">Question 10 of 12 · Domain 4: Content Security</div>
+    <div class="q">An organization needs to block access to malicious domains for laptop users at coffee shops and home networks, where users are off the corporate network and not connected via VPN. The solution must work at the DNS layer using a lightweight client agent. Which Cisco solution should be deployed?</div>
+    <button class="opt" onclick="answer(this,9,0,3)">A. Cisco Secure Email (ESA)</button><button class="opt" onclick="answer(this,9,1,3)">B. Cisco Secure Web Appliance (WSA)</button><button class="opt" onclick="answer(this,9,2,3)">C. Cisco Secure Endpoint (AMP for Endpoints)</button><button class="opt" onclick="answer(this,9,3,3)">D. Cisco Umbrella</button>
+    <div class="expl">Cisco Umbrella provides DNS-layer security and secure web gateway functionality as a cloud service, and includes a lightweight roaming client that enforces protection for off-network users without requiring VPN backhaul.</div>
+  </div>
+
+  <div class="card qcard" id="q10" data-domain="Domain 5: Endpoint Protection and Detection">
+    <div class="meta">Question 11 of 12 · Domain 5: Endpoint Protection and Detection</div>
+    <div class="q">A security team needs an endpoint solution that continuously monitors process, file, and network telemetry, correlates activity across the environment, supports threat hunting, and can retrospectively alert when a previously allowed file is later found malicious. Which category of solution provides these capabilities, as implemented by Cisco Secure Endpoint?</div>
+    <button class="opt" onclick="answer(this,10,0,0)">A. Endpoint Detection and Response (EDR)</button><button class="opt" onclick="answer(this,10,1,0)">B. Endpoint Protection Platform (EPP)</button><button class="opt" onclick="answer(this,10,2,0)">C. Next-Generation Firewall (NGFW)</button><button class="opt" onclick="answer(this,10,3,0)">D. Intrusion Prevention System (IPS)</button>
+    <div class="expl">EDR focuses on continuous monitoring, telemetry collection, correlation, threat hunting, and retrospective detection/response after an initial verdict — all core capabilities of Cisco Secure Endpoint's EDR functionality.</div>
+  </div>
+
+  <div class="card qcard" id="q11" data-domain="Domain 6: Secure Network Access, Visibility, and Enforcement">
+    <div class="meta">Question 12 of 12 · Domain 6: Secure Network Access, Visibility, and Enforcement</div>
+    <div class="q">A security engineer needs to implement command-level authorization on Cisco network devices so that different administrators can only execute specific sets of CLI commands based on their role. Which AAA protocol should be used with Cisco ISE to support this requirement?</div>
+    <button class="opt" onclick="answer(this,11,0,2)">A. RADIUS</button><button class="opt" onclick="answer(this,11,1,2)">B. Diameter</button><button class="opt" onclick="answer(this,11,2,2)">C. TACACS+</button><button class="opt" onclick="answer(this,11,3,2)">D. LDAP</button>
+    <div class="expl">TACACS+ separates authentication, authorization, and accounting and encrypts the entire packet body, allowing granular per-command authorization (command sets) on Cisco IOS devices. This makes it the standard protocol for device administration AAA where CLI privilege control is required.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/cisco-350-701-scor-complete-security-core-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<section class="faq"><h3>350-701 SCOR exam — quick answers</h3><details><summary>How much does the 350-701 SCOR exam cost?</summary><p>The exam fee is approximately $400 and varies by region — confirm current pricing with the certification vendor before you book.</p></details><details><summary>What topics are on the exam?</summary><p>It covers 6 domains: Security Concepts (25%), Network Security (20%), Securing the Cloud (15%), Content Security (10%), Endpoint Protection and Detection (10%), Secure Network Access, Visibility, and Enforcement (20%). The full course has a dedicated chapter, lab and practice-test coverage for each.</p></details><details><summary>Is this practice test really free?</summary><p>Yes — all questions on this page are free with explanations and no sign-up. The paid Udemy course adds two full-length timed exams, video lessons and hands-on labs.</p></details><details><summary>Will this prepare me for the real exam?</summary><p>The questions mirror the real exam's style and are mapped to the official domains. This is exam-focused preparation — combine the free test with the full course's timed simulations to gauge your readiness.</p></details></section>
+<div class="domains"><span class="meta">More free practice by exam domain:</span><br><a href="350-701-scor-security-concepts.html">Security Concepts →</a><a href="350-701-scor-network-security.html">Network Security →</a><a href="350-701-scor-securing-the-cloud.html">Securing the Cloud →</a><a href="350-701-scor-secure-network-access-visibility-and-enforcement.html">Secure Network Access, Visibility, and Enforcement →</a></div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

@@ -1,0 +1,76 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Security Architecture Practice Questions — CompTIA SecurityX</title>
+<meta name="description" content="6 free Security Architecture practice questions with explanations for the CompTIA SecurityX exam.">
+<link rel="canonical" href="https://technuggets.academy/cas-005-security-architecture.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Security Architecture Practice Questions — CompTIA SecurityX">
+<meta property="og:description" content="6 free Security Architecture practice questions with explanations for the CompTIA SecurityX exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/cas-005-security-architecture.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#C8202F}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Security Architecture</h1>
+<p class="sub">Free CompTIA SecurityX practice — 6 questions on <strong>Security Architecture</strong>, with explanations. No sign-up.
+<a href="cas-005.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Security Architecture">
+    <div class="meta">Question 1 of 6 · Security Architecture</div>
+    <div class="q">A multinational company with a remote workforce spread across 40 countries wants to consolidate SWG, CASB, ZTNA, and FWaaS functions into a single cloud-delivered service, eliminating backhaul of remote-user traffic to on-premises data centers for internet-bound traffic. Which architecture BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,0,0,2)">A. Build a full-mesh site-to-site VPN between all branch offices and route all traffic through the central data center</button><button class="opt" onclick="answer(this,0,1,2)">B. Install a dedicated DLP appliance at each branch office with centralized log correlation</button><button class="opt" onclick="answer(this,0,2,2)">C. Deploy Secure Access Service Edge (SASE) with cloud-delivered PoPs near users, integrating networking and security functions</button><button class="opt" onclick="answer(this,0,3,2)">D. Implement a hub-and-spoke topology where all traffic, including internet-bound, is filtered at a single central hub</button>
+    <div class="expl">SASE converges SD-WAN networking with SWG, CASB, ZTNA, and FWaaS delivered from distributed cloud PoPs close to users, eliminating backhaul while enforcing consistent security policy globally.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Security Architecture">
+    <div class="meta">Question 2 of 6 · Security Architecture</div>
+    <div class="q">A financial services firm operating under GDPR replicates customer data across multiple cloud regions and multiple backup tiers. When a customer exercises the 'right to erasure,' the firm must render that customer's data irrecoverable everywhere without physically destroying shared storage media used by other tenants. Which technique BEST satisfies this requirement?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. Encrypt each customer's/tenant's data with a unique key and destroy that key upon erasure request (crypto-shredding)</button><button class="opt" onclick="answer(this,1,1,0)">B. Overwrite the customer's records with zeros only in the primary region</button><button class="opt" onclick="answer(this,1,2,0)">C. Move the customer's records to a cold archive storage tier</button><button class="opt" onclick="answer(this,1,3,0)">D. Increase the replication factor and rely on the cloud provider's shared responsibility model for deletion</button>
+    <div class="expl">Per-tenant encryption keys allow cryptographic erasure: destroying the key renders all copies of that customer's data (across regions and backups) unrecoverable without needing to locate and wipe every physical copy.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Security Architecture">
+    <div class="meta">Question 3 of 6 · Security Architecture</div>
+    <div class="q">Per NIST SP 800-207, an enterprise wants its zero trust architecture to continuously reevaluate access based on real-time device posture, location, and behavioral risk score, rather than trusting a session established at initial login. Which configuration achieves this?</div>
+    <button class="opt" onclick="answer(this,2,0,2)">A. Issue a session token valid for 24 hours after a single successful authentication event</button><button class="opt" onclick="answer(this,2,1,2)">B. Require MFA only for accounts with administrative privileges</button><button class="opt" onclick="answer(this,2,2,2)">C. Configure the Policy Enforcement Point (PEP) to query the Policy Decision Point (PDP) on every resource request, incorporating real-time signals such as device posture and UEBA risk score</button><button class="opt" onclick="answer(this,2,3,2)">D. Apply perimeter firewall allow/deny rules based solely on source IP address</button>
+    <div class="expl">Zero trust requires continuous, per-request authorization: the PEP must consult the PDP on every access attempt, factoring in dynamic risk signals, rather than relying on a one-time authentication decision.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Security Architecture">
+    <div class="meta">Question 4 of 6 · Security Architecture</div>
+    <div class="q">A company's ML-based fraud detection model retrains continuously on a stream of incoming customer transaction data. The security team is concerned an adversary could inject crafted malicious samples into the training pipeline to cause the model to systematically misclassify future fraudulent transactions as legitimate. Which architectural control BEST mitigates this risk?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. Implement data provenance/lineage tracking and statistical anomaly detection on incoming training data, with a human review gate for flagged outliers before retraining</button><button class="opt" onclick="answer(this,3,1,0)">B. Encrypt the training dataset at rest using AES-256</button><button class="opt" onclick="answer(this,3,2,0)">C. Increase the model's architectural complexity by adding additional layers</button><button class="opt" onclick="answer(this,3,3,0)">D. Apply DLP inspection only to the model's outbound inference API traffic</button>
+    <div class="expl">Training data (poisoning) attacks require controls at data ingestion: provenance tracking, statistical/anomaly validation, and human review before untrusted samples are allowed into the retraining set, preventing malicious data from corrupting the model.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Security Architecture">
+    <div class="meta">Question 5 of 6 · Security Architecture</div>
+    <div class="q">A healthcare organization requires an RPO of 15 minutes and RTO of 1 hour for its EHR systems, and must ensure backups survive an attacker who has already obtained domain administrator credentials and attempts to encrypt or delete backup data. Which architecture BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. Continuous data protection replication combined with immutable, logically isolated snapshots stored under a separate identity plane with no trust relationship to the production domain</button><button class="opt" onclick="answer(this,4,1,0)">B. Nightly backups written to a network share accessible using domain credentials</button><button class="opt" onclick="answer(this,4,2,0)">C. Weekly full backups stored within the same Active Directory forest as production systems</button><button class="opt" onclick="answer(this,4,3,0)">D. Synchronous replication to a secondary site that shares the same administrative credentials as the primary site</button>
+    <div class="expl">CDP satisfies the 15-minute RPO, and immutable object storage with a separate identity plane (no shared domain trust) ensures a domain-admin-level attacker cannot alter or delete backups, satisfying both the recovery objectives and ransomware resilience requirement.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Security Architecture">
+    <div class="meta">Question 6 of 6 · Security Architecture</div>
+    <div class="q">Which statement BEST differentiates microsegmentation from traditional network macrosegmentation (VLAN/subnet-based) in an enterprise zero trust architecture?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. Microsegmentation applies coarse controls only at the network perimeter, while macrosegmentation governs individual workloads</button><button class="opt" onclick="answer(this,5,1,1)">B. Microsegmentation enforces granular, identity- and workload-aware policies (often per host or per process) independent of underlying physical network topology, while macrosegmentation relies on VLANs/subnets and broader trust zones</button><button class="opt" onclick="answer(this,5,2,1)">C. Microsegmentation and macrosegmentation are functionally identical, differing only in vendor marketing terminology</button><button class="opt" onclick="answer(this,5,3,1)">D. Microsegmentation can only be implemented in cloud environments and has no on-premises equivalent</button>
+    <div class="expl">Microsegmentation enforces fine-grained, workload/identity-aware policy (frequently via host-based agents or software-defined controls) that isolates individual workloads regardless of subnet, whereas macrosegmentation creates broader trust zones bounded by VLANs or subnets.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">undefined</span> <span class="price">$34.99</span> with code <span class="code">FREETEST33</span> — valid through Oct 6.</p>
+  <a href="https://www.udemy.com/course/comptia-securityx-cas-005-exam-focused-prep/?couponCode=FREETEST33" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

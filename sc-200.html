@@ -1,0 +1,124 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Microsoft Certified: Security Operations Analyst Associate Practice Test — 12 Real Exam-Style Questions</title>
+<meta name="description" content="Free Microsoft Certified: Security Operations Analyst Associate practice questions with detailed explanations. Test yourself before the real exam.">
+<link rel="canonical" href="https://technuggets.academy/sc-200.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Microsoft Certified: Security Operations Analyst Associate Practice Test — 12 Real Exam-Style Questions">
+<meta property="og:description" content="Free Microsoft Certified: Security Operations Analyst Associate practice questions with detailed explanations. Test yourself before the real exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/sc-200.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0078D4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div><div class="hero">
+  <span class="chip">SC-200</span>
+  <h1>Free Microsoft Certified: Security Operations Analyst Associate Practice Test</h1>
+  <p class="sub">12 exam-style questions with full explanations — no sign-up. Score yourself, then close your gaps with the full course.</p>
+  <div class="facts"><span class="fact">Exam fee <b>~$165</b></span><span class="fact"><b>4</b> exam domains</span><span class="fact">Level <b>Intermediate</b></span><span class="fact"><b>2</b> timed practice tests in the course</span></div>
+  <div class="cta-row"><a class="btn enroll" href="https://www.udemy.com/course/sc-200-microsoft-security-operations-analyst-prep/?couponCode=FREETEST33" rel="sponsored" target="_blank">Get my $34.99 deal →</a><a class="btn ghost" href="#practice">Try the free test →</a><span class="urgency">⏳ Deal ends Oct 6</span></div>
+</div><div class="trust"><span>✅ <b>Free</b> practice — no sign-up</span><span>📝 Real exam-style questions</span><span>💡 Detailed explanations</span><span>💸 30-day money-back via Udemy</span></div>
+<div id="practice"></div>
+
+  <div class="card qcard" id="q0" data-domain="Manage a security operations environment">
+    <div class="meta">Question 1 of 12 · Manage a security operations environment</div>
+    <div class="q">A security team lead wants to grant a new SOC Tier 1 analyst the ability to view and manage incidents and alerts across both Microsoft Defender XDR and Microsoft Sentinel, without granting rights to modify automation rules, playbooks, or workspace settings. Which unified RBAC configuration should the lead use in the Microsoft Defender portal?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. Add the analyst to the Microsoft Sentinel Contributor Azure RBAC role only</button><button class="opt" onclick="answer(this,0,1,1)">B. Create a custom role in Microsoft Defender XDR unified RBAC with the 'Security operations' permission group set to Manage, leaving 'Authorization and settings' unassigned</button><button class="opt" onclick="answer(this,0,2,1)">C. Assign the built-in Global Administrator role in Microsoft Entra ID</button><button class="opt" onclick="answer(this,0,3,1)">D. Add the analyst to the Security Reader Microsoft Entra ID role only</button>
+    <div class="expl">Unified RBAC in the Defender portal separates permission groups such as 'Security operations' (incident/alert management) from 'Authorization and settings' (connectors, automation, workspace config). Granting Manage on Security operations only gives exactly the required scope across both Defender XDR and connected Sentinel workspaces.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Configure protections and detections">
+    <div class="meta">Question 2 of 12 · Configure protections and detections</div>
+    <div class="q">A SOC needs an alert to fire within one minute of a suspicious impossible-travel sign-in so analysts can respond before the session token is used elsewhere. Which Microsoft Sentinel analytics rule type BEST meets this requirement?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. A scheduled analytics rule set to run every 5 minutes</button><button class="opt" onclick="answer(this,1,1,3)">B. A Fusion rule</button><button class="opt" onclick="answer(this,1,2,3)">C. A Microsoft Security rule imported from Microsoft Defender for Cloud</button><button class="opt" onclick="answer(this,1,3,3)">D. A near-real-time (NRT) analytics rule</button>
+    <div class="expl">NRT rules run once every minute against the most recent data, delivering the fastest possible detection latency of any Sentinel analytics rule type - the only option that can realistically meet a one-minute requirement.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Manage incident response">
+    <div class="meta">Question 3 of 12 · Manage incident response</div>
+    <div class="q">A Microsoft Defender XDR incident shows a device actively encrypting files consistent with ransomware. Which response action should the analyst take FIRST to prevent further damage?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. Isolate the device from the network</button><button class="opt" onclick="answer(this,2,1,0)">B. Run a full antivirus scan on the device</button><button class="opt" onclick="answer(this,2,2,0)">C. Collect an investigation package for forensic analysis</button><button class="opt" onclick="answer(this,2,3,0)">D. Restrict app execution on the device</button>
+    <div class="expl">Device isolation immediately cuts the compromised host off from the network, stopping lateral movement and further encryption while investigation continues — this is the standard first containment step for active ransomware.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Manage security threats">
+    <div class="meta">Question 4 of 12 · Manage security threats</div>
+    <div class="q">During an active incident investigation in Microsoft Sentinel, an analyst runs a hunting query and finds three suspicious process-creation events buried among thousands of results. The analyst wants to save these three specific events with contextual notes, tag them to entities, and later attach them directly to the incident for the investigation team. Which Sentinel feature should the analyst use?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. Livestream</button><button class="opt" onclick="answer(this,3,1,3)">B. Workbooks</button><button class="opt" onclick="answer(this,3,2,3)">C. A saved hunting query</button><button class="opt" onclick="answer(this,3,3,3)">D. Bookmarks</button>
+    <div class="expl">Bookmarks let an analyst mark specific query result rows, add notes, link them to entities, and attach them to an incident for later investigation — exactly the described requirement.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Manage a security operations environment">
+    <div class="meta">Question 5 of 12 · Manage a security operations environment</div>
+    <div class="q">A company onboards 500 new Windows servers into Microsoft Defender for Endpoint. The SOC wants any device tagged 'Finance' to automatically be placed into a scope so only the Finance security team can see and remediate alerts on those machines. What should the SOC configure?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. A conditional access policy targeting the Finance security group</button><button class="opt" onclick="answer(this,4,1,2)">B. An Azure Policy assignment scoped to the Finance resource group</button><button class="opt" onclick="answer(this,4,2,2)">C. A device group in Microsoft Defender XDR settings with an automatic membership rule based on the device tag</button><button class="opt" onclick="answer(this,4,3,2)">D. A Microsoft Sentinel workspace-level Azure RBAC role assignment</button>
+    <div class="expl">Device groups in Microsoft Defender for Endpoint/XDR support automatic membership rules (based on tag, name, domain) and can be tied to RBAC role assignments so only specific teams see alerts/devices in that group.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Configure protections and detections">
+    <div class="meta">Question 6 of 12 · Configure protections and detections</div>
+    <div class="q">An organization wants Microsoft Sentinel to automatically correlate multiple low-fidelity signals from different products (e.g., a suspicious sign-in from Microsoft Entra ID and unusual PowerShell activity from Defender for Endpoint) into a single high-confidence incident representing a possible multistage attack. Which analytics rule type should be enabled?</div>
+    <button class="opt" onclick="answer(this,5,0,2)">A. Scheduled rule</button><button class="opt" onclick="answer(this,5,1,2)">B. Anomaly rule</button><button class="opt" onclick="answer(this,5,2,2)">C. Fusion rule</button><button class="opt" onclick="answer(this,5,3,2)">D. NRT rule</button>
+    <div class="expl">Fusion uses Microsoft's ML-based correlation engine to combine multiple low-fidelity signals from different data sources into a single high-confidence incident, specifically targeting multistage attack detection.</div>
+  </div>
+
+  <div class="card qcard" id="q6" data-domain="Manage incident response">
+    <div class="meta">Question 7 of 12 · Manage incident response</div>
+    <div class="q">An analyst is assigned a Microsoft Defender XDR incident containing 40 correlated alerts spanning email, endpoint, and identity. Rather than reading every alert manually, they want a fast natural-language overview of what happened, the affected entities, and the attack timeline. Which Security Copilot capability should they use?</div>
+    <button class="opt" onclick="answer(this,6,0,1)">A. Script analysis</button><button class="opt" onclick="answer(this,6,1,1)">B. Incident summarization</button><button class="opt" onclick="answer(this,6,2,1)">C. KQL query translation</button><button class="opt" onclick="answer(this,6,3,1)">D. Guided response playbook creation</button>
+    <div class="expl">Security Copilot's incident summarization capability ingests all correlated alerts and entities in an incident and produces a natural-language narrative of the attack, timeline, and impacted assets, dramatically speeding up triage.</div>
+  </div>
+
+  <div class="card qcard" id="q7" data-domain="Manage security threats">
+    <div class="meta">Question 8 of 12 · Manage security threats</div>
+    <div class="q">An analyst is writing a KQL hunting query to detect anomalous spikes in failed sign-in counts over a 30-day period. After building a time-bucketed series with make-series, which function should be applied to automatically flag statistical anomalies in that series?</div>
+    <button class="opt" onclick="answer(this,7,0,2)">A. render</button><button class="opt" onclick="answer(this,7,1,2)">B. summarize</button><button class="opt" onclick="answer(this,7,2,2)">C. series_decompose_anomalies()</button><button class="opt" onclick="answer(this,7,3,2)">D. extend</button>
+    <div class="expl">series_decompose_anomalies() is the KQL function specifically designed to analyze a time series (typically produced with make-series) and score/flag data points as anomalies, which is a core technique tested for KQL-based hunting.</div>
+  </div>
+
+  <div class="card qcard" id="q8" data-domain="Manage a security operations environment">
+    <div class="meta">Question 9 of 12 · Manage a security operations environment</div>
+    <div class="q">A Microsoft Sentinel analyst needs to run frequent scheduled analytics rules against Windows Security Event data for near real-time detection, while also retaining that data for 400 days for compliance audits at the lowest reasonable cost. Which configuration should be used?</div>
+    <button class="opt" onclick="answer(this,8,0,1)">A. Ingest the events into the Basic tier and rely on search jobs for all queries</button><button class="opt" onclick="answer(this,8,1,1)">B. Ingest the events into the Analytics tier and extend interactive retention to 400 days</button><button class="opt" onclick="answer(this,8,2,1)">C. Ingest the events into the Analytics tier at the default 90-day free retention with no extension</button><button class="opt" onclick="answer(this,8,3,1)">D. Ingest the events into the Auxiliary tier with 30-day retention only</button>
+    <div class="expl">Only the Analytics tier supports scheduled analytics rules for near real-time detection, and its interactive retention can be extended beyond the free 90 days (up to 2 years interactive, longer via archive) to satisfy the 400-day compliance need.</div>
+  </div>
+
+  <div class="card qcard" id="q9" data-domain="Configure protections and detections">
+    <div class="meta">Question 10 of 12 · Configure protections and detections</div>
+    <div class="q">Two automation rules in Microsoft Sentinel are both triggered when an incident is created for a specific analytics rule: one adds a tag and assigns an owner, the other runs a playbook that automatically closes false positives. The team wants the tagging rule to run before the playbook rule. What must be configured to guarantee this?</div>
+    <button class="opt" onclick="answer(this,9,0,0)">A. Set a lower 'order' value on the tagging automation rule than on the playbook automation rule</button><button class="opt" onclick="answer(this,9,1,0)">B. Rename the tagging rule so it is alphabetically first</button><button class="opt" onclick="answer(this,9,2,0)">C. Add a condition to the playbook rule referencing the tag</button><button class="opt" onclick="answer(this,9,3,0)">D. Move the tagging logic into the analytics rule query itself</button>
+    <div class="expl">Automation rules triggered by the same event execute in the order specified by their numeric 'order' value, with the lowest order number running first - this is the only guaranteed way to control sequencing.</div>
+  </div>
+
+  <div class="card qcard" id="q10" data-domain="Manage incident response">
+    <div class="meta">Question 11 of 12 · Manage incident response</div>
+    <div class="q">A device group in Microsoft Defender for Endpoint has automated investigation and response (AIR) configured with automation level 'Full – remediate threats automatically.' When AIR determines a file on a device in this group is malicious, what happens?</div>
+    <button class="opt" onclick="answer(this,10,0,2)">A. The file is quarantined temporarily and requires manual approval to fully remediate</button><button class="opt" onclick="answer(this,10,1,2)">B. The analyst is prompted to approve the remediation before it runs</button><button class="opt" onclick="answer(this,10,2,2)">C. The remediation action is applied automatically without requiring analyst approval</button><button class="opt" onclick="answer(this,10,3,2)">D. An alert is logged only, and no remediation action is taken</button>
+    <div class="expl">At the 'Full – remediate threats automatically' automation level, AIR applies remediation actions (e.g., quarantine, removal) immediately without waiting for analyst sign-off, which is the level's defining behavior.</div>
+  </div>
+
+  <div class="card qcard" id="q11" data-domain="Manage security threats">
+    <div class="meta">Question 12 of 12 · Manage security threats</div>
+    <div class="q">A threat intelligence indicator imported into Microsoft Sentinel should stop being matched against incoming logs automatically after 30 days, without the analyst needing to manually delete it. Which property of the threat indicator should be configured to accomplish this?</div>
+    <button class="opt" onclick="answer(this,11,0,2)">A. confidence</button><button class="opt" onclick="answer(this,11,1,2)">B. killChainPhases</button><button class="opt" onclick="answer(this,11,2,2)">C. expirationDateTime (Valid Until)</button><button class="opt" onclick="answer(this,11,3,2)">D. pattern</button>
+    <div class="expl">The expirationDateTime (shown as 'Valid Until' in the Sentinel UI) field defines when a threat indicator is automatically considered expired and stops being used for matching, without requiring manual deletion.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">undefined</span> <span class="price">$34.99</span> with code <span class="code">FREETEST33</span> — valid through Oct 6.</p>
+  <a href="https://www.udemy.com/course/sc-200-microsoft-security-operations-analyst-prep/?couponCode=FREETEST33" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<section class="faq"><h3>SC-200 exam — quick answers</h3><details><summary>How much does the SC-200 exam cost?</summary><p>The exam fee is approximately $165 and varies by region — confirm current pricing with the certification vendor before you book.</p></details><details><summary>What topics are on the exam?</summary><p>It covers 4 domains: Manage a security operations environment (40-45%), Configure protections and detections (15-20%), Manage incident response (25-30%), Manage security threats (15-20%). The full course has a dedicated chapter, lab and practice-test coverage for each.</p></details><details><summary>Is this practice test really free?</summary><p>Yes — all questions on this page are free with explanations and no sign-up. The paid Udemy course adds two full-length timed exams, video lessons and hands-on labs.</p></details><details><summary>How do I get the discount?</summary><p>Use code FREETEST33 at checkout for $34.99 (list undefined) through Oct 6 — the enroll button applies it automatically.</p></details><details><summary>Will this prepare me for the real exam?</summary><p>The questions mirror the real exam's style and are mapped to the official domains. This is exam-focused preparation — combine the free test with the full course's timed simulations to gauge your readiness.</p></details></section>
+<div class="domains"><span class="meta">More free practice by exam domain:</span><br><a href="sc-200-manage-a-security-operations-environment.html">Manage a security operations environment →</a><a href="sc-200-configure-protections-and-detections.html">Configure protections and detections →</a><a href="sc-200-manage-incident-response.html">Manage incident response →</a><a href="sc-200-manage-security-threats.html">Manage security threats →</a></div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

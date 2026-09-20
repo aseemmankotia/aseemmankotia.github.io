@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Defense-in-Depth and Defensible Network Architecture Practice Questions — GIAC Security Essentials</title>
+<meta name="description" content="6 free Defense-in-Depth and Defensible Network Architecture practice questions with explanations for the GIAC Security Essentials exam.">
+<link rel="canonical" href="https://technuggets.academy/gsec-defense-in-depth-and-defensible-network-architecture.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Defense-in-Depth and Defensible Network Architecture Practice Questions — GIAC Security Essentials">
+<meta property="og:description" content="6 free Defense-in-Depth and Defensible Network Architecture practice questions with explanations for the GIAC Security Essentials exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/gsec-defense-in-depth-and-defensible-network-architecture.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Defense-in-Depth and Defensible Network Architecture</h1>
+<p class="sub">Free GIAC Security Essentials practice — 6 questions on <strong>Defense-in-Depth and Defensible Network Architecture</strong>, with explanations. No sign-up.
+<a href="gsec.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Defense-in-Depth and Defensible Network Architecture">
+    <div class="meta">Question 1 of 6 · Defense-in-Depth and Defensible Network Architecture</div>
+    <div class="q">A hospital's inline network IPS sits between the core switch and the internet edge, inspecting all traffic to and from a life-safety monitoring system. During a firmware crash, the appliance loses power. The security architect must choose the failure behavior for this device given the organization's priorities. Which configuration is BEST for this defensible network design?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. Fail-closed, so all traffic is blocked until the IPS is restored, guaranteeing no unauthorized traffic passes uninspected</button><button class="opt" onclick="answer(this,0,1,3)">B. Fail-closed, then automatically reboot the device every 60 seconds until inspection resumes</button><button class="opt" onclick="answer(this,0,2,3)">C. Disable the IPS permanently and rely solely on the perimeter firewall for this segment</button><button class="opt" onclick="answer(this,0,3,3)">D. Fail-open, so traffic continues to flow uninspected rather than interrupting connectivity to life-safety systems</button>
+    <div class="expl">For systems where availability outweighs confidentiality/integrity concerns (life-safety, emergency services), fail-open is the correct choice because losing connectivity could directly endanger patients. GSEC teaches that failure mode selection (fail-open vs. fail-closed) must be driven by the criticality and risk tolerance of the protected asset, not applied uniformly.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Defense-in-Depth and Defensible Network Architecture">
+    <div class="meta">Question 2 of 6 · Defense-in-Depth and Defensible Network Architecture</div>
+    <div class="q">A security engineer needs to capture full-duplex traffic between a core switch and a border router for a new IDS sensor, with zero dropped packets even during oversubscribed traffic bursts, and without the possibility of the monitoring device injecting traffic back onto the wire. Which monitoring approach BEST satisfies these requirements?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. Configure a SPAN/mirror port on the core switch to duplicate traffic to the IDS</button><button class="opt" onclick="answer(this,1,1,2)">B. Enable NetFlow export from the router and analyze flow records instead of packet captures</button><button class="opt" onclick="answer(this,1,2,2)">C. Install an inline, passive network TAP between the switch and router and connect the IDS to the TAP's monitor ports</button><button class="opt" onclick="answer(this,1,3,2)">D. Place the IDS directly inline between the switch and router using two physical interfaces</button>
+    <div class="expl">A passive network TAP physically replicates full-duplex traffic without relying on switch CPU/backplane resources, so it does not drop packets under load, and passive TAPs are electrically isolated so the monitoring device cannot inject traffic onto the production link — exactly the requirement stated.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Defense-in-Depth and Defensible Network Architecture">
+    <div class="meta">Question 3 of 6 · Defense-in-Depth and Defensible Network Architecture</div>
+    <div class="q">An auditor found that hosts on VLAN 10 (finance) can be reached from VLAN 20 (guest wireless) using a double-tagging (VLAN hopping) technique that exploited the switch's default native VLAN configuration. Which configuration change MOST directly closes this specific attack vector?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. Increase the number of VLANs on the trunk to reduce the chance of collision</button><button class="opt" onclick="answer(this,2,1,3)">B. Enable Spanning Tree Portfast on all access ports</button><button class="opt" onclick="answer(this,2,2,3)">C. Change all VLANs to use the same subnet mask to simplify routing</button><button class="opt" onclick="answer(this,2,3,3)">D. Set the native VLAN on all trunk ports to an unused VLAN ID and explicitly disable it from carrying untagged traffic</button>
+    <div class="expl">Double-tagging VLAN hopping abuses the fact that a frame tagged with the switch's native VLAN gets its outer tag stripped by the first switch, exposing an inner tag for a different VLAN. Assigning an unused, dedicated native VLAN (not VLAN 1 or any production VLAN) and disabling untagged traffic on trunks is the specific, documented mitigation for this attack.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Defense-in-Depth and Defensible Network Architecture">
+    <div class="meta">Question 4 of 6 · Defense-in-Depth and Defensible Network Architecture</div>
+    <div class="q">In defensible network architecture, a 'choke point' is deliberately engineered into the network design. What is the PRIMARY security purpose of a choke point?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. To increase available bandwidth between network segments during peak usage</button><button class="opt" onclick="answer(this,3,1,1)">B. To force traffic through a limited number of well-monitored paths where security controls can be consistently applied and traffic can be inspected</button><button class="opt" onclick="answer(this,3,2,1)">C. To provide automatic failover so that if one path fails, traffic reroutes without any logging</button><button class="opt" onclick="answer(this,3,3,1)">D. To eliminate the need for a DMZ by consolidating all servers onto one flat network</button>
+    <div class="expl">A choke point intentionally restricts the number of paths traffic can take so that firewalls, IDS/IPS, and logging can be concentrated at those few points, making enforcement and monitoring consistent and comprehensive — a core defensible-architecture concept.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Defense-in-Depth and Defensible Network Architecture">
+    <div class="meta">Question 5 of 6 · Defense-in-Depth and Defensible Network Architecture</div>
+    <div class="q">A company is redesigning its perimeter to host a public web server, an email relay, and a partner-facing API gateway. The CISO requires that a compromise of any one DMZ host must NOT provide a direct network path to the internal corporate LAN, and that internet-facing and internal-facing filtering rules be enforced by physically or logically separate devices. Which architecture BEST meets these requirements?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. A single firewall with three interfaces (internet, DMZ, internal) using one unified rule base for all zones</button><button class="opt" onclick="answer(this,4,1,1)">B. A screened subnet (three-legged DMZ) design using two firewalls — an external firewall between internet and DMZ, and a separate internal firewall between DMZ and the corporate LAN, each with independently managed rule sets</button><button class="opt" onclick="answer(this,4,2,1)">C. Place all three servers directly on the internal LAN behind a single perimeter firewall for simplified management</button><button class="opt" onclick="answer(this,4,3,1)">D. Use a reverse proxy alone with no firewall, relying on the web server's host-based firewall for all filtering</button>
+    <div class="expl">A screened subnet (belt-and-suspenders / dual-firewall DMZ) design places independent filtering devices at each boundary, so an attacker who compromises a DMZ host still must bypass a second, separately administered firewall to reach the internal LAN — directly satisfying the 'no direct path' and 'separate enforcement points' requirements.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Defense-in-Depth and Defensible Network Architecture">
+    <div class="meta">Question 6 of 6 · Defense-in-Depth and Defensible Network Architecture</div>
+    <div class="q">A manufacturing company grants third-party maintenance vendors remote access to specific industrial control system (ICS) hosts. Per defense-in-depth principles, the security team wants to ensure vendor connections are restricted to only the required hosts/ports, are separated from the general corporate network, and can be revoked instantly without affecting internal users. Which design BEST achieves this?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. Create a dedicated extranet/partner segment with its own firewall ACLs restricting vendor traffic to only the specific ICS hosts and ports required, independent of internal user network access</button><button class="opt" onclick="answer(this,5,1,0)">B. Give vendors VPN credentials that place them directly on the corporate internal VLAN alongside employees</button><button class="opt" onclick="answer(this,5,2,0)">C. Share a single generic VPN account among all vendors on the same VLAN as finance systems for simplicity</button><button class="opt" onclick="answer(this,5,3,0)">D. Allow vendors to connect via a jump host that has unrestricted access to every internal subnet</button>
+    <div class="expl">A dedicated extranet segment with tightly scoped ACLs enforces least privilege and network segmentation for third parties, isolates vendor risk from internal networks, and allows access to be revoked (by disabling the account/ACL) without touching internal user connectivity — the core defensible-architecture pattern for partner access.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/gsec-giac-security-essentials-exam-focused-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

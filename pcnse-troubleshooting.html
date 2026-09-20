@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Troubleshooting Practice Questions — Palo Alto Networks Certified Network Security Engineer</title>
+<meta name="description" content="6 free Troubleshooting practice questions with explanations for the Palo Alto Networks Certified Network Security Engineer exam.">
+<link rel="canonical" href="https://technuggets.academy/pcnse-troubleshooting.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Troubleshooting Practice Questions — Palo Alto Networks Certified Network Security Engineer">
+<meta property="og:description" content="6 free Troubleshooting practice questions with explanations for the Palo Alto Networks Certified Network Security Engineer exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/pcnse-troubleshooting.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Troubleshooting</h1>
+<p class="sub">Free Palo Alto Networks Certified Network Security Engineer practice — 6 questions on <strong>Troubleshooting</strong>, with explanations. No sign-up.
+<a href="pcnse.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Domain 6: Troubleshooting">
+    <div class="meta">Question 1 of 6 · Domain 6: Troubleshooting</div>
+    <div class="q">A destination NAT rule translates traffic addressed to public IP 203.0.113.10 to an internal server at 10.1.1.50, which resides in the DMZ zone (interface ethernet1/3, DMZ zone). The Untrust zone interface faces the internet. An engineer configures a security policy rule with source zone Untrust, destination zone Untrust, destination address 203.0.113.10, action allow. Traffic matching the NAT rule is still denied. Given how PAN-OS orders NAT and security policy evaluation, what is the root cause?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. Security policy is evaluated first using the pre-NAT destination zone, so Untrust is correct; the deny is caused by an unrelated App-ID dependency mismatch, not zone selection.</button><button class="opt" onclick="answer(this,0,1,1)">B. NAT policy lookup occurs before the security policy lookup and determines that the packet's destination zone for policy purposes is DMZ (the zone of the translated address); the security rule must use DMZ as the destination zone while still matching the original pre-NAT address 203.0.113.10.</button><button class="opt" onclick="answer(this,0,2,1)">C. Destination NAT rules automatically create an implicit security allow, so the manual rule is redundant; the real problem is a missing route to 10.1.1.50 in the virtual router.</button><button class="opt" onclick="answer(this,0,3,1)">D. The security rule needs a corresponding NAT-exempt security policy for the return traffic; without a second explicit rule for 10.1.1.50 to Untrust, the session is denied on the reply packet.</button>
+    <div class="expl">PAN-OS performs NAT policy lookup before the security policy lookup to determine post-NAT zones. The security rule's destination zone must reflect the translated (post-NAT) zone, while the destination address in the rule still matches the original pre-NAT IP address because the packet header hasn't been rewritten yet at the point of policy evaluation. Using Untrust as the destination zone here is the misconfiguration.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Domain 6: Troubleshooting">
+    <div class="meta">Question 2 of 6 · Domain 6: Troubleshooting</div>
+    <div class="q">While troubleshooting SSL Forward Proxy decryption, `show session id &lt;id&gt;` on a firewall returns: session end-reason: decrypt-cert-validation. All other decrypted sites work normally. Which situation most likely produced this specific end-reason?</div>
+    <button class="opt" onclick="answer(this,1,0,1)">A. The client browser does not trust the firewall's Forward Trust CA certificate, producing an in-browser certificate warning.</button><button class="opt" onclick="answer(this,1,1,1)">B. The destination server presented a certificate that failed validation against the firewall's trusted CA store (for example, expired, self-signed, or revoked), and the Decryption Profile is configured to block sessions with untrusted server certificates.</button><button class="opt" onclick="answer(this,1,2,1)">C. The negotiated TLS version between client and server (TLS 1.3) is unsupported by the decryption profile in use.</button><button class="opt" onclick="answer(this,1,3,1)">D. The client presented an expired client certificate during a mutual TLS handshake with the destination server.</button>
+    <div class="expl">The decrypt-cert-validation end-reason specifically indicates the firewall's Forward Proxy validation of the destination server's certificate failed (untrusted issuer, expired, or revoked) and the applicable Decryption Profile setting for blocking sessions with untrusted issuers/expired certificates is enabled, so the session is terminated rather than allowed through.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Domain 6: Troubleshooting">
+    <div class="meta">Question 3 of 6 · Domain 6: Troubleshooting</div>
+    <div class="q">An engineer suspects packets destined for an internal host are being silently dropped at some internal processing stage but wants to avoid running a full packet capture. Which command displays only the global counters that have incremented since the packet-diag filter was applied, allowing quick identification of the exact drop reason (e.g., flow_policy_deny, flow_fwd_l3_noroute)?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. show counter global filter delta yes packet-filter yes</button><button class="opt" onclick="answer(this,2,1,0)">B. debug dataplane packet-diag show setting</button><button class="opt" onclick="answer(this,2,2,0)">C. show session all filter destination 10.1.1.50</button><button class="opt" onclick="answer(this,2,3,0)">D. tcpdump filter &quot;host 10.1.1.50&quot; view-pcap</button>
+    <div class="expl">`show counter global filter delta yes packet-filter yes` restricts output to counters that have incremented since the packet-diag filter was set, which is the standard PAN-OS technique to pinpoint exactly which internal drop counter is firing for a matched flow without capturing full packets.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Domain 6: Troubleshooting">
+    <div class="meta">Question 4 of 6 · Domain 6: Troubleshooting</div>
+    <div class="q">Users report that a specific mobile banking application consistently fails to connect whenever SSL Forward Proxy decryption is enabled for their zone. The decryption policy correctly matches the app's traffic, and the Forward Trust CA certificate is properly deployed and trusted on all managed endpoints. Disabling decryption for that traffic immediately resolves the issue, while all other decrypted sites continue working fine. What is the most likely cause and best remediation?</div>
+    <button class="opt" onclick="answer(this,3,0,3)">A. The Forward Trust certificate has expired, so it must be regenerated and redeployed to all endpoints before any decrypted TLS 1.2 session will succeed.</button><button class="opt" onclick="answer(this,3,1,3)">B. The application requires TLS 1.3 with 0-RTT, which PAN-OS cannot decrypt under any circumstance, so all TLS 1.3 destinations must be globally excluded from decryption.</button><button class="opt" onclick="answer(this,3,2,3)">C. The Decryption Profile is blocking sessions using unsupported cipher suites; enabling &quot;Allow client to use unsupported cipher suites&quot; will resolve the failure.</button><button class="opt" onclick="answer(this,3,3,3)">D. The application uses certificate pinning, validating the exact server certificate rather than trusting the OS/browser certificate store; create a decryption exclusion (no-decrypt policy or SSL Decryption Exclusion entry) for the application's specific FQDN.</button>
+    <div class="expl">Certificate pinning — common in banking and financial mobile apps — causes the app to reject the firewall's re-signed certificate even though it is properly trusted at the OS level, because the app validates the server's original certificate specifically. Since only this one app fails while everything else decrypts fine, the documented remediation is a targeted decryption exclusion for that FQDN/app, not a CA, cipher, or protocol-wide change.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Domain 6: Troubleshooting">
+    <div class="meta">Question 5 of 6 · Domain 6: Troubleshooting</div>
+    <div class="q">Remote users see the error &quot;Unable to connect to GlobalProtect service: Verify server certificate&quot; only when connecting to the gateway using its published FQDN (not when connecting directly by IP). The gateway's SSL/TLS Service Profile uses a certificate issued by an internal enterprise CA, and the GlobalProtect app is configured to validate server certificates. What is the most likely fix?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. Switch the gateway's authentication profile from certificate-based authentication to SAML, which removes any requirement to validate the gateway's server certificate.</button><button class="opt" onclick="answer(this,4,1,1)">B. Ensure the gateway certificate's Subject Alternative Name (SAN) includes the FQDN used to reach the gateway, and that the issuing enterprise CA's certificate chain is included in the client's trusted root store or Certificate Profile.</button><button class="opt" onclick="answer(this,4,2,1)">C. Temporarily disable &quot;Validate Server Certificate&quot; in the GlobalProtect app configuration and leave it disabled, since internal CAs are not supported by the GlobalProtect app.</button><button class="opt" onclick="answer(this,4,3,1)">D. Regenerate the gateway certificate using a 4096-bit key instead of 2048-bit, since GlobalProtect requires stronger keys when connecting via FQDN rather than IP.</button>
+    <div class="expl">Certificate validation checks the SAN (not just CN) against the hostname used to connect; failing only on FQDN-based connections (not IP) strongly indicates a SAN/hostname mismatch, and the client must also trust the issuing internal CA. Both the SAN entry and CA trust chain must be correct for validation to succeed.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Domain 6: Troubleshooting">
+    <div class="meta">Question 6 of 6 · Domain 6: Troubleshooting</div>
+    <div class="q">In an active/passive HA pair, both firewalls unexpectedly transition to the active state simultaneously, causing routing instability. The HA2 (data) link and all dataplane interfaces remain fully operational between sites, but `show high-availability state` on each firewall reports the peer as &quot;unknown&quot; with no heartbeats received. What most likely caused this split-brain condition, and what is the recommended long-term fix?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. The two firewalls have identical HA device priority values, causing an active/active race condition; assign distinct explicit device priorities to each firewall.</button><button class="opt" onclick="answer(this,5,1,3)">B. The HA group ID differs between the two firewalls, causing them to form two independent HA clusters that were never actually paired; correct the group ID so both peers match.</button><button class="opt" onclick="answer(this,5,2,3)">C. Path monitoring for a downstream link-monitored destination failed on the passive firewall, triggering unwanted preemption; disable preemption to resolve the issue.</button><button class="opt" onclick="answer(this,5,3,3)">D. The HA1 (control) link failed with no configured HA1 backup link, so each firewall independently lost contact with its peer's heartbeat and assumed the other had failed; configure a redundant HA1 backup link over a separate physical/network path.</button>
+    <div class="expl">The symptom of the peer state reporting as &quot;unknown&quot; with no heartbeats received, despite the HA2 data link and dataplane being fully functional, is the classic signature of an HA1 control link failure. Without a configured HA1 backup link, both members lose heartbeat visibility and independently assume the active role, producing split-brain; the standard remediation is a redundant HA1 backup link on separate infrastructure.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/pcnse-exam-prep-palo-alto-networks-ngfw-panorama/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

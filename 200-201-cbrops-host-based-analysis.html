@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Host-Based Analysis Practice Questions — Cisco Certified CyberOps Associate</title>
+<meta name="description" content="6 free Host-Based Analysis practice questions with explanations for the Cisco Certified CyberOps Associate exam.">
+<link rel="canonical" href="https://technuggets.academy/200-201-cbrops-host-based-analysis.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Host-Based Analysis Practice Questions — Cisco Certified CyberOps Associate">
+<meta property="og:description" content="6 free Host-Based Analysis practice questions with explanations for the Cisco Certified CyberOps Associate exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/200-201-cbrops-host-based-analysis.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Host-Based Analysis</h1>
+<p class="sub">Free Cisco Certified CyberOps Associate practice — 6 questions on <strong>Host-Based Analysis</strong>, with explanations. No sign-up.
+<a href="200-201-cbrops.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Host-Based Analysis">
+    <div class="meta">Question 1 of 6 · Host-Based Analysis</div>
+    <div class="q">A forensic analyst uses a hardware write blocker to acquire a bit-for-bit image of a suspect's hard drive and computes a SHA-256 hash of both the source drive and the resulting image immediately after acquisition. Three weeks later, prior to presenting findings, the analyst recalculates the hash of the stored image file and it matches the value recorded in the original case documentation. What does this MOST likely indicate?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. The image has not been altered since acquisition and remains forensically sound</button><button class="opt" onclick="answer(this,0,1,0)">B. The image is corrupted and cannot be used for analysis</button><button class="opt" onclick="answer(this,0,2,0)">C. The write blocker malfunctioned during the imaging process</button><button class="opt" onclick="answer(this,0,3,0)">D. The original evidence source was tampered with prior to acquisition</button>
+    <div class="expl">A matching hash value calculated at two different points in time proves the bit-level content of the image file has not changed, which is the standard method for demonstrating an untampered (forensically sound) copy of evidence.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Host-Based Analysis">
+    <div class="meta">Question 2 of 6 · Host-Based Analysis</div>
+    <div class="q">A SOC analyst is investigating a Windows 10 endpoint to determine whether a specific suspicious executable was run, how many times it executed, and approximately when it was last run. Which artifact provides this information most directly?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. Recycle Bin metadata, which records deleted executable timestamps</button><button class="opt" onclick="answer(this,1,1,3)">B. AmCache hive entries, which log every process launch with exact run counts</button><button class="opt" onclick="answer(this,1,2,3)">C. NTFS Master File Table entries, which record file creation and modification times</button><button class="opt" onclick="answer(this,1,3,3)">D. Prefetch files, which log application names, last-run times, and approximate run counts</button>
+    <div class="expl">Windows Prefetch files (.pf) are created to speed up application launches and store the executable name, last-run timestamp(s), and a run counter, making them a primary artifact for proving execution frequency and timing.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Host-Based Analysis">
+    <div class="meta">Question 3 of 6 · Host-Based Analysis</div>
+    <div class="q">An analyst is reviewing logs on an Ubuntu 22.04 Linux server to identify failed SSH login attempts associated with a suspected brute-force attack. Which log file should be examined first?</div>
+    <button class="opt" onclick="answer(this,2,0,2)">A. /var/log/dmesg, which records kernel ring buffer messages</button><button class="opt" onclick="answer(this,2,1,2)">B. /var/log/cron, which records scheduled task executions</button><button class="opt" onclick="answer(this,2,2,2)">C. /var/log/auth.log, which records authentication events including SSH login attempts on Debian/Ubuntu systems</button><button class="opt" onclick="answer(this,2,3,2)">D. /var/log/secure, which is the default authentication log location on Ubuntu systems</button>
+    <div class="expl">On Debian-based distributions such as Ubuntu, authentication-related events including SSH login successes and failures are logged to /var/log/auth.log by the PAM subsystem.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Host-Based Analysis">
+    <div class="meta">Question 4 of 6 · Host-Based Analysis</div>
+    <div class="q">During an incident response engagement, an analyst physically hands a seized hard drive to a second investigator for further analysis, but neither analyst records who received the evidence, the date and time of transfer, or the reason for the handoff. What has been compromised as a result?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. Data integrity, because the SHA-256 hash of the drive was not recalculated</button><button class="opt" onclick="answer(this,3,1,2)">B. Non-repudiation, because the transferring analyst did not digitally sign the transfer</button><button class="opt" onclick="answer(this,3,2,2)">C. Chain of custody, because the transfer was not documented with who, when, and under what circumstances the evidence changed hands</button><button class="opt" onclick="answer(this,3,3,2)">D. Evidence admissibility, solely due to hearsay rules governing digital evidence</button>
+    <div class="expl">Chain of custody requires a documented, unbroken record of who possessed evidence, when transfers occurred, and why, so that its integrity can be legally established; an undocumented handoff directly breaks this chain.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Host-Based Analysis">
+    <div class="meta">Question 5 of 6 · Host-Based Analysis</div>
+    <div class="q">A SOC team receives a suspicious executable attached to a phishing email and wants to observe its file system modifications, registry changes, and outbound network connection attempts without exposing the production network to risk. Which endpoint technology is BEST suited for this task?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. A host-based intrusion prevention system, which blocks known malicious behavior signatures in real time on the endpoint</button><button class="opt" onclick="answer(this,4,1,3)">B. Application allow listing, which prevents unapproved executables from running at all</button><button class="opt" onclick="answer(this,4,2,3)">C. A host-based firewall, which filters inbound and outbound traffic based on configured rules</button><button class="opt" onclick="answer(this,4,3,3)">D. A sandbox environment, which detonates the file in isolation and records file system, registry, and network activity for analysis</button>
+    <div class="expl">Sandboxing is designed specifically to safely detonate unknown or suspicious files in an isolated environment while capturing detailed behavioral telemetry such as file, registry, and network activity, which is exactly the goal described.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Host-Based Analysis">
+    <div class="meta">Question 6 of 6 · Host-Based Analysis</div>
+    <div class="q">An analyst discovers that a specific file hash on a compromised host matches a hash previously associated with a known ransomware family in a threat intelligence feed. In CyberOps terminology, this static artifact is best classified as which of the following?</div>
+    <button class="opt" onclick="answer(this,5,0,1)">A. An Indicator of Attack (IOA), since it describes a real-time behavioral pattern used during an active intrusion</button><button class="opt" onclick="answer(this,5,1,1)">B. An Indicator of Compromise (IOC), since it is a static, forensic artifact confirming a system was compromised</button><button class="opt" onclick="answer(this,5,2,1)">C. A tactic within the MITRE ATT&amp;CK framework describing adversary goals</button><button class="opt" onclick="answer(this,5,3,1)">D. Attribution data identifying the specific threat actor group responsible for the attack</button>
+    <div class="expl">A file hash is a static, after-the-fact forensic artifact that confirms a compromise occurred, which is the defining characteristic of an Indicator of Compromise (IOC), as opposed to a behavioral pattern observed during an active attack.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/200-201-cbrops-cyberops-associate-exam-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

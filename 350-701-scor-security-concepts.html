@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Security Concepts Practice Questions — Implementing and Operating Cisco Security Core Technologies</title>
+<meta name="description" content="6 free Security Concepts practice questions with explanations for the Implementing and Operating Cisco Security Core Technologies exam.">
+<link rel="canonical" href="https://technuggets.academy/350-701-scor-security-concepts.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Security Concepts Practice Questions — Implementing and Operating Cisco Security Core Technologies">
+<meta property="og:description" content="6 free Security Concepts practice questions with explanations for the Implementing and Operating Cisco Security Core Technologies exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/350-701-scor-security-concepts.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Security Concepts</h1>
+<p class="sub">Free Implementing and Operating Cisco Security Core Technologies practice — 6 questions on <strong>Security Concepts</strong>, with explanations. No sign-up.
+<a href="350-701-scor.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Domain 1: Security Concepts">
+    <div class="meta">Question 1 of 6 · Domain 1: Security Concepts</div>
+    <div class="q">A financial services company deployed a PKI-based VPN client authentication solution on a Cisco ASA headend. Security auditors discover that certificates revoked by the CA are still being accepted by the VPN headend for up to 12 hours, matching the CRL publish interval. Which change provides near real-time revocation checking without dramatically increasing CRL publishing frequency and its associated bandwidth/CPU overhead?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. Increase the CRL publish frequency to every 5 minutes</button><button class="opt" onclick="answer(this,0,1,1)">B. Configure OCSP for certificate revocation validation</button><button class="opt" onclick="answer(this,0,2,1)">C. Switch from CA-signed certificates to self-signed certificates on all VPN clients</button><button class="opt" onclick="answer(this,0,3,1)">D. Disable revocation checking on the VPN headend entirely</button>
+    <div class="expl">OCSP allows the VPN headend to query the CA (or an OCSP responder) in real time for the status of a specific certificate, eliminating the delay inherent in periodically published CRLs.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Domain 1: Security Concepts">
+    <div class="meta">Question 2 of 6 · Domain 1: Security Concepts</div>
+    <div class="q">A network engineer must configure an IKEv2 IPsec VPN between two Cisco ASAs that meets NSA Suite B-aligned cryptographic requirements, using a single algorithm that provides both confidentiality and data-origin authentication/integrity, removing the need to negotiate a separate HMAC integrity algorithm. Which IKEv2 encryption choice satisfies this requirement?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. AES-256-CBC combined with SHA-256 HMAC</button><button class="opt" onclick="answer(this,1,1,3)">B. 3DES combined with MD5 HMAC</button><button class="opt" onclick="answer(this,1,2,3)">C. AES-128-CBC combined with SHA-1 HMAC</button><button class="opt" onclick="answer(this,1,3,3)">D. AES-256-GCM</button>
+    <div class="expl">AES-GCM is an AEAD (Authenticated Encryption with Associated Data) cipher that provides confidentiality and integrity/authentication in one algorithm, so a separate HMAC integrity transform is not required and is in fact set to null.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Domain 1: Security Concepts">
+    <div class="meta">Question 3 of 6 · Domain 1: Security Concepts</div>
+    <div class="q">While building an IKEv2 policy on a Cisco ASA, an engineer selects AES-GCM as the encryption algorithm. IKEv2 proposals allow independent selection of an integrity algorithm and a separate pseudo-random function (PRF), unlike IKEv1 policies. Which configuration is correct for the integrity and PRF settings when GCM is used?</div>
+    <button class="opt" onclick="answer(this,2,0,2)">A. Configure SHA-384 as a separate integrity algorithm regardless of the encryption cipher chosen, since IKEv2 always mandates it</button><button class="opt" onclick="answer(this,2,1,2)">B. Leave both the integrity algorithm and the PRF unconfigured, since GCM negates the need for either function</button><button class="opt" onclick="answer(this,2,2,2)">C. Set the integrity algorithm to null, since GCM provides authentication internally, but still configure a PRF such as SHA-256 for key derivation</button><button class="opt" onclick="answer(this,2,3,2)">D. Set the PRF to null and configure only the integrity algorithm as SHA-256</button>
+    <div class="expl">When using an AEAD cipher like AES-GCM, the integrity algorithm must be set to null because authentication is built into the cipher itself. However, IKEv2 still requires a PRF (e.g., SHA-256) for key derivation material — the PRF is a separate function from data integrity and cannot be null.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Domain 1: Security Concepts">
+    <div class="meta">Question 4 of 6 · Domain 1: Security Concepts</div>
+    <div class="q">Which statement accurately differentiates the Zero Trust security model from a traditional defense-in-depth (perimeter-based) architecture?</div>
+    <button class="opt" onclick="answer(this,3,0,1)">A. Zero Trust eliminates the need for encryption because all traffic is assumed to already be inside a trusted perimeter</button><button class="opt" onclick="answer(this,3,1,1)">B. Zero Trust assumes breach and enforces least-privilege, continuous verification for every access request regardless of network location, while defense-in-depth relies on layered controls that implicitly trust traffic once inside the perimeter</button><button class="opt" onclick="answer(this,3,2,1)">C. Defense-in-depth requires microsegmentation of every workload, while Zero Trust relies solely on a hardened network perimeter</button><button class="opt" onclick="answer(this,3,3,1)">D. Zero Trust applies only to cloud-hosted workloads and cannot be implemented for on-premises network access</button>
+    <div class="expl">Zero Trust operates on 'never trust, always verify' — every access request is authenticated, authorized, and continuously validated regardless of whether it originates inside or outside the network. Defense-in-depth uses multiple layered perimeter/network defenses but generally still trusts traffic once it has passed inside those layers.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Domain 1: Security Concepts">
+    <div class="meta">Question 5 of 6 · Domain 1: Security Concepts</div>
+    <div class="q">A SOC analyst notices an internal host generating thousands of DNS queries per hour to random-looking subdomains of a domain registered to an unknown third party, with TXT record responses containing long base64-encoded strings. Which attack technique is most likely occurring, and which Cisco solution is best suited to detect and block it?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. ARP spoofing, detected using Cisco ISE device profiling</button><button class="opt" onclick="answer(this,4,1,1)">B. DNS tunneling for covert data exfiltration, detected using Cisco Umbrella</button><button class="opt" onclick="answer(this,4,2,1)">C. SQL injection, detected using Cisco Secure Web Appliance</button><button class="opt" onclick="answer(this,4,3,1)">D. Man-in-the-middle attack, detected using Cisco Duo</button>
+    <div class="expl">High volumes of DNS queries to random subdomains carrying encoded data in TXT records is a classic signature of DNS tunneling used for command-and-control or data exfiltration. Cisco Umbrella performs DNS-layer security and can identify and block malicious/tunneling domains using threat intelligence and behavioral analysis.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Domain 1: Security Concepts">
+    <div class="meta">Question 6 of 6 · Domain 1: Security Concepts</div>
+    <div class="q">An organization wants to automatically consume threat intelligence feeds in a standardized, machine-readable format and share indicators of compromise (IOCs) with Cisco Secure Network Analytics and other third-party security tools using an industry-standard exchange mechanism. Which combination of standards should be implemented?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. STIX for the threat intelligence data format and TAXII for the transport/exchange protocol</button><button class="opt" onclick="answer(this,5,1,0)">B. YANG data models for the IOC format and RESTCONF as the transport protocol</button><button class="opt" onclick="answer(this,5,2,0)">C. NetFlow records for the IOC format and Syslog as the transport protocol</button><button class="opt" onclick="answer(this,5,3,0)">D. SNMP as the transport protocol and CSV files for the IOC format</button>
+    <div class="expl">STIX (Structured Threat Information eXpression) is the industry-standard format for describing threat intelligence and IOCs, while TAXII (Trusted Automated Exchange of Intelligence Information) is the standard transport protocol used to share STIX content between platforms and organizations, and is supported by Cisco security intelligence integrations.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/cisco-350-701-scor-complete-security-core-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

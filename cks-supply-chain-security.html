@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Supply Chain Security Practice Questions — Certified Kubernetes Security Specialist</title>
+<meta name="description" content="6 free Supply Chain Security practice questions with explanations for the Certified Kubernetes Security Specialist exam.">
+<link rel="canonical" href="https://technuggets.academy/cks-supply-chain-security.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Supply Chain Security Practice Questions — Certified Kubernetes Security Specialist">
+<meta property="og:description" content="6 free Supply Chain Security practice questions with explanations for the Certified Kubernetes Security Specialist exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/cks-supply-chain-security.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Supply Chain Security</h1>
+<p class="sub">Free Certified Kubernetes Security Specialist practice — 6 questions on <strong>Supply Chain Security</strong>, with explanations. No sign-up.
+<a href="cks.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Supply Chain Security">
+    <div class="meta">Question 1 of 6 · Supply Chain Security</div>
+    <div class="q">Your security team requires that the API server admit only container images from a trusted internal registry, and mandates using a native Kubernetes admission mechanism rather than deploying any third-party controller. Which mechanism should you configure on the API server?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. OPA Gatekeeper with a ConstraintTemplate restricting allowed image registries</button><button class="opt" onclick="answer(this,0,1,3)">B. A Kubernetes NetworkPolicy restricting egress to registry IP ranges</button><button class="opt" onclick="answer(this,0,2,3)">C. PodSecurityPolicy with the allowedHostPaths field</button><button class="opt" onclick="answer(this,0,3,3)">D. The built-in ImagePolicyWebhook admission controller configured via --admission-control-config-file</button>
+    <div class="expl">ImagePolicyWebhook is a built-in kube-apiserver admission plugin enabled with --enable-admission-plugins=ImagePolicyWebhook and configured via an AdmissionConfiguration file pointing to a webhook backend that decides whether an image reference is allowed. It requires no third-party controller to be installed in the cluster.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Supply Chain Security">
+    <div class="meta">Question 2 of 6 · Supply Chain Security</div>
+    <div class="q">A CI pipeline stage runs: trivy image --exit-code 1 --severity CRITICAL myapp:v2. The scan finds 3 CRITICAL and 5 HIGH severity vulnerabilities. What happens to the pipeline stage?</div>
+    <button class="opt" onclick="answer(this,1,0,1)">A. Exit code 0; pipeline passes because trivy only warns by default regardless of flags</button><button class="opt" onclick="answer(this,1,1,1)">B. Exit code 1; pipeline fails because CRITICAL vulnerabilities matched the severity filter</button><button class="opt" onclick="answer(this,1,2,1)">C. Exit code 1; pipeline fails only if HIGH severity findings also exceed 10</button><button class="opt" onclick="answer(this,1,3,1)">D. Exit code 2; pipeline fails due to a scanner error, not vulnerability findings</button>
+    <div class="expl">The --severity CRITICAL flag limits which findings trivy counts, and --exit-code 1 tells trivy to return exit code 1 if any vulnerabilities matching that filter are found. Since 3 CRITICAL vulnerabilities were found, trivy exits with 1 and most CI systems treat a non-zero exit code as a failed stage.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Supply Chain Security">
+    <div class="meta">Question 3 of 6 · Supply Chain Security</div>
+    <div class="q">Your CI pipeline signs container images using Sigstore keyless signing (Fulcio short-lived certificates plus Rekor transparency log entries). Before Kubernetes admits a Pod, you need to cryptographically verify these signatures against expected certificate identity and OIDC issuer. Which tool and command should you use?</div>
+    <button class="opt" onclick="answer(this,2,0,2)">A. Docker Content Trust (Notary v1) with a delegated root key</button><button class="opt" onclick="answer(this,2,1,2)">B. kube-bench with the CIS Sigstore profile</button><button class="opt" onclick="answer(this,2,2,2)">C. cosign verify with the --certificate-identity and --certificate-oidc-issuer flags</button><button class="opt" onclick="answer(this,2,3,2)">D. Falco with a custom Sigstore rules file</button>
+    <div class="expl">cosign is the Sigstore project's client tool and natively supports keyless verification. cosign verify --certificate-identity=&lt;expected-signer&gt; --certificate-oidc-issuer=&lt;expected-issuer&gt; &lt;image&gt; checks the Fulcio-issued certificate embedded in the signature and confirms the Rekor transparency log entry, confirming the image was signed by the expected CI identity.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Supply Chain Security">
+    <div class="meta">Question 4 of 6 · Supply Chain Security</div>
+    <div class="q">You need to scan a Kubernetes Pod manifest with kubesec for security misconfigurations, but organizational policy prohibits sending manifest data to any external network endpoint. Which approach satisfies this requirement?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. curl -X POST --data-binary @pod.yaml https://v2.kubesec.io/scan</button><button class="opt" onclick="answer(this,3,1,2)">B. kubectl kubesec scan pod.yaml</button><button class="opt" onclick="answer(this,3,2,2)">C. kubesec scan pod.yaml (using the locally installed binary, with no outbound API call)</button><button class="opt" onclick="answer(this,3,3,2)">D. trivy config pod.yaml --checks kubesec</button>
+    <div class="expl">kubesec ships as a standalone Go binary (and container image) that evaluates manifests entirely locally, producing a JSON risk score with no network calls required — satisfying an offline/air-gapped policy constraint.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Supply Chain Security">
+    <div class="meta">Question 5 of 6 · Supply Chain Security</div>
+    <div class="q">What is the primary supply-chain security benefit of using a 'distroless' base image (e.g., gcr.io/distroless/static) compared to a minimal Alpine-based image?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. Distroless images are automatically signed and verified by cosign at pull time</button><button class="opt" onclick="answer(this,4,1,1)">B. Distroless images remove the shell, package manager, and other OS utilities, reducing the tools available to an attacker after container compromise</button><button class="opt" onclick="answer(this,4,2,1)">C. Distroless images include a full package manager for easier patching in production</button><button class="opt" onclick="answer(this,4,3,1)">D. Distroless images are functionally identical to Alpine images but with a different name</button>
+    <div class="expl">Distroless images strip out shells, package managers (apk/apt), and most coreutils, leaving only the application and its runtime dependencies. Even if an attacker exploits an application vulnerability and gains code execution, there is no shell or package manager available to pivot, install tools, or explore the filesystem interactively — significantly reducing post-compromise capability.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Supply Chain Security">
+    <div class="meta">Question 6 of 6 · Supply Chain Security</div>
+    <div class="q">A compliance requirement mandates generating a Software Bill of Materials (SBOM) for every container image, in a standardized schema consumable by both vulnerability scanners and license-compliance tooling. Which CI pipeline command correctly produces this artifact?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. syft myimage:tag -o cyclonedx-json</button><button class="opt" onclick="answer(this,5,1,0)">B. trivy image --format table myimage:tag</button><button class="opt" onclick="answer(this,5,2,0)">C. grype myimage:tag -o json</button><button class="opt" onclick="answer(this,5,3,0)">D. docker inspect myimage:tag</button>
+    <div class="expl">syft is purpose-built to generate SBOMs by cataloging packages, libraries, and metadata inside an image, and -o cyclonedx-json emits it in the CycloneDX standard schema — an industry format understood by downstream vulnerability scanners (e.g., grype) and license-compliance tools.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/cks-certified-kubernetes-security-specialist-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

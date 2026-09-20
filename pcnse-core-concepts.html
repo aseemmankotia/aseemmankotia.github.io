@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Core Concepts Practice Questions — Palo Alto Networks Certified Network Security Engineer</title>
+<meta name="description" content="6 free Core Concepts practice questions with explanations for the Palo Alto Networks Certified Network Security Engineer exam.">
+<link rel="canonical" href="https://technuggets.academy/pcnse-core-concepts.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Core Concepts Practice Questions — Palo Alto Networks Certified Network Security Engineer">
+<meta property="og:description" content="6 free Core Concepts practice questions with explanations for the Palo Alto Networks Certified Network Security Engineer exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/pcnse-core-concepts.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0EA5E9}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Core Concepts</h1>
+<p class="sub">Free Palo Alto Networks Certified Network Security Engineer practice — 6 questions on <strong>Core Concepts</strong>, with explanations. No sign-up.
+<a href="pcnse.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Domain 1: Core Concepts">
+    <div class="meta">Question 1 of 6 · Domain 1: Core Concepts</div>
+    <div class="q">A firewall is connected to a switch SPAN port using a Tap interface for passive traffic visibility. The security team configures a Vulnerability Protection profile with the action set to 'Reset Both' and attaches it to a security policy rule matching the tapped traffic, expecting the firewall to terminate sessions matching known exploit signatures. What is the actual result?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. The firewall sends TCP resets to both the client and server, terminating the malicious session as configured</button><button class="opt" onclick="answer(this,0,1,1)">B. The firewall generates threat logs for matched signatures, but no reset packets are sent because Tap mode only receives a copy of traffic and cannot inject packets into the flow</button><button class="opt" onclick="answer(this,0,2,1)">C. The reset action works only for UDP-based exploits when in Tap mode, not TCP</button><button class="opt" onclick="answer(this,0,3,1)">D. The firewall automatically converts the Tap interface to virtual wire to allow the reset action to function</button>
+    <div class="expl">Tap mode is strictly passive/out-of-band — the firewall only receives a mirrored copy of traffic and has no ability to forward, block, or inject packets. Security profiles still run and generate logs/alerts, but any blocking action (reset-client, reset-server, reset-both, drop) has no effect on the actual traffic flow.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Domain 1: Core Concepts">
+    <div class="meta">Question 2 of 6 · Domain 1: Core Concepts</div>
+    <div class="q">A firewall is deployed in virtual wire mode between a core switch and a router. The organization has three VLANs (10, 20, 30) trunked across this link and requires each VLAN's traffic to be inspected and separated into its own security zone for distinct policy enforcement, without adding physical interfaces or changing the Layer 2/3 topology upstream. Which configuration achieves this?</div>
+    <button class="opt" onclick="answer(this,1,0,2)">A. Create three separate virtual routers, one per VLAN, on the same virtual wire pair</button><button class="opt" onclick="answer(this,1,1,2)">B. Convert the interfaces to Layer 3 subinterfaces with unique VLAN tags and enable inter-VLAN routing</button><button class="opt" onclick="answer(this,1,2,2)">C. Create virtual wire subinterfaces on the paired interfaces, each tagged with the corresponding VLAN ID, and assign each subinterface to its own zone</button><button class="opt" onclick="answer(this,1,3,2)">D. Enable a single zone across the virtual wire pair and rely on User-ID to separate VLAN traffic</button>
+    <div class="expl">Virtual wire subinterfaces let you tag specific VLAN IDs on a vwire pair and map each tagged VLAN to a distinct zone. This provides Layer 2 transparency (no routing/topology change) while still allowing granular, VLAN-based security policy enforcement — a core vwire capability tested on the PCNSE.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Domain 1: Core Concepts">
+    <div class="meta">Question 3 of 6 · Domain 1: Core Concepts</div>
+    <div class="q">A destination NAT rule translates the public address 203.0.113.10 (received on the Untrust zone) to the internal server 10.1.1.50 residing in the DMZ zone. When writing the corresponding Security policy rule to permit this traffic, which destination address and zone should the administrator reference?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. Destination address 10.1.1.50 and destination zone DMZ (both post-NAT values)</button><button class="opt" onclick="answer(this,2,1,1)">B. Destination address 203.0.113.10 (pre-NAT) and destination zone DMZ (post-NAT)</button><button class="opt" onclick="answer(this,2,2,1)">C. Destination address 203.0.113.10 and destination zone Untrust (both pre-NAT values)</button><button class="opt" onclick="answer(this,2,3,1)">D. Destination address 10.1.1.50 (post-NAT) and destination zone Untrust (pre-NAT)</button>
+    <div class="expl">PAN-OS evaluates Security policy using the original (pre-NAT) packet addresses/ports for matching, but uses the post-NAT destination zone because the zone lookup occurs after the NAT policy lookup determines the egress interface/zone. This mixed pre/post-NAT behavior is one of the most heavily tested packet-flow concepts on the PCNSE.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Domain 1: Core Concepts">
+    <div class="meta">Question 4 of 6 · Domain 1: Core Concepts</div>
+    <div class="q">Which statement accurately describes a defining characteristic of PAN-OS's Single-Pass Parallel Processing (SP3) architecture as it relates to traffic classification and content inspection?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. App-ID, User-ID, and Content-ID each perform independent full scans of the packet stream sequentially, and results are merged at the end of the pipeline</button><button class="opt" onclick="answer(this,3,1,2)">B. Full Layer 7 payloads must be reassembled and buffered into complete files before any classification can occur, similar to a proxy-based UTM</button><button class="opt" onclick="answer(this,3,2,2)">C. The packet is classified and inspected for threats, URLs, and data patterns in a single pass through the stream-based engine, avoiding the need to re-scan the same traffic multiple times for each feature</button><button class="opt" onclick="answer(this,3,3,2)">D. Each enabled security profile (Antivirus, Vulnerability Protection, URL Filtering) spins up a dedicated scanning process that runs in series, increasing per-packet latency proportionally to the number of profiles</button>
+    <div class="expl">Single-pass architecture performs networking, policy lookup, App-ID classification, and content scanning (threat, URL, data filtering) in one integrated pass over the traffic stream, rather than making multiple sequential passes — this is the primary throughput/latency advantage over traditional multi-engine UTM designs.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Domain 1: Core Concepts">
+    <div class="meta">Question 5 of 6 · Domain 1: Core Concepts</div>
+    <div class="q">A retail company wants the firewall to enforce security policy between three VLANs on the same physical segment, but does not want the firewall to perform any Layer 3 routing or change the existing IP addressing/gateway scheme — end hosts should continue to use their existing default gateway (a separate router). Which deployment model satisfies this requirement?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. Layer 2 interfaces with VLAN objects, assigning each VLAN to its own zone so the firewall switches frames while enforcing policy between zones</button><button class="opt" onclick="answer(this,4,1,0)">B. Layer 3 interfaces with VLAN subinterfaces and OSPF enabled to route between VLANs</button><button class="opt" onclick="answer(this,4,2,0)">C. Virtual wire with a single zone spanning all VLANs</button><button class="opt" onclick="answer(this,4,3,0)">D. Tap mode with VLAN-based log forwarding filters</button>
+    <div class="expl">Layer 2 deployment lets the firewall act as a transparent switch, forwarding frames based on MAC address within a VLAN object while enforcing security policy on inter-VLAN traffic passing through different zones — with no change to IP addressing, gateways, or routing.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Domain 1: Core Concepts">
+    <div class="meta">Question 6 of 6 · Domain 1: Core Concepts</div>
+    <div class="q">An administrator has a security zone named 'DC-VirtualWire' containing two virtual wire interfaces. They attempt to add a Layer 3 interface (ethernet1/5) to this same zone to consolidate policy management. What happens when they try to commit this configuration?</div>
+    <button class="opt" onclick="answer(this,5,0,2)">A. The commit succeeds, and the zone now enforces policy across both the virtual wire pair and the Layer 3 interface transparently</button><button class="opt" onclick="answer(this,5,1,2)">B. The commit succeeds only if both interfaces are placed in the same virtual router</button><button class="opt" onclick="answer(this,5,2,2)">C. The commit fails or the interface is rejected from the zone because a security zone can only contain interfaces of a single, matching deployment type (e.g., all virtual wire, all Layer 2, or all Layer 3)</button><button class="opt" onclick="answer(this,5,3,2)">D. The commit succeeds, but only tap interfaces are permitted to coexist with virtual wire interfaces in the same zone</button>
+    <div class="expl">PAN-OS enforces that a single security zone can only contain interfaces of the same deployment mode. Mixing a Layer 3 interface with virtual wire interfaces in the same zone is not permitted and will cause a validation error on commit.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/pcnse-exam-prep-palo-alto-networks-ngfw-panorama/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

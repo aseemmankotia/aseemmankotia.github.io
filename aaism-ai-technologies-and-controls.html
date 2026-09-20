@@ -1,0 +1,76 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free AI Technologies and Controls Practice Questions — ISACA Advanced in AI Security Management</title>
+<meta name="description" content="6 free AI Technologies and Controls practice questions with explanations for the ISACA Advanced in AI Security Management exam.">
+<link rel="canonical" href="https://technuggets.academy/aaism-ai-technologies-and-controls.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free AI Technologies and Controls Practice Questions — ISACA Advanced in AI Security Management">
+<meta property="og:description" content="6 free AI Technologies and Controls practice questions with explanations for the ISACA Advanced in AI Security Management exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/aaism-ai-technologies-and-controls.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#5B21B6}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>AI Technologies and Controls</h1>
+<p class="sub">Free ISACA Advanced in AI Security Management practice — 6 questions on <strong>AI Technologies and Controls</strong>, with explanations. No sign-up.
+<a href="aaism.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Domain 3: AI Technologies and Controls">
+    <div class="meta">Question 1 of 6 · Domain 3: AI Technologies and Controls</div>
+    <div class="q">A company deploys an autonomous AI agent with access to internal HR, finance, and ticketing APIs to complete multi-step tasks on behalf of employees. Security is concerned that a prompt injection embedded in an incoming ticket could hijack the agent into exfiltrating finance data. Which architecture BEST minimizes the blast radius of such an attack?</div>
+    <button class="opt" onclick="answer(this,0,0,0)">A. Use a broker/proxy pattern that issues short-lived, per-task scoped tokens with explicit allow-lists per API, so the agent never holds a persistent broad credential</button><button class="opt" onclick="answer(this,0,1,0)">B. Give the agent a single service account with full read access across all three APIs and rely on request-level audit logging</button><button class="opt" onclick="answer(this,0,2,0)">C. Wrap every API call the agent makes in a try/except block with rate limiting to slow down any exfiltration attempt</button><button class="opt" onclick="answer(this,0,3,0)">D. Fine-tune the LLM on internal data-handling policy so it 'knows' not to access finance data without authorization</button>
+    <div class="expl">A broker/proxy issuing scoped, short-lived, per-task credentials enforces least privilege and segmentation at the identity/access layer, so even a successfully hijacked agent cannot reach systems outside its authorized task scope — this is the core secure-agentic-architecture control (tool/permission isolation).</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Domain 3: AI Technologies and Controls">
+    <div class="meta">Question 2 of 6 · Domain 3: AI Technologies and Controls</div>
+    <div class="q">A security architect is designing the training pipeline for an LLM fine-tuned on customer support tickets containing PII. The organization must later be able to prove exactly which dataset version and which records were used to produce a specific deployed model version, in order to honor data subject deletion requests. Which control provides this capability?</div>
+    <button class="opt" onclick="answer(this,1,0,1)">A. Regular-expression-based PII scrubbing applied to the raw tickets before training begins</button><button class="opt" onclick="answer(this,1,1,1)">B. Data lineage tracking that links immutable, hashed dataset version identifiers to specific model training run IDs</button><button class="opt" onclick="answer(this,1,2,1)">C. Encrypting the training dataset at rest using customer-managed encryption keys</button><button class="opt" onclick="answer(this,1,3,1)">D. Requiring data stewards to formally re-approve the training dataset's use on a quarterly basis</button>
+    <div class="expl">Only immutable version-hashed lineage that maps dataset versions to specific training run/model IDs creates a verifiable, record-level traceability chain, which is required to determine which model versions were built from data that must later be removed or retrained.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Domain 3: AI Technologies and Controls">
+    <div class="meta">Question 3 of 6 · Domain 3: AI Technologies and Controls</div>
+    <div class="q">A healthcare AI system generates draft treatment recommendations and, as a safety control, requires clinician sign-off before any recommendation reaches the patient record. An audit discovers clinicians are approving 98% of recommendations within seconds, effectively rubber-stamping the AI's output and negating the intended human oversight. What is the MOST effective corrective control?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. Raise the model's confidence threshold so fewer recommendations are routed for clinician review</button><button class="opt" onclick="answer(this,2,1,1)">B. Require a documented clinical rationale field for each sign-off and periodically audit sign-off decisions against actual patient outcomes</button><button class="opt" onclick="answer(this,2,2,1)">C. Send clinicians an automated reminder email emphasizing the importance of careful review</button><button class="opt" onclick="answer(this,2,3,1)">D. Remove the human sign-off step entirely, since it is not meaningfully changing outcomes</button>
+    <div class="expl">Requiring a documented rationale forces clinicians to actively engage with each recommendation rather than passively approve it, and outcome-based auditing gives measurable evidence of whether oversight is genuine — this restores the substance of 'human oversight at critical decision points' rather than its mere appearance.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Domain 3: AI Technologies and Controls">
+    <div class="meta">Question 4 of 6 · Domain 3: AI Technologies and Controls</div>
+    <div class="q">An AI security team knows their pre-launch red team exercise on a customer-facing chatbot will not catch jailbreak techniques that emerge after deployment. Which control BEST addresses this ongoing, evolving risk once the chatbot is in production?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. Implement a continuous automated adversarial testing pipeline integrated with production prompt/response telemetry and monitoring</button><button class="opt" onclick="answer(this,3,1,0)">B. Repeat a full manual penetration test of the chatbot once per year</button><button class="opt" onclick="answer(this,3,2,0)">C. Perform a static code review of the chatbot's application and API layer</button><button class="opt" onclick="answer(this,3,3,0)">D. Increase the model's decoding temperature so its outputs become less predictable</button>
+    <div class="expl">Continuous automated red-teaming tied to live telemetry detects new jailbreak patterns as they emerge in production, closing the gap left by a point-in-time pre-launch test — this is the intended continuous evaluation/monitoring control for deployed generative AI systems.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Domain 3: AI Technologies and Controls">
+    <div class="meta">Question 5 of 6 · Domain 3: AI Technologies and Controls</div>
+    <div class="q">Before fully replacing a production LLM-based fraud-detection classifier with a newer fine-tuned version, the security team wants to evaluate the new model's real-world safety and accuracy against live traffic while ensuring zero customers are exposed to any risk from the new model's decisions. Which deployment pattern BEST achieves this?</div>
+    <button class="opt" onclick="answer(this,4,0,3)">A. Blue-green deployment with an immediate full cutover to the new model</button><button class="opt" onclick="answer(this,4,1,3)">B. Canary release exposing 5% of live customers to decisions made by the new model</button><button class="opt" onclick="answer(this,4,2,3)">C. A/B testing that splits live traffic 50/50 between the old and new models</button><button class="opt" onclick="answer(this,4,3,3)">D. Shadow deployment in which the new model scores live traffic in parallel, with its outputs logged and compared but never acted upon</button>
+    <div class="expl">Shadow deployment scores real traffic to validate the new model's behavior but never surfaces its decisions to end users, giving the security team true real-world evaluation data with zero customer risk exposure.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Domain 3: AI Technologies and Controls">
+    <div class="meta">Question 6 of 6 · Domain 3: AI Technologies and Controls</div>
+    <div class="q">Which statement BEST distinguishes a 'fairness constraint' control from a 'differential privacy' control in an AI system?</div>
+    <button class="opt" onclick="answer(this,5,0,0)">A. Fairness constraints aim to ensure equitable model performance/outcomes across protected groups, while differential privacy adds calibrated noise to limit the ability to identify or infer influence of individual training records</button><button class="opt" onclick="answer(this,5,1,0)">B. Fairness constraints protect individual training records from being identified in model outputs, while differential privacy ensures equitable outcomes across demographic groups</button><button class="opt" onclick="answer(this,5,2,0)">C. The two controls serve identical purposes and can be used interchangeably to satisfy a regulatory audit requirement covering either bias or privacy</button><button class="opt" onclick="answer(this,5,3,0)">D. Fairness constraints can only be applied at inference time, while differential privacy can only be applied to improve model explainability</button>
+    <div class="expl">Fairness constraints are performance-equity controls that target disparate outcomes across protected groups, whereas differential privacy is a data-protection technique that mathematically bounds how much any single training record can influence or be inferred from the model's output — the two address distinct risk categories.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">undefined</span> <span class="price">$34.99</span> with code <span class="code">FREETEST33</span> — valid through Oct 6.</p>
+  <a href="https://www.udemy.com/course/aaism-certification-exam-prep-ai-security-management/?couponCode=FREETEST33" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

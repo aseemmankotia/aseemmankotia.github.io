@@ -1,0 +1,75 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free Implement and manage user identities Practice Questions — Microsoft Certified: Identity and Access Administrator Associate</title>
+<meta name="description" content="6 free Implement and manage user identities practice questions with explanations for the Microsoft Certified: Identity and Access Administrator Associate exam.">
+<link rel="canonical" href="https://technuggets.academy/sc-300-implement-and-manage-user-identities.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free Implement and manage user identities Practice Questions — Microsoft Certified: Identity and Access Administrator Associate">
+<meta property="og:description" content="6 free Implement and manage user identities practice questions with explanations for the Microsoft Certified: Identity and Access Administrator Associate exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/sc-300-implement-and-manage-user-identities.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#0078D4}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>Implement and manage user identities</h1>
+<p class="sub">Free Microsoft Certified: Identity and Access Administrator Associate practice — 6 questions on <strong>Implement and manage user identities</strong>, with explanations. No sign-up.
+<a href="sc-300.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Implement and manage user identities">
+    <div class="meta">Question 1 of 6 · Implement and manage user identities</div>
+    <div class="q">Contoso currently uses federated authentication (AD FS) for all 50,000 users. IT wants to migrate to Microsoft Entra Connect with Password Hash Sync and evaluate the impact on a pilot group of 200 users in the Sales department before cutting the entire directory over, without modifying the existing federation trust. What should they configure?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. Enable Seamless SSO on the on-premises AD FS servers and monitor sign-in logs</button><button class="opt" onclick="answer(this,0,1,1)">B. Create a Staged Rollout feature in Microsoft Entra ID, enable Password Hash Sync and Seamless SSO, and add the Sales security group to the feature</button><button class="opt" onclick="answer(this,0,2,1)">C. Run Set-MsolDomainAuthentication to convert the entire domain from federated to managed immediately</button><button class="opt" onclick="answer(this,0,3,1)">D. Deploy Pass-through Authentication agents only on the workstations of the pilot users</button>
+    <div class="expl">Staged Rollout lets admins enable cloud authentication features (PHS, PTA, Seamless SSO) for a specific security group of users while the domain remains federated for everyone else, providing a safe pilot before full cutover.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Implement and manage user identities">
+    <div class="meta">Question 2 of 6 · Implement and manage user identities</div>
+    <div class="q">Fabrikam wants to collaborate with users from partner organization Adatum inside a Microsoft Teams shared channel. Adatum users must authenticate with their own Adatum credentials, and no guest user object should be created in Fabrikam's tenant. Both organizations must configure mutual cross-tenant trust settings for this to work. Which capability should be used?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. Microsoft Entra B2B direct connect</button><button class="opt" onclick="answer(this,1,1,0)">B. Microsoft Entra B2B collaboration invitation</button><button class="opt" onclick="answer(this,1,2,0)">C. Microsoft Entra External ID for customers (B2C)</button><button class="opt" onclick="answer(this,1,3,0)">D. Azure AD Application Proxy</button>
+    <div class="expl">B2B direct connect establishes a mutual, two-way trust relationship between two Microsoft Entra tenants specifically for scenarios like Teams shared channels, and it does not create a guest object in either tenant's directory.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Implement and manage user identities">
+    <div class="meta">Question 3 of 6 · Implement and manage user identities</div>
+    <div class="q">Contoso's identity admin must ensure that Global Administrators cannot reset passwords or edit profile attributes for the CEO and board members' accounts, even though those admins retain their tenant-wide role elsewhere. Only members of the role-assignable 'Executive Support' group should be able to manage these specific accounts. What should be configured?</div>
+    <button class="opt" onclick="answer(this,2,0,1)">A. Assign the Privileged Role Administrator role to the Executive Support group at the tenant scope</button><button class="opt" onclick="answer(this,2,1,1)">B. Create a restricted management administrative unit containing the executive accounts, and assign the Helpdesk Administrator role scoped to that unit to the Executive Support group</button><button class="opt" onclick="answer(this,2,2,1)">C. Create a Conditional Access policy that blocks Global Administrator sign-ins from managing executive mailboxes</button><button class="opt" onclick="answer(this,2,3,1)">D. Add the executive accounts to a dynamic security group that is excluded from all directory role assignments</button>
+    <div class="expl">A restricted management administrative unit prevents even Global Administrators (unless explicitly assigned a role on that unit) from managing its members, while a scoped role assignment to Executive Support grants exactly the least-privilege management needed.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Implement and manage user identities">
+    <div class="meta">Question 4 of 6 · Implement and manage user identities</div>
+    <div class="q">An organization wants users to reset their on-premises Active Directory password through Microsoft Entra self-service password reset (SSPR), with the new password written back to on-premises AD in near real time. Which combination is required to make this work?</div>
+    <button class="opt" onclick="answer(this,3,0,2)">A. Password Hash Sync only, with a Microsoft Entra ID Free tier license</button><button class="opt" onclick="answer(this,3,1,2)">B. The Microsoft Entra Connect Health agent installed on all domain controllers</button><button class="opt" onclick="answer(this,3,2,2)">C. Microsoft Entra Connect with password writeback enabled, a Microsoft Entra ID P1 or higher license, and SSPR configured</button><button class="opt" onclick="answer(this,3,3,2)">D. Pass-through Authentication agents configured with a writeback extension</button>
+    <div class="expl">Password writeback requires enabling the writeback feature in Microsoft Entra Connect, a Microsoft Entra ID P1 (or P2) license for SSPR writeback, and SSPR itself configured and enabled for the relevant users.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Implement and manage user identities">
+    <div class="meta">Question 5 of 6 · Implement and manage user identities</div>
+    <div class="q">After configuring Microsoft Entra Connect with Password Hash Sync, synchronization fails for two on-premises user accounts with the error 'Attribute proxyAddresses or userPrincipalName must be unique across the directory.' Investigation shows both AD accounts were accidentally assigned the same email-based value during a migration. Which Microsoft Entra Connect feature automatically appends a temporary suffix to one of the conflicting values so synchronization can proceed while the source data issue is fixed?</div>
+    <button class="opt" onclick="answer(this,4,0,0)">A. Duplicate Attribute Resiliency</button><button class="opt" onclick="answer(this,4,1,0)">B. Sync Rules Editor conflict resolution</button><button class="opt" onclick="answer(this,4,2,0)">C. Connector space full import</button><button class="opt" onclick="answer(this,4,3,0)">D. Export Deletion Threshold</button>
+    <div class="expl">Duplicate Attribute Resiliency (DAR) automatically detects duplicate proxyAddresses or userPrincipalName values and appends a temporary suffix to one of them, allowing sync to continue until an administrator corrects the source data in AD.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Implement and manage user identities">
+    <div class="meta">Question 6 of 6 · Implement and manage user identities</div>
+    <div class="q">A user is a member of two groups: one assigns a Microsoft 365 E3 license (which includes Intune and EMS service plans), and another assigns a standalone Enterprise Mobility + Security E3 license whose service plans conflict with plans already granted by the M365 E3 license. The Microsoft Entra admin center shows a licensing 'Problem' status for the user. What is the recommended way to resolve the conflict while keeping the user in both groups for other purposes, such as Conditional Access targeting?</div>
+    <button class="opt" onclick="answer(this,5,0,3)">A. Remove the user from both groups and assign both licenses to the user directly</button><button class="opt" onclick="answer(this,5,1,3)">B. Delete the standalone Enterprise Mobility + Security E3 license from the tenant's subscriptions entirely</button><button class="opt" onclick="answer(this,5,2,3)">C. Assign the user the Global Administrator role so that Microsoft Entra bypasses license conflict checks</button><button class="opt" onclick="answer(this,5,3,3)">D. In the group's license assignment, use 'Assign options' to disable the specific conflicting service plan for that group's license</button>
+    <div class="expl">Group-based licensing allows admins to disable individual service plans within a group's license assignment via 'Assign options,' resolving the duplicate/conflicting plan while preserving the group memberships needed for other purposes.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course has two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed answer explanations.</p>
+  <a href="https://www.udemy.com/course/sc-300-microsoft-identity-and-access-administrator-prep/" rel="sponsored">Start my full course on Udemy →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

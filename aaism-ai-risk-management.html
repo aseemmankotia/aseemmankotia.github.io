@@ -1,0 +1,76 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free AI Risk Management Practice Questions — ISACA Advanced in AI Security Management</title>
+<meta name="description" content="6 free AI Risk Management practice questions with explanations for the ISACA Advanced in AI Security Management exam.">
+<link rel="canonical" href="https://technuggets.academy/aaism-ai-risk-management.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free AI Risk Management Practice Questions — ISACA Advanced in AI Security Management">
+<meta property="og:description" content="6 free AI Risk Management practice questions with explanations for the ISACA Advanced in AI Security Management exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/aaism-ai-risk-management.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#5B21B6}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>AI Risk Management</h1>
+<p class="sub">Free ISACA Advanced in AI Security Management practice — 6 questions on <strong>AI Risk Management</strong>, with explanations. No sign-up.
+<a href="aaism.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="Domain 2: AI Risk Management">
+    <div class="meta">Question 1 of 6 · Domain 2: AI Risk Management</div>
+    <div class="q">A security manager is assessing risk for a computer-vision model licensed from a third-party vendor. The vendor discloses that the training dataset was aggregated from multiple public web scrapes with no documented chain of custody, and the vendor cannot confirm whether copyrighted or PII-containing images were filtered out. The model is scheduled for deployment in a public-facing product within 30 days. Using AI risk assessment principles, which action should the security manager prioritize BEFORE deployment?</div>
+    <button class="opt" onclick="answer(this,0,0,1)">A. Proceed with deployment since output filtering at inference time compensates for any upstream data quality issues</button><button class="opt" onclick="answer(this,0,1,1)">B. Require the vendor to provide a data provenance attestation and conduct an independent bias/PII leakage evaluation, treating the unresolved provenance gap as an unacceptable risk pending mitigation</button><button class="opt" onclick="answer(this,0,2,1)">C. Accept the risk because the vendor's contract includes a standard indemnification clause for IP infringement</button><button class="opt" onclick="answer(this,0,3,1)">D. Delay only the marketing launch while allowing internal beta testing to continue unrestricted, since beta users are not the general public</button>
+    <div class="expl">AI risk assessment requires treating provenance gaps in training data as a distinct risk category from output-level controls; when provenance cannot be verified and legal/privacy exposure exists, the correct treatment is to obtain attestation and independently verify before accepting residual risk, especially given a hard deployment deadline.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="Domain 2: AI Risk Management">
+    <div class="meta">Question 2 of 6 · Domain 2: AI Risk Management</div>
+    <div class="q">A bank's AI-based transaction fraud detection model has a documented false-negative rate that fraud rings have begun exploiting by structuring transactions just below the model's decision threshold — a classic evasion technique. The security team's risk register currently rates this threat as 'Low' because the model's overall accuracy remains above 98%. From an AI risk management perspective, what is the MOST significant flaw in this rating?</div>
+    <button class="opt" onclick="answer(this,1,0,0)">A. The rating incorrectly relies on aggregate accuracy rather than assessing adversarial robustness and targeted exploitation impact, which can be severe even when overall accuracy is high</button><button class="opt" onclick="answer(this,1,1,0)">B. The rating should be increased solely because evasion attacks are always classified as Critical severity regardless of context</button><button class="opt" onclick="answer(this,1,2,0)">C. The rating is appropriate because a 98% accuracy rate exceeds most industry benchmarks for fraud detection models</button><button class="opt" onclick="answer(this,1,3,0)">D. The rating cannot be assessed until the model is retrained, since risk scoring is only valid immediately after training</button>
+    <div class="expl">AI risk assessment for adversarial threats must evaluate targeted, exploitable weaknesses (evasion at the decision boundary) rather than relying on aggregate performance metrics; a high overall accuracy figure can mask a systematically exploitable blind spot with significant financial impact — this is a core AAISM distinction between traditional model performance metrics and security-relevant robustness metrics.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="Domain 2: AI Risk Management">
+    <div class="meta">Question 3 of 6 · Domain 2: AI Risk Management</div>
+    <div class="q">An attacker sends carefully crafted queries to a publicly exposed model-inference API, systematically varying inputs and recording outputs to reconstruct a functionally equivalent copy of the proprietary model without ever accessing the underlying weights or infrastructure. Which MITRE ATLAS-aligned threat category does this technique represent?</div>
+    <button class="opt" onclick="answer(this,2,0,3)">A. Data poisoning during the training pipeline</button><button class="opt" onclick="answer(this,2,1,3)">B. Prompt injection targeting the system instructions</button><button class="opt" onclick="answer(this,2,2,3)">C. Supply chain compromise of a third-party dependency</button><button class="opt" onclick="answer(this,2,3,3)">D. Model extraction (model theft via query-based reconstruction)</button>
+    <div class="expl">Systematic input/output querying to reverse-engineer or clone a model's functionality is the defining pattern of model extraction (model theft), a technique explicitly cataloged in the MITRE ATLAS matrix under exfiltration/theft of ML artifacts via API abuse.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="Domain 2: AI Risk Management">
+    <div class="meta">Question 4 of 6 · Domain 2: AI Risk Management</div>
+    <div class="q">During a quarterly AI risk review, a residual risk score of 18 (on a 1–25 scale, where likelihood and impact are each rated 1–5) is calculated for an AI supply-chain compromise scenario involving a compromised open-source model repository used in the organization's ML pipeline. The organization's documented AI risk appetite threshold is 12. According to AI risk treatment principles, what is the CORRECT next step?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. Since the residual score exceeds appetite, select and implement a formal treatment option (mitigate, transfer, avoid, or accept with documented executive sign-off) and re-score after treatment</button><button class="opt" onclick="answer(this,3,1,0)">B. Log the finding for informational purposes only, since supply-chain risks are inherently unmanageable and excluded from formal treatment</button><button class="opt" onclick="answer(this,3,2,0)">C. Automatically accept the risk because open-source components are cost-effective and widely used industry-wide</button><button class="opt" onclick="answer(this,3,3,0)">D. Reduce the impact rating to bring the score below threshold so no further action is required</button>
+    <div class="expl">When a residual risk score exceeds the defined risk appetite threshold, governance requires formal treatment selection from the standard options (mitigate, transfer, avoid, or accept), with acceptance requiring explicit documented approval at an appropriate authority level — simply logging or ignoring the exceedance violates the risk management lifecycle.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="Domain 2: AI Risk Management">
+    <div class="meta">Question 5 of 6 · Domain 2: AI Risk Management</div>
+    <div class="q">A security manager is negotiating a contract with a hosted foundation-model provider that will process the organization's confidential customer data through its API for a customer-service chatbot. The vendor's standard terms are silent on whether customer inputs may be used to further train or fine-tune the provider's models. From an AI vendor risk management standpoint, which contractual requirement is MOST critical to add before signing?</div>
+    <button class="opt" onclick="answer(this,4,0,2)">A. A right-to-audit clause allowing annual on-site inspection of the vendor's data centers</button><button class="opt" onclick="answer(this,4,1,2)">B. A most-favored-customer pricing clause ensuring the organization receives the vendor's lowest published rate</button><button class="opt" onclick="answer(this,4,2,2)">C. An explicit data-usage and retention clause guaranteeing customer inputs are not used for model training and specifying retention/deletion timelines</button><button class="opt" onclick="answer(this,4,3,2)">D. A service-level agreement guaranteeing 99.99% API uptime</button>
+    <div class="expl">For hosted/foundation-model vendors, the highest-priority security and privacy risk is unauthorized use of confidential inputs for further model training or retention beyond need, which can lead to data leakage into future model outputs served to other customers; an explicit data-usage and retention clause directly addresses this AI-specific supply-chain risk and is a core AAISM vendor-management concern.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="Domain 2: AI Risk Management">
+    <div class="meta">Question 6 of 6 · Domain 2: AI Risk Management</div>
+    <div class="q">During threat modeling for a deployed recommendation model, an analyst distinguishes between two attack techniques: one where an adversary queries the model repeatedly to determine whether a specific individual's record was part of the training dataset, and another where an adversary manipulates input features at inference time to force a misclassification without altering the model itself. Which pairing correctly labels these two techniques?</div>
+    <button class="opt" onclick="answer(this,5,0,2)">A. First is a data poisoning attack; second is a model extraction attack</button><button class="opt" onclick="answer(this,5,1,2)">B. First is an evasion attack; second is a membership inference attack</button><button class="opt" onclick="answer(this,5,2,2)">C. First is a membership inference attack; second is an evasion attack</button><button class="opt" onclick="answer(this,5,3,2)">D. First is a model inversion attack; second is a data poisoning attack</button>
+    <div class="expl">Membership inference determines whether a specific data record was used in training by analyzing model confidence/output patterns on queries — a privacy attack. Evasion involves crafting inputs at inference time to cause misclassification without modifying the model — an integrity attack against the deployed model's decision boundary. This distinction is a core part of the AI threat taxonomy tested in AAISM.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST33"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">undefined</span> <span class="price">$34.99</span> with code <span class="code">FREETEST33</span> — valid through Oct 6.</p>
+  <a href="https://www.udemy.com/course/aaism-certification-exam-prep-ai-security-management/?couponCode=FREETEST33" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>

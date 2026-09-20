@@ -1,0 +1,76 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Free NVIDIA InfiniBand Networking Practice Questions — NVIDIA-Certified Professional: AI Networking</title>
+<meta name="description" content="6 free NVIDIA InfiniBand Networking practice questions with explanations for the NVIDIA-Certified Professional: AI Networking exam.">
+<link rel="canonical" href="https://technuggets.academy/ncp-ain-nvidia-infiniband-networking.html">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="theme-color" content="#F59E0B">
+<meta property="og:site_name" content="TechNuggets Academy">
+<meta property="og:title" content="Free NVIDIA InfiniBand Networking Practice Questions — NVIDIA-Certified Professional: AI Networking">
+<meta property="og:description" content="6 free NVIDIA InfiniBand Networking practice questions with explanations for the NVIDIA-Certified Professional: AI Networking exam.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://technuggets.academy/ncp-ain-nvidia-infiniband-networking.html">
+<meta property="og:image" content="https://technuggets.academy/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://technuggets.academy/og-image.png">
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8296329880252390" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="style.css"><style>:root{--vendor:#76B900}</style></head><body><div class="wrap"><div class="brandbar"><a href="index.html"><img src="logo.png" alt="TechNuggets Academy" width="200" height="50"></a></div>
+<header><h1>NVIDIA InfiniBand Networking</h1>
+<p class="sub">Free NVIDIA-Certified Professional: AI Networking practice — 6 questions on <strong>NVIDIA InfiniBand Networking</strong>, with explanations. No sign-up.
+<a href="ncp-ain.html" style="color:var(--acc)">Full 12-question mixed test →</a></p></header>
+
+  <div class="card qcard" id="q0" data-domain="NVIDIA InfiniBand Networking">
+    <div class="meta">Question 1 of 6 · NVIDIA InfiniBand Networking</div>
+    <div class="q">A 2,048-node GPU training cluster uses NVIDIA Quantum-2 InfiniBand with UFM as the subnet manager. The primary UFM instance running on a dedicated server fails during a training job. Fabric connectivity should be preserved automatically. Which mechanism BEST explains how this is achieved without operator intervention?</div>
+    <button class="opt" onclick="answer(this,0,0,3)">A. GPUDirect RDMA automatically reroutes traffic around the failed SM host using cached forwarding tables</button><button class="opt" onclick="answer(this,0,1,3)">B. The Subnet Manager role migrates to the HCA firmware on the compute nodes, which recomputes routing using SHARP trees</button><button class="opt" onclick="answer(this,0,2,3)">C. NCCL detects the SM failure and falls back to TCP/IP sockets until the SM restarts</button><button class="opt" onclick="answer(this,0,3,3)">D. A standby SM configured with a lower priority value detects the master's absence via periodic SM polling and takes over master role, re-sweeping the fabric and reprogramming LFTs</button>
+    <div class="expl">InfiniBand supports master/standby SM redundancy; standby SMs poll the master at a configured interval, and on failure the standby with the best (numerically highest, per IB spec priority semantics as configured) priority takes over, performs subnet discovery/sweep, and reprograms LIDs and forwarding tables — all without host application intervention.</div>
+  </div>
+
+  <div class="card qcard" id="q1" data-domain="NVIDIA InfiniBand Networking">
+    <div class="meta">Question 2 of 6 · NVIDIA InfiniBand Networking</div>
+    <div class="q">An architect is designing a non-blocking fat-tree (CBB — constant bisectional bandwidth) InfiniBand fabric for 1,024 GPU-attached HCAs using 40-port leaf switches with equal uplink and downlink port counts. What downlink-to-uplink port ratio on each leaf switch is required to guarantee full non-blocking bisectional bandwidth?</div>
+    <button class="opt" onclick="answer(this,1,0,3)">A. 3:1, oversubscribed intentionally to reduce switch count</button><button class="opt" onclick="answer(this,1,1,3)">B. 4:1, since GPU workloads tolerate moderate blocking under SHARP aggregation</button><button class="opt" onclick="answer(this,1,2,3)">C. 2:1, matching typical Clos oversubscription for storage fabrics</button><button class="opt" onclick="answer(this,1,3,3)">D. 1:1, i.e., an equal number of ports must connect to hosts and to the spine layer</button>
+    <div class="expl">A true non-blocking (CBB) fat-tree requires the aggregate downlink bandwidth to hosts to equal the aggregate uplink bandwidth to the spine on every leaf switch — a 1:1 port ratio. Any tapering ratio (2:1, 3:1, etc.) introduces oversubscription, which the exam distinguishes from CBB design.</div>
+  </div>
+
+  <div class="card qcard" id="q2" data-domain="NVIDIA InfiniBand Networking">
+    <div class="meta">Question 3 of 6 · NVIDIA InfiniBand Networking</div>
+    <div class="q">A cluster is running distributed training with NCCL all-reduce operations across 512 GPUs on Quantum-2 switches with SHARPv3 enabled. Which statement correctly describes what SHARP offloads to accomplish for this workload?</div>
+    <button class="opt" onclick="answer(this,2,0,0)">A. SHARP performs the reduction arithmetic in-network on the switch ASICs along an aggregation tree, so partial sums are computed as data flows toward the root instead of all data being reduced at the endpoints</button><button class="opt" onclick="answer(this,2,1,0)">B. SHARP replaces RDMA Write operations with RDMA Read to reduce PCIe bus contention on the GPU host</button><button class="opt" onclick="answer(this,2,2,0)">C. SHARP dynamically reroutes congested flows around slow links using per-packet adaptive routing decisions</button><button class="opt" onclick="answer(this,2,3,0)">D. SHARP compresses gradient tensors using lossy quantization before transmission to reduce bandwidth</button>
+    <div class="expl">SHARP (Scalable Hierarchical Aggregation and Reduction Protocol) offloads collective reduction operations (e.g., all-reduce) to the switch network by building an aggregation tree; switches perform partial reductions in-flight, cutting the data volume that must traverse the fabric and reducing endpoint compute/communication overhead — this is its defining exam-tested capability.</div>
+  </div>
+
+  <div class="card qcard" id="q3" data-domain="NVIDIA InfiniBand Networking">
+    <div class="meta">Question 4 of 6 · NVIDIA InfiniBand Networking</div>
+    <div class="q">A fabric administrator observes that despite having multiple equal-cost paths between leaf switches (via LMC &gt; 0), certain uplinks remain congested while others are underutilized, even though Adaptive Routing (AR) is enabled at the switch level. What is the MOST likely root cause?</div>
+    <button class="opt" onclick="answer(this,3,0,0)">A. AR groups were never populated because the SM's routing engine did not compute multiple valid LFT entries per destination LID, so AR has no alternate paths to select from</button><button class="opt" onclick="answer(this,3,1,0)">B. SHARP aggregation trees are overriding the AR group path selection for all traffic, not just collectives</button><button class="opt" onclick="answer(this,3,2,0)">C. The subnet manager was configured with a fat-tree routing algorithm instead of the up/down algorithm, which disables AR group creation entirely</button><button class="opt" onclick="answer(this,3,3,0)">D. The HCAs are using static LID routing at the transport layer, which always takes precedence over switch-level AR regardless of switch configuration</button>
+    <div class="expl">Adaptive Routing requires that the SM's routing algorithm (e.g., fat-tree routing algorithm with LMC&gt;0) actually populate multiple valid forwarding entries (AR groups) per destination at each switch. If the SM does not generate genuinely redundant paths in its LFT/AR group computation, AR has nothing to load-balance across even if enabled on switch ports.</div>
+  </div>
+
+  <div class="card qcard" id="q4" data-domain="NVIDIA InfiniBand Networking">
+    <div class="meta">Question 5 of 6 · NVIDIA InfiniBand Networking</div>
+    <div class="q">On an NVIDIA Quantum InfiniBand fabric, an administrator wants to guarantee that management traffic (subnet management packets) is never starved by high-priority GPU training RDMA traffic, even under heavy congestion. Which InfiniBand QoS mechanism inherently reserves a dedicated lane for this purpose?</div>
+    <button class="opt" onclick="answer(this,4,0,1)">A. Service Level 0 (SL0), which is reserved by default for all RDMA Write operations</button><button class="opt" onclick="answer(this,4,1,1)">B. VL15, which is reserved exclusively for subnet management traffic and is never subject to SL2VL arbitration with data traffic</button><button class="opt" onclick="answer(this,4,2,1)">C. The Congestion Control (CC) mechanism, which throttles data VLs but has no relationship to virtual lane reservation</button><button class="opt" onclick="answer(this,4,3,1)">D. ECN marking on RoCEv2 packets, which is also used natively by InfiniBand SMPs for lane prioritization</button>
+    <div class="expl">InfiniBand architecture reserves Virtual Lane 15 (VL15) exclusively for subnet management packets (SMPs). VL15 is never used for data traffic and is excluded from SL2VL mapping and standard flow control, guaranteeing management traffic always has a dedicated path regardless of data-plane congestion.</div>
+  </div>
+
+  <div class="card qcard" id="q5" data-domain="NVIDIA InfiniBand Networking">
+    <div class="meta">Question 6 of 6 · NVIDIA InfiniBand Networking</div>
+    <div class="q">A hyperscale AI training deployment plans to scale beyond 4,000 GPU nodes and is evaluating Dragonfly+ versus a traditional 3-tier fat-tree topology for the InfiniBand fabric. Which statement correctly captures the primary trade-off the exam expects you to know?</div>
+    <button class="opt" onclick="answer(this,5,0,2)">A. Dragonfly+ is only supported with NVIDIA Spectrum-X Ethernet and cannot be deployed on Quantum InfiniBand switches</button><button class="opt" onclick="answer(this,5,1,2)">B. A 3-tier fat-tree always uses fewer total switches than Dragonfly+ at any scale above 1,000 nodes</button><button class="opt" onclick="answer(this,5,2,2)">C. Dragonfly+ reduces the number of long-haul optical cables and switch tiers required at extreme scale by using global links between groups, but requires more sophisticated adaptive routing to avoid hotspots since paths are not uniformly non-blocking like a well-provisioned fat-tree</button><button class="opt" onclick="answer(this,5,3,2)">D. Dragonfly+ eliminates the need for a subnet manager since routing is fully static and precomputed at fabric design time</button>
+    <div class="expl">Dragonfly+ topologies reduce cabling, switch tier count, and cost at very large scale by using fewer global (inter-group) links compared to a fully non-blocking multi-tier fat-tree, but this comes at the cost of needing robust adaptive routing to avoid congestion on shared global links, since the topology is not inherently uniformly non-blocking end-to-end like a well-provisioned fat-tree.</div>
+  </div>
+<div class="score" id="score"></div>
+<div class="gaps" id="gaps" data-coupon="FREETEST34"></div>
+<div class="cta">
+  <strong>Ready for the real thing?</strong>
+  <p>The full course: two full-length practice tests, video lessons for every exam domain, hands-on labs and detailed explanations.</p>
+  <p><span class="strike">undefined</span> <span class="price">$34.99</span> with code <span class="code">FREETEST34</span> — valid through Oct 11.</p>
+  <a href="https://www.udemy.com/course/ncp-ain-nvidia-ai-networking-certification-prep/?couponCode=FREETEST34" rel="sponsored">Get my $34.99 deal →</a>
+</div>
+<footer>Questions © TechNuggets Academy (Aseem Mankotia). Course links may be referral links.
+Not affiliated with or endorsed by the certification vendor. <a href="index.html">All free practice tests</a></footer>
+</div><script src="quiz.js"></script></body></html>
